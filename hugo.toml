@@ -1,14 +1,14 @@
-baseURL = 'http://jonesckevin.github.io/'
-languageCode = 'en'
-title = "Write-Ups"
-theme = 'hello'
+baseurl      = "localhost"
+title        = "My Blog"
+languageCode = "en-us"
+theme        = "hugo-PaperMod"
+pagination.pagerSize     = 10
 
 [params]
-  dateform        = "2 Jan 2006"
-  dateformShort   = "2 Jan"
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
-  disableInlineCopyToClipBoard = true
 
   # Subtitle for home
   homeSubtitle = "A simple and beautiful blog"
@@ -43,7 +43,7 @@ theme = 'hello'
     subtitle  = "A simple theme for Hugo"
 
     [languages.en.params.logo]
-      logoText = "MedaVerse"
+      logoText = "hello friend ng"
       logoHomeLink = "/"
     # or
     #
@@ -52,11 +52,6 @@ theme = 'hello'
 
   # And you can even create generic menu
   [[menu.main]]
-    identifier = "writeup"
-    name       = "CTF Write-Ups"
-    url        = "/writeup"
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
