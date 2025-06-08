@@ -1,11 +1,7 @@
-*huge.exe
-.hugo_build.lock
+.gitignore
+**.exe
+**.lock
 LICENSE
-.idea
-exampleSite
-exampleSite/public/
-exampleSite/resources/
-.hugo_build.lock
 public/
 resources/
-content/*
+content
