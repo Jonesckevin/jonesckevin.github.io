@@ -1,0 +1,11 @@
+*huge.exe
+.hugo_build.lock
+LICENSE
+.idea
+exampleSite
+exampleSite/public/
+exampleSite/resources/
+.hugo_build.lock
+public/
+resources/
+content/*

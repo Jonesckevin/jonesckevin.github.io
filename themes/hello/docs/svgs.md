@@ -1,4 +1,4 @@
-# Available Social Icons:
+# Available Social Icons
 
 - [amazon](https://simpleicons.org/?q=amazon)
 - [anilist](https://simpleicons.org/?q=anilist)
