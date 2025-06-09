@@ -44,7 +44,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   home = "/"
   # Add a permalink for the index page
   index = "/"
-  
+
 [languages]
   [languages.en]
     title = "MedaVerse"
