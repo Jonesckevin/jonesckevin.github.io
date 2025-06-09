@@ -1,8 +1,13 @@
 baseurl      = "localhost"
-title        = "My Blog"
+title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
 languageCode = "en-us"
-theme        = "hugo-PaperMod"
-pagination.pagerSize     = 10
+theme        = "hello-friend-ng"
+
+#enableGitInfo = true
+#enableEmoji = true
+pagination.pagerSize  = 10
+
+ignoreLogs = ['warning-goldmark-raw-html']
 
 [params]
   dateform        = "Jan 2, 2006"
@@ -10,48 +15,58 @@ pagination.pagerSize     = 10
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
 
-  # Subtitle for home
-  homeSubtitle = "A simple and beautiful blog"
-
-  # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  disableReadOtherPosts = false
-
-  # Enable sharing buttons, if you like
-  enableSharingButtons = true
-  
-  # Show a global language switcher in the navigation bar
-  enableGlobalLanguageMenu = true
+  homeSubtitle = "A simple and beautiful blog" # Subtitle for home page
+  disableReadOtherPosts = false # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  enableSharingButtons = false # Enable sharing buttons, if you like
+  enableGlobalLanguageMenu = false # Show a global language switcher in the navigation bar
 
   # Metadata mostly used in document's head
-  description = "My new homepage or blog"
-  keywords = "homepage, blog"
-  images = [""]
+  description = "Cyber Security Type Info"
+  keywords = "homepage, blog, 4n6, forensics, cyber security, ctf, writeup, nsec, ns3c, nsec, NorthSec, NorthSec, NSec, NS3C, NSec CTF, NS3C CTF, Cyber Security, Cybersecurity, Cyber Security Blog, Cyber Security Writeup, Cyber Security CTF"
+  images = [""] # Images used in document's head, e.g. for social media sharing
 
 [taxonomies]
-    category = "blog"
-    tag      = "tags"
-    series   = "series"
-
+  category = "blog" # Category taxonomy, used for categorizing posts
+  tag      = "tags" # Tag taxonomy, used for tagging posts
+  series   = "series" # Series taxonomy, used for grouping posts into 
+  author   = "authors" # Author taxonomy, used for grouping posts by authors
+  language = "languages" # Language taxonomy, used for grouping posts by languages
+  type     = "types" # Type taxonomy, used for grouping posts by types, e.g. "Tutorials", "News", etc.
+[permalinks]
+  blog       = "/blog/:slug/" # Permalink for blog posts, e.g. "/blog/my-first-post/"
+  authors    = "/authors/:slug/" # Permalink for author pages, e.g. "/authors/john-doe/"
+  tags       = "/tags/:slug/" # Permalink for tag pages, e.g. "/tags/hugo/"
+  categories = "/categories/:slug/" # Permalink for category pages, e.g. "/categories/tutorials/"
+  series     = "/series/:slug/" # Permalink for series pages, e.g. "/series/hugo-tutorials/"
+  languages  = "/languages/:slug/" # Permalink for language pages, e.g. "/languages/en/"
+  types      = "/types/:slug/" # Permalink for type pages, e.g. "/types/tutorials/"
+  # Add a permalink for the homepage
+  home = "/"
+  # Add a permalink for the index page
+  index = "/"
+  
 [languages]
   [languages.en]
-    title = "Hello Friend NG"
+    title = "MedaVerse"
     keywords = ""
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 
   [languages.en.params]
-    subtitle  = "A simple theme for Hugo"
+    subtitle  = "The Truest of Subtitles"
 
     [languages.en.params.logo]
-      logoText = "hello friend ng"
+      logoText = "MedaVerse"
       logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
+      #path = "/images/logo-81x112.png"
+      #alt = "Medabee4n6 Logo"
 
-  # And you can even create generic menu
+  # Create  Header Menu
   [[menu.main]]
-    identifier = "blog"
-    name       = "Blog"
-    url        = "/posts"
+    identifier = "writeups"
+    name       = "CTF WriteUps"
+    url        = "/writeups"
+  [[menu.main]]
+    identifier = "NSec"
+    name       = "NSec"
+    url        = "/nsec"
