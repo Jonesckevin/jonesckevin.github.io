@@ -1,11 +1,11 @@
 baseurl      = "localhost"
 title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
-languageCode = "en-us"
+languageCode = "en"
 theme        = "hello-friend-ng"
 
 #enableGitInfo = true
 #enableEmoji = true
-pagination.pagerSize  = 10
+pagination.pagerSize  = 30
 
 ignoreLogs = ['warning-goldmark-raw-html']
 
@@ -16,9 +16,9 @@ ignoreLogs = ['warning-goldmark-raw-html']
   dateformNumTime = "2006-01-02 15:04"
 
   homeSubtitle = "A simple and beautiful blog" # Subtitle for home page
-  disableReadOtherPosts = false # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  enableSharingButtons = false # Enable sharing buttons, if you like
-  enableGlobalLanguageMenu = false # Show a global language switcher in the navigation bar
+  disableReadOtherPosts = true      # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  enableSharingButtons = true       # Enable sharing buttons, if you like
+  enableGlobalLanguageMenu = false  # Show a global language switcher in the navigation bar
 
   # Metadata mostly used in document's head
   description = "Cyber Security Type Info"
@@ -42,8 +42,6 @@ ignoreLogs = ['warning-goldmark-raw-html']
   types      = "/types/:slug/" # Permalink for type pages, e.g. "/types/tutorials/"
   # Add a permalink for the homepage
   home = "/"
-  # Add a permalink for the index page
-  index = "/"
 
 [languages]
   [languages.en]
@@ -67,6 +65,6 @@ ignoreLogs = ['warning-goldmark-raw-html']
     name       = "CTF WriteUps"
     url        = "/writeups"
   [[menu.main]]
-    identifier = "NSec"
-    name       = "NSec"
-    url        = "/nsec"
+    identifier = "4n6Post"
+    name       = "4n6Post"
+    url        = "https://4n6post.com"

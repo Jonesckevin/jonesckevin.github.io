@@ -77,3 +77,18 @@
 {{- if $.Site.Params.plausibleDataDomain }}
     <script defer data-domain="{{ .Site.Params.plausibleDataDomain }}" src="{{ .Site.Params.plausibleScriptSource }}"></script>
 {{- end}}
+
+<style>
+
+    body {
+        background-color: #181a1b;
+        background-image:
+            repeating-linear-gradient(135deg, #232526 0px, #232526 2px, transparent 2px, transparent 20px),
+            repeating-linear-gradient(225deg, #232526 0px, #232526 2px, transparent 2px, transparent 20px);
+        background-size: 15px 15px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: repeat;
+        color: #e0e0e0;
+    }
+</style>
