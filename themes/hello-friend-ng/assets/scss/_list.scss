@@ -98,29 +98,27 @@ $link-color: #007acc; // or your preferred link color
 }
 
 .sidebar {
+  position: absolute;
   flex-shrink: 0;
   flex-basis: 25%;
   flex-grow: 0;
   flex-wrap: nowrap;
-  width: 25%;
+  width: 15%;
   min-width: 180px;
   max-width: 400px;
-  padding: 1px 16px 24px 15px;
-  position: sticky;
+  padding: 1px 16px 20px 15px;
   top: 64px; // Adjust as needed to clear the header
-  height: calc(100vh - 18%); // Adjust to match header height
+  height: auto; // Adjust to match header height
   overflow-y: auto;
   text-align: left;
   background: linear-gradient(135deg, #00e90c17 40%, #9702771f 60%);
-  border-radius: 28px 8px 23px 8px;
-  box-shadow: 0 4px 24px 0 rgba(0, 122, 204, 0.10), 0 1.5px 0.5px 0 #fff8 inset;
-  border: 2px solid #b3d8ff;
-  position: relative;
-  margin-top: 32px; // Add space from the top header;
+  border-radius: 40px 40px 40px 40px;
+  box-shadow: 0 14px 20px 10px rgba(0, 122, 204, 0.10), 0 1.5px 0.5px 0 #fff8 inset;
+  border: 2px solid #430045;
+  margin-top: 55px; // Add space from the top header;
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;
-  
 
   @media #{$media-size-tablet} {
     width: 100%;
