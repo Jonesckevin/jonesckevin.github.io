@@ -5,5 +5,5 @@ draft: false
 toc: false
 images:
 tags:
-  - writeups
+  - posts
 ---

@@ -15,7 +15,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
 
-  homeSubtitle = "A simple and beautiful blog" # Subtitle for home page
+  homeSubtitle = "The Posts, The WriteUps, The CTFs, The Enjoyment" # Subtitle for home page
   disableReadOtherPosts = true      # Set disableReadOtherPosts to true in order to hide the links to other posts.
   enableSharingButtons = true       # Enable sharing buttons, if you like
   enableGlobalLanguageMenu = false  # Show a global language switcher in the navigation bar
@@ -61,9 +61,14 @@ ignoreLogs = ['warning-goldmark-raw-html']
 
   # Create  Header Menu
   [[menu.main]]
-    identifier = "writeups"
-    name       = "CTF WriteUps"
+    identifier = "posts"
+    name       = "Posts"
     url        = "/writeups"
+  [[menu.main]]
+    identifier = "docker"
+    name       = "Dockers"
+    url        = "/dockers"
+  
   [[menu.main]]
     identifier = "4n6Post"
     name       = "4n6Post"

@@ -1,18 +1,79 @@
 {{ define "main" }}
     {{ $paginator := .Paginate .Data.Pages }}
-
     <div class="list-layout">
-        <nav class="sidebar">
-            <h2 class="sidebar-title">{{ .Title }}</h2>
-            <ul class="sidebar-list">
-                <!-- Sidebar should not show the header content, so leave this section empty or remove it entirely -->
-                {{ range $paginator.Pages }}
-                    <li class="sidebar-item">
-                        <a href="{{ .Permalink }}">{{ .Title }}</a>
-                    </li>
-                {{ end }}
-            </ul>
+        <!-- Sidebar: Directory structure 1 and 2 levels up -->
+        <nav class="sidebar-directory">
+            <!-- Expand/Collapse Section -->
+            <input type="checkbox" id="sidebar-expand-toggle" class="sidebar-expand-toggle" checked hidden>
+            <label for="sidebar-expand-toggle" class="sidebar-expand-header">
+                {{ .Site.Title }}
+                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
+            </label>
+            <div class="sidebar-expand-content">
+                {{ $current := . }}
+                {{ $section := .CurrentSection }}
+                {{ $parent := $section.Parent }}
+                {{ $grandparent := $parent.Parent }}
+                <nav>
+                    {{ if $grandparent }}
+                        <div class="sidebar-level">
+                            <input type="checkbox" id="sidebar-grandparent-toggle" class="sidebar-sub-expand-toggle" checked hidden>
+                            <label for="sidebar-grandparent-toggle" class="sidebar-sub-expand-header">
+                                <strong>{{ $grandparent.Title }}</strong>
+                                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
+                            </label>
+                            <div class="sidebar-sub-expand-content">
+                                <ul>
+                                    {{ range $grandparent.Pages }}
+                                        <li>
+                                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                        </div>
+                    {{ end }}
+                    {{ if $parent }}
+                        <div class="sidebar-level">
+                            <input type="checkbox" id="sidebar-parent-toggle" class="sidebar-sub-expand-toggle" checked hidden>
+                            <label for="sidebar-parent-toggle" class="sidebar-sub-expand-header">
+                                <strong>{{ $parent.Title }}</strong>
+                                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
+                            </label>
+                            <div class="sidebar-sub-expand-content">
+                                <ul>
+                                    {{ range $parent.Pages }}
+                                        <li>
+                                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                        </div>
+                    {{ end }}
+                    {{ if $section }}
+                        <div class="sidebar-level">
+                            <input type="checkbox" id="sidebar-section-toggle" class="sidebar-sub-expand-toggle" checked hidden>
+                            <label for="sidebar-section-toggle" class="sidebar-sub-expand-header">
+                                <strong>{{ $section.Title }}</strong>
+                                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
+                            </label>
+                            <div class="sidebar-sub-expand-content">
+                                <ul>
+                                    {{ range $section.Pages }}
+                                        <li>
+                                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                        </div>
+                    {{ end }}
+                </nav>
+            </div>
         </nav>
+        <!-- End Sidebar -->
+
         <main class="posts">
             <h1>{{ .Title }}</h1>
 
@@ -46,4 +107,53 @@
         {{ partial "pagination-list.html" . }}
         </main>
     </div>
+<style>
+/* Sidebar expand/collapse styles */
+.sidebar-expand-header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.5em 0;
+    font-size: 1.1em;
+}
+.expand-icon {
+    margin-left: auto;
+    transition: transform 0.2s;
+}
+.sidebar-expand-toggle:not(:checked) ~ .sidebar-expand-header .expand-icon {
+    transform: rotate(-90deg);
+}
+.sidebar-expand-toggle:not(:checked) ~ .sidebar-expand-content {
+    display: none;
+}
+.sidebar-expand-content {
+    transition: max-height 0.2s;
+}
+
+/* Sub-level expand/collapse styles */
+.sidebar-sub-expand-header {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.3em 0;
+    font-size: 1em;
+}
+.sidebar-sub-expand-header strong {
+    font-weight: bold;
+}
+.sidebar-sub-expand-toggle:not(:checked) ~ .sidebar-sub-expand-header .expand-icon {
+    transform: rotate(-90deg);
+}
+.sidebar-sub-expand-toggle:not(:checked) ~ .sidebar-sub-expand-header + .sidebar-sub-expand-content {
+    display: none;
+}
+.sidebar-sub-expand-content {
+    transition: max-height 0.2s;
+    padding-left: 1em;
+}
+</style>
 {{ end }}
