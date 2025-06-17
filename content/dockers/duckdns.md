@@ -6,6 +6,8 @@ tags: [DuckDNS, dynamic DNS, self-hosted, domain, IP address]
 
 **Ref:** [DuckDNS.org](https://www.duckdns.org/)
 
+![DuckDNS Logo](https://github.com/homarr-labs/dashboard-icons/blob/main/png/duckdns.png?raw=true)
+
 DuckDNS is a free dynamic DNS service that allows you to keep your domain name pointed to your dynamic IP address. It is a simple and effective solution for users who want to access their home network or self-hosted services from anywhere in the world without worrying about IP address changes.
 
 ## Portainer Stack
