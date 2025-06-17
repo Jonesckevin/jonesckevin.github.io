@@ -4,8 +4,8 @@
 }
 
 .sidebar-directory {
-    width: 280px;
-    max-height: 90vh;
+    width: 250px;
+    max-height: 100vh;
     overflow-y: auto;
     margin-right: 2rem;
     background: transparent;
@@ -41,6 +41,14 @@
 
 .sidebar-level a:hover {
     color: #007acc;
+}
+
+.header {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 @media (max-width: 900px) {

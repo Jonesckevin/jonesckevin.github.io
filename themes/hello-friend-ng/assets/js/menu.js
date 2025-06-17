@@ -1,5 +1,3 @@
-// Mobile menu
-
 const menuTrigger = document.querySelector(".menu-trigger");
 const menu = document.querySelector(".menu");
 const mobileQuery = getComputedStyle(document.body).getPropertyValue(

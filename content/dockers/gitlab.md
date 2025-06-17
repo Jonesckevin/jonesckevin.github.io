@@ -29,3 +29,21 @@ services:
 ```.env
 EXTERNAL_URL=https://gitlab.4n6post.com
 ```
+
+## Post Setup Instructions
+
+While the docker is up and running, you can access GitLab at `http://localhost:8500`.
+
+Because Gitlab requires an admin user to authorize new accounts, you will need to set up the initial root & password by running the following docker command:
+
+```bash
+docker exec -it GitLab gitlab-rake "gitlab:password:reset[root]"
+```
+
+This will prompt you to enter a new password for the root user.
+
+---
+
+Once Logged in you should be able to go to user settings and allow your new account:
+
+- <http://10.1.3.160:8520/admin/users>

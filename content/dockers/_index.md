@@ -1,3 +1,3 @@
 +++
-title = "Docker Compose for Portainer"
+title = "Docker/Portainer"
 +++

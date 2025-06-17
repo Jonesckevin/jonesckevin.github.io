@@ -16,11 +16,17 @@ services:
         image: 'portainer/portainer-ce:latest'
         volumes:
             - '/var/run/docker.sock:/var/run/docker.sock'
+            - 'portainer_data:/data'
+        command: '-H unix:///var/run/docker.sock'
         ports:
-            - '9000:9000'
+            - '9443:9000'
         restart: 'always'
         hostname: portainer
         container_name: Portainer
+
+volumes:
+    portainer_data:
+        driver: local
 ```
 
 If you want an agent, this is the configuration:

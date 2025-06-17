@@ -1,8 +1,6 @@
 {{ define "main" }}
     <div class="list-layout">
-        <!-- Sidebar: Directory structure 1 and 2 levels up -->
         <nav class="sidebar-directory">
-            <!-- Expand/Collapse Section -->
             <input type="checkbox" id="sidebar-expand-toggle" class="sidebar-expand-toggle" checked hidden>
             <label for="sidebar-expand-toggle" class="sidebar-expand-header">
                 {{ .Title }}
@@ -71,8 +69,6 @@
                 </nav>
             </div>
         </nav>
-        <!-- End Sidebar -->
-
         <main class="posts">
             <h1>{{ .Title }}</h1>
             <div class="content">{{ .Content }}</div>
