@@ -58,11 +58,22 @@ Narrowed down to host 23 to collect only these in `tcpdump`. I then cut out most
 tcpdump -nr portobello53.pcapng 'dst fd00:6e73:6563:3232::100 and src fd00:6e73:6563:3232::23' | cut -d " " -f 8- | cut -d "." -f -2 | cut -d "." -f 2- > hex.log
 ```
 
+**The command does the following:**
+- `tcpdump -nr portobello53.pcapng` reads the packet capture file.
+- `'dst fd00:6e73:6563:3232::100 and src fd00:6e73:6563:3232::23'` filters packets with the specified destination and source IP addresses.
+- `cut -d " " -f 8-` extracts the relevant fields from the packet data.
+- `cut -d "." -f -2` removes the domain suffix.
+- `cut -d "." -f 2-` removes the first part of the domain, leaving only the hex code.
+- `> hex.log` saves the output to a file named `hex.log`.
+
 I used **CyberChef**, but after the excess is removed you can just type in Linux:
 
 ```bash
 cat hex.log | xxd -r -p
 ```
+
+- This will convert the hex code back to text.
+- You can also use CyberChef to convert the hex code to text.
 
 ![CyberChef output](6.png)
 

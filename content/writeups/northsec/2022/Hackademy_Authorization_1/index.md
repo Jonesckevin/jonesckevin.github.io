@@ -5,7 +5,7 @@ date: 2022-06-01
 tags: [northsec, nsec, dfir, ctf, 2022, hackademy_authorization_1, write_up, montreal, hackademy_authorization_1, hackademy]
 ---
 
-## CHECKING html
+## Check the html
 
 ![image](1.png)
 

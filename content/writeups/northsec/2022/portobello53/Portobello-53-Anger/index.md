@@ -100,6 +100,7 @@ with open('output', 'wb') as f:
     f.write(base64.b64decode(data))
 ```
 
+**This script will read the PCAP file, filter for packets with the specified source IP and DNS query, and decode the Base64 data found in the TXT records.**
 - We can now use the `file` command to make sure what type of file it is:
 
 ```bash

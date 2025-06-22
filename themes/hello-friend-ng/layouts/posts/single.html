@@ -47,7 +47,7 @@
 
       {{ if .Params.Audio }}
         <div class="post-audio">
-          <audio controls>
+          <audio controls style="width: 100%;">
             <source src="{{ .Params.Audio }}">
           </audio>
         </div>
@@ -56,6 +56,34 @@
       <div class="post-content">
         {{ .Content }}
       </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Find all links in the post content
+          const links = document.querySelectorAll('.post-content a');
+          
+          links.forEach(function(link) {
+            const href = link.getAttribute('href');
+            // Check if the link points to an audio file
+            if (href && /\.(mp3|wav|ogg|m4a|flac)$/i.test(href)) {
+              // Create audio element
+              const audio = document.createElement('audio');
+              audio.controls = true;
+              audio.style.width = '100%';
+              audio.style.marginTop = '10px';
+              audio.style.marginBottom = '10px';
+              
+              // Create source element
+              const source = document.createElement('source');
+              source.src = href;
+              audio.appendChild(source);
+              
+              // Insert the audio player after the link
+              link.parentNode.insertBefore(audio, link.nextSibling);
+            }
+          });
+        });
+      </script>
     </article>
 
     <hr />

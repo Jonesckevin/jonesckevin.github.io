@@ -7,7 +7,7 @@ tags: [nsec, 2022, warm-up, write-up, montreal]
 
 ## Context
 
-I play this tune every time I'm headed home and land at Montréal-Pierre Elliott Trudeau International Airport! It has a special meaning for this year. Can you find it?
+> I play this tune every time I'm headed home and land at Montréal-Pierre Elliott Trudeau International Airport! It has a special meaning for this year. Can you find it?
 
 > **Warning:** This remixed version of the song has some really loud parts. Keep your volume low.
 
@@ -15,7 +15,8 @@ I play this tune every time I'm headed home and land at Montréal-Pierre Elliott
 
 ### Provided File
 
-- [MONTREAL.mp3](MONTREAL.mp3)
+> Watch your ears, this one is loud! At first.
+>- [MONTREAL.mp3](MONTREAL.mp3)
 
 ---
 
@@ -50,5 +51,3 @@ You may choose to cut out the sections in between or proceed to the next step.
 Remove unnecessary parts to focus on the relevant audio segments.
 
 ![Cut Audio Screenshot](4.png)
-
----

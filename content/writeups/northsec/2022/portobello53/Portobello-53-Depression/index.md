@@ -25,6 +25,13 @@ After removing the excess and focusing on the head before it turns into junk, yo
 tcpdump -nr portobello53.pcapng 'src fd00:6e73:6563:3232::9' | cut -d " " -f 8- | cut -d "." -f -1 | egrep xn-- | head
 ```
 
+- `tcpdump -nr portobello53.pcapng` reads the packet capture file.
+- `'src fd00:6e73:6563:3232::9'` filters packets with the source IP address `fd00:6e73:6563:3232::9`.
+- `cut -d " " -f 8-` extracts the relevant fields from the packet data.
+- `cut -d "." -f -1` removes the domain suffix.
+- `egrep xn--` filters for entries containing `xn--`.
+- `head` limits the output to the first 6 entries. (_You will eventually use all lines, this is just a starting point._)
+
 ![image](2.png)
 
 [Punycoder Converter](https://www.punycoder.com/)
@@ -51,11 +58,23 @@ According to another write-up, using the following command achieves something si
 tcpdump -nr portobello53.pcapng 'src fd00:6e73:6563:3232::9' | cut -d " " -f 8- | cut -d "." -f -1 | egrep "xn--" > punycode.log
 ```
 
+- `tcpdump -nr portobello53.pcapng` reads the packet capture file.
+- `'src fd00:6e73:6563:3232::9'` filters packets with the source IP address `fd00:6e73:6563:3232::9`.
+- `cut -d " " -f 8-` extracts the relevant fields from the packet data.
+- `cut -d "." -f -1` removes the domain suffix.
+- `egrep "xn--"` filters for entries containing `xn--`.
+- `> punycode.log` saves the output to a file named `punycode.log`.
+
 **Write-up Version:**
 
 ```bash
 tshark -r portobello53.pcapng | grep libera | grep "query 0x" | awk {'print $12'}
 ```
+
+- `tshark -r portobello53.pcapng` reads the packet capture file.
+- `grep libera` filters packets containing the word "libera".
+- `grep "query 0x"` filters packets that contain the phrase "query 0x".
+- `awk {'print $12'}` prints the 12th field of each packet, which contains the subdomain.
 
 Either way, decode here: [https://www.punycoder.com/](https://www.punycoder.com/)
 
