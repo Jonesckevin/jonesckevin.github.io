@@ -2,6 +2,7 @@
   z-index: 9999;
   // Default
   background: $light-background-header;
+  font-weight: bold;
 
   @media (prefers-color-scheme: dark) {
     background: $dark-background-header;
@@ -37,7 +38,7 @@
     padding: 0 15px;
     font-size: 1rem;
     list-style: none;
-
+    
     li {
       margin: 0 12px;
     }

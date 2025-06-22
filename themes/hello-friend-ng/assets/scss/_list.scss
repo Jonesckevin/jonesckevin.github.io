@@ -9,7 +9,7 @@ $posts-margin-top: 90px; // Default top margin for posts
   max-width: auto;
   margin: 0 auto;
   position: relative;
-  padding-left: 25%;
+  padding-left: 26%;
   padding-right: auto;
 
   @media (max-width: 900px) {
@@ -33,7 +33,7 @@ $posts-margin-top: 90px; // Default top margin for posts
 
   // Fixed position at top left
   position: fixed;
-  top: 13%;
+  top: 14.7%;
   left: 3%;
   z-index: 1000;
 
@@ -197,6 +197,7 @@ a {
   color: $link-color;
   text-decoration: none;
   transition: color 0.2s;
+  font-weight: bold;
 
   &:hover {
     color: darken($link-color, 10%);
