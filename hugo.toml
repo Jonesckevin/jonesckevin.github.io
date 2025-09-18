@@ -1,4 +1,4 @@
-baseurl      = "localhost"
+baseurl      = "https://jonesckevin.github.io"
 title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
 languageCode = "en"
 theme        = "hello-friend-ng"
