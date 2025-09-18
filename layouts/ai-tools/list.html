@@ -22,14 +22,21 @@
 <script>
     // Front page JavaScript for AI Tools
     document.addEventListener('DOMContentLoaded', async function () {
+        console.log('AI Tools page loaded, attempting to fetch manifest...');
         try {
             // Load manifest
-            const response = await fetch('{{ .Site.BaseURL }}shared/components/ai-tools-manifest.json');
+            const manifestUrl = '{{ .Site.BaseURL }}shared/components/ai-tools-manifest.json';
+            console.log('Fetching manifest from:', manifestUrl);
+            const response = await fetch(manifestUrl);
+            console.log('Response status:', response.status);
             const manifest = await response.json();
+            console.log('Manifest loaded successfully:', manifest);
 
             // Populate services grid
             const servicesGrid = document.getElementById('services-grid');
+            console.log('Services grid element:', servicesGrid);
             if (servicesGrid && manifest.categories) {
+                console.log('Processing categories:', manifest.categories.length);
                 const services = [];
                 manifest.categories.forEach(category => {
                     category.links.forEach(link => {
@@ -45,6 +52,7 @@
                     });
                 });
 
+                console.log('Found services:', services.length);
                 servicesGrid.innerHTML = services.map(service => `
                 <div class="service-card">
                     <div class="card-header">
@@ -63,17 +71,25 @@
                     </div>
                 </div>
             `).join('');
+                console.log('Services HTML generated and inserted');
+            } else {
+                console.log('No services grid or categories found');
             }
 
             // Populate security grid
             const securityGrid = document.getElementById('security-grid');
+            console.log('Security grid element:', securityGrid);
             if (securityGrid && manifest.site && manifest.site.security) {
+                console.log('Processing security items:', manifest.site.security.length);
                 securityGrid.innerHTML = manifest.site.security.map(item => `
                 <div class="security-item">
                     <h4>${item.title}</h4>
                     <p>${item.description}</p>
                 </div>
             `).join('');
+                console.log('Security HTML generated and inserted');
+            } else {
+                console.log('No security grid or security data found');
             }
 
         } catch (error) {
