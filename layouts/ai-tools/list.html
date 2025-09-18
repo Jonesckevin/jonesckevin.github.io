@@ -24,8 +24,8 @@
     document.addEventListener('DOMContentLoaded', async function () {
         console.log('AI Tools page loaded, attempting to fetch manifest...');
         try {
-            // Load manifest
-            const manifestUrl = '{{ .Site.BaseURL }}shared/components/ai-tools-manifest.json';
+            // Load manifest - use absolute path to ensure HTTPS
+            const manifestUrl = '/shared/components/ai-tools-manifest.json';
             console.log('Fetching manifest from:', manifestUrl);
             const response = await fetch(manifestUrl);
             console.log('Response status:', response.status);
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ .Site.BaseURL }}${service.href}" class="cta-button">${service.ctaText}</a>
+                        <a href="${service.href}" class="cta-button">${service.ctaText}</a>
                     </div>
                 </div>
             `).join('');
