@@ -5,6 +5,8 @@ description: A guide to setting up and using Nginx Proxy Manager with Docker.
 
 **Ref:** [Nginx Proxy Manager](https://nginxproxymanager.com/setup/)
 
+![Nginx Reverse Proxy Example](../images/nginxreverse_example.png)
+
 This guide provides a Docker Compose setup for Nginx Proxy Manager, which allows you to manage your web applications and services with ease. It is designed to work with a Synology NAS or similar systems.
 
 ## Portainer Setup

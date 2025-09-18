@@ -2,12 +2,19 @@ baseurl      = "localhost"
 title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
 languageCode = "en"
 theme        = "hello-friend-ng"
-
 #enableGitInfo = true
 #enableEmoji = true
 pagination.pagerSize  = 30
 
 ignoreLogs = ['warning-goldmark-raw-html']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = true
 
 [params]
   dateform        = "Jan 2, 2006"
@@ -60,6 +67,10 @@ ignoreLogs = ['warning-goldmark-raw-html']
       #alt = "Medabee4n6 Logo"
 
   # Create  Header Menu
+  [[menu.main]]
+    identifier = "ai-tools"
+    name       = "AI Tools"
+    url        = "/ai-tools"
   [[menu.main]]
     identifier = "posts"
     name       = "Posts"

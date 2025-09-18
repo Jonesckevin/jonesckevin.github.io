@@ -1,0 +1,333 @@
+{
+    "site": {
+        "hero": {
+            "title": "AI Tools API Services Hub",
+            "description": "Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic. Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation — all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD."
+        },
+        "securityTitle": "Security & Privacy",
+        "security": [
+            {
+                "title": "Your API Key",
+                "description": "Your API key (OpenAI, DeepSeek, or Anthropic) is used only for the current session and is never stored."
+            },
+            {
+                "title": "Data Privacy",
+                "description": "All uploaded documents and generated content are processed securely and not retained after your session."
+            },
+            {
+                "title": "Multi-Provider Support",
+                "description": "Switch between AI providers seamlessly while maintaining the same security standards across all services."
+            },
+            {
+                "title": "Rich Output Formats",
+                "description": "All AI responses are converted to HTML and available for download in Markdown, HTML, and MD formats."
+            },
+            {
+                "title": "Open Source",
+                "description": "The platform is built with open-source technologies, ensuring transparency and community-driven improvements."
+            },
+            {
+                "title": "No Ads or Tracking",
+                "description": "I respect your privacy and do not use ads or tracking technologies on this platform."
+            }
+        ]
+    },
+    "categories": [
+        {
+            "title": "Core Services",
+            "links": [
+                {
+                    "label": "Home",
+                    "href": "/ai-tools/"
+                },
+                {
+                    "label": "Compassionate Response",
+                    "href": "/ai-tools/core-services/compassionate-response/",
+                    "home": {
+                        "show": true,
+                        "title": "Compassionate Response Generator",
+                        "description": "Generate empathetic and hopeful responses to global tragedies. Craft meaningful messages that express solidarity and support.",
+                        "features": [
+                            "Preloaded compassionate prompts",
+                            "Multiple output styles",
+                            "Customizable length",
+                            "Focus on hope and humanity"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Resume Builder",
+                    "href": "/ai-tools/core-services/resume-builder/",
+                    "home": {
+                        "show": true,
+                        "title": "Resume Builder",
+                        "description": "Transform your documents into professional, ATS-optimized resumes ready for applications.",
+                        "features": [
+                            "Supports TXT and MD",
+                            "ATS-friendly formatting",
+                            "Multiple styles",
+                            "One-page optimization"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Resume Critique",
+                    "href": "/ai-tools/core-services/resume-critique/",
+                    "home": {
+                        "show": true,
+                        "title": "Resume Critique & Enhancement",
+                        "description": "AI-powered analysis with detailed feedback, scoring, and an enhanced version tailored to your target job.",
+                        "features": [
+                            "Comprehensive analysis & scoring",
+                            "Section-by-section critiques",
+                            "ATS compatibility assessment",
+                            "Enhanced resume generation"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Content Summarizer",
+                    "href": "/ai-tools/core-services/content-summarizer/",
+                    "home": {
+                        "show": true,
+                        "title": "Content Summarizer",
+                        "description": "Digest articles and documents with AI-powered summaries in various lengths and tones.",
+                        "features": [
+                            "Multiple summary lengths",
+                            "Tone customization",
+                            "Focus filters",
+                            "Headline generation"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Document Generator",
+                    "href": "/ai-tools/core-services/document-generator/",
+                    "home": {
+                        "show": true,
+                        "title": "Business Document Generator",
+                        "description": "Create contracts, proposals, policies and more with professional formatting.",
+                        "features": [
+                            "10+ document types",
+                            "Professional formatting",
+                            "Legal-appropriate language",
+                            "Customizable templates"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Interview Questions",
+                    "href": "/ai-tools/core-services/thought-provoking-questions/",
+                    "home": {
+                        "show": true,
+                        "title": "Thought-Provoking Interview Questions",
+                        "description": "Generate deep, engaging interview questions tailored to your field and objectives.",
+                        "features": [
+                            "Multiple question types",
+                            "Industry-specific prompts",
+                            "Rubric generation",
+                            "Follow-up suggestions"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Visual Roadmap",
+                    "href": "/ai-tools/core-services/visual-roadmap/",
+                    "home": {
+                        "show": true,
+                        "title": "Visual Project Roadmap",
+                        "description": "Transform your project plans into professional visual roadmaps with timelines and milestones.",
+                        "features": [
+                            "Interactive charts",
+                            "Timeline visualization",
+                            "Milestone tracking",
+                            "Export options"
+                        ],
+                        "ctaText": "Start"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Learning & Education",
+            "links": [
+                {
+                    "label": "Quiz Generator",
+                    "href": "/ai-tools/learning/quiz-generator/",
+                    "home": {
+                        "show": true,
+                        "title": "Quiz Generator",
+                        "description": "Create interactive quizzes from any topic or content with multiple choice questions and explanations.",
+                        "features": [
+                            "Multiple question types",
+                            "Difficulty levels",
+                            "Instant feedback",
+                            "Export formats"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Study Guide",
+                    "href": "/ai-tools/learning/study-guide/",
+                    "home": {
+                        "show": true,
+                        "title": "Study Guide Generator",
+                        "description": "Transform complex topics into structured study guides with key concepts and practice questions.",
+                        "features": [
+                            "Organized sections",
+                            "Key concepts",
+                            "Practice questions",
+                            "Review summaries"
+                        ],
+                        "ctaText": "Start"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Gaming & Entertainment",
+            "links": [
+                {
+                    "label": "MythMaker",
+                    "href": "/ai-tools/gaming/dnd-character/",
+                    "home": {
+                        "show": true,
+                        "title": "MythMaker - D&D Character Creator",
+                        "description": "Generate detailed D&D characters with backstories, stats, and personality traits.",
+                        "features": [
+                            "Full character sheets",
+                            "Rich backstories",
+                            "Stat generation",
+                            "Class specialization"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "NPC Generator",
+                    "href": "/ai-tools/gaming/npc-generator/",
+                    "home": {
+                        "show": true,
+                        "title": "NPC Generator",
+                        "description": "Generate detailed NPCs with personalities, motivations, and backstories for your campaigns.",
+                        "features": [
+                            "Character portraits",
+                            "Detailed backgrounds",
+                            "Personality traits",
+                            "Quest hooks"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Magic Item Crafter",
+                    "href": "/ai-tools/gaming/magic-item-crafter/",
+                    "home": {
+                        "show": true,
+                        "title": "Magic Item Crafter",
+                        "description": "Design unique magical items with balanced stats, interesting properties, and rich descriptions.",
+                        "features": [
+                            "Balanced mechanics",
+                            "Rich descriptions",
+                            "Rarity scaling",
+                            "Campaign integration"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Story Generator",
+                    "href": "/ai-tools/gaming/story-generator/",
+                    "home": {
+                        "show": true,
+                        "title": "Story Generator",
+                        "description": "Create compelling narratives and story arcs for your RPG campaigns and creative writing.",
+                        "features": [
+                            "Multiple genres",
+                            "Character integration",
+                            "Plot progression",
+                            "Campaign hooks"
+                        ],
+                        "ctaText": "Start"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Creative Writing",
+            "links": [
+                {
+                    "label": "Fanfiction Generator",
+                    "href": "/ai-tools/creative/fanfiction-generator/",
+                    "home": {
+                        "show": true,
+                        "title": "Fanfiction Generator",
+                        "description": "Create engaging fanfiction stories with character development, plot progression, and authentic world-building.",
+                        "features": [
+                            "Multiple fandoms",
+                            "Character dynamics",
+                            "Plot development",
+                            "Style options"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Plot Twist Generator",
+                    "href": "/ai-tools/creative/plot-twist-generator/",
+                    "home": {
+                        "show": true,
+                        "title": "Plot Twist Generator",
+                        "description": "Generate surprising and logical plot twists that enhance your storytelling.",
+                        "features": [
+                            "Genre-specific twists",
+                            "Character revelations",
+                            "Pacing control",
+                            "Integration tips"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Character Voice Converter",
+                    "href": "/ai-tools/creative/character-voice-converter/",
+                    "home": {
+                        "show": true,
+                        "title": "Character Voice Converter",
+                        "description": "Transform text to match specific character voices, writing styles, and personalities.",
+                        "features": [
+                            "Character archetypes",
+                            "Style adaptation",
+                            "Voice consistency",
+                            "Tone adjustment"
+                        ],
+                        "ctaText": "Start"
+                    }
+                },
+                {
+                    "label": "Reading Level Adjuster",
+                    "href": "/ai-tools/creative/reading-level-adjuster/",
+                    "home": {
+                        "show": true,
+                        "title": "Reading Level Adjuster",
+                        "description": "Adapt content to different reading levels while maintaining core meaning and engagement.",
+                        "features": [
+                            "Multiple reading levels",
+                            "Vocabulary adjustment",
+                            "Structure optimization",
+                            "Engagement preservation"
+                        ],
+                        "ctaText": "Start"
+                    }
+                }
+            ]
+        }
+    ]
+}

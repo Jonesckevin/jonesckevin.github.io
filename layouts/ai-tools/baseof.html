@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+
+<head>
+    {{ partial "head.html" . }}
+
+    <!-- Conditional loading for ai-tools specific assets -->
+    {{ if eq .Type "ai-tools" }}
+    <!-- AI Tools specific styles and scripts -->
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}assets/css/styles.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}assets/css/ai-tools-pages.css">
+
+    <!-- AI Management Scripts -->
+    <script src="{{ .Site.BaseURL }}shared/components/api-manager.js"></script>
+    <script src="{{ .Site.BaseURL }}shared/components/utils.js"></script>
+    <script src="{{ .Site.BaseURL }}shared/components/multi-download-manager.js"></script>
+    <script src="{{ .Site.BaseURL }}shared/components/ai-interface.js"></script>
+    {{ end }}
+</head>
+
+{{ block "body" . }}
+
+<body>
+    {{ end }}
+
+    <div class="container">
+        {{ partial "header-ai.html" . }}
+
+        <div class="content">
+            {{ if eq .Type "ai-tools" }}
+            <main class="main-content">
+                {{ block "main" . }}{{ end }}
+            </main>
+            {{ else }}
+            {{ block "main" . }}{{ end }}
+            {{ end }}
+        </div>
+
+        {{ block "footer" . }}
+        {{ if eq .Type "ai-tools" }}
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 TheGongShow. All rights reserved.</p>
+                <p>Requires your own AI API key (OpenAI, DeepSeek, or Anthropic) to function.</p>
+            </div>
+        </footer>
+        {{ else }}
+        {{ partial "footer.html" . }}
+        {{ end }}
+        {{ end }}
+    </div>
+
+    {{ partial "javascript.html" . }}
+</body>
+
+</html>

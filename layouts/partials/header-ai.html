@@ -1,0 +1,1214 @@
+<header class="header">
+  <table style="width:100%; border-collapse:collapse; margin:0; padding:0; background:none;">
+    <tr>
+      <!-- Top Left - Logo -->
+      <td style="text-align:left; vertical-align:middle; padding:0 1.5rem; border:none; width:30%;">
+        {{ partial "logo.html" . }}
+      </td>
+      <!-- Top Center - Controls -->
+      <td style="text-align:center; vertical-align:middle; padding:0; border:none; width:40%;">
+        <span class="header__btn-group">
+          <button id="randomColorBtn" class="header__random-btn" type="button"
+            aria-label="Randomize link color">🎲</button>
+          <button id="randomPostColorBtn" class="header__random-btn" type="button"
+            aria-label="Randomize post font color">🖍️</button>
+          <button id="resetColorBtn" class="header__random-btn" type="button" aria-label="Reset colors">🔄</button>
+          <a href="https://github.com/jonesckevin/jonesckevin.github.io/" target="_blank" rel="noopener"
+            aria-label="GitHub Repository" style="margin-left:0.5em; vertical-align:middle; display:inline-block;">
+            <svg height="28" width="28" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"
+              style="vertical-align:middle;">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+              </path>
+            </svg></a>
+          <span class="theme-toggle not-selectable" style="margin-left:0.5em;">{{ partial "theme-toggle-icon.html" .
+            }}</span>
+        </span>
+      </td>
+      <!-- Top Right - Menu -->
+      <td style="text-align:right; vertical-align:middle; padding:0 2rem; border:none; width:30%; white-space:nowrap;">
+        <span class="header__right" style="display:inline-flex; align-items:center; gap:0.75rem;">
+          {{- if len .Site.Menus }}
+          {{ partial "menu.html" . }}
+          <span class="menu-trigger" style="margin-left: 0.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg>
+          </span>
+          {{- end }}
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <!-- Second Left - Empty/Spacer -->
+      <td style="text-align:left; vertical-align:middle; padding:0 1.5rem; border:none; width:30%;">
+        <!-- Empty column to match top row layout -->
+      </td>
+      <!-- Second Center - Navigation Menu -->
+      <td style="text-align:center; vertical-align:middle; padding:0; border:none; width:40%;">
+        <nav class="ai-nav">
+          <div class="ai-nav-container" style="justify-content: center;">
+            <div class="ai-nav-links">
+              <div class="ai-nav-dropdown">
+                <span class="ai-nav-dropdown-toggle">Core Services ▾</span>
+                <div class="ai-nav-dropdown-content">
+                  <a href="/ai-tools/core-services/compassionate-response/">Compassionate Response</a>
+                  <a href="/ai-tools/core-services/resume-builder/">Resume Builder</a>
+                  <a href="/ai-tools/core-services/resume-critique/">Resume Critique</a>
+                  <a href="/ai-tools/core-services/content-summarizer/">Content Summarizer</a>
+                  <a href="/ai-tools/core-services/document-generator/">Document Generator</a>
+                  <a href="/ai-tools/core-services/thought-provoking-questions/">Interview Questions</a>
+                  <a href="/ai-tools/core-services/visual-roadmap/">Visual Roadmap</a>
+                </div>
+              </div>
+              <div class="ai-nav-dropdown">
+                <span class="ai-nav-dropdown-toggle">Learning ▾</span>
+                <div class="ai-nav-dropdown-content">
+                  <a href="/ai-tools/learning/quiz-generator/">Quiz Generator</a>
+                  <a href="/ai-tools/learning/study-guide/">Study Guide</a>
+                </div>
+              </div>
+              <div class="ai-nav-dropdown">
+                <span class="ai-nav-dropdown-toggle">Creative ▾</span>
+                <div class="ai-nav-dropdown-content">
+                  <a href="/ai-tools/creative/fanfiction-generator/">Fan Fiction Generator</a>
+                  <a href="/ai-tools/creative/character-voice-converter/">Character Voice Converter</a>
+                  <a href="/ai-tools/creative/plot-twist-generator/">Plot Twist Generator</a>
+                  <a href="/ai-tools/creative/reading-level-adjuster/">Reading Level Adjuster</a>
+                </div>
+              </div>
+              <div class="ai-nav-dropdown">
+                <span class="ai-nav-dropdown-toggle">Gaming ▾</span>
+                <div class="ai-nav-dropdown-content">
+                  <a href="/ai-tools/gaming/dnd-character/">MythMaker</a>
+                  <a href="/ai-tools/gaming/npc-generator/">NPC Forge</a>
+                  <a href="/ai-tools/gaming/name-forge/">Name Forge</a>
+                  <a href="/ai-tools/gaming/magic-item-crafter/">Item Crafter</a>
+                  <a href="/ai-tools/gaming/traps-and-puzzles/">Traps & Puzzles</a>
+                  <a href="/ai-tools/gaming/story-generator/">Story Generator</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </td>
+      <!-- Second Right - AI Configuration and Hamburger -->
+      <td style="text-align:right; vertical-align:middle; padding:0 2rem; border:none; width:30%;">
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 15px;">
+          <!-- AI Provider Configuration -->
+          <div class="ai-profile">
+            <button class="ai-profile-btn" aria-label="AI Settings">
+              <span class="ai-badge">AI</span>
+            </button>
+            <div class="ai-dropdown">
+              <div class="ai-dropdown-inner">
+                <div class="ai-dropdown-header">AI Provider Settings</div>
+                <div class="ai-field">
+                  <label for="ai-provider">Provider</label>
+                  <select id="ai-provider">
+                    <option value="openai">OpenAI</option>
+                    <option value="deepseek">DeepSeek</option>
+                    <option value="anthropic">Anthropic</option>
+                    <option value="gemini">Google Gemini</option>
+                  </select>
+                </div>
+                <div class="ai-field">
+                  <label for="ai-key">API Key</label>
+                  <input type="password" id="ai-key" placeholder="Enter your API key">
+                  <small class="ai-help">Keys are stored only for your session</small>
+                </div>
+                <div class="ai-field">
+                  <label for="ai-model">Model (Optional)</label>
+                  <select id="ai-model" disabled>
+                    <option value="">Enter API key to load models...</option>
+                  </select>
+                  <small id="ai-model-help" class="ai-help">Models are fetched from the selected provider after
+                    validating your API key.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Hamburger Menu Button -->
+          <button class="hamburger" aria-label="Menu" id="nav-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</header>
+
+<!-- AI Tools Sidebar Navigation Menu -->
+<ul class="nav-menu" id="ai-nav-menu">
+  <li class="nav-menu-header">
+    <span class="nav-menu-title">Navigation</span>
+    <button class="nav-menu-close" id="nav-menu-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </li>
+  <li class="home-link">
+    <a href="/ai-tools/" class="nav-link">🏠 AI Tools Hub</a>
+  </li>
+  <li class="menu-category">
+    <div class="category-title">Core Services</div>
+    <ul class="category-links">
+      <li><a href="/ai-tools/core-services/compassionate-response/" class="nav-link">Compassionate Response</a></li>
+      <li><a href="/ai-tools/core-services/resume-builder/" class="nav-link">Resume Builder</a></li>
+      <li><a href="/ai-tools/core-services/resume-critique/" class="nav-link">Resume Critique</a></li>
+      <li><a href="/ai-tools/core-services/content-summarizer/" class="nav-link">Content Summarizer</a></li>
+      <li><a href="/ai-tools/core-services/document-generator/" class="nav-link">Document Generator</a></li>
+      <li><a href="/ai-tools/core-services/thought-provoking-questions/" class="nav-link">Interview Questions</a></li>
+      <li><a href="/ai-tools/core-services/visual-roadmap/" class="nav-link">Visual Roadmap</a></li>
+    </ul>
+  </li>
+  <li class="menu-category">
+    <div class="category-title">Learning</div>
+    <ul class="category-links">
+      <li><a href="/ai-tools/learning/quiz-generator/" class="nav-link">Quiz Generator</a></li>
+      <li><a href="/ai-tools/learning/study-guide/" class="nav-link">Study Guide</a></li>
+    </ul>
+  </li>
+  <li class="menu-category">
+    <div class="category-title">Creative</div>
+    <ul class="category-links">
+      <li><a href="/ai-tools/creative/fanfiction-generator/" class="nav-link">Fan Fiction Generator</a></li>
+      <li><a href="/ai-tools/creative/character-voice-converter/" class="nav-link">Character Voice Converter</a></li>
+      <li><a href="/ai-tools/creative/plot-twist-generator/" class="nav-link">Plot Twist Generator</a></li>
+      <li><a href="/ai-tools/creative/reading-level-adjuster/" class="nav-link">Reading Level Adjuster</a></li>
+    </ul>
+  </li>
+  <li class="menu-category">
+    <div class="category-title">Gaming</div>
+    <ul class="category-links">
+      <li><a href="/ai-tools/gaming/dnd-character/" class="nav-link">MythMaker</a></li>
+      <li><a href="/ai-tools/gaming/npc-generator/" class="nav-link">NPC Forge</a></li>
+      <li><a href="/ai-tools/gaming/name-forge/" class="nav-link">Name Forge</a></li>
+      <li><a href="/ai-tools/gaming/magic-item-crafter/" class="nav-link">Item Crafter</a></li>
+      <li><a href="/ai-tools/gaming/traps-and-puzzles/" class="nav-link">Traps & Puzzles</a></li>
+      <li><a href="/ai-tools/gaming/story-generator/" class="nav-link">Story Generator</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- Navigation Overlay -->
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<style>
+  /* AI Navigation Styles */
+  .ai-nav {
+    font-family: inherit;
+    font-size: 0.9em;
+  }
+
+  .ai-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .ai-nav-brand {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--accent);
+    margin-right: 1rem;
+  }
+
+  .ai-nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .ai-nav-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .ai-nav-dropdown-toggle {
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    user-select: none;
+    font-weight: 500;
+  }
+
+  .ai-nav-dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .ai-nav-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 200px;
+    padding: 0.5rem 0;
+    margin-top: 0.25rem;
+  }
+
+  .ai-nav-dropdown:hover .ai-nav-dropdown-content {
+    display: block;
+  }
+
+  .ai-nav-dropdown-content a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--color);
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    background-color: #232425dd;
+  }
+
+  .ai-nav-dropdown-content a:hover {
+    background-color: var(--accent);
+    color: var(--background);
+  }
+
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .ai-nav-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .ai-nav-brand {
+      margin-right: 0;
+    }
+
+    .ai-nav-links {
+      gap: 1rem;
+    }
+
+    .ai-nav-dropdown-content {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 300px;
+    }
+  }
+
+  /* Original header styles */
+  .header {
+    border: 4px solid transparent;
+    border-image: linear-gradient(90deg, #ff6e6170, #6a5acd70, #20b2aa70, #ffd70070, #ff6f6170, #6a5acd70, #20b2aa70, #ffd70070) 0 0 1 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__btn-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .header__random-btn {
+    margin: 0 0.15em;
+    font-size: 1.1em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .header__random-btn:hover,
+  .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    margin: 0 0.15em;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  /* AI Dropdown Styles */
+  .ai-profile {
+    position: relative;
+  }
+
+  .ai-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 107, 53, 0.8);
+    box-shadow: 0 0 13px rgba(255, 107, 53, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    color: #ff6b35;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+  }
+
+  .ai-profile-btn:hover {
+    transform: translateZ(10px) rotateX(10deg) rotateY(10deg) scale(1.25);
+    box-shadow:
+      0 15px 25px rgba(0, 0, 0, 0.4),
+      0 0 10px rgba(255, 107, 53, 0.8),
+      0 0 20px rgba(255, 107, 53, 0.6),
+      0 0 30px rgba(255, 107, 53, 0.4);
+    border: 2px solid #ff6b35;
+    background: rgba(255, 107, 53, 0.1);
+    animation: ai-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes ai-pulse {
+
+    0%,
+    100% {
+      box-shadow: 0 0 13px rgba(255, 107, 53, 0.6);
+    }
+
+    50% {
+      box-shadow: 0 0 20px rgba(255, 107, 53, 0.9);
+    }
+  }
+
+  .ai-badge {
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .ai-dropdown {
+    position: absolute;
+    top: 54px;
+    right: 0;
+    width: min(320px, 90vw);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+  }
+
+  .ai-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ai-dropdown-inner {
+    padding: 16px;
+  }
+
+  .ai-dropdown-header {
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ff6b35;
+    font-size: 14px;
+  }
+
+  .ai-field {
+    margin-bottom: 12px;
+  }
+
+  .ai-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #ff6b35;
+  }
+
+  .ai-field select,
+  .ai-field input {
+    width: 100%;
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .ai-field select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff6b35' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 14px;
+    padding-right: 30px;
+    cursor: pointer;
+  }
+
+  .ai-field input[type="password"] {
+    font-family: 'Courier New', monospace;
+  }
+
+  .ai-field input:focus,
+  .ai-field select:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 8px rgba(255, 107, 53, 0.2);
+    background: #2a2a2a;
+  }
+
+  .ai-field select:hover {
+    border-color: rgba(255, 107, 53, 0.5);
+    background-color: #2a2a2a;
+  }
+
+  .ai-field select option {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    padding: 6px;
+  }
+
+  .ai-help {
+    display: block;
+    margin-top: 6px;
+    font-size: 10px;
+    color: #e0e0e0;
+    opacity: 0.7;
+  }
+
+  .ai-field.loading select {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
+  .ai-field.error input,
+  .ai-field.error select {
+    border-color: #ff4444;
+    box-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
+  }
+
+  /* Hamburger Menu Button */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background: none;
+    z-index: 1001;
+    transition: transform 0.2s ease;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hamburger:hover {
+    transform: scale(1.1);
+    position: relative;
+    border-radius: 8px;
+  }
+
+  .hamburger:hover::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg,
+        #ff0000, #ff3300, #ff6600, #ff9900, #ffcc00, #ffff00,
+        #ccff00, #99ff00, #66ff00, #33ff00, #00ff00, #00ff33,
+        #00ff66, #00ff99, #00ffcc, #00ffff, #00ccff, #0099ff,
+        #0066ff, #0033ff, #0000ff, #3300ff, #6600ff, #9900ff,
+        #cc00ff, #ff00ff, #ff00cc, #ff0099, #ff0066, #ff0033, #ff0000);
+    background-size: 400% 400%;
+    border-radius: 8px;
+    z-index: -1;
+    animation: rainbow-border 3s linear infinite;
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: #ff6b35;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    transform-origin: center;
+    display: block;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Sidebar Navigation */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100vh;
+    background: var(--background);
+    border-left: 1px solid var(--border-color);
+    z-index: 1002;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    padding: 80px 0 20px 0;
+    list-style: none;
+    margin: 0;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.open {
+    right: 0;
+  }
+
+  .nav-menu-header {
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    margin: -80px 0 10px 0;
+  }
+
+  .nav-menu-title {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 18px;
+  }
+
+  .nav-menu-close {
+    background: none;
+    border: none;
+    color: var(--color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-menu-close:hover {
+    background: rgba(255, 107, 53, 0.1);
+    color: #ff6b35;
+    transform: scale(1.1);
+  }
+
+  .nav-menu-close svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-menu .home-link {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+  }
+
+  .nav-menu .home-link a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .nav-menu .menu-category {
+    margin-bottom: 5px;
+  }
+
+  .nav-menu .category-title {
+    padding: 12px 20px 8px 20px;
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 5px;
+  }
+
+  .nav-menu .category-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-menu .category-links li {
+    margin: 0;
+  }
+
+  .nav-menu .nav-link {
+    display: block;
+    padding: 10px 20px 10px 30px;
+    color: var(--color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 13px;
+  }
+
+  .nav-menu .nav-link:hover,
+  .nav-menu .nav-link.active {
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  /* Navigation Overlay */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Rainbow Animations */
+  @keyframes rainbow-glow {
+    0% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.4), 0 0 30px rgba(255, 0, 0, 0.3), 0 0 40px rgba(255, 0, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    10% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 80, 0, 0.5), 0 0 20px rgba(255, 80, 0, 0.4), 0 0 30px rgba(255, 80, 0, 0.3), 0 0 40px rgba(255, 80, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    20% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 160, 0, 0.5), 0 0 20px rgba(255, 160, 0, 0.4), 0 0 30px rgba(255, 160, 0, 0.3), 0 0 40px rgba(255, 160, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    30% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 0, 0.5), 0 0 20px rgba(255, 255, 0, 0.4), 0 0 30px rgba(255, 255, 0, 0.3), 0 0 40px rgba(255, 255, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    40% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(160, 255, 0, 0.5), 0 0 20px rgba(160, 255, 0, 0.4), 0 0 30px rgba(160, 255, 0, 0.3), 0 0 40px rgba(160, 255, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    50% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.4), 0 0 30px rgba(0, 255, 0, 0.3), 0 0 40px rgba(0, 255, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    60% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 255, 160, 0.5), 0 0 20px rgba(0, 255, 160, 0.4), 0 0 30px rgba(0, 255, 160, 0.3), 0 0 40px rgba(0, 255, 160, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    70% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 160, 255, 0.5), 0 0 20px rgba(0, 160, 255, 0.4), 0 0 30px rgba(0, 160, 255, 0.3), 0 0 40px rgba(0, 160, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    80% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 255, 0.5), 0 0 20px rgba(0, 0, 255, 0.4), 0 0 30px rgba(0, 0, 255, 0.3), 0 0 40px rgba(0, 0, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    90% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(160, 0, 255, 0.5), 0 0 20px rgba(160, 0, 255, 0.4), 0 0 30px rgba(160, 0, 255, 0.3), 0 0 40px rgba(160, 0, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+
+    100% {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.4), 0 0 30px rgba(255, 0, 0, 0.3), 0 0 40px rgba(255, 0, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  @keyframes rainbow-border {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
+<script>
+  // Persistent color management
+  function getStoredColor(key) {
+    return localStorage.getItem(key);
+  }
+
+  function setStoredColor(key, color) {
+    localStorage.setItem(key, color);
+  }
+
+  function removeStoredColor(key) {
+    localStorage.removeItem(key);
+  }
+
+  function applyStoredColors() {
+    // Apply stored link color
+    const linkColor = getStoredColor('randomLinkColor');
+    if (linkColor) {
+      document.querySelectorAll('a').forEach(function (link) {
+        link.style.color = linkColor;
+      });
+    }
+
+    // Apply stored paragraph color
+    const paragraphColor = getStoredColor('randomParagraphColor');
+    if (paragraphColor) {
+      document.querySelectorAll('p').forEach(function (paragraph) {
+        paragraph.style.color = paragraphColor;
+      });
+    }
+  }
+
+  // Change all <a> link font colors to a random color when the button is clicked
+  document.addEventListener('DOMContentLoaded', function () {
+    // Apply stored colors on page load
+    applyStoredColors();
+
+    var btn = document.getElementById('randomColorBtn');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        setStoredColor('randomLinkColor', randomColor);
+        document.querySelectorAll('a').forEach(function (link) {
+          link.style.color = randomColor;
+        });
+      });
+    }
+
+    // Change paragraph font color when the second button is clicked
+    var postBtn = document.getElementById('randomPostColorBtn');
+    if (postBtn) {
+      postBtn.addEventListener('click', function () {
+        var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        setStoredColor('randomParagraphColor', randomColor);
+        document.querySelectorAll('p').forEach(function (paragraph) {
+          paragraph.style.color = randomColor;
+        });
+      });
+    }
+
+    // Reset colors when the reset button is clicked
+    var resetBtn = document.getElementById('resetColorBtn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        // Remove stored colors
+        removeStoredColor('randomLinkColor');
+        removeStoredColor('randomParagraphColor');
+
+        // Reset actual colors
+        document.querySelectorAll('a').forEach(function (link) {
+          link.style.color = '';
+        });
+        document.querySelectorAll('p').forEach(function (paragraph) {
+          paragraph.style.color = '';
+        });
+      });
+    }
+
+    // Function to apply colors to newly loaded content
+    window.applyPersistentColors = function (container) {
+      const linkColor = getStoredColor('randomLinkColor');
+      const paragraphColor = getStoredColor('randomParagraphColor');
+
+      if (linkColor) {
+        const links = container ? container.querySelectorAll('a') : document.querySelectorAll('a');
+        links.forEach(function (link) {
+          link.style.color = linkColor;
+        });
+      }
+
+      if (paragraphColor) {
+        const paragraphs = container ? container.querySelectorAll('p') : document.querySelectorAll('p');
+        paragraphs.forEach(function (paragraph) {
+          paragraph.style.color = paragraphColor;
+        });
+      }
+    };
+
+    // Observe for dynamically added content
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              // Apply colors to the newly added element and its children
+              window.applyPersistentColors(node);
+            }
+          });
+        }
+      });
+    });
+
+    // Start observing changes to the document
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    // AI Configuration and Navigation Management
+    const hamburger = document.getElementById('nav-menu-toggle');
+    const navMenu = document.getElementById('ai-nav-menu');
+    const navOverlay = document.getElementById('nav-overlay');
+    const navMenuClose = document.getElementById('nav-menu-close');
+    const aiProfileBtn = document.querySelector('.ai-profile-btn');
+    const aiDropdown = document.querySelector('.ai-dropdown');
+
+    // Function to close navigation menu
+    function closeNavMenu() {
+      if (hamburger && navMenu && navOverlay) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('open');
+        navOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Function to open navigation menu
+    function openNavMenu() {
+      if (hamburger && navMenu && navOverlay) {
+        hamburger.classList.add('active');
+        navMenu.classList.add('open');
+        navOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Hamburger menu toggle
+    if (hamburger && navMenu && navOverlay) {
+      hamburger.addEventListener('click', function () {
+        if (navMenu.classList.contains('open')) {
+          closeNavMenu();
+        } else {
+          openNavMenu();
+        }
+      });
+
+      // Close menu when overlay is clicked
+      navOverlay.addEventListener('click', function () {
+        closeNavMenu();
+      });
+
+      // Close menu when X button is clicked
+      if (navMenuClose) {
+        navMenuClose.addEventListener('click', function (e) {
+          e.stopPropagation();
+          closeNavMenu();
+        });
+      }
+
+      // Close menu when a link is clicked
+      navMenu.addEventListener('click', function (e) {
+        if (e.target.classList.contains('nav-link')) {
+          closeNavMenu();
+        }
+      });
+
+      // Close menu when clicking outside (on the menu itself but not on content)
+      navMenu.addEventListener('click', function (e) {
+        // If the click is directly on the nav-menu element (not on any child)
+        if (e.target === navMenu) {
+          closeNavMenu();
+        }
+      });
+
+      // Close menu with Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+          closeNavMenu();
+        }
+      });
+    }
+
+    // AI Profile dropdown management
+    if (aiProfileBtn && aiDropdown) {
+      aiProfileBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        aiDropdown.classList.toggle('open');
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!aiDropdown.contains(e.target)) {
+          aiDropdown.classList.remove('open');
+        }
+      });
+
+      // Prevent dropdown from closing when clicking inside it
+      aiDropdown.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    }
+
+    // AI Provider settings management
+    const aiProvider = document.getElementById('ai-provider');
+    const aiKey = document.getElementById('ai-key');
+    const aiModel = document.getElementById('ai-model');
+    const aiModelHelp = document.getElementById('ai-model-help');
+
+    // Update API key placeholder based on provider
+    function updateApiKeyPlaceholder(provider) {
+      if (!aiKey) return;
+      const placeholders = {
+        openai: 'Enter your OpenAI API key (sk-...)',
+        deepseek: 'Enter your DeepSeek API key (sk-...)',
+        anthropic: 'Enter your Anthropic API key (sk-ant-...)',
+        gemini: 'Enter your Gemini API key (AIza...)'
+      };
+      aiKey.placeholder = placeholders[provider] || 'Enter your API key';
+    }
+
+    // Reset model select to default state
+    function resetModelSelect() {
+      if (!aiModel) return;
+      aiModel.innerHTML = '<option value="">Enter API key to load models...</option>';
+      aiModel.disabled = true;
+      if (aiModelHelp) aiModelHelp.textContent = 'Models are fetched from the selected provider after validating your API key.';
+    }
+
+    // Load models from API provider
+    async function tryLoadModels() {
+      if (!window.apiManager || !window.utils || !aiProvider || !aiKey || !aiModel) {
+        // Fallback to static models if API manager not available
+        updateStaticModelOptions(aiProvider?.value || 'openai');
+        return;
+      }
+
+      const provider = aiProvider.value;
+      const key = (aiKey.value || '').trim();
+
+      if (!provider || !window.utils.validateApiKey(key, provider)) {
+        resetModelSelect();
+        return;
+      }
+
+      try {
+        if (aiModelHelp) aiModelHelp.textContent = 'Loading models...';
+        if (aiModel.parentElement) aiModel.parentElement.classList.add('loading');
+
+        const models = await window.apiManager.listModels(provider, key);
+
+        if (!Array.isArray(models) || models.length === 0) {
+          if (aiModelHelp) aiModelHelp.textContent = 'No chat models available for this key/provider.';
+          return;
+        }
+
+        aiModel.innerHTML = models.map(m => `<option value="${m.id}">${m.label}</option>`).join('');
+        aiModel.disabled = false;
+
+        // Select previously saved model or provider default
+        const desired = window.apiManager.getModel(provider) || window.apiManager.getProviderConfig(provider).defaultModel;
+        const found = Array.from(aiModel.options).some(opt => opt.value === desired);
+        aiModel.value = found ? desired : aiModel.options[0].value;
+
+        window.apiManager.setModel(aiModel.value, provider);
+        if (aiModelHelp) aiModelHelp.textContent = 'Model list loaded from provider.';
+
+      } catch (err) {
+        console.error('Failed to load models:', err);
+        if (aiModelHelp) aiModelHelp.textContent = err.message || 'Failed to load models.';
+        // Fallback to static models on error
+        updateStaticModelOptions(provider);
+      } finally {
+        if (aiModel.parentElement) aiModel.parentElement.classList.remove('loading');
+      }
+    }
+
+    // Fallback static model options when API is not available
+    function updateStaticModelOptions(provider) {
+      if (!aiModel) return;
+
+      aiModel.innerHTML = '<option value="">Use default model</option>';
+      aiModel.disabled = false;
+
+      const models = {
+        openai: [
+          { value: 'gpt-4', text: 'GPT-4' },
+          { value: 'gpt-4-turbo', text: 'GPT-4 Turbo' },
+          { value: 'gpt-3.5-turbo', text: 'GPT-3.5 Turbo' }
+        ],
+        deepseek: [
+          { value: 'deepseek-chat', text: 'DeepSeek Chat' },
+          { value: 'deepseek-coder', text: 'DeepSeek Coder' }
+        ],
+        anthropic: [
+          { value: 'claude-3-opus-20240229', text: 'Claude 3 Opus' },
+          { value: 'claude-3-sonnet-20240229', text: 'Claude 3 Sonnet' },
+          { value: 'claude-3-haiku-20240307', text: 'Claude 3 Haiku' }
+        ],
+        gemini: [
+          { value: 'gemini-1.5-pro', text: 'Gemini 1.5 Pro' },
+          { value: 'gemini-1.5-flash', text: 'Gemini 1.5 Flash' }
+        ]
+      };
+
+      if (models[provider]) {
+        models[provider].forEach(model => {
+          const option = document.createElement('option');
+          option.value = model.value;
+          option.textContent = model.text;
+          aiModel.appendChild(option);
+        });
+      }
+
+      if (aiModelHelp) aiModelHelp.textContent = 'Using fallback model list. For live models, ensure API manager is loaded.';
+    }
+
+    // Load saved settings
+    if (aiProvider && aiKey && aiModel) {
+      const savedProvider = localStorage.getItem('ai-provider') || 'openai';
+      const savedKey = sessionStorage.getItem('ai-key') || '';
+      const savedModel = localStorage.getItem('ai-model') || '';
+
+      aiProvider.value = savedProvider;
+      aiKey.value = savedKey;
+      aiModel.value = savedModel;
+
+      // Initialize
+      updateApiKeyPlaceholder(savedProvider);
+
+      // Try to load models or fallback to static
+      setTimeout(() => {
+        if (savedKey) {
+          tryLoadModels();
+        } else {
+          resetModelSelect();
+        }
+      }, 100);
+
+      // Event listeners
+      let keyInputTimeout;
+
+      aiProvider.addEventListener('change', function () {
+        const provider = this.value;
+        localStorage.setItem('ai-provider', provider);
+        updateApiKeyPlaceholder(provider);
+
+        if (window.apiManager) window.apiManager.setProvider(provider);
+
+        resetModelSelect();
+        if (aiKey.value.trim()) {
+          setTimeout(tryLoadModels, 100);
+        }
+      });
+
+      aiKey.addEventListener('input', function () {
+        const key = this.value;
+        sessionStorage.setItem('ai-key', key);
+
+        if (window.apiManager) window.apiManager.setApiKey(key);
+
+        clearTimeout(keyInputTimeout);
+        keyInputTimeout = setTimeout(() => {
+          if (key.trim()) {
+            tryLoadModels();
+          } else {
+            resetModelSelect();
+          }
+        }, 400);
+      });
+
+      aiModel.addEventListener('change', function () {
+        const model = this.value;
+        localStorage.setItem('ai-model', model);
+
+        if (window.apiManager) window.apiManager.setModel(model);
+      });
+    }
+
+    // Update active navigation links
+    function updateActiveLinks() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const currentPath = window.location.pathname;
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+
+        if (href === currentPath ||
+          (href !== '/ai-tools/' && currentPath.startsWith(href))) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Initialize active links
+    updateActiveLinks();
+  });
+</script>

@@ -1,0 +1,84 @@
+{{ define "main" }}
+<div class="hero-section">
+    <h1 class="hero-title">AI Tools API Services Hub</h1>
+    <p class="hero-description">
+        Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic.
+        Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation —
+        all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD.
+    </p>
+</div>
+
+<div class="services-grid" id="services-grid">
+    <!-- Services will be populated by JavaScript -->
+</div>
+
+<div class="security-section">
+    <h2>Security & Privacy</h2>
+    <div class="security-grid" id="security-grid">
+        <!-- Security features will be populated by JavaScript -->
+    </div>
+</div>
+
+<script>
+    // Front page JavaScript for AI Tools
+    document.addEventListener('DOMContentLoaded', async function () {
+        try {
+            // Load manifest
+            const response = await fetch('{{ .Site.BaseURL }}shared/components/ai-tools-manifest.json');
+            const manifest = await response.json();
+
+            // Populate services grid
+            const servicesGrid = document.getElementById('services-grid');
+            if (servicesGrid && manifest.categories) {
+                const services = [];
+                manifest.categories.forEach(category => {
+                    category.links.forEach(link => {
+                        if (link.home && link.home.show && link.label !== 'Home') {
+                            services.push({
+                                title: link.home.title,
+                                description: link.home.description,
+                                features: link.home.features,
+                                href: link.href,
+                                ctaText: link.home.ctaText || 'Start'
+                            });
+                        }
+                    });
+                });
+
+                servicesGrid.innerHTML = services.map(service => `
+                <div class="service-card">
+                    <div class="card-header">
+                        <h3>${service.title}</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-content-wrapper">
+                            <p>${service.description}</p>
+                            <ul class="feature-list">
+                                ${service.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ .Site.BaseURL }}${service.href}" class="cta-button">${service.ctaText}</a>
+                    </div>
+                </div>
+            `).join('');
+            }
+
+            // Populate security grid
+            const securityGrid = document.getElementById('security-grid');
+            if (securityGrid && manifest.site && manifest.site.security) {
+                securityGrid.innerHTML = manifest.site.security.map(item => `
+                <div class="security-item">
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                </div>
+            `).join('');
+            }
+
+        } catch (error) {
+            console.error('Failed to load manifest:', error);
+        }
+    });
+</script>
+{{ end }}

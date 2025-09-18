@@ -1,0 +1,101 @@
+{{ define "main" }}
+{{ if eq .Type "ai-tools" }}
+<!-- AI Tools Interface Layout -->
+<div class="form-container">
+    {{ .Content }}
+
+    <div id="ai-interface">
+        <!-- AI Interface will be populated by JavaScript -->
+    </div>
+</div>
+
+{{ if .Params.pageScript }}
+<script src="{{ .Site.BaseURL }}{{ .Params.pageScript }}"></script>
+{{ end }}
+
+{{ else }}
+<!-- AI Tool Layout -->
+<div class="ai-tool-layout">
+    <!-- Main Content Area -->
+    <article class="ai-tool-page">
+        <div class="ai-tool-content">
+            {{ .Content }}
+        </div>
+
+        {{ if .Params.tags }}
+        <div class="ai-tool-tags">
+            <h3>Tags:</h3>
+            {{ range .Params.tags }}
+            <span class="tag">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        <div class="ai-tool-navigation">
+            <p><a href="/ai-tools/">← Back to AI Tools Hub</a></p>
+        </div>
+    </article>
+</div>
+
+<style>
+    .ai-tool-layout {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .ai-tool-page {
+        width: 100%;
+    }
+
+    .ai-tool-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .ai-tool-subtitle {
+        font-size: 1.2em;
+        color: #666;
+        margin: 10px 0;
+    }
+
+    .ai-tool-meta {
+        font-size: 0.9em;
+        color: #888;
+        margin: 15px 0;
+    }
+
+    .ai-tool-meta span {
+        margin-right: 15px;
+    }
+
+    .ai-tool-tags {
+        margin: 30px 0;
+    }
+
+    .ai-tool-tags .tag {
+        background: #ff6b35;
+        color: white;
+        padding: 4px 8px;
+        margin: 2px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        display: inline-block;
+    }
+
+    .ai-tool-navigation {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    .ai-tool-interface {
+        margin: 20px 0;
+    }
+
+    .tool-content-wrapper {
+        background: transparent;
+    }
+</style>
+{{ end }}
+{{ end }}
