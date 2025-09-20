@@ -1,10 +1,17 @@
-baseurl      = "https://jonesckevin.github.io"
+baseurl      = "https://jonesckevin.ca"
+
 title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
 languageCode = "en"
 theme        = "hello-friend-ng"
 #enableGitInfo = true
 #enableEmoji = true
 pagination.pagerSize  = 30
+
+# Google Analytics Configuration
+# Replace 'YOUR_GA_MEASUREMENT_ID' with your actual Google Analytics Measurement ID (e.g., G-XXXXXXXXXX)
+[services]
+  [services.googleAnalytics]
+    ID = "G-JDM6KTJ2WY"
 
 ignoreLogs = ['warning-goldmark-raw-html']
 
@@ -31,6 +38,18 @@ ignoreLogs = ['warning-goldmark-raw-html']
   description = "Cyber Security Type Info"
   keywords = "homepage, blog, 4n6, forensics, cyber security, ctf, writeup, nsec, ns3c, nsec, NorthSec, NorthSec, NSec, NS3C, NSec CTF, NS3C CTF, Cyber Security, Cybersecurity, Cyber Security Blog, Cyber Security Writeup, Cyber Security CTF"
   images = [""] # Images used in document's head, e.g. for social media sharing
+
+  # === GOOGLE TRACKING CONFIGURATION ===
+  # Option 1: Google Analytics ID (for the built-in Hugo GA support)
+  # googleAnalyticsID = "G-XXXXXXXXXX"  # Replace with your GA4 Measurement ID
+  
+  # Option 2: Google Tag Manager ID (alternative to GA)
+  # googleTagManagerID = "GTM-XXXXXXX"  # Replace with your GTM Container ID
+  
+  # Option 3: Custom tracking code (paste any tracking code as a string)
+  # customTrackingCode = """
+  # <!-- Your custom tracking code here -->
+  # """
 
 [taxonomies]
   category = "blog" # Category taxonomy, used for categorizing posts
