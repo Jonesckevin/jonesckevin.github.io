@@ -28,21 +28,21 @@
       margin-top: 10px;
     }
 
-    & > *:not(:last-child)::after {
+    &>*:not(:last-child)::after {
       content: "•";
       padding: 0 5px;
 
       @media #{$media-size-tablet} {
-          content: "";
-          padding: 0;
+        content: "";
+        padding: 0;
       }
     }
 
-    & > *:last-child {
+    &>*:last-child {
       padding: 0 0px;
 
       @media #{$media-size-tablet} {
-          padding: 0;
+        padding: 0;
       }
     }
   }

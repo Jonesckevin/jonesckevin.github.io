@@ -1,0 +1,92 @@
+---
+title: "Resume Critique"
+subtitle: "AI-Powered Tool"
+author: JonesCKevin
+date: 2025-09-13
+tags:
+- AI
+- Tools
+- Core Services
+- Productivity
+type: ai-tools
+---
+
+<link rel="stylesheet" href="/ai-tools/core-services/resume-critique/resume-critique.css">
+<main class="main-content">
+<div class="form-container">
+<h1 style="text-align: center; margin-bottom: 20px; color: #ff6b35;">AI Resume Critique & Enhancement</h1>
+<p style="text-align: center; margin-bottom: 40px; opacity: 0.9; font-size: 1.1rem; line-height: 1.6;">
+Get professional AI-powered analysis of your resume with detailed feedback, scoring, section-by-section critiques, and an enhanced version tailored for your target job.
+<br><strong style="color: #ff6b35;">Transform your resume into an interview-winning document!</strong>
+</p>
+
+<form id="resumeCritiqueForm">
+<div class="form-group">
+<label>Input Method *</label>
+<div style="display: flex; gap: 20px; margin-bottom: 15px;">
+<label style="display: flex; align-items: left; color: #e0e0e0;">
+<input checked="" name="inputMethod" style="margin-right: 10px;" type="radio" value="text"/>
+Paste Resume Text
+</label>
+<label style="display: flex; align-items: left; color: #e0e0e0;">
+<input name="inputMethod" style="margin-right: 10px;" type="radio" value="file"/>
+Upload Resume File
+</label>
+</div>
+</div>
+
+<div class="form-group" id="textInputGroup">
+<label for="resumeText">Resume Content *</label>
+<textarea id="resumeText" placeholder="Paste your resume content here..." required="" rows="12"></textarea>
+</div>
+
+<div class="form-group" id="fileInputGroup" style="display: none;">
+<label>Upload Resume</label>
+<div class="file-upload-area" id="uploadArea" style="border: 3px dashed #ff6b35; background: #2a2a2a; min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<div class="upload-text">Click to upload or drag and drop</div>
+<div class="upload-subtext">Supports TXT and MD files</div>
+<div class="file-name" id="fileName" style="display: none;"></div>
+</div>
+<input accept=".txt,.md" id="fileInput" style="display: none;" type="file"/>
+</div>
+
+<div class="form-group">
+<label for="targetJob">Target Job/Industry (Optional)</label>
+<input id="targetJob" placeholder="e.g., Software Engineer, Marketing Manager" type="text"/>
+</div>
+
+<div class="form-group">
+<label for="experienceLevel">Experience Level</label>
+<select id="experienceLevel">
+<option value="entry">Entry Level (0-2 years)</option>
+<option value="mid" selected>Mid-Level (3-7 years)</option>
+<option value="senior">Senior Level (8+ years)</option>
+<option value="executive">Executive Level</option>
+</select>
+</div>
+
+<button type="button" class="btn-primary" onclick="analyzeResume()">Analyze Resume</button>
+</form>
+
+<div class="loading" id="loadingDiv" style="display: none;">
+Analyzing your resume with AI...
+</div>
+
+<div id="errorDiv" style="display: none;"></div>
+
+<div id="resultDiv" style="display: none;">
+<h3 style="color: #ff6b35; margin-bottom: 20px;">Resume Analysis Results</h3>
+<div class="result-content" id="resultContent"></div>
+<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
+<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy Analysis</button>
+<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download MD</button>
+<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
+<button class="btn-primary" onclick="generateEnhanced()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">✨ Enhanced Version</button>
+<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Reset</button>
+</div>
+</div>
+
+</div>
+</main>
+
+<script src="/ai-tools/core-services/resume-critique/resume-critique.js"></script>

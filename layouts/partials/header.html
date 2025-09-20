@@ -4,7 +4,62 @@
     <div class="header-top">
       <!-- Logo Section -->
       <div class="header-logo">
-        {{ partial "logo.html" . }}
+        <div class="header-logo-container">
+          <div class="header-rss-dropdown">
+            <button class="header-rss-btn" aria-label="RSS Feeds" id="rss-dropdown-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
+                <path d="M4 11a9 9 0 0 1 9 9"></path>
+                <path d="M4 4a16 16 0 0 1 16 16"></path>
+                <circle cx="5" cy="19" r="1"></circle>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="dropdown-arrow">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+            </button>
+            <div class="rss-dropdown-content" id="rss-dropdown-content">
+              <div class="rss-dropdown-header">RSS Feeds</div>
+              <a href="{{ " index.xml" | absURL }}" target="_blank" class="rss-dropdown-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 11a9 9 0 0 1 9 9"></path>
+                  <path d="M4 4a16 16 0 0 1 16 16"></path>
+                  <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+                All Posts
+              </a>
+              <a href="{{ " ai-tools/index.xml" | absURL }}" target="_blank" class="rss-dropdown-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 11a9 9 0 0 1 9 9"></path>
+                  <path d="M4 4a16 16 0 0 1 16 16"></path>
+                  <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+                AI Tools
+              </a>
+              <a href="{{ " writeups/index.xml" | absURL }}" target="_blank" class="rss-dropdown-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 11a9 9 0 0 1 9 9"></path>
+                  <path d="M4 4a16 16 0 0 1 16 16"></path>
+                  <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+                Posts & WriteUps
+              </a>
+              <a href="{{ " dockers/index.xml" | absURL }}" target="_blank" class="rss-dropdown-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 11a9 9 0 0 1 9 9"></path>
+                  <path d="M4 4a16 16 0 0 1 16 16"></path>
+                  <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+                Docker Configs
+            </div>
+          </div>
+          {{ partial "logo.html" . }}
+        </div>
       </div>
 
       <!-- Controls Section -->
@@ -15,8 +70,8 @@
           <button id="randomPostColorBtn" class="header__random-btn" type="button"
             aria-label="Randomize post font color">🖍️</button>
           <button id="resetColorBtn" class="header__random-btn" type="button" aria-label="Reset colors">🔄</button>
-          <a href="https://github.com/jonesckevin/jonesckevin.github.io/" target="_blank" rel="noopener"
-            aria-label="GitHub Repository" class="header-github-link">
+          <a href="https://github.com/jonesckevin/" target="_blank" rel="noopener" aria-label="GitHub Repository"
+            class="header-github-link">
             <svg height="28" width="28" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path
                 d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
@@ -82,6 +137,127 @@
     flex: 0 0 auto;
     display: flex;
     align-items: center;
+  }
+
+  .header-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .header-rss-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-rss-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .header-rss-btn:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+  }
+
+  .header-rss-btn .rss-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+  }
+
+  .header-rss-btn .dropdown-arrow {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  .header-rss-btn.active .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .rss-dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 200px;
+    padding: 8px 0;
+    margin-top: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+  }
+
+  .rss-dropdown-content.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .rss-dropdown-header {
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 4px;
+  }
+
+  .rss-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    min-height: 36px;
+  }
+
+  .rss-dropdown-item:hover {
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  .rss-dropdown-item svg {
+    flex-shrink: 0;
+    stroke: currentColor;
+  }
+
+  .rss-dropdown-item.external {
+    position: relative;
+  }
+
+  .rss-dropdown-item .external-icon {
+    margin-left: auto;
+    opacity: 0.7;
+  }
+
+  .rss-dropdown-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 4px 0;
   }
 
   .header-controls {
@@ -210,6 +386,31 @@
       min-height: 50px;
     }
 
+    .header-logo-container {
+      gap: 0.5rem;
+    }
+
+    .header-rss-btn {
+      min-width: 32px;
+      min-height: 32px;
+      padding: 6px 8px;
+    }
+
+    .header-rss-btn .rss-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .header-rss-btn .dropdown-arrow {
+      width: 10px;
+      height: 10px;
+    }
+
+    .rss-dropdown-content {
+      min-width: 180px;
+      left: -10px;
+    }
+
     .header__random-btn,
     .theme-toggle,
     .header-github-link,
@@ -278,6 +479,46 @@
 
   // Change all <a> link font colors to a random color when the button is clicked
   document.addEventListener('DOMContentLoaded', function () {
+    // RSS Dropdown functionality
+    const rssToggle = document.getElementById('rss-dropdown-toggle');
+    const rssContent = document.getElementById('rss-dropdown-content');
+
+    if (rssToggle && rssContent) {
+      rssToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isOpen = rssContent.classList.contains('open');
+
+        if (isOpen) {
+          rssContent.classList.remove('open');
+          rssToggle.classList.remove('active');
+        } else {
+          rssContent.classList.add('open');
+          rssToggle.classList.add('active');
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!rssToggle.contains(e.target) && !rssContent.contains(e.target)) {
+          rssContent.classList.remove('open');
+          rssToggle.classList.remove('active');
+        }
+      });
+
+      // Prevent dropdown from closing when clicking inside it
+      rssContent.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+
+      // Close dropdown when pressing Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && rssContent.classList.contains('open')) {
+          rssContent.classList.remove('open');
+          rssToggle.classList.remove('active');
+        }
+      });
+    }
+
     // Apply stored colors on page load
     applyStoredColors();
 
