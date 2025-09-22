@@ -17,7 +17,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Windows
 - **ShutdownTime**: The subkey stores the date and time when the computer was last shut down. This is only logged when the host is shutdown correctly and not on BSOD or power plug pulls. During Incident handling, pulling the plug will potentially retain the date for you.
 
 ```
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Windows
 ```
 
 Here is a one liner PowerShell Script to decode your current Windows Registry date:

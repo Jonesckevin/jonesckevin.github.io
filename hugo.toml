@@ -3,12 +3,14 @@ baseurl      = "https://jonesckevin.ca"
 title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
 languageCode = "en"
 theme        = "hello-friend-ng"
-#enableGitInfo = true
-#enableEmoji = true
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+# Set to true to enable RSS feed generation
+enableRSS = true
+# Set to true to enable sitemap generation
+enableSitemap = true
 pagination.pagerSize  = 30
 
-# Google Analytics Configuration
-# Replace 'YOUR_GA_MEASUREMENT_ID' with your actual Google Analytics Measurement ID (e.g., G-XXXXXXXXXX)
 [services]
   [services.googleAnalytics]
     ID = "G-NSQ2K5MBJ7"
@@ -20,8 +22,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    style = "github"
-    lineNos = true
+    codeFences = false            # Disable Hugo's syntax highlighting to let Prism.js handle it
 
 [params]
   dateform        = "Jan 2, 2006"
@@ -29,45 +30,32 @@ ignoreLogs = ['warning-goldmark-raw-html']
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
 
-  homeSubtitle = "The Posts, The WriteUps, The CTFs, The Enjoyment" # Subtitle for home page
-  disableReadOtherPosts = true      # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  enableSharingButtons = true       # Enable sharing buttons, if you like
-  enableGlobalLanguageMenu = false  # Show a global language switcher in the navigation bar
+  homeSubtitle = "The Posts, The WriteUps, The CTFs, The Enjoyment"         # Subtitle for home page
+  disableReadOtherPosts = true       # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  enableSharingButtons = true        # Enable sharing buttons, if you like
+  enableGlobalLanguageMenu = false   # Show a global language switcher in the navigation bar
 
   # Metadata mostly used in document's head
   description = "Cyber Security Type Info"
   keywords = "homepage, blog, 4n6, forensics, cyber security, ctf, writeup, nsec, ns3c, nsec, NorthSec, NorthSec, NSec, NS3C, NSec CTF, NS3C CTF, Cyber Security, Cybersecurity, Cyber Security Blog, Cyber Security Writeup, Cyber Security CTF"
-  images = [""] # Images used in document's head, e.g. for social media sharing
-
-  # === GOOGLE TRACKING CONFIGURATION ===
-  # Option 1: Google Analytics ID (for the built-in Hugo GA support)
-  # googleAnalyticsID = "G-XXXXXXXXXX"  # Replace with your GA4 Measurement ID
-  
-  # Option 2: Google Tag Manager ID (alternative to GA)
-  # googleTagManagerID = "GTM-XXXXXXX"  # Replace with your GTM Container ID
-  
-  # Option 3: Custom tracking code (paste any tracking code as a string)
-  # customTrackingCode = """
-  # <!-- Your custom tracking code here -->
-  # """
+  images = ["/images/default.png"]                      # Images used in document's head, e.g. for social media sharing
 
 [taxonomies]
-  category = "blog" # Category taxonomy, used for categorizing posts
-  tag      = "tags" # Tag taxonomy, used for tagging posts
-  series   = "series" # Series taxonomy, used for grouping posts into 
-  author   = "authors" # Author taxonomy, used for grouping posts by authors
-  language = "languages" # Language taxonomy, used for grouping posts by languages
-  type     = "types" # Type taxonomy, used for grouping posts by types, e.g. "Tutorials", "News", etc.
+  category   = "blog"                # Used for categorizing posts   e.g. "Tutorials", "News", etc.
+  tag        = "tags"                # Used for tagging posts        e.g. "Hugo", "Docker", etc.
+  series     = "series"              # Used for grouping posts       e.g. "Hugo Tutorials", "Docker Tutorials", etc.
+  author     = "authors"             #                               e.g. "John Doe", "Jane Smith", etc.
+  language   = "languages"           #                               e.g. "en", "fr", etc.
+  type       = "types"               #                               e.g. "Tutorials", "News", etc.
 [permalinks]
-  blog       = "/blog/:slug/" # Permalink for blog posts, e.g. "/blog/my-first-post/"
-  authors    = "/authors/:slug/" # Permalink for author pages, e.g. "/authors/john-doe/"
-  tags       = "/tags/:slug/" # Permalink for tag pages, e.g. "/tags/hugo/"
-  categories = "/categories/:slug/" # Permalink for category pages, e.g. "/categories/tutorials/"
-  series     = "/series/:slug/" # Permalink for series pages, e.g. "/series/hugo-tutorials/"
-  languages  = "/languages/:slug/" # Permalink for language pages, e.g. "/languages/en/"
-  types      = "/types/:slug/" # Permalink for type pages, e.g. "/types/tutorials/"
-  # Add a permalink for the homepage
-  home = "/"
+  blog       = "/blog/:slug/"        # blog posts                    e.g. "/blog/my-first-post/"
+  authors    = "/authors/:slug/"     # author pages                  e.g. "/authors/john-doe/"
+  tags       = "/tags/:slug/"        # tag pages                     e.g. "/tags/hugo/"
+  categories = "/categories/:slug/"  # category pages                e.g. "/categories/tutorials/"
+  series     = "/series/:slug/"      # series pages                  e.g. "/series/hugo-tutorials/"
+  languages  = "/languages/:slug/"   # language pages                e.g. "/languages/en/"
+  types      = "/types/:slug/"       # type pages,                   e.g. "/types/tutorials/"
+  home       = "/"                   # home page,                    e.g. "/"  
 
 [languages]
   [languages.en]
@@ -91,15 +79,14 @@ ignoreLogs = ['warning-goldmark-raw-html']
     name       = "AI Tools"
     url        = "/ai-tools"
   [[menu.main]]
+    identifier = "4n6post"
+    name       = "4n6Post"
+    url        = "/4n6post"
+  [[menu.main]]
     identifier = "posts"
-    name       = "Posts"
+    name       = "CTF Post"
     url        = "/writeups"
   [[menu.main]]
     identifier = "docker"
     name       = "Dockers"
     url        = "/dockers"
-  
-  [[menu.main]]
-    identifier = "4n6Post"
-    name       = "4n6Post"
-    url        = "https://4n6post.com"

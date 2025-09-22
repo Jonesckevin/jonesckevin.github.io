@@ -18,9 +18,9 @@ services:
     hostname: velociraptor
     restart: unless-stopped
     ports:
-      - "8600:8000"
-      - "8601:8001"
-      - "8609:8889"
+      - "8000:8000"
+      - "8001:8001"
+      - "8889:8889"
     volumes:
       - ./velociraptor:/velociraptor/:rw
     environment:
@@ -35,7 +35,7 @@ services:
 # VELOX_USER=admin
 # VELOX_PASSWORD=admin
 # VELOX_ROLE=administrator
-# VELOX_SERVER_URL=http://10.1.1.16:8609
+# VELOX_SERVER_URL=https://10.1.1.16:8889
 # VELOX_FRONTEND_HOSTNAME=MedaRaptor
 # VELOX_SERVER_URL2=https://raptor.4n6post.com/
 ```

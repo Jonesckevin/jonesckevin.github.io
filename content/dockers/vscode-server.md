@@ -8,7 +8,9 @@ VSCode Server is a web-based version of Visual Studio Code that allows developer
 
 ## Portainer Stack
 
-![VSCode Server Example](../images/vscode_server_example.png)
+![VSCode Server Example](../images/vscode_example.png)
+
+Default Password here: `thepassword`
 
 ```yaml
 services:
@@ -31,3 +33,4 @@ services:
     restart: "always"
     hostname: vscode
     container_name: VSCode
+```

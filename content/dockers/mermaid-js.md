@@ -11,9 +11,9 @@ It is particularly useful for developers, technical writers, and anyone who need
 
 ## Portainer Stack
 
-![Mermaid JS Example](../images/mermaid_js_example.png)
+![Mermaid JS Example](../images/mermaid_example.png)
 
-````yaml
+```yaml
 services:
     mermaid-js:
         image: ghcr.io/mermaid-js/mermaid-live-editor
