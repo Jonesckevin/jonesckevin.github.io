@@ -83,6 +83,13 @@
 
       <!-- Right Section -->
       <div class="header-right">
+        <!-- Modern Navigation Toggle Button -->
+        <button class="modern-hamburger" aria-label="Menu" id="modern-nav-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         {{- if len .Site.Menus }}
         <div class="header-menu-desktop">
           {{ partial "menu.html" . }}
@@ -444,6 +451,80 @@
   .header__inner {
     display: none;
   }
+
+  /* Modern Hamburger Menu Button */
+  .modern-hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .modern-hamburger:hover {
+    background: rgba(74, 144, 226, 0.1);
+    transform: scale(1.05);
+  }
+
+  .modern-hamburger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: var(--color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .modern-hamburger:hover span {
+    background: #4a90e2;
+  }
+
+  .modern-hamburger span:nth-child(1) {
+    transform: translateY(0);
+  }
+
+  .modern-hamburger span:nth-child(2) {
+    opacity: 1;
+  }
+
+  .modern-hamburger span:nth-child(3) {
+    transform: translateY(0);
+  }
+
+  /* Animation when menu is open */
+  .modern-hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .modern-hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .modern-hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @media (max-width: 684px) {
+    .modern-hamburger {
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+    }
+
+    .modern-hamburger span {
+      width: 20px;
+      height: 2px;
+    }
+  }
 </style>
 <script>
   // Persistent color management
@@ -601,6 +682,30 @@
     observer.observe(document.body, {
       childList: true,
       subtree: true
+    });
+
+    // Modern Hamburger Menu Integration
+    const modernHamburger = document.getElementById('modern-nav-menu-toggle');
+    if (modernHamburger) {
+      modernHamburger.addEventListener('click', function () {
+        // Toggle hamburger animation
+        this.classList.toggle('active');
+
+        // Open modern navigation if function exists
+        if (typeof window.modernNavToggle === 'function') {
+          window.modernNavToggle();
+        }
+      });
+    }
+
+    // Listen for navigation close events to reset hamburger
+    document.addEventListener('click', function (e) {
+      if (e.target.id === 'modern-nav-overlay' || e.target.id === 'modern-nav-close') {
+        const hamburger = document.getElementById('modern-nav-menu-toggle');
+        if (hamburger) {
+          hamburger.classList.remove('active');
+        }
+      }
     });
   });
 </script>
