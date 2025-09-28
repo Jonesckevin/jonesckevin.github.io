@@ -22,6 +22,30 @@
                 d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
               </path>
             </svg></a>
+          <!-- RSS Feeds -->
+          <div class="rss-feeds" style="position:relative;">
+            <button id="rssToggle" class="header__random-btn" type="button" aria-label="RSS Feeds" title="RSS Feeds"
+              style="display:flex;align-items:center;justify-content:center;padding:4px 6px;gap:4px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" role="img">
+                <path d="M6.18 17.82a2.18 2.18 0 1 1-4.36 0 2.18 2.18 0 0 1 4.36 0Z" />
+                <path d="M2 10.59v3.05c4.13 0 7.49 3.36 7.49 7.49h3.05c0-5.82-4.72-10.54-10.54-10.54Z" />
+                <path d="M2 4v3.05c7.57 0 13.69 6.12 13.69 13.69h3.05C18.74 11.33 11.41 4 2 4Z" />
+              </svg>
+              <svg width="10" height="10" viewBox="0 0 12 8" fill="none" aria-hidden="true" class="rss-caret">
+                <path d="M2 2l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div id="rssMenu" class="rss-menu"
+              style="display:none; position:absolute; top:48px; left:0; background:rgba(0,0,0,0.9); border:1px solid #ff6b35; padding:10px 12px; border-radius:8px; min-width:220px; z-index:999; box-shadow:0 4px 18px rgba(0,0,0,0.4); text-align:left;">
+              <div
+                style="font-size:0.8rem; letter-spacing:0.05em; text-transform:uppercase; opacity:0.7; margin-bottom:6px;">
+                RSS Feeds</div>
+              <a class="rss-link" href="/4n6post/index.xml">4n6Post Feed</a>
+              <a class="rss-link" href="/writeups/index.xml">CTF Writeups Feed</a>
+              <a class="rss-link" href="/dockers/index.xml">Dockers Feed 🐋</a>
+            </div>
+          </div>
           <span class="theme-toggle not-selectable">{{ partial "theme-toggle-icon.html" . }}</span>
         </div>
       </div>
@@ -1237,6 +1261,21 @@
     }
   }
 </style>
+<style>
+  .rss-menu a.rss-link {
+    display: block;
+    padding: 4px 6px;
+    border-radius: 4px;
+    color: #ffb08a;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+  .rss-menu a.rss-link:hover {
+    background: rgba(255, 107, 53, 0.15);
+    color: #fff;
+  }
+</style>
 
 100% {
 background-position: 0% 50%;
@@ -1573,6 +1612,26 @@ background-position: 0% 50%;
     }
 
     // Removed static fallback list per requirement; we now present explicit error states only.
+
+    // RSS toggle logic
+    const rssToggle = document.getElementById('rssToggle');
+    const rssMenu = document.getElementById('rssMenu');
+    if (rssToggle && rssMenu) {
+      rssToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = rssMenu.style.display === 'block';
+        rssMenu.style.display = open ? 'none' : 'block';
+      });
+      document.addEventListener('click', (e) => {
+        if (rssMenu.style.display === 'block' && !rssMenu.contains(e.target) && e.target !== rssToggle) {
+          rssMenu.style.display = 'none';
+        }
+      });
+      // Close on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') rssMenu.style.display = 'none';
+      });
+    }
 
     // Load saved settings
     if (aiProvider && aiKey && aiModel) {

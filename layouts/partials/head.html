@@ -29,6 +29,21 @@
 <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
 
+{{/* Section-specific CSS overrides */}}
+{{ $sec := lower .Section }}
+{{ if eq $sec "writeups" }}
+<link rel="stylesheet" href="/assets/css/writeups.css">
+{{ end }}
+{{ if or (eq $sec "4n6post") (eq $sec "4n6post") }}
+<link rel="stylesheet" href="/assets/css/4n6post.css">
+{{ end }}
+{{ if eq $sec "dockers" }}
+<link rel="stylesheet" href="/assets/css/dockers.css">
+{{ end }}
+{{ if eq $sec "ai-tools" }}
+<link rel="stylesheet" href="/assets/css/ai-tools-pages.css">
+{{ end }}
+
 {{ range $val := $.Site.Params.customCSS }}
 {{ if gt (len $val) 0 }}
 <link rel="stylesheet" type="text/css" href="{{ $val }}">

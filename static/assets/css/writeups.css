@@ -1,0 +1,60 @@
+body.section-writeups {
+    --accent: #ff6b35;
+    --accent-soft: rgba(255, 107, 53, 0.18);
+    --accent-soft-border: rgba(255, 107, 53, 0.35);
+    background-image: radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.10), transparent 60%), radial-gradient(circle at 80% 60%, rgba(255, 107, 53, 0.07), transparent 70%), repeating-linear-gradient(135deg, #232526 0px, #232526 2px, transparent 2px, transparent 18px), repeating-linear-gradient(225deg, #232526 0px, #232526 2px, transparent 2px, transparent 18px);
+}
+
+.section-writeups .main-content h1:first-of-type {
+    color: var(--accent);
+}
+
+.section-writeups .main-content h1,
+.section-writeups .main-content h2,
+.section-writeups .main-content h3 {
+    color: var(--accent);
+}
+
+.section-writeups .post-card,
+.section-writeups .listing-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--accent-soft-border);
+    border-left: 4px solid var(--accent);
+    padding: 18px 20px 16px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+    transition: background .25s, transform .25s, border-color .25s;
+}
+
+.section-writeups .post-card:hover,
+.section-writeups .listing-item:hover {
+    background: rgba(255, 107, 53, 0.10);
+    transform: translateY(-3px);
+}
+
+.section-writeups a {
+    color: var(--accent);
+}
+
+.section-writeups a:hover {
+    color: #ffb995;
+}
+
+.section-writeups blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+}
+
+.section-writeups pre,
+.section-writeups code {
+    background: #2a1d19;
+    border: 1px solid var(--accent-soft-border);
+}
+
+.section-writeups pre {
+    padding: 14px 16px;
+    border-radius: 10px;
+    overflow: auto;
+}

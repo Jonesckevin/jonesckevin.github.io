@@ -3,7 +3,8 @@ class NavigationComponent {
     constructor() {
         this.currentPath = window.location.pathname.replace(/\\/g, '/');
         this.basePath = this.getBasePath();
-        this.manifestPath = `${this.basePath}shared/components/nav-manifest.json`;
+        // Use unified ai-tools-manifest.json as the single source of truth
+        this.manifestPath = `${this.basePath}shared/components/ai-tools-manifest.json`;
     }
     getBasePath() {
         // For Hugo sites, always use root-relative paths

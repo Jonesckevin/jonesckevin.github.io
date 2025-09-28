@@ -8,4 +8,10 @@ tags:
   - ctf
   - nsec
   - northsec
+  - ctf-writeups
+  - ctf-2024
+  - docker
+  - 4n6post
+  - forensics
+  - memory-forensics
 ---

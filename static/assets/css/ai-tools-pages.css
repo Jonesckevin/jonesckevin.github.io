@@ -206,3 +206,29 @@
     background: rgba(0, 0, 0, 0.05);
     color: #333;
 }
+
+.ai-result-stack {
+    display: grid;
+    gap: 14px;
+}
+
+.ai-card {
+    background: #1a1a1a;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+.ai-card h1 {
+    margin: 0 0 12px 0;
+    color: #ff6b35;
+}
+
+.ai-card ul,
+.ai-card ol {
+    padding-left: 28px;
+}
+
+.ai-card li {
+    margin: 6px 0;
+}
