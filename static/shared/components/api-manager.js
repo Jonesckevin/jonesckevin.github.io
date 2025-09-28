@@ -207,21 +207,17 @@ class APIManager {
             throw new Error('API key is required to list models');
         }
 
-        try {
-            switch (p) {
-                case 'openai':
-                case 'deepseek':
-                    return this._listOpenAIStyleModels(config, key);
-                case 'anthropic':
-                    return this._getAnthropicModels();
-                case 'gemini':
-                    return this._getGeminiModels();
-                default:
-                    throw new Error(`Unsupported provider: ${p}`);
-            }
-        } catch (error) {
-            console.error('Failed to list models:', error);
-            return this._getFallbackModels(p);
+        switch (p) {
+            case 'openai':
+            case 'deepseek':
+                return this._listOpenAIStyleModels(config, key);
+            case 'anthropic':
+                // Anthropic currently requires manual model enumeration (API model listing limited)
+                return this._getAnthropicModels();
+            case 'gemini':
+                return this._getGeminiModels();
+            default:
+                throw new Error(`Unsupported provider: ${p}`);
         }
     }
 
@@ -263,23 +259,9 @@ class APIManager {
         ];
     }
 
-    _getFallbackModels(provider) {
-        const fallbacks = {
-            openai: [
-                { id: 'gpt-4o', label: 'GPT-4o' },
-                { id: 'gpt-4o-mini', label: 'GPT-4o Mini' },
-                { id: 'gpt-4-turbo', label: 'GPT-4 Turbo' },
-                { id: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo' }
-            ],
-            deepseek: [
-                { id: 'deepseek-chat', label: 'DeepSeek Chat' },
-                { id: 'deepseek-coder', label: 'DeepSeek Coder' }
-            ],
-            anthropic: this._getAnthropicModels(),
-            gemini: this._getGeminiModels()
-        };
-
-        return fallbacks[provider] || fallbacks.openai;
+    _getFallbackModels() {
+        // Deprecated: explicit fallback removed per requirements.
+        return [];
     }
 }
 
@@ -296,6 +278,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.apiManager = apiManager;
+    // Dispatch a custom event so late listeners (like header) can react
+    document.dispatchEvent(new CustomEvent('apiManagerReady'));
 });
 
 // Export for use in other files

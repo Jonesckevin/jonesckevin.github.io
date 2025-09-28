@@ -79,6 +79,12 @@
     src="{{ .Site.Params.plausibleScriptSource }}"></script>
 {{- end}}
 
+<!-- Global AI tooling scripts (ensure header model controls work on non ai-tools pages) -->
+<script src="/shared/components/api-manager.js" defer></script>
+<script src="/shared/components/utils.js" defer></script>
+<script src="/shared/components/multi-download-manager.js" defer></script>
+<script src="/shared/components/ai-interface.js" defer></script>
+
 <style>
     body {
         background-color: #181a1b;
