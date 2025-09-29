@@ -525,21 +525,26 @@
   }
 
   @media (max-width: 480px) {
-    .header-top {
-      padding: 0.25rem;
-      gap: 0.25rem;
-    }
-
-    .header-right {
-      gap: 0.5rem;
-    }
-
-    .ai-dropdown {
-      top: 44px;
-      right: -10px;
-      width: min(300px, 95vw);
-    }
+  .header-top {
+    padding: 0.25rem;
+    gap: 0.25rem;
   }
+
+  .header-right {
+    gap: 0.5rem;
+  }
+
+  .ai-dropdown {
+    position: fixed !important;       /* take it out of parent flow */
+    top: 60px !important;             /* adjust below header */
+    left: 50% !important;             /* center it */
+    transform: translateX(-50%) !important;
+    width: 90vw !important;           /* almost full width */
+    max-width: 95vw !important;
+    box-sizing: border-box !important;
+    z-index: 2000 !important;         /* ensure on top */
+  }
+}
 
   /* Legacy table styles cleanup */
   table {
@@ -1182,6 +1187,10 @@
     .nav-menu-header {
       padding: 10px;
     }
+
+
+
+    
 
     .nav-menu .home-link a,
     .nav-menu .category-title,
