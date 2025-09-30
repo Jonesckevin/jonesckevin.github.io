@@ -156,115 +156,6 @@ class DownloadManager {
         return html.join('');
     }
 
-    // Robust HTML to Markdown with preserved nesting/indentation
-    htmlToMarkdown(html) {
-        const temp = document.createElement('div');
-        temp.innerHTML = html;
-
-        function textOf(node) {
-            if (!node) return '';
-            if (node.nodeType === Node.TEXT_NODE) return node.nodeValue || '';
-            let s = '';
-            node.childNodes.forEach(function (c) { s += textOf(c); });
-            return s;
-        }
-
-        function serialize(node, ctx) {
-            ctx = ctx || { indent: 0 };
-            if (!node) return '';
-            if (node.nodeType === Node.TEXT_NODE) return (node.nodeValue || '').replace(/\s+/g, ' ');
-            if (node.nodeType !== Node.ELEMENT_NODE) return '';
-
-            const name = node.tagName.toLowerCase();
-            const kids = Array.from(node.childNodes);
-            const joinKids = function () { return kids.map(function (k) { return serialize(k, ctx); }).join(''); };
-
-            if (name === 'h1' || name === 'h2' || name === 'h3' || name === 'h4' || name === 'h5' || name === 'h6') {
-                const level = parseInt(name.substring(1), 10);
-                return new Array(level + 1).join('#') + ' ' + textOf(node).trim() + '\n\n';
-            }
-            if (name === 'strong' || name === 'b') return '**' + joinKids().trim() + '**';
-            if (name === 'em' || name === 'i') return '*' + joinKids().trim() + '*';
-            if (name === 'code') {
-                if (node.parentElement && node.parentElement.tagName.toLowerCase() === 'pre') return textOf(node);
-                return '`' + joinKids().trim() + '`';
-            }
-            if (name === 'pre') {
-                const code = node.querySelector('code');
-                const body = code ? code.textContent : textOf(node);
-                return '\n\n~~~\n' + body.replace(/\n$/, '') + '\n~~~\n\n';
-            }
-            if (name === 'a') {
-                const href = node.getAttribute('href') || '#';
-                const t = textOf(node).trim() || href;
-                return '[' + t.replace(/\|/g, '\\|') + '](' + href + ')';
-            }
-            if (name === 'br') return '\n';
-            if (name === 'hr') return '\n---\n\n';
-            if (name === 'p') {
-                const inner = joinKids().trim();
-                return inner ? (inner + '\n\n') : '\n\n';
-            }
-            if (name === 'ul' || name === 'ol') {
-                const isOl = name === 'ol';
-                const startIndent = ctx.indent;
-                let out = '';
-                let idx = 1;
-                kids.forEach(function (li) {
-                    if (li.nodeType === Node.ELEMENT_NODE && li.tagName.toLowerCase() === 'li') {
-                        const marker = isOl ? (idx + '.') : '-';
-                        out += new Array(startIndent + 1).join(' ') + marker + ' ' + serializeListItem(li, { indent: startIndent + 2 });
-                        idx++;
-                    }
-                });
-                return out + (out.slice(-2) === '\n\n' ? '' : '\n');
-            }
-            if (name === 'blockquote') {
-                const inner = joinKids();
-                return inner.split('\n').map(function (l) { return '> ' + l; }).join('\n') + '\n\n';
-            }
-            if (name === 'img') {
-                const alt = node.getAttribute('alt') || '';
-                const src = node.getAttribute('src') || '';
-                return src ? ('![' + alt + '](' + src + ')') : '';
-            }
-            // Generic container
-            return kids.map(function (k) { return serialize(k, ctx); }).join('');
-        }
-
-        function serializeListItem(li, ctx) {
-            ctx = ctx || { indent: 0 };
-            let blocks = Array.from(li.childNodes);
-            let parts = [];
-            let buffer = '';
-            function flush() { if (buffer.trim()) { parts.push({ type: 'text', value: buffer.trim() }); buffer = ''; } }
-
-            blocks.forEach(function (n) {
-                const t = n.nodeType === Node.ELEMENT_NODE ? n.tagName.toLowerCase() : 'text';
-                if (t === 'ul' || t === 'ol') { flush(); parts.push({ type: t, node: n }); }
-                else { buffer += serialize(n, ctx); }
-            });
-            flush();
-
-            const indent = ctx.indent || 0;
-            if (parts.length === 0) return '\n';
-            let out = '';
-            const first = parts[0];
-            if (first.type === 'text') out += first.value + '\n';
-            else if (first.type === 'ul' || first.type === 'ol') out += '\n' + serialize(first.node, { indent: indent + 2 });
-
-            for (let i = 1; i < parts.length; i++) {
-                const part = parts[i];
-                if (part.type === 'text') out += new Array(indent + 1).join(' ') + '  ' + part.value + '\n';
-                else out += serialize(part.node, { indent: indent + 2 });
-            }
-            return out;
-        }
-
-        const md = Array.from(temp.childNodes).map(function (n) { return serialize(n); }).join('');
-        return md.replace(/\s+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
-    }
-
     // Markdown to plain text
     markdownToText(markdown) {
         return markdown
@@ -327,14 +218,6 @@ class DownloadManager {
             .replace(/^\s+|\s+$/gm, '')
             .replace(/\n\s*\n/g, '\n\n')
             .trim();
-    }
-
-    // Smart conversion to plain text
-    convertToText(content) {
-        if (content.includes('<') && content.includes('>')) {
-            return this.htmlToText(content);
-        }
-        return this.markdownToText(content);
     }
 
     // Download helpers
@@ -499,9 +382,4 @@ class DownloadManager {
 }
 
 // Create global instance
-const downloadManager = new DownloadManager();
-
-// Export for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = DownloadManager;
-}
+window.downloadManager = new DownloadManager();

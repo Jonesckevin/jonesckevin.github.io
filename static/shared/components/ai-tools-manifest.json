@@ -151,6 +151,24 @@
                         ],
                         "ctaText": "Start"
                     }
+                },
+                {
+                    "label": "SQL Query Builder",
+                    "href": "/ai-tools/core-services/sql-query-builder/",
+                    "home": {
+                        "show": true,
+                        "title": "SQL Query Builder",
+                        "description": "Generate optimized SQL queries from natural language descriptions. Supports multiple database systems with performance optimization.",
+                        "features": [
+                            "Multi-database support",
+                            "Natural language input",
+                            "Query optimization",
+                            "Schema-aware generation",
+                            "Index suggestions",
+                            "Test data generation"
+                        ],
+                        "ctaText": "Start"
+                    }
                 }
             ]
         },

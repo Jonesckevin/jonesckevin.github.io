@@ -40,6 +40,10 @@ ignoreLogs = ['warning-goldmark-raw-html']
   keywords = "homepage, blog, 4n6, forensics, cyber security, ctf, writeup, nsec, ns3c, nsec, NorthSec, NorthSec, NSec, NS3C, NSec CTF, NS3C CTF, Cyber Security, Cybersecurity, Cyber Security Blog, Cyber Security Writeup, Cyber Security CTF"
   images = ["/images/default.png"]                      # Images used in document's head, e.g. for social media sharing
 
+  [params.favicon]
+    mask = "#10b981"
+    msapplication = "#111827"
+
 [taxonomies]
   category   = "blog"                # Used for categorizing posts   e.g. "Tutorials", "News", etc.
   tag        = "tags"                # Used for tagging posts        e.g. "Hugo", "Docker", etc.
