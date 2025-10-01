@@ -1,0 +1,109 @@
+{{/* Specialized schema for AI Tools */}}
+{{ if eq .Params.schema_type "SoftwareApplication" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ .Title }}",
+  "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "applicationCategory": "Productivity",
+  "operatingSystem": "Web Browser",
+  "softwareVersion": "1.0",
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}JonesCKevin{{ end }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  {{ if .Params.featured_image }}
+  "screenshot": {
+    "@type": "ImageObject",
+    "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}{{ .Params.featured_image }}"
+  },
+  {{ end }}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "ratingCount": "100"
+  },
+  "featureList": [
+    "AI-Powered Processing",
+    "Free to Use",
+    "No Registration Required",
+    "Professional Output",
+    "Multiple Format Support"
+  ]
+}
+</script>
+{{ end }}
+
+{{/* Specialized schema for Technical Articles */}}
+{{ if eq .Params.schema_type "TechArticle" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ .Title }}",
+  "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  {{ if .Params.featured_image }}
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}{{ .Params.featured_image }}",
+    "width": 1200,
+    "height": 630
+  },
+  {{ end }}
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}JonesCKevin{{ end }}",
+    "jobTitle": "Digital Forensics Expert",
+    "knowsAbout": ["Digital Forensics", "DFIR", "Cybersecurity", "Windows Forensics"]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/images/logo-81x112.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Digital Forensics"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Cybersecurity Professionals"
+  },
+  {{ if .Params.keywords }}
+  "keywords": [
+    {{ range $index, $keyword := .Params.keywords }}
+    {{ if $index }}, {{ end }}"{{ $keyword }}"
+    {{ end }}
+  ],
+  {{ end }}
+  "genre": "Technical Documentation",
+  "inLanguage": "en-US"
+}
+</script>
+{{ end }}

@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: {{ .Site.BaseURL | strings.TrimSuffix "/" }}/sitemap.xml
+
+# Specific directives for better crawling
+Crawl-delay: 1
+
+# Disallow admin and temporary directories
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /_gen/
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /

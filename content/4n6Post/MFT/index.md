@@ -1,9 +1,29 @@
 +++
-title = "MFT (Master File Table)"
+title = "MFT Analysis - Master File Table Forensics Guide"
+description = "Complete guide to NTFS Master File Table (MFT) analysis for digital forensics. Learn MFT structure, forensic artifacts, timeline analysis, and tools like MFTECmd for DFIR investigations."
+keywords = ["MFT analysis", "Master File Table", "NTFS forensics", "digital forensics", "MFTECmd", "file system forensics", "Windows forensics", "DFIR", "forensic timeline", "MFT records", "file metadata", "$MFT", "forensic artifacts"]
 date = "2023-01-01"
+lastmod = "2025-09-30"
 draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "NTFS", "MFT", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
+tags = ["4n6", "digital forensics", "windows forensics", "NTFS", "MFT", "DFIR", "MFTECmd", "timeline analysis", "file system", "forensic tools"]
+categories = ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
+type = "4n6post"
+seo_title = "MFT Analysis Guide - Master File Table Digital Forensics"
+canonical = "/4n6post/mft/"
+featured_image = "/images/4n6post/mft-analysis.png"
+schema_type = "TechArticle"
+author = "JonesCKevin"
+sitemap_priority = 0.8
+sitemap_changefreq = "monthly"
+[social_media]
+  og_title = "MFT Analysis - Master File Table Forensics Guide"
+  og_description = "Complete guide to NTFS Master File Table analysis for digital forensics. Learn MFT structure, artifacts, and tools for DFIR investigations."
+  og_image = "/images/4n6post/mft-social.png"
+  og_type = "article"
+  twitter_card = "summary_large_image"
+  twitter_title = "MFT Analysis - Digital Forensics Guide"
+  twitter_description = "Complete MFT analysis guide for digital forensics - structure, artifacts, and forensic tools for DFIR investigations."
+  twitter_image = "/images/4n6post/mft-twitter.png"
 +++
 
 ![MFT File Overview](images/MFT%20File.png)

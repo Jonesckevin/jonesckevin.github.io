@@ -1,9 +1,29 @@
 +++
-title = "UserAssist Registry"
+title = "UserAssist Registry Analysis - Windows Program Execution Tracking"
+description = "Complete guide to UserAssist registry analysis for digital forensics. Learn how Windows tracks program execution, forensic artifacts, and DFIR investigation techniques for UserAssist entries."
+keywords = ["UserAssist registry", "Windows forensics", "program execution tracking", "digital forensics", "registry analysis", "DFIR", "Windows artifacts", "execution evidence", "forensic investigation", "malware analysis", "user activity tracking", "registry forensics"]
 date = "2023-01-01"
+lastmod = "2025-09-30"
 draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "program execution", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
+tags = ["4n6", "digital forensics", "windows forensics", "registry", "program execution", "DFIR", "UserAssist", "Windows artifacts", "execution tracking", "forensic analysis"]
+categories = ["4n6", "Digital Forensics", "Windows Forensics", "Registry Analysis"]
+type = "4n6post"
+seo_title = "UserAssist Registry Analysis - Windows Program Execution Forensics"
+canonical = "/4n6post/userassist/"
+featured_image = "/images/4n6post/userassist-analysis.png"
+schema_type = "TechArticle"
+author = "JonesCKevin"
+sitemap_priority = 0.8
+sitemap_changefreq = "monthly"
+[social_media]
+  og_title = "UserAssist Registry Analysis - Windows Forensics Guide"
+  og_description = "Complete guide to UserAssist registry analysis for tracking program execution in Windows digital forensics investigations."
+  og_image = "/images/4n6post/userassist-social.png"
+  og_type = "article"
+  twitter_card = "summary_large_image"
+  twitter_title = "UserAssist Registry Forensics Guide"
+  twitter_description = "Learn UserAssist registry analysis for Windows forensics - program execution tracking and DFIR techniques."
+  twitter_image = "/images/4n6post/userassist-twitter.png"
 +++
 
 ![Registry Block](/images/RegistryBlock.png)

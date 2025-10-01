@@ -243,6 +243,11 @@ class DownloadManager {
         }
     }
 
+    // Public method to download any content as a file
+    downloadAsFile(content, filename, mimeType = 'text/plain') {
+        this._downloadFile(content, filename, mimeType);
+    }
+
     createDownloadButtons(baseName = 'generated-content') {
         return `
             <div class="result-buttons">

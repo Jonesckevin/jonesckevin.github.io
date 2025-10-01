@@ -1,0 +1,211 @@
+{{/* Enhanced SEO Meta Tags */}}
+
+{{/* Basic Meta Tags */}}
+{{ if .Params.seo_title }}
+<meta name="title" content="{{ .Params.seo_title }}">
+{{ end }}
+
+{{ if .Params.canonical }}
+<link rel="canonical" href="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.canonical }}">
+{{ end }}
+
+{{/* Open Graph Meta Tags */}}
+{{ if .Params.social_media.og_title }}
+<meta property="og:title" content="{{ .Params.social_media.og_title }}">
+{{ else }}
+<meta property="og:title" content="{{ .Title }}">
+{{ end }}
+
+{{ if .Params.social_media.og_description }}
+<meta property="og:description" content="{{ .Params.social_media.og_description }}">
+{{ else if .Params.description }}
+<meta property="og:description" content="{{ .Params.description }}">
+{{ else }}
+<meta property="og:description" content="{{ .Summary | plainify | truncate 160 }}">
+{{ end }}
+
+{{ if .Params.social_media.og_type }}
+<meta property="og:type" content="{{ .Params.social_media.og_type }}">
+{{ else }}
+<meta property="og:type" content="article">
+{{ end }}
+
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+
+{{ if .Params.social_media.og_image }}
+<meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.social_media.og_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{{ else if .Params.featured_image }}
+<meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
+{{ else }}
+<meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/images/default.png">
+{{ end }}
+
+{{ if .Params.date }}
+<meta property="article:published_time" content="{{ .Date.Format " 2006-01-02T15:04:05Z07:00" }}">
+{{ end }}
+
+{{ if .Params.lastmod }}
+<meta property="article:modified_time" content="{{ .Lastmod.Format " 2006-01-02T15:04:05Z07:00" }}">
+{{ end }}
+
+{{ if .Params.author }}
+<meta property="article:author" content="{{ .Params.author }}">
+{{ end }}
+
+{{ range .Params.tags }}
+<meta property="article:tag" content="{{ . }}">
+{{ end }}
+
+{{/* Twitter Card Meta Tags */}}
+{{ if .Params.social_media.twitter_card }}
+<meta name="twitter:card" content="{{ .Params.social_media.twitter_card }}">
+{{ else }}
+<meta name="twitter:card" content="summary_large_image">
+{{ end }}
+
+{{ if .Params.social_media.twitter_title }}
+<meta name="twitter:title" content="{{ .Params.social_media.twitter_title }}">
+{{ else }}
+<meta name="twitter:title" content="{{ .Title }}">
+{{ end }}
+
+{{ if .Params.social_media.twitter_description }}
+<meta name="twitter:description" content="{{ .Params.social_media.twitter_description }}">
+{{ else if .Params.description }}
+<meta name="twitter:description" content="{{ .Params.description }}">
+{{ else }}
+<meta name="twitter:description" content="{{ .Summary | plainify | truncate 160 }}">
+{{ end }}
+
+{{ if .Params.social_media.twitter_image }}
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.social_media.twitter_image
+    }}">
+{{ else if .Params.featured_image }}
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
+{{ else }}
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/images/default.png">
+{{ end }}
+
+{{/* JSON-LD Structured Data */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ if .Params.schema_type }}{{ .Params.schema_type }}{{ else }}Article{{ end }}",
+  "headline": "{{ .Title }}",
+  "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  {{ if .Params.featured_image }}
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}{{ .Params.featured_image }}",
+    "width": 1200,
+    "height": 630
+  },
+  {{ end }}
+  {{ if .Params.date }}
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  {{ if .Params.lastmod }}
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  "author": {
+    "@type": "Person",
+    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Author.name | default "JonesCKevin" }}{{ end }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/images/logo-81x112.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  }
+  {{ if .Params.keywords }},
+  "keywords": [
+    {{ range $index, $keyword := .Params.keywords }}
+    {{ if $index }}, {{ end }}"{{ $keyword }}"
+    {{ end }}
+  ]
+  {{ end }}
+}
+</script>
+
+{{/* Breadcrumb Structured Data */}}
+{{ if not .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}"
+    }
+    {{ if .Section }},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ .Section | title }}",
+      "item": "{{ .Site.BaseURL }}{{ .Section }}/"
+    }
+    {{ end }}
+    {{ if and .Section (ne .Type .Section) }},
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+    {{ else if not .IsSection }},
+    {
+      "@type": "ListItem",
+      "position": {{ if .Section }}3{{ else }}2{{ end }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+    {{ end }}
+  ]
+}
+</script>
+{{ end }}
+
+{{/* Website/Organization Structured Data for Homepage */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ .Site.BaseURL }}search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/images/logo-81x112.png"
+    }
+  }
+}
+</script>
+{{ end }}

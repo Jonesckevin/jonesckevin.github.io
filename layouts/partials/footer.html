@@ -26,4 +26,24 @@
         </div>
     </div>
     {{ end }}
+
+    {{/* Organization Schema for Footer */}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ .Site.BaseURL }}",
+      "logo": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/images/logo-81x112.png",
+      "description": "{{ .Site.Params.description }}",
+      "sameAs": [
+        "{{ .Site.BaseURL }}"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "url": "{{ .Site.BaseURL }}contact/"
+      }
+    }
+    </script>
 </footer>

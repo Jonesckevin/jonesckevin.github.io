@@ -1,9 +1,29 @@
 ---
-title: "Windows Prefetch: Understanding Digital Footprints"
-description: "A comprehensive guide to Windows Prefetch, its forensic value, and how it tracks application execution"
-keywords: ["Prefetch", "Windows forensics", "digital forensics", "POE", "Proof of Execution", "4n6", "DFIR", "PECmd", "KAPE", "forensic artifacts"]
+title: "Windows Prefetch Analysis - Digital Forensics Execution Tracking"
+description: "Complete guide to Windows Prefetch forensics for tracking application execution. Learn prefetch structure, forensic analysis techniques, PECmd usage, and DFIR investigation methods."
+keywords: ["Windows Prefetch", "prefetch analysis", "digital forensics", "proof of execution", "POE", "application tracking", "Windows forensics", "DFIR", "PECmd", "forensic artifacts", "execution timeline", "malware analysis", "incident response", "forensic tools"]
 date: 2023-01-01
+lastmod: 2025-09-30
 draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "prefetch", "DFIR", "PECmd", "execution tracking", "forensic timeline", "malware analysis", "incident response"]
+categories: ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
+type: "4n6post"
+seo_title: "Windows Prefetch Analysis - Digital Forensics Application Tracking Guide"
+canonical: "/4n6post/prefetch/"
+featured_image: "/images/4n6post/prefetch-analysis.png"
+schema_type: "TechArticle"
+author: "JonesCKevin"
+sitemap_priority: 0.8
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "Windows Prefetch Analysis - Digital Forensics Guide"
+  og_description: "Complete guide to Windows Prefetch forensics for tracking application execution and DFIR investigations."
+  og_image: "/images/4n6post/prefetch-social.png"
+  og_type: "article"
+  twitter_card: "summary_large_image"
+  twitter_title: "Windows Prefetch Forensics Guide"
+  twitter_description: "Learn Windows Prefetch analysis for digital forensics - execution tracking, timeline analysis, and DFIR techniques."
+  twitter_image: "/images/4n6post/prefetch-twitter.png"
 ---
 
 # Windows Prefetch: Understanding Digital Footprints

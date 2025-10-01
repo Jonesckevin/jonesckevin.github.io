@@ -131,12 +131,25 @@ class APIManager {
         });
 
         if (!response.ok) {
-            const error = await response.json().catch(() => ({ error: { message: 'Unknown error' } }));
+            let error;
+            try {
+                error = await response.json();
+            } catch (jsonError) {
+                console.warn('Failed to parse error response as JSON:', jsonError);
+                error = { error: { message: 'Unknown error' } };
+            }
             throw new Error(error.error?.message || `API request failed: ${response.status}`);
         }
 
-        const data = await response.json();
-        return data.choices[0].message.content;
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonError) {
+            console.error('Failed to parse API response as JSON:', jsonError);
+            throw new Error('Invalid JSON response from API');
+        }
+
+        return data.choices?.[0]?.message?.content || '';
     }
 
     async _makeAnthropicRequest(config, apiKey, model, messages, options) {
@@ -162,12 +175,25 @@ class APIManager {
         });
 
         if (!response.ok) {
-            const error = await response.json().catch(() => ({ error: { message: 'Unknown error' } }));
+            let error;
+            try {
+                error = await response.json();
+            } catch (jsonError) {
+                console.warn('Failed to parse error response as JSON:', jsonError);
+                error = { error: { message: 'Unknown error' } };
+            }
             throw new Error(error.error?.message || `API request failed: ${response.status}`);
         }
 
-        const data = await response.json();
-        return data.content[0].text;
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonError) {
+            console.error('Failed to parse API response as JSON:', jsonError);
+            throw new Error('Invalid JSON response from API');
+        }
+
+        return data.content?.[0]?.text || '';
     }
 
     async _makeGeminiRequest(config, apiKey, model, messages, options) {
@@ -190,12 +216,25 @@ class APIManager {
         });
 
         if (!response.ok) {
-            const error = await response.json().catch(() => ({ error: { message: 'Unknown error' } }));
+            let error;
+            try {
+                error = await response.json();
+            } catch (jsonError) {
+                console.warn('Failed to parse error response as JSON:', jsonError);
+                error = { error: { message: 'Unknown error' } };
+            }
             throw new Error(error.error?.message || `API request failed: ${response.status}`);
         }
 
-        const data = await response.json();
-        return data.candidates[0].content.parts[0].text;
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonError) {
+            console.error('Failed to parse API response as JSON:', jsonError);
+            throw new Error('Invalid JSON response from API');
+        }
+
+        return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     }
 
     async listModels(provider = null, apiKey = null) {
@@ -265,8 +304,13 @@ class APIManager {
     }
 }
 
-// Initialize stored models on load
+// Initialize stored models on load (only if not already initialized)
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.apiManager) {
+        console.log('APIManager already initialized, skipping...');
+        return;
+    }
+
     const apiManager = new APIManager();
 
     // Load stored models for each provider
@@ -282,5 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.dispatchEvent(new CustomEvent('apiManagerReady'));
 });
 
-// Export for use in other files
-window.APIManager = APIManager;
+// Export for use in other files (only if not already defined)
+if (!window.APIManager) {
+    window.APIManager = APIManager;
+}
