@@ -1,14 +1,30 @@
 ---
-title: "Interactive Quiz Generator"
-subtitle: "AI-Powered Tool"
+title: "Interactive Quiz Generator - AI Study Quiz Creator"
+subtitle: "AI-Powered Quiz and Assessment Generator"
+description: "Create interactive quizzes and assessments for any topic. Generate multiple-choice questions, study materials, and educational content with AI assistance. Perfect for teachers and students."
+keywords: ["quiz generator", "interactive quiz", "AI quiz creator", "assessment generator", "study quiz", "educational tool", "test generator", "quiz maker", "learning assessment", "education AI"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Learning
-- Productivity
+lastmod: 2025-10-01
+draft: false
+tags: ["AI", "Tools", "Learning", "Education", "Quizzes", "Assessment", "Study", "Teaching"]
+categories: ["AI Tools", "Education", "Learning Tools"]
 type: ai-tools
+seo_title: "Free Interactive Quiz Generator - AI Study Quiz & Assessment Creator"
+canonical: "/ai-tools/learning/quiz-generator/"
+featured_image: "/images/ai-tools/quiz-generator.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "Interactive Quiz Generator - AI Study Quiz Creator"
+  og_description: "Create interactive quizzes and assessments for any topic with AI. Perfect for teachers, students, and educators."
+  og_image: "/images/ai-tools/quiz-generator-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free Interactive Quiz Generator"
+  twitter_description: "Generate educational quizzes and assessments with AI. Perfect for study and teaching materials."
+  twitter_image: "/images/ai-tools/quiz-generator-twitter.png"
 ---
 
 
@@ -88,7 +104,7 @@ type: ai-tools
 <div id="resultsDetails"></div>
 <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
 <button class="btn-primary" onclick="retakeQuiz()" style="width: auto; padding: 10px 20px;">Retake Quiz</button>
-<button class="btn-primary" onclick="newTopic()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">Try New Topic</button>
+
 <button class="btn-primary" onclick="copyQuizResults()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
 <button class="btn-primary" onclick="downloadQuizResults('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
 <button class="btn-primary" onclick="downloadQuizResults('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>

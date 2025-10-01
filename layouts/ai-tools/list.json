@@ -1,0 +1,18 @@
+{{/* Generate search index JSON */}}
+{{- $pages := where .Site.RegularPages "Section" "ai-tools" -}}
+{{- $searchIndex := slice -}}
+
+{{- range $pages -}}
+  {{- $searchItem := dict -}}
+  {{- $searchItem = $searchItem | merge (dict "title" .Title) -}}
+  {{- $searchItem = $searchItem | merge (dict "url" .Permalink) -}}
+  {{- $searchItem = $searchItem | merge (dict "description" (cond .Params.description .Params.description (.Summary | plainify | truncate 200))) -}}
+  {{- $searchItem = $searchItem | merge (dict "section" .Section) -}}
+  {{- $searchItem = $searchItem | merge (dict "date" (.Date.Format "2006-01-02")) -}}
+  {{- $searchItem = $searchItem | merge (dict "tags" .Params.tags) -}}
+  {{- $searchItem = $searchItem | merge (dict "categories" .Params.categories) -}}
+  {{- $searchItem = $searchItem | merge (dict "keywords" .Params.keywords) -}}
+  {{- $searchIndex = $searchIndex | append $searchItem -}}
+{{- end -}}
+
+{{- $searchIndex | jsonify -}}

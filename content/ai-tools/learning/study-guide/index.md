@@ -1,14 +1,30 @@
 ---
-title: "Study Guide Generator"
-subtitle: "AI-Powered Tool"
+title: "AI Study Guide Generator - Personalized Study Materials"
+subtitle: "AI-Powered Study Guide and Review Creator"
+description: "Generate comprehensive study guides tailored to your learning needs. Create personalized study materials, practice questions, and review notes for any subject with AI assistance."
+keywords: ["study guide generator", "AI study materials", "personalized study guide", "exam preparation", "study notes", "learning assistant", "educational AI", "review materials", "study planner", "academic tools"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Learning
-- Productivity
+lastmod: 2025-10-01
+draft: false
+tags: ["AI", "Tools", "Learning", "Education", "Study", "Exam Prep", "Academic", "Review"]
+categories: ["AI Tools", "Education", "Study Tools"]
 type: ai-tools
+seo_title: "Free AI Study Guide Generator - Personalized Learning Materials"
+canonical: "/ai-tools/learning/study-guide/"
+featured_image: "/images/ai-tools/study-guide.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Study Guide Generator - Personalized Study Materials"
+  og_description: "Generate comprehensive study guides tailored to your learning needs. Create personalized materials for any subject."
+  og_image: "/images/ai-tools/study-guide-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Study Guide Generator"
+  twitter_description: "Create personalized study guides and review materials with AI. Perfect for students and exam preparation."
+  twitter_image: "/images/ai-tools/study-guide-twitter.png"
 ---
 
 
@@ -74,7 +90,7 @@ type: ai-tools
 <button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-<button class="btn-primary" onclick="generateNew()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Generate New</button>
+
 </div>
 </div>
 </main>

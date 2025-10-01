@@ -1,14 +1,30 @@
 ---
-title: "Character Voice Converter"
-subtitle: "AI-Powered Tool"
+title: "Character Voice Converter - AI Character Voice Generator"
+subtitle: "AI-Powered Character Voice and Dialogue Tool"
+description: "Transform text to match specific character voices and speaking styles. Perfect for dialogue writing, character development, and creating authentic voices for stories and games."
+keywords: ["character voice converter", "dialogue generator", "character voice AI", "writing tool", "story dialogue", "character development", "voice generator", "creative writing", "roleplay tool", "character speech"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Creative
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Creative", "Writing", "Character Development", "Dialogue", "Storytelling", "Roleplay"]
+categories: ["AI Tools", "Creative Writing", "Character Tools"]
 type: ai-tools
+seo_title: "Free Character Voice Converter - AI Dialogue & Voice Generator"
+canonical: "/ai-tools/creative/character-voice-converter/"
+featured_image: "/images/ai-tools/character-voice-converter.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "Character Voice Converter - AI Dialogue Generator" 
+  og_description: "Transform text to match character voices and speaking styles. Perfect for writers, game developers, and storytellers."
+  og_image: "/images/ai-tools/character-voice-converter-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free Character Voice Converter"
+  twitter_description: "Create authentic character voices and dialogue with AI. Perfect for writers and game developers."
+  twitter_image: "/images/ai-tools/character-voice-converter-twitter.png"
 ---
 
 <link rel="stylesheet" href="character-voice-converter.css">
@@ -145,8 +161,7 @@ Converting text to character voice...
 <button class="btn-primary btn-download" onclick="copyResult()">Copy Output</button>
 <button class="btn-primary btn-download" onclick="downloadResult('markdown')">MD</button>
 <button class="btn-primary btn-download" onclick="downloadResult('html')">HTML</button>
-<button class="btn-primary btn-download" onclick="generateVariation()">Generate New</button>
-<button class="btn-primary btn-download" onclick="resetForm()">Reset</button>
+
 </div>
 </div>
 </div>

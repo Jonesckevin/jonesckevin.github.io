@@ -1,16 +1,30 @@
 ---
-title: "SQL Query Builder"
-subtitle: "AI-Powered Tool"
+title: "SQL Query Builder - AI Database Query Generator"
+subtitle: "AI-Powered SQL Query Generation Tool"
+description: "Generate optimized SQL queries from natural language descriptions. Create database queries for any SQL system with AI assistance. Free online SQL query builder for developers."
+keywords: ["SQL query builder", "database query generator", "AI SQL tool", "SQL generator", "database development", "SQL optimization", "query builder", "SQL assistant", "database tools", "SQL automation"]
 author: JonesCKevin
 date: 2025-09-30
-tags:
-- AI
-- Tools
-- Core Services
-- Database
-- SQL
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Core Services", "Database", "SQL", "Productivity", "Development", "Query Builder"]
+categories: ["AI Tools", "Development", "Database Tools"]
 type: ai-tools
+seo_title: "Free AI SQL Query Builder - Generate Database Queries with AI"
+canonical: "/ai-tools/core-services/sql-query-builder/"
+featured_image: "/images/ai-tools/sql-query-builder.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI SQL Query Builder - Generate Database Queries"
+  og_description: "Generate optimized SQL queries from natural language descriptions. Free AI-powered database query builder for developers."
+  og_image: "/images/ai-tools/sql-query-builder-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI SQL Query Builder"
+  twitter_description: "Generate SQL queries from natural language. AI-powered database query builder for all SQL systems."
+  twitter_image: "/images/ai-tools/sql-query-builder-twitter.png"
 ---
 <link rel="stylesheet" href="sql-query-builder.css">
 <main class="main-content">
@@ -151,7 +165,7 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 <button class="btn-primary btn-download" onclick="downloadResult('docker')" id="dockerDownloadBtn" style="display: none;">Docker</button>
 <button class="btn-primary btn-download" onclick="downloadResult('markdown')">Markdown</button>
 <button class="btn-primary btn-download" onclick="generateVariation()">Generate Alternative</button>
-<button class="btn-primary btn-download" onclick="resetForm()">Reset</button>
+
 </div>
 </div>
 

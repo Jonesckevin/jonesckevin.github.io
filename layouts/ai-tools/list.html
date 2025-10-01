@@ -97,4 +97,38 @@
         }
     });
 </script>
+
+{{/* AI Tools Collection Schema */}}
+{{ if .IsSection }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "AI Tools Collection",
+  "description": "Professional AI-powered tools for productivity and workflow enhancement",
+  "url": "{{ .Permalink }}",
+  "numberOfItems": {{ len .Pages }},
+  "itemListElement": [
+    {{ range $index, $page := .Pages }}
+    {
+      "@type": "SoftwareApplication",
+      "position": {{ add $index 1 }},
+      "name": "{{ $page.Title }}",
+      "description": "{{ if $page.Params.description }}{{ $page.Params.description }}{{ else }}{{ $page.Summary | plainify | truncate 160 }}{{ end }}",
+      "url": "{{ $page.Permalink }}",
+      "applicationCategory": "Productivity",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }{{ if ne $index (sub (len $.Pages) 1) }},{{ end }}
+    {{ end }}
+  ]
+}
+</script>
+{{ end }}
+
 {{ end }}

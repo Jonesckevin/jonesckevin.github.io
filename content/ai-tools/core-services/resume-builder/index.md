@@ -1,14 +1,30 @@
 ---
-title: "Resume Builder"
-subtitle: "AI-Powered Tool"
+title: "AI Resume Builder - Professional Resume Generator Tool"
+subtitle: "AI-Powered Resume Creation Tool"
+description: "Create professional, ATS-optimized resumes with our AI-powered resume builder. Transform your documents into polished resumes ready for any job application. Free online tool."
+keywords: ["AI resume builder", "resume generator", "ATS optimized resume", "professional resume maker", "AI-powered resume", "resume creator", "job application tool", "resume template", "free resume builder", "career tools", "professional documents"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Core Services
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Core Services", "Productivity", "Resume Builder", "Career Tools", "ATS Optimization", "Professional Development"]
+categories: ["AI Tools", "Productivity", "Career Tools"]
 type: ai-tools
+seo_title: "Free AI Resume Builder - Create Professional ATS-Optimized Resumes"
+canonical: "/ai-tools/core-services/resume-builder/"
+featured_image: "/images/ai-tools/resume-builder.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Resume Builder - Professional Resume Generator"
+  og_description: "Create professional, ATS-optimized resumes with our free AI-powered resume builder. Transform documents into polished resumes instantly."
+  og_image: "/images/ai-tools/resume-builder-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Resume Builder Tool"
+  twitter_description: "Create professional ATS-optimized resumes with AI. Free resume generator for job applications."
+  twitter_image: "/images/ai-tools/resume-builder-twitter.png"
 ---
 
 <link rel="stylesheet" href="/ai-tools/core-services/resume-builder/resume-builder.css">
@@ -66,10 +82,7 @@ type: ai-tools
                             Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐
                             Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭
-                            Generate New</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄
-                            Reset</button>
+
 </div>
 </div>
 </div>

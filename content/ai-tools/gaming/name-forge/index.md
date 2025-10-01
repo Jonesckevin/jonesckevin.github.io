@@ -1,14 +1,30 @@
 ---
-title: "Name Forge - Multi-Genre Name Generator"
-subtitle: "AI-Powered Tool"
+title: "Name Forge - Multi-Genre Name Generator for RPG & Fantasy"
+subtitle: "AI-Powered Character and Place Name Generator"
+description: "Generate unique names for characters, places, and fantasy elements across multiple genres. Perfect for RPG campaigns, creative writing, and world-building."
+keywords: ["name generator", "fantasy name generator", "RPG name generator", "character names", "place names", "fantasy names", "D&D names", "creative names", "world building", "character creator"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Gaming
-- Productivity
+lastmod: 2025-10-01
+draft: false
+tags: ["AI", "Tools", "Gaming", "Fantasy", "RPG", "Names", "Character", "World Building", "Creative"]
+categories: ["AI Tools", "Gaming", "Creative Tools"]
 type: ai-tools
+seo_title: "Free Name Generator - Fantasy & RPG Character Name Creator"
+canonical: "/ai-tools/gaming/name-forge/"
+featured_image: "/images/ai-tools/name-forge.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "Name Forge - Multi-Genre Name Generator for RPG & Fantasy"
+  og_description: "Generate unique names for characters, places, and fantasy elements. Perfect for RPG campaigns and creative writing."
+  og_image: "/images/ai-tools/name-forge-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free Fantasy Name Generator"
+  twitter_description: "Create unique character and place names for RPG campaigns and fantasy worlds with AI."
+  twitter_image: "/images/ai-tools/name-forge-twitter.png"
 ---
 
 <link rel="stylesheet" href="name-forge.css">
@@ -123,7 +139,7 @@ Forging unique names...
 <button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
 <button class="btn-primary" onclick="generateMoreNames()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎲 Generate More</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Reset</button>
+
 </div>
 </div>
 </div>

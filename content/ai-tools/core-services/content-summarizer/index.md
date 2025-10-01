@@ -1,14 +1,30 @@
 ---
-title: "Content Summarizer"
-subtitle: "AI-Powered Tool"
+title: "AI Content Summarizer - Text Summarization Tool"
+subtitle: "AI-Powered Content Summarization Tool"
+description: "Quickly summarize articles, documents, and text with our AI-powered content summarizer. Get concise summaries in multiple formats and tones. Free online text summarization tool."
+keywords: ["AI content summarizer", "text summarizer", "document summarizer", "article summarizer", "AI text processing", "content analysis", "automatic summarization", "text condensing", "reading comprehension", "productivity tools", "free summarizer"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Core Services
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Core Services", "Productivity", "Content Summarizer", "Text Processing", "Document Analysis", "Reading Tools"]
+categories: ["AI Tools", "Productivity", "Content Tools"]
 type: ai-tools
+seo_title: "Free AI Content Summarizer - Intelligent Text Summarization Tool"
+canonical: "/ai-tools/core-services/content-summarizer/"
+featured_image: "/images/ai-tools/content-summarizer.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Content Summarizer - Intelligent Text Summarization"
+  og_description: "Quickly summarize articles, documents, and text with our free AI-powered content summarizer. Multiple formats and tones available."
+  og_image: "/images/ai-tools/content-summarizer-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Content Summarizer Tool"
+  twitter_description: "Summarize articles and documents with AI. Quick, accurate text summarization in multiple formats."
+  twitter_image: "/images/ai-tools/content-summarizer-twitter.png"
 ---
 <link rel="stylesheet" href="content-summarizer.css">
 <main class="main-content">
@@ -94,8 +110,7 @@ type: ai-tools
 <button class="btn-primary btn-download" onclick="copyResult()">Copy Output</button>
 <button class="btn-primary btn-download" onclick="downloadResult('markdown')">MD</button>
 <button class="btn-primary btn-download" onclick="downloadResult('html')">HTML</button>
-<button class="btn-primary btn-download" onclick="generateVariation()">Generate New</button>
-<button class="btn-primary btn-download" onclick="resetForm()">Reset</button>
+
 </div>
 </div>
 </div>

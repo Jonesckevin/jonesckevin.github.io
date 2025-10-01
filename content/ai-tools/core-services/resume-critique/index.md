@@ -1,14 +1,30 @@
 ---
-title: "Resume Critique"
-subtitle: "AI-Powered Tool"
+title: "AI Resume Critique - Professional Resume Analysis Tool"
+subtitle: "AI-Powered Resume Review and Enhancement Service"
+description: "Get professional AI-powered resume analysis with detailed feedback and scoring. Improve your resume with expert critiques and ATS optimization suggestions. Free resume reviewer."
+keywords: ["resume critique", "resume analysis", "AI resume reviewer", "resume feedback", "ATS optimization", "resume scoring", "professional resume review", "resume improvement", "career tools", "job application help"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Core Services
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Core Services", "Productivity", "Resume", "Career", "Analysis", "Professional Development"]
+categories: ["AI Tools", "Career Tools", "Productivity"]
 type: ai-tools
+seo_title: "Free AI Resume Critique - Professional Resume Analysis & Review"
+canonical: "/ai-tools/core-services/resume-critique/"
+featured_image: "/images/ai-tools/resume-critique.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Resume Critique - Professional Resume Analysis"
+  og_description: "Get expert AI-powered resume analysis with detailed feedback and scoring. Improve your resume for better job applications."
+  og_image: "/images/ai-tools/resume-critique-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Resume Critique Tool"
+  twitter_description: "Professional resume analysis with AI. Get detailed feedback and scoring to improve your job applications."
+  twitter_image: "/images/ai-tools/resume-critique-twitter.png"
 ---
 
 <link rel="stylesheet" href="/ai-tools/core-services/resume-critique/resume-critique.css">
@@ -82,7 +98,7 @@ Analyzing your resume with AI...
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download MD</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateEnhanced()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">✨ Enhanced Version</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Reset</button>
+
 </div>
 </div>
 

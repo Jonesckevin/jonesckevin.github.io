@@ -1,14 +1,30 @@
 ---
-title: "Compassionate Response Generator"
-subtitle: "AI-Powered Tool"
+title: "Compassionate Response Generator - Empathetic AI Messages"
+subtitle: "AI-Powered Empathetic Response Creation Tool"
+description: "Generate compassionate and empathetic responses to global tragedies and difficult situations. Create meaningful content that expresses solidarity and support with AI assistance."
+keywords: ["compassionate response", "empathetic messages", "AI empathy tool", "crisis response", "supportive messaging", "solidarity statements", "community support", "tragedy response", "emotional intelligence AI"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Core Services
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Core Services", "Communication", "Empathy", "Support", "Community", "Crisis Response"]
+categories: ["AI Tools", "Communication", "Support"]
 type: ai-tools
+seo_title: "Free Compassionate Response Generator - AI Empathetic Messages"
+canonical: "/ai-tools/core-services/compassionate-response/"
+featured_image: "/images/ai-tools/compassionate-response.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "Compassionate Response Generator - AI Empathetic Messages"
+  og_description: "Generate compassionate responses to global tragedies with AI. Create meaningful content that expresses solidarity and support."
+  og_image: "/images/ai-tools/compassionate-response-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free Compassionate Response Generator"
+  twitter_description: "Create empathetic responses to difficult situations with AI. Express solidarity and support with meaningful content."
+  twitter_image: "/images/ai-tools/compassionate-response-twitter.png"
 ---
 <main class="main-content">
 <div class="form-container">
@@ -58,10 +74,7 @@ type: ai-tools
                         Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐
                         Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭
-                        Generate New</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄
-                        Reset</button>
+
 </div>
 </div>
 </div>

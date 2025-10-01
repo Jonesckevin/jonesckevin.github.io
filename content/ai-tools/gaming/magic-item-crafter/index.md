@@ -1,14 +1,30 @@
 ---
-title: "Loot & Magic Item Crafter"
-subtitle: "AI-Powered Tool"
+title: "Loot & Magic Item Crafter - D&D Magic Item Generator"
+subtitle: "AI-Powered Magic Item and Treasure Generator"
+description: "Generate balanced treasure parcels and bespoke magic items with lore, attunement, and campaign hooks. Perfect for D&D DMs and RPG creators."
+keywords: ["magic item generator", "D&D loot generator", "RPG treasure", "magic item creator", "DnD magic items", "tabletop RPG", "treasure generator", "magic weapon generator", "RPG loot"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Gaming
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Gaming", "D&D", "RPG", "Magic Items", "Loot", "Treasure", "DM Tools"]
+categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
+seo_title: "Free Magic Item Generator - D&D Loot & Treasure Creator"
+canonical: "/ai-tools/gaming/magic-item-crafter/"
+featured_image: "/images/ai-tools/magic-item-crafter.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "Loot & Magic Item Crafter - D&D Magic Item Generator"
+  og_description: "Generate balanced treasure and bespoke magic items with lore and campaign hooks. Perfect for D&D DMs."
+  og_image: "/images/ai-tools/magic-item-crafter-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free Magic Item Generator"
+  twitter_description: "Create balanced D&D magic items and treasure with AI. Perfect for DMs and RPG creators."
+  twitter_image: "/images/ai-tools/magic-item-crafter-twitter.png"
 ---
 
 <link rel="stylesheet" href="magic-item-crafter.css">
@@ -118,7 +134,7 @@ Crafting magical treasures...
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎲 Generate Different Items</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Reset</button>
+
 </div>
 </div>
 </div>

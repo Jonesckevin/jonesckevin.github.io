@@ -1,14 +1,30 @@
 ---
-title: "Story Generator"
-subtitle: "AI-Powered Tool"
+title: "RPG Story Generator - D&D Campaign Story Creator"
+subtitle: "AI-Powered RPG Story and Quest Generator"
+description: "Generate engaging stories and quest hooks for your RPG campaigns. Create compelling narratives, adventures, and plot lines for D&D and tabletop gaming sessions."
+keywords: ["RPG story generator", "D&D story creator", "campaign story", "quest generator", "RPG plot", "adventure generator", "DnD stories", "tabletop RPG", "campaign ideas", "quest hooks"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Gaming
-- Productivity
+lastmod: 2025-10-01
+draft: false
+tags: ["AI", "Tools", "Gaming", "RPG", "D&D", "Stories", "Campaigns", "Adventures", "DM Tools"]
+categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
+seo_title: "Free RPG Story Generator - D&D Campaign & Quest Creator"
+canonical: "/ai-tools/gaming/story-generator/"
+featured_image: "/images/ai-tools/story-generator.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "RPG Story Generator - D&D Campaign Story Creator"
+  og_description: "Generate engaging stories and quest hooks for RPG campaigns. Create compelling narratives for D&D and tabletop games."
+  og_image: "/images/ai-tools/story-generator-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free RPG Story Generator"
+  twitter_description: "Create engaging stories and adventures for your D&D campaigns with AI. Perfect for DMs and storytellers."
+  twitter_image: "/images/ai-tools/story-generator-twitter.png"
 ---
 
 
@@ -94,7 +110,7 @@ Crafting your story...
 <button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">📖 Generate Alternative</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Reset</button>
+
 </div>
 </div>
 </div>

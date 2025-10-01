@@ -1,14 +1,30 @@
 ---
-title: "Plot Twist Generator"
-subtitle: "AI-Powered Tool"
+title: "AI Plot Twist Generator - Story Twist Creator"
+subtitle: "AI-Powered Plot Twist and Story Surprise Tool"
+description: "Generate contextual plot twists that fit seamlessly into your story. Create surprising reveals, unexpected turns, and shocking moments for any narrative genre."
+keywords: ["plot twist generator", "story twist creator", "narrative surprise", "story generator", "creative writing tool", "plot device", "story development", "writing inspiration", "twist ideas", "story elements"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Creative
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Creative", "Writing", "Plot", "Story", "Narrative", "Twist"]
+categories: ["AI Tools", "Creative Writing", "Story Development"]
 type: ai-tools
+seo_title: "Free AI Plot Twist Generator - Create Story Twists & Surprises"
+canonical: "/ai-tools/creative/plot-twist-generator/"
+featured_image: "/images/ai-tools/plot-twist-generator.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Plot Twist Generator - Create Story Surprises"
+  og_description: "Generate contextual plot twists that fit seamlessly into your story. Perfect for writers seeking unexpected narrative turns."
+  og_image: "/images/ai-tools/plot-twist-generator-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Plot Twist Generator"
+  twitter_description: "Create surprising plot twists for your stories with AI. Generate unexpected turns and shocking reveals."
+  twitter_image: "/images/ai-tools/plot-twist-generator-twitter.png"
 ---
 
 <link rel="stylesheet" href="plot-twist-generator.css">
@@ -121,7 +137,7 @@ type: ai-tools
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">� Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭 Refine Twist</button>
-<button class="btn-primary" onclick="generateNew()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">✨ New Story</button>
+
 </div>
 </div>
 </main>

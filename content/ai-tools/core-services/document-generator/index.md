@@ -1,14 +1,30 @@
 ---
-title: "Business Document Generator"
-subtitle: "AI-Powered Tool"
+title: "Business Document Generator - AI Professional Documents"
+subtitle: "AI-Powered Business Document Creation Tool"
+description: "Generate professional business documents with AI assistance. Create contracts, proposals, policies, and reports with industry-standard formatting. Free AI document generator."
+keywords: ["business document generator", "AI document creator", "professional documents", "contract generator", "proposal writer", "policy generator", "business templates", "document automation", "AI writing assistant"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Core Services
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Core Services", "Productivity", "Business", "Documents", "Writing", "Templates"]
+categories: ["AI Tools", "Business", "Productivity"]
 type: ai-tools
+seo_title: "Free AI Business Document Generator - Professional Templates"
+canonical: "/ai-tools/core-services/document-generator/"
+featured_image: "/images/ai-tools/document-generator.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Business Document Generator - Professional Templates"
+  og_description: "Generate professional business documents with AI. Create contracts, proposals, and policies with industry-standard formatting."
+  og_image: "/images/ai-tools/document-generator-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Business Document Generator"
+  twitter_description: "Create professional business documents with AI. Contracts, proposals, policies, and more with perfect formatting."  
+  twitter_image: "/images/ai-tools/document-generator-twitter.png"
 ---
 
 <main class="main-content">
@@ -64,10 +80,7 @@ Generate professional business documents with AI assistance. Create contracts, p
                             Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐
                             Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭
-                            Generate New</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄
-                            Reset</button>
+
 </div>
 </div>
 </div>

@@ -1,20 +1,36 @@
 ---
-title: "Thought-Provoking Interview Questions"
-subtitle: "AI-Powered Tool"
+title: "AI Interview Questions Generator - Thought-Provoking Questions"
+subtitle: "AI-Powered Interview Question Generation Tool"
+description: "Generate insightful interview questions that reveal judgment, clarity, and depth. Create thought-provoking questions for job interviews, hiring, and assessments. Free AI question generator."
+keywords: ["interview questions generator", "thought-provoking questions", "AI interview tool", "hiring questions", "behavioral interview questions", "job interview prep", "assessment questions", "candidate evaluation", "interview preparation"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Core Services
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Core Services", "Productivity", "Interview", "Questions", "Hiring", "Assessment"]
+categories: ["AI Tools", "HR Tools", "Interview Preparation"]
 type: ai-tools
+seo_title: "Free AI Interview Questions Generator - Thought-Provoking Questions"
+canonical: "/ai-tools/core-services/thought-provoking-questions/"
+featured_image: "/images/ai-tools/thought-provoking-questions.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.7
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Interview Questions Generator - Thought-Provoking Questions"
+  og_description: "Generate insightful interview questions that reveal judgment and depth. Perfect for hiring managers and interview preparation."
+  og_image: "/images/ai-tools/thought-provoking-questions-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Interview Questions Generator"
+  twitter_description: "Create thought-provoking interview questions with AI. Perfect for hiring managers and candidate evaluation."
+  twitter_image: "/images/ai-tools/thought-provoking-questions-twitter.png"
 ---
 
 <main class="main-content">
 <div class="form-container">
 <div class="tpq-hero">
-<h1>Thought-Provoking Interview Questions <span class="pill">General + Chosen Topics</span></h1>
+<h1>Interviewer Questions <span class="pill">General + Chosen Topics</span></h1>
 <p>Generate a high-signal question set that reveals judgment, clarity, and depth.</p>
 </div>
 
@@ -98,8 +114,7 @@ Generating interview questions...
 <button class="btn-primary btn-download" onclick="copyResult()">Copy Output</button>
 <button class="btn-primary btn-download" onclick="downloadResult('markdown')">MD</button>
 <button class="btn-primary btn-download" onclick="downloadResult('html')">HTML</button>
-<button class="btn-primary btn-download" onclick="generateVariation()">Generate New</button>
-<button class="btn-primary btn-download" onclick="resetForm()">Reset</button>
+
 </div>
 </div>
 </div>

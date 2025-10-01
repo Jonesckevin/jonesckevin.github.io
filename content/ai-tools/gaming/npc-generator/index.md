@@ -1,14 +1,30 @@
 ---
-title: "NPC Forge: Character Generator"
-subtitle: "AI-Powered Tool"
+title: "NPC Forge: D&D NPC Generator - AI Character Creator"
+subtitle: "AI-Powered NPC and Character Generator"
+description: "Generate detailed NPCs for D&D and RPG campaigns. Create compelling non-player characters with backgrounds, motivations, and personality traits for your tabletop games."
+keywords: ["NPC generator", "D&D NPC creator", "RPG character generator", "non-player character", "DnD NPC", "tabletop RPG", "character creator", "RPG NPC", "DM tools", "campaign NPCs"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Gaming
-- Productivity
+lastmod: 2025-10-01
+draft: false
+tags: ["AI", "Tools", "Gaming", "D&D", "RPG", "NPC", "Character", "DM Tools", "Tabletop"]
+categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
+seo_title: "Free D&D NPC Generator - AI Character Creator for RPG Campaigns"
+canonical: "/ai-tools/gaming/npc-generator/"
+featured_image: "/images/ai-tools/npc-generator.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "NPC Forge: D&D NPC Generator - AI Character Creator"
+  og_description: "Generate detailed NPCs for D&D campaigns. Create compelling non-player characters with backgrounds and motivations."
+  og_image: "/images/ai-tools/npc-generator-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free D&D NPC Generator"
+  twitter_description: "Create detailed NPCs for your RPG campaigns with AI. Perfect for D&D DMs and tabletop gamers."
+  twitter_image: "/images/ai-tools/npc-generator-twitter.png"
 ---
 
 <link rel="stylesheet" href="npc-generator.css">
@@ -113,7 +129,7 @@ Forging your NPC character...
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎲 Generate Alternative</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Reset</button>
+
 </div>
 </div> 
 </main>

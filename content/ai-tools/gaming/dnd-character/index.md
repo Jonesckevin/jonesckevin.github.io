@@ -1,14 +1,30 @@
 ---
-title: "MythMaker: D&D 5E Character Lore Generator"
-subtitle: "AI-Powered Tool"
+title: "MythMaker: D&D 5E Character Lore Generator - AI DnD Backstories"
+subtitle: "AI-Powered D&D Character Background Generator"
+description: "Generate rich backstories and compelling lore for your D&D characters. Create legendary heroes with detailed backgrounds, flaws, and divine connections for your RPG campaigns."
+keywords: ["D&D character generator", "DnD backstory generator", "RPG character creator", "D&D 5E character", "tabletop RPG", "character background", "DnD lore generator", "RPG backstory", "character development"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Gaming
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Gaming", "D&D", "DnD", "RPG", "Character", "Tabletop", "5E"]
+categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
+seo_title: "Free D&D Character Generator - AI DnD Backstory & Lore Creator"
+canonical: "/ai-tools/gaming/dnd-character/"
+featured_image: "/images/ai-tools/dnd-character.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "MythMaker: D&D Character Lore Generator - AI DnD Backstories"
+  og_description: "Generate rich backstories for your D&D characters. Create legendary heroes with detailed backgrounds and lore for your campaigns."
+  og_image: "/images/ai-tools/dnd-character-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free D&D Character Generator"
+  twitter_description: "Create compelling D&D character backstories with AI. Generate rich lore and backgrounds for your RPG campaigns."
+  twitter_image: "/images/ai-tools/dnd-character-twitter.png"
 ---
 
 <link rel="stylesheet" href="dnd-character.css">
@@ -125,7 +141,7 @@ Forging your character's legend...
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭 Alternative Backstory</button>
-<button class="btn-primary" onclick="resetForm()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">🔄 Reset</button>
+
 </div>
 </div>
 </div>

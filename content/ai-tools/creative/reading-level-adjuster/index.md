@@ -1,14 +1,30 @@
 ---
-title: "Reading Level Adjuster"
-subtitle: "AI-Powered Tool"
+title: "AI Reading Level Adjuster - Text Simplification Tool"
+subtitle: "AI-Powered Reading Level Conversion Tool"
+description: "Convert text to different reading levels while preserving meaning. Simplify complex content for accessibility, education, and broader audience reach with AI assistance."
+keywords: ["reading level adjuster", "text simplification", "readability tool", "AI text converter", "content accessibility", "educational tool", "text complexity", "plain language", "reading comprehension"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Creative
-- Productivity
+lastmod: 2025-09-30
+draft: false
+tags: ["AI", "Tools", "Creative", "Education", "Accessibility", "Text Processing", "Reading", "Content"]
+categories: ["AI Tools", "Education", "Accessibility"]
 type: ai-tools
+seo_title: "Free AI Reading Level Adjuster - Simplify Text for Any Audience"
+canonical: "/ai-tools/creative/reading-level-adjuster/"
+featured_image: "/images/ai-tools/reading-level-adjuster.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "AI Reading Level Adjuster - Text Simplification Tool"
+  og_description: "Convert text to different reading levels while preserving meaning. Perfect for educators and content creators."
+  og_image: "/images/ai-tools/reading-level-adjuster-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free AI Reading Level Adjuster"
+  twitter_description: "Simplify complex text for any reading level with AI. Perfect for education and accessibility."
+  twitter_image: "/images/ai-tools/reading-level-adjuster-twitter.png"
 ---
 
 <link rel="stylesheet" href="reading-level-adjuster.css">
@@ -110,7 +126,7 @@ type: ai-tools
 <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">� Download Markdown</button>
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🔄 Try Different Approach</button>
-<button class="btn-primary" onclick="adjustNew()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #666, #888);">📝 New Text</button>
+
 </div>
 </div>
 </main>

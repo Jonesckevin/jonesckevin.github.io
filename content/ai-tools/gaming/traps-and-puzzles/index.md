@@ -1,14 +1,30 @@
 ---
-title: "Traps & Puzzles Generator"
-subtitle: "AI-Powered Tool"
+title: "D&D Traps & Puzzles Generator - RPG Dungeon Creator"
+subtitle: "AI-Powered Trap and Puzzle Generator for RPGs"
+description: "Generate creative traps and challenging puzzles for your D&D dungeons and RPG campaigns. Create engaging obstacles with solutions, mechanics, and difficulty scaling."
+keywords: ["D&D traps generator", "RPG puzzle generator", "dungeon traps", "DnD puzzles", "trap creator", "puzzle maker", "RPG obstacles", "dungeon mechanics", "DM tools", "tabletop RPG"]
 author: JonesCKevin
 date: 2025-09-13
-tags:
-- AI
-- Tools
-- Gaming
-- Productivity
+lastmod: 2025-10-01
+draft: false
+tags: ["AI", "Tools", "Gaming", "D&D", "RPG", "Traps", "Puzzles", "Dungeons", "DM Tools"]
+categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
+seo_title: "Free D&D Traps & Puzzles Generator - RPG Dungeon Creator"
+canonical: "/ai-tools/gaming/traps-and-puzzles/"
+featured_image: "/images/ai-tools/traps-and-puzzles.png"
+schema_type: "SoftwareApplication"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "D&D Traps & Puzzles Generator - RPG Dungeon Creator"
+  og_description: "Generate creative traps and challenging puzzles for D&D dungeons. Create engaging obstacles for your RPG campaigns."
+  og_image: "/images/ai-tools/traps-and-puzzles-social.png"
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "Free D&D Traps & Puzzles Generator"
+  twitter_description: "Create challenging traps and puzzles for your D&D dungeons with AI. Perfect for DMs and campaign creators."
+  twitter_image: "/images/ai-tools/traps-and-puzzles-twitter.png"
 ---
 
 <link rel="stylesheet" href="traps-and-puzzles.css">
@@ -110,9 +126,7 @@ Rewards for success
 <button type="button" onclick="generateVariation()" class="variation-btn">
 🔄 Generate Alternative
 </button>
-<button type="button" onclick="resetForm()" class="reset-btn">
-🗑️ Reset Form
-</button>
+
 </div>
 </form>
 
