@@ -1,5 +1,5 @@
 +++
-title = "4n6Post - Digital Forensics & DFIR Knowledge Hub"
+title = "4N6Post"
 description = "Comprehensive digital forensics articles covering Windows forensics, registry analysis, MFT analysis, artifact examination, and DFIR techniques. Expert insights for cybersecurity professionals."
 keywords = ["digital forensics", "DFIR", "windows forensics", "registry analysis", "MFT analysis", "cyber forensics", "forensic artifacts", "incident response", "computer forensics", "forensic investigation", "Windows artifacts", "forensic timeline", "prefetch files", "jump lists", "shellbags", "UserAssist", "amcache", "SHIMCACHE", "forensic tools"]
 date = "2023-01-01"
@@ -16,7 +16,7 @@ author = "JonesCKevin"
 sitemap_priority = 0.9
 sitemap_changefreq = "weekly"
 [social_media]
-  og_title = "4n6Post - Digital Forensics & DFIR Knowledge Hub"
+  og_title = "4n6Post"
   og_description = "Expert digital forensics articles covering Windows artifacts, registry analysis, MFT examination, and DFIR techniques for cybersecurity professionals."
   og_image = "/images/4n6post-social.png"
   og_type = "article"

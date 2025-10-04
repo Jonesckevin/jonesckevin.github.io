@@ -1,5 +1,5 @@
 ---
-title: "Posts"
+title: "CTF Write Ups"
 draft: false
 toc: true
 images: []
