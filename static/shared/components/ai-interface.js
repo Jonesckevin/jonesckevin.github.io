@@ -12,14 +12,14 @@ class AIInterface {
         this.formId = options.formId || 'ai-form';
         this.resultId = options.resultId || 'ai-result';
         this.includeResponseLength = options.includeResponseLength !== false;
-    this.includeModelSelect = options.includeModelSelect !== false;
+        this.includeModelSelect = options.includeModelSelect !== false;
         this.responseLengthOptions = options.responseLengthOptions || [
             { value: 'short', label: 'Short (~150 words)' },
             { value: 'medium', label: 'Medium (~500 words)' },
             { value: 'long', label: 'Long (~1000+ words)' }
         ];
         this.customFields = options.customFields || [];
-        
+
         this.init();
     }
 
@@ -53,7 +53,7 @@ class AIInterface {
                         </div>
                     `;
                 case 'select':
-                    const options = field.options.map(opt => 
+                    const options = field.options.map(opt =>
                         `<option value="${opt.value}">${opt.label}</option>`
                     ).join('');
                     return `
@@ -86,14 +86,14 @@ class AIInterface {
             <div class="form-group">
                 <label for="ai-response-length">Response Length</label>
                 <select id="ai-response-length">
-                    ${this.responseLengthOptions.map(opt => 
-                        `<option value="${opt.value}">${opt.label}</option>`
-                    ).join('')}
+                    ${this.responseLengthOptions.map(opt =>
+            `<option value="${opt.value}">${opt.label}</option>`
+        ).join('')}
                 </select>
             </div>
         ` : '';
 
-    const modelSelectHTML = '';
+        const modelSelectHTML = '';
 
         container.innerHTML = `
             <form id="${this.formId}">
@@ -122,9 +122,9 @@ class AIInterface {
 
     attachEventListeners() {
         const form = document.getElementById(this.formId);
-    const providerSelect = document.getElementById('ai-provider');
-    const apiKeyInput = document.getElementById('ai-api-key');
-    const modelSelect = document.getElementById('ai-model');
+        const providerSelect = document.getElementById('ai-provider');
+        const apiKeyInput = document.getElementById('ai-api-key');
+        const modelSelect = document.getElementById('ai-model');
 
         if (form && this.onSubmit) {
             form.addEventListener('submit', async (e) => {
@@ -133,12 +133,12 @@ class AIInterface {
             });
         }
 
-    // Provider/api/model events are handled globally via header controls
+        // Provider/api/model events are handled globally via header controls
     }
 
     async handleSubmit(event) {
         const resultDiv = document.getElementById(this.resultId);
-        
+
         try {
             // Get AI provider settings
             const provider = apiManager.getProvider();
@@ -146,7 +146,7 @@ class AIInterface {
 
             // Validation
             if (!utils.validateApiKey(apiKey, provider)) {
-                const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', gemini: 'Gemini' };
+                const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', gemini: 'Gemini', grok: 'Grok (X.AI)' };
                 utils.showError(resultDiv, `Please enter a valid ${providerNames[provider]} API key`);
                 resultDiv.style.display = 'block';
                 return;
@@ -215,8 +215,8 @@ class AIInterface {
         const storedKey = apiManager.getApiKey();
         const storedProvider = apiManager.getProvider();
         const storedModel = apiManager.getModel(storedProvider);
-        
-    // Header inputs reflect stored values; nothing to populate here now
+
+        // Header inputs reflect stored values; nothing to populate here now
 
         // Attempt to load models if we have key+provider
         if (this.includeModelSelect) {
@@ -225,7 +225,7 @@ class AIInterface {
     }
 
     resetModelSelect() {
-    // Model select lives in header; keep for backward compatibility
+        // Model select lives in header; keep for backward compatibility
     }
 
     debouncedLoadModels = (() => {
@@ -237,8 +237,8 @@ class AIInterface {
     })();
 
     async tryLoadModels(preselectModel = null) {
-    // Model select is managed by header; nothing to load here.
-    return;
+        // Model select is managed by header; nothing to load here.
+        return;
 
         try {
             if (help) help.textContent = 'Loading models…';
@@ -265,20 +265,20 @@ class AIInterface {
 
     displayResult(content, title = 'Generated Content', downloadBaseName = 'generated-content') {
         const resultDiv = document.getElementById(this.resultId);
-        
+
         // Set content in download manager for proper conversion
         downloadManager.setContent(content, 'markdown');
-        
+
         // Convert markdown to HTML for display
         const htmlContent = downloadManager.currentContent.html;
 
         // Group by H1 sections into cards
         const sections = [];
-        (function(){
+        (function () {
             const temp = document.createElement('div');
             temp.innerHTML = htmlContent;
             let current = null;
-            Array.from(temp.childNodes).forEach(function(node){
+            Array.from(temp.childNodes).forEach(function (node) {
                 if (node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'h1') {
                     current && sections.push(current);
                     current = document.createElement('div');
@@ -295,7 +295,7 @@ class AIInterface {
             if (current) sections.push(current);
         })();
 
-        const groupedHtml = sections.length ? sections.map(function(s){ return s.outerHTML; }).join('') : (`<div class="ai-card">${htmlContent}</div>`);
+        const groupedHtml = sections.length ? sections.map(function (s) { return s.outerHTML; }).join('') : (`<div class="ai-card">${htmlContent}</div>`);
 
         // Display result with grouped output and download buttons
         resultDiv.innerHTML = `

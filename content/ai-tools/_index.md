@@ -23,12 +23,3 @@ sitemap_changefreq = "weekly"
   twitter_description = "Free AI-powered tools for productivity, content creation, and professional development. Enhance your workflow with our AI applications."
   twitter_image = "/images/ai-tools-hub-twitter.png"
 +++
-
-<!--
-<div class="hero-section"></div>
-<div class="services-grid"></div>
-<div class="security-section"><h2>Security & Privacy</h2><div class="security-grid"></div></div>
-
-<script src="/shared/components/frontpage.js"></script>
-<link rel="stylesheet" href="/assets/css/styles.css">
--->

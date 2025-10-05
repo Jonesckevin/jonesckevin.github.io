@@ -74,77 +74,23 @@ const quizUtils = {
     }
 };
 
-// Simple API manager to avoid conflicts
+// Use centralized API manager
 const quizApiManager = {
     makeRequest: async function (messages, options) {
+        console.log('=== QUIZ GENERATOR USING API MANAGER ===');
         const { provider, apiKey, maxTokens, temperature } = options;
 
-        let url, headers, body;
-
-        switch (provider) {
-            case 'openai':
-                url = 'https://api.openai.com/v1/chat/completions';
-                headers = {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                };
-                body = JSON.stringify({
-                    model: 'gpt-3.5-turbo',
-                    messages: messages,
-                    max_tokens: maxTokens,
-                    temperature: temperature
-                });
-                break;
-
-            case 'deepseek':
-                url = 'https://api.deepseek.com/v1/chat/completions';
-                headers = {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                };
-                body = JSON.stringify({
-                    model: 'deepseek-chat',
-                    messages: messages,
-                    max_tokens: maxTokens,
-                    temperature: temperature
-                });
-                break;
-
-            case 'anthropic':
-                url = 'https://api.anthropic.com/v1/messages';
-                headers = {
-                    'Content-Type': 'application/json',
-                    'x-api-key': apiKey,
-                    'anthropic-version': '2023-06-01'
-                };
-                body = JSON.stringify({
-                    model: 'claude-3-sonnet-20240229',
-                    max_tokens: maxTokens,
-                    temperature: temperature,
-                    messages: messages
-                });
-                break;
-
-            default:
-                throw new Error('Unsupported AI provider');
-        }
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: headers,
-            body: body
-        });
-
-        if (!response.ok) {
-            throw new Error(`API request failed: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (provider === 'anthropic') {
-            return data.content[0].text;
-        } else {
-            return data.choices[0].message.content;
+        try {
+            // Use the centralized API manager
+            return await apiManager.makeRequest(messages, {
+                provider: provider,
+                apiKey: apiKey,
+                maxTokens: maxTokens || 2000,
+                temperature: temperature || 0.7
+            });
+        } catch (error) {
+            console.error('Quiz API Manager request failed:', error);
+            throw error;
         }
     }
 };
@@ -191,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Validation
         if (!quizUtils.validateApiKey(apiKey, aiProvider)) {
-            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic' };
+            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', grok: 'Grok (X.AI)' };
             quizUtils.showError(document.getElementById('errorDiv'), `Please enter a valid ${providerNames[aiProvider]} API key`);
             return;
         }

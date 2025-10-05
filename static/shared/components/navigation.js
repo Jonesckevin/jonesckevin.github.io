@@ -3,7 +3,7 @@ class NavigationComponent {
     constructor() {
         this.currentPath = window.location.pathname.replace(/\\/g, '/');
         this.basePath = this.getBasePath();
-        // Use unified ai-tools-manifest.json as the single source of truth
+        // Deprecated: Only used as last resort fallback
         this.manifestPath = `${this.basePath}shared/components/ai-tools-manifest.json`;
     }
     getBasePath() {
@@ -36,59 +36,44 @@ class NavigationComponent {
     }
     async loadManifest() {
         try {
-            console.log('Loading manifest from:', this.manifestPath);
+            // Primary: Use Hugo-generated data
+            if (window.aiToolsData && window.aiToolsData.categories) {
+                console.log('✓ Using Hugo-generated AI tools data, categories:', window.aiToolsData.categories.length);
+                return window.aiToolsData;
+            }
+
+            // Secondary: Try to wait for Hugo data to load (in case script loads before template)
+            console.log('Hugo data not immediately available, waiting...');
+            await new Promise(resolve => setTimeout(resolve, 100));
+            if (window.aiToolsData && window.aiToolsData.categories) {
+                console.log('✓ Using Hugo-generated AI tools data (after wait), categories:', window.aiToolsData.categories.length);
+                return window.aiToolsData;
+            }
+
+            // Deprecated: Fallback to JSON manifest (should not be needed)
+            console.warn('⚠ Hugo data unavailable, attempting deprecated JSON manifest fallback');
             const res = await fetch(this.manifestPath, { cache: 'no-cache' });
-            console.log('Manifest fetch response:', res.status, res.ok);
-            if (!res.ok) return null;
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
-            console.log('Manifest data loaded, categories:', data.categories?.length || 0);
+            console.log('📄 JSON manifest loaded, categories:', data.categories?.length || 0);
             return data;
         } catch (e) {
-            console.error('Manifest load failed:', e);
-            return null; // Fallback to default
+            console.error('❌ All manifest sources failed, using minimal fallback:', e);
+            return this.getDefaultStructure();
         }
     }
     getDefaultStructure() {
+        // Minimal fallback structure - all data should come from Hugo
         return {
             categories: [
                 {
-                    title: 'Core Services',
+                    title: 'AI Tools',
                     links: [
-                        { label: 'Home', href: '/' },
-                        { label: 'Compassionate Response', href: '/ai-tools/core-services/compassionate-response/' },
-                        { label: 'Resume Builder', href: '/ai-tools/core-services/resume-builder/' },
-                        { label: 'Resume Critique', href: '/ai-tools/core-services/resume-critique/' },
-                        { label: 'Content Summarizer', href: '/ai-tools/core-services/content-summarizer/' },
-                        { label: 'Document Generator', href: '/ai-tools/core-services/document-generator/' },
-                        { label: 'Interview Questions', href: '/ai-tools/core-services/thought-provoking-questions/' },
-                        { label: 'Visual Roadmap', href: '/ai-tools/core-services/visual-roadmap/' }
-                    ]
-                },
-                {
-                    title: 'Learning & Education',
-                    links: [
-                        { label: 'Quiz Generator', href: '/ai-tools/learning/quiz-generator/' },
-                        { label: 'Study Guide', href: '/ai-tools/learning/study-guide/' }
-                    ]
-                },
-                {
-                    title: 'Gaming & Entertainment',
-                    links: [
-                        { label: 'MythMaker', href: '/ai-tools/gaming/dnd-character/' },
-                        { label: 'NPC Generator', href: '/ai-tools/gaming/npc-generator/' },
-                        { label: 'Name Forge', href: '/ai-tools/gaming/name-forge/' },
-                        { label: 'Magic Item Crafter', href: '/ai-tools/gaming/magic-item-crafter/' },
-                        { label: 'Story Generator', href: '/ai-tools/gaming/story-generator/' },
-                        { label: 'Traps & Puzzles', href: '/ai-tools/gaming/traps-and-puzzles/' }
-                    ]
-                },
-                {
-                    title: 'Creative Tools',
-                    links: [
-                        { label: 'Character Voice Converter', href: '/ai-tools/creative/character-voice-converter/' },
-                        { label: 'Fanfiction Generator', href: '/ai-tools/creative/fanfiction-generator/' },
-                        { label: 'Plot Twist Generator', href: '/ai-tools/creative/plot-twist-generator/' },
-                        { label: 'Reading Level Adjuster', href: '/ai-tools/creative/reading-level-adjuster/' }
+                        { label: 'Home', href: '/ai-tools/' },
+                        { label: 'Core Services', href: '/ai-tools/core-services/' },
+                        { label: 'Learning', href: '/ai-tools/learning/' },
+                        { label: 'Creative', href: '/ai-tools/creative/' },
+                        { label: 'Gaming', href: '/ai-tools/gaming/' }
                     ]
                 }
             ]
@@ -135,12 +120,12 @@ class NavigationComponent {
                     </a>
                     <div class="nav-right">
                         <div class="ai-profile" id="aiProfile">
-                            <button class="ai-profile-btn" id="aiProfileBtn" aria-haspopup="true" aria-expanded="false" title="AI Settings">
-                                <span class="ai-badge">API</span>
+                            <button class="ai-profile-btn" id="aiProfileBtn" aria-label="AI Settings">
+                                <span class="ai-badge">AI</span>
                             </button>
-                            <div class="ai-dropdown" id="aiDropdown" aria-hidden="true">
+                            <div class="ai-dropdown" id="aiDropdown">
                                 <div class="ai-dropdown-inner">
-                                    <div class="ai-dropdown-header">AI Settings</div>
+                                    <div class="ai-dropdown-header">AI Provider Settings</div>
                                     <div class="ai-field">
                                         <label for="ai-provider">Provider</label>
                                         <select id="ai-provider">

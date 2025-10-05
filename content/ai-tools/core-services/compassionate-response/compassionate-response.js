@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const maxLength = document.getElementById('maxLength').value;
         // Validation
         if (!utils.validateApiKey(apiKey, aiProvider)) {
-            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic' };
+            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', gemini: 'Gemini', grok: 'Grok (X.AI)' };
             utils.showError(document.getElementById('errorDiv'), `Please enter a valid ${providerNames[aiProvider]} API key`);
             document.getElementById('errorDiv').style.display = 'block';
             return;

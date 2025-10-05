@@ -1,102 +1,50 @@
 {{ define "main" }}
 <div class="hero-section">
-    <h1 class="hero-title">AI Tools API Services Hub</h1>
+    <h1 class="hero-title">{{ .Site.Params.aitools.hero_title }}</h1>
     <p class="hero-description">
-        Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic.
-        Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation —
-        all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD.
+        {{ .Site.Params.aitools.hero_description }}
     </p>
 </div>
 
-<div class="services-grid" id="services-grid">
-    <!-- Services will be populated by JavaScript -->
+<div class="services-grid">
+    {{- range $menuName := slice "coreservices" "learning" "creative" "gaming" }}
+    {{- $menu := index $.Site.Menus $menuName }}
+    {{- range $menu }}
+    {{- if and .Params.show_home (ne .Name "Home") }}
+    <div class="service-card">
+        <div class="card-header">
+            <h3>{{ .Params.home_title }}</h3>
+        </div>
+        <div class="card-content">
+            <div class="card-content-wrapper">
+                <p>{{ .Params.home_description }}</p>
+                <ul class="feature-list">
+                    {{- range .Params.home_features }}
+                    <li>{{ . }}</li>
+                    {{- end }}
+                </ul>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ .URL | relLangURL }}" class="cta-button">{{ .Params.home_cta | default "Start" }}</a>
+        </div>
+    </div>
+    {{- end }}
+    {{- end }}
+    {{- end }}
 </div>
 
 <div class="security-section">
-    <h2>Security & Privacy</h2>
-    <div class="security-grid" id="security-grid">
-        <!-- Security features will be populated by JavaScript -->
+    <h2>{{ .Site.Params.aitools.security_title }}</h2>
+    <div class="security-grid">
+        {{- range .Site.Params.aitools.security }}
+        <div class="security-item">
+            <h4>{{ .title }}</h4>
+            <p>{{ .description }}</p>
+        </div>
+        {{- end }}
     </div>
 </div>
-
-<script>
-    // Front page JavaScript for AI Tools
-    document.addEventListener('DOMContentLoaded', async function () {
-        console.log('AI Tools page loaded, attempting to fetch manifest...');
-        try {
-            // Load manifest - use absolute path to ensure HTTPS
-            const manifestUrl = '/shared/components/ai-tools-manifest.json';
-            console.log('Fetching manifest from:', manifestUrl);
-            const response = await fetch(manifestUrl);
-            console.log('Response status:', response.status);
-            const manifest = await response.json();
-            console.log('Manifest loaded successfully:', manifest);
-
-            // Populate services grid
-            const servicesGrid = document.getElementById('services-grid');
-            console.log('Services grid element:', servicesGrid);
-            if (servicesGrid && manifest.categories) {
-                console.log('Processing categories:', manifest.categories.length);
-                const services = [];
-                manifest.categories.forEach(category => {
-                    category.links.forEach(link => {
-                        if (link.home && link.home.show && link.label !== 'Home') {
-                            services.push({
-                                title: link.home.title,
-                                description: link.home.description,
-                                features: link.home.features,
-                                href: link.href,
-                                ctaText: link.home.ctaText || 'Start'
-                            });
-                        }
-                    });
-                });
-
-                console.log('Found services:', services.length);
-                servicesGrid.innerHTML = services.map(service => `
-                <div class="service-card">
-                    <div class="card-header">
-                        <h3>${service.title}</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-content-wrapper">
-                            <p>${service.description}</p>
-                            <ul class="feature-list">
-                                ${service.features.map(feature => `<li>${feature}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="${service.href}" class="cta-button">${service.ctaText}</a>
-                    </div>
-                </div>
-            `).join('');
-                console.log('Services HTML generated and inserted');
-            } else {
-                console.log('No services grid or categories found');
-            }
-
-            // Populate security grid
-            const securityGrid = document.getElementById('security-grid');
-            console.log('Security grid element:', securityGrid);
-            if (securityGrid && manifest.site && manifest.site.security) {
-                console.log('Processing security items:', manifest.site.security.length);
-                securityGrid.innerHTML = manifest.site.security.map(item => `
-                <div class="security-item">
-                    <h4>${item.title}</h4>
-                    <p>${item.description}</p>
-                </div>
-            `).join('');
-                console.log('Security HTML generated and inserted');
-            } else {
-                console.log('No security grid or security data found');
-            }
-
-        } catch (error) {
-            console.error('Failed to load manifest:', error);
-        }
-    });
-</script>
 
 {{/* AI Tools Collection Schema */}}
 {{ if .IsSection }}

@@ -46,6 +46,36 @@ ignoreLogs = ['warning-goldmark-raw-html']
   keywords = "homepage, blog, 4n6, forensics, cyber security, ctf, writeup, nsec, ns3c, nsec, NorthSec, NorthSec, NSec, NS3C, NSec CTF, NS3C CTF, Cyber Security, Cybersecurity, Cyber Security Blog, Cyber Security Writeup, Cyber Security CTF"
   images = ["/images/default.png"]                      # Images used in document's head, e.g. for social media sharing
 
+  # AI Tools Site Configuration
+  [params.aitools]
+    hero_title = "AI Tools API Services Hub"
+    hero_description = "Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic. Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation — all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD."
+    security_title = "Security & Privacy"
+    
+    [[params.aitools.security]]
+      title = "Your API Key"
+      description = "Your API key (OpenAI, DeepSeek, or Anthropic) is used only for the current session and is never stored."
+    
+    [[params.aitools.security]]
+      title = "Data Privacy"
+      description = "All uploaded documents and generated content are processed securely and not retained after your session."
+    
+    [[params.aitools.security]]
+      title = "Multi-Provider Support"
+      description = "Switch between AI providers seamlessly while maintaining the same security standards across all services."
+    
+    [[params.aitools.security]]
+      title = "Rich Output Formats"
+      description = "All AI responses are converted to HTML and available for download in Markdown, HTML, and MD formats."
+    
+    [[params.aitools.security]]
+      title = "Open Source"
+      description = "The platform is built with open-source technologies, ensuring transparency and community-driven improvements."
+    
+    [[params.aitools.security]]
+      title = "No Ads, Only Google Analytics"
+      description = "I respect your privacy and do not use ads on this platform."
+
   [params.favicon]
     mask = "#10b981"
     msapplication = "#111827"
@@ -100,3 +130,221 @@ ignoreLogs = ['warning-goldmark-raw-html']
     identifier = "docker"
     name       = "Dockers"
     url        = "/dockers"
+
+  # AI Tools Navigation Menu - Using Nested Menu Groups
+  # Core Services
+  [[menu.coreservices]]
+    identifier = "compassionate-response"
+    name       = "Compassionate Response"
+    url        = "/ai-tools/core-services/compassionate-response/"
+    weight     = 11
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "Compassionate Response Generator"
+      home_description = "Generate empathetic and hopeful responses to global tragedies. Craft meaningful messages that express solidarity and support."
+      home_features = ["Preloaded compassionate prompts", "Multiple output styles", "Customizable length", "Focus on hope and humanity"]
+      home_cta = "Start"
+  [[menu.coreservices]]
+    identifier = "resume-builder"
+    name       = "Resume Builder"
+    url        = "/ai-tools/core-services/resume-builder/"
+    weight     = 12
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "Resume Builder"
+      home_description = "Transform your documents into professional, ATS-optimized resumes ready for applications."
+      home_features = ["Supports TXT and MD", "ATS-friendly formatting", "Multiple styles", "One-page optimization"]
+      home_cta = "Start"
+  [[menu.coreservices]]
+    identifier = "resume-critique"
+    name       = "Resume Critique"
+    url        = "/ai-tools/core-services/resume-critique/"
+    weight     = 13
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "Resume Critique & Enhancement"
+      home_description = "AI-powered analysis with detailed feedback, scoring, and an enhanced version tailored to your target job."
+      home_features = ["Comprehensive analysis & scoring", "Section-by-section critiques", "ATS compatibility assessment", "Enhanced resume generation"]
+      home_cta = "Start"
+  [[menu.coreservices]]
+    identifier = "content-summarizer"
+    name       = "Content Summarizer"
+    url        = "/ai-tools/core-services/content-summarizer/"
+    weight     = 14
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "Content Summarizer"
+      home_description = "Digest articles and documents with AI-powered summaries in various lengths and tones."
+      home_features = ["Multiple summary lengths", "Tone customization", "Article & document support", "Key insights extraction"]
+      home_cta = "Start"
+  [[menu.coreservices]]
+    identifier = "document-generator"
+    name       = "Document Generator"
+    url        = "/ai-tools/core-services/document-generator/"
+    weight     = 15
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "Document Generator"
+      home_description = "Create professional documents, reports, and templates with AI assistance for any purpose."
+      home_features = ["Multiple document types", "Professional formatting", "Template generation", "Custom requirements"]
+      home_cta = "Start"
+  [[menu.coreservices]]
+    identifier = "interview-questions"
+    name       = "Interview Questions"
+    url        = "/ai-tools/core-services/thought-provoking-questions/"
+    weight     = 16
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "Thought-Provoking Questions"
+      home_description = "Practice thought-provoking interview questions with AI-crafted prompts and guidance."
+      home_features = ["Industry-specific questions", "Difficulty levels", "Sample answers", "Interview preparation tips"]
+      home_cta = "Start"
+  [[menu.coreservices]]
+    identifier = "visual-roadmap"
+    name       = "Visual Roadmap"
+    url        = "/ai-tools/core-services/visual-roadmap/"
+    weight     = 17
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "Visual Roadmap Generator"
+      home_description = "Build a clear, visual roadmap and preview multiple chart styles from generated plans."
+      home_features = ["Multiple chart styles", "Goal tracking", "Milestone planning", "Visual progress indicators"]
+      home_cta = "Start"
+
+  # Learning
+  [[menu.learning]]
+    identifier = "quiz-generator"
+    name       = "Quiz Generator"
+    url        = "/ai-tools/learning/quiz-generator/"
+    weight     = 21
+    [menu.learning.params]
+      show_home = true
+      home_title = "Quiz Generator"
+      home_description = "Create comprehensive quizzes and assessments from any topic or content with AI-powered question generation."
+      home_features = ["Multiple question types", "Difficulty adjustment", "Topic-based generation", "Answer explanations"]
+      home_cta = "Start"
+  [[menu.learning]]
+    identifier = "study-guide"
+    name       = "Study Guide"
+    url        = "/ai-tools/learning/study-guide/"
+    weight     = 22
+    [menu.learning.params]
+      show_home = true
+      home_title = "Study Guide Generator"
+      home_description = "Transform complex topics into structured study guides with key concepts, summaries, and practice questions."
+      home_features = ["Structured formatting", "Key concept extraction", "Practice questions", "Review summaries"]
+      home_cta = "Start"
+
+  # Creative
+  [[menu.creative]]
+    identifier = "fanfiction-generator"
+    name       = "Fan Fiction Generator"
+    url        = "/ai-tools/creative/fanfiction-generator/"
+    weight     = 31
+    [menu.creative.params]
+      show_home = true
+      home_title = "Fanfiction Generator"
+      home_description = "Create engaging fanfiction stories with AI assistance, perfect for exploring beloved universes and characters."
+      home_features = ["Multiple fandoms", "Character consistency", "Plot development", "Writing style adaptation"]
+      home_cta = "Start"
+  [[menu.creative]]
+    identifier = "character-voice-converter"
+    name       = "Character Voice Converter"
+    url        = "/ai-tools/creative/character-voice-converter/"
+    weight     = 32
+    [menu.creative.params]
+      show_home = true
+      home_title = "Character Voice Converter"
+      home_description = "Transform text to match specific character voices, writing styles, and personalities."
+      home_features = ["Character archetypes", "Style adaptation", "Voice consistency", "Tone adjustment"]
+      home_cta = "Start"
+  [[menu.creative]]
+    identifier = "plot-twist-generator"
+    name       = "Plot Twist Generator"
+    url        = "/ai-tools/creative/plot-twist-generator/"
+    weight     = 33
+    [menu.creative.params]
+      show_home = true
+      home_title = "Plot Twist Generator"
+      home_description = "Generate surprising and logical plot twists that enhance your storytelling."
+      home_features = ["Genre-specific twists", "Character revelations", "Pacing control", "Integration tips"]
+      home_cta = "Start"
+  [[menu.creative]]
+    identifier = "reading-level-adjuster"
+    name       = "Reading Level Adjuster"
+    url        = "/ai-tools/creative/reading-level-adjuster/"
+    weight     = 34
+    [menu.creative.params]
+      show_home = true
+      home_title = "Reading Level Adjuster"
+      home_description = "Adapt content to different reading levels while maintaining core meaning and engagement."
+      home_features = ["Multiple reading levels", "Vocabulary adjustment", "Structure optimization", "Engagement preservation"]
+      home_cta = "Start"
+
+  # Gaming
+  [[menu.gaming]]
+    identifier = "mythmaker"
+    name       = "MythMaker"
+    url        = "/ai-tools/gaming/dnd-character/"
+    weight     = 41
+    [menu.gaming.params]
+      show_home = true
+      home_title = "MythMaker - D&D Character Generator"
+      home_description = "Create detailed D&D characters with backstories, stats, and personality traits for your campaigns."
+      home_features = ["Full character sheets", "Rich backstories", "Class optimization", "Campaign integration"]
+      home_cta = "Start"
+  [[menu.gaming]]
+    identifier = "npc-forge"
+    name       = "NPC Forge"
+    url        = "/ai-tools/gaming/npc-generator/"
+    weight     = 42
+    [menu.gaming.params]
+      show_home = true
+      home_title = "NPC Forge - Character Generator"
+      home_description = "Generate memorable NPCs with personalities, motivations, and backgrounds for your tabletop games."
+      home_features = ["Diverse personalities", "Quest hooks", "Character relationships", "Multiple archetypes"]
+      home_cta = "Start"
+  [[menu.gaming]]
+    identifier = "name-forge"
+    name       = "Name Forge"
+    url        = "/ai-tools/gaming/name-forge/"
+    weight     = 43
+    [menu.gaming.params]
+      show_home = true
+      home_title = "Name Forge - Multi-Genre Name Generator"
+      home_description = "Generate unique names for characters, places, and fantasy elements across multiple genres and cultures."
+      home_features = ["Multiple genres", "Cultural diversity", "Place names", "Fantasy elements"]
+      home_cta = "Start"
+  [[menu.gaming]]
+    identifier = "item-crafter"
+    name       = "Item Crafter"
+    url        = "/ai-tools/gaming/magic-item-crafter/"
+    weight     = 44
+    [menu.gaming.params]
+      show_home = true
+      home_title = "Magic Item Crafter"
+      home_description = "Design custom magic items with unique properties, lore, and balanced mechanics for your campaigns."
+      home_features = ["Balanced mechanics", "Rich item lore", "Rarity scaling", "Custom properties"]
+      home_cta = "Start"
+  [[menu.gaming]]
+    identifier = "traps-puzzles"
+    name       = "Traps & Puzzles"
+    url        = "/ai-tools/gaming/traps-and-puzzles/"
+    weight     = 45
+    [menu.gaming.params]
+      show_home = true
+      home_title = "Traps & Puzzles Generator"
+      home_description = "Create challenging traps and puzzles for your campaigns with solutions and difficulty scaling."
+      home_features = ["Scalable difficulty", "Multiple trap types", "Puzzle solutions", "Campaign integration"]
+      home_cta = "Start"
+  [[menu.gaming]]
+    identifier = "story-generator"
+    name       = "Story Generator"
+    url        = "/ai-tools/gaming/story-generator/"
+    weight     = 46
+    [menu.gaming.params]
+      show_home = true
+      home_title = "Story Generator"
+      home_description = "Generate compelling storylines, plot hooks, and campaign narratives for your tabletop adventures."
+      home_features = ["Campaign arcs", "Plot hooks", "Character motivations", "World building"]
+      home_cta = "Start"

@@ -1,69 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
     let currentResult = '';
 
-    // API calling function
+    // Use centralized API manager for requests
     async function makeApiCall(apiKey, provider, prompt) {
-        const getApiUrl = (provider) => {
-            const urls = {
-                'openai': 'https://api.openai.com/v1/chat/completions',
-                'deepseek': 'https://api.deepseek.com/v1/chat/completions',
-                'anthropic': 'https://api.anthropic.com/v1/messages'
-            };
-            return urls[provider];
-        };
+        console.log('=== CHARACTER VOICE CONVERTER USING API MANAGER ===');
+        console.log('Provider:', provider);
+        console.log('API Key length:', apiKey ? apiKey.length : 0);
+        console.log('Prompt length:', prompt ? prompt.length : 0);
 
-        const getModel = (provider) => {
-            const models = {
-                'openai': 'gpt-4o-mini',
-                'deepseek': 'deepseek-chat',
-                'anthropic': 'claude-3-haiku-20240307'
-            };
-            return models[provider];
-        };
+        try {
+            // Convert prompt to messages format for API manager
+            const messages = [{ role: 'user', content: prompt }];
 
-        const url = getApiUrl(provider);
-        const model = getModel(provider);
-
-        let headers = {
-            'Content-Type': 'application/json'
-        };
-
-        let body;
-
-        if (provider === 'anthropic') {
-            headers['x-api-key'] = apiKey;
-            headers['anthropic-version'] = '2023-06-01';
-            body = JSON.stringify({
-                model: model,
-                max_tokens: 2000,
-                messages: [{ role: 'user', content: prompt }]
-            });
-        } else {
-            headers['Authorization'] = `Bearer ${apiKey}`;
-            body = JSON.stringify({
-                model: model,
-                messages: [{ role: 'user', content: prompt }],
-                max_tokens: 2000,
+            // Use the centralized API manager
+            return await apiManager.makeRequest(messages, {
+                provider: provider,
+                apiKey: apiKey,
+                maxTokens: 2000,
                 temperature: 0.7
             });
-        }
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: headers,
-            body: body
-        });
-
-        if (!response.ok) {
-            throw new Error(`API request failed: ${response.status} ${response.statusText}`);
-        }
-
-        const data = await response.json();
-
-        if (provider === 'anthropic') {
-            return data.content[0].text;
-        } else {
-            return data.choices[0].message.content;
+        } catch (error) {
+            console.error('Character Voice Converter API Manager request failed:', error);
+            throw error;
         }
     }
 
@@ -74,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const patterns = {
             'openai': /^sk-[A-Za-z0-9_-]+$/,
             'deepseek': /^sk-[A-Za-z0-9_-]+$/,
-            'anthropic': /^sk-ant-[A-Za-z0-9_-]+$/
+            'anthropic': /^sk-ant-[A-Za-z0-9_-]+$/,
+            'grok': /^xai-[A-Za-z0-9_-]+$/
         };
 
         return patterns[provider] ? patterns[provider].test(apiKey) : false;
@@ -163,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Validation
         if (!validateApiKey(apiKey, aiProvider)) {
-            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic' };
+            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', grok: 'Grok (X.AI)' };
             document.getElementById('errorDiv').innerHTML = `<div class="error-message">Please enter a valid ${providerNames[aiProvider]} API key in the AI Provider section at the top of the page.</div>`;
             document.getElementById('errorDiv').style.display = 'block';
             return;

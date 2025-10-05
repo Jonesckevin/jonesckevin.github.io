@@ -141,7 +141,7 @@ class AIInterface {
 
             // Validation
             if (!window.utils || !window.utils.validateApiKey(apiKey, provider)) {
-                const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', gemini: 'Gemini' };
+                const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', gemini: 'Gemini', grok: 'Grok (X.AI)' };
                 if (window.utils) {
                     window.utils.showError(resultDiv, `Please enter a valid ${providerNames[provider]} API key`);
                 } else {

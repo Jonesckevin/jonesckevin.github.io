@@ -11,7 +11,8 @@ window.utils = {
             openai: /^sk-[A-Za-z0-9_-]+$/,
             deepseek: /^sk-[A-Za-z0-9_-]+$/,
             anthropic: /^sk-ant-[A-Za-z0-9_-]+$/,
-            gemini: /^AIza[A-Za-z0-9_-]+$/
+            gemini: /^AIza[A-Za-z0-9_-]+$/,
+            grok: /^xai-[A-Za-z0-9_-]+$/
         };
 
         const pattern = patterns[provider];
