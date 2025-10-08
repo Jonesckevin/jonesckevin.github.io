@@ -1,4 +1,19 @@
 /* Controls Dropdown and Button Styles */
+/* Light mode: white background */
+html[data-theme="light"] .controls-dropdown .header__random-btn,
+html[data-theme="light"] .controls-dropdown .header-github-link,
+html[data-theme="light"] .controls-dropdown .theme-toggle {
+  background-color: #fff !important;
+}
+
+/* Dark mode: black background */
+html[data-theme="dark"] .controls-dropdown .header__random-btn,
+html[data-theme="dark"] .controls-dropdown .header-github-link,
+html[data-theme="dark"] .controls-dropdown .theme-toggle {
+  background-color: #1b1c1d !important;
+}
+
+
 
 /* Controls Dropdown attached to logo */
 .controls-dropdown {
