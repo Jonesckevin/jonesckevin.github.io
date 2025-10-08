@@ -15,6 +15,8 @@ schema_type = "TechArticle"
 author = "JonesCKevin"
 sitemap_priority = 0.8
 sitemap_changefreq = "monthly"
+aliases = ["/2023/12/the-mft-comprehensive-guide.html"]
++++
 [social_media]
   og_title = "MFT Analysis - Master File Table Forensics Guide"
   og_description = "Complete guide to NTFS Master File Table analysis for digital forensics. Learn MFT structure, artifacts, and tools for DFIR investigations."
