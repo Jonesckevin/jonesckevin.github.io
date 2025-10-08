@@ -1,14 +1,14 @@
 <!-- Google Analytics / Google Tag Manager -->
 <!-- Replace the content below with your actual Google tracking code -->
 
-<!-- Google tag (gtag.js) - Replace GA_MEASUREMENT_ID with your actual ID -->
-{{- if .Site.Params.googleAnalyticsID }}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalyticsID }}"></script>
+<!-- Google tag (gtag.js) - Now using Hugo's services configuration -->
+{{- if .Site.Config.Services.GoogleAnalytics.ID }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Config.Services.GoogleAnalytics.ID }}"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', '{{ .Site.Params.googleAnalyticsID }}');
+    gtag('config', '{{ .Site.Config.Services.GoogleAnalytics.ID }}');
 </script>
 {{- end }}
 

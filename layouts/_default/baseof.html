@@ -10,14 +10,6 @@
 <body class="section-{{ lower .Section }}">
     {{ end }}
 
-    {{- /* Google Tag Manager (noscript) */ -}}
-    {{- if .Site.Params.googleTagManagerID }}
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.Params.googleTagManagerID }}" height="0"
-            width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    {{- end }}
-
     <div class="container">
         {{ partial "header.html" . }}
         {{ partial "modern-sidebar.html" . }}

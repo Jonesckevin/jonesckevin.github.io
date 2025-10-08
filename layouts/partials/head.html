@@ -92,9 +92,6 @@
 {{ template "_internal/google_analytics.html" . }}
 {{- end }}
 
-{{- /* Custom Google Tracking (Alternative method) */ -}}
-{{- partial "google-tracking.html" . }}
-
 {{- if $.Site.Params.plausibleDataDomain }}
 <script defer data-domain="{{ .Site.Params.plausibleDataDomain }}"
     src="{{ .Site.Params.plausibleScriptSource }}"></script>
