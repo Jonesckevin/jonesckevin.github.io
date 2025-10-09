@@ -29,13 +29,13 @@ social_media:
 
 <link rel="stylesheet" href="reading-level-adjuster.css">
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Reading Level Adjuster</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
                 Convert text to different reading levels while preserving meaning and essential information. 
                 Perfect for educational materials, accessibility, technical documentation, and audience adaptation.
             </p>
+<form onsubmit="adjustReadingLevel(); return false;">
 <div class="form-group">
 <label for="originalText">Original Text *</label>
 <textarea id="originalText" placeholder="Paste the text you want to adjust for a different reading level..." required="" rows="8"></textarea>
@@ -111,11 +111,12 @@ social_media:
 <label for="specialInstructions">Special Instructions (Optional)</label>
 <textarea id="specialInstructions" placeholder="Any specific requirements, terminology to preserve, target audience details, or special considerations..." rows="2"></textarea>
 </div>
-<button class="btn-primary" onclick="adjustReadingLevel()">Adjust Reading Level</button>
+<button type="submit" class="btn-primary">Adjust Reading Level</button>
+</form>
+<div class="ai-loading" id="loadingDiv" style="display: none;">
+    <div class="ai-loading-spinner"></div>
+    <div>Adjusting reading level...</div>
 </div>
-<div class="loading" id="loadingDiv" style="display: none;">
-            Adjusting reading level...
-        </div>
 <div id="errorDiv" style="display: none;"></div>
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Adjusted Text</h3>
@@ -128,8 +129,7 @@ social_media:
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🔄 Try Different Approach</button>
 
 </div>
-</div>
-</main>
+
 
 <script src="reading-level-adjuster.js"></script>
 

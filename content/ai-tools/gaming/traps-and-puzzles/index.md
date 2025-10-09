@@ -29,8 +29,7 @@ social_media:
 
 <link rel="stylesheet" href="traps-and-puzzles.css">
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align:center;margin-bottom:30px;color:#ff6b35;">🗝️ Traps & Puzzles Generator</h1>
 <p style="text-align:center;margin-bottom:40px;opacity:.9;">Create ready-to-run traps and puzzles with triggers, effects, clues, disarm methods, and scaling options for your tabletop RPG sessions.</p>
 
@@ -147,8 +146,7 @@ Rewards for success
 </div>
 <div id="resultContent" class="result-content"></div>
 </div>
-</div>
-</main>
+
 
 <script src="traps-and-puzzles.js"></script>
 

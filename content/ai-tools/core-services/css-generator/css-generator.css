@@ -1,0 +1,439 @@
+/* CSS Generator Specific Styles */
+
+/* CSS Editor Container */
+.css-editor-container {
+    background: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 107, 53, 0.1);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.3);
+    color: #ff6b35;
+    font-weight: 600;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.apply-btn {
+    background: linear-gradient(135deg, #28a745, #34ce57);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3);
+}
+
+.apply-btn:hover {
+    background: linear-gradient(135deg, #218838, #2db84d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+.apply-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+}
+
+/* CSS Code Editor */
+.css-code-editor {
+    width: 100%;
+    min-height: 300px;
+    max-height: 800px;
+    padding: 20px;
+    background: #0d0d0d;
+    color: #e0e0e0;
+    border: none;
+    font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: both;
+    outline: none;
+    tab-size: 4;
+    overflow: auto;
+}
+
+.css-code-editor:focus {
+    background: #111;
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.3);
+}
+
+/* Preview Container */
+.preview-container {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 30px;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+/* Preview Content */
+.preview-content {
+    background: #0d0d0d;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.preview-section {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.preview-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    color: #ff6b35;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+.section-content {
+    padding: 10px 0;
+}
+
+/* Default Preview Element Styles (can be overridden by generated CSS) */
+.preview-element {
+    margin-bottom: 15px;
+}
+
+/* Text Preview Defaults */
+.preview-section h1.preview-element {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.preview-section h2.preview-element {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.preview-section h3.preview-element {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.preview-section p.preview-element {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.preview-section ul.preview-element {
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.preview-section li {
+    margin-bottom: 8px;
+}
+
+/* Table Preview Defaults */
+.preview-section table.preview-element {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    background: #1a1a1a;
+}
+
+.preview-section th,
+.preview-section td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #444;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+.preview-section th {
+    background: #2a2a2a;
+    font-weight: bold;
+    color: #ff6b35;
+    border-bottom: 2px solid #ff6b35;
+}
+
+.preview-section tbody tr {
+    background: #1a1a1a;
+}
+
+.preview-section tbody tr:nth-child(even) {
+    background: #222;
+}
+
+.preview-section tbody tr:hover {
+    background: #2a2a2a;
+    transition: background-color 0.2s ease;
+}
+
+.preview-section td {
+    border-right: 1px solid #333;
+}
+
+.preview-section td:last-child {
+    border-right: none;
+}
+
+/* Buttons Preview Defaults */
+.preview-section .section-content {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.preview-section button.preview-element,
+.preview-section a.preview-element {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.preview-section button.preview-element {
+    background: #ff6b35;
+    color: white;
+}
+
+.preview-section button.preview-element.secondary {
+    background: #666;
+}
+
+.preview-section button.preview-element.success {
+    background: #28a745;
+}
+
+.preview-section button.preview-element.danger {
+    background: #dc3545;
+}
+
+/* Form Preview Defaults */
+.preview-section form.preview-element {
+    max-width: 500px;
+}
+
+.preview-section label.preview-element {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.preview-section input[type="text"].preview-element,
+.preview-section input[type="email"].preview-element,
+.preview-section select.preview-element,
+.preview-section textarea.preview-element {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.preview-section input.preview-element:focus,
+.preview-section select.preview-element:focus,
+.preview-section textarea.preview-element:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.preview-section form button.preview-element[type="submit"] {
+    background: #ff6b35;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.preview-section form button.preview-element:hover {
+    background: #ff5722;
+}
+
+/* Card Preview Defaults */
+.preview-section .card.preview-element {
+    background: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #444;
+    max-width: 500px;
+}
+
+.preview-section .card-header {
+    background: #333;
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+}
+
+.preview-section .card-body {
+    padding: 20px;
+}
+
+.preview-section .card-body p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.preview-section .card-body ul {
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.preview-section .card-body li {
+    margin-bottom: 8px;
+}
+
+.preview-section .card-footer {
+    padding: 15px 20px;
+    background: #222;
+    border-top: 1px solid #444;
+}
+
+.preview-section .card-footer button.preview-element {
+    background: #ff6b35;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Form styling improvements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .preview-tabs {
+        gap: 5px;
+    }
+
+    .preview-tab {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .preview-content {
+        padding: 20px;
+    }
+
+    #preview-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #preview-buttons button,
+    #preview-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+}

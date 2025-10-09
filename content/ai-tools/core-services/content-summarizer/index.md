@@ -27,8 +27,7 @@ social_media:
   twitter_image: "/images/ai-tools/content-summarizer-twitter.png"
 ---
 <link rel="stylesheet" href="content-summarizer.css">
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">AI-Powered Content Summarizer</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
                 Quickly digest articles, documents, and text blocks with AI-powered summaries. Choose your
@@ -113,6 +112,5 @@ social_media:
 
 </div>
 </div>
-</div>
-</main>
+
 <script src="content-summarizer.js"></script>

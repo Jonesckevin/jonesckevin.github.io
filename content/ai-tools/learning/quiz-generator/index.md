@@ -29,15 +29,13 @@ social_media:
 
 
 <link rel="stylesheet" href="quiz-generator.css">
-<main class="main-content">
-<div class="quiz-container">
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Interactive Learning Quiz Generator</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
                 Test your knowledge across educational topics with AI-generated quizzes. Track your progress 
                 and improve your understanding.
             </p>
 <!-- Setup Form -->
-<div class="form-container" id="setupForm">
+<form id="setupForm" onsubmit="startQuiz(); return false;">
 <div class="form-group">
 <label for="topicSelect">Select Quiz Topic *</label>
 <select id="topicSelect" required="" onchange="toggleCustomTopic()">
@@ -80,8 +78,8 @@ social_media:
 <span>100</span>
 </div>
 </div>
-<button class="btn-primary" onclick="startQuiz()">Start Quiz</button>
-</div>
+<button type="submit" class="btn-primary">Start Quiz</button>
+</form>
 <!-- Quiz Interface -->
 <div id="quizInterface" style="display: none;">
 <div class="progress-bar">
@@ -111,12 +109,11 @@ social_media:
 </div>
 </div>
 </div>
-<div class="loading" id="loadingDiv" style="display: none;">
-                Generating quiz questions...
-            </div>
-<div id="errorDiv" style="display: none;"></div>
+<div class="ai-loading" id="loadingDiv" style="display: none;">
+    <div class="ai-loading-spinner"></div>
+    <div>Generating quiz questions...</div>
 </div>
-</main>
+<div id="errorDiv" style="display: none;"></div>
 
 <script src="quiz-generator.js"></script>
 

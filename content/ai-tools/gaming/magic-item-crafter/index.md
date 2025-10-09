@@ -29,8 +29,7 @@ social_media:
 
 <link rel="stylesheet" href="magic-item-crafter.css">
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Loot & Magic Item Crafter</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Generate balanced treasure parcels and bespoke magic items with lore, attunement, and hooks for your campaigns.
@@ -137,8 +136,7 @@ Crafting magical treasures...
 
 </div>
 </div>
-</div>
-</main>
+
 
 <script src="magic-item-crafter.js"></script>
 

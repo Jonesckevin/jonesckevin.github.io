@@ -28,8 +28,7 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/ai-tools/core-services/resume-builder/resume-builder.css">
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Resume Builder</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
                     Transform your documents into professional, ATS-optimized resumes. Upload your content files
@@ -85,7 +84,6 @@ social_media:
 
 </div>
 </div>
-</div>
-</main>
+
 
 <script src="/ai-tools/core-services/resume-builder/resume-builder.js"></script>

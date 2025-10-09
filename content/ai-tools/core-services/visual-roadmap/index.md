@@ -27,8 +27,7 @@ social_media:
   twitter_image: "/images/ai-tools/visual-roadmap-twitter.png"
 ---
 
-<main class="main-content">
-<div class="form-container">
+
 <div class="vr-hero">
 <h1>Visual Roadmap Builder <span class="pill">Mermaid Diagrams</span></h1>
 <p>Create interactive Mermaid flowcharts and timelines to visualize your learning journey, project plans, or goal progression with AI assistance.</p>
@@ -117,8 +116,7 @@ Creating your visual roadmap...
 
 </div>
 </div>
-</div>
-</main>
+
 
 <!-- Include CSS and JavaScript for Visual Roadmap -->
 <link rel="stylesheet" href="visual-roadmap.css">

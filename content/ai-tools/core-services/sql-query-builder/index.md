@@ -27,8 +27,7 @@ social_media:
   twitter_image: "/images/ai-tools/sql-query-builder-twitter.png"
 ---
 <link rel="stylesheet" href="sql-query-builder.css">
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">SQL Query Builder</h1>
 <button class="safety-toggle-btn" id="safetyToggleBtn" onclick="showSafetyNotice()" aria-label="Show safety guidelines" title="Safety Guidelines" style="display: none;">
 <span class="caution-triangle">⚠️</span>
@@ -169,8 +168,7 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 </div>
 </div>
 
-</div>
-</main>
+
 
 <!-- Safety Notice Popup Overlay -->
 <div class="safety-overlay" id="safetyOverlay">

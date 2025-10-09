@@ -28,8 +28,7 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/ai-tools/core-services/resume-critique/resume-critique.css">
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 20px; color: #ff6b35;">AI Resume Critique & Enhancement</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9; font-size: 1.1rem; line-height: 1.6;">
 Get professional AI-powered analysis of your resume with detailed feedback, scoring, section-by-section critiques, and an enhanced version tailored for your target job.
@@ -102,7 +101,6 @@ Analyzing your resume with AI...
 </div>
 </div>
 
-</div>
-</main>
+
 
 <script src="/ai-tools/core-services/resume-critique/resume-critique.js"></script>

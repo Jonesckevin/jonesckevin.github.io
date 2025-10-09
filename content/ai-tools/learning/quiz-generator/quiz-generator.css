@@ -1,15 +1,4 @@
-.quiz-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.form-container {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-}
+/* Quiz Generator Styles */
 
 .form-group {
     margin-bottom: 20px;
@@ -214,13 +203,6 @@
     font-weight: bold;
     color: #ff6b35;
     margin-bottom: 20px;
-}
-
-.loading {
-    text-align: center;
-    padding: 40px;
-    font-size: 18px;
-    color: #ff6b35;
 }
 
 #errorDiv {

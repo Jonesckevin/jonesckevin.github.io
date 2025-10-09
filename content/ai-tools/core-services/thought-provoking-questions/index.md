@@ -27,8 +27,7 @@ social_media:
   twitter_image: "/images/ai-tools/thought-provoking-questions-twitter.png"
 ---
 
-<main class="main-content">
-<div class="form-container">
+
 <div class="tpq-hero">
 <h1>Interviewer Questions <span class="pill">General + Chosen Topics</span></h1>
 <p>Generate a high-signal question set that reveals judgment, clarity, and depth.</p>
@@ -117,6 +116,5 @@ Generating interview questions...
 
 </div>
 </div>
-</div>
-</main>
+
 <script src="thought-provoking-questions.js"></script>

@@ -26,8 +26,7 @@ social_media:
   twitter_description: "Create empathetic responses to difficult situations with AI. Express solidarity and support with meaningful content."
   twitter_image: "/images/ai-tools/compassionate-response-twitter.png"
 ---
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Compassionate Response Generator</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
                 Generate empathetic and hopeful responses to global tragedies. This tool crafts meaningful content
@@ -77,7 +76,5 @@ social_media:
 
 </div>
 </div>
-</div>
-</main>
 
 <script src="compassionate-response.js"></script>

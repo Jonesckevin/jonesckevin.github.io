@@ -24,7 +24,7 @@ $posts-margin-top: 90px; // Default top margin for posts
   overflow-y: auto;
   background: transparent;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   text-align: left;
   white-space: nowrap;
   overflow-x: hidden;
@@ -35,7 +35,7 @@ $posts-margin-top: 90px; // Default top margin for posts
   position: fixed;
   top: 14.7%;
   left: 3%;
-  z-index: 1000;
+  z-index: 10;
 
   @media (max-width:900px) {
     display: none;
@@ -63,14 +63,14 @@ $posts-margin-top: 90px; // Default top margin for posts
 }
 
 ul {
-    text-align: left;
-    margin-left: 1.5em;
-    padding-left: 0;
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-    font-size: 0.9em;
-    line-height: 1.5;
+  text-align: left;
+  margin-left: 1.5em;
+  padding-left: 0;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
 }
 
 .sidebar-level li {
@@ -125,6 +125,7 @@ ul {
     @media #{$media-size-tablet} {
       display: block;
     }
+
     @media (max-width: 900px) {
       display: block;
     }
@@ -152,6 +153,7 @@ ul {
       @media #{$media-size-tablet} {
         margin: -6px 0 4px;
       }
+
       @media (max-width: 900px) {
         margin: -6px 0 4px;
       }
@@ -166,6 +168,7 @@ ul {
         align-items: baseline;
         padding: 12px 0;
         text-decoration: none;
+
         @media (max-width: 900px) {
           flex-direction: column;
           align-items: flex-start;
@@ -178,6 +181,7 @@ ul {
       flex-shrink: 0;
       margin-left: 1em;
       @include dimmed;
+
       @media (max-width: 900px) {
         margin-left: 0;
       }
@@ -194,6 +198,7 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
+
 a {
   color: $link-color;
   text-decoration: none;

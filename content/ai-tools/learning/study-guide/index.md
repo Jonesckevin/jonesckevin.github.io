@@ -29,13 +29,13 @@ social_media:
 
 
 <link rel="stylesheet" href="study-guide.css">
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">AI Study Guide Generator</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
                 Transform your course material into comprehensive study guides. Create structured learning aids 
                 with summaries, key concepts, practice questions, and memory techniques.
             </p>
+<form onsubmit="generateStudyGuide(); return false;">
 <div class="form-group">
 <label for="subject">Subject/Course *</label>
 <input id="subject" placeholder="e.g., Biology 101, World History, Calculus, etc." required="" type="text"/>
@@ -77,11 +77,12 @@ social_media:
 <label for="focusAreas">Specific Focus Areas (Optional)</label>
 <textarea id="focusAreas" placeholder="List specific topics, chapters, or concepts you want to emphasize in the study guide" rows="3"></textarea>
 </div>
-<button class="btn-primary" onclick="generateStudyGuide()">Generate Study Guide</button>
+<button type="submit" class="btn-primary">Generate Study Guide</button>
+</form>
+<div class="ai-loading" id="loadingDiv" style="display: none;">
+    <div class="ai-loading-spinner"></div>
+    <div>Creating your personalized study guide...</div>
 </div>
-<div class="loading" id="loadingDiv" style="display: none;">
-            Creating your personalized study guide...
-        </div>
 <div id="errorDiv" style="display: none;"></div>
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Your Study Guide</h3>
@@ -92,8 +93,7 @@ social_media:
 <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 
 </div>
-</div>
-</main>
+
 
 <script src="study-guide.js"></script>
 

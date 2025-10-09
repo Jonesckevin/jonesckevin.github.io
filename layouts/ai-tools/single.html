@@ -1,101 +1,176 @@
-{{ define "main" }}
-{{ if eq .Type "ai-tools" }}
-<!-- AI Tools Interface Layout -->
-<div class="form-container">
-    {{ .Content }}
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
 
-    <div id="ai-interface">
-        <!-- AI Interface will be populated by JavaScript -->
+<head>
+    {{ partial "head.html" . }}
+
+    <!-- AI Tools specific styles and scripts -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/ai-tools-pages.css">
+</head>
+
+<body class="section-{{ lower .Section }}">
+
+    <div class="container">
+        {{ partial "header.html" . }}
+
+        <div class="content">
+            <main class="main-content">
+                <!-- AI Tools Interface Layout -->
+                {{ .Content }}
+
+                {{ if .Params.pageScript }}
+                <script src="{{ .Site.BaseURL }}{{ .Params.pageScript }}"></script>
+                {{ end }}
+            </main>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 TheGongShow. All rights reserved.</p>
+                <p>Requires your own AI API key (OpenAI, DeepSeek, or Anthropic) to function.</p>
+            </div>
+        </footer>
     </div>
-</div>
 
-{{ if .Params.pageScript }}
-<script src="{{ .Site.BaseURL }}{{ .Params.pageScript }}"></script>
-{{ end }}
+    {{ partial "javascript.html" . }}
 
-{{ else }}
-<!-- AI Tool Layout -->
-<div class="ai-tool-layout">
-    <!-- Main Content Area -->
-    <article class="ai-tool-page">
-        <div class="ai-tool-content">
-            {{ .Content }}
-        </div>
+    <!-- AI Tools Layout Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Reorganize content into side-by-side layout
+            const mainContent = document.querySelector('.main-content');
+            if (!mainContent) return;
 
-        {{ if .Params.tags }}
-        <div class="ai-tool-tags">
-            <h3>Tags:</h3>
-            {{ range .Params.tags }}
-            <span class="tag">{{ . }}</span>
-            {{ end }}
-        </div>
-        {{ end }}
+            // Find form and result elements
+            const form = mainContent.querySelector('form');
+            const loadingDiv = document.getElementById('loadingDiv');
+            const errorDiv = document.getElementById('errorDiv');
+            const resultDiv = document.getElementById('resultDiv');
 
-        <div class="ai-tool-navigation">
-            <p><a href="/ai-tools/">← Back to AI Tools Hub</a></p>
-        </div>
-    </article>
-</div>
+            // Only proceed if we have a form
+            if (!form) return;
 
-<style>
-    .ai-tool-layout {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+            // Create wrapper structure
+            const wrapper = document.createElement('div');
+            wrapper.className = 'ai-tools-layout';
 
-    .ai-tool-page {
-        width: 100%;
-    }
+            const formSection = document.createElement('div');
+            formSection.className = 'ai-form-section';
 
-    .ai-tool-header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
+            const divider = document.createElement('div');
+            divider.className = 'layout-divider';
+            divider.title = 'Drag to resize';
 
-    .ai-tool-subtitle {
-        font-size: 1.2em;
-        color: #666;
-        margin: 10px 0;
-    }
+            const resultsSection = document.createElement('div');
+            resultsSection.className = 'ai-results-section';
 
-    .ai-tool-meta {
-        font-size: 0.9em;
-        color: #888;
-        margin: 15px 0;
-    }
+            // Get all content before the form
+            const elementsBeforeForm = [];
+            let currentElement = mainContent.firstElementChild;
+            while (currentElement && currentElement !== form) {
+                elementsBeforeForm.push(currentElement);
+                currentElement = currentElement.nextElementSibling;
+            }
 
-    .ai-tool-meta span {
-        margin-right: 15px;
-    }
+            // Move header content (h1, p, etc.) before the form to form section
+            elementsBeforeForm.forEach(el => {
+                formSection.appendChild(el);
+            });
 
-    .ai-tool-tags {
-        margin: 30px 0;
-    }
+            // Move form to form section
+            if (form) {
+                formSection.appendChild(form);
+            }
 
-    .ai-tool-tags .tag {
-        background: #ff6b35;
-        color: white;
-        padding: 4px 8px;
-        margin: 2px;
-        border-radius: 4px;
-        font-size: 0.8em;
-        display: inline-block;
-    }
+            // Move result-related divs to results section
+            if (loadingDiv) resultsSection.appendChild(loadingDiv);
+            if (errorDiv) resultsSection.appendChild(errorDiv);
+            if (resultDiv) resultsSection.appendChild(resultDiv);
 
-    .ai-tool-navigation {
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid #eee;
-    }
+            // Append sections to wrapper
+            wrapper.appendChild(formSection);
+            wrapper.appendChild(divider);
+            wrapper.appendChild(resultsSection);
 
-    .ai-tool-interface {
-        margin: 20px 0;
-    }
+            // Clear main content and append wrapper
+            mainContent.innerHTML = '';
+            mainContent.appendChild(wrapper);
 
-    .tool-content-wrapper {
-        background: transparent;
-    }
-</style>
-{{ end }}
-{{ end }}
+            // Add resize functionality for larger screens
+            if (window.innerWidth >= 1024) {
+                initResizer(wrapper, formSection, divider, resultsSection);
+            }
+
+            // Reinitialize resizer on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function () {
+                    if (window.innerWidth >= 1024) {
+                        initResizer(wrapper, formSection, divider, resultsSection);
+                    } else {
+                        // Reset to default grid on mobile
+                        wrapper.style.gridTemplateColumns = '1fr';
+                        formSection.style.width = '';
+                        resultsSection.style.width = '';
+                    }
+                }, 250);
+            });
+        });
+
+        function initResizer(wrapper, formSection, divider, resultsSection) {
+            let isResizing = false;
+            let startX = 0;
+            let startWidth = 0;
+            const minWidth = 300;
+            const maxWidth = 800;
+
+            divider.addEventListener('mousedown', function (e) {
+                isResizing = true;
+                startX = e.clientX;
+                startWidth = formSection.offsetWidth;
+                divider.classList.add('dragging');
+                document.body.style.cursor = 'col-resize';
+                document.body.style.userSelect = 'none';
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                if (!isResizing) return;
+
+                const deltaX = e.clientX - startX;
+                let newWidth = startWidth + deltaX;
+
+                // Constrain width
+                newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+                // Update grid template
+                wrapper.style.gridTemplateColumns = `${newWidth}px 4px 1fr`;
+
+                // Save to localStorage
+                localStorage.setItem('ai-tools-form-width', newWidth);
+            });
+
+            document.addEventListener('mouseup', function () {
+                if (isResizing) {
+                    isResizing = false;
+                    divider.classList.remove('dragging');
+                    document.body.style.cursor = '';
+                    document.body.style.userSelect = '';
+                }
+            });
+
+            // Load saved width from localStorage
+            const savedWidth = localStorage.getItem('ai-tools-form-width');
+            if (savedWidth && window.innerWidth >= 1024) {
+                const width = parseInt(savedWidth);
+                if (width >= minWidth && width <= maxWidth) {
+                    wrapper.style.gridTemplateColumns = `${width}px 4px 1fr`;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

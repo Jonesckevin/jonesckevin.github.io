@@ -29,13 +29,13 @@ social_media:
 
 <link rel="stylesheet" href="plot-twist-generator.css">
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Plot Twist Generator</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
                 Generate contextual plot twists that fit seamlessly into your story. Create surprising reveals, 
                 character reversals, and dramatic turns with proper foreshadowing and logical foundations.
             </p>
+<form onsubmit="generateTwist(); return false;">
 <div class="form-group">
 <label for="storyContext">Current Story Context *</label>
 <textarea id="storyContext" placeholder="Describe your story so far: main characters, setting, current plot, conflicts, relationships, and any important details that a plot twist should consider..." required="" rows="6"></textarea>
@@ -122,11 +122,12 @@ social_media:
 </div>
 </div>
 </div>
-<button class="btn-primary" onclick="generateTwist()">Generate Plot Twist</button>
+<button type="submit" class="btn-primary">Generate Plot Twist</button>
+</form>
+<div class="ai-loading" id="loadingDiv" style="display: none;">
+    <div class="ai-loading-spinner"></div>
+    <div>Crafting your plot twist...</div>
 </div>
-<div class="loading" id="loadingDiv" style="display: none;">
-            Crafting your plot twist...
-        </div>
 <div id="errorDiv" style="display: none;"></div>
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Your Plot Twist</h3>
@@ -139,8 +140,7 @@ social_media:
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭 Refine Twist</button>
 
 </div>
-</div>
-</main>
+
 
 <script src="plot-twist-generator.js"></script>
 

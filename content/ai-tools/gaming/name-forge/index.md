@@ -29,8 +29,7 @@ social_media:
 
 <link rel="stylesheet" href="name-forge.css">
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Name Forge: Multi-Genre Generator</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Generate unique names for characters, places, items, ships, guilds, and more across genres and cultures.
@@ -142,8 +141,7 @@ Forging unique names...
 
 </div>
 </div>
-</div>
-</main>
+
 
 <script src="name-forge.js"></script>
 

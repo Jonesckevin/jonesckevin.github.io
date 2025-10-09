@@ -27,8 +27,7 @@ social_media:
   twitter_image: "/images/ai-tools/document-generator-twitter.png"
 ---
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Business Document Generator</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Generate professional business documents with AI assistance. Create contracts, proposals, policy documents, and more with industry-standard formatting and language.
@@ -83,7 +82,6 @@ Generate professional business documents with AI assistance. Create contracts, p
 
 </div>
 </div>
-</div>
-</main>
+
 
 <script src="document-generator.js"></script>

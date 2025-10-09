@@ -29,8 +29,7 @@ social_media:
 
 <link rel="stylesheet" href="dnd-character.css">
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">MythMaker: D&D 5E Character Lore Generator</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Generate rich backstories and compelling lore for your D&D characters. Create legendary heroes with detailed backgrounds, flaws, and divine connections that bring depth to your campaigns.
@@ -144,8 +143,7 @@ Forging your character's legend...
 
 </div>
 </div>
-</div>
-</main>
+
 
 <script src="dnd-character.js"></script>
 

@@ -29,8 +29,7 @@ social_media:
 
 <link rel="stylesheet" href="character-voice-converter.css">
 
-<main class="main-content">
-<div class="form-container">
+
 <h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Character Voice Converter</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Transform any text to match specific character voices and speaking styles. Perfect for dialogue writing, character development, and creating authentic voices for stories, games, and roleplaying.
@@ -164,8 +163,7 @@ Converting text to character voice...
 
 </div>
 </div>
-</div>
-</main>
+
 
 <script src="character-voice-converter.js"></script>
 

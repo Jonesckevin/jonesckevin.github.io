@@ -1,8 +1,210 @@
 /* AI Tools Pages Stylesheet */
 
+/* Override main-content width for AI Tools section */
+.section-ai-tools .main-content {
+    max-width: 95%;
+    width: 100%;
+    padding: 30px 20px;
+}
+
+@media (min-width: 1400px) {
+    .section-ai-tools .main-content {
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 1920px) {
+    .section-ai-tools .main-content {
+        max-width: 85%;
+    }
+}
+
+/* Side-by-side layout for form and results */
+.ai-tools-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    border: 2px solid rgba(255, 107, 53, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 1024px) {
+    .ai-tools-layout {
+        grid-template-columns: 450px 4px 1fr;
+        min-height: 600px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .ai-tools-layout {
+        grid-template-columns: 500px 4px 1fr;
+    }
+}
+
+/* Resizable divider */
+.layout-divider {
+    display: none;
+    background: linear-gradient(90deg,
+            rgba(255, 107, 53, 0.3) 0%,
+            rgba(255, 107, 53, 0.6) 50%,
+            rgba(255, 107, 53, 0.3) 100%);
+    cursor: col-resize;
+    position: relative;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.layout-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.layout-divider:hover,
+.layout-divider.dragging {
+    background: linear-gradient(90deg,
+            rgba(255, 107, 53, 0.5) 0%,
+            rgba(255, 107, 53, 0.9) 50%,
+            rgba(255, 107, 53, 0.5) 100%);
+}
+
+@media (min-width: 1024px) {
+    .layout-divider {
+        display: block;
+    }
+}
+
+/* Form section (left side) */
+.ai-form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(0, 0, 0, 0.3) 100%);
+    padding: 30px;
+    position: relative;
+    border-right: none;
+}
+
+/* Form section header label */
+.ai-form-section::before {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #ff6b35;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+/* Results section (right side) */
+.ai-results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 300px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(255, 107, 53, 0.05) 100%);
+    padding: 30px;
+    position: relative;
+}
+
+/* Results section header label */
+.ai-results-section::before {
+    content: '📊 Results & Output';
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #ff6b35;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+/* Empty state for results */
+.ai-results-section:not(:has(*)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-results-section:empty::after {
+    content: 'Results will appear here...';
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* Mobile: Stack sections vertically */
+@media (max-width: 1023px) {
+    .ai-form-section {
+        border-right: none;
+        border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+    }
+}
+
+/* Compact headers in form section */
+.ai-form-section h1 {
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+    color: #ff6b35;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ai-form-section>p:first-of-type {
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Connection line visual effect */
+.ai-tools-layout::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(255, 107, 53, 0.5) 50%,
+            transparent 100%);
+    pointer-events: none;
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .ai-tools-layout::after {
+        display: none;
+        /* Hidden since we have the divider */
+    }
+}
+
+/* Remove old form-container styles that conflict */
+.form-container {
+    display: block;
+    width: 100%;
+}
+
 /* General AI Tools Page Styling */
 .ai-tools-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -30,9 +232,20 @@
     border-radius: 12px;
     margin-bottom: 30px;
     border: 1px solid rgba(255, 107, 53, 0.2);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .ai-form-group {
+    margin-bottom: 20px;
+}
+
+/* Responsive form grid for side-by-side inputs */
+.ai-form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     margin-bottom: 20px;
 }
 
@@ -48,6 +261,7 @@
 .ai-form-group select,
 .ai-form-group textarea {
     width: 100%;
+    max-width: 100%;
     padding: 12px;
     border: 2px solid rgba(255, 107, 53, 0.3);
     border-radius: 8px;
@@ -57,6 +271,19 @@
     font-family: inherit;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Allow select dropdowns to wrap text properly */
+.ai-form-group select {
+    white-space: normal;
+}
+
+/* For option text wrapping */
+.ai-form-group select option {
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 .ai-form-group input:focus,
@@ -176,6 +403,11 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .section-ai-tools .main-content {
+        max-width: 98%;
+        padding: 20px 15px;
+    }
+
     .ai-tools-container {
         padding: 15px;
     }
@@ -189,6 +421,32 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
+    }
+
+    .ai-form-group input,
+    .ai-form-group select,
+    .ai-form-group textarea {
+        font-size: 14px;
+    }
+
+    .ai-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-ai-tools .main-content {
+        max-width: 100%;
+        padding: 20px 10px;
+    }
+
+    .ai-tools-container {
+        padding: 10px;
+    }
+
+    .ai-form-container,
+    .ai-results-container {
+        padding: 15px;
     }
 }
 
