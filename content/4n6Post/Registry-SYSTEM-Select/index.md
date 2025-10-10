@@ -1,22 +1,25 @@
 +++
-title = "Windows Registry SYSTEM Select Key Analysis"
+title = "Registry- SYSTEM Select"
 date = "2024-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows registry", "forensics", "system analysis"]
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Windows Registry SYSTEM Select Key Analysis"
-description = "An in-depth look at the Windows Registry SYSTEM Select key and its significance for digital forensic investigations."
-keywords = ["Windows Registry", "SYSTEM Select", "Digital Forensics", "DFIR", "Forensic Artifacts", "Registry Analysis"]
+seo_title = "Windows Registry SYSTEM Select - ControlSet Forensics Analysis Guide"
+description = "Detailed guide to Windows Registry SYSTEM Select key forensic analysis. Learn Current, Default, Failed, and LastKnownGood ControlSet tracking for DFIR investigations and system troubleshooting."
+keywords = ["SYSTEM Select registry", "ControlSet forensics", "Windows registry analysis", "CurrentControlSet", "LastKnownGood", "Failed ControlSet", "digital forensics", "DFIR", "system configuration", "boot analysis", "registry artifacts", "Windows troubleshooting"]
 canonical = "/4n6Post/Registry-SYSTEM-Select/"
+aliases = ["/4n6Post/Registry-SYSTEM-Select/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
+## Windows Registry SYSTEM Select Key Analysis
+
 The Windows Registry is a hierarchical database that stores configuration information for the operating system, applications, and hardware devices. One of the key branches in the registry is SYSTEM\Select, which contains information about the system's hardware configuration and boot options.
 
-![Registry Block](../Registry-SYSTEM-Select/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 ## The **SYSTEM\Select** subkeys and objects are as follows:
 

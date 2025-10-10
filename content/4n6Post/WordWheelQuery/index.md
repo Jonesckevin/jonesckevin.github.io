@@ -6,17 +6,18 @@ tags = ["4n6", "digital forensics", "windows forensics", "registry", "search his
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "WordWheelQuery - Windows Search History for Digital Forensics"
-description = "An in-depth look at the WordWheelQuery registry section and its significance for digital forensic investigations."
-keywords = ["WordWheelQuery", "Windows Search History", "Registry Analysis", "Digital Forensics", "DFIR", "User Activity", "Forensic Artifacts"]
+seo_title = "WordWheelQuery Forensics - Windows Search History Analysis"
+description = "Comprehensive guide to WordWheelQuery registry forensic analysis for tracking Windows search history. Learn search term extraction, user intent analysis, and DFIR investigation techniques."
+keywords = ["WordWheelQuery registry", "Windows search history", "search forensics", "user search tracking", "registry analysis", "digital forensics", "DFIR", "Windows Explorer search", "forensic artifacts", "search terms", "user activity", "forensic investigation"]
 canonical = "/4n6Post/WordWheelQuery/"
+aliases = ["/4n6Post/WordWheelQuery/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
-![Registry Block](../WordWheelQuery/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
-# The Registry Section of WordWheelQuery: An Overview for Digital Forensic Investigators
+## The Registry Section of WordWheelQuery: An Overview for Digital Forensic Investigators
 
 The WordWheelQuery registry section is a critical component for digital forensic investigations, as it contains information about the user's search queries made using the Windows operating system. In this blog post, we'll take a closer look at what exactly can be found in the WordWheelQuery registry section and its significance for both normal and malicious use cases.
 

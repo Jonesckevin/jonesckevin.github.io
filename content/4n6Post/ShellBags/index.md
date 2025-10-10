@@ -1,22 +1,25 @@
 +++
-title = "Understanding ShellBags in the Windows Registry: A Deep Dive"
-date = "2024-01-01"
+title = "ShellBags Registry"
+date = "2024-01-02"
 draft = false
-description = "A comprehensive guide to ShellBags analysis in Windows Registry for digital forensics"
+description = "Comprehensive guide to ShellBags forensic analysis in Windows Registry. Learn folder access tracking, ShellBags Explorer tool usage, external device detection, and DFIR investigation techniques."
 tags = ["forensics", "registry", "shellbags", "windows", "digital-forensics"]
-keywords = ["4n6", "digital forensics", "shellbags", "shell bags", "shellbags analysis", "registry", "windows registry", "eric zimmerman", "registryexplorer", "accessdata"]
+keywords = ["ShellBags forensics", "ShellBags Explorer", "folder access tracking", "Windows registry analysis", "user activity forensics", "external device detection", "digital forensics", "DFIR", "Windows Explorer forensics", "BagMRU", "registry artifacts", "folder history"]
 categories = ["Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Understanding ShellBags in the Windows Registry: A Deep Dive"
+seo_title = "ShellBags Registry Forensics - Windows Folder Access Analysis Guide"
 canonical = "/4n6Post/ShellBags/"
+aliases = ["/4n6Post/ShellBags/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
+## Understanding ShellBags in the Windows Registry: A Deep Dive
+
 As my other posts likely portrais. The Windows operating system is a treasure of love and trove-like of forensic evidence. Along with the various artifacts, ShellBags stand out for their ability to provide valuable timeline and insights into a user's general activity. Whether used for legitimate investigations or malicious purposes, understanding ShellBags is crucial for anyone dealing with digital forensics and even cybersecurity defenses like EDR.
 
-![Registry Block](../ShellBags/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 ## What Are ShellBags?
 

@@ -6,10 +6,11 @@ tags = ["4n6", "digital forensics", "windows forensics", "LNK files", "shortcuts
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "LNK Files - Windows Shortcuts for Digital Forensics"
-description = "An in-depth look at LNK files (Windows shortcuts) and their significance for digital forensic investigations."
-keywords = ["LNK Files", "Windows Shortcuts", "Digital Forensics", "DFIR", "Malware Analysis", "Forensic Artifacts"]
+seo_title = "LNK File Forensics - Windows Shortcut Analysis for DFIR"
+description = "Complete guide to LNK file forensic analysis for tracking file access and user activity. Learn LNK file structure, LECmd tool usage, malware detection, and DFIR investigation techniques."
+keywords = ["LNK file forensics", "Windows shortcuts", "LECmd", "file access tracking", "user activity analysis", "digital forensics", "DFIR", "LNK parser", "malware analysis", "shortcut forensics", "forensic artifacts", "link file analysis"]
 canonical = "/4n6Post/ShortCut-LNK/"
+aliases = ["/4n6Post/ShortCut-LNK/"]
 featured_image = "/images/Windows11Explorer.png"
 schema_type = "Article"
 +++
@@ -75,7 +76,7 @@ To view the data, in a more forensics or reverse malware method, I will use:
 2. **[LECmd by Eric Zimmerman](https://github.com/EricZimmerman/LECmd)** - Specialized LNK file analysis tool
 3. **Hex Editors** - Low-level binary analysis of LNK structure
 
-![LNK Analysis Example](images/LNK-Example2.PNG)
+![LNK Analysis Example](../ShortCut-LNK/images/LNK-Example2.PNG)
 
 ### LNK File Structure Analysis
 
@@ -88,9 +89,9 @@ LNK files contain structured binary data that includes:
 - **Icon Information**: Display icon and location
 - **Timestamps**: Creation, modification, and access times
 
-![LNK Structure Analysis](../ShortCut-LNK/images/LNK-Example3.PNG)
+![LNK Structure Analysis](../ShortCut-LNK/images/LNK-Example3-Strings.PNG)
 
-![LNK Detailed Analysis](../ShortCut-LNK/images/LNK-Example4.PNG)
+![LNK Detailed Analysis](../ShortCut-LNK/images/LNK-Example4-ExifTool.PNG)
 
 ## Forensic Analysis Techniques
 

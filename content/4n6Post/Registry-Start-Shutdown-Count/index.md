@@ -1,22 +1,25 @@
 +++
-title = "Windows Registry: System Start, Shutdown, and Reboot Tracking"
+title = "Registry- Start, Shutdown, and Reboot"
 date = "2023-10-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "registry", "system start", "shutdown", "reboot", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
+categories = ["4n6", "Digital Forensics", "Registry", "System Analysis"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Windows Registry: System Start, Shutdown, and Reboot Tracking"
-description = "An in-depth look at the Windows registry for tracking system start, shutdown, and reboot events in digital forensic investigations."
-keywords = ["Windows Registry", "System Start", "Shutdown", "Reboot", "Digital Forensics", "DFIR", "Forensic Artifacts"]
+seo_title = "Windows Registry Start Shutdown Tracking - System Boot Forensics Guide"
+description = "Complete guide to Windows registry forensics for tracking system start, shutdown, and reboot events. Learn ShutdownCount, LastBootUpTime registry keys, and DFIR timeline analysis techniques."
+keywords = ["Windows shutdown tracking", "ShutdownCount registry", "LastBootUpTime", "system boot forensics", "Windows registry analysis", "reboot tracking", "digital forensics", "DFIR", "system timeline", "boot analysis", "forensic artifacts", "Windows startup"]
 canonical = "/4n6Post/Registry-Start-Shutdown-Count/"
+aliases = ["/4n6Post/Registry-Start-Shutdown-Count/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
+## Windows Registry: System Start, Shutdown, and Reboot Tracking
+
 The Windows registry is a hierarchical database that stores configuration settings for Windows operating systems, including Windows 10, Windows 8, and Windows 7. The registry is organized into five main components, namely HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, and HKEY_CURRENT_CONFIG. Each of these components contains subkeys that store configuration data, including the data and time for when a computer turns on, shuts down, and restarts.
 
-![Registry Block](../Registry-Start-Shutdown-Count/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 ## The SYSTEM\Select subkeys and objects are as follows:
 

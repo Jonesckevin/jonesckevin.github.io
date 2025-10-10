@@ -1,89 +1,60 @@
 +++
-title = "Amcache.hve - Windows Amcache.hve Forensics"
+title = "Amcache.hve"
 date = "2024-10-01"
 draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+tags = ["registry", "4n6", "digital forensics", "windows forensics"]
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Amcache.hve - Windows Amcache.hve Forensics"
-description = "An in-depth look at the Amcache.hve registry file and its significance for digital forensic investigations."
-keywords = ["Amcache.hve", "Windows Forensics", "Registry Analysis", "Digital Forensics", "DFIR", "Forensic Artifacts"]
+seo_title = "Amcache.hve Analysis - Windows Application Execution Forensics Guide"
+description = "Complete guide to Amcache.hve forensic analysis for tracking application execution. Learn file locations, registry keys, AmcacheParser tool usage, and DFIR investigation techniques."
+keywords = ["Amcache.hve", "Amcache forensics", "application execution tracking", "Windows forensics", "AmcacheParser", "digital forensics", "DFIR", "forensic artifacts", "program execution", "Windows registry", "malware analysis", "incident response", "execution timeline"]
 canonical = "/4n6Post/Amcache.hve/"
+aliases = ["/4n6Post/Amcache.hve/"]
 featured_image = "/images/SHIMCache-Logo.png"
 schema_type = "Article"
 sitemap_priority = 0.7
 +++
 
-![Registry Block](../Amcache.hve/images/RegistryBlock.png)
+![](../images/SHIMCache-Logo.png)
 
-# Enabling Windows BSOD Detail Information
+Amcache.hve is a forensic artifact that can be used to uncover valuable information about a computer system, both in normal and malicious use cases. The Amcache.hve file is a hive file that is located in the Windows operating system, and it provides a wealth of information about the software and files that have been executed on the system.
 
-## Introduction
+In normal use cases, the Amcache.hve file can be used to track software installations and updates, as well as to determine which files were recently executed on the system. This information can be useful for system administrators and other IT professionals who need to manage and maintain their computer systems.
 
-By default, Windows displays a simple emoticon (smiley face) when a Blue Screen of Death (BSOD) occurs. However, if you prefer to see detailed information about the error, you can modify specific registry entries. This guide will walk you through the process.
+In malicious use cases, the Amcache.hve file can be used to uncover evidence of malware infections, as well as to track the execution of malicious files. For example, the Amcache.hve file can be used to determine which malicious files were executed on a system, and which files were used to carry out the attack. This information can be critical in identifying the source of an attack, as well as in tracking down the attackers themselves.
 
-## Disabling Ads in Windows
+The Amcache.hve file can be found in the file system at the following location: %SystemRoot%\AppCompat\Programs\Amcache.hve. 
 
-### What is it About?
+![](../Amcache.hve/images/Amcache-Explorer1.png)
 
-Windows often displays ads and promotes certain apps to users. However, not everyone appreciates this feature. To gain more control over your Windows experience, you can disable specific apps' promotional activities using Registry Keys.
+Additionally, the Amcache.hve information can be found within the registry, under the following key:
 
-### Making the Change
+Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache\
+You can manually go through this data for dates and programs or use a program to  parse the data. See the ping as the photo bellow as an example. Doing this manually will be extremely tedious.
 
-### Windows Registry Edit
+![](../Amcache.hve/images/Amcache-Reg1.png)
 
-1. Open Registry Editor:
-    - Press Win + R, type regedit, and press Enter.
-2. Navigate to the Appropriate Key
+which can be parsed with either:
 
-#### For CrashControl in ControlSet001:
+Mandiant. - ShimCacheParser
 
-```
-HKLM\SYSTEM\ControlSet001\Control\CrashControl\DisplayParameters
-```
+EricZimmerman - AmcacheParser
 
-#### For CrashControl in CurrentControlSet:
+ 
 
-```
-HKLM\SYSTEM\CurrentControlSet\Control\CrashControl\DisplayParameters
-```
+AmcacheParser.exe -f Amcache.hve --csv C:\Users\<USER>\Desktop\KAPE\Export --csvf amcache.csv
 
-#### For User-Specific Settings:
+![](../Amcache.hve/images/Amcache-Explorer2.png)
 
-```
-HKU\<SID-RID>\SOFTWARE\Winaero.com\Winaero Tweaker\Changes
-```
+Using Timeline Explorer, to view the Shortcuts, you can see the App and ID, the path and last time the program was written/referenced.
 
-- Modify the Value:
-  - For both ControlSet001 and CurrentControlSet, locate or create a DWORD value named DisplayParameters.
-  - Set the value to 0x00000001.
-- User-Specific Settings:
-  - For user-specific settings, navigate to the specified path:
+![](../Amcache.hve/images/Amcache-Explorer3.png)
 
-```
-HKU\<SID-RID>\SOFTWARE\Winaero.com\Winaero Tweaker\Changes
-```
+The SANS Institute has published a white paper on the Amcache.hve file, which can be found here: https://digital-forensics.sans.org/media/Amcache_Whitepaper.pdf. The white paper provides a comprehensive overview of the Amcache.hve file and its uses in forensic investigations.
 
-  - Create a new String Value (REG_SZ) named pageShowBSODDetails and set its value to "202312251613518424".
+In conclusion, the Amcache.hve file is a valuable forensic artifact that can provide valuable information about a computer system, both in normal and malicious use cases. Whether you are a system administrator or a forensic investigator, the Amcache.hve file is a valuable resource that should be included in your toolkit. To learn more about the Amcache.hve file and its uses, be sure to read the white paper and the SANS poster linked above.
 
-## Implementing Changes
+![](../Amcache.hve/images/AmCache-SansPoster.PNG)
 
-### PowerShell
-
-```powershell
-# Set DisplayParameters for ControlSet001
-Set-ItemProperty -Path 'HKLM:\SYSTEM\ControlSet001\Control\CrashControl\' -Name 'DisplayParameters' -Value 0x00000001
-
-# Set DisplayParameters for CurrentControlSet
-Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl\' -Name 'DisplayParameters' -Value 0x00000001
-
-# Set user-specific BSOD details
-$regPath = 'HKU:\S-1-5-21-685282480-2200850043-2854793132-1001\SOFTWARE\Winaero.com\Winaero Tweaker\Changes'
-New-Item -Path $regPath -Force
-Set-ItemProperty -Path $regPath -Name 'pageShowBSODDetails' -Value '202312251613518424'
-```
-
-### Caution
-
-Modifying the registry is a powerful action that can affect system stability. Always ensure that you have a backup of your registry or create a system restore point before making changes. Additionally, follow the instructions carefully to avoid unintended consequences.
+https://www.sans.org/posters/windows-forensic-analysis/

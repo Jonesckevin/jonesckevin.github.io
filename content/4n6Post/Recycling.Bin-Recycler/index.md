@@ -6,10 +6,11 @@ tags = ["4n6", "digital forensics", "windows forensics", "recycling bin", "file 
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "The Hidden Forensics of the Windows Recycling Bin: Understanding the I and R Numbers and How They Work"
-description = "An in-depth look at the Windows Recycling Bin and its significance for digital forensic investigations."
-keywords = ["Recycling Bin", "Windows Recycling Bin", "Digital Forensics", "File Recovery", "DFIR", "File Deletion", "Forensic Artifacts"]
+seo_title = "Windows Recycling Bin Forensics - $I and $R Files Analysis Guide"
+description = "In-depth guide to Windows Recycling Bin forensic analysis. Learn $I and $R file structures, MFT connections, RBCmd tool usage, file recovery techniques, and DFIR investigation methods."
+keywords = ["Recycling Bin forensics", "$I file", "$R file", "Windows file recovery", "deleted files analysis", "digital forensics", "DFIR", "$Recycle.Bin", "RBCmd", "file deletion tracking", "forensic artifacts", "MFT analysis", "data recovery"]
 canonical = "/4n6Post/Recycling.Bin-Recycler/"
+aliases = ["/4n6Post/Recycling.Bin-Recycler/"]
 featured_image = "/images/RecyclingBin.png"
 schema_type = "Article"
 +++

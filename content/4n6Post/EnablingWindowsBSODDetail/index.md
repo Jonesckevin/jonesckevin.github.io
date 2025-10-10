@@ -1,20 +1,21 @@
 +++
-title = "Enabling Windows BSOD Detail"
+title = "Enable Windows BSOD Detail"
 date = "2023-01-01"
 draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+tags = ["registry", "4n6", "digital forensics", "windows forensics"]
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Enabling Windows BSOD Detail Information"
-description = "A guide to enabling detailed Blue Screen of Death (BSOD) information in Windows by modifying registry settings."
-keywords = ["BSOD", "Blue Screen of Death", "Windows Forensics", "Registry Settings", "Digital Forensics", "DFIR", "System Crashes", "Error Analysis"]
+seo_title = "Enable Windows BSOD Detailed Information - Registry Forensics Guide"
+description = "Step-by-step guide to enabling detailed Blue Screen of Death (BSOD) information in Windows through registry modifications. Essential for forensic analysis, troubleshooting, and crash investigation."
+keywords = ["BSOD detail", "Blue Screen of Death", "Windows crash analysis", "registry forensics", "DisplayParameters", "system troubleshooting", "crash dump analysis", "Windows forensics", "DFIR", "error diagnostics", "stop error", "Windows debugging", "forensic investigation"]
 canonical = "/4n6Post/EnablingWindowsBSODDetail/"
+aliases = ["/4n6Post/EnablingWindowsBSODDetail/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
-![Registry Block](../EnablingWindowsBSODDetail/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 ## Introduction
 
@@ -48,9 +49,7 @@ Open Registry Editor:
 
 #### For User-Specific Settings:
 
-HKU\<SID-RID>\SOFTWARE\Winaero.com\Winaero Tweaker\Changes
-
-#### Modify the Value:
+**Modify the Value:**
 
 For both ControlSet001 and CurrentControlSet, locate or
 create a DWORD value named DisplayParameters.
@@ -58,8 +57,6 @@ Set the value to 0x00000001.
 User-Specific Settings:
 For user-specific settings, navigate to the specified
 path:
-
-#### HKU\<SID-RID>\SOFTWARE\Winaero.com\Winaero Tweaker\Changes
 
 #### Create a new String Value (REG_SZ) named
 
@@ -76,12 +73,6 @@ Set-ItemProperty -Path 'HKLM:\SYSTEM\ControlSet001\Control\CrashControl\' -Name 
 # Set DisplayParameters for CurrentControlSet
 
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl\' -Name 'DisplayParameters' -Value 0x00000001
-
-# Set user-specific BSOD details
-
-$regPath = 'HKU:\S-1-5-21-685282480-2200850043-2854793132-1001\SOFTWARE\Winaero.com\Winaero Tweaker\Changes'
-New-Item -Path $regPath -Force
-Set-ItemProperty -Path $regPath -Name 'pageShowBSODDetails' -Value '202312251613518424'
 ```
 
 ### Caution

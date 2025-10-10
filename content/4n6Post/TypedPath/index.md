@@ -6,15 +6,16 @@ tags = ["4n6", "digital forensics", "windows forensics", "registry", "typed path
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "TypedPath Registry - Windows Navigation History Forensics"
-description = "An in-depth look at the TypedPath registry section and its significance for digital forensic investigations."
-keywords = ["TypedPath", "Windows Navigation History", "Registry Analysis", "Digital Forensics", "DFIR", "User Activity", "Forensic Artifacts"]
+seo_title = "TypedPaths Registry Forensics - Windows Explorer Navigation History"
+description = "Comprehensive guide to TypedPaths registry forensic analysis for tracking user navigation history. Learn Explorer address bar artifacts, path tracking, and DFIR investigation techniques for Windows forensics."
+keywords = ["TypedPaths registry", "Windows Explorer history", "address bar forensics", "navigation tracking", "user activity analysis", "digital forensics", "DFIR", "registry artifacts", "path history", "Explorer forensics", "typed URLs", "forensic investigation"]
 canonical = "/4n6Post/TypedPath/"
+aliases = ["/4n6Post/TypedPath/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
-![Registry Block](../TypedPath/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 # Registry Section of TypedPath: Understanding Its Importance in Digital Forensics
 

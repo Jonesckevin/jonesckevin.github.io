@@ -5,17 +5,18 @@ draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "jumplist", "recent files", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
-seo_title = "JumpList Forensics - Windows JumpList Analysis"
-description = "An in-depth guide to JumpList forensics, including analysis techniques and forensic artifacts."
-keywords = ["JumpList", "Windows Forensics", "Digital Forensics", "DFIR", "Forensic Artifacts", "Recent Files", "User Activity"]
+seo_title = "JumpList Forensics - Windows Recent Files and User Activity Analysis"
+description = "Comprehensive guide to JumpList forensic analysis for tracking user activity and recent files. Learn AutomaticDestinations, CustomDestinations, JLECmd usage, and DFIR investigation techniques."
+keywords = ["JumpList forensics", "AutomaticDestinations", "CustomDestinations", "Windows user activity", "recent files tracking", "JLECmd", "digital forensics", "DFIR", "user behavior analysis", "taskbar forensics", "file access history", "Windows artifacts", "forensic timeline"]
 canonical = "/4n6Post/JumpList/"
+aliases = ["/4n6Post/JumpList/"]
 featured_image = "/images/Windows11Explorer.png"
 schema_type = "Article"
 +++
 
-![Explorer and Registry Block](../JumpList/images/ExplorerANDRegistryBlock.png)
+## JumpList Forensics 
 
-# JumpList Forensics
+![Explorer and Registry Block](/images/Windows11Explorer.png)
 
 **JumpList** is a feature of Microsoft Windows operating systems that allows users to quickly access frequently used files, folders, and applications. This feature can be accessed by right-clicking on the taskbar icon or start menu tile of the target application. The JumpList registry holds the information that is displayed in the JumpList. This can be found multiple ways via Explorer File paths as well as within the registry itself.
 

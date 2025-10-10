@@ -1,7 +1,7 @@
 ---
-title: "SOF-ELK Uploading - Digital Forensics with KAPE"
-description: "A comprehensive guide on using SOF-ELK with KAPE for digital forensics, including MFT and Event Log analysis"
-keywords: ["SOF-ELK", "KAPE", "digital forensics", "MFT", "Event Logs", "EVTX", "forensics analysis", "incident response"]
+title: "KAPE to SOF-ELK"
+description: "Step-by-step guide for uploading forensic evidence to SOF-ELK using KAPE. Covers advanced MFT, EVTX, and timeline analysis for incident response and digital forensics investigations."
+keywords: ["SOF-ELK uploading", "KAPE workflow", "forensic timeline", "MFT analysis", "EVTX event logs", "incident response tools", "Windows forensics", "forensic automation", "evidence ingestion", "digital forensics platform", "SOF-ELK dashboard", "KAPE triage", "forensic data visualization"]
 date: 2024-01-01
 draft: false
 tags: ["SOF-ELK", "KAPE", "Digital Forensics", "MFT", "Event Logs", "EVTX", "Forensics Analysis", "Incident Response"]
@@ -10,6 +10,7 @@ type: 4n6post
 author: JonesCKevin
 seo_title: "SOF-ELK Uploading Guide - Digital Forensics with KAPE"
 canonical: "/4n6Post/SOF-ELK_Uploading/"
+aliases: ["/4n6Post/SOF-ELK_Uploading/"]
 featured_image: "/images/SOF-ELK.png"
 schema_type: "Article"
 sitemap_priority: 0.6

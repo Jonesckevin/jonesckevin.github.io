@@ -6,15 +6,16 @@ tags = ["4n6", "digital forensics", "windows forensics", "USB forensics", "regis
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Windows USB Connection Analysis - Digital Forensics"
-description = "An in-depth look at Windows USB connection analysis and its significance for digital forensic investigations."
-keywords = ["USB", "USB Forensics", "Digital Forensics", "DFIR", "Registry Analysis", "setupapi.dev.log", "Data Exfiltration", "Malware Introduction"]
+seo_title = "Windows USB Forensics - Device Connection Analysis Guide"
+description = "Comprehensive guide to Windows USB forensic analysis. Learn USBSTOR registry, setupapi.dev.log parsing, MountedDevices tracking, and external device investigation for DFIR."
+keywords = ["USB forensics", "USBSTOR registry", "setupapi.dev.log", "Windows USB analysis", "MountedDevices", "external device tracking", "digital forensics", "DFIR", "data exfiltration", "USB device history", "registry artifacts", "device forensics"]
 canonical = "/4n6Post/Windows-USB-Connection/"
+aliases = ["/4n6Post/Windows-USB-Connection/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
-![Registry Block](../Windows-USB-Connection/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 **USB connections** are a commonly used method for transferring data between computers and other electronic devices. In Windows, the use of USB connections can affect the registry in several ways, including within the registry are the **USB**, **USBSTOR** and **MountPoints** keys. In this post, we'll explore the connection between USB Mountpoints and the setupapi.dev.log, and provide examples of both normal and malicious use cases.
 

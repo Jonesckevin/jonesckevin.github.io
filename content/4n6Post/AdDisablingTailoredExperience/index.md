@@ -2,23 +2,24 @@
 title = "Ad Disabling Tailored Experience"
 date = "2023-01-01"
 draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+tags = ["registry", "4n6", "digital forensics", "windows forensics"]
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 seo_title = "Ad Disabling and Tailored Experience in Windows - Registry Tweaks"
 canonical = "/4n6post/ad-disabling-tailored-experience/"
+aliases = ["/4n6post/ad-disabling-tailored-experience/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "TechArticle"
 author = "JonesCKevin"
 sitemap_priority = 0.7
+description = "Guide to disabling ads and controlling tailored experience in Windows via registry tweaks. Learn forensic implications, privacy settings, and how to optimize Windows forensics investigations."
+keywords = ["Windows ads", "disable tailored experience", "registry tweaks", "Windows privacy", "forensic implications", "Windows customization", "ad settings", "Windows telemetry", "digital forensics", "privacy optimization", "Windows registry", "forensic analysis"]
 +++
 
 ![Registry Block](/images/RegistryBlock.png)
 
 # Customizing Windows: Ad Disabling and Tailored Experience
 
-## Introduction
-`
 In the realm of Windows customization, users often seek ways to tailor their experience to suit personal
 preferences. This blog post explores a specific aspect of this customization - the modification of registry keys
 to disable ads in Windows and control tailored experiences.
@@ -30,27 +31,32 @@ Windows often displays ads and promotes certain apps to users. However, not ever
 To gain more control over your Windows experience, you can disable specific apps' promotional activities using
 Registry Keys.
 
-## ### Where to Make the Change?
+## Where to Make the Change?
 
 The changes are made in the Windows Registry, a database that stores low-level settings for the Windows
 operating system. Below are the keys associated with disabling ads and controlling tailored experiences:
 
 ### Disable Ads:
 
-*`HKU\&lt;SID-RID&gt;\SOFTWARE\Microsoft\Windows\CurrentVersion\`***AdvertisingInfo\Enabled**
+*`HKU\<SID-RID>\SOFTWARE\Microsoft\Windows\CurrentVersion\`***AdvertisingInfo\Enabled**
 
 ### Tailored
 
-Experiences Control:
-*`HKU\&lt;SID-RID&gt;\SOFTWARE\Microsoft\Windows\CurrentVersion\`***ContentDeliveryManager\** :
+**Experiences Control:**
+
+_`HKU\<SID-RID>\SOFTWARE\Microsoft\Windows\CurrentVersion\`_ **ContentDeliveryManager\\**
 **RotatingLockScreenEnabled**
-RotatingLockScreenOverlayEnabled
-SoftLandingEnabled
-SystemPaneSuggestionsEnabled
-SubscribedContent-338387Enabled
-SubscribedContent-310093Enabled
-SubscribedContent-338393Enabled
-SubscribedContent-314563Enabled
+
+```
+RotatingLockScreenOverlayEnabled  
+SoftLandingEnabled  
+SystemPaneSuggestionsEnabled  
+SubscribedContent-338387    Enabled  
+SubscribedContent-310093    Enabled  
+SubscribedContent-338393    Enabled  
+SubscribedContent-314563    Enabled  
+```
+
 ## Implementing Changes
 
 ### RegEdit:

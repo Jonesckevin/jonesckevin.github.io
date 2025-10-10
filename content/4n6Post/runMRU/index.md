@@ -1,22 +1,25 @@
 +++
-title = "Understanding the RunMRU Registry: Security Implications and Forensic Value"
+title = "Registry- RunMRU"
 date = "2023-01-01"
 draft = false
 tags = ["forensics", "windows", "registry", "security", "digital-forensics"]
 categories = ["Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Understanding the RunMRU Registry: Security Implications and Forensic Value"
-description = "An in-depth look at the RunMRU registry, its normal use cases, and its potential for malicious exploitation."
-keywords = ["RunMRU", "Windows Registry", "Digital Forensics", "DFIR", "Malware Analysis"]
+seo_title = "RunMRU Registry Forensics - Windows Run Dialog History Analysis"
+description = "Complete guide to RunMRU registry forensic analysis for tracking command execution history. Learn Run dialog artifacts, malware detection techniques, and DFIR investigation methods for Windows forensics."
+keywords = ["RunMRU registry", "Run dialog history", "command execution tracking", "Windows forensics", "malware analysis", "digital forensics", "DFIR", "execution artifacts", "Windows Run command", "forensic investigation", "proof of execution", "registry analysis"]
 canonical = "/4n6Post/runMRU/"
+aliases = ["/4n6Post/runMRU/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
+## Understanding the RunMRU Registry: Security Implications and Forensic Value
+
 The RunMRU (Most Recently Used) registry is a key component of the Microsoft Windows operating system, storing information about the most recently executed applications and documents. This information is used to populate the "Recent Items" list in the Start menu, as well as for application compatibility purposes.
 
-![Registry Block](../runMRU/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 While the RunMRU registry serves a useful purpose for end users, it also presents a potential security risk if not properly managed. In this blog post, we will discuss the normal use case for the RunMRU registry, as well as several examples of malicious use of the RunMRU registry. We will also provide links to additional resources for further study, including a white paper on the RunMRU registry and a SANS poster with proof of execution.
 
@@ -54,6 +57,6 @@ The RunMRU registry is an important component of the Microsoft Windows operating
 
 For proof of execution of malicious activity related to the RunMRU registry, we recommend viewing the SANS poster "RunMRU Registry Key: Proof of Execution". This poster can be found at the following link:
 
-![SANS RunMRU Poster](../runMRU/images/runMRU-SansPoster.PNG)
+<!--![SANS RunMRU Poster](../runMRU/images/runMRU-SansPoster.PNG)-->
 
 [https://www.sans.org/posters/windows-forensic-analysis/](https://www.sans.org/posters/windows-forensic-analysis/)

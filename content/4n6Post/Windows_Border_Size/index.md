@@ -6,19 +6,18 @@ tags = ["4n6", "digital forensics", "windows forensics", "registry", "customizat
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Windows Border Size Modification - Digital Forensics"
-description = "An in-depth look at Windows Border Size Modification and its significance for digital forensic investigations."
-keywords = ["Windows", "Border Size Modification", "Digital Forensics", "DFIR", "Registry Analysis", "User Customization"]
+seo_title = "Windows Border Size Registry - Visual Customization Forensics"
+description = "Guide to Windows border size modification through registry analysis. Learn WindowMetrics registry keys, user customization tracking, and forensic investigation techniques for visual preference artifacts."
+keywords = ["Windows border size", "WindowMetrics registry", "Windows customization forensics", "registry analysis", "user preferences", "digital forensics", "DFIR", "visual customization", "registry artifacts", "Windows personalization", "forensic investigation"]
 canonical = "/4n6Post/Windows-Border-Size/"
+aliases = ["/4n6Post/Windows-Border-Size/"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
 ![Registry Block](../Windows_Border_Size/images/RegistryBlock.png)
 
-# Exploring Windows Border Size Modification
-
-## Introduction
+## Exploring Windows Border Size Modification
 
 Welcome to our exploration of a subtle yet impactful customization in the Windows operating system. Today, we'll delve into the world of Windows Border size modification and how a few Registry Keys can unlock a realm of personalization.
 

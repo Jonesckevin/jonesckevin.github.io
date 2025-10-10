@@ -6,10 +6,11 @@ tags = ["4n6", "digital forensics", "windows forensics", "installation keys", "r
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "Windows Generic Installation Keys - Digital Forensics"
-description = "An in-depth look at Windows Generic Installation Keys and their significance for digital forensic investigations."
-keywords = ["Windows", "Generic Installation Keys", "Digital Forensics", "DFIR", "Registry Analysis"]
+seo_title = "Windows Generic Installation Keys - KMS Client Setup Keys Reference"
+description = "Complete reference guide to Windows generic installation keys (GVLKs) for KMS activation. Essential resource for forensic analysis of Windows licensing, deployment validation, and DFIR investigations."
+keywords = ["Windows installation keys", "GVLK keys", "KMS client keys", "Windows activation", "generic product keys", "digital forensics", "DFIR", "Windows licensing", "forensic reference", "Windows deployment", "volume activation", "forensic investigation"]
 canonical = "/4n6Post/WindowsGenericInstallationKeys/"
+aliases = ["/4n6Post/WindowsGenericInstallationKeys/"]
 schema_type = "Article"
 +++
 

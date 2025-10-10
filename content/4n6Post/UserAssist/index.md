@@ -1,5 +1,5 @@
 +++
-title = "UserAssist Registry Analysis - Windows Program Execution Tracking"
+title = "Registry- UserAssist"
 description = "Complete guide to UserAssist registry analysis for digital forensics. Learn how Windows tracks program execution, forensic artifacts, and DFIR investigation techniques for UserAssist entries."
 keywords = ["UserAssist registry", "Windows forensics", "program execution tracking", "digital forensics", "registry analysis", "DFIR", "Windows artifacts", "execution evidence", "forensic investigation", "malware analysis", "user activity tracking", "registry forensics"]
 date = "2023-01-01"
@@ -10,6 +10,7 @@ categories = ["4n6", "Digital Forensics", "Windows Forensics", "Registry Analysi
 type = "4n6post"
 seo_title = "UserAssist Registry Analysis - Windows Program Execution Forensics"
 canonical = "/4n6post/userassist/"
+aliases = ["/4n6post/userassist/"]
 featured_image = "/images/Windows11Explorer.png"
 schema_type = "TechArticle"
 author = "JonesCKevin"
@@ -26,7 +27,9 @@ sitemap_changefreq = "monthly"
   twitter_image = "/images/4n6post/userassist-twitter.png"
 +++
 
-![Registry Block](../UserAssist/images/RegistryBlock.png)
+## UserAssist Registry Analysis - Windows Program Execution Tracking
+
+![Registry Block](/images/RegistryBlock.png)
 
 **UserAssist** is a feature of the Windows operating system that keeps track of the programs that are launched on a user's profile. This information is stored in the registry, a database that contains configuration settings for the operating system and other software. In this blog post, we'll explore what UserAssist is, its normal use cases, and how it can be abused by malicious actors.
 

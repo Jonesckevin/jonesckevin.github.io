@@ -1,18 +1,21 @@
 +++
-title = "ShimCache - Windows Application Compatibility Cache for Digital Forensics"
+title = "ShimCache"
 date = "2023-10-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "registry", "shimcache", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "ShimCache - Windows Application Compatibility Cache for Digital Forensics"
-description = "An in-depth look at ShimCache (Application Compatibility Cache) and its significance for digital forensic investigations."
-keywords = ["ShimCache", "Application Compatibility Cache", "Digital Forensics", "DFIR", "Registry Analysis", "Forensic Artifacts"]
+seo_title = "ShimCache Forensics - Application Compatibility Cache Analysis Guide"
+description = "Complete guide to ShimCache (Application Compatibility Cache) forensic analysis. Learn AppCompatCache registry parsing, execution tracking, AppCompatCacheParser usage, and DFIR investigation techniques."
+keywords = ["ShimCache forensics", "Application Compatibility Cache", "AppCompatCache", "execution tracking", "Windows forensics", "AppCompatCacheParser", "digital forensics", "DFIR", "program execution", "registry analysis", "forensic artifacts", "malware detection"]
 canonical = "/4n6Post/SHIMCACHE/"
+aliases = ["/4n6Post/SHIMCACHE/"]
 featured_image = "/images/SHIMCache-Logo.png"
 schema_type = "Article"
 +++
+
+## ShimCache - Windows Application Compatibility Cache for Digital Forensics
 
 Shimcache is a Windows artifact that stores information about programs that **have been executed** on a Windows machine. The Shimcache can be used for both benign and malicious purposes, making it a useful tool for system administrators, digital forensics analysts, and attackers.
 

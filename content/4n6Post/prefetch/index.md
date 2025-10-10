@@ -1,5 +1,5 @@
 +++
-title = "Windows Prefetch Analysis - Digital Forensics Execution Tracking"
+title = "Prefetch"
 description = "Complete guide to Windows Prefetch forensics for tracking application execution. Learn prefetch structure, forensic analysis techniques, PECmd usage, and DFIR investigation methods."
 keywords = ["Windows Prefetch", "prefetch analysis", "digital forensics", "proof of execution", "POE", "application tracking", "Windows forensics", "DFIR", "PECmd", "forensic artifacts", "execution timeline", "malware analysis", "incident response", "forensic tools"]
 date = 2023-01-01
@@ -10,6 +10,7 @@ categories = ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
 type = "4n6post"
 seo_title = "Windows Prefetch Analysis - Digital Forensics Application Tracking Guide"
 canonical = "/4n6post/prefetch/"
+aliases = ["/4n6post/prefetch/"]
 featured_image = "/images/Windows11Explorer.png"
 schema_type = "TechArticle"
 author = "JonesCKevin"
@@ -17,9 +18,11 @@ sitemap_priority = 0.8
 sitemap_changefreq = "monthly"
 +++
 
+## Windows Prefetch Analysis - Digital Forensics Execution Tracking
+
 Windows Prefetch is a feature in the Windows operating system that was first introduced in Windows XP. It is a built-in tool that helps to speed up the loading of applications and other system processes by analyzing which files and libraries are most frequently used and then pre-loading them into memory. In this blog post, we will explore what Windows Prefetch is, how it works, and provide examples of both normal and malicious use cases.
 
-![Registry Block](../prefetch/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 ## How Windows Prefetch Works
 

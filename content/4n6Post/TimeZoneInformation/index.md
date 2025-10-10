@@ -6,15 +6,16 @@ tags = ["4n6", "digital forensics", "windows forensics", "registry", "timezone",
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "TimeZone Information - Windows Timezone Registry Forensics"
-description = "An in-depth look at the TimeZoneInformation registry section and its significance for digital forensic investigations."
-keywords = ["TimeZoneInformation", "Windows Timezone", "Registry Analysis", "Digital Forensics", "DFIR", "Timestamp Analysis", "Forensic Artifacts"]
+seo_title = "TimeZoneInformation Registry - Windows Timezone Forensics Guide"
+description = "Complete guide to TimeZoneInformation registry forensic analysis. Learn timezone tracking, UTC calculations, daylight saving time detection, and timestamp normalization for DFIR investigations."
+keywords = ["TimeZoneInformation registry", "timezone forensics", "UTC conversion", "Windows timestamp analysis", "daylight saving time", "digital forensics", "DFIR", "registry analysis", "tzres.dll", "timezone tracking", "forensic timeline", "timestamp correlation"]
 canonical = "/4n6Post/TimeZoneInformation/"
+aliases = ["/4n6Post/TimeZoneInformation/"]
 featured_image = "/images/4n6post-Analog-Clock.png"
 schema_type = "Article"
 +++
 
-![Analog Clock](../TimeZoneInformation/images/4n6post-Analog-Clock.png)
+![Analog Clock](/images/4n6post-Analog-Clock.png)
 
 The Windows registry is a critical component of the Windows operating system. It stores important configuration data and settings that help the operating system function properly. One of the registry keys that play an important role in the functioning of the system is the TimeZoneInformation registry key. In this blog post, we'll delve into the registry TimeZoneInformation, its connection with the Dynamic Link Library (DLL) it uses, and how it is used in both normal and malicious scenarios.
 

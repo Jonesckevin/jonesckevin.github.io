@@ -6,10 +6,11 @@ tags = ["4n6", "digital forensics", "windows forensics", "WMI", "persistence", "
 categories = ["4n6", "Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
-seo_title = "WMI Filter Query Consumer - Digital Forensics"
-description = "An in-depth look at WMI Filter Query Consumers and their significance for digital forensic investigations."
-keywords = ["WMI", "Filter Query", "Digital Forensics", "DFIR", "Persistence", "Windows Forensics"]
+seo_title = "WMI Forensics - Event Filter Consumer Persistence Analysis"
+description = "Complete guide to WMI forensic analysis for detecting malicious persistence. Learn WMI event filters, consumers, bindings, Objects.data parsing, and DFIR investigation techniques for Windows forensics."
+keywords = ["WMI forensics", "WMI persistence", "event filter consumer", "WMI malware", "Objects.data", "Windows forensics", "digital forensics", "DFIR", "malware persistence", "WMI repository", "forensic investigation", "threat hunting"]
 canonical = "/4n6Post/WMI-Filter-Query-Consumer/"
+aliases = ["/4n6Post/WMI-Filter-Query-Consumer/"]
 featured_image = "/images/Windows11Explorer.png"
 schema_type = "Article"
 +++
