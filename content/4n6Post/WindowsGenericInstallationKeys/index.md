@@ -10,7 +10,7 @@ seo_title = "Windows Generic Installation Keys - KMS Client Setup Keys Reference
 description = "Complete reference guide to Windows generic installation keys (GVLKs) for KMS activation. Essential resource for forensic analysis of Windows licensing, deployment validation, and DFIR investigations."
 keywords = ["Windows installation keys", "GVLK keys", "KMS client keys", "Windows activation", "generic product keys", "digital forensics", "DFIR", "Windows licensing", "forensic reference", "Windows deployment", "volume activation", "forensic investigation"]
 canonical = "/4n6Post/WindowsGenericInstallationKeys/"
-aliases = ["/4n6Post/WindowsGenericInstallationKeys/"]
+aliases = ["/4n6Post/WindowsGenericInstallationKeys/", "/2024/02/windows-generic-installation-keys.html"]
 schema_type = "Article"
 +++
 
