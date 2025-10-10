@@ -10,8 +10,9 @@ seo_title = "Amcache.hve - Windows Amcache.hve Forensics"
 description = "An in-depth look at the Amcache.hve registry file and its significance for digital forensic investigations."
 keywords = ["Amcache.hve", "Windows Forensics", "Registry Analysis", "Digital Forensics", "DFIR", "Forensic Artifacts"]
 canonical = "/4n6Post/Amcache.hve/"
-featured_image = "../Amcache.hve/images/RegistryBlock.png"
+featured_image = "/images/SHIMCache-Logo.png"
 schema_type = "Article"
+sitemap_priority = 0.7
 +++
 
 ![Registry Block](../Amcache.hve/images/RegistryBlock.png)

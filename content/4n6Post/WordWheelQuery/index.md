@@ -10,7 +10,7 @@ seo_title = "WordWheelQuery - Windows Search History for Digital Forensics"
 description = "An in-depth look at the WordWheelQuery registry section and its significance for digital forensic investigations."
 keywords = ["WordWheelQuery", "Windows Search History", "Registry Analysis", "Digital Forensics", "DFIR", "User Activity", "Forensic Artifacts"]
 canonical = "/4n6Post/WordWheelQuery/"
-featured_image = "../WordWheelQuery/imagesWordWheelQuery.png"
+featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 

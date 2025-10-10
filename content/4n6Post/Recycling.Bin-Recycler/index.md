@@ -10,7 +10,7 @@ seo_title = "The Hidden Forensics of the Windows Recycling Bin: Understanding th
 description = "An in-depth look at the Windows Recycling Bin and its significance for digital forensic investigations."
 keywords = ["Recycling Bin", "Windows Recycling Bin", "Digital Forensics", "File Recovery", "DFIR", "File Deletion", "Forensic Artifacts"]
 canonical = "/4n6Post/Recycling.Bin-Recycler/"
-featured_image = "../Recycling.Bin-Recycler/images/RecyclingBin.png"
+featured_image = "/images/RecyclingBin.png"
 schema_type = "Article"
 +++
 

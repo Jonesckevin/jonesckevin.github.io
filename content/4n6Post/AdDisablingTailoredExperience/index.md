@@ -4,9 +4,16 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+seo_title = "Ad Disabling and Tailored Experience in Windows - Registry Tweaks"
+canonical = "/4n6post/ad-disabling-tailored-experience/"
+featured_image = "/images/RegistryBlock.png"
+schema_type = "TechArticle"
+author = "JonesCKevin"
+sitemap_priority = 0.7
 +++
 
-![Registry Block](/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 # Customizing Windows: Ad Disabling and Tailored Experience
 

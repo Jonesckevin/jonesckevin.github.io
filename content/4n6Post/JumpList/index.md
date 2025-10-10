@@ -4,6 +4,13 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "jumplist", "recent files", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+seo_title = "JumpList Forensics - Windows JumpList Analysis"
+description = "An in-depth guide to JumpList forensics, including analysis techniques and forensic artifacts."
+keywords = ["JumpList", "Windows Forensics", "Digital Forensics", "DFIR", "Forensic Artifacts", "Recent Files", "User Activity"]
+canonical = "/4n6Post/JumpList/"
+featured_image = "/images/Windows11Explorer.png"
+schema_type = "Article"
 +++
 
 ![Explorer and Registry Block](../JumpList/images/ExplorerANDRegistryBlock.png)

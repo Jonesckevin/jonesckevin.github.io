@@ -10,7 +10,7 @@ type: 4n6post
 author: JonesCKevin
 seo_title: "SOF-ELK Uploading Guide - Digital Forensics with KAPE"
 canonical: "/4n6Post/SOF-ELK_Uploading/"
-featured_image: "/../SOF-ELK_Uploading/images/SOF-ELK.png"
+featured_image: "/images/SOF-ELK.png"
 schema_type: "Article"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

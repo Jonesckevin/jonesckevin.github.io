@@ -10,7 +10,6 @@ seo_title = "Windows Generic Installation Keys - Digital Forensics"
 description = "An in-depth look at Windows Generic Installation Keys and their significance for digital forensic investigations."
 keywords = ["Windows", "Generic Installation Keys", "Digital Forensics", "DFIR", "Registry Analysis"]
 canonical = "/4n6Post/WindowsGenericInstallationKeys/"
-featured_image = "../WindowsGenericInstallationKeys/images/WindowsLogo.png"
 schema_type = "Article"
 +++
 

@@ -10,7 +10,7 @@ seo_title = "Windows Registry SYSTEM Select Key Analysis"
 description = "An in-depth look at the Windows Registry SYSTEM Select key and its significance for digital forensic investigations."
 keywords = ["Windows Registry", "SYSTEM Select", "Digital Forensics", "DFIR", "Forensic Artifacts", "Registry Analysis"]
 canonical = "/4n6Post/Registry-SYSTEM-Select/"
-featured_image = "../Registry-SYSTEM-Select/images/RegistryBlock.png"
+featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 

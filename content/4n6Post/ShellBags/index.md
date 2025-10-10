@@ -8,6 +8,10 @@ keywords = ["4n6", "digital forensics", "shellbags", "shell bags", "shellbags an
 categories = ["Digital Forensics"]
 type = "4n6post"
 author = "JonesCKevin"
+seo_title = "Understanding ShellBags in the Windows Registry: A Deep Dive"
+canonical = "/4n6Post/ShellBags/"
+featured_image = "/images/RegistryBlock.png"
+schema_type = "Article"
 +++
 
 As my other posts likely portrais. The Windows operating system is a treasure of love and trove-like of forensic evidence. Along with the various artifacts, ShellBags stand out for their ability to provide valuable timeline and insights into a user's general activity. Whether used for legitimate investigations or malicious purposes, understanding ShellBags is crucial for anyone dealing with digital forensics and even cybersecurity defenses like EDR.

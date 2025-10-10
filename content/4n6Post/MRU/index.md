@@ -7,7 +7,7 @@ layout = "single"
 author = "JonesCKevin"
 seo_title = "MRU (Most Recently Used) Registry - Digital Forensics"
 canonical = "/4n6Post/MRU/"
-featured_image = "../MRU/images/RegistryBlock.png"
+featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 date = "2024-10-02"
 +++

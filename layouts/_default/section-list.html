@@ -27,7 +27,8 @@
                     {{ if not .Params.disableSearch }}
                     <!-- Search Filter -->
                     <div class="search-filter">
-                        <input type="text" id="sectionSearch" placeholder="🔍 {{ .Params.searchPlaceholder | default "Search..." }}" class="search-input">
+                        <input type="text" id="sectionSearch" placeholder="🔍 {{ .Params.searchPlaceholder | default "
+                            Search..." }}" class="search-input">
                         <div id="searchResults" class="search-results"></div>
                     </div>
                     {{ end }}
@@ -82,18 +83,6 @@
                                 <p>{{ .Summary | plainify | truncate 150 }}</p>
                                 {{ end }}
 
-                                {{ if not $.Params.hideThumbnails }}
-                                {{ if or .Params.thumbnail .Params.featured_image }}
-                                <div class="card-thumbnail-inline">
-                                    {{ if .Params.thumbnail }}
-                                    <img src="{{ .Params.thumbnail | absURL }}" alt="{{ .Title }}">
-                                    {{ else if .Params.featured_image }}
-                                    <img src="{{ .Params.featured_image | absURL }}" alt="{{ .Title }}">
-                                    {{ end }}
-                                </div>
-                                {{ end }}
-                                {{ end }}
-
                                 {{ with .Params.tags }}
                                 <ul class="feature-list">
                                     {{ range first 3 . }}
@@ -103,6 +92,17 @@
                                 {{ end }}
                             </div>
                         </div>
+                        {{ if not $.Params.hideThumbnails }}
+                        {{ if or .Params.thumbnail .Params.featured_image }}
+                        <div class="card-thumbnail">
+                            {{ if .Params.thumbnail }}
+                            <img src="{{ .Params.thumbnail | absURL }}" alt="{{ .Title }}">
+                            {{ else if .Params.featured_image }}
+                            <img src="{{ .Params.featured_image | absURL }}" alt="{{ .Title }}">
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                        {{ end }}
                     </a>
                     {{ end }}
                     {{ end }}

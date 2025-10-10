@@ -10,7 +10,7 @@ seo_title = "TimeZone Information - Windows Timezone Registry Forensics"
 description = "An in-depth look at the TimeZoneInformation registry section and its significance for digital forensic investigations."
 keywords = ["TimeZoneInformation", "Windows Timezone", "Registry Analysis", "Digital Forensics", "DFIR", "Timestamp Analysis", "Forensic Artifacts"]
 canonical = "/4n6Post/TimeZoneInformation/"
-featured_image = "../TimeZoneInformation/images/4n6post-Analog-Clock.png"
+featured_image = "/images/4n6post-Analog-Clock.png"
 schema_type = "Article"
 +++
 

@@ -10,7 +10,7 @@ seo_title = "LNK Files - Windows Shortcuts for Digital Forensics"
 description = "An in-depth look at LNK files (Windows shortcuts) and their significance for digital forensic investigations."
 keywords = ["LNK Files", "Windows Shortcuts", "Digital Forensics", "DFIR", "Malware Analysis", "Forensic Artifacts"]
 canonical = "/4n6Post/ShortCut-LNK/"
-featured_image = "images/LNK File.png"
+featured_image = "/images/Windows11Explorer.png"
 schema_type = "Article"
 +++
 

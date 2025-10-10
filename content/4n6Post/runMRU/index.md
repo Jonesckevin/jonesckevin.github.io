@@ -10,7 +10,7 @@ seo_title = "Understanding the RunMRU Registry: Security Implications and Forens
 description = "An in-depth look at the RunMRU registry, its normal use cases, and its potential for malicious exploitation."
 keywords = ["RunMRU", "Windows Registry", "Digital Forensics", "DFIR", "Malware Analysis"]
 canonical = "/4n6Post/runMRU/"
-featured_image = "../runMRU/images/RegistryBlock.png"
+featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 

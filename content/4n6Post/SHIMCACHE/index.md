@@ -10,7 +10,7 @@ seo_title = "ShimCache - Windows Application Compatibility Cache for Digital For
 description = "An in-depth look at ShimCache (Application Compatibility Cache) and its significance for digital forensic investigations."
 keywords = ["ShimCache", "Application Compatibility Cache", "Digital Forensics", "DFIR", "Registry Analysis", "Forensic Artifacts"]
 canonical = "/4n6Post/SHIMCACHE/"
-featured_image = "images/SHIMCache-Logo.png"
+featured_image = "/images/SHIMCache-Logo.png"
 schema_type = "Article"
 +++
 

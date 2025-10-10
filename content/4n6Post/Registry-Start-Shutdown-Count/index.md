@@ -10,7 +10,7 @@ seo_title = "Windows Registry: System Start, Shutdown, and Reboot Tracking"
 description = "An in-depth look at the Windows registry for tracking system start, shutdown, and reboot events in digital forensic investigations."
 keywords = ["Windows Registry", "System Start", "Shutdown", "Reboot", "Digital Forensics", "DFIR", "Forensic Artifacts"]
 canonical = "/4n6Post/Registry-Start-Shutdown-Count/"
-featured_image = "../Registry-Start-Shutdown-Count/images/RegistryBlock.png"
+featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 

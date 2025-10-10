@@ -10,7 +10,7 @@ seo_title = "WMI Filter Query Consumer - Digital Forensics"
 description = "An in-depth look at WMI Filter Query Consumers and their significance for digital forensic investigations."
 keywords = ["WMI", "Filter Query", "Digital Forensics", "DFIR", "Persistence", "Windows Forensics"]
 canonical = "/4n6Post/WMI-Filter-Query-Consumer/"
-featured_image = "../WMI-Filter-Query-Consumer/images/WMI-Logo.png"
+featured_image = "/images/Windows11Explorer.png"
 schema_type = "Article"
 +++
 
