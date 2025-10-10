@@ -27,8 +27,7 @@
                     {{ if not .Params.disableSearch }}
                     <!-- Search Filter -->
                     <div class="search-filter">
-                        <input type="text" id="sectionSearch" placeholder="🔍 {{ .Params.searchPlaceholder | default "
-                            Search..." }}" class="search-input">
+                        <input type="text" id="sectionSearch" placeholder="🔍 {{ .Params.searchPlaceholder | default "Search..." }}" class="search-input">
                         <div id="searchResults" class="search-results"></div>
                     </div>
                     {{ end }}
