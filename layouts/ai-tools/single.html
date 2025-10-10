@@ -4,7 +4,6 @@
 <head>
     {{ partial "head.html" . }}
 
-    <!-- AI Tools specific styles and scripts -->
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/ai-tools-pages.css">
 </head>
@@ -13,10 +12,11 @@
 
     <div class="container">
         {{ partial "header.html" . }}
+        {{ partial "side-menu-LR.html" . }}
 
         <div class="content">
             <main class="main-content">
-                <!-- AI Tools Interface Layout -->
+                <!-- AI Tools Interface Layout. Shows you the MD Page Data -->
                 {{ .Content }}
 
                 {{ if .Params.pageScript }}
@@ -24,7 +24,7 @@
                 {{ end }}
             </main>
         </div>
-
+        <!-- Shows you the Footer -->
         <footer class="footer">
             <div class="footer-content">
                 <p>&copy; 2025 TheGongShow. All rights reserved.</p>
@@ -35,7 +35,7 @@
 
     {{ partial "javascript.html" . }}
 
-    <!-- AI Tools Layout Script -->
+    <!-- Sets the Content Design and Shape for the AI Tools Layout -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Reorganize content into side-by-side layout

@@ -1,8 +1,22 @@
-# Windows Registry: System Start, Shutdown, and Reboot Tracking
++++
+title = "Windows Registry: System Start, Shutdown, and Reboot Tracking"
+date = "2023-10-01"
+draft = false
+tags = ["4n6", "digital forensics", "windows forensics", "registry", "system start", "shutdown", "reboot", "DFIR"]
+categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "Windows Registry: System Start, Shutdown, and Reboot Tracking"
+description = "An in-depth look at the Windows registry for tracking system start, shutdown, and reboot events in digital forensic investigations."
+keywords = ["Windows Registry", "System Start", "Shutdown", "Reboot", "Digital Forensics", "DFIR", "Forensic Artifacts"]
+canonical = "/4n6Post/Registry-Start-Shutdown-Count/"
+featured_image = "../Registry-Start-Shutdown-Count/images/RegistryBlock.png"
+schema_type = "Article"
++++
 
 The Windows registry is a hierarchical database that stores configuration settings for Windows operating systems, including Windows 10, Windows 8, and Windows 7. The registry is organized into five main components, namely HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, and HKEY_CURRENT_CONFIG. Each of these components contains subkeys that store configuration data, including the data and time for when a computer turns on, shuts down, and restarts.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../Registry-Start-Shutdown-Count/images/RegistryBlock.png)
 
 ## The SYSTEM\Select subkeys and objects are as follows:
 
@@ -26,9 +40,9 @@ Here is a one liner PowerShell Script to decode your current Windows Registry da
 [DateTime]::FromFileTimeUtc([BitConverter]::ToInt64(([byte[]](Get-ItemPropertyValue -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Windows" -Name "ShutdownTime")), 0))
 ```
 
-![PowerShell Output 1](images/Restart-Reboot-Shutdown-PoSH1.png)
+![PowerShell Output 1](../Registry-Start-Shutdown-Count/images/Restart-Reboot-Shutdown-PoSH1.png)
 
-![PowerShell Output 2](images/Restart-Reboot-Shutdown-PoSH2.png)
+![PowerShell Output 2](../Registry-Start-Shutdown-Count/images/Restart-Reboot-Shutdown-PoSH2.png)
 
 - **AutoReboot**: The subkey and stores a value of 1 if the computer is set to automatically restart after a system failure.
 

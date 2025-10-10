@@ -8,7 +8,6 @@ tags: [it-tools, web app, tools, cyberchef, draw.io, dashboard, productivity,
 IT Tools is a collection of web-based tools designed for IT professionals. It includes applications like CyberChef for data analysis, Draw.io for diagramming, and other utilities that enhance productivity and collaboration in IT environments.
 
 ## Portainer Stack
-
 ![IT Tools Example](../images/it_tools_example.png)
 
 ```yaml

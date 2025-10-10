@@ -10,7 +10,7 @@ categories = ["4n6", "Digital Forensics", "Windows Forensics", "Registry Analysi
 type = "4n6post"
 seo_title = "UserAssist Registry Analysis - Windows Program Execution Forensics"
 canonical = "/4n6post/userassist/"
-featured_image = "/images/4n6post/userassist-analysis.png"
+featured_image = "/images/userassist-analysis.png"
 schema_type = "TechArticle"
 author = "JonesCKevin"
 sitemap_priority = 0.8
@@ -26,7 +26,7 @@ sitemap_changefreq = "monthly"
   twitter_image = "/images/4n6post/userassist-twitter.png"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../UserAssist/images/RegistryBlock.png)
 
 **UserAssist** is a feature of the Windows operating system that keeps track of the programs that are launched on a user's profile. This information is stored in the registry, a database that contains configuration settings for the operating system and other software. In this blog post, we'll explore what UserAssist is, its normal use cases, and how it can be abused by malicious actors.
 
@@ -44,14 +44,14 @@ The UserAssist key is located under the following path in the registry:
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\
 ```
 
-![UserAssist Registry Structure](images/UserAssist0.png)
+![UserAssist Registry Structure](../UserAssist/images/UserAssist0.png)
 
 The UserAssist registry contains subkeys with GUID identifiers that categorize different types of user activities:
 
 - **{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}**: Executable file runs
 - **{F4E57C4B-2036-45F0-A9AB-443BCFE33D9F}**: Shortcut file runs
 
-![UserAssist Registry Values](images/UserAssist1.png)
+![UserAssist Registry Values](../UserAssist/images/UserAssist1.png)
 
 ## Data Structure and Encoding
 
@@ -60,7 +60,7 @@ UserAssist entries contain several important pieces of information:
 ### Encoded Program Names
 Program names and paths are stored in ROT13 encoding (Caesar cipher with 13-character shift). This simple obfuscation requires decoding to reveal the actual program names.
 
-![UserAssist Encoded Data](images/UserAssist2.png)
+![UserAssist Encoded Data](../UserAssist/images/UserAssist2.png)
 
 ### Execution Count and Timestamps
 Each entry contains:
@@ -81,7 +81,7 @@ ROT13 shifts each letter 13 positions in the alphabet:
 ### CyberChef Analysis
 CyberChef provides an excellent platform for decoding UserAssist data:
 
-![CyberChef UserAssist Decoding](images/UserAssist-CyberChef.png)
+![CyberChef UserAssist Decoding](../UserAssist/images/UserAssist-CyberChef.png)
 
 Using CyberChef's ROT13 operation, analysts can quickly decode:
 - Program paths and names
@@ -183,7 +183,7 @@ Cross-reference UserAssist data with:
 - May miss some program types
 - Dependent on Windows version
 
-![UserAssist Analysis Reference](images/image_425c299a.png)
+![UserAssist Analysis Reference](../UserAssist/images/image_425c299a.png)
 
 ## Conclusion
 

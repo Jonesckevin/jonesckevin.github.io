@@ -4,9 +4,17 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "WMI", "persistence", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "WMI Filter Query Consumer - Digital Forensics"
+description = "An in-depth look at WMI Filter Query Consumers and their significance for digital forensic investigations."
+keywords = ["WMI", "Filter Query", "Digital Forensics", "DFIR", "Persistence", "Windows Forensics"]
+canonical = "/4n6Post/WMI-Filter-Query-Consumer/"
+featured_image = "../WMI-Filter-Query-Consumer/images/WMI-Logo.png"
+schema_type = "Article"
 +++
 
-![WMI Logo](images/WMI-Logo.png)
+![WMI Logo](../WMI-Filter-Query-Consumer/images/WMI-Logo.png)
 
 Windows Management Instrumentation (WMI) is a Microsoft technology that provides a unified way of managing Windows operating systems and applications. WMI is a management infrastructure that is built into Windows operating systems, and it provides a standardized interface for accessing system management information. WMI is used by system administrators to gather information about the state of their systems, to automate system management tasks, and to perform remote administration. In this blog post, we will take a closer look at what WMI is, how it works, and some examples of its normal and malicious use cases.
 
@@ -51,7 +59,7 @@ WMI Event Consumers are components that can respond to specific WMI events. Ther
 
 PowerShell provides powerful capabilities for analyzing WMI components:
 
-![PowerShell WMI Analysis](images/WMI-PoSH1.png)
+![PowerShell WMI Analysis](../WMI-Filter-Query-Consumer/images/WMI-PoSH1.png)
 
 ### Key PowerShell Commands:
 

@@ -4,9 +4,28 @@ description: "A comprehensive guide on using SOF-ELK with KAPE for digital foren
 keywords: ["SOF-ELK", "KAPE", "digital forensics", "MFT", "Event Logs", "EVTX", "forensics analysis", "incident response"]
 date: 2024-01-01
 draft: false
+tags: ["SOF-ELK", "KAPE", "Digital Forensics", "MFT", "Event Logs", "EVTX", "Forensics Analysis", "Incident Response"]
+categories: ["4N6Post", "Digital Forensics", "Tools"]
+type: 4n6post
+author: JonesCKevin
+seo_title: "SOF-ELK Uploading Guide - Digital Forensics with KAPE"
+canonical: "/4n6Post/SOF-ELK_Uploading/"
+featured_image: "/../SOF-ELK_Uploading/images/SOF-ELK.png"
+schema_type: "Article"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "SOF-ELK Uploading - Digital Forensics with KAPE"
+  og_description: "A comprehensive guide on using SOF-ELK with KAPE for digital forensics, including MFT and Event Log analysis"
+  og_image: "/../SOF-ELK_Uploading/images/SOF-ELK-social.png"
+  og_type: "article"
+  twitter_card: "summary_large_image"
+  twitter_title: "SOF-ELK Uploading Guide"
+  twitter_description: "Learn how to use SOF-ELK with KAPE for effective digital forensics, focusing on MFT and Event Log analysis."
+  twitter_image: "/../SOF-ELK_Uploading/images/SOF-ELK-twitter.png"
 ---
 
-![SOF-ELK Logo](images/SOF-ELK.png)
+![SOF-ELK Logo](../SOF-ELK_Uploading/../SOF-ELK_Uploading/images/SOF-ELK.png)
 
 ## Resources and Help
 
@@ -23,11 +42,11 @@ SOF-ELK, coupled with the powerful capabilities of the KAPE (Kroll Artifact Pars
 
 You can easily import the Virtual Machine by using the downloaded VMDK and VMX files. Depending on the version, you might need to upgrade it to match your current version, as shown in the images below. If the image fails to load, it suggests an upgrade. Once you create a clone, the Virtual Machine should function properly.
 
-![SOF-ELK Installation Step 1](images/SOF-ELK1.PNG)
+![SOF-ELK Installation Step 1](../SOF-ELK_Uploading/images/SOF-ELK1.PNG)
 
-![SOF-ELK Installation Step 2](images/SOF-ELK2.PNG)
+![SOF-ELK Installation Step 2](../SOF-ELK_Uploading/images/SOF-ELK2.PNG)
 
-![SOF-ELK Installation Step 3](images/SOF-ELK3.PNG)
+![SOF-ELK Installation Step 3](../SOF-ELK_Uploading/images/SOF-ELK3.PNG)
 
 **Default User:** elk_user  
 **Default Password:** forensics
@@ -38,7 +57,7 @@ You can easily import the Virtual Machine by using the downloaded VMDK and VMX f
 
 To start, it's essential to prepare and decide on the method you intend to use for transferring files to the designated folder on the machine. In this example, I'll be utilizing WinSCP for the connection and transfer process.
 
-![WinSCP Connection](images/SOF-ELK4.PNG)
+![WinSCP Connection](../SOF-ELK_Uploading/images/SOF-ELK4.PNG)
 
 **Navigate to the destination folder:**
 
@@ -46,7 +65,7 @@ To start, it's essential to prepare and decide on the method you intend to use f
 /logstash/kape
 ```
 
-![Destination Folder](images/SOF-ELK5.PNG)
+![Destination Folder](../SOF-ELK_Uploading/images/SOF-ELK5.PNG)
 
 ## Creating KAPE Files
 
@@ -73,21 +92,21 @@ Once the scan completes, review the generated KAPE report to ensure that the MFT
 ### Step 7: Move the Results
 Once you confirm the files appear correct, use WinSCP to move/copy the files to the SOF-ELK KAPE Folder and wait a few minutes for the system to import them with the preinstalled filebeats process.
 
-![KAPE GUI Configuration](images/SOF-ELK6.png)
+![KAPE GUI Configuration](../SOF-ELK_Uploading/images/SOF-ELK6.png)
 
-![KAPE Output](images/SOF-ELK6-2.png)
+![KAPE Output](../SOF-ELK_Uploading/images/SOF-ELK6-2.png)
 
-![KAPE Processing](images/SOF-ELK6-3.png)
+![KAPE Processing](../SOF-ELK_Uploading/images/SOF-ELK6-3.png)
 
-![File Transfer to SOF-ELK](images/SOF-ELK7.png)
+![File Transfer to SOF-ELK](../SOF-ELK_Uploading/images/SOF-ELK7.png)
 
-![Files in KAPE Folder](images/SOF-ELK8.png)
+![Files in KAPE Folder](../SOF-ELK_Uploading/images/SOF-ELK8.png)
 
 ## Exploring the SOF-ELK Web GUI
 
 Using the IP:Port of your Server, navigate to `http://<IP>:5601`.
 
-![SOF-ELK Web Interface](images/SOF-ELK10.png)
+![SOF-ELK Web Interface](../SOF-ELK_Uploading/images/SOF-ELK10.png)
 
 The key area you will want to be aware of is the different dashboards you can pick from as each of the different artifacts are shown using a different dashboard.
 
@@ -96,9 +115,9 @@ The key area you will want to be aware of is the different dashboards you can pi
 - **LNK File Dashboard**
 - **Filesystem Dashboard**
 
-![Dashboard Selection](images/SOF-ELK11.png)
+![Dashboard Selection](../SOF-ELK_Uploading/images/SOF-ELK11.png)
 
-![Dashboard View](images/SOF-ELK12.png)
+![Dashboard View](../SOF-ELK_Uploading/images/SOF-ELK12.png)
 
 > **IMPORTANT: ENSURE YOU CHANGE THE TIMEFRAME AT THE TOP RIGHT TO FIT THE PROPER TIMEFRAME YOU ARE LOOKING FOR!!**
 

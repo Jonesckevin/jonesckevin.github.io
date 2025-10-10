@@ -1,15 +1,22 @@
----
-title: "Understanding the RunMRU Registry: Security Implications and Forensic Value"
-date: 2023-01-01
-draft: false
-tags: ["forensics", "windows", "registry", "security", "digital-forensics"]
-categories: ["Digital Forensics"]
-keywords: ["4n6", "digital forensics", "RunMRU", "registry", "Windows forensics", "SANS", "proof of execution", "malware analysis"]
----
++++
+title = "Understanding the RunMRU Registry: Security Implications and Forensic Value"
+date = "2023-01-01"
+draft = false
+tags = ["forensics", "windows", "registry", "security", "digital-forensics"]
+categories = ["Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "Understanding the RunMRU Registry: Security Implications and Forensic Value"
+description = "An in-depth look at the RunMRU registry, its normal use cases, and its potential for malicious exploitation."
+keywords = ["RunMRU", "Windows Registry", "Digital Forensics", "DFIR", "Malware Analysis"]
+canonical = "/4n6Post/runMRU/"
+featured_image = "../runMRU/images/RegistryBlock.png"
+schema_type = "Article"
++++
 
 The RunMRU (Most Recently Used) registry is a key component of the Microsoft Windows operating system, storing information about the most recently executed applications and documents. This information is used to populate the "Recent Items" list in the Start menu, as well as for application compatibility purposes.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../runMRU/images/RegistryBlock.png)
 
 While the RunMRU registry serves a useful purpose for end users, it also presents a potential security risk if not properly managed. In this blog post, we will discuss the normal use case for the RunMRU registry, as well as several examples of malicious use of the RunMRU registry. We will also provide links to additional resources for further study, including a white paper on the RunMRU registry and a SANS poster with proof of execution.
 
@@ -23,11 +30,11 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 
 The RunMRU registry is located in the Windows registry under the key **HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU**. It can be viewed and modified using the Registry Editor (regedit.exe) in Windows.
 
-![RunMRU Registry Example 1](images/runMRU-Reg1.PNG)
+![RunMRU Registry Example 1](../runMRU/images/runMRU-Reg1.PNG)
 
 In the image above, I used `ping 127.0.0.1` in the run box, followed by ipconfig. This gave the order a and then b. You can see the last object called **"MRUList"** with the value of **"ba"**. This will give you the last order of usage of the RunMRU's. In this case, **"b"** was most recently used as it was the second one I executed. In the following image, you can see additional MRUList items for an example.
 
-![RunMRU Registry Example 2](images/runMRU-Reg2.PNG)
+![RunMRU Registry Example 2](../runMRU/images/runMRU-Reg2.PNG)
 
 In order of last executed, you can see that I re-ran **"a"** after I ran **"d"** and the list will only show the last use.
 
@@ -47,6 +54,6 @@ The RunMRU registry is an important component of the Microsoft Windows operating
 
 For proof of execution of malicious activity related to the RunMRU registry, we recommend viewing the SANS poster "RunMRU Registry Key: Proof of Execution". This poster can be found at the following link:
 
-![SANS RunMRU Poster](images/runMRU-SansPoster.PNG)
+![SANS RunMRU Poster](../runMRU/images/runMRU-SansPoster.PNG)
 
 [https://www.sans.org/posters/windows-forensic-analysis/](https://www.sans.org/posters/windows-forensic-analysis/)

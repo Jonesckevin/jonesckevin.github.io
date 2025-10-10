@@ -1,0 +1,19 @@
+/* ==========================================================================
+   WRITEUPS THEME
+   Purple/Magenta theme for Writeups section
+   ========================================================================== */
+
+body.section-writeups {
+    --accent: #9d4edd;
+    --accent-light: #c77dff;
+    --accent-soft: rgba(157, 78, 221, 0.18);
+    --accent-soft-border: rgba(157, 78, 221, 0.35);
+    --accent-glow: rgba(157, 78, 221, 0.3);
+    --accent-button-text: #ffffff;
+
+    --card-bg: linear-gradient(135deg, #24182a 0%, #1a141e 100%);
+    --card-bg-hover: linear-gradient(135deg, #2e1f35 0%, #221a28 100%);
+    --code-bg: #1e1424;
+
+    background: #232425;
+}

@@ -4,9 +4,17 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "LNK files", "shortcuts", "malware analysis", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "LNK Files - Windows Shortcuts for Digital Forensics"
+description = "An in-depth look at LNK files (Windows shortcuts) and their significance for digital forensic investigations."
+keywords = ["LNK Files", "Windows Shortcuts", "Digital Forensics", "DFIR", "Malware Analysis", "Forensic Artifacts"]
+canonical = "/4n6Post/ShortCut-LNK/"
+featured_image = "images/LNK File.png"
+schema_type = "Article"
 +++
 
-![LNK File Overview](images/LNK%20File.png)
+![LNK File Overview](../ShortCut-LNK/images/LNKFile.png)
 
 Windows users are likely familiar with .lnk files, also known as LNK Link files. These files are shortcuts that point to another file or folder on the computer, allowing users to quickly access their desired content. While LNK files are a convenient feature in Windows, they can also be exploited by malicious actors. In this post, we'll explore LNK files, their normal use cases, and how they can be exploited by cybercriminals.
 
@@ -55,9 +63,9 @@ For this example, I decided to do something simple and normally create a shortcu
 
 Windows will appropriately clean up the path with full paths as you can see in the image below. In the photo, you can also see that the starting path was set to the default powershell directory and the icon was converted to the appropriate powershell icon.
 
-![LNK Example Properties](images/LNK-Example1.PNG)
+![LNK Example Properties](../ShortCut-LNK/images/LNK-Example1.PNG)
 
-![LNK Example Icon](images/LNK-Example5.PNG)
+![LNK Example Icon](../ShortCut-LNK/images/LNK-Example5.PNG)
 
 ### Analysis Methods
 
@@ -80,9 +88,9 @@ LNK files contain structured binary data that includes:
 - **Icon Information**: Display icon and location
 - **Timestamps**: Creation, modification, and access times
 
-![LNK Structure Analysis](images/LNK-Example3.PNG)
+![LNK Structure Analysis](../ShortCut-LNK/images/LNK-Example3.PNG)
 
-![LNK Detailed Analysis](images/LNK-Example4.PNG)
+![LNK Detailed Analysis](../ShortCut-LNK/images/LNK-Example4.PNG)
 
 ## Forensic Analysis Techniques
 
@@ -133,7 +141,7 @@ Suspicious LNK characteristics:
 - **FTK Imager**: Forensic imaging and analysis
 - **Hex Editors**: Binary structure examination
 
-![SANS LNK Files Reference](images/LNK-Poster.PNG)
+![SANS LNK Files Reference](../ShortCut-LNK/images/LNK-Poster.PNG)
 
 ## Conclusion
 

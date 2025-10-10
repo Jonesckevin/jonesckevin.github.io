@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+
+<head>
+    {{ partial "head.html" . }}
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/section-base.css">
+    {{ if .Params.customCSS }}
+    <link rel="stylesheet" href="{{ .Params.customCSS }}">
+    {{ end }}
+</head>
+
+<body class="section-{{ lower .Section }}">
+
+    <div class="container">
+        {{ partial "header.html" . }}
+        {{ partial "side-menu-LR.html" . }}
+
+        <div class="content">
+            <main class="main-content">
+                <div class="hero-section">
+                    <h1 class="hero-title">{{ .Title }}</h1>
+                    {{ with .Description }}
+                    <p class="hero-description">{{ . }}</p>
+                    {{ end }}
+
+                    {{ if not .Params.disableSearch }}
+                    <!-- Search Filter -->
+                    <div class="search-filter">
+                        <input type="text" id="sectionSearch" placeholder="🔍 {{ .Params.searchPlaceholder | default "Search..." }}" class="search-input">
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                    {{ end }}
+                </div>
+
+                {{ .Content }}
+
+                <div class="services-grid" id="servicesGrid">
+                    {{/* Check if using menu-based content (AI Tools) */}}
+                    {{ if .Params.useMenus }}
+                    {{/* Iterate through specified menus */}}
+                    {{- range $menuName := .Params.menuNames }}
+                    {{- $menu := index $.Site.Menus $menuName }}
+                    {{- range $menu }}
+                    {{- if and .Params.show_home (ne .Name "Home") }}
+                    <a href="{{ .URL | relLangURL }}" class="service-card" data-title="{{ .Params.home_title | lower }}"
+                        data-description="{{ .Params.home_description | lower }}"
+                        data-tags="{{ if .Params.home_features }}{{ delimit .Params.home_features " " | lower }}{{ end }}">
+                        <div class="card-header">
+                            <h3>{{ .Params.home_title }}</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-content-wrapper">
+                                <p>{{ .Params.home_description }}</p>
+                                {{ with .Params.home_features }}
+                                <ul class="feature-list">
+                                    {{- range . }}
+                                    <li>{{ . }}</li>
+                                    {{- end }}
+                                </ul>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </a>
+                    {{- end }}
+                    {{- end }}
+                    {{- end }}
+                    {{ else }}
+                    {{/* Default: Use pages */}}
+                    {{ range .Pages }}
+                    <a href="{{ .Permalink }}" class="service-card" data-title="{{ .Title | lower }}"
+                        data-description="{{ with .Description }}{{ . | lower }}{{ else }}{{ .Summary | plainify | lower }}{{ end }}"
+                        data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}">
+                        <div class="card-header">
+                            <h3>{{ .Title }}</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-content-wrapper">
+                                {{ with .Description }}
+                                <p>{{ . }}</p>
+                                {{ else }}
+                                <p>{{ .Summary | plainify | truncate 150 }}</p>
+                                {{ end }}
+
+                                {{ if not $.Params.hideThumbnails }}
+                                {{ if or .Params.thumbnail .Params.featured_image }}
+                                <div class="card-thumbnail-inline">
+                                    {{ if .Params.thumbnail }}
+                                    <img src="{{ .Params.thumbnail | absURL }}" alt="{{ .Title }}">
+                                    {{ else if .Params.featured_image }}
+                                    <img src="{{ .Params.featured_image | absURL }}" alt="{{ .Title }}">
+                                    {{ end }}
+                                </div>
+                                {{ end }}
+                                {{ end }}
+
+                                {{ with .Params.tags }}
+                                <ul class="feature-list">
+                                    {{ range first 3 . }}
+                                    <li>{{ . }}</li>
+                                    {{ end }}
+                                </ul>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </a>
+                    {{ end }}
+                    {{ end }}
+                </div>
+
+                {{/* Optional security/info section */}}
+                {{ if .Params.showSecurity }}
+                <div class="security-section">
+                    <h2>{{ .Site.Params.aitools.security_title }}</h2>
+                    <div class="security-grid">
+                        {{- range .Site.Params.aitools.security }}
+                        <div class="security-item">
+                            <h4>{{ .title }}</h4>
+                            <p>{{ .description }}</p>
+                        </div>
+                        {{- end }}
+                    </div>
+                </div>
+                {{ end }}
+
+                {{ if .Params.schemaType }}
+                {{/* Schema Markup */}}
+                {{ if .IsSection }}
+                <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "ItemList",
+                  "name": "{{ .Params.schemaName | default .Title }}",
+                  "description": "{{ .Params.schemaDescription | default .Description }}",
+                  "url": "{{ .Permalink }}",
+                  "numberOfItems": {{ len .Pages }},
+                  "itemListElement": [
+                    {{ range $index, $page := .Pages }}
+                    {
+                      "@type": "{{ $.Params.schemaItemType | default "Article" }}",
+                      "position": {{ add $index 1 }},
+                      {{ if eq $.Params.schemaItemType "SoftwareApplication" }}
+                      "name": "{{ $page.Title }}",
+                      "applicationCategory": "{{ $.Params.schemaCategory | default "Productivity" }}",
+                      {{ else if eq $.Params.schemaItemType "SoftwareSourceCode" }}
+                      "name": "{{ $page.Title }}",
+                      "programmingLanguage": "{{ $.Params.schemaProgrammingLanguage | default "Docker" }}",
+                      {{ else }}
+                      "headline": "{{ $page.Title }}",
+                      "datePublished": "{{ $page.Date.Format "2006-01-02" }}",
+                      {{ if $page.Lastmod }}"dateModified": "{{ $page.Lastmod.Format "2006-01-02" }}",{{ end }}
+                      "author": {
+                        "@type": "Person",
+                        "name": "{{ if $page.Params.author }}{{ $page.Params.author }}{{ else }}{{ $.Params.defaultAuthor | default "JonesCKevin" }}{{ end }}"
+                      },
+                      "keywords": "{{ if $page.Params.tags }}{{ delimit $page.Params.tags ", " }}{{ end }}",
+                      {{ end }}
+                      "description": "{{ if $page.Params.description }}{{ $page.Params.description }}{{ else }}{{ $page.Summary | plainify | truncate 160 }}{{ end }}",
+                      "url": "{{ $page.Permalink }}"
+                    }{{ if ne $index (sub (len $.Pages) 1) }},{{ end }}
+                    {{ end }}
+                  ]
+                }
+                </script>
+                {{ end }}
+                {{ end }}
+            </main>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 TheGongShow. All rights reserved.</p>
+                {{ if .Params.footerNote }}
+                <p>{{ .Params.footerNote }}</p>
+                {{ end }}
+            </div>
+        </footer>
+    </div>
+
+    {{ partial "javascript.html" . }}
+
+    {{ if not .Params.disableSearch }}
+    <!-- Search Filter Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('sectionSearch');
+            const searchResults = document.getElementById('searchResults');
+            const servicesGrid = document.getElementById('servicesGrid');
+            const serviceCards = servicesGrid.querySelectorAll('.service-card');
+
+            let noResultsDiv = null;
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                searchResults.innerHTML = '';
+
+                if (searchTerm === '') {
+                    serviceCards.forEach(card => card.style.display = '');
+                    if (noResultsDiv) noResultsDiv.remove();
+                    searchResults.style.display = 'none';
+                    return;
+                }
+
+                let visibleCount = 0;
+
+                serviceCards.forEach(card => {
+                    const title = card.getAttribute('data-title');
+                    const description = card.getAttribute('data-description');
+                    const tags = card.getAttribute('data-tags');
+
+                    if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount > 0) {
+                    searchResults.innerHTML = `<span style="color: var(--accent); font-weight: bold;">${visibleCount} {{ .Params.searchResultLabel | default "item" }}${visibleCount !== 1 ? 's' : ''} found</span>`;
+                    searchResults.style.display = 'block';
+                    if (noResultsDiv) noResultsDiv.remove();
+                } else {
+                    searchResults.innerHTML = '<span style="color: var(--accent);">No {{ .Params.searchResultLabel | default "items" }} found matching your search</span>';
+                    searchResults.style.display = 'block';
+
+                    if (!noResultsDiv) {
+                        noResultsDiv = document.createElement('div');
+                        noResultsDiv.className = 'no-results-message';
+                        noResultsDiv.innerHTML = `
+                            <div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">
+                                <h3 style="color: var(--accent); margin-bottom: 15px;">No {{ .Params.searchNoResultsTitle | default "Items" }} Found</h3>
+                                <p style="opacity: 0.8; margin-bottom: 20px;">Try a different search term or browse all available {{ .Params.searchResultLabel | default "items" }}.</p>
+                                <button onclick="document.getElementById('sectionSearch').value = ''; document.getElementById('sectionSearch').dispatchEvent(new Event('input'));" style="background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: var(--accent-button-text); border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">Clear Search</button>
+                            </div>
+                        `;
+                        servicesGrid.appendChild(noResultsDiv);
+                    }
+                }
+            });
+
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    this.dispatchEvent(new Event('input'));
+                    this.blur();
+                }
+            });
+        });
+    </script>
+    {{ end }}
+</body>
+
+</html>

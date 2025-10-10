@@ -10,25 +10,24 @@ categories = ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
 type = "4n6post"
 seo_title = "MFT Analysis Guide - Master File Table Digital Forensics"
 canonical = "/4n6post/mft/"
-featured_image = "/images/4n6post/mft-analysis.png"
+featured_image = "../MFT/images/MFTFile.png"
 schema_type = "TechArticle"
 author = "JonesCKevin"
 sitemap_priority = 0.8
 sitemap_changefreq = "monthly"
-aliases = ["/2023/12/the-mft-comprehensive-guide.html"]
 +++
 [social_media]
   og_title = "MFT Analysis - Master File Table Forensics Guide"
   og_description = "Complete guide to NTFS Master File Table analysis for digital forensics. Learn MFT structure, artifacts, and tools for DFIR investigations."
-  og_image = "/images/4n6post/mft-social.png"
+  og_image = "../MFT/images/4n6post/mft-social.png"
   og_type = "article"
   twitter_card = "summary_large_image"
   twitter_title = "MFT Analysis - Digital Forensics Guide"
   twitter_description = "Complete MFT analysis guide for digital forensics - structure, artifacts, and forensic tools for DFIR investigations."
-  twitter_image = "/images/4n6post/mft-twitter.png"
+  twitter_image = "../MFT/images/4n6post/mft-twitter.png"
 +++
 
-![MFT File Overview](images/MFT%20File.png)
+![MFT File Overview](../MFT/images/MFTFile.png)
 
 The **$MFT**, or Master File Table, plays a crucial role in the NTFS (New Technology File System) utilized by Windows operating systems. Essentially acting as a master index for all files and directories on an NTFS volume, understanding the nuances of the $MFT file is vital for various professionals, including forensic investigators, system administrators, and security experts. In this blog post, we'll thoroughly explore the $MFT file, examining its structure, functions, and its applications in both normal and potentially malicious scenarios. Additionally, we'll touch upon tools such as MFTECmd.exe by Eric Zimmerman and MACTIME in Linux, highlighting how these tools can be utilized in forensic analysis to parse the $MFT.
 
@@ -56,7 +55,7 @@ At a deep level, you can find the $MFT file sitting on Logical Sector 1 (Which i
 
 1. Even with Super Hidden Files Enabled in Windows 11, the MFT cannot be seen. Using FTKImager or other tools can help you find and or extract the file.
 
-![FTK Imager Hidden Files](images/4n6Post_$MFT%20(1).png)
+![FTK Imager Hidden Files](../MFT/images/4n6Post_$MFT(1).png)
 
 ## Carving Out the $MFT File: From Start to End
 
@@ -68,11 +67,11 @@ In the screenshot below, you can see PHYSICALDRIVE1, in Sector 1 of the drive we
 
 These are partitions start being listed on at offset 400 or 1024 bytes. Each Partition header is 128 Bytes long (0x80).
 
-![EFI Partition Table](images/4n6Post_$MFT%20(2).png)
+![EFI Partition Table](../MFT/images/4n6Post_$MFT(2).png)
 
-![Partition Analysis View](images/4n6Post_$MFT%20(3-1).png)
+![Partition Analysis View](../MFT/images/4n6Post_$MFT(3-1).png)
 
-![Partition Header Details](images/4n6Post_$MFT%20(4-1).png)
+![Partition Header Details](../MFT/images/4n6Post_$MFT(4-1).png)
 
 3. *The break down of how these are built will be on a new page once I create one, and I will replace this text when it's ready to be linked.*
 
@@ -106,7 +105,7 @@ The following partitions start and end at Hex:
 
 **For now you can click on the appropriate partion in FTKimager to logically navigate to where you want to go.**
 
-![Partition Navigation](images/4n6Post_$MFT%20(5).png)
+![Partition Navigation](../MFT/images/4n6Post_$MFT(5).png)
 
 4. Where we want to go is to one of the NTFS partitions. You might notice that in my example, the largest one which is C: Drive is encrypted. This may dampen your style, depending on your scenarios.
 
@@ -114,9 +113,9 @@ What can be seen by looking at this partition is the encrypted value showing **e
 - Because I am using the drive, it can be seen unencrypted.
 - You will have to mount Encrypted ones separately or use an unencrypted partition for your testing.
 
-![BitLocker Encrypted Partition](images/4n6Post_$MFT%20(6).png)
+![BitLocker Encrypted Partition](../MFT/images/4n6Post_$MFT(6).png)
 
-![Unencrypted NTFS Partition](images/4n6Post_$MFT%20(7).png)
+![Unencrypted NTFS Partition](../MFT/images/4n6Post_$MFT(7).png)
 
 5. Here you can see Partition 4 is not encrypted and allows me to go to the MFT. (FILE0)
 
@@ -125,21 +124,21 @@ What can be seen by looking at this partition is the encrypted value showing **e
   - You can see from the image the physical sector is actually 0x38bb5810 (or Sector 951,801,872)
   - If you look back at the Start and End Partition in step 3 you can see that the Partition Starts at 0x38BB5800, which is hex 10 or 16 sectors in difference. Everything appears to line up, which is nice.
 
-![MFT FILE0 Entry](images/4n6Post_$MFT%20(8).png)
+![MFT FILE0 Entry](../MFT/images/4n6Post_$MFT(8).png)
 
-![MFT Structure Hex View](images/4n6Post_$MFT%20(9).png)
+![MFT Structure Hex View](../MFT/images/4n6Post_$MFT(9).png)
 
 6. You can see the $MFT file itself, by scrolling to find the attributes.
 
-![MFT File Attributes](images/4n6Post_$MFT%20(10).png)
+![MFT File Attributes](../MFT/images/4n6Post_$MFT(10).png)
 
-![MFT File Analysis](images/4n6Post_$MFT%20(11).png)
+![MFT File Analysis](../MFT/images/4n6Post_$MFT(11).png)
 
-![MFT Entry Details](images/4n6Post_$MFT%20(12).png)
+![MFT Entry Details](../MFT/images/4n6Post_$MFT(12).png)
 
-![MFT Records Structure](images/4n6Post_$MFT%20(13).png)
+![MFT Records Structure](../MFT/images/4n6Post_$MFT(13).png)
 
-![MFT Data Analysis](images/4n6Post_$MFT%20(14).png)
+![MFT Data Analysis](../MFT/images/4n6Post_$MFT(14).png)
 
 ## Forensic Analysis Tools
 

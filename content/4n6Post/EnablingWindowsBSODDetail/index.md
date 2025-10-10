@@ -4,11 +4,17 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "Enabling Windows BSOD Detail Information"
+description = "A guide to enabling detailed Blue Screen of Death (BSOD) information in Windows by modifying registry settings."
+keywords = ["BSOD", "Blue Screen of Death", "Windows Forensics", "Registry Settings", "Digital Forensics", "DFIR", "System Crashes", "Error Analysis"]
+canonical = "/4n6Post/EnablingWindowsBSODDetail/"
+featured_image = "/images/RegistryBlock.png"
+schema_type = "Article"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
-
-# Enabling Windows BSOD Detail Information
+![Registry Block](../EnablingWindowsBSODDetail/images/RegistryBlock.png)
 
 ## Introduction
 

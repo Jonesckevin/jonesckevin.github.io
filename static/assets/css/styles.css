@@ -16,6 +16,23 @@ body {
 }
 
 /* ==========================================================================
+   IMAGES
+   ========================================================================== */
+/* Limit example images to 100px height */
+img[alt*="_example.png"],
+img[alt*="_example.jpg"],
+img[alt*="_example.jpeg"],
+img[src*="_example.png"],
+img[src*="_example.jpg"],
+img[src*="_example.jpeg"] {
+    max-height: 100px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ==========================================================================
    NAVIGATION
    ========================================================================== */
 .navbar {
@@ -517,6 +534,45 @@ body {
     line-height: 1.5;
 }
 
+/* Search Filter */
+.search-filter {
+    margin-top: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 107, 53, 0.3);
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    border-color: #ff6b35;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.search-results {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    display: none;
+}
+
 /* ==========================================================================
    SERVICES GRID
    ========================================================================== */
@@ -541,22 +597,31 @@ body {
     width: 100%;
     max-width: none;
     min-height: 80px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .service-card:hover {
     transform: translateX(4px);
     border-color: #ff6b35;
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.15);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+    background: linear-gradient(135deg, #2f2f2f 0%, #232323 100%);
+}
+
+.service-card:hover .card-header h3 {
+    color: #ff8c69;
 }
 
 .card-header {
     padding: 16px 20px;
     border-bottom: none;
     border-right: 1px solid rgba(255, 107, 53, 0.1);
-    flex: 0 0 280px;
+    flex: 0 0 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 200px;
 }
 
 .card-header h3 {
@@ -578,7 +643,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px solid rgba(255, 107, 53, 0.1);
 }
 
 .card-content-wrapper {
@@ -617,14 +681,6 @@ body {
     display: none;
 }
 
-.card-footer {
-    padding: 16px 20px;
-    margin-top: 0;
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-}
-
 .pill {
     display: inline-block;
     padding: 2px 8px;
@@ -634,25 +690,6 @@ body {
     font-size: 0.75rem;
     line-height: 1;
     vertical-align: baseline;
-}
-
-.cta-button {
-    display: inline-block;
-    background: linear-gradient(135deg, #ff6b35, #ff8c69);
-    color: white;
-    text-decoration: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    text-align: center;
-    width: 100%;
-}
-
-.cta-button:hover {
-    background: linear-gradient(135deg, #ff8c69, #ff6b35);
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
 }
 
 /* ==========================================================================
@@ -1551,10 +1588,6 @@ p,
 
     .card-content {
         border-right: none;
-        padding: 12px 16px;
-    }
-
-    .card-footer {
         padding: 12px 16px;
     }
 

@@ -1,9 +1,18 @@
----
-title: "Understanding ShimCache: A Windows Forensic Artifact"
-date: 2023-02-15
-tags: ["Windows Forensics", "Digital Forensics", "ShimCache", "Registry", "Incident Response"]
-keywords: ["WMI", "WMIConsumer", "Wmi Consumer", "WMI Query", "Command Line", "windows registry", "4n6", "digital forensics news", "tryhackme pyramid of pain", "4n-6", "log4j", "evtxecmd", "ecdfp review", "review", "alert", "forensics", "digital", "digital forensics", "malwarebytes", "norton", "semantec", "bitdefender", "bytes", "news", "posts", "drives", "hard drives", "solid state", "ram", "blog", "sans"]
----
++++
+title = "ShimCache - Windows Application Compatibility Cache for Digital Forensics"
+date = "2023-10-01"
+draft = false
+tags = ["4n6", "digital forensics", "windows forensics", "registry", "shimcache", "DFIR"]
+categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "ShimCache - Windows Application Compatibility Cache for Digital Forensics"
+description = "An in-depth look at ShimCache (Application Compatibility Cache) and its significance for digital forensic investigations."
+keywords = ["ShimCache", "Application Compatibility Cache", "Digital Forensics", "DFIR", "Registry Analysis", "Forensic Artifacts"]
+canonical = "/4n6Post/SHIMCACHE/"
+featured_image = "images/SHIMCache-Logo.png"
+schema_type = "Article"
++++
 
 Shimcache is a Windows artifact that stores information about programs that **have been executed** on a Windows machine. The Shimcache can be used for both benign and malicious purposes, making it a useful tool for system administrators, digital forensics analysts, and attackers.
 

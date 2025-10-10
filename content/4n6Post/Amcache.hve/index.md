@@ -1,4 +1,20 @@
-![Registry Block](/images/RegistryBlock.png)
++++
+title = "Amcache.hve - Windows Amcache.hve Forensics"
+date = "2024-10-01"
+draft = false
+tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "Amcache.hve - Windows Amcache.hve Forensics"
+description = "An in-depth look at the Amcache.hve registry file and its significance for digital forensic investigations."
+keywords = ["Amcache.hve", "Windows Forensics", "Registry Analysis", "Digital Forensics", "DFIR", "Forensic Artifacts"]
+canonical = "/4n6Post/Amcache.hve/"
+featured_image = "../Amcache.hve/images/RegistryBlock.png"
+schema_type = "Article"
++++
+
+![Registry Block](../Amcache.hve/images/RegistryBlock.png)
 
 # Enabling Windows BSOD Detail Information
 

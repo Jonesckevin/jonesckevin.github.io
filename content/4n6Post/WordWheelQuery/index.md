@@ -4,9 +4,17 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "registry", "search history", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "WordWheelQuery - Windows Search History for Digital Forensics"
+description = "An in-depth look at the WordWheelQuery registry section and its significance for digital forensic investigations."
+keywords = ["WordWheelQuery", "Windows Search History", "Registry Analysis", "Digital Forensics", "DFIR", "User Activity", "Forensic Artifacts"]
+canonical = "/4n6Post/WordWheelQuery/"
+featured_image = "../WordWheelQuery/imagesWordWheelQuery.png"
+schema_type = "Article"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../WordWheelQuery/images/RegistryBlock.png)
 
 # The Registry Section of WordWheelQuery: An Overview for Digital Forensic Investigators
 

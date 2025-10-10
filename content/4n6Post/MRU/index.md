@@ -1,14 +1,22 @@
----
-title: "MRU (Most Recently Used) Registry"
-description: "Understanding the MRU registry in Windows for digital forensics"
-keywords: ["4n6", "digital forensics", "MRU", "registry", "Windows forensics", "SANS", "forensics analysis"]
----
++++
+title = "MRU (Most Recently Used) Registry"
+description = "Understanding the MRU registry in Windows for digital forensics"
+keywords = ["4n6", "digital forensics", "MRU", "registry", "Windows forensics", "SANS", "forensics analysis"]
+type = "4n6post"
+layout = "single"
+author = "JonesCKevin"
+seo_title = "MRU (Most Recently Used) Registry - Digital Forensics"
+canonical = "/4n6Post/MRU/"
+featured_image = "../MRU/images/RegistryBlock.png"
+schema_type = "Article"
+date = "2024-10-02"
++++
 
 # MRU (Most Recently Used) Registry
 
 The **MRU (Most Recently Used)** registry is a database in Microsoft Windows that stores information about recently opened files, URLs, and other items. This information can be used for a variety of purposes, both benign and malicious. **This is NOT the same as runMRU.**
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../MRU/images/RegistryBlock.png)
 
 ## Normal Use Case
 
@@ -30,11 +38,11 @@ The MRU registry can be found within the Windows registry, under the following k
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePidlMRU
 ```
 
-![MRU Registry Location](images/MRU-Reg1.png)
+![MRU Registry Location](../MRU/images/MRU-Reg1.png)
 
 The MRU registry entries are stored as binary values, each representing a different file or URL that was recently accessed. These values can be analyzed to determine the names and locations of the files and URLs that were recently accessed.
 
-![MRU Registry Values](images/MRU-Reg2.png)
+![MRU Registry Values](../MRU/images/MRU-Reg2.png)
 
 In the file system, the MRU information is stored in various locations, depending on the type of item that was recently accessed. For example, information about recently opened files can be found in the Recent folder, located at the following path:
 
@@ -50,7 +58,7 @@ In conclusion, the MRU registry is a useful tool for both users and applications
 
 The SANS poster provides a detailed analysis of the MRU registry and how it can be used to prove execution of files and applications. It provides valuable information for forensic investigators who need to determine what files and applications were executed on a system.
 
-![SANS Poster MRU](images/MRU-SansPoster.png)
+![SANS Poster MRU](../MRU/images/MRU-SansPoster.png)
 
 [https://www.sans.org/posters/windows-forensic-analysis/](https://www.sans.org/posters/windows-forensic-analysis/)
 

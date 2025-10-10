@@ -1,17 +1,18 @@
----
-title: "Understanding ShellBags in the Windows Registry: A Deep Dive"
-date: 2024-01-01
-draft: false
-description: "A comprehensive guide to ShellBags analysis in Windows Registry for digital forensics"
-tags: ["forensics", "registry", "shellbags", "windows", "digital-forensics"]
-keywords: ["4n6", "digital forensics", "shellbags", "shell bags", "shellbags analysis", "registry", "windows registry", "eric zimmerman", "registryexplorer", "accessdata"]
----
-
-# Understanding ShellBags in the Windows Registry: A Deep Dive
++++
+title = "Understanding ShellBags in the Windows Registry: A Deep Dive"
+date = "2024-01-01"
+draft = false
+description = "A comprehensive guide to ShellBags analysis in Windows Registry for digital forensics"
+tags = ["forensics", "registry", "shellbags", "windows", "digital-forensics"]
+keywords = ["4n6", "digital forensics", "shellbags", "shell bags", "shellbags analysis", "registry", "windows registry", "eric zimmerman", "registryexplorer", "accessdata"]
+categories = ["Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
++++
 
 As my other posts likely portrais. The Windows operating system is a treasure of love and trove-like of forensic evidence. Along with the various artifacts, ShellBags stand out for their ability to provide valuable timeline and insights into a user's general activity. Whether used for legitimate investigations or malicious purposes, understanding ShellBags is crucial for anyone dealing with digital forensics and even cybersecurity defenses like EDR.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../ShellBags/images/RegistryBlock.png)
 
 ## What Are ShellBags?
 
@@ -64,9 +65,9 @@ Eric Zimmerman's **RegistryExplorer** is one tool for analyzing Registry data. H
 2. **Interpret the Data:** RegistryExplorer provides a user-friendly ish interface that decodes binary data into readable formats. Review folder paths, timestamps, and view settings.
 3. **Bookmark Key Entries:** RegistryExplorer's bookmark feature is invaluable for investigations. Analysts can mark critical entries for quick reference, helping streamline the analysis process.
 
-![ShellBags Example 1](images/ShellBags0.png)
+![ShellBags Example 1](../ShellBags/images/ShellBags0.png)
 
-![ShellBags Example 2](images/ShellBags2.png)
+![ShellBags Example 2](../ShellBags/images/ShellBags2.png)
 
 Another tool that can be used is AccessData's Registry Viewer. This tool is also useful for parsing ShellBag data and provides a similar interface to RegistryExplorer. RegistryExplorer is likely more often used for the bookmarks but I tend to prefer RegistryViewer for the UI and less clicks for the data I personally want. I won't use examples here as to not double the blog data, but it's worth checking both to experience it yourself.
 
@@ -78,7 +79,7 @@ Imagine a scenario where a user accesses a folder named "Vacation Photos" stored
 
 In the following example, you can see a directory on a network share was accessed and looking at the left pane, this is represented as a 1 which would be the second last upper directory accessed, and it contains its own sub directories in order of last access as well.
 
-![ShellBags Network Share](images/ShellBags3.png)
+![ShellBags Network Share](../ShellBags/images/ShellBags3.png)
 
 ### Malicious Use Case
 
@@ -131,7 +132,7 @@ FFlags uses the Hex Adding together concept and are used to store various settin
 - 0x00000200 - No Recent Docs
 - 0x00000024 - No Flags
 
-![ShellBags FFlags](images/ShellBags_FFlags.png)
+![ShellBags FFlags](../ShellBags/images/ShellBags_FFlags.png)
 
 ## Summary
 

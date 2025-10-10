@@ -4,9 +4,17 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "registry", "customization", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "Windows Border Size Modification - Digital Forensics"
+description = "An in-depth look at Windows Border Size Modification and its significance for digital forensic investigations."
+keywords = ["Windows", "Border Size Modification", "Digital Forensics", "DFIR", "Registry Analysis", "User Customization"]
+canonical = "/4n6Post/Windows-Border-Size/"
+featured_image = "/images/RegistryBlock.png"
+schema_type = "Article"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../Windows_Border_Size/images/RegistryBlock.png)
 
 # Exploring Windows Border Size Modification
 

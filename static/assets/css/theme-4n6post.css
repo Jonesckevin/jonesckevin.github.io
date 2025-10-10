@@ -1,0 +1,19 @@
+/* ==========================================================================
+   4N6POST THEME
+   Yellow/Gold/Olive theme for Digital Forensics section
+   ========================================================================== */
+
+body.section-4n6post {
+    --accent: #d4af37;
+    --accent-light: #f4d47f;
+    --accent-soft: rgba(212, 175, 55, 0.18);
+    --accent-soft-border: rgba(212, 175, 55, 0.35);
+    --accent-glow: rgba(212, 175, 55, 0.3);
+    --accent-button-text: #1a1a1a;
+
+    --card-bg: linear-gradient(135deg, #242418 0%, #1a1a14 100%);
+    --card-bg-hover: linear-gradient(135deg, #2a2a1e 0%, #22221a 100%);
+    --code-bg: #1e1e14;
+
+    background: #232425;
+}

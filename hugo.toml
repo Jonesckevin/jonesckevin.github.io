@@ -50,7 +50,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   [params.aitools]
     hero_title = "AI Tools API Services Hub"
     hero_description = "Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic. Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation — all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD."
-    security_title = "Security & Privacy"
+    security_title = ""
     
     [[params.aitools.security]]
       title = "Your API Key"
@@ -67,15 +67,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
     [[params.aitools.security]]
       title = "Rich Output Formats"
       description = "All AI responses are converted to HTML and available for download in Markdown, HTML, and MD formats."
-    
-    [[params.aitools.security]]
-      title = "Open Source"
-      description = "The platform is built with open-source technologies, ensuring transparency and community-driven improvements."
-    
-    [[params.aitools.security]]
-      title = "No Ads, Only Google Analytics"
-      description = "I respect your privacy and do not use ads on this platform."
-
+        
   [params.favicon]
     mask = "#10b981"
     msapplication = "#111827"
@@ -209,6 +201,17 @@ ignoreLogs = ['warning-goldmark-raw-html']
       home_title = "Visual Roadmap Generator"
       home_description = "Build a clear, visual roadmap and preview multiple chart styles from generated plans."
       home_features = ["Multiple chart styles", "Goal tracking", "Milestone planning", "Visual progress indicators"]
+      home_cta = "Start"
+  [[menu.coreservices]]
+    identifier = "css-generator"
+    name       = "CSS Generator"
+    url        = "/ai-tools/core-services/css-generator/"
+    weight     = 18
+    [menu.coreservices.params]
+      show_home = true
+      home_title = "CSS Generator with Live Preview"
+      home_description = "Generate custom CSS styles with AI and preview them in real-time with examples for text, tables, buttons, forms, and cards."
+      home_features = ["Live preview", "Editable CSS", "Multiple examples", "Instant download"]
       home_cta = "Start"
 
   # Learning

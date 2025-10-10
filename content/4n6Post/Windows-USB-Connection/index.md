@@ -4,9 +4,17 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "USB forensics", "registry", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "Windows USB Connection Analysis - Digital Forensics"
+description = "An in-depth look at Windows USB connection analysis and its significance for digital forensic investigations."
+keywords = ["USB", "USB Forensics", "Digital Forensics", "DFIR", "Registry Analysis", "setupapi.dev.log", "Data Exfiltration", "Malware Introduction"]
+canonical = "/4n6Post/Windows-USB-Connection/"
+featured_image = "/images/RegistryBlock.png"
+schema_type = "Article"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../Windows-USB-Connection/images/RegistryBlock.png)
 
 **USB connections** are a commonly used method for transferring data between computers and other electronic devices. In Windows, the use of USB connections can affect the registry in several ways, including within the registry are the **USB**, **USBSTOR** and **MountPoints** keys. In this post, we'll explore the connection between USB Mountpoints and the setupapi.dev.log, and provide examples of both normal and malicious use cases.
 
@@ -31,13 +39,13 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
 HKEY_LOCAL_MACHINE\SYSTEM\MountedDevices
 ```
 
-![USB Registry Information](images/USB-Info3.PNG)
+![USB Registry Information](../Windows-USB-Connection/images/USB-Info3.PNG)
 
 ### MountedDevices Registry
 
 The MountedDevices registry key contains information about all mounted storage devices:
 
-![Mounted Devices Registry](images/USB-Reg-MountedDevice1.PNG)
+![Mounted Devices Registry](../Windows-USB-Connection/images/USB-Reg-MountedDevice1.PNG)
 
 This key maps:
 - **Volume GUIDs** to physical device identifiers
@@ -48,7 +56,7 @@ This key maps:
 
 The USBSTOR key provides detailed information about USB storage devices:
 
-![USBSTOR Registry Key](images/USB-Reg-USBSTOR2.PNG)
+![USBSTOR Registry Key](../Windows-USB-Connection/images/USB-Reg-USBSTOR2.PNG)
 
 Key information includes:
 - **Vendor ID**: Manufacturer identifier
@@ -56,20 +64,20 @@ Key information includes:
 - **Device Serial Number**: Unique device identifier
 - **Device Class**: Type of USB device
 
-![USBSTOR Device Details](images/USB-Reg-USBSTOR3.PNG)
+![USBSTOR Device Details](../Windows-USB-Connection/images/USB-Reg-USBSTOR3.PNG)
 
 Each device entry contains:
 - **First Installation Time**: When device was first connected
 - **Last Connection Time**: Most recent connection timestamp
 - **Device Properties**: Hardware characteristics and capabilities
 
-![USBSTOR Additional Information](images/USB-Reg-USBSTOR4.PNG)
+![USBSTOR Additional Information](../Windows-USB-Connection/images/USB-Reg-USBSTOR4.PNG)
 
 ## Setup API Device Log Analysis
 
 The setupapi.dev.log file provides detailed information about device installation and connection events:
 
-![Setup API Device Log](images/USB-Setupapi-dev-log.PNG)
+![Setup API Device Log](../Windows-USB-Connection/images/USB-Setupapi-dev-log.PNG)
 
 The log contains:
 - **Device Installation Events**: When devices are first recognized
@@ -152,11 +160,11 @@ These logs provide:
 
 ## SANS USB Analysis References
 
-![SANS USB Forensics Poster 1](images/USB-SANSPoster1.PNG)
+![SANS USB Forensics Poster 1](../Windows-USB-Connection/images/USB-SANSPoster1.PNG)
 
-![SANS USB Forensics Poster 2](images/USB-SANSPoster2.PNG)
+![SANS USB Forensics Poster 2](../Windows-USB-Connection/images/USB-SANSPoster2.PNG)
 
-![SANS USB Forensics Poster 3](images/USB-SANSPoster3.PNG)
+![SANS USB Forensics Poster 3](../Windows-USB-Connection/images/USB-SANSPoster3.PNG)
 
 ## Investigation Best Practices
 

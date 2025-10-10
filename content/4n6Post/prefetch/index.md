@@ -1,36 +1,25 @@
----
-title: "Windows Prefetch Analysis - Digital Forensics Execution Tracking"
-description: "Complete guide to Windows Prefetch forensics for tracking application execution. Learn prefetch structure, forensic analysis techniques, PECmd usage, and DFIR investigation methods."
-keywords: ["Windows Prefetch", "prefetch analysis", "digital forensics", "proof of execution", "POE", "application tracking", "Windows forensics", "DFIR", "PECmd", "forensic artifacts", "execution timeline", "malware analysis", "incident response", "forensic tools"]
-date: 2023-01-01
-lastmod: 2025-09-30
-draft: false
-tags: ["4n6", "digital forensics", "windows forensics", "prefetch", "DFIR", "PECmd", "execution tracking", "forensic timeline", "malware analysis", "incident response"]
-categories: ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
-type: "4n6post"
-seo_title: "Windows Prefetch Analysis - Digital Forensics Application Tracking Guide"
-canonical: "/4n6post/prefetch/"
-featured_image: "/images/4n6post/prefetch-analysis.png"
-schema_type: "TechArticle"
-author: "JonesCKevin"
-sitemap_priority: 0.8
-sitemap_changefreq: "monthly"
-social_media:
-  og_title: "Windows Prefetch Analysis - Digital Forensics Guide"
-  og_description: "Complete guide to Windows Prefetch forensics for tracking application execution and DFIR investigations."
-  og_image: "/images/4n6post/prefetch-social.png"
-  og_type: "article"
-  twitter_card: "summary_large_image"
-  twitter_title: "Windows Prefetch Forensics Guide"
-  twitter_description: "Learn Windows Prefetch analysis for digital forensics - execution tracking, timeline analysis, and DFIR techniques."
-  twitter_image: "/images/4n6post/prefetch-twitter.png"
----
-
-# Windows Prefetch: Understanding Digital Footprints
++++
+title = "Windows Prefetch Analysis - Digital Forensics Execution Tracking"
+description = "Complete guide to Windows Prefetch forensics for tracking application execution. Learn prefetch structure, forensic analysis techniques, PECmd usage, and DFIR investigation methods."
+keywords = ["Windows Prefetch", "prefetch analysis", "digital forensics", "proof of execution", "POE", "application tracking", "Windows forensics", "DFIR", "PECmd", "forensic artifacts", "execution timeline", "malware analysis", "incident response", "forensic tools"]
+date = 2023-01-01
+lastmod = 2025-09-30
+draft = false
+tags = ["4n6", "digital forensics", "windows forensics", "prefetch", "DFIR", "PECmd", "execution tracking", "forensic timeline", "malware analysis", "incident response"]
+categories = ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
+type = "4n6post"
+seo_title = "Windows Prefetch Analysis - Digital Forensics Application Tracking Guide"
+canonical = "/4n6post/prefetch/"
+featured_image = "/images/4n6post/prefetch-analysis.png"
+schema_type = "TechArticle"
+author = "JonesCKevin"
+sitemap_priority = 0.8
+sitemap_changefreq = "monthly"
++++
 
 Windows Prefetch is a feature in the Windows operating system that was first introduced in Windows XP. It is a built-in tool that helps to speed up the loading of applications and other system processes by analyzing which files and libraries are most frequently used and then pre-loading them into memory. In this blog post, we will explore what Windows Prefetch is, how it works, and provide examples of both normal and malicious use cases.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../prefetch/images/RegistryBlock.png)
 
 ## How Windows Prefetch Works
 
@@ -81,7 +70,7 @@ In the Registry Editor, navigate to the following key:
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\EnablePrefetcher
 ```
 
-![Prefetch Registry](images/Prefetch-Reg1.png)
+![Prefetch Registry](../prefetch/images/Prefetch-Reg1.png)
 
 ### Registry Values
 
@@ -121,30 +110,30 @@ I will now go through a GUI demo for you for fun. If you prefer CLI, you can use
 
 For this demo I will be using Nirsoft - [winprefetchviewer.exe](https://www.nirsoft.net/utils/win_prefetch_view.html). For an added bonus I used [Kape](https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape) by Kroll to collect the data for you.
 
-![KAPE GUI](images/Prefetch-Gather1.PNG)
+![KAPE GUI](../prefetch/images/Prefetch-Gather1.PNG)
 *I used the GUI to make a command for myself.*
 
-![KAPE Command](images/Prefetch-Gather2.PNG)
+![KAPE Command](../prefetch/images/Prefetch-Gather2.PNG)
 *Using the command, I gathered the files into my export folder.*
 
-![Exported Prefetch Files](images/Prefetch-Gather3.PNG)
+![Exported Prefetch Files](../prefetch/images/Prefetch-Gather3.PNG)
 *Here is an image of the exported prefetch*
 
-![WinPrefetchView Start](images/Prefetch-Gather4.PNG)
+![WinPrefetchView Start](../prefetch/images/Prefetch-Gather4.PNG)
 *Open winprefetchview.exe from the start or where applicable*
 
-![WinPrefetchView Default](images/Prefetch-Gather5.PNG)
+![WinPrefetchView Default](../prefetch/images/Prefetch-Gather5.PNG)
 *By default this will open your systems Prefetch. Press F9 or go to Options → Advanced Options to select your target Prefetch folder.*
 
-![Advanced Options](images/Prefetch-Gather6.PNG)
+![Advanced Options](../prefetch/images/Prefetch-Gather6.PNG)
 
-![Multiple KAPE Instances](images/Prefetch-Gather7.PNG)
+![Multiple KAPE Instances](../prefetch/images/Prefetch-Gather7.PNG)
 *In this example, you can see I have 3x Instances of Kape type programs. This is because 2x Kape.exe are in different locations, and the Hex Value is calculated from the path.*
 
-![Run Times](images/Prefetch-Gather8.PNG)
+![Run Times](../prefetch/images/Prefetch-Gather8.PNG)
 *Prefetch will collect the last 8 run times. You can include 9 if you count the Initial Creation Time as first run.*
 
-![Loaded Files](images/Prefetch-Gather9.PNG)
+![Loaded Files](../prefetch/images/Prefetch-Gather9.PNG)
 *In the loaded area at the bottom, you can see what was logged into the prefetch. The highlighted example is showing that it loaded the file PREFETCH.TKAPE which is a support file within the Kape directory. This area can provide you useful files or DLL that was associated for evidence or something or to help track down potentially relevant malicious files or intent.*
 
 ## Summary
@@ -155,7 +144,7 @@ It's important to note that while Prefetch can be a helpful tool for improving s
 
 Understanding how Windows Prefetch works and being aware of the potential security risks can help users make informed decisions about how they use their systems and take steps to protect their devices.
 
-![SANS Windows Forensic Analysis Poster](images/Prefetch-poster.PNG)
+![SANS Windows Forensic Analysis Poster](../prefetch/images/Prefetch-poster.PNG)
 
 [https://www.sans.org/posters/windows-forensic-analysis/](https://www.sans.org/posters/windows-forensic-analysis/)
 

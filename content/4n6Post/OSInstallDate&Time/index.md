@@ -1,13 +1,21 @@
----
-title: "Windows OS Install Date & Time Registry Analysis"
-date: 2023-01-15
-description: "Understanding Windows registry artifacts for install date and time analysis in digital forensics"
-keywords: ["4n6post recycling bin", "4n6post recycling", "4n6 recycling", "Recycling.Bin / Recycler", "timezone", "timezoneinformation", "time", "POE", "Proof Of Execution", "4n6", "digital forensics news", "tryhackme pyramid of pain", "4n-6", "log4j", "evtxecmd", "ecdfp review", "review", "alert", "forensics", "digital", "digital forensics", "malwarebytes", "norton", "semantec", "bitdefender", "bytes", "news", "posts", "drives", "hard drives", "solid state", "ram", "blog", "sans", "nirsoft"]
----
++++
+title = "Windows OS Install Date & Time Registry Analysis"
+date = "2023-01-15"
+description = "Understanding Windows registry artifacts for install date and time analysis in digital forensics"
+keywords = ["4n6post recycling bin", "4n6post recycling", "4n6 recycling", "Recycling.Bin / Recycler", "timezone", "timezoneinformation", "time", "POE", "Proof Of Execution", "4n6", "digital forensics news", "tryhackme pyramid of pain", "4n-6", "log4j", "evtxecmd", "ecdfp review", "review", "alert", "forensics", "digital", "digital forensics", "malwarebytes", "norton", "semantec", "bitdefender", "bytes", "news", "posts", "drives", "hard drives", "solid state", "ram", "blog", "sans", "nirsoft"]
+categories = ["4n6", "Digital Forensics"]
+tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "Windows OS Install Date & Time Registry Analysis"
+canonical = "/4n6Post/OSInstallDate&Time/"
+featured_image = "/images/RegistryBlock.png"
+schema_type = "Article"
++++
 
 The Windows registry is a central repository of configuration data for the Windows operating system and its applications. One important aspect of the registry is the section involving the Windows install time. This information can be used in a variety of ways, both for normal system usage and for malicious purposes.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../OSInstallDate&Time/images/RegistryBlock.png)
 
 ## Finding the InstallDate/InstallTime Registry
 
@@ -43,11 +51,11 @@ Within this section, you will find the following valuable key values:
 
 > **Note:** Your Forensic VM should have decode installed to make decoding times easier if not through other means:
 
-![System Info Registry 2](images/SystemInfo-Reg2.PNG)
+![System Info Registry 2](../OSInstallDate&Time/images/SystemInfo-Reg2.PNG)
 
 **Windows FileTime (UTC) = 2023-01-15 15:47:07.6287754 Z**
 
-![System Info Registry 1](images/SystemInfo-Reg1.PNG)
+![System Info Registry 1](../OSInstallDate&Time/images/SystemInfo-Reg1.PNG)
 
 **A slight alternative if you were to look at the SYSTEM hive:**
 
@@ -71,7 +79,7 @@ Additionally, the timezone information may be used to determine the physical loc
 
 In conclusion, the registry section involving the Windows install time is an important aspect of the Windows registry that can be used for both normal and malicious purposes. Understanding this information and how to access it can be valuable for system administrators, security professionals, and anyone interested in the inner workings of the Windows operating system.
 
-![SANS Poster](images/SystemInfo-SansPoster.PNG)
+![SANS Poster](../OSInstallDate&Time/images/SystemInfo-SansPoster.PNG)
 
 [https://www.sans.org/posters/windows-forensic-analysis/](https://www.sans.org/posters/windows-forensic-analysis/)
 

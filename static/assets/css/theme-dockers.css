@@ -1,0 +1,19 @@
+/* ==========================================================================
+   DOCKERS THEME
+   Blue theme for Docker/Portainer section
+   ========================================================================== */
+
+body.section-dockers {
+    --accent: #2aa9ff;
+    --accent-light: #8dd6ff;
+    --accent-soft: rgba(42, 169, 255, 0.18);
+    --accent-soft-border: rgba(42, 169, 255, 0.35);
+    --accent-glow: rgba(42, 169, 255, 0.3);
+    --accent-button-text: #ffffff;
+
+    --card-bg: linear-gradient(135deg, #1a2a33 0%, #0f1f28 100%);
+    --card-bg-hover: linear-gradient(135deg, #1f3540 0%, #142a35 100%);
+    --code-bg: #0f2a37;
+
+    background: #232425;
+}

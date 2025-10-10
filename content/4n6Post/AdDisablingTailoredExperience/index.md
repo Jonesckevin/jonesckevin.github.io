@@ -6,12 +6,12 @@ tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/RegistryBlock.png)
 
 # Customizing Windows: Ad Disabling and Tailored Experience
 
 ## Introduction
-
+`
 In the realm of Windows customization, users often seek ways to tailor their experience to suit personal
 preferences. This blog post explores a specific aspect of this customization - the modification of registry keys
 to disable ads in Windows and control tailored experiences.

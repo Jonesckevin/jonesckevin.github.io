@@ -4,9 +4,17 @@ date = "2023-01-01"
 draft = false
 tags = ["4n6", "digital forensics", "windows forensics", "registry", "typed paths", "DFIR"]
 categories = ["4n6", "Digital Forensics"]
+type = "4n6post"
+author = "JonesCKevin"
+seo_title = "TypedPath Registry - Windows Navigation History Forensics"
+description = "An in-depth look at the TypedPath registry section and its significance for digital forensic investigations."
+keywords = ["TypedPath", "Windows Navigation History", "Registry Analysis", "Digital Forensics", "DFIR", "User Activity", "Forensic Artifacts"]
+canonical = "/4n6Post/TypedPath/"
+featured_image = "/images/RegistryBlock.png"
+schema_type = "Article"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](../TypedPath/images/RegistryBlock.png)
 
 # Registry Section of TypedPath: Understanding Its Importance in Digital Forensics
 
@@ -24,7 +32,7 @@ The TypedPath registry entries are located at:
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
 ```
 
-![TypedPath Registry Location](images/TypedPath-Reg1.PNG)
+![TypedPath Registry Location](../TypedPath/images/TypedPath-Reg1.PNG)
 
 ## What is TypedPath?
 
@@ -98,7 +106,7 @@ Compare TypedPath data with:
 3. **Timeline Construction**: Map typed paths to other system activities
 4. **Network Correlation**: Investigate any network paths for additional evidence
 
-![SANS TypedPath Reference](images/TypedPath-Poster.PNG)
+![SANS TypedPath Reference](../TypedPath/images/TypedPath-Poster.PNG)
 
 ## Conclusion
 
