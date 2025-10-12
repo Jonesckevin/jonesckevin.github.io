@@ -33,7 +33,7 @@ The TypedPath registry entries are located at:
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
 ```
 
-![TypedPath Registry Location](../TypedPath/images/TypedPath-Reg1.PNG)
+![TypedPath Registry Location](images/TypedPath-Reg1.PNG)
 
 ## What is TypedPath?
 
@@ -107,7 +107,7 @@ Compare TypedPath data with:
 3. **Timeline Construction**: Map typed paths to other system activities
 4. **Network Correlation**: Investigate any network paths for additional evidence
 
-![SANS TypedPath Reference](../TypedPath/images/TypedPath-Poster.PNG)
+![SANS TypedPath Reference](images/TypedPath-Poster.PNG)
 
 ## Conclusion
 

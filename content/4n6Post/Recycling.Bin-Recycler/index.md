@@ -15,7 +15,7 @@ featured_image = "/images/RecyclingBin.png"
 schema_type = "Article"
 +++
 
-![Recycling Bin Overview](../Recycling.Bin-Recycler/images/RecyclingBin.png)
+![Recycling Bin Overview](/images/RecyclingBin.png)
 
 The Recycling Bin is a well-known feature in Windows operating systems that acts as a temporary storage location for deleted files. However, what many users may not know is that the Recycling Bin is also a valuable forensic artifact that can provide valuable information in both normal and malicious use cases. In this blog post, we will explore the Recycling Bin and its role as a forensic artifact, including the connection between the "$I" and "$R" values created in the **Master File Table (MFT)**, the normal and malicious use cases of the Recycling Bin, and how to permanently delete files to skip the Recycling Bin, as well as how to set the Recycling Bin in the registry.
 
@@ -23,13 +23,13 @@ The Recycling Bin is a well-known feature in Windows operating systems that acts
 
 In the example below, I deleted a PNG file. The file was moved over to the $Recycle.Bin folder under the appropriate SID S-1-5-21-*. You can see that both a "$IN2BBNL.png" and "$RIN2BBNL.png" are the most recently created. The $R####### file will continue to hold the metadata of the original file as this file IS the original file renamed and moved. The $I####### file is newly created as an Index file for the file to hold the original filename, path, file size, and when the file was deleted in the event recovery of the file is requested.
 
-![Recycle Bin File Example](../Recycling.Bin-Recycler/images/Recycle_Bin-File1.PNG)
+![Recycle Bin File Example](images/Recycle_Bin-File1.PNG)
 
 Additionally you can see the $I30 was also updated. This in short tracks the files that was or is in the folder. I don't intend to elaborate on it in this post.
 
 Once a file is recovered, the $I####### file does remain, however the $R####### file is relocated back to its appropriate location and will not continue to reside in the Recycle.Bin. As seen in the following image.
 
-![Recycle Bin File Recovery](../Recycling.Bin-Recycler/images/Recycle_Bin-File2.PNG)
+![Recycle Bin File Recovery](images/Recycle_Bin-File2.PNG)
 
 ## $I####### - IndexFile Format
 
@@ -52,11 +52,11 @@ The $I index files contain metadata about deleted files in a specific binary for
 
 You can see in the image below the file size in bytes which is represented in Little Endian on the second set of 8 Bytes.
 
-![Recycle Bin File Size Analysis](../Recycling.Bin-Recycler/images/Recycle_Bin-XXD2.png)
+![Recycle Bin File Size Analysis](images/Recycle_Bin-XXD2.png)
 
 ### Date Header Analysis
 
-![Recycle Bin Date Header](../Recycling.Bin-Recycler/images/Recycle_Bin-XXD1.png)
+![Recycle Bin Date Header](images/Recycle_Bin-XXD1.png)
 
 ## MFT Integration
 
@@ -153,7 +153,7 @@ HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Bitbucket
 3. **Timeline Integration**: Include deletion events in master timeline
 4. **Cross-Validation**: Verify findings with multiple tools
 
-![SANS Recycling Bin Reference](../Recycling.Bin-Recycler/images/Recycle_Bin-Poster.PNG)
+![SANS Recycling Bin Reference](images/Recycle_Bin-Poster.PNG)
 
 ## Conclusion
 

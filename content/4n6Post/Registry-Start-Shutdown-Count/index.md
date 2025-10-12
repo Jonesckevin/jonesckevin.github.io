@@ -43,9 +43,9 @@ Here is a one liner PowerShell Script to decode your current Windows Registry da
 [DateTime]::FromFileTimeUtc([BitConverter]::ToInt64(([byte[]](Get-ItemPropertyValue -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Windows" -Name "ShutdownTime")), 0))
 ```
 
-![PowerShell Output 1](../Registry-Start-Shutdown-Count/images/Restart-Reboot-Shutdown-PoSH1.png)
+![PowerShell Output 1](images/Restart-Reboot-Shutdown-PoSH1.png)
 
-![PowerShell Output 2](../Registry-Start-Shutdown-Count/images/Restart-Reboot-Shutdown-PoSH2.png)
+![PowerShell Output 2](images/Restart-Reboot-Shutdown-PoSH2.png)
 
 - **AutoReboot**: The subkey and stores a value of 1 if the computer is set to automatically restart after a system failure.
 

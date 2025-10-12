@@ -26,14 +26,14 @@ In malicious use cases, the Amcache.hve file can be used to uncover evidence of 
 
 The Amcache.hve file can be found in the file system at the following location: %SystemRoot%\AppCompat\Programs\Amcache.hve. 
 
-![](../Amcache.hve/images/Amcache-Explorer1.png)
+![](images/Amcache-Explorer1.png)
 
 Additionally, the Amcache.hve information can be found within the registry, under the following key:
 
 Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache\
 You can manually go through this data for dates and programs or use a program to  parse the data. See the ping as the photo bellow as an example. Doing this manually will be extremely tedious.
 
-![](../Amcache.hve/images/Amcache-Reg1.png)
+![](images/Amcache-Reg1.png)
 
 which can be parsed with either:
 
@@ -45,16 +45,16 @@ EricZimmerman - AmcacheParser
 
 AmcacheParser.exe -f Amcache.hve --csv C:\Users\<USER>\Desktop\KAPE\Export --csvf amcache.csv
 
-![](../Amcache.hve/images/Amcache-Explorer2.png)
+![](images/Amcache-Explorer2.png)
 
 Using Timeline Explorer, to view the Shortcuts, you can see the App and ID, the path and last time the program was written/referenced.
 
-![](../Amcache.hve/images/Amcache-Explorer3.png)
+![](images/Amcache-Explorer3.png)
 
 The SANS Institute has published a white paper on the Amcache.hve file, which can be found here: https://digital-forensics.sans.org/media/Amcache_Whitepaper.pdf. The white paper provides a comprehensive overview of the Amcache.hve file and its uses in forensic investigations.
 
 In conclusion, the Amcache.hve file is a valuable forensic artifact that can provide valuable information about a computer system, both in normal and malicious use cases. Whether you are a system administrator or a forensic investigator, the Amcache.hve file is a valuable resource that should be included in your toolkit. To learn more about the Amcache.hve file and its uses, be sure to read the white paper and the SANS poster linked above.
 
-![](../Amcache.hve/images/AmCache-SansPoster.PNG)
+![](images/AmCache-SansPoster.PNG)
 
 https://www.sans.org/posters/windows-forensic-analysis/

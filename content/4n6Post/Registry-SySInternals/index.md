@@ -40,7 +40,7 @@ The SysInternals suite includes a diverse set of tools that cater to various sys
 
 Using SysInternals tools is straightforward and typically involves downloading the desired utility from the official Microsoft website. As of Windows 11, the Microsoft Store contains an AppPackage that can be installed. The package installs/downloads the tools to `C:\Users\%username%\AppData\Local\Microsoft\WindowsApps\SysinternalsSuite`.
 
-![SysInternals Microsoft Store](../Registry-SySInternals/images/SysInternals-MSStore.png)
+![SysInternals Microsoft Store](images/SysInternals-MSStore.png)
 
 Once downloaded, the tool can be run directly from the executable file without requiring installation. You can leverage the command-line interface or graphical user interface (GUI) to interact with the tool. Each tool comes with detailed documentation and usage instructions to help make the most of its capabilities.
 
@@ -76,7 +76,7 @@ Microsoft.SysinternalsSuite_8wekyb3d8bbwe\HAM\AUI\strings\V1\LU
 
 The PCT and PTT values are used to store process creation and termination times, respectively. These values are stored in LE hexadecimal format and represent the timestamp data for the process.
 
-![SysInternals Hex Time](../Registry-SySInternals/images/SysInternals-HexTime.png)
+![SysInternals Hex Time](images/SysInternals-HexTime.png)
 
 - **PCT:**
   - **Hex:** `42 54 33` 2D 75 5C DB 01

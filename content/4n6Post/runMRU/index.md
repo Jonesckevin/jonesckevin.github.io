@@ -33,11 +33,11 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 
 The RunMRU registry is located in the Windows registry under the key **HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU**. It can be viewed and modified using the Registry Editor (regedit.exe) in Windows.
 
-![RunMRU Registry Example 1](../runMRU/images/runMRU-Reg1.PNG)
+![RunMRU Registry Example 1](images/runMRU-Reg1.PNG)
 
 In the image above, I used `ping 127.0.0.1` in the run box, followed by ipconfig. This gave the order a and then b. You can see the last object called **"MRUList"** with the value of **"ba"**. This will give you the last order of usage of the RunMRU's. In this case, **"b"** was most recently used as it was the second one I executed. In the following image, you can see additional MRUList items for an example.
 
-![RunMRU Registry Example 2](../runMRU/images/runMRU-Reg2.PNG)
+![RunMRU Registry Example 2](images/runMRU-Reg2.PNG)
 
 In order of last executed, you can see that I re-ran **"a"** after I ran **"d"** and the list will only show the last use.
 
@@ -57,6 +57,6 @@ The RunMRU registry is an important component of the Microsoft Windows operating
 
 For proof of execution of malicious activity related to the RunMRU registry, we recommend viewing the SANS poster "RunMRU Registry Key: Proof of Execution". This poster can be found at the following link:
 
-<!--![SANS RunMRU Poster](../runMRU/images/runMRU-SansPoster.PNG)-->
+<!--![SANS RunMRU Poster](images/runMRU-SansPoster.PNG)-->
 
 [https://www.sans.org/posters/windows-forensic-analysis/](https://www.sans.org/posters/windows-forensic-analysis/)

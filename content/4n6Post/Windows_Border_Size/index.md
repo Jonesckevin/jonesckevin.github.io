@@ -15,7 +15,7 @@ featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++
 
-![Registry Block](../Windows_Border_Size/images/RegistryBlock.png)
+![Registry Block](/images/RegistryBlock.png)
 
 ## Exploring Windows Border Size Modification
 

@@ -52,11 +52,11 @@ Within this section, you will find the following valuable key values:
 
 > **Note:** Your Forensic VM should have decode installed to make decoding times easier if not through other means:
 
-![System Info Registry 2](../OSInstallDateTime/images/SystemInfo-Reg2.PNG)
+![System Info Registry 2](images/SystemInfo-Reg2.PNG)
 
 **Windows FileTime (UTC) = 2023-01-15 15:47:07.6287754 Z**
 
-![System Info Registry 1](../OSInstallDateTime/images/SystemInfo-Reg1.PNG)
+![System Info Registry 1](images/SystemInfo-Reg1.PNG)
 
 **A slight alternative if you were to look at the SYSTEM hive:**
 
@@ -80,7 +80,7 @@ Additionally, the timezone information may be used to determine the physical loc
 
 In conclusion, the registry section involving the Windows install time is an important aspect of the Windows registry that can be used for both normal and malicious purposes. Understanding this information and how to access it can be valuable for system administrators, security professionals, and anyone interested in the inner workings of the Windows operating system.
 
-<!--![SANS Poster](../OSInstallDateTime/images/SystemInfo-SansPoster.PNG)-->
+<!--![SANS Poster](images/SystemInfo-SansPoster.PNG)-->
 
 [https://www.sans.org/posters/windows-forensic-analysis/](https://www.sans.org/posters/windows-forensic-analysis/)
 

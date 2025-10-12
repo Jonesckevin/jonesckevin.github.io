@@ -32,7 +32,7 @@ To set the Maximum Jump List, you can **Create** a new **DWORD(32-Bit Value)** w
 HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 ```
 
-![JumpList Registry Configuration](../JumpList/images/JumpList-Reg1.PNG)
+![JumpList Registry Configuration](images/JumpList-Reg1.PNG)
 
 If you wish to **Disable JumpList**, you can alternatively **Create** a new **DWORD(32-Bit Value)** named `Start_TrackDocs` with the hex value of **0**.
 
@@ -56,7 +56,7 @@ The new location, which is your best location is in the **File Path**:
 C:\%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations
 ```
 
-![JumpList File Location](../JumpList/images/JumpList-Explorer1.PNG)
+![JumpList File Location](images/JumpList-Explorer1.PNG)
 
 ### File Structure
 

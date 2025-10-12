@@ -46,13 +46,13 @@ The primary timezone information is stored at:
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
 ```
 
-![TimeZone Registry Key](../TimeZoneInformation/images/TimeZoneInfo-Reg1.PNG)
+![TimeZone Registry Key](images/TimeZoneInfo-Reg1.PNG)
 
 ## Registry Values and Their Meanings
 
 ### Key Registry Values:
 
-![TimeZone Registry Values](../TimeZoneInformation/images/TimeZoneInfo-Reg2.png)
+![TimeZone Registry Values](images/TimeZoneInfo-Reg2.png)
 
 **Bias**: The time difference (in minutes) between the local time and Coordinated Universal Time (UTC)
 - Example: -300 = 5 hours behind UTC (Eastern Time)
@@ -63,7 +63,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
 **DaylightName**: The name when daylight saving time is active  
 - Example: "Eastern Daylight Time"
 
-![TimeZone Advanced Settings](../TimeZoneInformation/images/TimeZoneInfo-Reg3.png)
+![TimeZone Advanced Settings](images/TimeZoneInfo-Reg3.png)
 
 **StandardBias**: Additional bias applied during standard time (usually 0)
 
@@ -71,7 +71,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
 
 **TimeZoneKeyName**: References the specific timezone configuration
 
-![TimeZone Configuration](../TimeZoneInformation/images/TimeZoneInfo-Reg4.png)
+![TimeZone Configuration](images/TimeZoneInfo-Reg4.png)
 
 ## Dynamic Link Library (DLL) Connection
 
@@ -82,7 +82,7 @@ The timezone system relies heavily on **tzres.dll** (Time Zone Resource DLL) whi
 - Historical timezone data
 - Localized timezone strings
 
-![TimeZone DLL Reference](../TimeZoneInformation/images/TimeZoneInfo-Reg5.png)
+![TimeZone DLL Reference](images/TimeZoneInfo-Reg5.png)
 
 The registry contains resource IDs that reference specific strings within tzres.dll, allowing the system to display appropriate timezone information based on the user's locale and preferences.
 
@@ -90,7 +90,7 @@ The registry contains resource IDs that reference specific strings within tzres.
 
 ### Timeline Establishment
 
-![TimeZone Analysis](../TimeZoneInformation/images/TimeZoneInfo-Reg6.png)
+![TimeZone Analysis](images/TimeZoneInfo-Reg6.png)
 
 Accurate timezone information is crucial for:
 - **Event Correlation**: Matching timestamps across multiple systems
@@ -100,7 +100,7 @@ Accurate timezone information is crucial for:
 
 ### Event Log Analysis
 
-![Event Log TimeZone](../TimeZoneInformation/images/TimeZoneInfo-EventLog.png)
+![Event Log TimeZone](images/TimeZoneInfo-EventLog.png)
 
 Event logs often contain timezone-specific timestamps that must be properly interpreted:
 - System startup/shutdown events
@@ -122,7 +122,7 @@ Event logs often contain timezone-specific timestamps that must be properly inte
 - Collaboration across time zones
 - System clock synchronization
 
-![Explorer TimeZone View](../TimeZoneInformation/images/TimeZoneInfo-Explorer1.png)
+![Explorer TimeZone View](images/TimeZoneInfo-Explorer1.png)
 
 ## Malicious Use Cases
 
@@ -154,7 +154,7 @@ Verify that the timezone settings are consistent with:
 - Review network access logs
 
 ### 3. Registry Timeline Reconstruction
-![TimeZone Registry Timeline](../TimeZoneInformation/images/TimeZoneInfo-Reg7.png)
+![TimeZone Registry Timeline](images/TimeZoneInfo-Reg7.png)
 
 Examine registry modification timestamps for:
 - When timezone was last changed
@@ -170,7 +170,7 @@ Examine registry modification timestamps for:
 4. **Validation**: Verify timezone consistency across multiple artifacts
 5. **Context Analysis**: Consider legitimate reasons for timezone changes
 
-![SANS TimeZone Information Poster](../TimeZoneInformation/images/TimeZoneInfo-Poster.PNG)
+![SANS TimeZone Information Poster](images/TimeZoneInfo-Poster.PNG)
 
 ## Conclusion
 

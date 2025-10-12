@@ -23,7 +23,7 @@ The Windows Registry is a hierarchical database that stores configuration inform
 
 ## The **SYSTEM\Select** subkeys and objects are as follows:
 
-![Select Registry](../Registry-SYSTEM-Select/images/Select-Reg1.PNG)
+![Select Registry](images/Select-Reg1.PNG)
 
 Not all objects exist if they are not referred to, set or used in older versions.
 

@@ -72,9 +72,9 @@ Eric Zimmerman's **RegistryExplorer** is one tool for analyzing Registry data. H
 2. **Interpret the Data:** RegistryExplorer provides a user-friendly ish interface that decodes binary data into readable formats. Review folder paths, timestamps, and view settings.
 3. **Bookmark Key Entries:** RegistryExplorer's bookmark feature is invaluable for investigations. Analysts can mark critical entries for quick reference, helping streamline the analysis process.
 
-![ShellBags Example 1](../ShellBags/images/ShellBags0.png)
+![ShellBags Example 1](images/ShellBags0.png)
 
-![ShellBags Example 2](../ShellBags/images/ShellBags2.png)
+![ShellBags Example 2](images/ShellBags2.png)
 
 Another tool that can be used is AccessData's Registry Viewer. This tool is also useful for parsing ShellBag data and provides a similar interface to RegistryExplorer. RegistryExplorer is likely more often used for the bookmarks but I tend to prefer RegistryViewer for the UI and less clicks for the data I personally want. I won't use examples here as to not double the blog data, but it's worth checking both to experience it yourself.
 
@@ -86,7 +86,7 @@ Imagine a scenario where a user accesses a folder named "Vacation Photos" stored
 
 In the following example, you can see a directory on a network share was accessed and looking at the left pane, this is represented as a 1 which would be the second last upper directory accessed, and it contains its own sub directories in order of last access as well.
 
-![ShellBags Network Share](../ShellBags/images/ShellBags3.png)
+![ShellBags Network Share](images/ShellBags3.png)
 
 ### Malicious Use Case
 
@@ -139,7 +139,7 @@ FFlags uses the Hex Adding together concept and are used to store various settin
 - 0x00000200 - No Recent Docs
 - 0x00000024 - No Flags
 
-![ShellBags FFlags](../ShellBags/images/ShellBags_FFlags.png)
+![ShellBags FFlags](images/ShellBags_FFlags.png)
 
 ## Summary
 
