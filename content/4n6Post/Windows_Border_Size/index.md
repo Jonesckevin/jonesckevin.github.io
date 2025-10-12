@@ -10,7 +10,7 @@ seo_title = "Windows Border Size Registry - Visual Customization Forensics"
 description = "Guide to Windows border size modification through registry analysis. Learn WindowMetrics registry keys, user customization tracking, and forensic investigation techniques for visual preference artifacts."
 keywords = ["Windows border size", "WindowMetrics registry", "Windows customization forensics", "registry analysis", "user preferences", "digital forensics", "DFIR", "visual customization", "registry artifacts", "Windows personalization", "forensic investigation"]
 canonical = "/4n6Post/Windows-Border-Size/"
-aliases = ["/4n6Post/Windows-Border-Size/"]
+aliases = ["/4n6Post/Windows-Border-Size/", "/2023/12/windows-mod-windows-border-size.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

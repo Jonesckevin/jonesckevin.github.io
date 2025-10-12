@@ -10,7 +10,7 @@ seo_title = "TimeZoneInformation Registry - Windows Timezone Forensics Guide"
 description = "Complete guide to TimeZoneInformation registry forensic analysis. Learn timezone tracking, UTC calculations, daylight saving time detection, and timestamp normalization for DFIR investigations."
 keywords = ["TimeZoneInformation registry", "timezone forensics", "UTC conversion", "Windows timestamp analysis", "daylight saving time", "digital forensics", "DFIR", "registry analysis", "tzres.dll", "timezone tracking", "forensic timeline", "timestamp correlation"]
 canonical = "/4n6Post/TimeZoneInformation/"
-aliases = ["/4n6Post/TimeZoneInformation/"]
+aliases = ["/4n6Post/TimeZoneInformation/", "/2023/02/timezoneinformation.html"]
 featured_image = "/images/4n6post-Analog-Clock.png"
 schema_type = "Article"
 +++

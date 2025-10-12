@@ -10,7 +10,7 @@ seo_title = "Enable Windows BSOD Detailed Information - Registry Forensics Guide
 description = "Step-by-step guide to enabling detailed Blue Screen of Death (BSOD) information in Windows through registry modifications. Essential for forensic analysis, troubleshooting, and crash investigation."
 keywords = ["BSOD detail", "Blue Screen of Death", "Windows crash analysis", "registry forensics", "DisplayParameters", "system troubleshooting", "crash dump analysis", "Windows forensics", "DFIR", "error diagnostics", "stop error", "Windows debugging", "forensic investigation"]
 canonical = "/4n6Post/EnablingWindowsBSODDetail/"
-aliases = ["/4n6Post/EnablingWindowsBSODDetail/"]
+aliases = ["/4n6Post/EnablingWindowsBSODDetail/", "/2023/12/windows-mod-enabling-windows-bsod-detail.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

@@ -10,7 +10,7 @@ seo_title = "Windows Registry Start Shutdown Tracking - System Boot Forensics Gu
 description = "Complete guide to Windows registry forensics for tracking system start, shutdown, and reboot events. Learn ShutdownCount, LastBootUpTime registry keys, and DFIR timeline analysis techniques."
 keywords = ["Windows shutdown tracking", "ShutdownCount registry", "LastBootUpTime", "system boot forensics", "Windows registry analysis", "reboot tracking", "digital forensics", "DFIR", "system timeline", "boot analysis", "forensic artifacts", "Windows startup"]
 canonical = "/4n6Post/Registry-Start-Shutdown-Count/"
-aliases = ["/4n6Post/Registry-Start-Shutdown-Count/"]
+aliases = ["/4n6Post/Registry-Start-Shutdown-Count/", "/2023/03/registry-computer-restarts-shutdown.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

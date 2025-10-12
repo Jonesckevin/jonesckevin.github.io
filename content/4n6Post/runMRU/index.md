@@ -10,7 +10,7 @@ seo_title = "RunMRU Registry Forensics - Windows Run Dialog History Analysis"
 description = "Complete guide to RunMRU registry forensic analysis for tracking command execution history. Learn Run dialog artifacts, malware detection techniques, and DFIR investigation methods for Windows forensics."
 keywords = ["RunMRU registry", "Run dialog history", "command execution tracking", "Windows forensics", "malware analysis", "digital forensics", "DFIR", "execution artifacts", "Windows Run command", "forensic investigation", "proof of execution", "registry analysis"]
 canonical = "/4n6Post/runMRU/"
-aliases = ["/4n6Post/runMRU/"]
+aliases = ["/4n6Post/runMRU/", "/2023/02/runmru.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

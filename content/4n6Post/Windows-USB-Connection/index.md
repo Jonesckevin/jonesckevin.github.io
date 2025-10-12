@@ -10,7 +10,7 @@ seo_title = "Windows USB Forensics - Device Connection Analysis Guide"
 description = "Comprehensive guide to Windows USB forensic analysis. Learn USBSTOR registry, setupapi.dev.log parsing, MountedDevices tracking, and external device investigation for DFIR."
 keywords = ["USB forensics", "USBSTOR registry", "setupapi.dev.log", "Windows USB analysis", "MountedDevices", "external device tracking", "digital forensics", "DFIR", "data exfiltration", "USB device history", "registry artifacts", "device forensics"]
 canonical = "/4n6Post/Windows-USB-Connection/"
-aliases = ["/4n6Post/Windows-USB-Connection/"]
+aliases = ["/4n6Post/Windows-USB-Connection/", "/2023/02/windows-usb-connections.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

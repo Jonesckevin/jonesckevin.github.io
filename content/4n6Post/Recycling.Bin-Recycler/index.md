@@ -10,7 +10,7 @@ seo_title = "Windows Recycling Bin Forensics - $I and $R Files Analysis Guide"
 description = "In-depth guide to Windows Recycling Bin forensic analysis. Learn $I and $R file structures, MFT connections, RBCmd tool usage, file recovery techniques, and DFIR investigation methods."
 keywords = ["Recycling Bin forensics", "$I file", "$R file", "Windows file recovery", "deleted files analysis", "digital forensics", "DFIR", "$Recycle.Bin", "RBCmd", "file deletion tracking", "forensic artifacts", "MFT analysis", "data recovery"]
 canonical = "/4n6Post/Recycling.Bin-Recycler/"
-aliases = ["/4n6Post/Recycling.Bin-Recycler/"]
+aliases = ["/4n6Post/Recycling.Bin-Recycler/", "/2023/02/recyclingbin-recycler.html"]
 featured_image = "/images/RecyclingBin.png"
 schema_type = "Article"
 +++

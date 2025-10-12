@@ -10,7 +10,7 @@ seo_title = "Windows Registry SYSTEM Select - ControlSet Forensics Analysis Guid
 description = "Detailed guide to Windows Registry SYSTEM Select key forensic analysis. Learn Current, Default, Failed, and LastKnownGood ControlSet tracking for DFIR investigations and system troubleshooting."
 keywords = ["SYSTEM Select registry", "ControlSet forensics", "Windows registry analysis", "CurrentControlSet", "LastKnownGood", "Failed ControlSet", "digital forensics", "DFIR", "system configuration", "boot analysis", "registry artifacts", "Windows troubleshooting"]
 canonical = "/4n6Post/Registry-SYSTEM-Select/"
-aliases = ["/4n6Post/Registry-SYSTEM-Select/"]
+aliases = ["/4n6Post/Registry-SYSTEM-Select/", "/2023/02/registry-systemselect.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

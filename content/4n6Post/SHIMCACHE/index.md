@@ -10,7 +10,7 @@ seo_title = "ShimCache Forensics - Application Compatibility Cache Analysis Guid
 description = "Complete guide to ShimCache (Application Compatibility Cache) forensic analysis. Learn AppCompatCache registry parsing, execution tracking, AppCompatCacheParser usage, and DFIR investigation techniques."
 keywords = ["ShimCache forensics", "Application Compatibility Cache", "AppCompatCache", "execution tracking", "Windows forensics", "AppCompatCacheParser", "digital forensics", "DFIR", "program execution", "registry analysis", "forensic artifacts", "malware detection"]
 canonical = "/4n6Post/SHIMCACHE/"
-aliases = ["/4n6Post/SHIMCACHE/"]
+aliases = ["/4n6Post/SHIMCACHE/", "/2023/03/shimcache.html"]
 featured_image = "/images/SHIMCache-Logo.png"
 schema_type = "Article"
 +++

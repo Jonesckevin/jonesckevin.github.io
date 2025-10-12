@@ -9,7 +9,7 @@ type = "4n6post"
 author = "JonesCKevin"
 seo_title = "Windows OS Install Date & Time Registry Analysis"
 canonical = "/4n6Post/OSInstallDateTime/"
-aliases = ["/4n6Post/OSInstallDateTime/"]
+aliases = ["/4n6Post/OSInstallDateTime/", "/2023/02/registry-os-install-date-time.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

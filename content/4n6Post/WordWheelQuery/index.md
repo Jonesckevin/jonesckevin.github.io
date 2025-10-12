@@ -10,7 +10,7 @@ seo_title = "WordWheelQuery Forensics - Windows Search History Analysis"
 description = "Comprehensive guide to WordWheelQuery registry forensic analysis for tracking Windows search history. Learn search term extraction, user intent analysis, and DFIR investigation techniques."
 keywords = ["WordWheelQuery registry", "Windows search history", "search forensics", "user search tracking", "registry analysis", "digital forensics", "DFIR", "Windows Explorer search", "forensic artifacts", "search terms", "user activity", "forensic investigation"]
 canonical = "/4n6Post/WordWheelQuery/"
-aliases = ["/4n6Post/WordWheelQuery/"]
+aliases = ["/4n6Post/WordWheelQuery/", "/2023/02/registry-wordwheelquery.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

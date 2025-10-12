@@ -10,7 +10,7 @@ type = "4n6post"
 author = "JonesCKevin"
 seo_title = "ShellBags Registry Forensics - Windows Folder Access Analysis Guide"
 canonical = "/4n6Post/ShellBags/"
-aliases = ["/4n6Post/ShellBags/"]
+aliases = ["/4n6Post/ShellBags/", "/2024/12/registry-shellbags.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

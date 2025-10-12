@@ -10,7 +10,7 @@ seo_title = "TypedPaths Registry Forensics - Windows Explorer Navigation History
 description = "Comprehensive guide to TypedPaths registry forensic analysis for tracking user navigation history. Learn Explorer address bar artifacts, path tracking, and DFIR investigation techniques for Windows forensics."
 keywords = ["TypedPaths registry", "Windows Explorer history", "address bar forensics", "navigation tracking", "user activity analysis", "digital forensics", "DFIR", "registry artifacts", "path history", "Explorer forensics", "typed URLs", "forensic investigation"]
 canonical = "/4n6Post/TypedPath/"
-aliases = ["/4n6Post/TypedPath/"]
+aliases = ["/4n6Post/TypedPath/", "/2023/02/registry-typedpath.html"]
 featured_image = "/images/RegistryBlock.png"
 schema_type = "Article"
 +++

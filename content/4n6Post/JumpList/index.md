@@ -9,7 +9,7 @@ seo_title = "JumpList Forensics - Windows Recent Files and User Activity Analysi
 description = "Comprehensive guide to JumpList forensic analysis for tracking user activity and recent files. Learn AutomaticDestinations, CustomDestinations, JLECmd usage, and DFIR investigation techniques."
 keywords = ["JumpList forensics", "AutomaticDestinations", "CustomDestinations", "Windows user activity", "recent files tracking", "JLECmd", "digital forensics", "DFIR", "user behavior analysis", "taskbar forensics", "file access history", "Windows artifacts", "forensic timeline"]
 canonical = "/4n6Post/JumpList/"
-aliases = ["/4n6Post/JumpList/"]
+aliases = ["/4n6Post/JumpList/", "/2023/02/jump-list.html"]
 featured_image = "/images/Windows11Explorer.png"
 schema_type = "Article"
 +++

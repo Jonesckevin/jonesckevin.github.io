@@ -10,7 +10,7 @@ seo_title = "LNK File Forensics - Windows Shortcut Analysis for DFIR"
 description = "Complete guide to LNK file forensic analysis for tracking file access and user activity. Learn LNK file structure, LECmd tool usage, malware detection, and DFIR investigation techniques."
 keywords = ["LNK file forensics", "Windows shortcuts", "LECmd", "file access tracking", "user activity analysis", "digital forensics", "DFIR", "LNK parser", "malware analysis", "shortcut forensics", "forensic artifacts", "link file analysis"]
 canonical = "/4n6Post/ShortCut-LNK/"
-aliases = ["/4n6Post/ShortCut-LNK/"]
+aliases = ["/4n6Post/ShortCut-LNK/", "/2023/02/shortcut-files-lnk.html"]
 featured_image = "/images/Windows11Explorer.png"
 schema_type = "Article"
 +++
