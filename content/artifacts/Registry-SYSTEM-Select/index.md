@@ -19,7 +19,7 @@ schema_type = "Article"
 
 The Windows Registry is a hierarchical database that stores configuration information for the operating system, applications, and hardware devices. One of the key branches in the registry is SYSTEM\Select, which contains information about the system's hardware configuration and boot options.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## The **SYSTEM\Select** subkeys and objects are as follows:
 

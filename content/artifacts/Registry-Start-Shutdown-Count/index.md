@@ -19,7 +19,7 @@ schema_type = "Article"
 
 The Windows registry is a hierarchical database that stores configuration settings for Windows operating systems, including Windows 10, Windows 8, and Windows 7. The registry is organized into five main components, namely HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, and HKEY_CURRENT_CONFIG. Each of these components contains subkeys that store configuration data, including the data and time for when a computer turns on, shuts down, and restarts.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## The SYSTEM\Select subkeys and objects are as follows:
 

@@ -28,7 +28,7 @@ sitemap_changefreq = "monthly"
 
 ## UserAssist Registry Analysis - Windows Program Execution Tracking
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 **UserAssist** is a feature of the Windows operating system that keeps track of the programs that are launched on a user's profile. This information is stored in the registry, a database that contains configuration settings for the operating system and other software. In this blog post, we'll explore what UserAssist is, its normal use cases, and how it can be abused by malicious actors.
 

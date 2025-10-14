@@ -15,7 +15,7 @@ featured_image = "/images/featured/4n6post-Analog-Clock.png"
 schema_type = "Article"
 +++
 
-![Analog Clock](/images/4n6post-Analog-Clock.png)
+![Analog Clock](/images/featured/artifacts/4n6post-Analog-Clock.png)
 
 The Windows registry is a critical component of the Windows operating system. It stores important configuration data and settings that help the operating system function properly. One of the registry keys that play an important role in the functioning of the system is the TimeZoneInformation registry key. In this blog post, we'll delve into the registry TimeZoneInformation, its connection with the Dynamic Link Library (DLL) it uses, and how it is used in both normal and malicious scenarios.
 

@@ -20,7 +20,7 @@ sitemap_changefreq = "monthly"
 
 ## SysInternals Tools - Registry Forensics and Analysis
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## What is SysInternals?
 

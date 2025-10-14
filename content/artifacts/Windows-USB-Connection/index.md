@@ -15,7 +15,7 @@ featured_image = "/images/featured/RegistryBlock.png"
 schema_type = "Article"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 **USB connections** are a commonly used method for transferring data between computers and other electronic devices. In Windows, the use of USB connections can affect the registry in several ways, including within the registry are the **USB**, **USBSTOR** and **MountPoints** keys. In this post, we'll explore the connection between USB Mountpoints and the setupapi.dev.log, and provide examples of both normal and malicious use cases.
 

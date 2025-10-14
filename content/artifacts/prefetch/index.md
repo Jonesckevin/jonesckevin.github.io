@@ -22,7 +22,7 @@ sitemap_changefreq = "monthly"
 
 Windows Prefetch is a feature in the Windows operating system that was first introduced in Windows XP. It is a built-in tool that helps to speed up the loading of applications and other system processes by analyzing which files and libraries are most frequently used and then pre-loading them into memory. In this blog post, we will explore what Windows Prefetch is, how it works, and provide examples of both normal and malicious use cases.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## How Windows Prefetch Works
 

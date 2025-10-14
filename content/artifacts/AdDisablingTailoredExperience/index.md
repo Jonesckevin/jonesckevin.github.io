@@ -16,7 +16,7 @@ description = "Guide to disabling ads and controlling tailored experience in Win
 keywords = ["Windows ads", "disable tailored experience", "registry tweaks", "Windows privacy", "forensic implications", "Windows customization", "ad settings", "Windows telemetry", "digital forensics", "privacy optimization", "Windows registry", "forensic analysis"]
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 # Customizing Windows: Ad Disabling and Tailored Experience
 

@@ -16,7 +16,7 @@ schema_type = "Article"
 
 The Windows registry is a central repository of configuration data for the Windows operating system and its applications. One important aspect of the registry is the section involving the Windows install time. This information can be used in a variety of ways, both for normal system usage and for malicious purposes.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## Finding the InstallDate/InstallTime Registry
 

@@ -19,7 +19,7 @@ schema_type = "Article"
 
 As my other posts likely portrais. The Windows operating system is a treasure of love and trove-like of forensic evidence. Along with the various artifacts, ShellBags stand out for their ability to provide valuable timeline and insights into a user's general activity. Whether used for legitimate investigations or malicious purposes, understanding ShellBags is crucial for anyone dealing with digital forensics and even cybersecurity defenses like EDR.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## What Are ShellBags?
 

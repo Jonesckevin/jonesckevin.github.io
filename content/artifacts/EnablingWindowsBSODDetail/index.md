@@ -15,7 +15,7 @@ featured_image = "/images/featured/RegistryBlock.png"
 schema_type = "Article"
 +++
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## Introduction
 

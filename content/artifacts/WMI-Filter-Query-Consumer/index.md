@@ -15,7 +15,7 @@ featured_image = "/images/featured/Windows11Explorer.png"
 schema_type = "Article"
 +++
 
-![WMI Logo](/images/WMI-Logo.png)
+![WMI Logo](/images/featured/artifacts/WMI-Logo.png)
 
 Windows Management Instrumentation (WMI) is a Microsoft technology that provides a unified way of managing Windows operating systems and applications. WMI is a management infrastructure that is built into Windows operating systems, and it provides a standardized interface for accessing system management information. WMI is used by system administrators to gather information about the state of their systems, to automate system management tasks, and to perform remote administration. In this blog post, we will take a closer look at what WMI is, how it works, and some examples of its normal and malicious use cases.
 

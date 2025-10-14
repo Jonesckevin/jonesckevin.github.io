@@ -17,7 +17,7 @@ date = "2024-10-02"
 
 The **MRU (Most Recently Used)** registry is a database in Microsoft Windows that stores information about recently opened files, URLs, and other items. This information can be used for a variety of purposes, both benign and malicious. **This is NOT the same as runMRU.**
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 ## Normal Use Case
 

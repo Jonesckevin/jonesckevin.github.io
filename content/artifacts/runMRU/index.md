@@ -19,7 +19,7 @@ schema_type = "Article"
 
 The RunMRU (Most Recently Used) registry is a key component of the Microsoft Windows operating system, storing information about the most recently executed applications and documents. This information is used to populate the "Recent Items" list in the Start menu, as well as for application compatibility purposes.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 While the RunMRU registry serves a useful purpose for end users, it also presents a potential security risk if not properly managed. In this blog post, we will discuss the normal use case for the RunMRU registry, as well as several examples of malicious use of the RunMRU registry. We will also provide links to additional resources for further study, including a white paper on the RunMRU registry and a SANS poster with proof of execution.
 

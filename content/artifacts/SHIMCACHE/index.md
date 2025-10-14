@@ -23,7 +23,7 @@ You should keep in mind that ShimCache and [AMCache](/artifacts/AMCACHE/) are ve
 
 When we use our computers, we expect our operating systems to keep track of our activities, including which programs and files we access, how often we access them, and what modifications we make to them. In the case of Microsoft Windows, this information is stored in a structure known as the Shimcache.
 
-![Registry Block](/images/RegistryBlock.png)
+![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 
 The Shimcache is a data structure used by Windows to store information about programs that have been executed on a Windows machine. It is maintained by the Application Compatibility Engine (ACE), which is responsible for ensuring that older programs can run on newer versions of Windows. Everyone loves backwards compatibility, and you can thank Shimcache somewhere in that list.
 
