@@ -11,7 +11,7 @@ description = "Step-by-step guide to enabling detailed Blue Screen of Death (BSO
 keywords = ["BSOD detail", "Blue Screen of Death", "Windows crash analysis", "registry forensics", "DisplayParameters", "system troubleshooting", "crash dump analysis", "Windows forensics", "DFIR", "error diagnostics", "stop error", "Windows debugging", "forensic investigation"]
 canonical = "/artifacts/EnablingWindowsBSODDetail/"
 aliases = ["/artifacts/EnablingWindowsBSODDetail/", "/2023/12/windows-mod-enabling-windows-bsod-detail.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

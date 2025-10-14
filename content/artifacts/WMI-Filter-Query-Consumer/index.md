@@ -11,7 +11,7 @@ description = "Complete guide to WMI forensic analysis for detecting malicious p
 keywords = ["WMI forensics", "WMI persistence", "event filter consumer", "WMI malware", "Objects.data", "Windows forensics", "digital forensics", "DFIR", "malware persistence", "WMI repository", "forensic investigation", "threat hunting"]
 canonical = "/artifacts/WMI-Filter-Query-Consumer/"
 aliases = ["/artifacts/WMI-Filter-Query-Consumer/", "/2023/03/wmi-filterqueryconsumer.html"]
-featured_image = "/images/featured/Windows11Explorer.png"
+featured_image = "/images/featured/artifacts/Windows11Explorer.png"
 schema_type = "Article"
 +++
 

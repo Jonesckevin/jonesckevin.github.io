@@ -11,7 +11,7 @@ author = "JonesCKevin"
 seo_title = "ShellBags Registry Forensics - Windows Folder Access Analysis Guide"
 canonical = "/artifacts/ShellBags/"
 aliases = ["/artifacts/ShellBags/", "/2024/12/registry-shellbags.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

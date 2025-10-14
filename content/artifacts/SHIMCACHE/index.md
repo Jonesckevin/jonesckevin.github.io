@@ -11,7 +11,7 @@ description = "Complete guide to ShimCache (Application Compatibility Cache) for
 keywords = ["ShimCache forensics", "Application Compatibility Cache", "AppCompatCache", "execution tracking", "Windows forensics", "AppCompatCacheParser", "digital forensics", "DFIR", "program execution", "registry analysis", "forensic artifacts", "malware detection"]
 canonical = "/artifacts/SHIMCACHE/"
 aliases = ["/artifacts/SHIMCACHE/", "/2023/03/shimcache.html"]
-featured_image = "/images/featured/SHIMCache-Logo.png"
+featured_image = "/images/featured/artifacts/SHIMCache-Logo.png"
 schema_type = "Article"
 +++
 

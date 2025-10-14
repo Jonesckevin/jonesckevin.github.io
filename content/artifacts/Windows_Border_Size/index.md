@@ -11,7 +11,7 @@ description = "Guide to Windows border size modification through registry analys
 keywords = ["Windows border size", "WindowMetrics registry", "Windows customization forensics", "registry analysis", "user preferences", "digital forensics", "DFIR", "visual customization", "registry artifacts", "Windows personalization", "forensic investigation"]
 canonical = "/artifacts/Windows-Border-Size/"
 aliases = ["/artifacts/Windows-Border-Size/", "/2023/12/windows-mod-windows-border-size.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

@@ -10,7 +10,7 @@ author = "JonesCKevin"
 seo_title = "Windows OS Install Date & Time Registry Analysis"
 canonical = "/artifacts/OSInstallDateTime/"
 aliases = ["/artifacts/OSInstallDateTime/", "/2023/02/registry-os-install-date-time.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

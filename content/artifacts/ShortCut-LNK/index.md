@@ -11,7 +11,7 @@ description = "Complete guide to LNK file forensic analysis for tracking file ac
 keywords = ["LNK file forensics", "Windows shortcuts", "LECmd", "file access tracking", "user activity analysis", "digital forensics", "DFIR", "LNK parser", "malware analysis", "shortcut forensics", "forensic artifacts", "link file analysis"]
 canonical = "/artifacts/ShortCut-LNK/"
 aliases = ["/artifacts/ShortCut-LNK/", "/2023/02/shortcut-files-lnk.html"]
-featured_image = "/images/featured/Windows11Explorer.png"
+featured_image = "/images/featured/artifacts/Windows11Explorer.png"
 schema_type = "Article"
 +++
 

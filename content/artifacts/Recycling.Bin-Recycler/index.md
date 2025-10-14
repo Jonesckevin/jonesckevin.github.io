@@ -11,7 +11,7 @@ description = "In-depth guide to Windows Recycling Bin forensic analysis. Learn 
 keywords = ["Recycling Bin forensics", "$I file", "$R file", "Windows file recovery", "deleted files analysis", "digital forensics", "DFIR", "$Recycle.Bin", "RBCmd", "file deletion tracking", "forensic artifacts", "MFT analysis", "data recovery"]
 canonical = "/artifacts/Recycling.Bin-Recycler/"
 aliases = ["/artifacts/Recycling.Bin-Recycler/", "/2023/02/recyclingbin-recycler.html"]
-featured_image = "/images/featured/RecyclingBin.png"
+featured_image = "/images/featured/artifacts/RecyclingBin.png"
 schema_type = "Article"
 +++
 

@@ -11,7 +11,7 @@ description = "Complete guide to TimeZoneInformation registry forensic analysis.
 keywords = ["TimeZoneInformation registry", "timezone forensics", "UTC conversion", "Windows timestamp analysis", "daylight saving time", "digital forensics", "DFIR", "registry analysis", "tzres.dll", "timezone tracking", "forensic timeline", "timestamp correlation"]
 canonical = "/artifacts/TimeZoneInformation/"
 aliases = ["/artifacts/TimeZoneInformation/", "/2023/02/timezoneinformation.html"]
-featured_image = "/images/featured/4n6post-Analog-Clock.png"
+featured_image = "/images/featured/artifacts/4n6post-Analog-Clock.png"
 schema_type = "Article"
 +++
 

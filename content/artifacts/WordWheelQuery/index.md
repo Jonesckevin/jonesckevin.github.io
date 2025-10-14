@@ -11,7 +11,7 @@ description = "Comprehensive guide to WordWheelQuery registry forensic analysis 
 keywords = ["WordWheelQuery registry", "Windows search history", "search forensics", "user search tracking", "registry analysis", "digital forensics", "DFIR", "Windows Explorer search", "forensic artifacts", "search terms", "user activity", "forensic investigation"]
 canonical = "/artifacts/WordWheelQuery/"
 aliases = ["/artifacts/WordWheelQuery/", "/2023/02/registry-wordwheelquery.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

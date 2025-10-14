@@ -10,7 +10,7 @@ author = "JonesCKevin"
 seo_title = "MRU Registry Forensics - Most Recently Used Files Analysis Guide"
 canonical = "/artifacts/MRU/"
 aliases = ["/artifacts/MRU/", "/2023/02/mru.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 date = "2024-10-02"
 +++

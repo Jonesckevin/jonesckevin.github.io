@@ -11,7 +11,7 @@ description = "Detailed guide to Windows Registry SYSTEM Select key forensic ana
 keywords = ["SYSTEM Select registry", "ControlSet forensics", "Windows registry analysis", "CurrentControlSet", "LastKnownGood", "Failed ControlSet", "digital forensics", "DFIR", "system configuration", "boot analysis", "registry artifacts", "Windows troubleshooting"]
 canonical = "/artifacts/Registry-SYSTEM-Select/"
 aliases = ["/artifacts/Registry-SYSTEM-Select/", "/2023/02/registry-systemselect.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

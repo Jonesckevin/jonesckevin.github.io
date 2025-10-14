@@ -11,7 +11,7 @@ description = "Complete guide to RunMRU registry forensic analysis for tracking 
 keywords = ["RunMRU registry", "Run dialog history", "command execution tracking", "Windows forensics", "malware analysis", "digital forensics", "DFIR", "execution artifacts", "Windows Run command", "forensic investigation", "proof of execution", "registry analysis"]
 canonical = "/artifacts/runMRU/"
 aliases = ["/artifacts/runMRU/", "/2023/02/runmru.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

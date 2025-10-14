@@ -11,7 +11,7 @@ description = "Complete guide to Amcache.hve forensic analysis for tracking appl
 keywords = ["Amcache.hve", "Amcache forensics", "application execution tracking", "Windows forensics", "AmcacheParser", "digital forensics", "DFIR", "forensic artifacts", "program execution", "Windows registry", "malware analysis", "incident response", "execution timeline"]
 canonical = "/artifacts/Amcache.hve/"
 aliases = ["/artifacts/Amcache.hve/", "/2023/02/amcachehve.html"]
-featured_image = "/images/featured/SHIMCache-Logo.png"
+featured_image = "/images/featured/artifacts/SHIMCache-Logo.png"
 schema_type = "Article"
 sitemap_priority = 0.7
 +++

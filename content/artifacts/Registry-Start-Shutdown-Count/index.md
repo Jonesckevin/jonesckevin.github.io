@@ -11,7 +11,7 @@ description = "Complete guide to Windows registry forensics for tracking system 
 keywords = ["Windows shutdown tracking", "ShutdownCount registry", "LastBootUpTime", "system boot forensics", "Windows registry analysis", "reboot tracking", "digital forensics", "DFIR", "system timeline", "boot analysis", "forensic artifacts", "Windows startup"]
 canonical = "/artifacts/Registry-Start-Shutdown-Count/"
 aliases = ["/artifacts/Registry-Start-Shutdown-Count/", "/2023/03/registry-computer-restarts-shutdown.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

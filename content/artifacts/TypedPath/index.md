@@ -11,7 +11,7 @@ description = "Comprehensive guide to TypedPaths registry forensic analysis for 
 keywords = ["TypedPaths registry", "Windows Explorer history", "address bar forensics", "navigation tracking", "user activity analysis", "digital forensics", "DFIR", "registry artifacts", "path history", "Explorer forensics", "typed URLs", "forensic investigation"]
 canonical = "/artifacts/TypedPath/"
 aliases = ["/artifacts/TypedPath/", "/2023/02/registry-typedpath.html"]
-featured_image = "/images/featured/RegistryBlock.png"
+featured_image = "/images/featured/artifacts/RegistryBlock.png"
 schema_type = "Article"
 +++
 

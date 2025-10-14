@@ -10,7 +10,7 @@ description = "Comprehensive guide to JumpList forensic analysis for tracking us
 keywords = ["JumpList forensics", "AutomaticDestinations", "CustomDestinations", "Windows user activity", "recent files tracking", "JLECmd", "digital forensics", "DFIR", "user behavior analysis", "taskbar forensics", "file access history", "Windows artifacts", "forensic timeline"]
 canonical = "/artifacts/JumpList/"
 aliases = ["/artifacts/JumpList/", "/2023/02/jump-list.html"]
-featured_image = "/images/featured/Windows11Explorer.png"
+featured_image = "/images/featured/artifacts/Windows11Explorer.png"
 schema_type = "Article"
 +++
 
