@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
-tags: ["AI", "Tools", "Gaming", "D&D", "RPG", "Traps", "Puzzles", "Dungeons", "DM Tools"]
+tags: ["Gaming", "D&D", "RPG", "Traps", "Puzzles", "Dungeons", "DM Tools", "AI", "Tools"]
 categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
 seo_title: "Free D&D Traps & Puzzles Generator - RPG Dungeon Creator"

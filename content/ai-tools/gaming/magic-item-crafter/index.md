@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
-tags: ["AI", "Tools", "Gaming", "D&D", "RPG", "Magic Items", "Loot", "Treasure", "DM Tools"]
+tags: ["Gaming", "D&D", "RPG", "Magic Items", "Loot", "Treasure", "DM Tools", "AI", "Tools"]
 categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
 seo_title: "Free Magic Item Generator - D&D Loot & Treasure Creator"

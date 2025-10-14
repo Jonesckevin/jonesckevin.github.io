@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
-tags: ["AI", "Tools", "Gaming", "D&D", "DnD", "RPG", "Character", "Tabletop", "5E"]
+tags: ["Gaming", "D&D", "DnD", "RPG", "Character", "Tabletop", "5E", "AI", "Tools"]
 categories: ["AI Tools", "Gaming", "RPG Tools"]
 type: ai-tools
 seo_title: "Free D&D Character Generator - AI DnD Backstory & Lore Creator"

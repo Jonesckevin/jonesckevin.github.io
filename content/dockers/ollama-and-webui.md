@@ -1,5 +1,5 @@
 ---
-title: Ollama and Open WebUI Docker Compose Setup
+title: Ollama and Open WebUI
 description: A Docker Compose setup for Ollama and Open WebUI, enabling easy access to AI models and a web interface.
 tags: [ollama, open-webui, docker-compose, ai models, web interface, machine learning, deployment,
   self-hosted, open source, productivity, development, containerization, web app]

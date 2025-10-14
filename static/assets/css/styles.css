@@ -1411,6 +1411,24 @@ button.btn-primary:disabled {
     opacity: 0.7;
 }
 
+.footer-content .footer-note {
+    font-size: 0.9em;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 8px;
+}
+
+.footer-content a {
+    color: #ff6b35;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-content a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 /* ==========================================================================
    GLOBAL ALIGNMENT OVERRIDES
    ========================================================================== */

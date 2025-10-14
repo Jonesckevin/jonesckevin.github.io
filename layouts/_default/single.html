@@ -1,126 +1,300 @@
 {{ define "main" }}
-    <div class="list-layout">
-        <nav class="sidebar-directory">
-            <input type="checkbox" id="sidebar-expand-toggle" class="sidebar-expand-toggle" checked hidden>
-            <label for="sidebar-expand-toggle" class="sidebar-expand-header">
-                {{ .Title }}
-                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
-            </label>
-            <div class="sidebar-expand-content">
-                {{ $current := . }}
-                {{ $section := .CurrentSection }}
-                {{ $parent := $section.Parent }}
-                {{ $grandparent := $parent.Parent }}
-                <nav>
-                    {{ if $grandparent }}
-                        <div class="sidebar-level">
-                            <input type="checkbox" id="sidebar-grandparent-toggle" class="sidebar-sub-expand-toggle" checked hidden>
-                            <label for="sidebar-grandparent-toggle" class="sidebar-sub-expand-header">
-                                <strong>{{ $grandparent.Title }}</strong>
-                                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
-                            </label>
-                            <div class="sidebar-sub-expand-content">
-                                <ul>
-                                    {{ range $grandparent.Pages }}
-                                        <li>
-                                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                        </li>
-                                    {{ end }}
-                                </ul>
-                            </div>
-                        </div>
-                    {{ end }}
-                    {{ if $parent }}
-                        <div class="sidebar-level">
-                            <input type="checkbox" id="sidebar-parent-toggle" class="sidebar-sub-expand-toggle" checked hidden>
-                            <label for="sidebar-parent-toggle" class="sidebar-sub-expand-header">
-                                <strong>{{ $parent.Title }}</strong>
-                                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
-                            </label>
-                            <div class="sidebar-sub-expand-content">
-                                <ul>
-                                    {{ range $parent.Pages }}
-                                        <li>
-                                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                        </li>
-                                    {{ end }}
-                                </ul>
-                            </div>
-                        </div>
-                    {{ end }}
-                    {{ if $section }}
-                        <div class="sidebar-level">
-                            <input type="checkbox" id="sidebar-section-toggle" class="sidebar-sub-expand-toggle" checked hidden>
-                            <label for="sidebar-section-toggle" class="sidebar-sub-expand-header">
-                                <strong>{{ $section.Title }}</strong>
-                                <span class="expand-icon" aria-label="Expand/collapse">&#9660;</span>
-                            </label>
-                            <div class="sidebar-sub-expand-content">
-                                <ul>
-                                    {{ range $section.Pages }}
-                                        <li>
-                                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                        </li>
-                                    {{ end }}
-                                </ul>
-                            </div>
-                        </div>
-                    {{ end }}
-                </nav>
-            </div>
-        </nav>
-        <main class="posts">
-            <h1>{{ .Title }}</h1>
-            <div class="content">{{ .Content }}</div>
-        </main>
-    </div>
-<style>
-/* Sidebar expand/collapse styles */
-.sidebar-expand-header {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    padding: 0.5em 0;
-    font-size: 1.1em;
-}
-.expand-icon {
-    margin-left: auto;
-    transition: transform 0.2s;
-}
-.sidebar-expand-toggle:not(:checked) ~ .sidebar-expand-header .expand-icon {
-    transform: rotate(-90deg);
-}
-.sidebar-expand-toggle:not(:checked) ~ .sidebar-expand-content {
-    display: none;
-}
-.sidebar-expand-content {
-    transition: max-height 0.2s;
-}
+<main class="posts" style="max-width: 1000px; margin: 120px auto 0 auto; padding: 0 2rem;">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="separator">›</span>
+        {{ with .CurrentSection }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span class="separator">›</span>
+        {{ end }}
+        <span>{{ .Title }}</span>
+    </nav>
 
-/* Sub-level expand/collapse styles */
-.sidebar-sub-expand-header {
-    display: flex;
-    align-items: center;
-    font-weight: normal;
-    cursor: pointer;
-    user-select: none;
-    padding: 0.3em 0;
-    font-size: 1em;
-}
-.sidebar-sub-expand-header strong {
-    font-weight: bold;
-}
-.sidebar-sub-expand-toggle:not(:checked) ~ .sidebar-sub-expand-header .expand-icon {
-    transform: rotate(-90deg);
-}
-.sidebar-sub-expand-toggle:not(:checked) ~ .sidebar-sub-expand-header + .sidebar-sub-expand-content {
-    display: none;
-}
-.sidebar-sub-expand-content {
-    transition: max-height 0.2s;
-    padding-left: 1em;
-}
+    <!-- Article Header -->
+    <article class="post-single">
+        <header class="post-header">
+            <h1 class="post-title">{{ .Title }}</h1>
+
+            <!-- Post metadata section -->
+            <div class="post-meta">
+                {{ with .Params.brand }}
+                <span class="brand-badge">{{ . }}</span>
+                {{ end }}
+
+                {{ with .Params.model }}
+                <span class="brand-badge">{{ . }}</span>
+                {{ end }}
+
+                <div class="meta-info">
+                    {{ if .Params.date }}
+                    <span class="meta-item meta-date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        {{ dateFormat "January 2, 2006" .Date }}
+                    </span>
+                    {{ end }}
+
+                    {{ if .ReadingTime }}
+                    <span class="separator">•</span>
+                    <span>{{ .ReadingTime }} min read</span>
+                    {{ end }}
+
+                    {{ with .Params.tags }}
+                    <span class="separator">•</span>
+                    <span class="meta-item meta-tags">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
+                            </path>
+                            <line x1="7" y1="7" x2="7" y2="7"></line>
+                        </svg>
+                        {{ range $index, $tag := . }}{{ if $index }}, {{ end }}<a
+                            href='{{ "tags/" | absLangURL }}{{ $tag | urlize }}/'>{{ $tag }}</a>{{ end }}
+                    </span>
+                    {{ end }}
+
+                    {{ with .Params.categories }}
+                    <span class="separator">•</span>
+                    <span class="meta-item meta-categories">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                            </path>
+                        </svg>
+                        {{ range $index, $cat := . }}{{ if $index }}, {{ end }}<a
+                            href='{{ "categories/" | absLangURL }}{{ $cat | urlize }}/'>{{ $cat }}</a>{{ end }}
+                    </span>
+                    {{ end }}
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <div class="post-content">
+            {{ .Content }}
+        </div>
+
+        <!-- Navigation to Previous/Next Posts -->
+        <nav class="post-navigation">
+            {{ with .NextInSection }}
+            <a href="{{ .Permalink }}" class="nav-link prev">
+                <span class="nav-label">← Previous</span>
+                <span class="nav-title">{{ .Title }}</span>
+            </a>
+            {{ end }}
+
+            {{ with .PrevInSection }}
+            <a href="{{ .Permalink }}" class="nav-link next">
+                <span class="nav-label">Next →</span>
+                <span class="nav-title">{{ .Title }}</span>
+            </a>
+            {{ end }}
+        </nav>
+    </article>
+</main>
+<style>
+    /* Center posts area with proper spacing */
+    main.posts {
+        max-width: 1000px;
+        margin: 120px auto 0 auto;
+        padding: 0 2rem;
+    }
+
+    /* Breadcrumb Navigation */
+    .breadcrumb {
+        margin-bottom: 2rem;
+        padding: 0.75rem 0;
+        font-size: 0.9em;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .breadcrumb a {
+        color: var(--accent, #00d4ff);
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+
+    .breadcrumb a:hover {
+        opacity: 0.7;
+    }
+
+    .breadcrumb .separator {
+        margin: 0 0.5rem;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Post Single Article */
+    .post-single {
+        max-width: 100%;
+    }
+
+    .post-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .post-title {
+        margin: 0 0 1rem 0;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        color: var(--accent-light, #fff);
+    }
+
+    .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95em;
+    }
+
+    .brand-badge {
+        background: var(--accent-soft, rgba(255, 255, 255, 0.1));
+        border: 1px solid var(--accent-soft-border, rgba(255, 255, 255, 0.2));
+        color: var(--accent-light, #fff);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85em;
+        font-weight: 600;
+    }
+
+    .meta-info {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .meta-item {
+        align-items: center;
+        gap: 0.4em;
+    }
+
+    .separator {
+        margin: 0 0.25rem;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Post Content */
+    .post-content {
+        margin: 2rem 0;
+        line-height: 1.7;
+    }
+
+    .post-content p {
+        margin-bottom: 1.25rem;
+    }
+
+    .post-content h2,
+    .post-content h3,
+    .post-content h4 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--accent-light, #fff);
+    }
+
+    .post-content ul,
+    .post-content ol {
+        margin: 1rem 0 1rem 2rem;
+    }
+
+    .post-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    .post-content table {
+        width: 100%;
+        margin: 2rem 0;
+        border-collapse: collapse;
+    }
+
+    .post-content table th,
+    .post-content table td {
+        padding: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .post-content table th {
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 600;
+    }
+
+    /* Post Navigation */
+    .post-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .post-navigation .nav-link {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        background: var(--card-bg, rgba(255, 255, 255, 0.05));
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .post-navigation .nav-link:hover {
+        background: var(--card-bg-hover, rgba(255, 255, 255, 0.08));
+        border-color: var(--accent, #00d4ff);
+        transform: translateY(-2px);
+    }
+
+    .post-navigation .nav-link.prev {
+        text-align: left;
+    }
+
+    .post-navigation .nav-link.next {
+        text-align: right;
+        grid-column: 2;
+    }
+
+    .post-navigation .nav-label {
+        font-size: 0.85em;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 0.5rem;
+    }
+
+    .post-navigation .nav-title {
+        color: var(--accent-light, #fff);
+        font-weight: 600;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        main.posts {
+            padding: 0 1rem;
+            margin-top: 120px;
+        }
+
+        .post-title {
+            font-size: 2rem;
+        }
+
+        .post-navigation {
+            grid-template-columns: 1fr;
+        }
+
+        .post-navigation .nav-link.next {
+            grid-column: 1;
+        }
+
+        .post-meta {
+            font-size: 0.85em;
+        }
+    }
 </style>
 {{ end }}

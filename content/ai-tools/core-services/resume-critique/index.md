@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
-tags: ["AI", "Tools", "Core Services", "Productivity", "Resume", "Career", "Analysis", "Professional Development"]
+tags: ["Core Services", "Productivity", "Resume", "Career", "Analysis", "Professional Development", "AI", "Tools"]
 categories: ["AI Tools", "Career Tools", "Productivity"]
 type: ai-tools
 seo_title: "Free AI Resume Critique - Professional Resume Analysis & Review"

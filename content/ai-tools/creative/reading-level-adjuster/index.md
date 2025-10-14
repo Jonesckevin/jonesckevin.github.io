@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
-tags: ["AI", "Tools", "Creative", "Education", "Accessibility", "Text Processing", "Reading", "Content"]
+tags: ["Creative", "Education", "Accessibility", "Text Processing", "Reading", "Content", "AI", "Tools"]
 categories: ["AI Tools", "Education", "Accessibility"]
 type: ai-tools
 seo_title: "Free AI Reading Level Adjuster - Simplify Text for Any Audience"

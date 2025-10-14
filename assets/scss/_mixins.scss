@@ -1,3 +1,69 @@
 @mixin dimmed {
   opacity: .6;
 }
+
+// Theme-aware property mixin - applies a property with light/dark values
+@mixin theme-property($property, $light-value, $dark-value) {
+  #{$property}: $light-value;
+
+  @media (prefers-color-scheme: dark) {
+    #{$property}: $dark-value;
+  }
+
+  [data-theme=dark] & {
+    #{$property}: $dark-value;
+  }
+
+  [data-theme=light] & {
+    #{$property}: $light-value;
+  }
+}
+
+// Multiple theme properties at once
+@mixin theme-properties($properties) {
+  @each $property, $values in $properties {
+    #{$property}: map-get($values, light);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @each $property, $values in $properties {
+      #{$property}: map-get($values, dark);
+    }
+  }
+
+  [data-theme=dark] & {
+    @each $property, $values in $properties {
+      #{$property}: map-get($values, dark);
+    }
+  }
+
+  [data-theme=light] & {
+    @each $property, $values in $properties {
+      #{$property}: map-get($values, light);
+    }
+  }
+}
+
+// Simplified theme background mixin
+@mixin theme-background($light-bg, $dark-bg) {
+  @include theme-property(background, $light-bg, $dark-bg);
+}
+
+// Simplified theme color mixin
+@mixin theme-color($light-color, $dark-color) {
+  @include theme-property(color, $light-color, $dark-color);
+}
+
+// Simplified theme border mixin
+@mixin theme-border($light-border, $dark-border) {
+  @include theme-property(border-bottom, $light-border, $dark-border);
+}
+
+// Background and color together (most common pattern)
+@mixin theme-bg-color($light-bg, $dark-bg, $light-color: null, $dark-color: null) {
+  @include theme-background($light-bg, $dark-bg);
+
+  @if $light-color and $dark-color {
+    @include theme-color($light-color, $dark-color);
+  }
+}

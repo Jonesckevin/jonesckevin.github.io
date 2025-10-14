@@ -3,14 +3,14 @@
 html[data-theme="light"] .controls-dropdown .header__random-btn,
 html[data-theme="light"] .controls-dropdown .header-github-link,
 html[data-theme="light"] .controls-dropdown .theme-toggle {
-  background-color: #fff !important;
+    background-color: #fff !important;
 }
 
 /* Dark mode: black background */
 html[data-theme="dark"] .controls-dropdown .header__random-btn,
 html[data-theme="dark"] .controls-dropdown .header-github-link,
 html[data-theme="dark"] .controls-dropdown .theme-toggle {
-  background-color: #1b1c1d !important;
+    background-color: #1b1c1d !important;
 }
 
 
@@ -42,7 +42,7 @@ html[data-theme="dark"] .controls-dropdown .theme-toggle {
         transform: translateY(0);
     }
 
-    @media (max-width: 900px) {
+    @media #{$media-size-tablet} {
         position: fixed;
         top: 60px;
         left: 0.5rem;
@@ -51,7 +51,7 @@ html[data-theme="dark"] .controls-dropdown .theme-toggle {
         min-width: 200px;
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         position: fixed;
         top: 60px;
         left: 0.5rem;
@@ -157,7 +157,7 @@ html[data-theme="dark"] .controls-dropdown .theme-toggle {
         background: rgba(255, 255, 255, 0.08);
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         height: 40px;
         width: 40px;
         min-width: 40px;
@@ -181,7 +181,7 @@ html[data-theme="dark"] .controls-dropdown .theme-toggle {
         background: rgba(255, 255, 255, 0.08);
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         height: 40px;
         width: 40px;
         min-width: 40px;
@@ -211,7 +211,7 @@ html[data-theme="dark"] .controls-dropdown .theme-toggle {
     align-items: center;
     gap: 0.5rem;
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         display: none;
     }
 }
@@ -239,7 +239,7 @@ html[data-theme="dark"] .controls-dropdown .theme-toggle {
         height: 24px;
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         height: 40px;
         width: 40px;
         min-width: 40px;

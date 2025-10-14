@@ -49,7 +49,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   # AI Tools Site Configuration
   [params.aitools]
     hero_title = "AI Tools API Services Hub"
-    hero_description = "Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic. Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation — all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD."
+    hero_description = "Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic. Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation - all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD."
     security_title = ""
     
     [[params.aitools.security]]
@@ -73,7 +73,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
     msapplication = "#111827"
 
 [taxonomies]
-  category   = "blog"                # Used for categorizing posts   e.g. "Tutorials", "News", etc.
+  category   = "categories"          # Used for categorizing posts   e.g. "Tutorials", "News", etc.
   tag        = "tags"                # Used for tagging posts        e.g. "Hugo", "Docker", etc.
   series     = "series"              # Used for grouping posts       e.g. "Hugo Tutorials", "Docker Tutorials", etc.
   author     = "authors"             #                               e.g. "John Doe", "Jane Smith", etc.
@@ -102,8 +102,6 @@ ignoreLogs = ['warning-goldmark-raw-html']
     [languages.en.params.logo]
       logoText = "MedaVerse"
       logoHomeLink = "/"
-      #path = "/images/logo-81x112.png"
-      #alt = "Medabee4n6 Logo"
 
   # Create  Header Menu
   [[menu.main]]
@@ -111,9 +109,9 @@ ignoreLogs = ['warning-goldmark-raw-html']
     name       = "AI Tools"
     url        = "/ai-tools"
   [[menu.main]]
-    identifier = "4n6post"
-    name       = "4n6Post"
-    url        = "/4n6post"
+    identifier = "artifacts"
+    name       = "Artifacts"
+    url        = "/artifacts"
   [[menu.main]]
     identifier = "posts"
     name       = "CTF Post"
@@ -282,6 +280,17 @@ ignoreLogs = ['warning-goldmark-raw-html']
       home_title = "Reading Level Adjuster"
       home_description = "Adapt content to different reading levels while maintaining core meaning and engagement."
       home_features = ["Multiple reading levels", "Vocabulary adjustment", "Structure optimization", "Engagement preservation"]
+      home_cta = "Start"
+  [[menu.creative]]
+    identifier = "music-lyrics-generator"
+    name       = "Music Lyrics Generator"
+    url        = "/ai-tools/creative/music-lyrics-generator/"
+    weight     = 35
+    [menu.creative.params]
+      show_home = true
+      home_title = "Music Lyrics Generator"
+      home_description = "Create professional song lyrics with proper structure including intro, verses, chorus, and bridge. Generate original songs or write in the style of your favorite artists."
+      home_features = ["Proper song structure", "Style emulation", "Multiple genres", "Custom lyrics features"]
       home_cta = "Start"
 
   # Gaming

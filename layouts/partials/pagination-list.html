@@ -1,20 +1,16 @@
+{{ $paginator := .Paginator }}
+{{ if gt $paginator.TotalPages 1 }}
 <div class="pagination">
-    <div class="pagination__buttons">
-        {{ if .Paginator.HasPrev }}
-        <span class="button previous">
-            <a href="{{ .Paginator.Prev.URL }}">
-                <span class="button__icon">←</span>
-                <span class="button__text">{{ i18n "pagination.newerPosts" }}</span>
-            </a>
-        </span>
-        {{ end }}
-        {{ if .Paginator.HasNext }}
-        <span class="button next">
-            <a href="{{ .Paginator.Next.URL }}">
-                <span class="button__text">{{ i18n "pagination.olderPosts" }}</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        {{ end }}
-    </div>
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}" class="pagination-link">← Previous</a>
+    {{ end }}
+
+    <span class="pagination-info">
+        Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+    </span>
+
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}" class="pagination-link">Next →</a>
+    {{ end }}
 </div>
+{{ end }}

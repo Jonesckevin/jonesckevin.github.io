@@ -67,7 +67,7 @@
     transform: translateY(-4px);
     transition: all 0.2s ease;
 
-    @media (max-width: 356px) {
+    @media #{$media-size-phone-xs} {
         width: 90vw;
     }
 
@@ -77,7 +77,7 @@
         transform: translateY(0);
     }
 
-    @media (max-width: 480px) {
+    @media #{$media-size-phone-medium} {
         position: fixed !important;
         top: 60px !important;
         left: 50% !important;
@@ -251,7 +251,7 @@
         }
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         width: 40px;
         height: 40px;
         min-width: 40px;
@@ -284,7 +284,7 @@
     backdrop-filter: blur(15px);
     scroll-behavior: smooth;
 
-    @media (max-width: 376px) {
+    @media #{$media-size-phone-small} {
         width: 85vw;
     }
 
@@ -321,7 +321,7 @@
         margin-bottom: 20px;
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         width: 100vw;
         right: -100vw;
     }
@@ -342,12 +342,12 @@
     box-sizing: border-box;
     backdrop-filter: blur(10px);
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         padding: 12px;
         min-height: 48px;
     }
 
-    @media (max-width: 480px) {
+    @media #{$media-size-phone-medium} {
         padding: 10px;
     }
 }
@@ -393,7 +393,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         font-size: 14px;
     }
 }
@@ -466,12 +466,12 @@
             }
         }
 
-        @media (max-width: 684px) {
+        @media #{$media-size-phone} {
             padding: 10px 12px;
             font-size: 13px;
         }
 
-        @media (max-width: 480px) {
+        @media #{$media-size-phone-medium} {
             padding-left: 10px;
             padding-right: 10px;
         }
@@ -525,12 +525,12 @@
         border-radius: 0 2px 2px 0;
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         padding: 8px 12px;
         font-size: 11px;
     }
 
-    @media (max-width: 480px) {
+    @media #{$media-size-phone-medium} {
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -544,12 +544,12 @@
     min-width: 20px;
     text-align: center;
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         font-size: 14px;
         min-width: 18px;
     }
 
-    @media (max-width: 480px) {
+    @media #{$media-size-phone-medium} {
         font-size: 12px;
         min-width: 16px;
     }
@@ -624,7 +624,7 @@
         }
     }
 
-    @media (max-width: 684px) {
+    @media #{$media-size-phone} {
         padding: 6px 12px 6px 20px;
         font-size: 11px;
         min-height: 28px;
@@ -634,7 +634,7 @@
         }
     }
 
-    @media (max-width: 480px) {
+    @media #{$media-size-phone-medium} {
         padding-left: 18px;
         padding-right: 10px;
     }

@@ -1,24 +1,7 @@
 .menu {
   z-index: 9999;
-  // Default
-  background: $light-background-header;
   font-weight: bold;
-
-  @media (prefers-color-scheme: dark) {
-    background: $dark-background-header;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-background-header;
-  }
-
-  [data-theme=dark] & {
-    background: $dark-background-header;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-header;
-  }
+  @include theme-background($light-background-header, $dark-background-header);
 
   @media #{$media-size-phone} {
     position: absolute;
@@ -38,7 +21,7 @@
     padding: 0 15px;
     font-size: 1rem;
     list-style: none;
-    
+
     li {
       margin: 0 12px;
     }
@@ -85,23 +68,7 @@
 
 
 .submenu {
-  background: $light-background-header;
-
-  @media (prefers-color-scheme: dark) {
-    background: $dark-background-header;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-background-header;
-  }
-
-  [data-theme=dark] & {
-    background: $dark-background-header;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-header;
-  }
+  @include theme-background($light-background-header, $dark-background-header);
 
   ul {
     list-style-type: none;
@@ -110,7 +77,8 @@
     overflow: hidden;
   }
 
-  li a, .dropbtn {
+  li a,
+  .dropbtn {
     display: inline-block;
     text-decoration: none;
   }
@@ -122,19 +90,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background: $dark-background-header;
-
-    @media (prefers-color-scheme: light) {
-      background: $light-background-header;
-    }
-    
-    [data-theme=dark] & {
-      background: $dark-background-header;
-    }
-  
-    [data-theme=light] & {
-      background: $light-background-header;
-    }
+    @include theme-background($light-background-header, $dark-background-header);
   }
 
   .dropdown-content a {
@@ -145,19 +101,7 @@
   }
 
   .dropdown-content a:hover {
-    background: $dark-background-header;
-    
-    @media (prefers-color-scheme: light) {
-      background: $light-background-header;
-    }
-
-    [data-theme=dark] & {
-      background: $dark-background-header;
-    }
-  
-    [data-theme=light] & {
-      background: $light-background-header;
-    }
+    @include theme-background($light-background-header, $dark-background-header);
   }
 
   .dropdown:hover .dropdown-content {

@@ -8,26 +8,9 @@
   width: 100%;
   z-index: 100;
   padding: 20px;
-  // Default
-  background: $light-background-header;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   max-height: 125px;
-
-  @media (prefers-color-scheme: dark) {
-    background: $dark-background-header;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-background-header;
-  }
-
-  [data-theme=dark] & {
-    background: $dark-background-header;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-header;
-  }
+  @include theme-background($light-background-header, $dark-background-header);
 
   &__right {
     display: flex;
@@ -97,17 +80,17 @@
   min-height: 60px;
   gap: 1rem;
 
-  @media (max-width: 900px) {
+  @media #{$media-size-tablet} {
     padding: 0.5rem 0.75rem;
     gap: 0.5rem;
   }
 
-  @media (max-width: 684px) {
+  @media #{$media-size-phone} {
     padding: 0.5rem;
     min-height: 50px;
   }
 
-  @media (max-width: 480px) {
+  @media #{$media-size-phone-medium} {
     padding: 0.25rem;
     gap: 0.25rem;
   }
@@ -137,7 +120,7 @@
   gap: 2rem;
   align-items: center;
 
-  @media (max-width: 900px) {
+  @media #{$media-size-tablet} {
     display: none;
   }
 }
@@ -205,7 +188,7 @@
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 900px) {
+  @media #{$media-size-tablet} {
     display: flex;
   }
 
@@ -247,7 +230,7 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  @media (max-width: 684px) {
+  @media #{$media-size-phone} {
     position: fixed;
     top: 60px;
     left: 50%;
@@ -295,7 +278,7 @@
   align-items: center;
   gap: 0.75rem;
 
-  @media (max-width: 480px) {
+  @media #{$media-size-phone-medium} {
     gap: 0.5rem;
   }
 }

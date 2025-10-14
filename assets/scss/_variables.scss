@@ -20,15 +20,117 @@ $dark-color-secondary: #b3b3bd;
 $dark-border-color: #4e4e57;
 $dark-table-color: #4e4e57;
 
-$media-size-phone: "(max-width: 684px)";
-$media-size-tablet: "(max-width: 900px)";
+/* ============================================== */
+/* Desktop & Laptop Sizes - big screens, big dreams */
+/* ============================================== */
+
+// Extra large desktop - 4K command centers and wall TVs
+$media-size-desktop-xl: "(max-width: 1920px)";
+$breakpoint-desktop-xl: 1920px;
+
+// Large desktop - 1440p/1080p workhorses doing spreadsheets
+$media-size-desktop-lg: "(max-width: 1440px)";
+$breakpoint-desktop-lg: 1440px;
+
+// Standard desktop - laptops pretending to be desktops
+$media-size-desktop: "(max-width: 1280px)";
+$breakpoint-desktop: 1280px;
+
+// Small desktop / large laptop - 13–15" “it fits in a backpack”
+$media-size-desktop-sm: "(max-width: 1024px)";
+$breakpoint-desktop-sm: 1024px;
+
+/* ============================================== */
+/* Tablet Sizes - the couch-surfing class */
+/* ============================================== */
+
+// Tablet landscape - iPad Pro and “is this a small laptop?”
+$media-size-tablet-lg: "(max-width: 1200px)";
+$breakpoint-tablet-lg: 1200px;
+
+// Tablet landscape and smaller - iPad landscape; tiny laptops in disguise
+$media-size-tablet: "(max-width: 1000px)";
+$breakpoint-tablet: 1000px;
+
+// Tablet portrait - classic iPad portrait breakpoint
+$media-size-tablet-md: "(max-width: 768px)";
+$breakpoint-tablet-md: 768px;
+
+// Small tablet portrait - minis, readers, and comfy thumbs
+$media-size-tablet-sm: "(max-width: 600px)";
+$breakpoint-tablet-sm: 600px;
+
+/* ============================================== */
+/* Phone Sizes - the thumb zone */
+/* ============================================== */
+
+// Large phone / phablet - the “two-hand default” club
+$media-size-phone-xl: "(max-width: 684px)";
+$breakpoint-phone-xl: 684px;
+
+// Large phone - big pockets required
+$media-size-phone-lg: "(max-width: 576px)";
+$breakpoint-phone-lg: 576px;
+
+// Standard phone portrait - most modern phones here
+$media-size-phone: "(max-width: 480px)";
+$breakpoint-phone: 480px;
+
+// Standard phone medium - iPhone 13-ish, Pixel 5-ish widths
+$media-size-phone-md: "(max-width: 414px)";
+$breakpoint-phone-md: 414px;
+
+// Standard phone small - modern “not quite mini”
+$media-size-phone-sm: "(max-width: 390px)";
+$breakpoint-phone-sm: 390px;
+
+// Small phone portrait - iPhone X/11 Pro width territory
+$media-size-phone-xs: "(max-width: 375px)";
+$breakpoint-phone-xs: 375px;
+
+// Very small phone - compact Android classics
+$media-size-phone-xxs: "(max-width: 360px)";
+$breakpoint-phone-xxs: 360px;
+
+// Extra small compact phone - the “is that a calculator?” size
+$media-size-phone-tiny: "(max-width: 320px)";
+$breakpoint-phone-tiny: 320px;
+
+/* ============================================== */
+/* Legacy Variables (for backwards compatibility) */
+/* ============================================== */
+
+// Keep old variable names pointing to new equivalents
+$media-size-phone-medium: $media-size-phone;
+$breakpoint-phone-medium: $breakpoint-phone;
+
+$media-size-phone-small: $media-size-phone-xs;
+$breakpoint-phone-small: $breakpoint-phone-xs;
 
 /* Variables for js, must be the same as these in @custom-media queries */
 :root {
-  --phoneWidth: (max-width: 684px);
+  /* Desktop breakpoints */
+  --desktopXlWidth: (max-width: 1920px);
+  --desktopLgWidth: (max-width: 1440px);
+  --desktopWidth: (max-width: 1280px);
+  --desktopSmWidth: (max-width: 1024px);
+
+  /* Tablet breakpoints */
+  --tabletLgWidth: (max-width: 1000px);
   --tabletWidth: (max-width: 900px);
+  --tabletMdWidth: (max-width: 768px);
+  --tabletSmWidth: (max-width: 600px);
+
+  /* Phone breakpoints */
+  --phoneXlWidth: (max-width: 684px);
+  --phoneLgWidth: (max-width: 576px);
+  --phoneWidth: (max-width: 480px);
+  --phoneMdWidth: (max-width: 414px);
+  --phoneSmWidth: (max-width: 390px);
+  --phoneXsWidth: (max-width: 375px);
+  --phoneXxsWidth: (max-width: 360px);
+  --phoneTinyWidth: (max-width: 320px);
 }
 
 /* Content */
 $max-width: 860px;
-

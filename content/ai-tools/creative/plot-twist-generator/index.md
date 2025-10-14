@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
-tags: ["AI", "Tools", "Creative", "Writing", "Plot", "Story", "Narrative", "Twist"]
+tags: ["Creative", "Writing", "Plot", "Story", "Narrative", "Twist", "AI", "Tools"]
 categories: ["AI Tools", "Creative Writing", "Story Development"]
 type: ai-tools
 seo_title: "Free AI Plot Twist Generator - Create Story Twists & Surprises"

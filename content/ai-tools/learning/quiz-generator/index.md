@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
-tags: ["AI", "Tools", "Learning", "Education", "Quizzes", "Assessment", "Study", "Teaching"]
+tags: ["Learning", "Education", "Quizzes", "Assessment", "Study", "Teaching", "AI", "Tools"]
 categories: ["AI Tools", "Education", "Learning Tools"]
 type: ai-tools
 seo_title: "Free Interactive Quiz Generator - AI Study Quiz & Assessment Creator"

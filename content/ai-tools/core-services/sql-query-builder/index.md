@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-30
 lastmod: 2025-09-30
 draft: false
-tags: ["AI", "Tools", "Core Services", "Database", "SQL", "Productivity", "Development", "Query Builder"]
+tags: ["Core Services", "Database", "SQL", "Productivity", "Development", "Query Builder", "AI", "Tools"]
 categories: ["AI Tools", "Development", "Database Tools"]
 type: ai-tools
 seo_title: "Free AI SQL Query Builder - Generate Database Queries with AI"

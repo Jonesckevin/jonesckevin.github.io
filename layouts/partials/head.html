@@ -17,9 +17,9 @@
 {{ block "title" . }}
 <title>
     {{ if .IsHome }}
-    {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} — {{ . }} {{ end }}
+    {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} - {{ . }} {{ end }}
     {{ else }}
-    {{ .Title }} :: {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} — {{ . }}{{ end }}
+    {{ .Title }} :: {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} - {{ . }}{{ end }}
     {{ end }}
 </title>
 {{ end }}
@@ -32,13 +32,13 @@
 {{/* Section-specific CSS overrides */}}
 {{ $sec := lower .Section }}
 {{ if eq $sec "writeups" }}
-<link rel="stylesheet" href="/assets/css/writeups.css">
+<link rel="stylesheet" href="/assets/css/theme-writeups.css">
 {{ end }}
-{{ if or (eq $sec "4n6post") (eq $sec "4n6post") }}
-<link rel="stylesheet" href="/assets/css/4n6post.css">
+{{ if or (eq $sec "artifacts") (eq $sec "artifacts") }}
+<link rel="stylesheet" href="/assets/css/theme-artifacts.css">
 {{ end }}
 {{ if eq $sec "dockers" }}
-<link rel="stylesheet" href="/assets/css/dockers.css">
+<link rel="stylesheet" href="/assets/css/theme-dockers.css">
 {{ end }}
 {{ if eq $sec "ai-tools" }}
 <link rel="stylesheet" href="/assets/css/ai-tools-pages.css">

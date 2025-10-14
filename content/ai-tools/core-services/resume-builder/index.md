@@ -7,7 +7,7 @@ author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
-tags: ["AI", "Tools", "Core Services", "Productivity", "Resume Builder", "Career Tools", "ATS Optimization", "Professional Development"]
+tags: ["Core Services", "Productivity", "Resume Builder", "Career Tools", "ATS Optimization", "Professional Development", "AI", "Tools"]
 categories: ["AI Tools", "Productivity", "Career Tools"]
 type: ai-tools
 seo_title: "Free AI Resume Builder - Create Professional ATS-Optimized Resumes"
