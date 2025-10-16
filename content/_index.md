@@ -1,5 +1,5 @@
 ---
-title: "Cetagories"
+title: "Categories"
 draft: false
 toc: true
 images: []

@@ -263,6 +263,7 @@ pre {
   font-size: 0.95rem;
   overflow: auto;
 
+  /*
   [data-theme=dark] & {
     background-color: $dark-background-secondary;
   }
@@ -270,6 +271,7 @@ pre {
   [data-theme=light] & {
     background-color: $light-background-secondary;
   }
+*/
 
   @media #{$media-size-phone} {
     white-space: pre-wrap;
@@ -418,4 +420,180 @@ hr {
 // Prism JS Additionals
 .highlight {
   margin: 30px auto;
+}
+
+// Details/Summary Dropdown Styles - Enhanced Prominence
+details {
+  margin: 1.5em 0;
+  padding: 0;
+  border: 2px solid var(--accent, #d4af37);
+  border-radius: 8px;
+  background: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &[open] {
+    border-color: var(--accent, #d4af37);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+summary {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent, #d4af37) 0%, var(--accent-light, #f4d47f) 100%);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+
+  // Add animated shimmer effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+  }
+
+  // Ensure text stays above the shimmer
+  &>* {
+    position: relative;
+    z-index: 2;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg,
+        var(--accent, #d4af37) 0%,
+        var(--accent-light, #f4d47f) 25%,
+        var(--accent, #d4af37) 50%,
+        var(--accent-light, #f4d47f) 75%,
+        var(--accent, #d4af37) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 2s ease infinite;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px var(--accent-glow, rgba(212, 175, 55, 0.4));
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px #fff;
+    outline: 2px solid var(--accent, #d4af37);
+    outline-offset: 2px;
+  }
+
+  // Custom arrow indicator
+  &::after {
+    content: '⚙️▼';
+    font-size: 1.25em;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    margin-left: auto;
+    padding-left: 1rem;
+    opacity: 0.8;
+  }
+
+  // Hide default marker
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+details[open] summary {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  &::after {
+    transform: rotate(180deg);
+  }
+}
+
+// Content inside details
+details>*:not(summary) {
+  padding: 1.5rem;
+  animation: slideDown 0.3s ease-out;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Special styling for code blocks inside details
+details pre {
+  margin: 0 !important;
+  border-radius: 4px;
+}
+
+details .highlight {
+  margin: 0 !important;
+
+  pre {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Make the details more visible with a subtle glow effect
+details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+details:hover::before {
+  opacity: 1;
 }

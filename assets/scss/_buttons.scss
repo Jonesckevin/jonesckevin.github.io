@@ -77,7 +77,8 @@ a.button {
 .code-toolbar {
   margin-bottom: 20px;
 
-  .toolbar-item a {
+  .toolbar-item a,
+  .toolbar-item button {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -101,6 +102,23 @@ a.button {
 
     [data-theme=dark] & {
       color: inherit;
+    }
+
+    &:hover {
+      opacity: 0.8;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  .copy-code-button {
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
   }
 }
