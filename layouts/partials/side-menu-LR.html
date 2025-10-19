@@ -5,13 +5,12 @@
 <ul class="side-menu-right" id="side-menu-right">
     <li class="side-menu-header">
         <div class="side-menu-brand">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="side-menu-brand-icon">
-                <path d="M12 2L2 7v10l10 5 10-5V7z"></path>
-                <path d="M12 22V12"></path>
-                <path d="M22 9l-10 3-10-3"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
             </svg>
-            <span class="side-menu-title">{{ .Site.Title | default "Navigation" }}</span>
+            <span class="side-menu-title">AI Tools Hub</span>
         </div>
         <button class="side-menu-close" id="side-menu-right-close" aria-label="Close menu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -33,26 +32,36 @@
         </a>
     </li>
 
-    <!-- Dynamic section navigation based on current page -->
-    {{ $currentSection := .CurrentSection }}
-    {{ $sections := .Site.Sections }}
+    <!-- AI Tools Sidebar Navigation Menu -->
+    {{ $aiToolsSection := .Site.GetPage "/ai-tools" }}
+    {{ if $aiToolsSection }}
+
+    <!-- AI Tools Hub Link -->
+    <li class="side-menu-home-link">
+        <a href="{{ $aiToolsSection.RelPermalink }}"
+            class="side-menu-link {{ if eq .RelPermalink $aiToolsSection.RelPermalink }}active{{ end }}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+            AI Tools Hub
+        </a>
+    </li>
 
     {{ $categoryIndex := 0 }}
-    {{ range $sections }}
-    {{ if .Pages }}
+    {{ range $aiToolsSection.Sections.ByWeight }}
     <li class="side-menu-category">
-        <input type="checkbox" id="side-menu-right-category-{{ $categoryIndex }}" class="side-menu-category-toggle" {{
-            if eq $categoryIndex 0 }}checked{{ end }}>
+        <input type="checkbox" id="side-menu-right-category-{{ $categoryIndex }}" class="side-menu-category-toggle"
+            checked>
         <label for="side-menu-right-category-{{ $categoryIndex }}" class="side-menu-category-title">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <folder x="3" y="3" width="18" height="18" rx="2" ry="2"></folder>
                 <path d="M3 7V5a2 2 0 012-2h3l2 2h8a2 2 0 012 2v2"></path>
             </svg>
             {{ .Title }}
-            <span class="side-menu-toggle-icon">{{ if eq $categoryIndex 0 }}−{{ else }}+{{ end }}</span>
+            <span class="side-menu-toggle-icon">−</span>
         </label>
         <ul class="side-menu-category-links">
-            {{ range .Pages.ByTitle }}
+            {{ range .RegularPages.ByTitle }}
             {{ $active := eq .RelPermalink $.RelPermalink }}
             <li>
                 <a href="{{ .RelPermalink }}" class="side-menu-link {{ if $active }}active{{ end }}">
@@ -190,6 +199,14 @@
     </svg>
 </button>
 
+<!-- Right Side Menu Toggle Arrow -->
+<button class="side-menu-right-toggle" id="side-menu-right-toggle" aria-label="Open AI Tools">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+</button>
+
 <!-- Navigation Overlays -->
 <div class="side-menu-overlay" id="side-menu-right-overlay"></div>
 <div class="side-menu-overlay" id="side-menu-left-overlay"></div>
@@ -197,15 +214,15 @@
 <style>
     /* CSS Variables for Side Menus */
     :root {
-        /* Main color - same for both menus */
-        --side-menu-color: #4a90e2;
-        --side-menu-color-dark: #357abd;
+        /* AI Tools theme colors for right sidebar */
+        --side-menu-right-accent: #ff6b35;
+        --side-menu-right-accent-light: #ff8c42;
+        --side-menu-right-contrast: rgba(255, 107, 53, 0.2);
+        --side-menu-right-contrast-light: rgba(255, 107, 53, 0.1);
+        --side-menu-right-contrast-lighter: rgba(255, 107, 53, 0.05);
 
-        /* Contrast colors for differentiation */
-        --side-menu-right-contrast: rgba(74, 144, 226, 0.2);
-        --side-menu-right-contrast-light: rgba(74, 144, 226, 0.1);
-        --side-menu-right-contrast-lighter: rgba(74, 144, 226, 0.05);
-
+        /* Left sidebar colors */
+        --side-menu-left-color: #4a90e2;
         --side-menu-left-contrast: rgba(74, 144, 226, 0.3);
         --side-menu-left-contrast-light: rgba(74, 144, 226, 0.15);
         --side-menu-left-contrast-lighter: rgba(74, 144, 226, 0.08);
@@ -218,12 +235,11 @@
         top: 0;
         width: min(320px, 85vw);
         height: 100vh;
-        background: linear-gradient(180deg, var(--background, #232425) 0%, rgba(74, 144, 226, 0.08) 100%);
         z-index: 1002;
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         overflow-y: auto;
         overflow-x: hidden;
-        padding: 15px 0 20px 0;
+        padding: 70px 0 20px 0;
         list-style: none;
         margin: 0;
         box-shadow: 0 0 24px rgba(0, 0, 0, 0.12);
@@ -231,10 +247,12 @@
         scroll-behavior: smooth;
     }
 
-    /* Side Menu Right - slides from right */
+    /* Side Menu Right - AI Tools Theme */
     .side-menu-right {
         right: -320px;
+        background: linear-gradient(180deg, var(--background) 0%, rgba(255, 107, 53, 0.02) 100%);
         border-left: 1px solid var(--side-menu-right-contrast);
+        box-shadow: -6px 0 24px rgba(0, 0, 0, 0.12);
     }
 
     .side-menu-right.open {
@@ -257,7 +275,7 @@
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        background: linear-gradient(135deg, var(--side-menu-color), var(--side-menu-color-dark));
+        background: linear-gradient(135deg, var(--side-menu-left-color), #357abd);
         border: none;
         border-radius: 0 8px 8px 0;
         padding: 20px 8px;
@@ -282,6 +300,40 @@
     }
 
     .side-menu-left.open~.side-menu-left-toggle svg {
+        transform: rotate(180deg);
+    }
+
+    /* Right Side Toggle Arrow */
+    .side-menu-right-toggle {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(135deg, var(--side-menu-right-accent), var(--side-menu-right-accent-light));
+        border: none;
+        border-radius: 8px 0 0 8px;
+        padding: 20px 8px;
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: -2px 0 12px var(--side-menu-right-contrast);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .side-menu-right-toggle:hover {
+        padding-left: 12px;
+        box-shadow: -4px 0 20px var(--side-menu-right-contrast);
+        transform: translateY(-50%) translateX(-2px);
+    }
+
+    .side-menu-right-toggle svg {
+        transition: transform 0.3s ease;
+    }
+
+    .side-menu-right.open~.side-menu-right-toggle svg {
         transform: rotate(180deg);
     }
 
@@ -324,12 +376,12 @@
     /* Firefox scrollbar */
     .side-menu-right {
         scrollbar-width: thin;
-        scrollbar-color: var(--side-menu-color) rgba(74, 144, 226, 0.1);
+        scrollbar-color: var(--side-menu-right-accent) var(--side-menu-right-contrast-light);
     }
 
     .side-menu-left {
         scrollbar-width: thin;
-        scrollbar-color: var(--side-menu-color) rgba(226, 122, 74, 0.1);
+        scrollbar-color: var(--side-menu-left-color) rgba(74, 144, 226, 0.1);
     }
 
     /* Ensure content doesn't get cut off */
@@ -340,9 +392,7 @@
 
     /* Header styling */
     .side-menu-header {
-        position: sticky;
         top: 0;
-        background: linear-gradient(135deg, var(--background, #fff) 0%, rgba(74, 144, 226, 0.05) 100%);
         padding: 15px;
         display: flex;
         justify-content: space-between;
@@ -351,13 +401,20 @@
         min-height: 50px;
         box-sizing: border-box;
         backdrop-filter: blur(10px);
+        margin: -70px 0 0 0;
     }
 
     .side-menu-right .side-menu-header {
-        border-bottom: 2px solid var(--side-menu-color);
+        background: linear-gradient(135deg, var(--background) 0%, rgba(255, 107, 53, 0.05) 100%);
+        border-bottom: 2px solid var(--side-menu-right-accent);
     }
 
     .side-menu-left .side-menu-header {
+        background: linear-gradient(135deg, var(--background) 0%, rgba(74, 144, 226, 0.05) 100%);
+        border-bottom: 2px solid var(--side-menu-left-color);
+    }
+
+    .side-menu-header-old {
         border-bottom: 2px solid var(--side-menu-color);
         background: linear-gradient(135deg, var(--background, #fff) 0%, rgba(226, 122, 74, 0.05) 100%);
     }
@@ -378,11 +435,11 @@
     }
 
     .side-menu-right .side-menu-brand-icon {
-        color: var(--side-menu-color);
+        color: var(--side-menu-right-accent);
     }
 
     .side-menu-left .side-menu-brand-icon {
-        color: var(--side-menu-color);
+        color: var(--side-menu-left-color);
     }
 
     @keyframes sideMenuPulse {
@@ -402,12 +459,20 @@
     .side-menu-title {
         font-weight: 600;
         font-size: 16px;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: #232425;
-        background-clip: text;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .side-menu-right .side-menu-title {
+        background: linear-gradient(135deg, var(--side-menu-right-accent), var(--side-menu-right-accent-light));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .side-menu-left .side-menu-title {
+        color: var(--side-menu-left-color);
     }
 
     .side-menu-right .side-menu-title {
@@ -436,29 +501,29 @@
     }
 
     .side-menu-right .side-menu-close {
-        background: rgba(74, 144, 226, 0.1);
-        border-color: rgba(74, 144, 226, 0.3);
-        color: var(--side-menu-color);
+        background: rgba(255, 107, 53, 0.1);
+        border-color: rgba(255, 107, 53, 0.3);
+        color: var(--side-menu-right-accent);
     }
 
     .side-menu-left .side-menu-close {
-        background: rgba(226, 122, 74, 0.1);
-        border-color: rgba(226, 122, 74, 0.3);
-        color: var(--side-menu-color);
+        background: rgba(74, 144, 226, 0.1);
+        border-color: rgba(74, 144, 226, 0.3);
+        color: var(--side-menu-left-color);
     }
 
     .side-menu-right .side-menu-close:hover {
-        background: var(--side-menu-color);
-        color: white;
+        background: var(--side-menu-right-accent);
+        color: var(--background);
         transform: scale(1.1) rotate(90deg);
-        box-shadow: 0 3px 8px rgba(74, 144, 226, 0.3);
+        box-shadow: 0 3px 8px rgba(255, 107, 53, 0.3);
     }
 
     .side-menu-left .side-menu-close:hover {
-        background: var(--side-menu-color);
+        background: var(--side-menu-left-color);
         color: white;
         transform: scale(1.1) rotate(90deg);
-        box-shadow: 0 3px 8px rgba(226, 122, 74, 0.3);
+        box-shadow: 0 3px 8px rgba(74, 144, 226, 0.3);
     }
 
     /* Home link styling */
@@ -466,14 +531,17 @@
         margin: 10px 0;
         border-radius: 6px;
         overflow: hidden;
+        border-bottom: 2px solid;
     }
 
     .side-menu-right .side-menu-home-link {
-        background: linear-gradient(135deg, rgba(74, 144, 226, 0.05), rgba(74, 144, 226, 0.02));
+        background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(255, 107, 53, 0.02));
+        border-bottom-color: var(--side-menu-right-contrast);
     }
 
     .side-menu-left .side-menu-home-link {
-        background: linear-gradient(135deg, rgba(226, 122, 74, 0.05), rgba(226, 122, 74, 0.02));
+        background: linear-gradient(135deg, rgba(74, 144, 226, 0.05), rgba(74, 144, 226, 0.02));
+        border-bottom-color: rgba(74, 144, 226, 0.2);
     }
 
     .side-menu-home-link a {
@@ -490,11 +558,11 @@
     }
 
     .side-menu-right .side-menu-home-link a {
-        color: var(--side-menu-color);
+        color: var(--side-menu-right-accent);
     }
 
     .side-menu-left .side-menu-home-link a {
-        color: var(--side-menu-color);
+        color: var(--side-menu-left-color);
     }
 
     .side-menu-home-link a::before {
@@ -513,17 +581,17 @@
     }
 
     .side-menu-right .side-menu-home-link a:hover {
-        background: var(--side-menu-color);
-        color: white;
+        background: var(--side-menu-right-accent);
+        color: var(--background);
         transform: translateX(3px);
-        box-shadow: 0 3px 8px rgba(74, 144, 226, 0.3);
+        box-shadow: 0 3px 8px rgba(255, 107, 53, 0.3);
     }
 
     .side-menu-left .side-menu-home-link a:hover {
-        background: var(--side-menu-color);
+        background: var(--side-menu-left-color);
         color: white;
         transform: translateX(3px);
-        box-shadow: 0 3px 8px rgba(226, 122, 74, 0.3);
+        box-shadow: 0 3px 8px rgba(74, 144, 226, 0.3);
     }
 
     /* Category styling */
@@ -566,23 +634,23 @@
     }
 
     .side-menu-right .side-menu-category-title {
-        color: var(--side-menu-color);
+        color: var(--side-menu-right-accent);
+        background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 107, 53, 0.05));
+        border-bottom-color: var(--side-menu-right-contrast);
+    }
+
+    .side-menu-left .side-menu-category-title {
+        color: var(--side-menu-left-color);
         background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(74, 144, 226, 0.05));
         border-bottom-color: rgba(74, 144, 226, 0.2);
     }
 
-    .side-menu-left .side-menu-category-title {
-        color: var(--side-menu-color);
-        background: linear-gradient(135deg, rgba(226, 122, 74, 0.1), rgba(226, 122, 74, 0.05));
-        border-bottom-color: rgba(226, 122, 74, 0.2);
-    }
-
     .side-menu-right .side-menu-category-title:hover {
-        background: linear-gradient(135deg, rgba(74, 144, 226, 0.15), rgba(74, 144, 226, 0.08));
+        background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 107, 53, 0.08));
     }
 
     .side-menu-left .side-menu-category-title:hover {
-        background: linear-gradient(135deg, rgba(226, 122, 74, 0.15), rgba(226, 122, 74, 0.08));
+        background: linear-gradient(135deg, rgba(74, 144, 226, 0.15), rgba(74, 144, 226, 0.08));
     }
 
     .side-menu-category-title::before {
@@ -596,11 +664,11 @@
     }
 
     .side-menu-right .side-menu-category-title::before {
-        background: var(--side-menu-color);
+        background: var(--side-menu-right-accent);
     }
 
     .side-menu-left .side-menu-category-title::before {
-        background: var(--side-menu-color);
+        background: var(--side-menu-left-color);
     }
 
     .side-menu-toggle-icon {
@@ -677,28 +745,28 @@
     }
 
     .side-menu-right .side-menu-link::before {
-        color: var(--side-menu-color);
+        color: var(--side-menu-right-accent);
     }
 
     .side-menu-left .side-menu-link::before {
-        color: var(--side-menu-color);
+        color: var(--side-menu-left-color);
     }
 
     .side-menu-right .side-menu-link:hover,
     .side-menu-right .side-menu-link.active {
-        background: linear-gradient(135deg, var(--side-menu-color), var(--side-menu-color-dark));
-        color: white;
+        background: linear-gradient(135deg, var(--side-menu-right-accent), var(--side-menu-right-accent-light));
+        color: var(--background);
         transform: translateX(3px);
-        border-left-color: var(--side-menu-color-dark);
+        border-left-color: var(--side-menu-right-accent-light);
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
 
     .side-menu-left .side-menu-link:hover,
     .side-menu-left .side-menu-link.active {
-        background: linear-gradient(135deg, var(--side-menu-color), var(--side-menu-color-dark));
+        background: linear-gradient(135deg, var(--side-menu-left-color), #357abd);
         color: white;
         transform: translateX(3px);
-        border-left-color: var(--side-menu-color-dark);
+        border-left-color: #357abd;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
 
@@ -927,6 +995,18 @@
             sideMenuLeftToggle.addEventListener('click', toggleLeftNav);
         }
 
+        // Toggle right navigation when arrow is clicked
+        const sideMenuRightToggleBtn = document.getElementById('side-menu-right-toggle');
+        if (sideMenuRightToggleBtn) {
+            sideMenuRightToggleBtn.addEventListener('click', function () {
+                if (sideMenuRight && sideMenuRight.classList.contains('open')) {
+                    closeRightNav();
+                } else {
+                    openRightNav();
+                }
+            });
+        }
+
         // Expose functions globally for hamburger menu integration
         window.sideMenuRightToggle = function () {
             if (sideMenuRight && sideMenuRight.classList.contains('open')) {
@@ -1045,5 +1125,27 @@
                 icon.textContent = toggle.checked ? '−' : '+';
             }
         });
+
+        // COMMENTED OUT: Event listeners for header sidebar toggle buttons
+        // These buttons are now commented out in header.html in favor of edge toggle arrows
+        // Uncomment this section if the header buttons are re-enabled
+        /*
+        const sidebarToggleLeft = document.getElementById('sidebar-toggle-left');
+        const sidebarToggleRight = document.getElementById('sidebar-toggle-right');
+
+        if (sidebarToggleLeft) {
+            sidebarToggleLeft.addEventListener('click', toggleLeftNav);
+        }
+
+        if (sidebarToggleRight) {
+            sidebarToggleRight.addEventListener('click', function () {
+                if (sideMenuRight && sideMenuRight.classList.contains('open')) {
+                    closeRightNav();
+                } else {
+                    openRightNav();
+                }
+            });
+        }
+        */
     });
 </script>

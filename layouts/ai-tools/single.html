@@ -3,9 +3,6 @@
 
 <head>
     {{ partial "head.html" . }}
-
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/ai-tools-pages.css">
 </head>
 
 <body class="section-{{ lower .Section }}">
@@ -92,7 +89,8 @@
 
             // Add resize functionality for larger screens
             if (window.innerWidth >= 1024) {
-                initResizer(wrapper, formSection, divider, resultsSection);
+                initLeftResizer(wrapper, formSection, divider, resultsSection);
+                initRightResizer(wrapper, sidebarSection, rightDivider, resultsSection);
             }
 
             // Reinitialize resizer on window resize
@@ -101,7 +99,7 @@
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(function () {
                     if (window.innerWidth >= 1024) {
-                        initResizer(wrapper, formSection, divider, resultsSection);
+                        initLeftResizer(wrapper, formSection, divider, resultsSection);
                     } else {
                         // Reset to default grid on mobile
                         wrapper.style.gridTemplateColumns = '1fr';
@@ -112,7 +110,7 @@
             });
         });
 
-        function initResizer(wrapper, formSection, divider, resultsSection) {
+        function initLeftResizer(wrapper, formSection, divider, resultsSection) {
             let isResizing = false;
             let startX = 0;
             let startWidth = 0;
@@ -165,5 +163,45 @@
         }
     </script>
 </body>
+
+<style>
+    /* Override main-content width for AI Tools section */
+    .section-ai-tools .main-content {
+        max-width: 95%;
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    @media (min-width: 1400px) {
+        .section-ai-tools .main-content {
+            max-width: 90%;
+        }
+    }
+
+    @media (min-width: 1920px) {
+        .section-ai-tools .main-content {
+            max-width: 85%;
+        }
+    }
+
+    body.section-ai-tools main {
+        display: block;
+        margin: 120px auto 0 auto;
+        width: auto;
+        max-width: 95%;
+        padding: 0 2rem;
+    }
+
+    body.section-ai-tools .container {
+        max-width: none;
+        width: auto;
+    }
+
+    body.section-ai-tools .post {
+        max-width: none;
+        width: auto;
+    }
+</style>
+
 
 </html>

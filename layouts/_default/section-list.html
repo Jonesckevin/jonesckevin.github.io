@@ -3,8 +3,6 @@
 
 <head>
     {{ partial "head.html" . }}
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/section-base.css">
     {{ if .Params.customCSS }}
     <link rel="stylesheet" href="{{ .Params.customCSS }}">
     {{ end }}
@@ -36,37 +34,49 @@
                 {{ .Content }}
 
                 <div class="services-grid" id="servicesGrid">
-                    {{/* Check if using menu-based content (AI Tools) */}}
-                    {{ if .Params.useMenus }}
-                    {{/* Iterate through specified menus */}}
-                    {{- range $menuName := .Params.menuNames }}
-                    {{- $menu := index $.Site.Menus $menuName }}
-                    {{- range $menu }}
-                    {{- if and .Params.show_home (ne .Name "Home") }}
-                    <a href="{{ .URL | relLangURL }}" class="service-card" data-title="{{ .Params.home_title | lower }}"
-                        data-description="{{ .Params.home_description | lower }}"
-                        data-tags="{{ if .Params.home_features }}{{ delimit .Params.home_features " " | lower }}{{ end }}">
+                    {{/* Check if showing all descendant pages or just immediate children */}}
+                    {{ if .Params.showAllDescendants }}
+                    {{/* Show all leaf pages (products/items) recursively */}}
+                    {{ range .Site.RegularPages }}
+                    {{ if and (in .File.Dir $.File.Dir) (not .IsSection) }}
+                    <a href="{{ .Permalink }}" class="service-card" data-title="{{ .Title | lower }}"
+                        data-description="{{ with .Description }}{{ . | lower }}{{ else }}{{ .Summary | plainify | lower }}{{ end }}"
+                        data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}{{ if .Params.brand }} {{ .Params.brand | lower }}{{ end }}{{ if .Params.model }} {{ .Params.model | lower }}{{ end }}">
                         <div class="card-header">
-                            <h3>{{ .Params.home_title }}</h3>
+                            <h3>{{ .Title }}</h3>
                         </div>
                         <div class="card-content">
                             <div class="card-content-wrapper">
-                                <p>{{ .Params.home_description }}</p>
-                                {{ with .Params.home_features }}
-                                <ul class="feature-list">
-                                    {{- range . }}
-                                    <li>{{ . }}</li>
-                                    {{- end }}
-                                </ul>
+                                {{ with .Description }}
+                                <p>{{ . }}</p>
+                                {{ else }}
+                                <p>{{ .Summary | plainify | truncate 150 }}</p>
+                                {{ end }}
+                                {{/* Show brand/category for context when showing all items */}}
+                                {{ if or .Params.brand .Params.model }}
+                                <div class="item-meta" style="margin-top: 0.5rem; font-size: 0.85em; opacity: 0.7;">
+                                    {{ if .Params.brand }}<span class="brand-label">{{ .Params.brand }}</span>{{ end }}
+                                    {{ if .Params.model }}<span class="model-label">{{ .Params.model }}</span>{{ end }}
+                                </div>
                                 {{ end }}
                             </div>
                         </div>
+                        {{ if not $.Params.hideThumbnails }}
+                        {{ if or .Params.thumbnail .Params.featured_image }}
+                        <div class="card-thumbnail">
+                            {{ if .Params.thumbnail }}
+                            <img src="{{ .Params.thumbnail | absURL }}" alt="{{ .Title }}">
+                            {{ else if .Params.featured_image }}
+                            <img src="{{ .Params.featured_image | absURL }}" alt="{{ .Title }}">
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                        {{ end }}
                     </a>
-                    {{- end }}
-                    {{- end }}
-                    {{- end }}
+                    {{ end }}
+                    {{ end }}
                     {{ else }}
-                    {{/* Default: Use pages */}}
+                    {{/* Default: Show only immediate child pages (sections/categories) */}}
                     {{ range .Pages }}
                     <a href="{{ .Permalink }}" class="service-card" data-title="{{ .Title | lower }}"
                         data-description="{{ with .Description }}{{ . | lower }}{{ else }}{{ .Summary | plainify | lower }}{{ end }}"
@@ -80,14 +90,6 @@
                                 <p>{{ . }}</p>
                                 {{ else }}
                                 <p>{{ .Summary | plainify | truncate 150 }}</p>
-                                {{ end }}
-
-                                {{ with .Params.tags }}
-                                <ul class="feature-list">
-                                    {{ range first 3 . }}
-                                    <li>{{ . }}</li>
-                                    {{ end }}
-                                </ul>
                                 {{ end }}
                             </div>
                         </div>
@@ -107,13 +109,13 @@
                     {{ end }}
                 </div>
 
-                {{/* Optional security/info section */}}
-                {{ if .Params.showSecurity }}
-                <div class="security-section">
-                    <h2>{{ .Site.Params.aitools.security_title }}</h2>
-                    <div class="security-grid">
-                        {{- range .Site.Params.aitools.security }}
-                        <div class="security-item">
+                {{/* Optional info section (configurable per section) */}}
+                {{ if .Params.showInfoSection }}
+                <div class="info-section">
+                    <h2>{{ .Params.infoSectionTitle | default "Additional Information" }}</h2>
+                    <div class="info-grid">
+                        {{- range .Params.infoItems }}
+                        <div class="info-item">
                             <h4>{{ .title }}</h4>
                             <p>{{ .description }}</p>
                         </div>

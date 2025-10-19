@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
 
-{{/* Section-specific CSS overrides */}}
+{{/* Section-specific CSS theme overrides (just color variables) */}}
 {{ $sec := lower .Section }}
 {{ if eq $sec "writeups" }}
 <link rel="stylesheet" href="/assets/css/theme-writeups.css">
@@ -41,7 +41,10 @@
 <link rel="stylesheet" href="/assets/css/theme-dockers.css">
 {{ end }}
 {{ if eq $sec "ai-tools" }}
-<link rel="stylesheet" href="/assets/css/ai-tools-pages.css">
+<link rel="stylesheet" href="/assets/css/theme-ai-tools.css">
+{{ end }}
+{{ if eq $sec "smelling_salts" }}
+<link rel="stylesheet" href="/assets/css/theme-smelling-salts.css">
 {{ end }}
 
 {{ range $val := $.Site.Params.customCSS }}
