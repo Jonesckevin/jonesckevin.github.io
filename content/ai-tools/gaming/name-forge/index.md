@@ -1,5 +1,5 @@
 ---
-title: "Name Forge - Multi-Genre Name Generator for RPG & Fantasy"
+title: "D&D Name Forger"
 subtitle: "AI-Powered Character and Place Name Generator"
 description: "Generate unique names for characters, places, and fantasy elements across multiple genres. Perfect for RPG campaigns, creative writing, and world-building."
 keywords: ["name generator", "fantasy name generator", "RPG name generator", "character names", "place names", "fantasy names", "D&D names", "creative names", "world building", "character creator"]

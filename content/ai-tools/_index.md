@@ -1,21 +1,20 @@
 +++
-title = "AI Tools Hub - Professional AI-Powered Tools for Productivity"
-description = "Discover powerful AI-driven tools for productivity, content creation, resume building, and professional development. Free online AI tools to enhance your workflow."
+title = "AI Tools Hub"
+description = "Discover powerful AI-driven tools for productivity, content creation, resumes, and professional dev. Free online AI tools to enhance workflow."
 keywords = ["AI tools", "artificial intelligence", "productivity tools", "AI-powered applications", "resume builder", "content generator", "document summarizer", "free AI tools", "professional tools", "workflow automation"]
 type = "ai-tools"
 layout = "section-list"
-date = "2025-09-30"
-lastmod = "2025-09-30"
 draft = false
+tags = ["AI Tools", "Productivity", "Content Creation", "Resume Builder", "Document Summarization", "Workflow Automation", "Free AI Tools", "Professional Development"]
+categories = ["AI Tools", "Productivity", "Content Creation"]
 seo_title = "AI Tools Hub - Free Professional AI-Powered Tools & Applications"
 canonical = "/ai-tools/"
-schema_type = "WebPage"
-author = "JonesCKevin"
-sitemap_priority = 0.8
-sitemap_changefreq = "weekly"
-
+seo_description = "Explore powerful AI-driven tools for productivity, content creation, resume building, and professional development. Free online AI tools to enhance your workflow."
+seo_keywords = ["AI tools", "artificial intelligence", "productivity tools", "AI-powered applications", "resume builder", "content generator", "document summarizer", "free AI tools", "professional tools", "workflow automation"]
 # Theme Configuration
 customCSS = "/assets/css/theme-ai-tools.css"
+
+showAllDescendants = true
 
 # Search Configuration
 searchPlaceholder = "Search AI Tools..."
@@ -23,13 +22,28 @@ searchResultLabel = "tool"
 searchNoResultsTitle = "AI Tools"
 disableSearch = false
 
-# Content Source - Use menus instead of pages
-useMenus = true
-menuNames = ["coreservices", "learning", "creative", "gaming"]
-
 # Display Configuration
 hideThumbnails = true
-showSecurity = true
+
+# Info Section Configuration
+showInfoSection = true
+infoSectionTitle = "Security & Privacy"
+
+[[infoItems]]
+title = "Your API Key"
+description = "Your API key (OpenAI, DeepSeek, or Anthropic) is used only for the current session and is never stored."
+
+[[infoItems]]
+title = "Data Privacy"
+description = "All uploaded documents and generated content are processed securely and not retained after your session."
+
+[[infoItems]]
+title = "Multi-Provider Support"
+description = "Switch between AI providers seamlessly while maintaining the same security standards across all services."
+
+[[infoItems]]
+title = "Rich Output Formats"
+description = "All AI responses are converted to HTML and available for download in Markdown, HTML, and MD formats."
 
 # Schema Configuration
 schemaType = true
@@ -48,4 +62,3 @@ schemaCategory = "Productivity"
   twitter_description = "Free AI-powered tools for productivity, content creation, and professional development. Enhance your workflow with our AI applications."
   twitter_image = "/images/ai-tools-hub-twitter.png"
 +++
-

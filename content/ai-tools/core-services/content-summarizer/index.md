@@ -1,5 +1,5 @@
 ---
-title: "AI Content Summarizer - Text Summarization Tool"
+title: "Text Summarization Tool"
 subtitle: "AI-Powered Content Summarization Tool"
 description: "Quickly summarize articles, documents, and text with our AI-powered content summarizer. Get concise summaries in multiple formats and tones. Free online text summarization tool."
 keywords: ["AI content summarizer", "text summarizer", "document summarizer", "article summarizer", "AI text processing", "content analysis", "automatic summarization", "text condensing", "reading comprehension", "productivity tools", "free summarizer"]

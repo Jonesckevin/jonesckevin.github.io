@@ -1,5 +1,5 @@
 ---
-title: "CSS Generator - AI CSS Creation Tool"
+title: "CSS Generator"
 subtitle: "AI-Powered CSS Generator with Live Preview"
 description: "Generate custom CSS styles with AI assistance and preview them in real-time. Create styles for text, tables, images, and more with live examples. Free AI CSS generator."
 keywords: ["CSS generator", "AI CSS creator", "CSS maker", "style generator", "web design tool", "CSS preview", "live CSS editor", "AI styling", "web development", "CSS examples"]

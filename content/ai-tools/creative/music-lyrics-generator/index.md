@@ -1,5 +1,5 @@
 ---
-title: "AI Music Lyrics Generator - Create Song Lyrics"
+title: "Create Song Lyrics"
 subtitle: "AI-Powered Song Writing & Lyrics Creation Tool"
 description: "Generate professional song lyrics with proper structure including intro, verses, chorus, and bridge. Create original songs or write in the style of your favorite artists with AI."
 keywords: ["music lyrics generator", "song lyrics creator", "AI songwriting", "lyrics writer", "song generator", "music composition", "creative writing", "AI music tool", "lyric creator"]

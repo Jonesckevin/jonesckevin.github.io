@@ -1,5 +1,5 @@
 ---
-title: "Business Document Generator - AI Professional Documents"
+title: "Business Document Generator"
 subtitle: "AI-Powered Business Document Creation Tool"
 description: "Generate professional business documents with AI assistance. Create contracts, proposals, policies, and reports with industry-standard formatting. Free AI document generator."
 keywords: ["business document generator", "AI document creator", "professional documents", "contract generator", "proposal writer", "policy generator", "business templates", "document automation", "AI writing assistant"]

@@ -1,5 +1,5 @@
 ---
-title: "AI Plot Twist Generator - Story Twist Creator"
+title: "DnD Story Twist Creator"
 subtitle: "AI-Powered Plot Twist and Story Surprise Tool"
 description: "Generate contextual plot twists that fit seamlessly into your story. Create surprising reveals, unexpected turns, and shocking moments for any narrative genre."
 keywords: ["plot twist generator", "story twist creator", "narrative surprise", "story generator", "creative writing tool", "plot device", "story development", "writing inspiration", "twist ideas", "story elements"]

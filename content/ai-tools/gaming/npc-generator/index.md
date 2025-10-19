@@ -1,5 +1,5 @@
 ---
-title: "NPC Forge: D&D NPC Generator - AI Character Creator"
+title: "D&D NPC Forge"
 subtitle: "AI-Powered NPC and Character Generator"
 description: "Generate detailed NPCs for D&D and RPG campaigns. Create compelling non-player characters with backgrounds, motivations, and personality traits for your tabletop games."
 keywords: ["NPC generator", "D&D NPC creator", "RPG character generator", "non-player character", "DnD NPC", "tabletop RPG", "character creator", "RPG NPC", "DM tools", "campaign NPCs"]

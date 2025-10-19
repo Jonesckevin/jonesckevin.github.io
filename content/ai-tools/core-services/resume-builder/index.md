@@ -1,5 +1,5 @@
 ---
-title: "AI Resume Builder - Professional Resume Generator Tool"
+title: "Resume Generator Tool"
 subtitle: "AI-Powered Resume Creation Tool"
 description: "Create professional, ATS-optimized resumes with our AI-powered resume builder. Transform your documents into polished resumes ready for any job application. Free online tool."
 keywords: ["AI resume builder", "resume generator", "ATS optimized resume", "professional resume maker", "AI-powered resume", "resume creator", "job application tool", "resume template", "free resume builder", "career tools", "professional documents"]

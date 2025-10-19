@@ -1,5 +1,5 @@
 ---
-title: "D&D Traps & Puzzles Generator - RPG Dungeon Creator"
+title: "D&D Traps & Puzzles"
 subtitle: "AI-Powered Trap and Puzzle Generator for RPGs"
 description: "Generate creative traps and challenging puzzles for your D&D dungeons and RPG campaigns. Create engaging obstacles with solutions, mechanics, and difficulty scaling."
 keywords: ["D&D traps generator", "RPG puzzle generator", "dungeon traps", "DnD puzzles", "trap creator", "puzzle maker", "RPG obstacles", "dungeon mechanics", "DM tools", "tabletop RPG"]

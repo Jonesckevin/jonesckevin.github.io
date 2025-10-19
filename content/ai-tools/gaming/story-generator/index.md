@@ -1,5 +1,5 @@
 ---
-title: "RPG Story Generator - D&D Campaign Story Creator"
+title: "D&D Character Story"
 subtitle: "AI-Powered RPG Story and Quest Generator"
 description: "Generate engaging stories and quest hooks for your RPG campaigns. Create compelling narratives, adventures, and plot lines for D&D and tabletop gaming sessions."
 keywords: ["RPG story generator", "D&D story creator", "campaign story", "quest generator", "RPG plot", "adventure generator", "DnD stories", "tabletop RPG", "campaign ideas", "quest hooks"]

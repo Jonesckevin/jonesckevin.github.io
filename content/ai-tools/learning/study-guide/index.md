@@ -1,5 +1,5 @@
 ---
-title: "AI Study Guide Generator - Personalized Study Materials"
+title: "Personalized Study Materials"
 subtitle: "AI-Powered Study Guide and Review Creator"
 description: "Generate comprehensive study guides tailored to your learning needs. Create personalized study materials, practice questions, and review notes for any subject with AI assistance."
 keywords: ["study guide generator", "AI study materials", "personalized study guide", "exam preparation", "study notes", "learning assistant", "educational AI", "review materials", "study planner", "academic tools"]

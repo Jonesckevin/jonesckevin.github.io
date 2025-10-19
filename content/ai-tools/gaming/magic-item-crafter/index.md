@@ -1,5 +1,5 @@
 ---
-title: "Loot & Magic Item Crafter - D&D Magic Item Generator"
+title: "D&D Magic Item"
 subtitle: "AI-Powered Magic Item and Treasure Generator"
 description: "Generate balanced treasure parcels and bespoke magic items with lore, attunement, and campaign hooks. Perfect for D&D DMs and RPG creators."
 keywords: ["magic item generator", "D&D loot generator", "RPG treasure", "magic item creator", "DnD magic items", "tabletop RPG", "treasure generator", "magic weapon generator", "RPG loot"]

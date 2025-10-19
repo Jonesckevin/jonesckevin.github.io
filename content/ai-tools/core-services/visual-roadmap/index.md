@@ -1,5 +1,5 @@
 ---
-title: "Visual Roadmap Builder - Mermaid Flowcharts & Timelines"
+title: "Mermaid Flowcharts & Timelines"
 subtitle: "AI-Powered Mermaid Diagram Generator"
 description: "Create visual roadmaps and timelines using Mermaid flowcharts. Generate interactive diagrams for learning paths, project planning, and goal visualization with AI assistance."
 keywords: ["visual roadmap", "mermaid diagrams", "flowchart generator", "timeline creator", "project planning", "learning path visualization", "AI diagram generator", "roadmap visualization"]

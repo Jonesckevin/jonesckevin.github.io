@@ -1,5 +1,5 @@
 ---
-title: "Character Voice Converter - AI Character Voice Generator"
+title: "DnD Personality Converter"
 subtitle: "AI-Powered Character Voice and Dialogue Tool"
 description: "Transform text to match specific character voices and speaking styles. Perfect for dialogue writing, character development, and creating authentic voices for stories and games."
 keywords: ["character voice converter", "dialogue generator", "character voice AI", "writing tool", "story dialogue", "character development", "voice generator", "creative writing", "roleplay tool", "character speech"]

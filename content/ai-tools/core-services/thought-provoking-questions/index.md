@@ -1,5 +1,5 @@
 ---
-title: "AI Interview Questions Generator - Thought-Provoking Questions"
+title: "AI Interviewer Questions"
 subtitle: "AI-Powered Interview Question Generation Tool"
 description: "Generate insightful interview questions that reveal judgment, clarity, and depth. Create thought-provoking questions for job interviews, hiring, and assessments. Free AI question generator."
 keywords: ["interview questions generator", "thought-provoking questions", "AI interview tool", "hiring questions", "behavioral interview questions", "job interview prep", "assessment questions", "candidate evaluation", "interview preparation"]

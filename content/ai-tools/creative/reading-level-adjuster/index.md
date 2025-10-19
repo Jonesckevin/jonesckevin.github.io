@@ -1,5 +1,5 @@
 ---
-title: "AI Reading Level Adjuster - Text Simplification Tool"
+title: "Text Simplification Tool"
 subtitle: "AI-Powered Reading Level Conversion Tool"
 description: "Convert text to different reading levels while preserving meaning. Simplify complex content for accessibility, education, and broader audience reach with AI assistance."
 keywords: ["reading level adjuster", "text simplification", "readability tool", "AI text converter", "content accessibility", "educational tool", "text complexity", "plain language", "reading comprehension"]

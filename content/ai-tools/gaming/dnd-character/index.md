@@ -1,5 +1,5 @@
 ---
-title: "MythMaker: D&D 5E Character Lore Generator - AI DnD Backstories"
+title: "D&D Character Lore"
 subtitle: "AI-Powered D&D Character Background Generator"
 description: "Generate rich backstories and compelling lore for your D&D characters. Create legendary heroes with detailed backgrounds, flaws, and divine connections for your RPG campaigns."
 keywords: ["D&D character generator", "DnD backstory generator", "RPG character creator", "D&D 5E character", "tabletop RPG", "character background", "DnD lore generator", "RPG backstory", "character development"]

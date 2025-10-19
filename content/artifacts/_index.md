@@ -1,7 +1,7 @@
 +++
 title = "4N6Post Artifacts"
 description = "Comprehensive digital forensics articles covering Windows forensics, registry analysis, MFT analysis, artifact examination, and DFIR techniques."
-type = "Artifacts"
+type = "artifacts"
 layout = "section-list"
 draft = false
 tags = ["Digital Forensics", "4N6Post", "Windows Artifacts", "  Registry Analysis", "MFT Analysis", "DFIR", "Forensic Techniques", "Incident Response", "File System Forensics", "Memory Forensics", "Log Analysis", "Timeline Analysis", "Malware Analysis", "Data Recovery", "Forensic Tools", "Cybersecurity"]

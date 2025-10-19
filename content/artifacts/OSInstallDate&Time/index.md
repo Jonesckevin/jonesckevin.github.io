@@ -1,5 +1,5 @@
 +++
-title = "Windows OS Install Date & Time Registry Analysis"
+title = "Windows Install Date & Time"
 date = "2023-01-15"
 description = "Complete guide to Windows OS install date and time forensic analysis via registry. Learn InstallDate and InstallTime registry keys, conversion techniques, and timeline establishment for DFIR investigations."
 keywords = ["Windows install date", "InstallTime registry", "OS installation forensics", "Windows registry analysis", "DFIR timeline", "digital forensics", "install timestamp", "system forensics", "Windows NT CurrentVersion", "forensic investigation", "system age determination", "registry artifacts"]

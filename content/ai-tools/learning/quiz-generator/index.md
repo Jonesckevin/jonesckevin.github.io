@@ -1,5 +1,5 @@
 ---
-title: "Interactive Quiz Generator - AI Study Quiz Creator"
+title: "Interactive Quiz"
 subtitle: "AI-Powered Quiz and Assessment Generator"
 description: "Create interactive quizzes and assessments for any topic. Generate multiple-choice questions, study materials, and educational content with AI assistance. Perfect for teachers and students."
 keywords: ["quiz generator", "interactive quiz", "AI quiz creator", "assessment generator", "study quiz", "educational tool", "test generator", "quiz maker", "learning assessment", "education AI"]

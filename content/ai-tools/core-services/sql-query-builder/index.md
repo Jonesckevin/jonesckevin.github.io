@@ -1,5 +1,5 @@
 ---
-title: "SQL Query Builder - AI Database Query Generator"
+title: "SQL Query Builder"
 subtitle: "AI-Powered SQL Query Generation Tool"
 description: "Generate optimized SQL queries from natural language descriptions. Create database queries for any SQL system with AI assistance. Free online SQL query builder for developers."
 keywords: ["SQL query builder", "database query generator", "AI SQL tool", "SQL generator", "database development", "SQL optimization", "query builder", "SQL assistant", "database tools", "SQL automation"]

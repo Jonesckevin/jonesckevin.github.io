@@ -1,5 +1,5 @@
 ---
-title: "Compassionate Response Generator - Empathetic AI Messages"
+title: "Twitter/X Compassion Post"
 subtitle: "AI-Powered Empathetic Response Creation Tool"
 description: "Generate compassionate and empathetic responses to global tragedies and difficult situations. Create meaningful content that expresses solidarity and support with AI assistance."
 keywords: ["compassionate response", "empathetic messages", "AI empathy tool", "crisis response", "supportive messaging", "solidarity statements", "community support", "tragedy response", "emotional intelligence AI"]
@@ -27,11 +27,9 @@ social_media:
   twitter_image: "/images/ai-tools/compassionate-response-twitter.png"
 ---
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Compassionate Response Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Generate empathetic and hopeful responses to global tragedies. This tool crafts meaningful content
-                that expresses solidarity and support for communities in need.
-            </p>
+# Compassionate Response Generator
+Generate empathetic and hopeful responses to global tragedies. This tool crafts meaningful content that expresses solidarity and support for communities in need.
+
 <form id="responseForm">
 <div class="form-group">
 <label for="systemPrompt">System Prompt *</label>
