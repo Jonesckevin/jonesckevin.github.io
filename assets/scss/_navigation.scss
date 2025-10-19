@@ -9,9 +9,8 @@
     width: 44px;
     height: 44px;
     min-width: 44px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 107, 53, 0.8);
-    box-shadow: 0 0 13px rgba(255, 107, 53, 0.6);
+    border-radius: 8px;
+    border: none;
     background: rgba(0, 0, 0, 0.4);
     color: #ff6b35;
     cursor: pointer;
@@ -19,17 +18,35 @@
     transition: all 0.3s ease;
     transform-style: preserve-3d;
     touch-action: manipulation;
+    overflow: visible;
 
     &:hover {
-        transform: translateZ(10px) rotateX(10deg) rotateY(10deg) scale(1.25);
-        box-shadow:
-            0 15px 25px rgba(0, 0, 0, 0.4),
-            0 0 10px rgba(255, 107, 53, 0.8),
-            0 0 20px rgba(255, 107, 53, 0.6),
-            0 0 30px rgba(255, 107, 53, 0.4);
-        border: 2px solid #ff6b35;
-        background: rgba(255, 107, 53, 0.1);
-        animation: ai-pulse 2s ease-in-out infinite;
+        transform: scale(1.15);
+        border: none;
+
+        .ai-cog {
+            animation: cog-spin 1s ease-in-out infinite;
+        }
+    }
+}
+
+.ai-cog {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    color: #ff6b35;
+    stroke: currentColor;
+    fill: none;
+    transition: all 0.3s ease;
+}
+
+@keyframes cog-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
 
@@ -47,8 +64,13 @@
 
 .ai-badge {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+    color: #ff6b35;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
 }
 
 .ai-dropdown {

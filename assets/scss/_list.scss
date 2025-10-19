@@ -1,7 +1,5 @@
 $link-color: #007acc; // or your preferred link color
 
-$posts-margin-top: 90px; // Default top margin for posts
-
 /* Remove old list-layout and sidebar styles */
 /* Pages now use themed section-base design */
 
@@ -15,7 +13,6 @@ $posts-margin-top: 90px; // Default top margin for posts
   margin: 20px auto;
   margin-left: 0;
   margin-right: 0; // Changed from 1% to prevent empty space
-  margin-top: $posts-margin-top; // Use variable
   box-sizing: border-box; // Ensure padding is included in width
   /*Auto Align Post*/
   display: block;
@@ -26,7 +23,6 @@ $posts-margin-top: 90px; // Default top margin for posts
     width: 100%;
     padding: 0 16px;
     margin: 0;
-    margin-top: calc(#{$posts-margin-top} - 20px);
   }
 
   // Phone landscape / Small tablet (480-660px) - Fix for ~580px range
@@ -35,7 +31,6 @@ $posts-margin-top: 90px; // Default top margin for posts
     width: 100%;
     margin: 0;
     padding: 0 16px 20px 16px;
-    margin-top: calc(#{$posts-margin-top} - 20px);
   }
 
   // Standard phone (below 480px)
@@ -44,7 +39,6 @@ $posts-margin-top: 90px; // Default top margin for posts
     width: 100%;
     margin: 0;
     padding: 0 16px 20px 16px;
-    margin-top: calc(#{$posts-margin-top} - 20px);
   }
 
   // Very small screens (below 375px)
@@ -71,8 +65,7 @@ $posts-margin-top: 90px; // Default top margin for posts
 
   .post {
     &-title {
-      font-size: 1rem;
-      margin: 5px 0 5px 0;
+      margin: 20px 0 10px 0;
     }
 
     &-year {

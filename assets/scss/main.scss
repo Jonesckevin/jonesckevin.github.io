@@ -9,6 +9,7 @@
 @import "mixins";
 @import "fonts";
 @import "buttons";
+
 /* Modules */
 @import "header";
 @import "controls";
@@ -22,3 +23,9 @@
 @import "sharing-buttons";
 @import "tables";
 @import "404";
+
+/* New consolidated modules */
+@import "forms";
+@import "common-layout";
+@import "section-base";
+@import "ai-tools";

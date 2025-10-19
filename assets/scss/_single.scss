@@ -6,7 +6,6 @@
   margin: 20px auto;
   margin-left: 20%;
   margin-right: 0; // Ensure no extra space on right
-  margin-top: 90px; // Added to move post below header
   box-sizing: border-box; // Ensure padding is included in width
 
   // Large tablet (768-1000px)
@@ -16,7 +15,6 @@
     margin-left: 0;
     margin-right: 0;
     padding: 16px;
-    margin-top: 70px; // Adjust for mobile header height
   }
 
   // Small tablet / Phone landscape (576-768px) - Fix for ~580px range
@@ -25,7 +23,6 @@
     width: 100%;
     margin: 0;
     padding: 12px 16px;
-    margin-top: 65px;
   }
 
   // Standard phone (below 576px)
@@ -34,7 +31,6 @@
     width: 100%;
     margin: 0;
     padding: 8px 16px;
-    margin-top: 60px; // Adjust for phone header height
   }
 
   // Very small screens (below 375px)
@@ -92,6 +88,7 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      border-radius: 80px 10px 80px 10px;
 
       @media #{$media-size-tablet} {
         width: 100%;
