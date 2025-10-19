@@ -5,7 +5,7 @@ keywords: ["SOF-ELK uploading", "KAPE workflow", "forensic timeline", "MFT analy
 date: 2024-01-01
 draft: false
 tags: ["SOF-ELK", "KAPE", "Digital Forensics", "MFT", "Event Logs", "EVTX", "Forensics Analysis", "Incident Response"]
-categories: ["4N6Post", "Digital Forensics", "Tools"]
+categories: ["Artifacts"]
 type: artifacts
 author: JonesCKevin
 seo_title: "SOF-ELK Uploading Guide - Digital Forensics with KAPE"

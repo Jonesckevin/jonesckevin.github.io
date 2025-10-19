@@ -1,21 +1,20 @@
-+++
-title = "Registry - SAM"
-description = "In-depth guide to Security Account Manager (SAM) database forensics. Learn password hash extraction, account analysis, authentication forensics, and SAM parsing techniques for DFIR investigations. Explore tools, methods, and best practices for handling SAM data in Windows systems."
-keywords = ["SAM database", "Security Account Manager", "password hash forensics", "NTLM hash", "LM hash", "Windows authentication", "credential extraction", "digital forensics", "DFIR", "registry forensics", "password cracking", "account analysis", "Windows security", "forensic investigation", "cybersecurity", "incident response", "threat hunting", "malware analysis", "penetration testing", "ethical hacking", "cyber defense", "information security"]
-date = 2025-10-14
-lastmod = 2025-10-16
-draft = false
-tags = ["windows forensics", "SAM", "registry", "DFIR", "authentication", "password forensics", "credential analysis", "4n6", "digital forensics", "incident response", "cybersecurity", "threat hunting", "malware analysis", "penetration testing", "ethical hacking", "cyber defense", "information security"]
-categories = ["Windows Forensics", "DFIR", "4n6", "digital forensics", "Registry"]
-type = "Artifacts"
-seo_title = "SAM Database Registry Forensics - Windows Account and Password Analysis Guide, Tools, and Techniques"
-canonical = "/artifacts/sam-database/"
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "TechArticle"
-author = "JonesCKevin"
-sitemap_priority = 0.8
-sitemap_changefreq = "monthly"
-+++
+---
+title: "Registry - SAM"
+description: "In-depth guide to Security Account Manager (SAM) database forensics. Learn password hash extraction, account analysis, authentication forensics, and SAM parsing techniques for DFIR investigations. Explore tools, methods, and best practices for handling SAM data in Windows systems."
+keywords: ["SAM database", "Security Account Manager", "password hash forensics", "NTLM hash", "LM hash", "Windows authentication", "credential extraction", "digital forensics", "DFIR", "registry forensics", "password cracking", "account analysis", "Windows security", "forensic investigation", "cybersecurity", "incident response", "threat hunting", "malware analysis", "penetration testing", "ethical hacking", "cyber defense", "information security"]
+date: 2025-10-14
+lastmod: 2025-10-16
+draft: false
+tags: ["windows forensics", "registry", "DFIR", "authentication", "Digital Forensics", "4n6", "incident response", "cybersecurity", "malware analysis"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "SAM Database Registry Forensics - Windows Account and Password Analysis Guide, Tools, and Techniques"
+canonical: "/artifacts/sam-database/"
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "TechArticle"
+sitemap_priority: 0.8
+sitemap_changefreq: "monthly"
+---
 
 ## SAM Database - Windows Security Account Manager
 

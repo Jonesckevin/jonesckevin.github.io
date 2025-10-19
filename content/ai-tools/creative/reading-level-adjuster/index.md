@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Creative", "Education", "Accessibility", "Text Processing", "Reading", "Content", "AI", "Tools"]
-categories: ["AI Tools", "Education", "Accessibility"]
+categories: ["AI Tools", "Accessibility"]
 type: ai-tools
 seo_title: "Free AI Reading Level Adjuster - Simplify Text for Any Audience"
 canonical: "/ai-tools/creative/reading-level-adjuster/"
-featured_image: "/images/ai-tools/reading-level-adjuster.png"
+#featured_image: "/images/ai-tools/reading-level-adjuster.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

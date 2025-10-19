@@ -1,19 +1,18 @@
-+++
-title = "File and Folder Opening - Link Files (LNK)"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "LNK files", "shortcuts", "malware analysis", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "LNK File Forensics - Windows Shortcut Analysis for DFIR"
-description = "Complete guide to LNK file forensic analysis for tracking file access and user activity. Learn LNK file structure, LECmd tool usage, malware detection, and DFIR investigation techniques."
-keywords = ["LNK file forensics", "Windows shortcuts", "LECmd", "file access tracking", "user activity analysis", "digital forensics", "DFIR", "LNK parser", "malware analysis", "shortcut forensics", "forensic artifacts", "link file analysis"]
-canonical = "/artifacts/ShortCut-LNK/"
-aliases = ["/artifacts/ShortCut-LNK/", "/2023/02/shortcut-files-lnk.html"]
-featured_image = "/images/featured/artifacts/Windows11Explorer.png"
-schema_type = "Article"
-+++
+---
+title: "File and Folder Opening - Link Files (LNK)"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "malware analysis", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "LNK File Forensics - Windows Shortcut Analysis for DFIR"
+description: "Complete guide to LNK file forensic analysis for tracking file access and user activity. Learn LNK file structure, LECmd tool usage, malware detection, and DFIR investigation techniques."
+keywords: ["LNK file forensics", "Windows shortcuts", "LECmd", "file access tracking", "user activity analysis", "digital forensics", "DFIR", "LNK parser", "malware analysis", "shortcut forensics", "forensic artifacts", "link file analysis"]
+canonical: "/artifacts/ShortCut-LNK/"
+aliases: ["/artifacts/ShortCut-LNK/", "/2023/02/shortcut-files-lnk.html"]
+featured_image: "/images/featured/artifacts/Windows11Explorer.png"
+schema_type: "Article"
+---
 
 ![LNK File Overview](images/LNKFile.png)
 

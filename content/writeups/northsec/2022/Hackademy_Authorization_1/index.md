@@ -1,9 +1,8 @@
-+++
-title = "Hackademy – Authorization 1"
-author = "JonesCKevin"
-date = "2022-06-01"
-tags = ["northsec", "nsec", "dfir", "ctf", "2022", "hackademy_authorization_1", "write_up", "montreal", "hackademy_authorization_1", "hackademy"]
-+++
+---
+title: "Hackademy – Authorization 1"
+date: "2022-06-01"
+tags: ["northsec", "nsec", "dfir", "ctf", "2022", "Writeups", "montreal"]
+---
 
 ## Check the html
 

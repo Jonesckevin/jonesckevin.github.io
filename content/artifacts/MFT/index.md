@@ -1,22 +1,21 @@
-+++
-title = "MFT"
-description = "Complete guide to NTFS Master File Table (MFT) analysis for digital forensics. Learn MFT structure, forensic artifacts, timeline analysis, and tools like MFTECmd for DFIR investigations."
-keywords = ["MFT", "Master File Table", "NTFS forensics", "digital forensics", "MFTECmd", "file system forensics", "Windows forensics", "DFIR", "forensic timeline", "MFT records", "file metadata", "$MFT", "forensic artifacts"]
-date = "2023-01-01"
-lastmod = "2025-09-30"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "NTFS", "MFT", "DFIR", "MFTECmd", "timeline analysis", "file system", "forensic tools"]
-categories = ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
-type = "Artifacts"
-seo_title = "MFT Analysis Guide - Master File Table Digital Forensics"
-canonical = "/artifacts/mft/"
-aliases = ["/artifacts/mft/", "/2023/12/the-mft-comprehensive-guide.html"]
-featured_image = "/images/featured/artifacts/MFTFile.png"
-schema_type = "TechArticle"
-author = "JonesCKevin"
-sitemap_priority = 0.8
-sitemap_changefreq = "monthly"
-+++
+---
+title: "MFT"
+description: "Complete guide to NTFS Master File Table (MFT) analysis for digital forensics. Learn MFT structure, forensic artifacts, timeline analysis, and tools like MFTECmd for DFIR investigations."
+keywords: ["MFT", "Master File Table", "NTFS forensics", "digital forensics", "MFTECmd", "file system forensics", "Windows forensics", "DFIR", "forensic timeline", "MFT records", "file metadata", "$MFT", "forensic artifacts"]
+date: "2023-01-01"
+lastmod: "2025-09-30"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "NTFS", "DFIR", "file system", "Tools"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "MFT Analysis Guide - Master File Table Digital Forensics"
+canonical: "/artifacts/mft/"
+aliases: ["/artifacts/mft/", "/2023/12/the-mft-comprehensive-guide.html"]
+featured_image: "/images/featured/artifacts/MFTFile.png"
+schema_type: "TechArticle"
+sitemap_priority: 0.8
+sitemap_changefreq: "monthly"
+---
 
 ## MFT Analysis - Master File Table Forensics Guide
 

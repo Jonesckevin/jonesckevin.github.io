@@ -1,19 +1,18 @@
-+++
-title = "TimeZone Information"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "timezone", "timestamp analysis", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "TimeZoneInformation Registry - Windows Timezone Forensics Guide"
-description = "Complete guide to TimeZoneInformation registry forensic analysis. Learn timezone tracking, UTC calculations, daylight saving time detection, and timestamp normalization for DFIR investigations."
-keywords = ["TimeZoneInformation registry", "timezone forensics", "UTC conversion", "Windows timestamp analysis", "daylight saving time", "digital forensics", "DFIR", "registry analysis", "tzres.dll", "timezone tracking", "forensic timeline", "timestamp correlation"]
-canonical = "/artifacts/TimeZoneInformation/"
-aliases = ["/artifacts/TimeZoneInformation/", "/2023/02/timezoneinformation.html"]
-featured_image = "/images/featured/artifacts/4n6post-Analog-Clock.png"
-schema_type = "Article"
-+++
+---
+title: "TimeZone Information"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "TimeZoneInformation Registry - Windows Timezone Forensics Guide"
+description: "Complete guide to TimeZoneInformation registry forensic analysis. Learn timezone tracking, UTC calculations, daylight saving time detection, and timestamp normalization for DFIR investigations."
+keywords: ["TimeZoneInformation registry", "timezone forensics", "UTC conversion", "Windows timestamp analysis", "daylight saving time", "digital forensics", "DFIR", "registry analysis", "tzres.dll", "timezone tracking", "forensic timeline", "timestamp correlation"]
+canonical: "/artifacts/TimeZoneInformation/"
+aliases: ["/artifacts/TimeZoneInformation/", "/2023/02/timezoneinformation.html"]
+featured_image: "/images/featured/artifacts/4n6post-Analog-Clock.png"
+schema_type: "Article"
+---
 
 ![Analog Clock](/images/featured/artifacts/4n6post-Analog-Clock.png)
 

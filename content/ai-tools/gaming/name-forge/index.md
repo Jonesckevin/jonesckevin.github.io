@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
 tags: ["Gaming", "Fantasy", "RPG", "Names", "Character", "World Building", "Creative", "AI", "Tools"]
-categories: ["AI Tools", "Gaming", "Creative Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free Name Generator - Fantasy & RPG Character Name Creator"
 canonical: "/ai-tools/gaming/name-forge/"
-featured_image: "/images/ai-tools/name-forge.png"
+#featured_image: "/images/ai-tools/name-forge.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

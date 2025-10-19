@@ -1,18 +1,18 @@
-+++
-title = "JumpList Forensics"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "jumplist", "recent files", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-seo_title = "JumpList Forensics - Windows Recent Files and User Activity Analysis"
-description = "Comprehensive guide to JumpList forensic analysis for tracking user activity and recent files. Learn AutomaticDestinations, CustomDestinations, JLECmd usage, and DFIR investigation techniques."
-keywords = ["JumpList forensics", "AutomaticDestinations", "CustomDestinations", "Windows user activity", "recent files tracking", "JLECmd", "digital forensics", "DFIR", "user behavior analysis", "taskbar forensics", "file access history", "Windows artifacts", "forensic timeline"]
-canonical = "/artifacts/JumpList/"
-aliases = ["/artifacts/JumpList/", "/2023/02/jump-list.html"]
-featured_image = "/images/featured/artifacts/Windows11Explorer.png"
-schema_type = "Article"
-+++
+---
+title: "JumpList Forensics"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "JumpList Forensics - Windows Recent Files and User Activity Analysis"
+description: "Comprehensive guide to JumpList forensic analysis for tracking user activity and recent files. Learn AutomaticDestinations, CustomDestinations, JLECmd usage, and DFIR investigation techniques."
+keywords: ["JumpList forensics", "AutomaticDestinations", "CustomDestinations", "Windows user activity", "recent files tracking", "JLECmd", "digital forensics", "DFIR", "user behavior analysis", "taskbar forensics", "file access history", "Windows artifacts", "forensic timeline"]
+canonical: "/artifacts/JumpList/"
+aliases: ["/artifacts/JumpList/", "/2023/02/jump-list.html"]
+featured_image: "/images/featured/artifacts/Windows11Explorer.png"
+schema_type: "Article"
+---
 
 ## JumpList Forensics 
 

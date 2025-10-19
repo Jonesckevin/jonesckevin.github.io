@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Communication", "Empathy", "Support", "Community", "Crisis Response", "AI", "Tools"]
-categories: ["AI Tools", "Communication", "Support"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free Compassionate Response Generator - AI Empathetic Messages"
 canonical: "/ai-tools/core-services/compassionate-response/"
-featured_image: "/images/ai-tools/compassionate-response.png"
+#featured_image: "/images/ai-tools/compassionate-response.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

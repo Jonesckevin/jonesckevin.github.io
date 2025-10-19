@@ -1,19 +1,18 @@
-+++
-title = "Enable Windows BSOD Detail"
-date = "2023-01-01"
-draft = false
-tags = ["registry", "4n6", "digital forensics", "windows forensics"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "Enable Windows BSOD Detailed Information - Registry Forensics Guide"
-description = "Step-by-step guide to enabling detailed Blue Screen of Death (BSOD) information in Windows through registry modifications. Essential for forensic analysis, troubleshooting, and crash investigation."
-keywords = ["BSOD detail", "Blue Screen of Death", "Windows crash analysis", "registry forensics", "DisplayParameters", "system troubleshooting", "crash dump analysis", "Windows forensics", "DFIR", "error diagnostics", "stop error", "Windows debugging", "forensic investigation"]
-canonical = "/artifacts/EnablingWindowsBSODDetail/"
-aliases = ["/artifacts/EnablingWindowsBSODDetail/", "/2023/12/windows-mod-enabling-windows-bsod-detail.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "Enable Windows BSOD Detail"
+date: "2023-01-01"
+draft: false
+tags: ["registry", "4n6", "digital forensics", "windows forensics"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "Enable Windows BSOD Detailed Information - Registry Forensics Guide"
+description: "Step-by-step guide to enabling detailed Blue Screen of Death (BSOD) information in Windows through registry modifications. Essential for forensic analysis, troubleshooting, and crash investigation."
+keywords: ["BSOD detail", "Blue Screen of Death", "Windows crash analysis", "registry forensics", "DisplayParameters", "system troubleshooting", "crash dump analysis", "Windows forensics", "DFIR", "error diagnostics", "stop error", "Windows debugging", "forensic investigation"]
+canonical: "/artifacts/EnablingWindowsBSODDetail/"
+aliases: ["/artifacts/EnablingWindowsBSODDetail/", "/2023/12/windows-mod-enabling-windows-bsod-detail.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 ![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 

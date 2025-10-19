@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
 tags: ["Gaming", "RPG", "D&D", "Stories", "Campaigns", "Adventures", "DM Tools", "AI", "Tools"]
-categories: ["AI Tools", "Gaming", "RPG Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free RPG Story Generator - D&D Campaign & Quest Creator"
 canonical: "/ai-tools/gaming/story-generator/"
-featured_image: "/images/ai-tools/story-generator.png"
+#featured_image: "/images/ai-tools/story-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

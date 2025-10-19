@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
 tags: ["Gaming", "D&D", "RPG", "Traps", "Puzzles", "Dungeons", "DM Tools", "AI", "Tools"]
-categories: ["AI Tools", "Gaming", "RPG Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free D&D Traps & Puzzles Generator - RPG Dungeon Creator"
 canonical: "/ai-tools/gaming/traps-and-puzzles/"
-featured_image: "/images/ai-tools/traps-and-puzzles.png"
+#featured_image: "/images/ai-tools/traps-and-puzzles.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

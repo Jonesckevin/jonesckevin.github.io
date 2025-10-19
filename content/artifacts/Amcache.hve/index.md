@@ -1,20 +1,19 @@
-+++
-title = "Amcache.hve"
-date = "2024-10-01"
-draft = false
-tags = ["registry", "4n6", "digital forensics", "windows forensics"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "Amcache.hve Analysis - Windows Application Execution Forensics Guide"
-description = "Complete guide to Amcache.hve forensic analysis for tracking application execution. Learn file locations, registry keys, AmcacheParser tool usage, and DFIR investigation techniques."
-keywords = ["Amcache.hve", "Amcache forensics", "application execution tracking", "Windows forensics", "AmcacheParser", "digital forensics", "DFIR", "forensic artifacts", "program execution", "Windows registry", "malware analysis", "incident response", "execution timeline"]
-canonical = "/artifacts/Amcache.hve/"
-aliases = ["/artifacts/Amcache.hve/", "/2023/02/amcachehve.html"]
-featured_image = "/images/featured/artifacts/SHIMCache-Logo.png"
-schema_type = "Article"
-sitemap_priority = 0.7
-+++
+---
+title: "Amcache.hve"
+date: "2024-10-01"
+draft: false
+tags: ["registry", "4n6", "digital forensics", "windows forensics"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "Amcache.hve Analysis - Windows Application Execution Forensics Guide"
+description: "Complete guide to Amcache.hve forensic analysis for tracking application execution. Learn file locations, registry keys, AmcacheParser tool usage, and DFIR investigation techniques."
+keywords: ["Amcache.hve", "Amcache forensics", "application execution tracking", "Windows forensics", "AmcacheParser", "digital forensics", "DFIR", "forensic artifacts", "program execution", "Windows registry", "malware analysis", "incident response", "execution timeline"]
+canonical: "/artifacts/Amcache.hve/"
+aliases: ["/artifacts/Amcache.hve/", "/2023/02/amcachehve.html"]
+featured_image: "/images/featured/artifacts/SHIMCache-Logo.png"
+schema_type: "Article"
+sitemap_priority: 0.7
+---
 
 ![](/images/SHIMCache-Logo.png)
 

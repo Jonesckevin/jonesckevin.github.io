@@ -1,19 +1,18 @@
-+++
-title = "TypedPath Registry"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "typed paths", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "TypedPaths Registry Forensics - Windows Explorer Navigation History"
-description = "Comprehensive guide to TypedPaths registry forensic analysis for tracking user navigation history. Learn Explorer address bar artifacts, path tracking, and DFIR investigation techniques for Windows forensics."
-keywords = ["TypedPaths registry", "Windows Explorer history", "address bar forensics", "navigation tracking", "user activity analysis", "digital forensics", "DFIR", "registry artifacts", "path history", "Explorer forensics", "typed URLs", "forensic investigation"]
-canonical = "/artifacts/TypedPath/"
-aliases = ["/artifacts/TypedPath/", "/2023/02/registry-typedpath.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "TypedPath Registry"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "TypedPaths Registry Forensics - Windows Explorer Navigation History"
+description: "Comprehensive guide to TypedPaths registry forensic analysis for tracking user navigation history. Learn Explorer address bar artifacts, path tracking, and DFIR investigation techniques for Windows forensics."
+keywords: ["TypedPaths registry", "Windows Explorer history", "address bar forensics", "navigation tracking", "user activity analysis", "digital forensics", "DFIR", "registry artifacts", "path history", "Explorer forensics", "typed URLs", "forensic investigation"]
+canonical: "/artifacts/TypedPath/"
+aliases: ["/artifacts/TypedPath/", "/2023/02/registry-typedpath.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 ![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 

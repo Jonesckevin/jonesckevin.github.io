@@ -1,15 +1,14 @@
-+++
-title = "A Flag"
-author = "JonesCKevin"
-date = "2022-06-01"
-tags = ["nsec", "2023", "a_flag", "write_up", "montreal", "ctf"]
-categories = ["writeups", "northsec", "2022"]
-seo_title = "NorthSec 2022 - A Flag Writeup"
-seo_description = "Writeup for the A Flag challenge from NorthSec 2022."
-seo_keywords = ["NorthSec 2022", "A Flag", "CTF Writeup", "Cybersecurity Challenges", "Capture The Flag", "Writeups"]
-layout = "writeup"
-draft = false
-+++
+---
+title: "A Flag"
+date: "2022-06-01"
+tags: ["nsec", "Writeups", "montreal", "ctf"]
+categories: ["writeups"]
+seo_title: "NorthSec 2022 - A Flag Writeup"
+seo_description: "Writeup for the A Flag challenge from NorthSec 2022."
+seo_keywords: ["NorthSec 2022", "A Flag", "CTF Writeup", "Cybersecurity Challenges", "Capture The Flag", "Writeups"]
+layout: "writeup"
+draft: false
+---
 
 
 **Context:**

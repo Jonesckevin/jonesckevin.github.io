@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Productivity", "Business", "Documents", "Writing", "Templates", "AI", "Tools"]
-categories: ["AI Tools", "Business", "Productivity"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Business Document Generator - Professional Templates"
 canonical: "/ai-tools/core-services/document-generator/"
-featured_image: "/images/ai-tools/document-generator.png"
+#featured_image: "/images/ai-tools/document-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

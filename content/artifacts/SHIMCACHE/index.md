@@ -1,19 +1,18 @@
-+++
-title = "ShimCache"
-date = "2023-10-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "shimcache", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "ShimCache Forensics - Application Compatibility Cache Analysis Guide"
-description = "Complete guide to ShimCache (Application Compatibility Cache) forensic analysis. Learn AppCompatCache registry parsing, execution tracking, AppCompatCacheParser usage, and DFIR investigation techniques."
-keywords = ["ShimCache forensics", "Application Compatibility Cache", "AppCompatCache", "execution tracking", "Windows forensics", "AppCompatCacheParser", "digital forensics", "DFIR", "program execution", "registry analysis", "forensic artifacts", "malware detection"]
-canonical = "/artifacts/SHIMCACHE/"
-aliases = ["/artifacts/SHIMCACHE/", "/2023/03/shimcache.html"]
-featured_image = "/images/featured/artifacts/SHIMCache-Logo.png"
-schema_type = "Article"
-+++
+---
+title: "ShimCache"
+date: "2023-10-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "ShimCache Forensics - Application Compatibility Cache Analysis Guide"
+description: "Complete guide to ShimCache (Application Compatibility Cache) forensic analysis. Learn AppCompatCache registry parsing, execution tracking, AppCompatCacheParser usage, and DFIR investigation techniques."
+keywords: ["ShimCache forensics", "Application Compatibility Cache", "AppCompatCache", "execution tracking", "Windows forensics", "AppCompatCacheParser", "digital forensics", "DFIR", "program execution", "registry analysis", "forensic artifacts", "malware detection"]
+canonical: "/artifacts/SHIMCACHE/"
+aliases: ["/artifacts/SHIMCACHE/", "/2023/03/shimcache.html"]
+featured_image: "/images/featured/artifacts/SHIMCache-Logo.png"
+schema_type: "Article"
+---
 
 ## ShimCache - Windows Application Compatibility Cache for Digital Forensics
 

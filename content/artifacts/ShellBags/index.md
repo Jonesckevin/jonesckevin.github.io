@@ -1,19 +1,18 @@
-+++
-title = "ShellBags Registry"
-date = "2024-01-02"
-draft = false
-description = "Comprehensive guide to ShellBags forensic analysis in Windows Registry. Learn folder access tracking, ShellBags Explorer tool usage, external device detection, and DFIR investigation techniques."
-tags = ["forensics", "registry", "shellbags", "windows", "digital-forensics"]
-keywords = ["ShellBags forensics", "ShellBags Explorer", "folder access tracking", "Windows registry analysis", "user activity forensics", "external device detection", "digital forensics", "DFIR", "Windows Explorer forensics", "BagMRU", "registry artifacts", "folder history"]
-categories = ["Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "ShellBags Registry Forensics - Windows Folder Access Analysis Guide"
-canonical = "/artifacts/ShellBags/"
-aliases = ["/artifacts/ShellBags/", "/2024/12/registry-shellbags.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "ShellBags Registry"
+date: "2024-01-02"
+draft: false
+description: "Comprehensive guide to ShellBags forensic analysis in Windows Registry. Learn folder access tracking, ShellBags Explorer tool usage, external device detection, and DFIR investigation techniques."
+tags: ["Digital Forensics", "registry", "windows"]
+keywords: ["ShellBags forensics", "ShellBags Explorer", "folder access tracking", "Windows registry analysis", "user activity forensics", "external device detection", "digital forensics", "DFIR", "Windows Explorer forensics", "BagMRU", "registry artifacts", "folder history"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "ShellBags Registry Forensics - Windows Folder Access Analysis Guide"
+canonical: "/artifacts/ShellBags/"
+aliases: ["/artifacts/ShellBags/", "/2024/12/registry-shellbags.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 ## Understanding ShellBags in the Windows Registry: A Deep Dive
 

@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Gaming", "D&D", "DnD", "RPG", "Character", "Tabletop", "5E", "AI", "Tools"]
-categories: ["AI Tools", "Gaming", "RPG Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free D&D Character Generator - AI DnD Backstory & Lore Creator"
 canonical: "/ai-tools/gaming/dnd-character/"
-featured_image: "/images/ai-tools/dnd-character.png"
+#featured_image: "/images/ai-tools/dnd-character.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

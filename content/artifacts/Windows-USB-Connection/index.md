@@ -1,19 +1,18 @@
-+++
-title = "Windows USB Connection Analysis"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "USB forensics", "registry", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "Windows USB Forensics - Device Connection Analysis Guide"
-description = "Comprehensive guide to Windows USB forensic analysis. Learn USBSTOR registry, setupapi.dev.log parsing, MountedDevices tracking, and external device investigation for DFIR."
-keywords = ["USB forensics", "USBSTOR registry", "setupapi.dev.log", "Windows USB analysis", "MountedDevices", "external device tracking", "digital forensics", "DFIR", "data exfiltration", "USB device history", "registry artifacts", "device forensics"]
-canonical = "/artifacts/Windows-USB-Connection/"
-aliases = ["/artifacts/Windows-USB-Connection/", "/2023/02/windows-usb-connections.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "Windows USB Connection Analysis"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "Windows USB Forensics - Device Connection Analysis Guide"
+description: "Comprehensive guide to Windows USB forensic analysis. Learn USBSTOR registry, setupapi.dev.log parsing, MountedDevices tracking, and external device investigation for DFIR."
+keywords: ["USB forensics", "USBSTOR registry", "setupapi.dev.log", "Windows USB analysis", "MountedDevices", "external device tracking", "digital forensics", "DFIR", "data exfiltration", "USB device history", "registry artifacts", "device forensics"]
+canonical: "/artifacts/Windows-USB-Connection/"
+aliases: ["/artifacts/Windows-USB-Connection/", "/2023/02/windows-usb-connections.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 ![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 

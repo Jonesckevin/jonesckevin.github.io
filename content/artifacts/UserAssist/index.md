@@ -1,30 +1,29 @@
-+++
-title = "Registry- UserAssist"
-description = "Complete guide to UserAssist registry analysis for digital forensics. Learn how Windows tracks program execution, forensic artifacts, and DFIR investigation techniques for UserAssist entries."
-keywords = ["UserAssist registry", "Windows forensics", "program execution tracking", "digital forensics", "registry analysis", "DFIR", "Windows artifacts", "execution evidence", "forensic investigation", "malware analysis", "user activity tracking", "registry forensics"]
-date = "2023-01-01"
-lastmod = "2025-10-11"
-tags = ["UserAssist", "Explorer UserAssist", "NTUSER.DAT", "ROT13 decoding", "Program execution evidence", "Run Count", "Focus Time", "DFIR timeline", "Windows 10 forensics", "Windows 11 forensics", "Registry artifacts", "Prefetch correlation", "AppCompatCache", "RECmd", "Registry Explorer", "RegRipper", "CyberChef", "UEME_RUNPATH", "UEME_RUNPIDL", "GUID CEBFF5CD-ACE2-4F4F-9178-9926F41749EA", "GUID F4E57C4B-2036-45F0-A9AB-443BCFE33D9F"]
-categories = ["4n6", "Digital Forensics", "Windows Forensics", "Registry Analysis"]
-type = "Artifacts"
-seo_title = "UserAssist Registry Analysis - Windows Program Execution Forensics"
-canonical = "/artifacts/userassist/"
-aliases = ["/artifacts/userassist/", "/2023/02/userassist.html"]
-featured_image = "/images/featured/artifacts/Windows11Explorer.png"
-schema_type = "TechArticle"
-author = "JonesCKevin"
-sitemap_priority = 0.8
-sitemap_changefreq = "monthly"
-[social_media]
-  og_title = "UserAssist Registry Analysis - Windows Forensics Guide"
-  og_description = "Complete guide to UserAssist registry analysis for tracking program execution in Windows digital forensics investigations."
-  og_image = "/images/4n6post/userassist-social.png"
-  og_type = "article"
-  twitter_card = "summary_large_image"
-  twitter_title = "UserAssist Registry Forensics Guide"
-  twitter_description = "Learn UserAssist registry analysis for Windows forensics - program execution tracking and DFIR techniques."
-  twitter_image = "/images/4n6post/userassist-twitter.png"
-+++
+---
+title: "Registry- UserAssist"
+description: "Complete guide to UserAssist registry analysis for digital forensics. Learn how Windows tracks program execution, forensic artifacts, and DFIR investigation techniques for UserAssist entries."
+keywords: ["UserAssist registry", "Windows forensics", "program execution tracking", "digital forensics", "registry analysis", "DFIR", "Windows artifacts", "execution evidence", "forensic investigation", "malware analysis", "user activity tracking", "registry forensics"]
+date: "2023-01-01"
+lastmod: "2025-10-11"
+tags: ["Windows Forensics"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "UserAssist Registry Analysis - Windows Program Execution Forensics"
+canonical: "/artifacts/userassist/"
+aliases: ["/artifacts/userassist/", "/2023/02/userassist.html"]
+featured_image: "/images/featured/artifacts/Windows11Explorer.png"
+schema_type: "TechArticle"
+sitemap_priority: 0.8
+sitemap_changefreq: "monthly"
+social_media:
+  og_title: "UserAssist Registry Analysis - Windows Forensics Guide"
+  og_description: "Complete guide to UserAssist registry analysis for tracking program execution in Windows digital forensics investigations."
+  og_image: "/images/4n6post/userassist-social.png"
+  og_type: "article"
+  twitter_card: "summary_large_image"
+  twitter_title: "UserAssist Registry Forensics Guide"
+  twitter_description: "Learn UserAssist registry analysis for Windows forensics - program execution tracking and DFIR techniques."
+  twitter_image: "/images/4n6post/userassist-twitter.png"
+---
 
 ## UserAssist Registry Analysis - Windows Program Execution Tracking
 

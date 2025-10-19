@@ -1,19 +1,18 @@
-+++
-title = "MRU (Most Recently Used)"
-description = "Comprehensive guide to MRU (Most Recently Used) registry forensics for tracking user activity. Learn registry locations, forensic analysis techniques, and how to investigate recent file access patterns."
-keywords = ["MRU registry", "Most Recently Used", "Windows registry forensics", "user activity tracking", "recent files", "digital forensics", "DFIR", "registry analysis", "file access history", "Windows artifacts", "forensic investigation", "ComDlg32", "RecentDocs"]
-type = "Artifacts"
-categories = ["4n6", "Digital Forensics", "Registry", "System Analysis"]
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "MRU", "DFIR"]
-layout = "single"
-author = "JonesCKevin"
-seo_title = "MRU Registry Forensics - Most Recently Used Files Analysis Guide"
-canonical = "/artifacts/MRU/"
-aliases = ["/artifacts/MRU/", "/2023/02/mru.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-date = "2024-10-02"
-+++
+---
+title: "MRU (Most Recently Used)"
+description: "Comprehensive guide to MRU (Most Recently Used) registry forensics for tracking user activity. Learn registry locations, forensic analysis techniques, and how to investigate recent file access patterns."
+keywords: ["MRU registry", "Most Recently Used", "Windows registry forensics", "user activity tracking", "recent files", "digital forensics", "DFIR", "registry analysis", "file access history", "Windows artifacts", "forensic investigation", "ComDlg32", "RecentDocs"]
+type: "Artifacts"
+categories: ["Artifacts"]
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+layout: "single"
+seo_title: "MRU Registry Forensics - Most Recently Used Files Analysis Guide"
+canonical: "/artifacts/MRU/"
+aliases: ["/artifacts/MRU/", "/2023/02/mru.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+date: "2024-10-02"
+---
 
 The **MRU (Most Recently Used)** registry is a database in Microsoft Windows that stores information about recently opened files, URLs, and other items. This information can be used for a variety of purposes, both benign and malicious. **This is NOT the same as runMRU.**
 

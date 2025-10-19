@@ -1,19 +1,18 @@
-+++
-title = "WMI Filter Query Consumer"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "WMI", "persistence", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "WMI Forensics - Event Filter Consumer Persistence Analysis"
-description = "Complete guide to WMI forensic analysis for detecting malicious persistence. Learn WMI event filters, consumers, bindings, Objects.data parsing, and DFIR investigation techniques for Windows forensics."
-keywords = ["WMI forensics", "WMI persistence", "event filter consumer", "WMI malware", "Objects.data", "Windows forensics", "digital forensics", "DFIR", "malware persistence", "WMI repository", "forensic investigation", "threat hunting"]
-canonical = "/artifacts/WMI-Filter-Query-Consumer/"
-aliases = ["/artifacts/WMI-Filter-Query-Consumer/", "/2023/03/wmi-filterqueryconsumer.html"]
-featured_image = "/images/featured/artifacts/Windows11Explorer.png"
-schema_type = "Article"
-+++
+---
+title: "WMI Filter Query Consumer"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "WMI Forensics - Event Filter Consumer Persistence Analysis"
+description: "Complete guide to WMI forensic analysis for detecting malicious persistence. Learn WMI event filters, consumers, bindings, Objects.data parsing, and DFIR investigation techniques for Windows forensics."
+keywords: ["WMI forensics", "WMI persistence", "event filter consumer", "WMI malware", "Objects.data", "Windows forensics", "digital forensics", "DFIR", "malware persistence", "WMI repository", "forensic investigation", "threat hunting"]
+canonical: "/artifacts/WMI-Filter-Query-Consumer/"
+aliases: ["/artifacts/WMI-Filter-Query-Consumer/", "/2023/03/wmi-filterqueryconsumer.html"]
+featured_image: "/images/featured/artifacts/Windows11Explorer.png"
+schema_type: "Article"
+---
 
 ![WMI Logo](/images/featured/artifacts/WMI-Logo.png)
 

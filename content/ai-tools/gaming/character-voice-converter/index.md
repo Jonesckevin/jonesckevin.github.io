@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Creative", "Writing", "Character Development", "Dialogue", "Storytelling", "Roleplay", "AI", "Tools"]
-categories: ["AI Tools", "Creative Writing", "Character Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free Character Voice Converter - AI Dialogue & Voice Generator"
 canonical: "/ai-tools/creative/character-voice-converter/"
-featured_image: "/images/ai-tools/character-voice-converter.png"
+#featured_image: "/images/ai-tools/character-voice-converter.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

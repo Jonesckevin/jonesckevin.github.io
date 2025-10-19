@@ -8,11 +8,11 @@ date: 2025-10-12
 lastmod: 2025-10-12
 draft: false
 tags: ["Creative", "Music", "Lyrics", "Songwriting", "Composition", "AI", "Tools"]
-categories: ["AI Tools", "Creative Writing", "Music"]
+categories: ["AI Tools", "Music"]
 type: ai-tools
 seo_title: "Free AI Music Lyrics Generator - Create Song Lyrics Online"
 canonical: "/ai-tools/creative/music-lyrics-generator/"
-featured_image: "/images/ai-tools/music-lyrics-generator.png"
+#featured_image: "/images/ai-tools/music-lyrics-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

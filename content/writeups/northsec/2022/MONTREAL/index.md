@@ -1,9 +1,8 @@
-+++
-title = "Warm-up - MONTREAL (Semi-Solved)"
-author = "JonesCKevin"
-date = "2022-06-01"
-tags = ["nsec", "2022", "warm-up", "write-up", "montreal"]
-+++
+---
+title: "Warm-up - MONTREAL (Semi-Solved)"
+date: "2022-06-01"
+tags: ["nsec", "2022", "montreal"]
+---
 
 ## Context
 

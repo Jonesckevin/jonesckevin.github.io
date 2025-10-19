@@ -46,48 +46,18 @@ ignoreLogs = ['warning-goldmark-raw-html']
   keywords = "homepage, artifacts, blog, 4n6, forensics, cyber security, ctf, writeup, nsec, ns3c, nsec, NorthSec, NorthSec, NSec, NS3C, NSec CTF, NS3C CTF, Cyber Security, Cybersecurity, Cyber Security Blog, Cyber Security Writeup, Cyber Security CTF, digital forensics, DFIR, incident response, malware analysis, registry forensics, Windows artifacts, security tools, AI cybersecurity, Docker security, penetration testing"
   images = ["default.png"]
 
-  # AI Tools Site Configuration
-  [params.aitools]
-    hero_title = "AI Tools API Services Hub"
-    hero_description = "Unlock the power of AI with your choice of providers: OpenAI, DeepSeek, or Anthropic. Access professional-grade AI tools for content generation, analysis, automation, and gaming lore creation - all in one secure platform. All outputs are converted to HTML with download options in Markdown, HTML, and MD."
-    security_title = ""
-    
-    [[params.aitools.security]]
-      title = "Your API Key"
-      description = "Your API key (OpenAI, DeepSeek, or Anthropic) is used only for the current session and is never stored."
-    
-    [[params.aitools.security]]
-      title = "Data Privacy"
-      description = "All uploaded documents and generated content are processed securely and not retained after your session."
-    
-    [[params.aitools.security]]
-      title = "Multi-Provider Support"
-      description = "Switch between AI providers seamlessly while maintaining the same security standards across all services."
-    
-    [[params.aitools.security]]
-      title = "Rich Output Formats"
-      description = "All AI responses are converted to HTML and available for download in Markdown, HTML, and MD formats."
-        
   [params.favicon]
     mask = "#10b981"
     msapplication = "#111827"
 
 [taxonomies]
-  category   = "categories"          # Used for categorizing posts   e.g. "Tutorials", "News", etc.
-  tag        = "tags"                # Used for tagging posts        e.g. "Hugo", "Docker", etc.
-  series     = "series"              # Used for grouping posts       e.g. "Hugo Tutorials", "Docker Tutorials", etc.
-  author     = "authors"             #                               e.g. "John Doe", "Jane Smith", etc.
-  language   = "languages"           #                               e.g. "en", "fr", etc.
-  type       = "types"               #                               e.g. "Tutorials", "News", etc.
+  category   = "categories"          # Used for categorizing posts
+  tag        = "tags"                # Used for tagging posts
 [permalinks]
-  blog       = "/blog/:slug/"        # blog posts                    e.g. "/blog/my-first-post/"
-  authors    = "/authors/:slug/"     # author pages                  e.g. "/authors/john-doe/"
-  tags       = "/tags/:slug/"        # tag pages                     e.g. "/tags/hugo/"
-  categories = "/categories/:slug/"  # category pages                e.g. "/categories/tutorials/"
-  series     = "/series/:slug/"      # series pages                  e.g. "/series/hugo-tutorials/"
-  languages  = "/languages/:slug/"   # language pages                e.g. "/languages/en/"
-  types      = "/types/:slug/"       # type pages,                   e.g. "/types/tutorials/"
-  home       = "/"                   # home page,                    e.g. "/"  
+  blog       = "/blog/:slug/"        # blog posts
+  tags       = "/tags/:slug/"        # tag pages
+  categories = "/categories/:slug/"  # category pages
+  home       = "/"                   # home page  
 
 [languages]
   [languages.en]

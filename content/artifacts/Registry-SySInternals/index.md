@@ -1,22 +1,21 @@
-+++
-title = "SysInternals Tools Registry Forensics"
-description = "Comprehensive guide to SysInternals tools for Windows forensics. Learn registry artifacts, forensic analysis techniques, and DFIR investigation methods for tracking SysInternals tool usage."
-keywords = ["SysInternals Tools", "Windows forensics", "registry analysis", "digital forensics", "DFIR", "Process Explorer", "Process Monitor", "SysInternals Suite", "forensic artifacts", "execution tracking", "Windows registry", "SysInternals documentation", "forensic tools", "incident response"]
-date = "2023-01-01"
-lastmod = "2025-10-11"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "sysinternals", "DFIR", "process management", "forensic analysis", "incident response"]
-categories = ["4n6", "Digital Forensics", "Windows Forensics", "Registry Analysis"]
-type = "Artifacts"
-seo_title = "SysInternals Registry Forensics - Windows Tool Usage Analysis"
-canonical = "/artifacts/registry-sysinternals/"
-aliases = ["/artifacts/registry-sysinternals/"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "TechArticle"
-author = "JonesCKevin"
-sitemap_priority = 0.8
-sitemap_changefreq = "monthly"
-+++
+---
+title: "SysInternals Tools Registry Forensics"
+description: "Comprehensive guide to SysInternals tools for Windows forensics. Learn registry artifacts, forensic analysis techniques, and DFIR investigation methods for tracking SysInternals tool usage."
+keywords: ["SysInternals Tools", "Windows forensics", "registry analysis", "digital forensics", "DFIR", "Process Explorer", "Process Monitor", "SysInternals Suite", "forensic artifacts", "execution tracking", "Windows registry", "SysInternals documentation", "forensic tools", "incident response"]
+date: "2023-01-01"
+lastmod: "2025-10-11"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR", "incident response"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "SysInternals Registry Forensics - Windows Tool Usage Analysis"
+canonical: "/artifacts/registry-sysinternals/"
+aliases: ["/artifacts/registry-sysinternals/"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "TechArticle"
+sitemap_priority: 0.8
+sitemap_changefreq: "monthly"
+---
 
 ## SysInternals Tools - Registry Forensics and Analysis
 

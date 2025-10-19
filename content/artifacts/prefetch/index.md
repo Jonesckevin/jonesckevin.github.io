@@ -1,22 +1,21 @@
-+++
-title = "Prefetch"
-description = "Complete guide to Windows Prefetch forensics for tracking application execution. Learn prefetch structure, forensic analysis techniques, PECmd usage, and DFIR investigation methods."
-keywords = ["Windows Prefetch", "prefetch analysis", "digital forensics", "proof of execution", "POE", "application tracking", "Windows forensics", "DFIR", "PECmd", "forensic artifacts", "execution timeline", "malware analysis", "incident response", "forensic tools"]
-date = 2023-01-01
-lastmod = 2025-09-30
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "prefetch", "DFIR", "PECmd", "execution tracking", "forensic timeline", "malware analysis", "incident response"]
-categories = ["4n6", "Digital Forensics", "Windows Forensics", "DFIR"]
-type = "Artifacts"
-seo_title = "Windows Prefetch Analysis - Digital Forensics Application Tracking Guide"
-canonical = "/artifacts/prefetch/"
-aliases = ["/artifacts/prefetch/"]
-featured_image = "/images/featured/artifacts/Windows11Explorer.png"
-schema_type = "TechArticle"
-author = "JonesCKevin"
-sitemap_priority = 0.8
-sitemap_changefreq = "monthly"
-+++
+---
+title: "Prefetch"
+description: "Complete guide to Windows Prefetch forensics for tracking application execution. Learn prefetch structure, forensic analysis techniques, PECmd usage, and DFIR investigation methods."
+keywords: ["Windows Prefetch", "prefetch analysis", "digital forensics", "proof of execution", "POE", "application tracking", "Windows forensics", "DFIR", "PECmd", "forensic artifacts", "execution timeline", "malware analysis", "incident response", "forensic tools"]
+date: 2023-01-01
+lastmod: 2025-09-30
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "DFIR", "malware analysis", "incident response"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "Windows Prefetch Analysis - Digital Forensics Application Tracking Guide"
+canonical: "/artifacts/prefetch/"
+aliases: ["/artifacts/prefetch/"]
+featured_image: "/images/featured/artifacts/Windows11Explorer.png"
+schema_type: "TechArticle"
+sitemap_priority: 0.8
+sitemap_changefreq: "monthly"
+---
 
 ## Windows Prefetch Analysis - Digital Forensics Execution Tracking
 

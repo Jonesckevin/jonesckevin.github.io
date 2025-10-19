@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
 tags: ["Learning", "Education", "Quizzes", "Assessment", "Study", "Teaching", "AI", "Tools"]
-categories: ["AI Tools", "Education", "Learning Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free Interactive Quiz Generator - AI Study Quiz & Assessment Creator"
 canonical: "/ai-tools/learning/quiz-generator/"
-featured_image: "/images/ai-tools/quiz-generator.png"
+#featured_image: "/images/ai-tools/quiz-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

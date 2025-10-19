@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
 tags: ["Learning", "Education", "Study", "Exam Prep", "Academic", "Review", "AI", "Tools"]
-categories: ["AI Tools", "Education", "Study Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Study Guide Generator - Personalized Learning Materials"
 canonical: "/ai-tools/learning/study-guide/"
-featured_image: "/images/ai-tools/study-guide.png"
+#featured_image: "/images/ai-tools/study-guide.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

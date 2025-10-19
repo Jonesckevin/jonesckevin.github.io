@@ -1,19 +1,18 @@
-+++
-title = "Registry- RunMRU"
-date = "2023-01-01"
-draft = false
-tags = ["forensics", "windows", "registry", "security", "digital-forensics"]
-categories = ["Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "RunMRU Registry Forensics - Windows Run Dialog History Analysis"
-description = "Complete guide to RunMRU registry forensic analysis for tracking command execution history. Learn Run dialog artifacts, malware detection techniques, and DFIR investigation methods for Windows forensics."
-keywords = ["RunMRU registry", "Run dialog history", "command execution tracking", "Windows forensics", "malware analysis", "digital forensics", "DFIR", "execution artifacts", "Windows Run command", "forensic investigation", "proof of execution", "registry analysis"]
-canonical = "/artifacts/runMRU/"
-aliases = ["/artifacts/runMRU/", "/2023/02/runmru.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "Registry- RunMRU"
+date: "2023-01-01"
+draft: false
+tags: ["Digital Forensics", "windows", "registry", "security"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "RunMRU Registry Forensics - Windows Run Dialog History Analysis"
+description: "Complete guide to RunMRU registry forensic analysis for tracking command execution history. Learn Run dialog artifacts, malware detection techniques, and DFIR investigation methods for Windows forensics."
+keywords: ["RunMRU registry", "Run dialog history", "command execution tracking", "Windows forensics", "malware analysis", "digital forensics", "DFIR", "execution artifacts", "Windows Run command", "forensic investigation", "proof of execution", "registry analysis"]
+canonical: "/artifacts/runMRU/"
+aliases: ["/artifacts/runMRU/", "/2023/02/runmru.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 ## Understanding the RunMRU Registry: Security Implications and Forensic Value
 

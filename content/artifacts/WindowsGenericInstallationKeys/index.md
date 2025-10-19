@@ -1,18 +1,17 @@
-+++
-title = "Windows Generic Installation Keys"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "installation keys", "reference", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "Windows Generic Installation Keys - KMS Client Setup Keys Reference"
-description = "Complete reference guide to Windows generic installation keys (GVLKs) for KMS activation. Essential resource for forensic analysis of Windows licensing, deployment validation, and DFIR investigations."
-keywords = ["Windows installation keys", "GVLK keys", "KMS client keys", "Windows activation", "generic product keys", "digital forensics", "DFIR", "Windows licensing", "forensic reference", "Windows deployment", "volume activation", "forensic investigation"]
-canonical = "/artifacts/WindowsGenericInstallationKeys/"
-aliases = ["/artifacts/WindowsGenericInstallationKeys/", "/2024/02/windows-generic-installation-keys.html"]
-schema_type = "Article"
-+++
+---
+title: "Windows Generic Installation Keys"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "Windows Generic Installation Keys - KMS Client Setup Keys Reference"
+description: "Complete reference guide to Windows generic installation keys (GVLKs) for KMS activation. Essential resource for forensic analysis of Windows licensing, deployment validation, and DFIR investigations."
+keywords: ["Windows installation keys", "GVLK keys", "KMS client keys", "Windows activation", "generic product keys", "digital forensics", "DFIR", "Windows licensing", "forensic reference", "Windows deployment", "volume activation", "forensic investigation"]
+canonical: "/artifacts/WindowsGenericInstallationKeys/"
+aliases: ["/artifacts/WindowsGenericInstallationKeys/", "/2024/02/windows-generic-installation-keys.html"]
+schema_type: "Article"
+---
 
 #### SOURCE: 
 **https://www.windowsafg.com/keys.html**

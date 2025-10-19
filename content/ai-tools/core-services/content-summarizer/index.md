@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Productivity", "Content Summarizer", "Text Processing", "Document Analysis", "Reading Tools", "AI", "Tools"]
-categories: ["AI Tools", "Productivity", "Content Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Content Summarizer - Intelligent Text Summarization Tool"
 canonical: "/ai-tools/core-services/content-summarizer/"
-featured_image: "/images/ai-tools/content-summarizer.png"
+#featured_image: "/images/ai-tools/content-summarizer.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

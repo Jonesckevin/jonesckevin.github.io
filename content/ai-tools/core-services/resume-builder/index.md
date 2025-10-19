@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Productivity", "Resume Builder", "Career Tools", "ATS Optimization", "Professional Development", "AI", "Tools"]
-categories: ["AI Tools", "Productivity", "Career Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Resume Builder - Create Professional ATS-Optimized Resumes"
 canonical: "/ai-tools/core-services/resume-builder/"
-featured_image: "/images/ai-tools/resume-builder.png"
+#featured_image: "/images/ai-tools/resume-builder.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

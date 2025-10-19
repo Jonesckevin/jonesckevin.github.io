@@ -1,17 +1,17 @@
-+++
-title = "PicoCTF"
-type = "writeups"
-date = "2024-06-01"
-lastmod = "2024-06-01"
-draft = false
-tags = ["CTF", "PicoCTF", "Cybersecurity", "Beginner-Friendly", "Challenges", "Learning", "Capture The Flag", "Hacking", "Security", "Education"]
-categories = ["CTF", "PicoCTF", "Cybersecurity", "Challenges", "Learning"]
-seo_title = "PicoCTF - Beginner-Friendly Cybersecurity CTF Competition"
-seo_description = "Explore PicoCTF, a beginner-friendly Capture The Flag (CTF) competition designed to teach cybersecurity concepts through hands-on challenges."
-seo_keywords = ["PicoCTF", "CTF Competition", "Cybersecurity Challenges", "Beginner-Friendly CTF", "Capture The Flag", "Hacking Challenges", "Security Education", "Cybersecurity Learning", "CTF Events", "Online CTF"]
-schemaItemType = "WebSite"
-schemaProgrammingLanguage = "Markdown"
-+++
+---
+title: "PicoCTF"
+type: "writeups"
+date: "2024-06-01"
+lastmod: "2024-06-01"
+draft: false
+tags: ["CTF", "Cybersecurity", "Challenges", "Learning", "Capture The Flag", "Hacking", "Security", "Education"]
+categories: ["Writeups", "AI Tools"]
+seo_title: "PicoCTF - Beginner-Friendly Cybersecurity CTF Competition"
+seo_description: "Explore PicoCTF, a beginner-friendly Capture The Flag (CTF) competition designed to teach cybersecurity concepts through hands-on challenges."
+seo_keywords: ["PicoCTF", "CTF Competition", "Cybersecurity Challenges", "Beginner-Friendly CTF", "Capture The Flag", "Hacking Challenges", "Security Education", "Cybersecurity Learning", "CTF Events", "Online CTF"]
+schemaItemType: "WebSite"
+schemaProgrammingLanguage: "Markdown"
+---
 
 [PicoCTF](https://picoctf.com)
 

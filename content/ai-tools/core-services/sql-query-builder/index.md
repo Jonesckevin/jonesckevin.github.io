@@ -8,11 +8,11 @@ date: 2025-09-30
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Database", "SQL", "Productivity", "Development", "Query Builder", "AI", "Tools"]
-categories: ["AI Tools", "Development", "Database Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI SQL Query Builder - Generate Database Queries with AI"
 canonical: "/ai-tools/core-services/sql-query-builder/"
-featured_image: "/images/ai-tools/sql-query-builder.png"
+#featured_image: "/images/ai-tools/sql-query-builder.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

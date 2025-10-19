@@ -1,18 +1,17 @@
-+++
-title = "Windows Install Date & Time"
-date = "2023-01-15"
-description = "Complete guide to Windows OS install date and time forensic analysis via registry. Learn InstallDate and InstallTime registry keys, conversion techniques, and timeline establishment for DFIR investigations."
-keywords = ["Windows install date", "InstallTime registry", "OS installation forensics", "Windows registry analysis", "DFIR timeline", "digital forensics", "install timestamp", "system forensics", "Windows NT CurrentVersion", "forensic investigation", "system age determination", "registry artifacts"]
-categories = ["4n6", "Digital Forensics"]
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "Windows OS Install Date & Time Registry Analysis"
-canonical = "/artifacts/OSInstallDateTime/"
-aliases = ["/artifacts/OSInstallDateTime/", "/2023/02/registry-os-install-date-time.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "Windows Install Date & Time"
+date: "2023-01-15"
+description: "Complete guide to Windows OS install date and time forensic analysis via registry. Learn InstallDate and InstallTime registry keys, conversion techniques, and timeline establishment for DFIR investigations."
+keywords: ["Windows install date", "InstallTime registry", "OS installation forensics", "Windows registry analysis", "DFIR timeline", "digital forensics", "install timestamp", "system forensics", "Windows NT CurrentVersion", "forensic investigation", "system age determination", "registry artifacts"]
+categories: ["Artifacts"]
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+type: "Artifacts"
+seo_title: "Windows OS Install Date & Time Registry Analysis"
+canonical: "/artifacts/OSInstallDateTime/"
+aliases: ["/artifacts/OSInstallDateTime/", "/2023/02/registry-os-install-date-time.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 The Windows registry is a central repository of configuration data for the Windows operating system and its applications. One important aspect of the registry is the section involving the Windows install time. This information can be used in a variety of ways, both for normal system usage and for malicious purposes.
 

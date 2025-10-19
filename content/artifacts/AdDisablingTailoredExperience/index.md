@@ -1,20 +1,19 @@
-+++
-title = "Ad Disabling Tailored Experience"
-date = "2023-01-01"
-draft = false
-tags = ["registry", "4n6", "digital forensics", "windows forensics"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-seo_title = "Ad Disabling and Tailored Experience in Windows - Registry Tweaks"
-canonical = "/artifacts/ad-disabling-tailored-experience/"
-aliases = ["/artifacts/ad-disabling-tailored-experience/", "/2023/12/windows-mod-ad-disabling-and-tailored.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "TechArticle"
-author = "JonesCKevin"
-sitemap_priority = 0.7
-description = "Guide to disabling ads and controlling tailored experience in Windows via registry tweaks. Learn forensic implications, privacy settings, and how to optimize Windows forensics investigations."
-keywords = ["Windows ads", "disable tailored experience", "registry tweaks", "Windows privacy", "forensic implications", "Windows customization", "ad settings", "Windows telemetry", "digital forensics", "privacy optimization", "Windows registry", "forensic analysis"]
-+++
+---
+title: "Ad Disabling Tailored Experience"
+date: "2023-01-01"
+draft: false
+tags: ["registry", "4n6", "digital forensics", "windows forensics"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "Ad Disabling and Tailored Experience in Windows - Registry Tweaks"
+canonical: "/artifacts/ad-disabling-tailored-experience/"
+aliases: ["/artifacts/ad-disabling-tailored-experience/", "/2023/12/windows-mod-ad-disabling-and-tailored.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "TechArticle"
+sitemap_priority: 0.7
+description: "Guide to disabling ads and controlling tailored experience in Windows via registry tweaks. Learn forensic implications, privacy settings, and how to optimize Windows forensics investigations."
+keywords: ["Windows ads", "disable tailored experience", "registry tweaks", "Windows privacy", "forensic implications", "Windows customization", "ad settings", "Windows telemetry", "digital forensics", "privacy optimization", "Windows registry", "forensic analysis"]
+---
 
 ![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 

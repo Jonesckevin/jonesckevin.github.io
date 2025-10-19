@@ -1,19 +1,18 @@
-+++
-title = "WordWheelQuery"
-date = "2023-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows forensics", "registry", "search history", "DFIR"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "WordWheelQuery Forensics - Windows Search History Analysis"
-description = "Comprehensive guide to WordWheelQuery registry forensic analysis for tracking Windows search history. Learn search term extraction, user intent analysis, and DFIR investigation techniques."
-keywords = ["WordWheelQuery registry", "Windows search history", "search forensics", "user search tracking", "registry analysis", "digital forensics", "DFIR", "Windows Explorer search", "forensic artifacts", "search terms", "user activity", "forensic investigation"]
-canonical = "/artifacts/WordWheelQuery/"
-aliases = ["/artifacts/WordWheelQuery/", "/2023/02/registry-wordwheelquery.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "WordWheelQuery"
+date: "2023-01-01"
+draft: false
+tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "WordWheelQuery Forensics - Windows Search History Analysis"
+description: "Comprehensive guide to WordWheelQuery registry forensic analysis for tracking Windows search history. Learn search term extraction, user intent analysis, and DFIR investigation techniques."
+keywords: ["WordWheelQuery registry", "Windows search history", "search forensics", "user search tracking", "registry analysis", "digital forensics", "DFIR", "Windows Explorer search", "forensic artifacts", "search terms", "user activity", "forensic investigation"]
+canonical: "/artifacts/WordWheelQuery/"
+aliases: ["/artifacts/WordWheelQuery/", "/2023/02/registry-wordwheelquery.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 ![Registry Block](/images/featured/artifacts/RegistryBlock.png)
 

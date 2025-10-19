@@ -1,13 +1,13 @@
-+++
-title = "CTF Resources"
-description = "A curated list of resources and tools for Capture The Flag (CTF) competitions."
-type = "writeups"
-tags = ["CTF", "Resources", "Cheat Sheets", "Tools", "Capture The Flag", "Hacking", "Cybersecurity"]
-categories = ["CTF", "Resources", "Cheat Sheets", "Tools"]
-seo_title = "CTF Resources - Tools and Cheat Sheets for Capture The Flag Competitions"
-seo_description = "Explore a curated list of resources, tools, and cheat sheets to help you succeed in Capture The Flag (CTF) competitions."
-seo_keywords = ["CTF Resources", "Capture The Flag Tools", "CTF Cheat Sheets", "Hacking Resources", "Cybersecurity Tools", "CTF Preparation", "CTF Competitions", "Hacking Challenges", "CTF Learning", "Cybersecurity Education"]
-+++
+---
+title: "CTF Resources"
+description: "A curated list of resources and tools for Capture The Flag (CTF) competitions."
+type: "writeups"
+tags: ["CTF", "Tools", "Capture The Flag", "Hacking", "Cybersecurity"]
+categories: ["Writeups", "AI Tools"]
+seo_title: "CTF Resources - Tools and Cheat Sheets for Capture The Flag Competitions"
+seo_description: "Explore a curated list of resources, tools, and cheat sheets to help you succeed in Capture The Flag (CTF) competitions."
+seo_keywords: ["CTF Resources", "Capture The Flag Tools", "CTF Cheat Sheets", "Hacking Resources", "Cybersecurity Tools", "CTF Preparation", "CTF Competitions", "Hacking Challenges", "CTF Learning", "Cybersecurity Education"]
+---
 
 ## General CTF Resources
 

@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
 tags: ["Gaming", "D&D", "RPG", "NPC", "Character", "DM Tools", "Tabletop", "AI", "Tools"]
-categories: ["AI Tools", "Gaming", "RPG Tools"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free D&D NPC Generator - AI Character Creator for RPG Campaigns"
 canonical: "/ai-tools/gaming/npc-generator/"
-featured_image: "/images/ai-tools/npc-generator.png"
+#featured_image: "/images/ai-tools/npc-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

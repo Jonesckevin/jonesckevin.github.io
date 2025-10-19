@@ -1,19 +1,18 @@
-+++
-title = "Registry- SYSTEM Select"
-date = "2024-01-01"
-draft = false
-tags = ["4n6", "digital forensics", "windows registry", "forensics", "system analysis"]
-categories = ["4n6", "Digital Forensics"]
-type = "Artifacts"
-author = "JonesCKevin"
-seo_title = "Windows Registry SYSTEM Select - ControlSet Forensics Analysis Guide"
-description = "Detailed guide to Windows Registry SYSTEM Select key forensic analysis. Learn Current, Default, Failed, and LastKnownGood ControlSet tracking for DFIR investigations and system troubleshooting."
-keywords = ["SYSTEM Select registry", "ControlSet forensics", "Windows registry analysis", "CurrentControlSet", "LastKnownGood", "Failed ControlSet", "digital forensics", "DFIR", "system configuration", "boot analysis", "registry artifacts", "Windows troubleshooting"]
-canonical = "/artifacts/Registry-SYSTEM-Select/"
-aliases = ["/artifacts/Registry-SYSTEM-Select/", "/2023/02/registry-systemselect.html"]
-featured_image = "/images/featured/artifacts/RegistryBlock.png"
-schema_type = "Article"
-+++
+---
+title: "Registry- SYSTEM Select"
+date: "2024-01-01"
+draft: false
+tags: ["4n6", "digital forensics"]
+categories: ["Artifacts"]
+type: "Artifacts"
+seo_title: "Windows Registry SYSTEM Select - ControlSet Forensics Analysis Guide"
+description: "Detailed guide to Windows Registry SYSTEM Select key forensic analysis. Learn Current, Default, Failed, and LastKnownGood ControlSet tracking for DFIR investigations and system troubleshooting."
+keywords: ["SYSTEM Select registry", "ControlSet forensics", "Windows registry analysis", "CurrentControlSet", "LastKnownGood", "Failed ControlSet", "digital forensics", "DFIR", "system configuration", "boot analysis", "registry artifacts", "Windows troubleshooting"]
+canonical: "/artifacts/Registry-SYSTEM-Select/"
+aliases: ["/artifacts/Registry-SYSTEM-Select/", "/2023/02/registry-systemselect.html"]
+featured_image: "/images/featured/artifacts/RegistryBlock.png"
+schema_type: "Article"
+---
 
 ## Windows Registry SYSTEM Select Key Analysis
 

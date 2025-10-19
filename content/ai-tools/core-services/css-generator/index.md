@@ -8,11 +8,11 @@ date: 2025-10-07
 lastmod: 2025-10-07
 draft: false
 tags: ["Core Services", "Web Development", "CSS", "Design", "Styling", "Frontend", "AI", "Tools"]
-categories: ["AI Tools", "Web Development", "Design"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI CSS Generator - Live Preview & Examples"
 canonical: "/ai-tools/core-services/css-generator/"
-featured_image: "/images/ai-tools/css-generator.png"
+#featured_image: "/images/ai-tools/css-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Productivity", "Interview", "Questions", "Hiring", "Assessment", "AI", "Tools"]
-categories: ["AI Tools", "HR Tools", "Interview Preparation"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Interview Questions Generator - Thought-Provoking Questions"
 canonical: "/ai-tools/core-services/thought-provoking-questions/"
-featured_image: "/images/ai-tools/thought-provoking-questions.png"
+#featured_image: "/images/ai-tools/thought-provoking-questions.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

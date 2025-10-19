@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Productivity", "Mermaid", "Visualization", "Diagrams", "Planning", "AI", "Tools"]
-categories: ["AI Tools", "Productivity", "Visualization"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Mermaid Visual Roadmap Builder - AI-Powered Diagram Generator"
 canonical: "/ai-tools/core-services/visual-roadmap/"
-featured_image: "/images/ai-tools/visual-roadmap.png"
+#featured_image: "/images/ai-tools/visual-roadmap.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

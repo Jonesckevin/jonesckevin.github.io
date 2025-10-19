@@ -95,15 +95,15 @@
                             </div>
                         </div>
                         {{ if not $.Params.hideThumbnails }}
-                        {{ if or .Params.thumbnail .Params.featured_image }}
                         <div class="card-thumbnail">
                             {{ if .Params.thumbnail }}
                             <img src="{{ .Params.thumbnail | absURL }}" alt="{{ .Title }}">
                             {{ else if .Params.featured_image }}
                             <img src="{{ .Params.featured_image | absURL }}" alt="{{ .Title }}">
+                            {{ else }}
+                            <img src="/android-chrome-192x192.png" alt="{{ .Title }}">
                             {{ end }}
                         </div>
-                        {{ end }}
                         {{ end }}
                     </a>
                     {{ end }}
@@ -127,15 +127,15 @@
                             </div>
                         </div>
                         {{ if not $.Params.hideThumbnails }}
-                        {{ if or .Params.thumbnail .Params.featured_image }}
                         <div class="card-thumbnail">
                             {{ if .Params.thumbnail }}
                             <img src="{{ .Params.thumbnail | absURL }}" alt="{{ .Title }}">
                             {{ else if .Params.featured_image }}
                             <img src="{{ .Params.featured_image | absURL }}" alt="{{ .Title }}">
+                            {{ else }}
+                            <img src="/android-chrome-192x192.png" alt="{{ .Title }}">
                             {{ end }}
                         </div>
-                        {{ end }}
                         {{ end }}
                     </a>
                     {{ end }}

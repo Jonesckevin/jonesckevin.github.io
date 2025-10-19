@@ -8,11 +8,11 @@ date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
 tags: ["Core Services", "Productivity", "Resume", "Career", "Analysis", "Professional Development", "AI", "Tools"]
-categories: ["AI Tools", "Career Tools", "Productivity"]
+categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Resume Critique - Professional Resume Analysis & Review"
 canonical: "/ai-tools/core-services/resume-critique/"
-featured_image: "/images/ai-tools/resume-critique.png"
+#featured_image: "/images/ai-tools/resume-critique.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
