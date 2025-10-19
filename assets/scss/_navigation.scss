@@ -109,10 +109,91 @@
         box-sizing: border-box !important;
         z-index: 2000 !important;
     }
+
+    // Wider dropdown when help is shown on desktop
+    &.open .ai-help-section[style*="display: block"]~.ai-settings-section {
+        @media (min-width: 768px) {
+            // Settings section stays at normal width
+        }
+    }
+
+    // Expand dropdown width on wider screens when help is visible
+    @media (min-width: 768px) {
+        &.open:has(.ai-help-section[style*="display: block"]) {
+            width: 800px; // Wider to accommodate 400px help content + 320px settings + gaps/padding
+            max-width: 90vw; // Prevent overflow on smaller screens
+        }
+    }
+
+    // Even wider on large screens
+    @media (min-width: 1200px) {
+        &.open:has(.ai-help-section[style*="display: block"]) {
+            width: 950px; // Wider for 480px help content + settings + gaps/padding
+        }
+    }
 }
 
 .ai-dropdown-inner {
     padding: 16px;
+}
+
+.ai-dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ai-top-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    // Side-by-side layout on wider screens when help is visible
+    @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 20px;
+        align-items: stretch; // Allow items to stretch to fill height
+    }
+}
+
+.ai-settings-section {
+    flex: 1;
+    min-width: 0; // Allows flex item to shrink below content size
+    display: flex;
+    flex-direction: column;
+    order: 1; // Settings first on mobile
+
+    @media (min-width: 768px) {
+        order: 2; // Settings second (right side) on desktop
+    }
+}
+
+.ai-instructions-row {
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 107, 53, 0.2);
+    text-align: left;
+
+    @media (min-width: 768px) {
+        margin-top: 8px;
+    }
+
+    .ai-help-list {
+        text-align: left;
+        padding-left: 20px;
+        margin: 0;
+        list-style-type: decimal;
+        list-style-position: outside;
+
+        li {
+            text-align: left;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-size: 11px;
+            color: #e0e0e0;
+            opacity: 0.85;
+            font-size: 12px;
+        }
+    }
 }
 
 .ai-dropdown-header {
@@ -120,6 +201,110 @@
     margin-bottom: 12px;
     color: #ff6b35;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ai-help-btn {
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    padding: 0;
+
+    &:hover {
+        background: rgba(255, 107, 53, 0.2);
+        border-color: #ff6b35;
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.ai-help-section {
+    // Mobile: Stacked below settings
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    order: 2; // Help second (below) on mobile
+
+    // Tablet and up: Side-by-side with settings, right border separator
+    @media (min-width: 768px) {
+        flex: 0 0 auto; // Don't grow, fixed size based on content
+        min-width: 280px;
+        padding-right: 20px;
+        border-right: 1px solid rgba(255, 107, 53, 0.2);
+        display: flex;
+        flex-direction: column;
+        order: 1; // Help first (left side) on desktop
+    }
+}
+
+.ai-help-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @media (min-width: 768px) {
+        width: 400px; // Wider content area for the GIF
+    }
+
+    @media (min-width: 1200px) {
+        width: 480px; // Even wider on large screens
+    }
+
+    h4 {
+        color: #ff6b35;
+        font-size: 13px;
+        font-weight: 600;
+        margin: 0 0 12px 0;
+        flex-shrink: 0;
+    }
+
+    .ai-help-gif {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 0;
+        display: block;
+        object-fit: contain; // Maintain aspect ratio
+
+        @media (min-width: 768px) {
+            height: 100%; // Take full height of container
+            flex: 1;
+        }
+    }
+
+    .ai-help-description {
+        font-size: 11px;
+        line-height: 1.5;
+        color: #e0e0e0;
+        margin: 0;
+        opacity: 0.85;
+    }
+
+    .ai-help-list {
+        text-align: left;
+        padding-left: 20px;
+        margin: 0;
+        list-style-type: decimal;
+        list-style-position: outside;
+
+        li {
+            text-align: left;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+    }
 }
 
 .ai-field {

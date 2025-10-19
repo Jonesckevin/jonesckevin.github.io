@@ -17,3 +17,136 @@ body.section-ai-tools {
 
     background: #232425;
 }
+
+/* Hero Header with Help Button */
+body.section-ai-tools .hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+body.section-ai-tools .hero-title {
+    margin: 0;
+    flex: 1;
+}
+
+/* Page Help Button (reuses header styles) */
+body.section-ai-tools .page-help-btn {
+    flex-shrink: 0;
+}
+
+/* Page Help Section */
+body.section-ai-tools .page-ai-help-section {
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+    /* Changed from hidden to show all content */
+}
+
+body.section-ai-tools .page-ai-help-section .ai-help-content {
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    min-height: auto;
+    /* Allow natural height */
+}
+
+@media (min-width: 768px) {
+    body.section-ai-tools .page-ai-help-section .ai-help-content {
+        width: 700px;
+        max-width: calc(90vw - 40px);
+    }
+}
+
+@media (min-width: 992px) {
+    body.section-ai-tools .page-ai-help-section .ai-help-content {
+        width: 800px;
+        max-width: calc(100vw - 60px);
+        /* More padding allowance */
+    }
+}
+
+@media (min-width: 1200px) {
+    body.section-ai-tools .page-ai-help-section .ai-help-content {
+        width: 850px;
+        max-width: calc(100vw - 80px);
+        /* More padding allowance */
+    }
+}
+
+body.section-ai-tools .page-ai-help-section .ai-help-content h4 {
+    color: #ff6b35;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+}
+
+body.section-ai-tools .page-ai-help-section .ai-help-gif {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    margin: 0 auto 16px;
+    display: block;
+    height: auto;
+    /* Allow natural height */
+    max-height: none;
+    /* Remove height restriction */
+    object-fit: contain;
+}
+
+body.section-ai-tools .page-ai-help-section .ai-help-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Help list styling */
+body.section-ai-tools .page-ai-help-section .ai-help-list {
+    text-align: left;
+    padding-left: 20px;
+    margin: 0;
+    list-style-type: decimal;
+    list-style-position: outside;
+    word-wrap: break-word;
+    /* Break long words */
+    overflow-wrap: break-word;
+    /* Break long words */
+}
+
+body.section-ai-tools .page-ai-help-section .ai-help-list li {
+    text-align: left;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+body.section-ai-tools .page-ai-help-section .ai-help-list li a {
+    word-break: break-word;
+    /* Break long URLs if needed */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body.section-ai-tools .hero-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    body.section-ai-tools .page-help-btn {
+        align-self: flex-end;
+    }
+}

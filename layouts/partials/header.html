@@ -111,29 +111,61 @@
           </button>
           <div class="ai-dropdown">
             <div class="ai-dropdown-inner">
-              <div class="ai-dropdown-header">AI Provider Settings</div>
-              <div class="ai-field">
-                <label for="ai-provider">Provider</label>
-                <select id="ai-provider">
-                  <option value="openai">OpenAI</option>
-                  <option value="deepseek">DeepSeek</option>
-                  <option value="anthropic">Anthropic</option>
-                  <option value="gemini">Google Gemini</option>
-                  <option value="grok">Grok (X.AI)</option>
-                </select>
+              <div class="ai-dropdown-header">
+                AI Provider Settings
+                <button class="ai-help-btn" id="ai-help-toggle" aria-label="Show AI Tools Help"
+                  title="How to use AI Tools">❓</button>
               </div>
-              <div class="ai-field">
-                <label for="ai-key">API Key</label>
-                <input type="password" id="ai-key" placeholder="Enter your API key">
-                <small class="ai-help">Keys are stored only for your session</small>
-              </div>
-              <div class="ai-field">
-                <label for="ai-model">Model (Optional)</label>
-                <select id="ai-model" disabled>
-                  <option value="">Enter API key to load models...</option>
-                </select>
-                <small id="ai-model-help" class="ai-help">Models are fetched from the selected provider after
-                  validating your API key.</small>
+              <div class="ai-dropdown-content">
+                <!-- Top Row: GIF and Settings side-by-side -->
+                <div class="ai-top-row">
+                  <!-- Help Section (Left on wide screens) - GIF only -->
+                  <div class="ai-help-section" id="ai-help-section" style="display: none;">
+                    <div class="ai-help-content">
+                      <h4>How to Use AI Tools</h4>
+                      <img src="/images/help/ai-tool-help.gif" alt="AI Tools Tutorial" class="ai-help-gif">
+                    </div>
+                  </div>
+                  <!-- Settings Section (Right on wide screens) -->
+                  <div class="ai-settings-section">
+                    <div class="ai-field">
+                      <label for="ai-provider">Provider</label>
+                      <select id="ai-provider">
+                        <option value="openai">OpenAI</option>
+                        <option value="deepseek">DeepSeek</option>
+                        <option value="anthropic">Anthropic</option>
+                        <option value="gemini">Google Gemini</option>
+                        <option value="grok">Grok (X.AI)</option>
+                      </select>
+                    </div>
+                    <div class="ai-field">
+                      <label for="ai-key">API Key</label>
+                      <input type="password" id="ai-key" placeholder="Enter your API key">
+                      <small class="ai-help">Keys are stored only for your session</small>
+                    </div>
+                    <div class="ai-field">
+                      <label for="ai-model">Model (Optional)</label>
+                      <select id="ai-model" disabled>
+                        <option value="">Enter API key to load models...</option>
+                      </select>
+                      <small id="ai-model-help" class="ai-help">Models are fetched from the selected provider after
+                        validating your API key.</small>
+                    </div>
+                  </div>
+                </div>
+                <!-- Bottom Row: Instructions spanning full width -->
+                <div class="ai-instructions-row" id="ai-instructions-row" style="display: none;">
+                  <ul class="ai-help-list">
+                    <li>Configure your AI provider by selecting one from the dropdown. <a href="#" id="provider-link"
+                        target="_blank" rel="noopener noreferrer">Visit provider website</a></li>
+                    <li>Enter your API key. <span id="key-format">Format: <code>sk-...</code></span></li>
+                    <li>Optionally choose a specific model. <a href="#" id="pricing-link" target="_blank"
+                        rel="noopener noreferrer">View pricing</a></li>
+                    <li>Visit any AI tool page to start using powerful AI-driven features like story generators, quiz
+                      creators, and more.</li>
+                    <li>Your API key is stored securely in your browser session and never sent to our servers.</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -324,6 +356,26 @@ background-position: 0% 50%;
       });
     }
 
+    // AI Help Toggle
+    const aiHelpToggle = document.getElementById('ai-help-toggle');
+    const aiHelpSection = document.getElementById('ai-help-section');
+    const aiInstructionsRow = document.getElementById('ai-instructions-row');
+
+    if (aiHelpToggle && aiHelpSection) {
+      aiHelpToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (aiHelpSection.style.display === 'none' || aiHelpSection.style.display === '') {
+          aiHelpSection.style.display = 'block';
+          if (aiInstructionsRow) aiInstructionsRow.style.display = 'block';
+          aiHelpToggle.setAttribute('aria-label', 'Hide AI Tools Help');
+        } else {
+          aiHelpSection.style.display = 'none';
+          if (aiInstructionsRow) aiInstructionsRow.style.display = 'none';
+          aiHelpToggle.setAttribute('aria-label', 'Show AI Tools Help');
+        }
+      });
+    }
+
     // AI Provider settings management
     const aiProvider = document.getElementById('ai-provider');
     const aiKey = document.getElementById('ai-key');
@@ -344,6 +396,61 @@ background-position: 0% 50%;
         grok: 'Enter your Grok API key (xai-...)'
       };
       aiKey.placeholder = placeholders[provider] || 'Enter your API key';
+    }
+
+    // Update provider-specific links in instructions
+    function updateProviderLinks(provider) {
+      const providerLink = document.getElementById('provider-link');
+      const keyFormat = document.getElementById('key-format');
+      const pricingLink = document.getElementById('pricing-link');
+
+      const providerInfo = {
+        openai: {
+          url: 'https://platform.openai.com/api-keys',
+          name: 'OpenAI API website',
+          keyFormat: 'sk-...',
+          pricing: 'https://openai.com/api/pricing/'
+        },
+        deepseek: {
+          url: 'https://platform.deepseek.com/api_keys',
+          name: 'DeepSeek API website',
+          keyFormat: 'sk-...',
+          pricing: 'https://platform.deepseek.com/api-docs/pricing'
+        },
+        anthropic: {
+          url: 'https://console.anthropic.com/settings/keys',
+          name: 'Anthropic API website',
+          keyFormat: 'sk-ant-...',
+          pricing: 'https://www.anthropic.com/pricing'
+        },
+        gemini: {
+          url: 'https://aistudio.google.com/app/apikey',
+          name: 'Google AI Studio',
+          keyFormat: 'AIza...',
+          pricing: 'https://ai.google.dev/pricing'
+        },
+        grok: {
+          url: 'https://console.x.ai/',
+          name: 'Grok (X.AI) Console',
+          keyFormat: 'xai-...',
+          pricing: 'https://x.ai/api'
+        }
+      };
+
+      const info = providerInfo[provider] || providerInfo.openai;
+
+      if (providerLink) {
+        providerLink.href = info.url;
+        providerLink.textContent = info.name;
+      }
+
+      if (keyFormat) {
+        keyFormat.innerHTML = `Format: <code>${info.keyFormat}</code>`;
+      }
+
+      if (pricingLink) {
+        pricingLink.href = info.pricing;
+      }
     }
 
     // Reset model select to default state
@@ -526,6 +633,7 @@ background-position: 0% 50%;
 
       // Initialize
       updateApiKeyPlaceholder(savedProvider);
+      updateProviderLinks(savedProvider);
 
       // Attempt staged model loading allowing time for apiManager to attach
       if (savedKey) {
@@ -550,6 +658,7 @@ background-position: 0% 50%;
         const provider = this.value;
         localStorage.setItem('ai-provider', provider);
         updateApiKeyPlaceholder(provider);
+        updateProviderLinks(provider);
 
         if (window.apiManager) window.apiManager.setProvider(provider);
 

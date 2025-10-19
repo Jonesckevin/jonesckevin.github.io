@@ -17,7 +17,13 @@
         <div class="content">
             <main class="main-content">
                 <div class="hero-section">
-                    <h1 class="hero-title">{{ .Title }}</h1>
+                    <div class="hero-header">
+                        <h1 class="hero-title">{{ .Title }}</h1>
+                        {{ if eq .Section "ai-tools" }}
+                        <button class="ai-help-btn page-help-btn" id="page-ai-help-toggle"
+                            aria-label="Show AI Tools Help" title="How to use AI Tools">❓</button>
+                        {{ end }}
+                    </div>
                     {{ with .Description }}
                     <p class="hero-description">{{ . }}</p>
                     {{ end }}
@@ -27,6 +33,33 @@
                     <div class="search-filter">
                         <input type="text" id="sectionSearch" placeholder="🔍 {{ .Params.searchPlaceholder | default "Search..." }}" class="search-input">
                         <div id="searchResults" class="search-results"></div>
+                    </div>
+                    {{ end }}
+
+                    {{ if eq .Section "ai-tools" }}
+                    <!-- Help Section for AI Tools Page -->
+                    <div class="page-ai-help-section" id="page-ai-help-section" style="display: none;">
+                        <div class="ai-help-content">
+                            <h4>How to Use AI Tools</h4>
+                            <img src="/images/help/ai-tool-help.gif" alt="AI Tools Tutorial" class="ai-help-gif">
+                            <p class="ai-help-description">
+                            <ul class="ai-help-list">
+                                <li>Configure your AI provider by selecting one from the dropdown. <a
+                                        href="https://platform.openai.com/api-keys" id="page-provider-link"
+                                        target="_blank" rel="noopener noreferrer">OpenAI API website</a></li>
+                                <li>Enter your API key. <span id="page-key-format">Format: <code>sk-...</code></span>
+                                </li>
+                                <li>Optionally choose a specific model. <a href="https://openai.com/api/pricing/"
+                                        id="page-pricing-link" target="_blank" rel="noopener noreferrer">View
+                                        pricing</a></li>
+                                <li>Visit any AI tool page to start using powerful AI-driven features like story
+                                    generators, quiz
+                                    creators, and more.</li>
+                                <li>Your API key is stored securely in your browser session and never sent to our
+                                    servers.</li>
+                            </ul>
+                            </p>
+                        </div>
                     </div>
                     {{ end }}
                 </div>
@@ -248,6 +281,129 @@
                     this.blur();
                 }
             });
+        });
+    </script>
+    {{ end }}
+
+    {{ if eq .Section "ai-tools" }}
+    <!-- AI Tools Help Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pageHelpToggle = document.getElementById('page-ai-help-toggle');
+            const pageHelpSection = document.getElementById('page-ai-help-section');
+
+            // Update provider-specific links on the page
+            function updatePageProviderLinks() {
+                const provider = localStorage.getItem('ai-provider') || 'openai';
+                const pageProviderLink = document.getElementById('page-provider-link');
+                const pageKeyFormat = document.getElementById('page-key-format');
+                const pagePricingLink = document.getElementById('page-pricing-link');
+
+                const providerInfo = {
+                    openai: {
+                        url: 'https://platform.openai.com/api-keys',
+                        name: 'OpenAI API website',
+                        keyFormat: 'sk-...',
+                        pricing: 'https://openai.com/api/pricing/'
+                    },
+                    deepseek: {
+                        url: 'https://platform.deepseek.com/api_keys',
+                        name: 'DeepSeek API website',
+                        keyFormat: 'sk-...',
+                        pricing: 'https://platform.deepseek.com/api-docs/pricing'
+                    },
+                    anthropic: {
+                        url: 'https://console.anthropic.com/settings/keys',
+                        name: 'Anthropic API website',
+                        keyFormat: 'sk-ant-...',
+                        pricing: 'https://www.anthropic.com/pricing'
+                    },
+                    gemini: {
+                        url: 'https://aistudio.google.com/app/apikey',
+                        name: 'Google AI Studio',
+                        keyFormat: 'AIza...',
+                        pricing: 'https://ai.google.dev/pricing'
+                    },
+                    grok: {
+                        url: 'https://console.x.ai/',
+                        name: 'Grok (X.AI) Console',
+                        keyFormat: 'xai-...',
+                        pricing: 'https://x.ai/api'
+                    }
+                };
+
+                const info = providerInfo[provider] || providerInfo.openai;
+
+                if (pageProviderLink) {
+                    pageProviderLink.href = info.url;
+                    pageProviderLink.textContent = info.name;
+                }
+
+                if (pageKeyFormat) {
+                    pageKeyFormat.innerHTML = `Format: <code>${info.keyFormat}</code>`;
+                }
+
+                if (pagePricingLink) {
+                    pagePricingLink.href = info.pricing;
+                }
+            }
+
+            // Update links on page load
+            updatePageProviderLinks();
+
+            // Listen for provider changes from header
+            window.addEventListener('storage', function (e) {
+                if (e.key === 'ai-provider') {
+                    updatePageProviderLinks();
+                }
+            });
+
+            if (pageHelpToggle && pageHelpSection) {
+                pageHelpToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+
+                    // Check if we're about to SHOW the help (currently hidden)
+                    const isCurrentlyHidden = pageHelpSection.style.display === 'none' || pageHelpSection.style.display === '';
+
+                    if (isCurrentlyHidden) {
+                        // SHOWING help - toggle page help AND open header
+                        pageHelpSection.style.display = 'block';
+                        pageHelpToggle.setAttribute('aria-label', 'Hide AI Tools Help');
+
+                        // Update links when showing help
+                        updatePageProviderLinks();
+
+                        // Open the header AI dropdown and show help
+                        const headerAiDropdown = document.querySelector('.ai-dropdown');
+                        const headerHelpSection = document.getElementById('ai-help-section');
+                        const headerInstructionsRow = document.getElementById('ai-instructions-row');
+                        const headerHelpToggle = document.getElementById('ai-help-toggle');
+
+                        if (headerAiDropdown && headerHelpSection) {
+                            // Open the AI dropdown in header
+                            headerAiDropdown.classList.add('open');
+
+                            // Show the help section and instructions row in header
+                            if (headerHelpSection.style.display !== 'block') {
+                                headerHelpSection.style.display = 'block';
+                                if (headerInstructionsRow) headerInstructionsRow.style.display = 'block';
+                                if (headerHelpToggle) {
+                                    headerHelpToggle.setAttribute('aria-label', 'Hide AI Tools Help');
+                                }
+                            }
+
+                            // Scroll to the header AI dropdown
+                            setTimeout(() => {
+                                headerAiDropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }, 100);
+                        }
+                    } else {
+                        // HIDING help - only toggle page help, don't touch header
+                        pageHelpSection.style.display = 'none';
+                        pageHelpToggle.setAttribute('aria-label', 'Show AI Tools Help');
+                    }
+                });
+            }
         });
     </script>
     {{ end }}
