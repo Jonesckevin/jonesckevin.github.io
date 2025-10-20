@@ -50,15 +50,11 @@ class NavigationComponent {
                 return window.aiToolsData;
             }
 
-            // Deprecated: Fallback to JSON manifest (should not be needed)
-            console.warn('⚠ Hugo data unavailable, attempting deprecated JSON manifest fallback');
-            const res = await fetch(this.manifestPath, { cache: 'no-cache' });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const data = await res.json();
-            console.log('📄 JSON manifest loaded, categories:', data.categories?.length || 0);
-            return data;
+            // Fallback: Use default structure (Hugo data not configured)
+            console.log('ℹ Hugo data not configured, using default navigation structure');
+            return this.getDefaultStructure();
         } catch (e) {
-            console.error('❌ All manifest sources failed, using minimal fallback:', e);
+            console.log('ℹ Using default navigation structure');
             return this.getDefaultStructure();
         }
     }
@@ -268,7 +264,34 @@ class NavigationComponent {
                     if (help) help.textContent = 'No chat models available for this key/provider.';
                     return;
                 }
-                modelEl.innerHTML = models.map(m => `<option value="${m.id}">${m.label}</option>`).join('');
+                // Render models with category headers as optgroups
+                console.log('📋 Rendering models with categorization...');
+                let html = '';
+                let currentCategory = null;
+
+                models.forEach(m => {
+                    if (m.isHeader) {
+                        // Close previous optgroup if exists
+                        if (currentCategory !== null) {
+                            html += '</optgroup>';
+                        }
+                        // Start new optgroup for category
+                        html += `<optgroup label="${m.label}">`;
+                        currentCategory = m.category;
+                    } else {
+                        // Regular model option - add visual prefix for indentation
+                        // Using simple bullet and spaces that work across all browsers
+                        const prefix = '  • '; // 2 spaces + bullet point
+                        html += `<option value="${m.id}">${prefix}${m.label}</option>`;
+                    }
+                });
+
+                // Close last optgroup if exists
+                if (currentCategory !== null) {
+                    html += '</optgroup>';
+                }
+
+                modelEl.innerHTML = html;
                 modelEl.disabled = false;
                 const desired = window.apiManager.getModel(provider) || window.apiManager.getProviderConfig(provider).defaultModel;
                 const found = Array.from(modelEl.options).some(opt => opt.value === desired);
@@ -323,6 +346,36 @@ class NavigationComponent {
         }
         // Attempt initial model load once everything is ready
         setTimeout(tryLoadModels, 0);
+
+        // Add CSS styling for categorized model select
+        const style = document.createElement('style');
+        style.textContent = `
+            #ai-model optgroup {
+                font-weight: bold;
+                font-style: normal;
+                color: #ff6b35;
+                background: rgba(255, 107, 53, 0.05);
+                padding: 8px 0 4px 0;
+                margin-top: 4px;
+            }
+            #ai-model optgroup option {
+                font-weight: normal;
+                color: #333;
+                padding: 6px 12px 6px 24px !important;
+                padding-left: 24px !important;
+                margin-left: 12px;
+            }
+            #ai-model option {
+                font-weight: normal;
+                color: #333;
+                padding: 6px 12px 6px 24px;
+                text-indent: 12px;
+            }
+            #ai-model {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        `;
+        document.head.appendChild(style);
     }
 }
 // Auto-initialize navigation when DOM is loaded

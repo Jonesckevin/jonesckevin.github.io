@@ -12,19 +12,19 @@ categories: ["AI Tools", "Story Development"]
 type: ai-tools
 seo_title: "Free AI Plot Twist Generator - Create Story Twists & Surprises"
 canonical: "/ai-tools/creative/plot-twist-generator/"
-#featured_image: "/images/ai-tools/plot-twist-generator.png"
+featured_image: "/images/featured/aitools/dnd-plot-twist.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Plot Twist Generator - Create Story Surprises"
   og_description: "Generate contextual plot twists that fit seamlessly into your story. Perfect for writers seeking unexpected narrative turns."
-  og_image: "/images/ai-tools/plot-twist-generator-social.png"
+  og_image: "/images/featured/aitools/dnd-plot-twist.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Plot Twist Generator"
   twitter_description: "Create surprising plot twists for your stories with AI. Generate unexpected turns and shocking reveals."
-  twitter_image: "/images/ai-tools/plot-twist-generator-twitter.png"
+  twitter_image: "/images/featured/aitools/dnd-plot-twist.png"
 ---
 
 <link rel="stylesheet" href="plot-twist-generator.css">

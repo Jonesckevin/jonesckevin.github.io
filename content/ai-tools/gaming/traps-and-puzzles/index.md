@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free D&D Traps & Puzzles Generator - RPG Dungeon Creator"
 canonical: "/ai-tools/gaming/traps-and-puzzles/"
-#featured_image: "/images/ai-tools/traps-and-puzzles.png"
+featured_image: "/images/featured/aitools/trapsnpuzzles.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "D&D Traps & Puzzles Generator - RPG Dungeon Creator"
   og_description: "Generate creative traps and challenging puzzles for D&D dungeons. Create engaging obstacles for your RPG campaigns."
-  og_image: "/images/ai-tools/traps-and-puzzles-social.png"
+  og_image: "/images/featured/aitools/trapsnpuzzles.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free D&D Traps & Puzzles Generator"
   twitter_description: "Create challenging traps and puzzles for your D&D dungeons with AI. Perfect for DMs and campaign creators."
-  twitter_image: "/images/ai-tools/traps-and-puzzles-twitter.png"
+  twitter_image: "/images/featured/aitools/trapsnpuzzles.png"
 ---
 
 <link rel="stylesheet" href="traps-and-puzzles.css">

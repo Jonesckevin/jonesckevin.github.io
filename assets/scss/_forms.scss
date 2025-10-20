@@ -238,7 +238,7 @@ label[style*="display: flex"] {
 button[onclick],
 button.btn-primary {
     background: linear-gradient(135deg, #ff6b35 0%, #ff8c69 100%) !important;
-    color: white !important;
+    color: rgb(255, 255, 255) !important;
     border: none !important;
     border-radius: 12px !important;
     padding: 16px 32px !important;
@@ -259,12 +259,13 @@ button.btn-primary {
     &:hover {
         transform: translateY(-2px) !important;
         box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4) !important;
-        background: linear-gradient(135deg, #ff8c69 0%, #ff6b35 100%) !important;
+        background: linear-gradient(135deg, #ff8c69 0%, #00d600 100%) !important;
     }
 
     &:active {
         transform: translateY(0) !important;
         box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+        background: linear-gradient(135deg, #ff8c69 0%, #008500 100%) !important;
     }
 
     &:disabled {

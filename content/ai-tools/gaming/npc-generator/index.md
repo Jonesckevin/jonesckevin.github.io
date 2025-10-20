@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free D&D NPC Generator - AI Character Creator for RPG Campaigns"
 canonical: "/ai-tools/gaming/npc-generator/"
-#featured_image: "/images/ai-tools/npc-generator.png"
+featured_image: "/images/featured/aitools/dnd-npc-creator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "NPC Forge: D&D NPC Generator - AI Character Creator"
   og_description: "Generate detailed NPCs for D&D campaigns. Create compelling non-player characters with backgrounds and motivations."
-  og_image: "/images/ai-tools/npc-generator-social.png"
+  og_image: "/images/featured/aitools/dnd-npc-creator.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free D&D NPC Generator"
   twitter_description: "Create detailed NPCs for your RPG campaigns with AI. Perfect for D&D DMs and tabletop gamers."
-  twitter_image: "/images/ai-tools/npc-generator-twitter.png"
+  twitter_image: "/images/featured/aitools/dnd-npc-creator.png"
 ---
 
 <link rel="stylesheet" href="npc-generator.css">

@@ -12,19 +12,18 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free RPG Story Generator - D&D Campaign & Quest Creator"
 canonical: "/ai-tools/gaming/story-generator/"
-#featured_image: "/images/ai-tools/story-generator.png"
-schema_type: "SoftwareApplication"
+featured_image: "/images/featured/aitools/dnd-character-story.png"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "RPG Story Generator - D&D Campaign Story Creator"
   og_description: "Generate engaging stories and quest hooks for RPG campaigns. Create compelling narratives for D&D and tabletop games."
-  og_image: "/images/ai-tools/story-generator-social.png"
+  og_image: "/images/featured/aitools/dnd-character-story.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free RPG Story Generator"
   twitter_description: "Create engaging stories and adventures for your D&D campaigns with AI. Perfect for DMs and storytellers."
-  twitter_image: "/images/ai-tools/story-generator-twitter.png"
+  twitter_image: "/images/featured/aitools/dnd-character-story.png"
 ---
 
 

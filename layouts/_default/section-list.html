@@ -8,7 +8,7 @@
     {{ end }}
 </head>
 
-<body class="section-{{ lower .Section }}">
+<body class="section-{{ lower .Section }}{{ if .Params.thumbnailOnlyView }} thumbnail-only-view{{ end }}">
 
     <div class="container">
         {{ partial "header.html" . }}
@@ -71,7 +71,7 @@
                     {{ if .Params.showAllDescendants }}
                     {{/* Show all leaf pages (products/items) recursively */}}
                     {{ range .Site.RegularPages }}
-                    {{ if and (in .File.Dir $.File.Dir) (not .IsSection) }}
+                    {{ if and (in .File.Dir $.File.Dir) (not .IsSection) (not .Params.hideFromListing) }}
                     <a href="{{ .Permalink }}" class="service-card" data-title="{{ .Title | lower }}"
                         data-description="{{ with .Description }}{{ . | lower }}{{ else }}{{ .Summary | plainify | lower }}{{ end }}"
                         data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}{{ if .Params.brand }} {{ .Params.brand | lower }}{{ end }}{{ if .Params.model }} {{ .Params.model | lower }}{{ end }}">
@@ -80,10 +80,12 @@
                         </div>
                         <div class="card-content">
                             <div class="card-content-wrapper">
+                                {{ if not $.Params.hideDescriptions }}
                                 {{ with .Description }}
                                 <p>{{ . }}</p>
                                 {{ else }}
                                 <p>{{ .Summary | plainify | truncate 150 }}</p>
+                                {{ end }}
                                 {{ end }}
                                 {{/* Show brand/category for context when showing all items */}}
                                 {{ if or .Params.brand .Params.model }}
@@ -111,6 +113,7 @@
                     {{ else }}
                     {{/* Default: Show only immediate child pages (sections/categories) */}}
                     {{ range .Pages }}
+                    {{ if not .Params.hideFromListing }}
                     <a href="{{ .Permalink }}" class="service-card" data-title="{{ .Title | lower }}"
                         data-description="{{ with .Description }}{{ . | lower }}{{ else }}{{ .Summary | plainify | lower }}{{ end }}"
                         data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}">
@@ -119,10 +122,12 @@
                         </div>
                         <div class="card-content">
                             <div class="card-content-wrapper">
+                                {{ if not $.Params.hideDescriptions }}
                                 {{ with .Description }}
                                 <p>{{ . }}</p>
                                 {{ else }}
                                 <p>{{ .Summary | plainify | truncate 150 }}</p>
+                                {{ end }}
                                 {{ end }}
                             </div>
                         </div>
@@ -138,6 +143,7 @@
                         </div>
                         {{ end }}
                     </a>
+                    {{ end }}
                     {{ end }}
                     {{ end }}
                 </div>

@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free Name Generator - Fantasy & RPG Character Name Creator"
 canonical: "/ai-tools/gaming/name-forge/"
-#featured_image: "/images/ai-tools/name-forge.png"
+featured_image: "/images/featured/aitools/dnd-name-creator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "Name Forge - Multi-Genre Name Generator for RPG & Fantasy"
   og_description: "Generate unique names for characters, places, and fantasy elements. Perfect for RPG campaigns and creative writing."
-  og_image: "/images/ai-tools/name-forge-social.png"
+  og_image: "/images/featured/aitools/dnd-name-creator.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free Fantasy Name Generator"
   twitter_description: "Create unique character and place names for RPG campaigns and fantasy worlds with AI."
-  twitter_image: "/images/ai-tools/name-forge-twitter.png"
+  twitter_image: "/images/featured/aitools/dnd-name-creator.png"
 ---
 
 <link rel="stylesheet" href="name-forge.css">

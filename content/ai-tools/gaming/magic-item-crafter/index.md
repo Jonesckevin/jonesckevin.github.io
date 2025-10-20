@@ -11,20 +11,20 @@ tags: ["Gaming", "D&D", "RPG", "Magic Items", "Loot", "Treasure", "DM Tools", "A
 categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free Magic Item Generator - D&D Loot & Treasure Creator"
-canonical: "/ai-tools/gaming/magic-item-crafter/"
-#featured_image: "/images/ai-tools/magic-item-crafter.png"
+canonical: "/ai-tools/featured/magic-item-crafter/"
+featured_image: "/images/featured/aitools/dnd-magic-item.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "Loot & Magic Item Crafter - D&D Magic Item Generator"
   og_description: "Generate balanced treasure and bespoke magic items with lore and campaign hooks. Perfect for D&D DMs."
-  og_image: "/images/ai-tools/magic-item-crafter-social.png"
+  og_image: "/images/featured/aitools/dnd-magic-item.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free Magic Item Generator"
   twitter_description: "Create balanced D&D magic items and treasure with AI. Perfect for DMs and RPG creators."
-  twitter_image: "/images/ai-tools/magic-item-crafter-twitter.png"
+  twitter_image: "/images/featured/aitools/dnd-magic-item.png"
 ---
 
 <link rel="stylesheet" href="magic-item-crafter.css">

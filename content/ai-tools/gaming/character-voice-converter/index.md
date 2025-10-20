@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free Character Voice Converter - AI Dialogue & Voice Generator"
 canonical: "/ai-tools/creative/character-voice-converter/"
-#featured_image: "/images/ai-tools/character-voice-converter.png"
+featured_image: "/images/featured/aitools/dnd-personality-convert.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "Character Voice Converter - AI Dialogue Generator" 
   og_description: "Transform text to match character voices and speaking styles. Perfect for writers, game developers, and storytellers."
-  og_image: "/images/ai-tools/character-voice-converter-social.png"
+  og_image: "/images/featured/aitools/dnd-personality-convert.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free Character Voice Converter"
   twitter_description: "Create authentic character voices and dialogue with AI. Perfect for writers and game developers."
-  twitter_image: "/images/ai-tools/character-voice-converter-twitter.png"
+  twitter_image: "/images/featured/aitools/dnd-personality-convert.png"
 ---
 
 <link rel="stylesheet" href="character-voice-converter.css">

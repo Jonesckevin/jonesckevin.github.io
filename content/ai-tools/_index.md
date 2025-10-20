@@ -5,6 +5,7 @@ keywords: ["AI tools", "artificial intelligence", "productivity tools", "AI-powe
 type: "ai-tools"
 layout: "section-list"
 draft: false
+hideDescriptions: false
 tags: ["Productivity", "Content Creation", "Workflow Automation"]
 categories: ["AI Tools"]
 seo_title: "AI Tools Hub - Free Professional AI-Powered Tools & Applications"
@@ -20,6 +21,7 @@ searchResultLabel: "tool"
 searchNoResultsTitle: "AI Tools"
 disableSearch: false
 # Display Configuration
+thumbnailOnlyView: false
 hideThumbnails: false
 # Info Section Configuration
 showInfoSection: true

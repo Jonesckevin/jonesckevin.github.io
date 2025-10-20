@@ -12,19 +12,19 @@ categories: ["AI Tools", "Music"]
 type: ai-tools
 seo_title: "Free AI Music Lyrics Generator - Create Song Lyrics Online"
 canonical: "/ai-tools/creative/music-lyrics-generator/"
-#featured_image: "/images/ai-tools/music-lyrics-generator.png"
+featured_image: "/images/featured/aitools/song-lyric-customizer.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Music Lyrics Generator - Create Song Lyrics"
   og_description: "Generate professional song lyrics with AI. Create original songs with proper structure or write in the style of your favorite artists."
-  og_image: "/images/ai-tools/music-lyrics-generator-social.png"
+  og_image: "/images/featured/aitools/song-lyric-customizer.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Music Lyrics Generator"
   twitter_description: "Create professional song lyrics with AI. Generate original songs or write in the style of existing artists."
-  twitter_image: "/images/ai-tools/music-lyrics-generator-twitter.png"
+  twitter_image: "/images/featured/aitools/song-lyric-customizer.png"
 ---
 
 <link rel="stylesheet" href="music-lyrics-generator.css">

@@ -2,7 +2,6 @@ baseURL = "https://4n6post.com"
 
 title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
 languageCode = "en"
-theme        = "hello-friend-ng"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 # Set to true to enable RSS feed generation

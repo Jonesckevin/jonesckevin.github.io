@@ -358,29 +358,156 @@ class APIManager {
         }
 
         const data = await response.json();
-        return data.data
-            .filter(model => model.id.includes('gpt') || model.id.includes('chat') || model.id.includes('deepseek') || model.id.includes('grok'))
-            .map(model => ({
+
+        // OpenAI /models API response structure:
+        // {
+        //   "object": "list",
+        //   "data": [
+        //     {
+        //       "id": "gpt-4o",              // Model identifier
+        //       "object": "model",            // Always "model"
+        //       "created": 1234567890,        // Unix timestamp
+        //       "owned_by": "system"          // Owner (e.g., "system", "openai", "organization-...")
+        //     },
+        //     ...
+        //   ]
+        // }
+        // Log first model to see available properties (for debugging)
+        if (data.data && data.data.length > 0) {
+            console.log('Sample model properties:', Object.keys(data.data[0]));
+            console.log('Sample model:', data.data[0]);
+        }
+
+        // Patterns to identify legacy/deprecated models
+        const datePattern = /\d{4}-\d{2}-\d{2}$/; // Matches YYYY-MM-DD at end
+        const versionPattern = /-(0\d{3,4}|1\d{3})$/; // Matches -0613, -0314, -1106, etc.
+
+        // Known legacy model patterns
+        const legacyPatterns = [
+            'gpt-3.5-turbo-16k',
+            'gpt-4-32k',
+            'text-davinci',
+            'text-curie',
+            'text-babbage',
+            'text-ada',
+            'davinci-002',
+            'babbage-002',
+            'curie-002',
+            'ada-002'
+        ];
+
+        // Categorize models
+        const categorizedModels = {
+            text: [],
+            images: [],
+            tts: [],
+            audio: [],
+            video: [],
+            transcribe: [],
+            other: []
+        };
+
+        data.data.forEach(model => {
+            const modelId = model.id;
+            const modelIdLower = modelId.toLowerCase();
+
+            // Skip models ending with dates (YYYY-MM-DD format)
+            if (datePattern.test(modelId)) {
+                console.log('Skipping date-versioned model:', modelId);
+                return;
+            }
+
+            // Skip models with version numbers (like -0613, -1106)
+            if (versionPattern.test(modelId)) {
+                console.log('Skipping version-numbered model:', modelId);
+                return;
+            }
+
+            // Skip known legacy model patterns
+            if (legacyPatterns.some(pattern => modelIdLower.includes(pattern))) {
+                console.log('Skipping legacy model:', modelId);
+                return;
+            }
+
+            const modelInfo = {
                 id: model.id,
-                label: model.id
-            }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+                label: model.id,
+                category: 'other',
+                created: model.created || null,
+                owned_by: model.owned_by || null
+            };
+
+            // Categorize by model type
+            if (modelId.includes('gpt') || modelId.includes('chat') || modelId.includes('deepseek') || modelId.includes('grok')) {
+                modelInfo.category = 'text';
+                categorizedModels.text.push(modelInfo);
+            } else if (modelId.includes('dall-e') || modelId.includes('dalle') || modelId.includes('gpt-image') || modelId.includes('image')) {
+                modelInfo.category = 'images';
+                categorizedModels.images.push(modelInfo);
+            } else if (modelId.includes('tts') || modelId.includes('text-to-speech')) {
+                modelInfo.category = 'tts';
+                categorizedModels.tts.push(modelInfo);
+            } else if (modelId.includes('whisper') || modelId.includes('transcrib')) {
+                modelInfo.category = 'transcribe';
+                categorizedModels.transcribe.push(modelInfo);
+            } else if (modelId.includes('audio')) {
+                modelInfo.category = 'audio';
+                categorizedModels.audio.push(modelInfo);
+            } else if (modelId.includes('video') || modelId.includes('sora')) {
+                modelInfo.category = 'video';
+                categorizedModels.video.push(modelInfo);
+            }
+        });
+
+        // Flatten categorized models with category headers
+        const flattenedModels = [];
+
+        const categoryLabels = {
+            text: '💬 Text Generation',
+            images: '🎨 Image Generation',
+            tts: '🔊 Text-to-Speech',
+            audio: '🎵 Audio Generation',
+            video: '🎬 Video Generation',
+            transcribe: '📝 Transcription'
+        };
+
+        // Add models by category with headers
+        Object.keys(categoryLabels).forEach(category => {
+            if (categorizedModels[category].length > 0) {
+                // Add category header
+                flattenedModels.push({
+                    id: `header-${category}`,
+                    label: categoryLabels[category],
+                    isHeader: true,
+                    category: category
+                });
+
+                // Add models in this category (sorted)
+                categorizedModels[category]
+                    .sort((a, b) => a.label.localeCompare(b.label))
+                    .forEach(model => flattenedModels.push(model));
+            }
+        });
+
+        return flattenedModels;
     }
 
     _getAnthropicModels() {
         return [
-            { id: 'claude-3-haiku-20240307', label: 'Claude 3 Haiku' },
-            { id: 'claude-3-sonnet-20240229', label: 'Claude 3 Sonnet' },
-            { id: 'claude-3-opus-20240229', label: 'Claude 3 Opus' },
-            { id: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet' }
+            { id: 'header-text', label: '💬 Text Generation', isHeader: true, category: 'text' },
+            { id: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet', category: 'text' },
+            { id: 'claude-3-opus-20240229', label: 'Claude 3 Opus', category: 'text' },
+            { id: 'claude-3-sonnet-20240229', label: 'Claude 3 Sonnet', category: 'text' },
+            { id: 'claude-3-haiku-20240307', label: 'Claude 3 Haiku', category: 'text' }
         ];
     }
 
     _getGeminiModels() {
         return [
-            { id: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
-            { id: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro' },
-            { id: 'gemini-pro', label: 'Gemini Pro' }
+            { id: 'header-text', label: '💬 Text Generation', isHeader: true, category: 'text' },
+            { id: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro', category: 'text' },
+            { id: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash', category: 'text' },
+            { id: 'gemini-pro', label: 'Gemini Pro', category: 'text' }
         ];
     }
 
