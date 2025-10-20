@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI SQL Query Builder - Generate Database Queries with AI"
 canonical: "/ai-tools/core-services/sql-query-builder/"
-#featured_image: "/images/ai-tools/sql-query-builder.png"
+featured_image: "/images/featured/aitools/sql-builder.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI SQL Query Builder - Generate Database Queries"
   og_description: "Generate optimized SQL queries from natural language descriptions. Free AI-powered database query builder for developers."
-  og_image: "/images/ai-tools/sql-query-builder-social.png"
+  og_image: "/images/featured/aitools/sql-builder.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI SQL Query Builder"
   twitter_description: "Generate SQL queries from natural language. AI-powered database query builder for all SQL systems."
-  twitter_image: "/images/ai-tools/sql-query-builder-twitter.png"
+  twitter_image: "/images/featured/aitools/sql-builder.png"
 ---
 <link rel="stylesheet" href="sql-query-builder.css">
 

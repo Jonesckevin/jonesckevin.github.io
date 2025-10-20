@@ -12,19 +12,19 @@ categories: ["AI Tools", "Accessibility"]
 type: ai-tools
 seo_title: "Free AI Reading Level Adjuster - Simplify Text for Any Audience"
 canonical: "/ai-tools/creative/reading-level-adjuster/"
-#featured_image: "/images/ai-tools/reading-level-adjuster.png"
+featured_image: "/images/featured/aitools/reading-level-adjust.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Reading Level Adjuster - Text Simplification Tool"
   og_description: "Convert text to different reading levels while preserving meaning. Perfect for educators and content creators."
-  og_image: "/images/ai-tools/reading-level-adjuster-social.png"
+  og_image: "/images/featured/aitools/reading-level-adjust.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Reading Level Adjuster"
   twitter_description: "Simplify complex text for any reading level with AI. Perfect for education and accessibility."
-  twitter_image: "/images/ai-tools/reading-level-adjuster-twitter.png"
+  twitter_image: "/images/featured/aitools/reading-level-adjust.png"
 ---
 
 <link rel="stylesheet" href="reading-level-adjuster.css">

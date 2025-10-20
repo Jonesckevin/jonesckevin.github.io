@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Study Guide Generator - Personalized Learning Materials"
 canonical: "/ai-tools/learning/study-guide/"
-#featured_image: "/images/ai-tools/study-guide.png"
+featured_image: "/images/featured/aitools/study-guide.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Study Guide Generator - Personalized Study Materials"
   og_description: "Generate comprehensive study guides tailored to your learning needs. Create personalized materials for any subject."
-  og_image: "/images/ai-tools/study-guide-social.png"
+  og_image: "/images/featured/aitools/study-guide.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Study Guide Generator"
   twitter_description: "Create personalized study guides and review materials with AI. Perfect for students and exam preparation."
-  twitter_image: "/images/ai-tools/study-guide-twitter.png"
+  twitter_image: "/images/featured/aitools/study-guide.png"
 ---
 
 

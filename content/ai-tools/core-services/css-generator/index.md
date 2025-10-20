@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI CSS Generator - Live Preview & Examples"
 canonical: "/ai-tools/core-services/css-generator/"
-#featured_image: "/images/ai-tools/css-generator.png"
+featured_image: "/images/featured/aitools/css-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI CSS Generator - Create Custom Styles with Live Preview"
   og_description: "Generate custom CSS styles with AI and preview them in real-time. See your styles applied to text, tables, images, and more."
-  og_image: "/images/ai-tools/css-generator-social.png"
+  og_image: "/images/featured/aitools/css-generator.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI CSS Generator Tool"
   twitter_description: "Create CSS styles with AI assistance. Live preview with text, tables, and image examples."
-  twitter_image: "/images/ai-tools/css-generator-twitter.png"
+  twitter_image: "/images/featured/aitools/css-generator.png"
 ---
 
 <link rel="stylesheet" href="css-generator.css">
