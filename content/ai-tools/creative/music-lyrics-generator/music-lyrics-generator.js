@@ -112,7 +112,23 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             // Call AI API
-            const result = await callAIAPI(apiKey, aiProvider, prompt);
+            const messages = [
+                {
+                    role: 'system',
+                    content: 'You are a professional songwriter and lyricist with expertise across all music genres. You create compelling, emotionally resonant lyrics with proper song structure.'
+                },
+                {
+                    role: 'user',
+                    content: prompt
+                }
+            ];
+
+            const result = await window.apiManager.makeRequest(messages, {
+                provider: aiProvider,
+                apiKey: apiKey,
+                temperature: 0.9,
+                maxTokens: 2000
+            });
             currentResult = result;
 
             // Display result with formatting
@@ -202,99 +218,6 @@ document.addEventListener('DOMContentLoaded', function () {
         prompt += `Ensure the chorus is catchy and repeatable. `;
 
         return prompt;
-    }
-
-    async function callAIAPI(apiKey, provider, prompt) {
-        const apiConfigs = {
-            openai: {
-                url: 'https://api.openai.com/v1/chat/completions',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                },
-                body: {
-                    model: 'gpt-4o',
-                    messages: [
-                        {
-                            role: 'system',
-                            content: 'You are a professional songwriter and lyricist with expertise across all music genres. You create compelling, emotionally resonant lyrics with proper song structure.'
-                        },
-                        {
-                            role: 'user',
-                            content: prompt
-                        }
-                    ],
-                    temperature: 0.9,
-                    max_tokens: 2000
-                }
-            },
-            deepseek: {
-                url: 'https://api.deepseek.com/chat/completions',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                },
-                body: {
-                    model: 'deepseek-chat',
-                    messages: [
-                        {
-                            role: 'system',
-                            content: 'You are a professional songwriter and lyricist with expertise across all music genres. You create compelling, emotionally resonant lyrics with proper song structure.'
-                        },
-                        {
-                            role: 'user',
-                            content: prompt
-                        }
-                    ],
-                    temperature: 0.9,
-                    max_tokens: 2000
-                }
-            },
-            anthropic: {
-                url: 'https://api.anthropic.com/v1/messages',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': apiKey,
-                    'anthropic-version': '2023-06-01'
-                },
-                body: {
-                    model: 'claude-3-5-sonnet-20241022',
-                    max_tokens: 2000,
-                    messages: [
-                        {
-                            role: 'user',
-                            content: `You are a professional songwriter and lyricist with expertise across all music genres. You create compelling, emotionally resonant lyrics with proper song structure.\n\n${prompt}`
-                        }
-                    ],
-                    temperature: 0.9
-                }
-            }
-        };
-
-        const config = apiConfigs[provider];
-        if (!config) {
-            throw new Error(`Unsupported AI provider: ${provider}`);
-        }
-
-        const response = await fetch(config.url, {
-            method: 'POST',
-            headers: config.headers,
-            body: JSON.stringify(config.body)
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.error?.message || `API request failed: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-
-        // Extract content based on provider
-        if (provider === 'anthropic') {
-            return data.content[0].text;
-        } else {
-            return data.choices[0].message.content;
-        }
     }
 
     function displayFormattedLyrics(lyrics) {

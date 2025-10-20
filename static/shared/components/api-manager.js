@@ -13,31 +13,47 @@ class APIManager {
                 name: 'OpenAI',
                 baseURL: 'https://api.openai.com/v1',
                 defaultModel: 'gpt-4o-mini',
-                keyPattern: /^sk-[A-Za-z0-9_\-]+$/
+                keyPattern: /^sk-[A-Za-z0-9_\-]+$/,
+                requiresKey: true
             },
             deepseek: {
                 name: 'DeepSeek',
                 baseURL: 'https://api.deepseek.com/v1',
                 defaultModel: 'deepseek-chat',
-                keyPattern: /^sk-[A-Za-z0-9_\-]+$/
+                keyPattern: /^sk-[A-Za-z0-9_\-]+$/,
+                requiresKey: true
             },
             anthropic: {
                 name: 'Anthropic',
                 baseURL: 'https://api.anthropic.com/v1',
                 defaultModel: 'claude-3-haiku-20240307',
-                keyPattern: /^sk-ant-[A-Za-z0-9_\-]+$/
+                keyPattern: /^sk-ant-[A-Za-z0-9_\-]+$/,
+                requiresKey: true
             },
             gemini: {
                 name: 'Google Gemini',
                 baseURL: 'https://generativelanguage.googleapis.com/v1beta',
                 defaultModel: 'gemini-1.5-flash',
-                keyPattern: /^AIza[A-Za-z0-9_\-]+$/
+                keyPattern: /^AIza[A-Za-z0-9_\-]+$/,
+                requiresKey: true
             },
             grok: {
                 name: 'Grok (X.AI)',
                 baseURL: 'https://api.x.ai/v1',
                 defaultModel: 'grok-beta',
-                keyPattern: /^xai-[A-Za-z0-9_\-]+$/
+                keyPattern: /^xai-[A-Za-z0-9_\-]+$/,
+                requiresKey: true
+            },
+            custom: {
+                name: 'Custom Server (Ollama/LMStudio)',
+                baseURL: 'http://localhost:11434/v1', // Default Ollama
+                defaultModel: 'llama2',
+                keyPattern: null, // No pattern required - API key is optional
+                requiresKey: false,
+                presets: {
+                    ollama: { host: 'localhost', port: '11434', name: 'Ollama' },
+                    lmstudio: { host: 'localhost', port: '1234', name: 'LM Studio' }
+                }
             }
         };
 
@@ -61,7 +77,50 @@ class APIManager {
 
     getProviderConfig(provider = null) {
         const p = provider || this.currentProvider;
-        return this.providers[p] || this.providers.openai;
+        const config = this.providers[p] || this.providers.openai;
+
+        // For custom provider, use stored endpoint or default
+        if (p === 'custom') {
+            const customEndpoint = this.getStoredCustomEndpoint();
+            if (customEndpoint) {
+                return {
+                    ...config,
+                    baseURL: customEndpoint
+                };
+            }
+        }
+
+        return config;
+    }
+
+    // Custom endpoint management for custom provider
+    setCustomEndpoint(host, port, protocol = 'http') {
+        const endpoint = `${protocol}://${host}:${port}/v1`;
+        sessionStorage.setItem('ai_custom_endpoint', endpoint);
+        sessionStorage.setItem('ai_custom_host', host);
+        sessionStorage.setItem('ai_custom_port', port);
+        sessionStorage.setItem('ai_custom_protocol', protocol);
+
+        // Update the provider config
+        if (this.currentProvider === 'custom') {
+            this.providers.custom.baseURL = endpoint;
+        }
+    }
+
+    getStoredCustomEndpoint() {
+        return sessionStorage.getItem('ai_custom_endpoint');
+    }
+
+    getStoredCustomHost() {
+        return sessionStorage.getItem('ai_custom_host') || 'localhost';
+    }
+
+    getStoredCustomPort() {
+        return sessionStorage.getItem('ai_custom_port') || '11434';
+    }
+
+    getStoredCustomProtocol() {
+        return sessionStorage.getItem('ai_custom_protocol') || 'http';
     }
 
     // API Key management
@@ -135,17 +194,25 @@ class APIManager {
         console.log('Custom seed cleared, returning to time-based randomization');
     }
 
+    // Helper function to remove <thinking> tags and their content
+    _stripThinkingTags(text) {
+        if (!text) return text;
+        // Remove <thinking>...</thinking> blocks (including multiline)
+        return text.replace(/<thinking>[\s\S]*?<\/thinking>/gi, '').trim();
+    }
+
     // API operations
     async makeRequest(messages, options = {}) {
         const provider = options.provider || this.currentProvider;
         const apiKey = options.apiKey || this.currentApiKey;
         const model = options.model || this.getModel(provider);
 
-        if (!apiKey) {
-            throw new Error('API key is required');
-        }
-
         const config = this.getProviderConfig(provider);
+
+        // Check if API key is required for this provider
+        if (config.requiresKey && !apiKey) {
+            throw new Error('API key is required for ' + config.name);
+        }
 
         // Add random seed if not explicitly provided
         if (!options.seed && !options.extraParams?.seed) {
@@ -157,6 +224,7 @@ class APIManager {
             case 'openai':
             case 'deepseek':
             case 'grok':
+            case 'custom': // Custom servers use OpenAI-compatible API
                 return this._makeOpenAIStyleRequest(config, apiKey, model, messages, options);
             case 'anthropic':
                 return this._makeAnthropicRequest(config, apiKey, model, messages, options);
@@ -181,12 +249,18 @@ class APIManager {
             requestBody.seed = options.seed;
         }
 
+        // Build headers - API key is optional for custom providers
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+
+        if (apiKey) {
+            headers['Authorization'] = 'Bearer ' + apiKey;
+        }
+
         const response = await fetch(config.baseURL + '/chat/completions', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + apiKey
-            },
+            headers: headers,
             body: JSON.stringify(requestBody)
         });
 
@@ -209,7 +283,8 @@ class APIManager {
             throw new Error('Invalid JSON response from API');
         }
 
-        return data.choices?.[0]?.message?.content || '';
+        const content = data.choices?.[0]?.message?.content || '';
+        return this._stripThinkingTags(content);
     }
 
     async _makeAnthropicRequest(config, apiKey, model, messages, options) {
@@ -263,7 +338,8 @@ class APIManager {
             throw new Error('Invalid JSON response from API');
         }
 
-        return data.content?.[0]?.text || '';
+        const content = data.content?.[0]?.text || '';
+        return this._stripThinkingTags(content);
     }
 
     async _makeGeminiRequest(config, apiKey, model, messages, options) {
@@ -319,7 +395,8 @@ class APIManager {
             throw new Error('Invalid JSON response from API');
         }
 
-        return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const content = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        return this._stripThinkingTags(content);
     }
 
     async listModels(provider = null, apiKey = null) {
@@ -327,8 +404,9 @@ class APIManager {
         const key = apiKey || this.currentApiKey;
         const config = this.getProviderConfig(p);
 
-        if (!key) {
-            throw new Error('API key is required to list models');
+        // For custom providers, API key is optional
+        if (config.requiresKey && !key) {
+            throw new Error('API key is required to list models for ' + config.name);
         }
 
         switch (p) {
@@ -336,6 +414,8 @@ class APIManager {
             case 'deepseek':
             case 'grok':
                 return this._listOpenAIStyleModels(config, key);
+            case 'custom':
+                return this._listOpenAIStyleModels(config, key, true); // Pass flag for optional key
             case 'anthropic':
                 // Anthropic currently requires manual model enumeration (API model listing limited)
                 return this._getAnthropicModels();
@@ -346,11 +426,16 @@ class APIManager {
         }
     }
 
-    async _listOpenAIStyleModels(config, apiKey) {
+    async _listOpenAIStyleModels(config, apiKey, optionalKey = false) {
+        const headers = {};
+
+        // Only add Authorization header if API key is provided
+        if (apiKey) {
+            headers['Authorization'] = 'Bearer ' + apiKey;
+        }
+
         const response = await fetch(config.baseURL + '/models', {
-            headers: {
-                'Authorization': 'Bearer ' + apiKey
-            }
+            headers: headers
         });
 
         if (!response.ok) {

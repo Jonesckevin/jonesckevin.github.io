@@ -5,17 +5,27 @@
 window.utils = {
     // API Key validation
     validateApiKey(key, provider = 'openai') {
-        if (!key || typeof key !== 'string') return false;
+        if (!key || typeof key !== 'string') {
+            // Custom provider doesn't require an API key
+            return provider === 'custom' ? true : false;
+        }
 
         const patterns = {
             openai: /^sk-[A-Za-z0-9_-]+$/,
             deepseek: /^sk-[A-Za-z0-9_-]+$/,
             anthropic: /^sk-ant-[A-Za-z0-9_-]+$/,
             gemini: /^AIza[A-Za-z0-9_-]+$/,
-            grok: /^xai-[A-Za-z0-9_-]+$/
+            grok: /^xai-[A-Za-z0-9_-]+$/,
+            custom: null // No pattern required - API key is optional
         };
 
         const pattern = patterns[provider];
+
+        // Custom provider accepts any key or no key
+        if (provider === 'custom') {
+            return true;
+        }
+
         return pattern ? pattern.test(key.trim()) : false;
     },
 

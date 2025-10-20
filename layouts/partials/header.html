@@ -136,10 +136,42 @@
                         <option value="anthropic">Anthropic</option>
                         <option value="gemini">Google Gemini</option>
                         <option value="grok">Grok (X.AI)</option>
+                        <option value="custom">Custom Server (Ollama/LMStudio)</option>
                       </select>
                     </div>
+                    <!-- Custom Server Configuration (shown only for custom provider) -->
+                    <div class="ai-field" id="ai-custom-config" style="display: none;">
+                      <label>Server Presets</label>
+                      <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                        <button type="button" class="ai-preset-btn" data-preset="ollama"
+                          style="flex: 1; padding: 6px 12px; background: #444; border: 1px solid #666; color: #fff; border-radius: 4px; cursor: pointer;">Ollama
+                          (11434)</button>
+                        <button type="button" class="ai-preset-btn" data-preset="lmstudio"
+                          style="flex: 1; padding: 6px 12px; background: #444; border: 1px solid #666; color: #fff; border-radius: 4px; cursor: pointer;">LM
+                          Studio (1234)</button>
+                      </div>
+                      <div style="display: flex; gap: 10px; align-items: flex-end;">
+                        <div style="flex: 0 0 100px;">
+                          <label for="ai-custom-protocol">Protocol</label>
+                          <select id="ai-custom-protocol" style="width: 100%;">
+                            <option value="http">http://</option>
+                            <option value="https">https://</option>
+                          </select>
+                        </div>
+                        <div style="flex: 1;">
+                          <label for="ai-custom-host">Host</label>
+                          <input type="text" id="ai-custom-host" placeholder="localhost or IP address"
+                            value="localhost">
+                        </div>
+                      </div>
+                      <label for="ai-custom-port" style="margin-top: 8px;">Port</label>
+                      <input type="text" id="ai-custom-port" placeholder="11434" value="11434">
+                      <small class="ai-help">Custom servers must support OpenAI-compatible API. Enable CORS in server
+                        settings.</small>
+                    </div>
                     <div class="ai-field">
-                      <label for="ai-key">API Key</label>
+                      <label for="ai-key">API Key <span id="ai-key-optional"
+                          style="display: none; color: #999; font-weight: normal;">(Optional)</span></label>
                       <input type="password" id="ai-key" placeholder="Enter your API key">
                       <small class="ai-help">Keys are stored only for your session</small>
                     </div>
@@ -403,9 +435,22 @@ background-position: 0% 50%;
         deepseek: 'Enter your DeepSeek API key (sk-...)',
         anthropic: 'Enter your Anthropic API key (sk-ant-...)',
         gemini: 'Enter your Gemini API key (AIza...)',
-        grok: 'Enter your Grok API key (xai-...)'
+        grok: 'Enter your Grok API key (xai-...)',
+        custom: 'API key (optional for local servers)'
       };
       aiKey.placeholder = placeholders[provider] || 'Enter your API key';
+
+      // Show/hide optional label for custom provider
+      const optionalLabel = document.getElementById('ai-key-optional');
+      if (optionalLabel) {
+        optionalLabel.style.display = provider === 'custom' ? 'inline' : 'none';
+      }
+
+      // Show/hide custom server configuration
+      const customConfig = document.getElementById('ai-custom-config');
+      if (customConfig) {
+        customConfig.style.display = provider === 'custom' ? 'block' : 'none';
+      }
     }
 
     // Update provider-specific links in instructions
@@ -444,6 +489,12 @@ background-position: 0% 50%;
           name: 'Grok (X.AI) Console',
           keyFormat: 'xai-...',
           pricing: 'https://x.ai/api'
+        },
+        custom: {
+          url: 'https://ollama.com/',
+          name: 'Ollama / LM Studio',
+          keyFormat: 'Optional',
+          pricing: 'https://github.com/ollama/ollama'
         }
       };
 
@@ -466,9 +517,15 @@ background-position: 0% 50%;
     // Reset model select to default state
     function resetModelSelect() {
       if (!aiModel) return;
-      aiModel.innerHTML = '<option value="">Enter API key to load models...</option>';
+      const provider = aiProvider ? aiProvider.value : 'openai';
+      if (provider === 'custom') {
+        aiModel.innerHTML = '<option value="">Configure server to load models...</option>';
+        if (aiModelHelp) aiModelHelp.textContent = 'Models will be fetched from your custom server after configuration.';
+      } else {
+        aiModel.innerHTML = '<option value="">Enter API key to load models...</option>';
+        if (aiModelHelp) aiModelHelp.textContent = 'Models are fetched from the selected provider after validating your API key.';
+      }
       aiModel.disabled = true;
-      if (aiModelHelp) aiModelHelp.textContent = 'Models are fetched from the selected provider after validating your API key.';
     }
 
     // Load models from API provider
@@ -500,9 +557,31 @@ background-position: 0% 50%;
       const provider = aiProvider.value;
       const key = (aiKey.value || '').trim();
 
-      if (!provider || !window.utils.validateApiKey(key, provider)) {
-        resetModelSelect();
-        return;
+      // For custom provider, check if endpoint is configured
+      if (provider === 'custom') {
+        const customHost = document.getElementById('ai-custom-host');
+        const customPort = document.getElementById('ai-custom-port');
+        const customProtocol = document.getElementById('ai-custom-protocol');
+
+        if (!customHost || !customPort || !customHost.value.trim() || !customPort.value.trim()) {
+          resetModelSelect();
+          if (aiModelHelp) aiModelHelp.textContent = 'Please configure custom server host and port.';
+          return;
+        }
+
+        // Ensure endpoint is set in apiManager
+        if (window.apiManager) {
+          const protocol = customProtocol ? customProtocol.value : 'http';
+          window.apiManager.setCustomEndpoint(customHost.value.trim(), customPort.value.trim(), protocol);
+        }
+
+        // For custom provider, key is optional - always try to load models if endpoint is configured
+      } else {
+        // For other providers, validate API key
+        if (!provider || !window.utils.validateApiKey(key, provider)) {
+          resetModelSelect();
+          return;
+        }
       }
 
       try {
@@ -666,12 +745,36 @@ background-position: 0% 50%;
       aiKey.value = savedKey;
       aiModel.value = savedModel;
 
+      // Load custom server settings if custom provider
+      if (savedProvider === 'custom') {
+        const customHost = document.getElementById('ai-custom-host');
+        const customPort = document.getElementById('ai-custom-port');
+        const customProtocol = document.getElementById('ai-custom-protocol');
+        if (customHost && customPort && customProtocol) {
+          // Load from sessionStorage directly (apiManager might not be ready yet)
+          const storedHost = sessionStorage.getItem('ai_custom_host') || 'localhost';
+          const storedPort = sessionStorage.getItem('ai_custom_port') || '11434';
+          const storedProtocol = sessionStorage.getItem('ai_custom_protocol') || 'http';
+
+          customHost.value = storedHost;
+          customPort.value = storedPort;
+          customProtocol.value = storedProtocol;
+
+          // Set endpoint in apiManager if available
+          if (window.apiManager) {
+            window.apiManager.setCustomEndpoint(storedHost, storedPort, storedProtocol);
+          }
+        }
+      }
+
       // Initialize
       updateApiKeyPlaceholder(savedProvider);
       updateProviderLinks(savedProvider);
 
       // Attempt staged model loading allowing time for apiManager to attach
-      if (savedKey) {
+      // For custom provider, try to load models if endpoint is configured (even without key)
+      // For other providers, only try if API key exists
+      if (savedKey || savedProvider === 'custom') {
         setTimeout(() => tryLoadModels(), 150); // initial attempt
         setTimeout(() => { if (aiModel.disabled) tryLoadModels(); }, 800); // second attempt
       } else {
@@ -680,9 +783,28 @@ background-position: 0% 50%;
 
       // Listen for late apiManager availability
       document.addEventListener('apiManagerReady', () => {
-        if (savedKey && aiModel.disabled) {
-          apiManagerRetryCount = 0;
-          tryLoadModels();
+        const provider = aiProvider.value;
+
+        // For custom provider, ensure endpoint is set in apiManager
+        if (provider === 'custom') {
+          const customHost = document.getElementById('ai-custom-host');
+          const customPort = document.getElementById('ai-custom-port');
+          const customProtocol = document.getElementById('ai-custom-protocol');
+          if (customHost && customPort && customProtocol && window.apiManager) {
+            window.apiManager.setCustomEndpoint(
+              customHost.value.trim(),
+              customPort.value.trim(),
+              customProtocol.value
+            );
+          }
+        }
+
+        // Try to load models if we have a key, or if it's custom provider with endpoint configured
+        if (savedKey || provider === 'custom') {
+          if (aiModel.disabled) {
+            apiManagerRetryCount = 0;
+            tryLoadModels();
+          }
         }
       });
 
@@ -697,8 +819,30 @@ background-position: 0% 50%;
 
         if (window.apiManager) window.apiManager.setProvider(provider);
 
+        // Load custom server settings if switching to custom provider
+        if (provider === 'custom') {
+          const customHost = document.getElementById('ai-custom-host');
+          const customPort = document.getElementById('ai-custom-port');
+          const customProtocol = document.getElementById('ai-custom-protocol');
+          if (customHost && customPort && customProtocol) {
+            // Load from sessionStorage directly
+            const storedHost = sessionStorage.getItem('ai_custom_host') || 'localhost';
+            const storedPort = sessionStorage.getItem('ai_custom_port') || '11434';
+            const storedProtocol = sessionStorage.getItem('ai_custom_protocol') || 'http';
+
+            customHost.value = storedHost;
+            customPort.value = storedPort;
+            customProtocol.value = storedProtocol;
+
+            // Set endpoint in apiManager if available
+            if (window.apiManager) {
+              window.apiManager.setCustomEndpoint(storedHost, storedPort, storedProtocol);
+            }
+          }
+        }
+
         resetModelSelect();
-        if (aiKey.value.trim()) {
+        if (aiKey.value.trim() || provider === 'custom') {
           apiManagerRetryCount = 0;
           setTimeout(tryLoadModels, 120);
         }
@@ -710,9 +854,20 @@ background-position: 0% 50%;
 
         if (window.apiManager) window.apiManager.setApiKey(key);
 
+        const provider = aiProvider ? aiProvider.value : 'openai';
+
         clearTimeout(keyInputTimeout);
         keyInputTimeout = setTimeout(() => {
-          if (key.trim()) {
+          // For custom provider, always try to load models if endpoint is configured
+          if (provider === 'custom') {
+            const customHost = document.getElementById('ai-custom-host');
+            const customPort = document.getElementById('ai-custom-port');
+            if (customHost && customPort && customHost.value.trim() && customPort.value.trim()) {
+              apiManagerRetryCount = 0;
+              tryLoadModels();
+            }
+          } else if (key.trim()) {
+            // For other providers, require API key
             apiManagerRetryCount = 0;
             tryLoadModels();
           } else {
@@ -727,6 +882,65 @@ background-position: 0% 50%;
 
         if (window.apiManager) window.apiManager.setModel(model);
       });
+
+      // Custom server preset buttons
+      const presetButtons = document.querySelectorAll('.ai-preset-btn');
+      presetButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const preset = this.getAttribute('data-preset');
+          const customHost = document.getElementById('ai-custom-host');
+          const customPort = document.getElementById('ai-custom-port');
+          const customProtocol = document.getElementById('ai-custom-protocol');
+
+          if (preset === 'ollama') {
+            customHost.value = 'localhost';
+            customPort.value = '11434';
+            customProtocol.value = 'http';
+          } else if (preset === 'lmstudio') {
+            customHost.value = 'localhost';
+            customPort.value = '1234';
+            customProtocol.value = 'http';
+          }
+
+          // Save and update endpoint
+          if (window.apiManager) {
+            window.apiManager.setCustomEndpoint(customHost.value, customPort.value, customProtocol.value);
+            // Try to load models
+            resetModelSelect();
+            apiManagerRetryCount = 0;
+            setTimeout(tryLoadModels, 120);
+          }
+        });
+      });
+
+      // Custom host/port/protocol change handlers
+      const customHost = document.getElementById('ai-custom-host');
+      const customPort = document.getElementById('ai-custom-port');
+      const customProtocol = document.getElementById('ai-custom-protocol');
+      let customConfigTimeout;
+
+      if (customHost && customPort && customProtocol) {
+        const updateCustomEndpoint = function () {
+          clearTimeout(customConfigTimeout);
+          customConfigTimeout = setTimeout(() => {
+            const host = customHost.value.trim();
+            const port = customPort.value.trim();
+            const protocol = customProtocol.value;
+
+            if (host && port && window.apiManager) {
+              window.apiManager.setCustomEndpoint(host, port, protocol);
+              // Try to load models
+              resetModelSelect();
+              apiManagerRetryCount = 0;
+              setTimeout(tryLoadModels, 120);
+            }
+          }, 600);
+        };
+
+        customHost.addEventListener('input', updateCustomEndpoint);
+        customPort.addEventListener('input', updateCustomEndpoint);
+        customProtocol.addEventListener('change', updateCustomEndpoint);
+      }
     }
 
     // Update active navigation links
