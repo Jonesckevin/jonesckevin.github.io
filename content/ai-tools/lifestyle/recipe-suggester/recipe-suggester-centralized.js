@@ -56,13 +56,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Check API configuration
         const provider = apiManager.getProvider();
+        const apiKey = apiManager.getApiKey();
 
         console.log('API Provider:', provider);
+        console.log('API Key present:', !!apiKey);
 
-        // API key validation is handled by apiManager - no need to check here
-        // LMStudio and other local APIs don't require API keys
+        // Validate API key (simple check - just ensure it exists)
+        if (!apiKey) {
+            utils.showError(
+                document.getElementById('errorDiv'),
+                'Please configure your AI API key using the settings menu (⚙️) at the top of the page.'
+            );
+            document.getElementById('errorDiv').style.display = 'block';
+            return;
+        }
 
-        console.log('Ready to generate recipes');
+        console.log('API Key validation passed');
 
         // Build the prompt
         let prompt = `You are a creative and knowledgeable chef assistant. Based on the following ingredients and preferences, generate ${numberOfRecipes} detailed recipe suggestions.\n\n`;

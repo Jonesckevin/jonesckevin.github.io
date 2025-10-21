@@ -113,7 +113,8 @@
             // Add resize functionality for larger screens
             if (window.innerWidth >= 1024) {
                 initLeftResizer(wrapper, formSection, divider, resultsSection);
-                initRightResizer(wrapper, sidebarSection, rightDivider, resultsSection);
+                // Right resizer removed - no right sidebar in current layout
+                // initRightResizer(wrapper, sidebarSection, rightDivider, resultsSection);
             }
 
             // Reinitialize resizer on window resize

@@ -27,6 +27,7 @@ social_media:
   twitter_image: "/images/ai-tools/resume-critique-twitter.png"
 ---
 
+<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="/ai-tools/core-services/resume-critique/resume-critique.css">
 
 <h1 style="text-align: center; margin-bottom: 20px; color: #ff6b35;">AI Resume Critique & Enhancement</h1>
@@ -90,17 +91,15 @@ Analyzing your resume with AI...
 <div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Resume Analysis Results</h3>
-<div class="result-content" id="resultContent"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy Analysis</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download MD</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
+<h3 style="color: #ff6b35; margin-bottom: 20px;">📊 Resume Analysis Results</h3>
+<div id="resultContent"></div>
+<div class="result-actions">
+<button class="btn-copy" onclick="copyResult(event)">📋 Copy Analysis</button>
+<button class="btn-download" onclick="downloadResult('markdown')">📄 Download MD</button>
+<button class="btn-download" onclick="downloadResult('html')">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateEnhanced()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">✨ Enhanced Version</button>
-
 </div>
 </div>
 
-
-
+<!-- Shared components already loaded in head.html -->
 <script src="/ai-tools/core-services/resume-critique/resume-critique.js"></script>

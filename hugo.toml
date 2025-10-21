@@ -74,7 +74,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   # Create  Header Menu
   [[menu.main]]
     identifier = "ai-tools"
-    name       = "AI Tools"
+    name       = "AI Hub"
     url        = "/ai-tools"
   [[menu.main]]
     identifier = "artifacts"

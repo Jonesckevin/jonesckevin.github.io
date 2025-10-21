@@ -1,6 +1,52 @@
 document.addEventListener('DOMContentLoaded', function () {
     let currentResult = '';
 
+    console.log('SQL Query Builder: DOMContentLoaded event fired');
+
+    // Create safety overlay dynamically if it doesn't exist
+    const existingOverlay = document.getElementById('safetyOverlay');
+    console.log('Checking for existing overlay:', existingOverlay ? 'FOUND' : 'NOT FOUND');
+
+    if (!existingOverlay) {
+        console.log('Creating safety overlay dynamically...');
+        const overlayHTML = `
+            <div class="safety-overlay" id="safetyOverlay">
+                <div class="safety-popup" id="safetyPopup">
+                    <div class="popup-header">
+                        <div class="popup-title">
+                            <span class="warning-icon">⚠️</span>
+                            <strong>Important Safety Notice</strong>
+                        </div>
+                    </div>
+                    <div class="popup-content">
+                        <p><strong>Always test generated queries in a development or test environment first.</strong></p>
+                        <ul>
+                            <li>Never run untested queries directly on production</li>
+                            <li>Review and validate all generated code before execution</li>
+                            <li>Consider performance impact on large datasets</li>
+                            <li>Ensure to backup before running data modification queries</li>
+                            <li>Verify permissions and access controls are appropriate</li>
+                        </ul>
+                        <div class="popup-actions">
+                            <button class="btn-acknowledge" onclick="dismissSafetyNotice()">I Understand - Proceed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', overlayHTML);
+
+        // Verify it was created
+        const verifyOverlay = document.getElementById('safetyOverlay');
+        if (verifyOverlay) {
+            console.log('✅ Safety overlay created successfully and verified in DOM');
+        } else {
+            console.error('❌ Safety overlay creation FAILED - element not in DOM!');
+        }
+    } else {
+        console.log('✅ Safety overlay already exists in HTML');
+    }
+
     // Global functions
     window.generateSQLQuery = generateSQLQuery;
     window.generateVariation = generateVariation;
@@ -10,19 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
     window.dismissSafetyNotice = dismissSafetyNotice;
     window.showSafetyNotice = showSafetyNotice;
 
-    // Utility functions
-    function showError(element, message) {
-        element.innerHTML = `<div class="error">${message}</div>`;
-    }
-
-    function formatMarkdown(text) {
-        // Basic markdown formatting
-        return text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/`(.*?)`/g, '<code>$1</code>')
-            .replace(/\n/g, '<br>');
-    }
+    // Utility functions now use centralized utils.js
+    // showError -> utils.utils.showError()
+    // formatMarkdown -> utils.utils.formatMarkdown()
 
     function highlightSQL(sql) {
         // Basic SQL syntax highlighting
@@ -180,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (options.includeExplanation && sections.explanation) {
             htmlContent += `
                 <div class="explanation-block">
-                    <div style="line-height: 1.7;">${formatMarkdown(sections.explanation)}</div>
+                    <div style="line-height: 1.7;">${utils.formatMarkdown(sections.explanation)}</div>
                 </div>
             `;
         }
@@ -189,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (options.includeIndexSuggestions && sections.indexes) {
             htmlContent += `
                 <div class="index-suggestions-block">
-                    <div style="line-height: 1.7;">${formatMarkdown(sections.indexes)}</div>
+                    <div style="line-height: 1.7;">${utils.formatMarkdown(sections.indexes)}</div>
                 </div>
             `;
         }
@@ -207,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (options.includeDocumentation && sections.documentation) {
             htmlContent += `
                 <div class="documentation-block">
-                    <div style="line-height: 1.7;">${formatMarkdown(sections.documentation)}</div>
+                    <div style="line-height: 1.7;">${utils.formatMarkdown(sections.documentation)}</div>
                 </div>
             `;
         }
@@ -403,14 +439,7 @@ Always ensure code is production-ready and follows security best practices.`;
 
         // Check if API is configured
         if (!window.apiManager) {
-            showError(document.getElementById('errorDiv'), 'API Manager not available. Please refresh the page.');
-            document.getElementById('errorDiv').style.display = 'block';
-            return;
-        }
-
-        const currentApiKey = window.apiManager.getApiKey();
-        if (!currentApiKey) {
-            showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️) at the top of the page.');
+            utils.showError(document.getElementById('errorDiv'), 'API Manager not available. Please refresh the page.');
             document.getElementById('errorDiv').style.display = 'block';
             return;
         }
@@ -437,7 +466,7 @@ Always ensure code is production-ready and follows security best practices.`;
 
         // Validation
         if (!queryDescription) {
-            showError(document.getElementById('errorDiv'), 'Please provide a query description');
+            utils.showError(document.getElementById('errorDiv'), 'Please provide a query description');
             document.getElementById('errorDiv').style.display = 'block';
             return;
         }
@@ -503,7 +532,7 @@ Always ensure code is production-ready and follows security best practices.`;
                 htmlContent = `
                     <div class="db-type-indicator db-${databaseType}">${databaseType.toUpperCase()} - ${outputFormat.toUpperCase()}</div>
                     <div class="sql-query-block db-${databaseType}">
-                        <div style="line-height: 1.7;">${formatMarkdown(response)}</div>
+                        <div style="line-height: 1.7;">${utils.formatMarkdown(response)}</div>
                     </div>
                 `;
             }
@@ -523,7 +552,7 @@ Always ensure code is production-ready and follows security best practices.`;
         } catch (error) {
             console.error('Error generating SQL query:', error);
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(document.getElementById('errorDiv'), error.message || 'Failed to generate SQL query. Please check your API key and try again.');
+            utils.showError(document.getElementById('errorDiv'), error.message || 'Failed to generate SQL query. Please check your API key and try again.');
             document.getElementById('errorDiv').style.display = 'block';
         }
     }
@@ -533,14 +562,7 @@ Always ensure code is production-ready and follows security best practices.`;
 
         // Check if API is configured
         if (!window.apiManager) {
-            showError(document.getElementById('errorDiv'), 'API Manager not available. Please refresh the page.');
-            document.getElementById('errorDiv').style.display = 'block';
-            return;
-        }
-
-        const currentApiKey = window.apiManager.getApiKey();
-        if (!currentApiKey) {
-            showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️) at the top of the page.');
+            utils.showError(document.getElementById('errorDiv'), 'API Manager not available. Please refresh the page.');
             document.getElementById('errorDiv').style.display = 'block';
             return;
         }
@@ -599,7 +621,7 @@ Database Type: ${databaseType.toUpperCase()}`;
             if (sections.explanation) {
                 htmlContent += `
                     <div class="explanation-block">
-                        <div style="line-height: 1.7;">${formatMarkdown(sections.explanation)}</div>
+                        <div style="line-height: 1.7;">${utils.formatMarkdown(sections.explanation)}</div>
                     </div>
                 `;
             }
@@ -607,7 +629,7 @@ Database Type: ${databaseType.toUpperCase()}`;
             if (!sections.query && !sections.explanation) {
                 htmlContent += `
                     <div class="sql-query-block db-${databaseType}">
-                        <div style="line-height: 1.7;">${formatMarkdown(response)}</div>
+                        <div style="line-height: 1.7;">${utils.formatMarkdown(response)}</div>
                     </div>
                 `;
             }
@@ -618,41 +640,56 @@ Database Type: ${databaseType.toUpperCase()}`;
         } catch (error) {
             console.error('Error generating alternative query:', error);
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(document.getElementById('errorDiv'), error.message || 'Failed to generate alternative query. Please try again.');
+            utils.showError(document.getElementById('errorDiv'), error.message || 'Failed to generate alternative query. Please try again.');
             document.getElementById('errorDiv').style.display = 'block';
         }
     }
 
-    function copyResult() {
-        if (!currentResult) return;
+    async function copyResult(event) {
+        if (!currentResult) {
+            utils.showError(document.getElementById('errorDiv'), 'No content to copy');
+            document.getElementById('errorDiv').style.display = 'block';
+            return;
+        }
 
         // Extract just the SQL query for copying
         const sections = parseResponse(currentResult);
         const queryToCopy = sections.query || currentResult;
 
-        navigator.clipboard.writeText(queryToCopy).then(() => {
-            // Show feedback
-            const button = event.target;
-            const originalText = button.textContent;
-            button.textContent = 'Copied!';
-            button.style.background = '#4CAF50';
+        const success = await utils.copyToClipboard(queryToCopy);
+
+        if (success && event?.target) {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            const originalBg = btn.style.background;
+
+            btn.textContent = '✅ Copied!';
+            btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
+
             setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = '';
+                btn.textContent = originalText;
+                btn.style.background = originalBg || '';
             }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy:', err);
-            alert('Failed to copy to clipboard');
-        });
+        } else if (!success) {
+            utils.showError(
+                document.getElementById('errorDiv'),
+                'Failed to copy to clipboard. Please try selecting and copying manually.'
+            );
+            document.getElementById('errorDiv').style.display = 'block';
+        }
     }
 
     function downloadResult(format) {
-        if (!currentResult) return;
+        if (!currentResult) {
+            utils.showError(document.getElementById('errorDiv'), 'No content to download');
+            document.getElementById('errorDiv').style.display = 'block';
+            return;
+        }
 
         const queryDescription = document.getElementById('queryDescription').value.trim();
         const databaseType = document.getElementById('databaseType').value;
         const outputFormat = document.getElementById('outputFormat').value;
-        const timestamp = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
+        const timestamp = utils.getCurrentTimestamp();
         const sections = parseResponse(currentResult, outputFormat);
 
         let content, filename, mimeType;
@@ -848,14 +885,61 @@ Database Type: ${databaseType.toUpperCase()}`;
     });
 
     // Click outside popup to close
-    document.getElementById('safetyOverlay').addEventListener('click', function (event) {
-        if (event.target === this) {
-            dismissSafetyNotice();
-        }
-    });
+    const safetyOverlayElement = document.getElementById('safetyOverlay');
+    if (safetyOverlayElement) {
+        safetyOverlayElement.addEventListener('click', function (event) {
+            if (event.target === this) {
+                dismissSafetyNotice();
+            }
+        });
+    }
 
     function showSafetyNotice() {
-        const overlay = document.getElementById('safetyOverlay');
+        console.log('showSafetyNotice called, searching for overlay...');
+        let overlay = document.getElementById('safetyOverlay');
+
+        // If overlay doesn't exist, create it now
+        if (!overlay) {
+            console.warn('Overlay not found, creating it now...');
+            const overlayHTML = `
+                <div class="safety-overlay" id="safetyOverlay">
+                    <div class="safety-popup" id="safetyPopup">
+                        <div class="popup-header">
+                            <div class="popup-title">
+                                <span class="warning-icon">⚠️</span>
+                                <strong>Important Safety Notice</strong>
+                            </div>
+                        </div>
+                        <div class="popup-content">
+                            <p><strong>Always test generated queries in a development or test environment first.</strong></p>
+                            <ul>
+                                <li>Never run untested queries directly on production</li>
+                                <li>Review and validate all generated code before execution</li>
+                                <li>Consider performance impact on large datasets</li>
+                                <li>Ensure to backup before running data modification queries</li>
+                                <li>Verify permissions and access controls are appropriate</li>
+                            </ul>
+                            <div class="popup-actions">
+                                <button class="btn-acknowledge" onclick="dismissSafetyNotice()">I Understand - Proceed</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', overlayHTML);
+            console.log('Overlay created in showSafetyNotice');
+
+            // Try to get it again
+            overlay = document.getElementById('safetyOverlay');
+            if (!overlay) {
+                console.error('CRITICAL: Still cannot find overlay after creation!');
+                console.log('document.body:', document.body);
+                console.log('document.body.innerHTML length:', document.body.innerHTML.length);
+                return;
+            }
+        }
+
+        console.log('Overlay found, adding show class');
         overlay.classList.add('show');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
@@ -864,11 +948,18 @@ Database Type: ${databaseType.toUpperCase()}`;
         const overlay = document.getElementById('safetyOverlay');
         const toggleBtn = document.getElementById('safetyToggleBtn');
 
+        if (!overlay) {
+            // Silently exit if overlay doesn't exist
+            return;
+        }
+
         overlay.classList.remove('show');
         document.body.style.overflow = ''; // Restore scrolling
 
-        // Show the toggle button
-        toggleBtn.style.display = 'flex';
+        // Show the toggle button if it exists
+        if (toggleBtn) {
+            toggleBtn.style.display = 'flex';
+        }
 
         // Store acknowledgment in localStorage
         localStorage.setItem('sqlBuilder_safetyAcknowledged', 'true');
@@ -881,6 +972,16 @@ Database Type: ${databaseType.toUpperCase()}`;
         const overlay = document.getElementById('safetyOverlay');
         const toggleBtn = document.getElementById('safetyToggleBtn');
 
+        // If overlay doesn't exist, safety overlay was created dynamically
+        if (!overlay) {
+            console.log('Safety notice overlay not yet available, will retry');
+            // Retry after brief delay to allow dynamic creation to complete
+            setTimeout(() => checkSafetyNoticeStatus(), 100);
+            return;
+        }
+
+        console.log('Safety notice overlay found, checking acknowledgment status');
+
         // Check if acknowledgment is less than 7 days old
         if (acknowledged === 'true' && acknowledgedDate) {
             const ackDate = new Date(acknowledgedDate);
@@ -888,17 +989,19 @@ Database Type: ${databaseType.toUpperCase()}`;
             const daysDiff = (now - ackDate) / (1000 * 60 * 60 * 24);
 
             if (daysDiff < 7) {
-                // Show toggle button, hide popup
-                toggleBtn.style.display = 'flex';
+                console.log('Safety acknowledged within 7 days, showing toggle button');
+                // Show toggle button if it exists, hide popup
+                if (toggleBtn) {
+                    toggleBtn.style.display = 'flex';
+                }
                 return;
             }
         }
 
+        console.log('Safety notice needs to be shown (new user or expired)');
         // Show popup immediately for new users or expired acknowledgments
-        setTimeout(() => {
-            showSafetyNotice();
-        }, 500); // Small delay for better UX
+        showSafetyNotice();
     }
 
-    window.dismissSafetyNotice = dismissSafetyNotice;
+    // Global functions already assigned at top of DOMContentLoaded handler
 });

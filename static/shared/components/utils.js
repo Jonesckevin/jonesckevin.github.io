@@ -16,6 +16,7 @@ window.utils = {
             anthropic: /^sk-ant-[A-Za-z0-9_-]+$/,
             gemini: /^AIza[A-Za-z0-9_-]+$/,
             grok: /^xai-[A-Za-z0-9_-]+$/,
+            mistral: /^[A-Za-z0-9_-]+$/, // Flexible pattern for Mistral keys
             custom: null // No pattern required - API key is optional
         };
 
@@ -348,5 +349,177 @@ window.utils = {
             reader.onerror = () => reject(new Error('Failed to read file'));
             reader.readAsText(file);
         });
+    },
+
+    // ===== CENTRALIZED RESULT DISPLAY FUNCTIONS =====
+
+    /**
+     * Display AI-generated result with standard formatting and buttons
+     * @param {string} containerId - ID of result container element
+     * @param {string} markdownContent - Markdown content to display
+     * @param {Object} options - Display options
+     * @param {boolean} options.showButtons - Show copy/download buttons (default: true)
+     * @param {string} options.buttonContainerId - ID for button container (default: containerId + '-actions')
+     * @returns {void}
+     */
+    showResult(containerId, markdownContent, options = {}) {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.error(`Container #${containerId} not found`);
+            return;
+        }
+
+        const htmlContent = this.formatMarkdown(markdownContent);
+
+        container.innerHTML = `<div class="result-display">${htmlContent}</div>`;
+        container.style.display = 'block';
+
+        // Smooth scroll to result
+        setTimeout(() => {
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    },
+
+    /**
+     * Copy text to clipboard with visual feedback on button
+     * @param {string} text - Text to copy
+     * @param {HTMLElement} buttonElement - Button element to show feedback on
+     * @returns {Promise<boolean>} - Success status
+     */
+    async copyWithFeedback(text, buttonElement) {
+        const success = await this.copyToClipboard(text);
+
+        if (success && buttonElement) {
+            const originalText = buttonElement.innerHTML;
+            const originalBg = buttonElement.style.background;
+
+            buttonElement.innerHTML = '✅ Copied!';
+            buttonElement.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
+
+            setTimeout(() => {
+                buttonElement.innerHTML = originalText;
+                buttonElement.style.background = originalBg || '';
+            }, 2000);
+        }
+
+        return success;
+    },
+
+    /**
+     * Standard download function using downloadManager
+     * @param {string} content - Content to download
+     * @param {string} format - 'markdown', 'html', or 'txt'
+     * @param {string} baseFilename - Base filename without extension
+     * @returns {void}
+     */
+    downloadContent(content, format, baseFilename) {
+        if (typeof downloadManager === 'undefined') {
+            console.error('downloadManager not loaded');
+            return;
+        }
+
+        const filename = `${baseFilename}_${this.getCurrentTimestamp()}`;
+        downloadManager.setContent(content, 'markdown');
+        downloadManager.download(format, filename);
+    },
+
+    /**
+     * Show standard result with copy/download buttons
+     * @param {Object} config - Configuration object
+     * @param {string} config.resultContainerId - ID of result display container
+     * @param {string} config.buttonsContainerId - ID of buttons container
+     * @param {string} config.content - Markdown content to display
+     * @param {string} config.toolName - Name for downloaded files
+     * @returns {void}
+     */
+    displayResultWithActions(config) {
+        const {
+            resultContainerId,
+            buttonsContainerId,
+            content,
+            toolName = 'ai-tool-output'
+        } = config;
+
+        // Display the result
+        this.showResult(resultContainerId, content);
+
+        // Update buttons to use the current content
+        const buttonsContainer = document.getElementById(buttonsContainerId);
+        if (buttonsContainer) {
+            // Store content reference for button handlers
+            window.__currentResult = content;
+            window.__currentToolName = toolName;
+        }
+    },
+
+    /**
+     * Create standard copy function for tool
+     * Returns a function that can be assigned to window.copyResult
+     * @param {Function} getContentFn - Function that returns current content
+     * @returns {Function} - Copy function
+     */
+    createCopyFunction(getContentFn) {
+        return async function (event) {
+            const content = getContentFn();
+            if (!content) {
+                console.error('No content to copy');
+                return false;
+            }
+
+            const success = await window.utils.copyToClipboard(content);
+
+            if (success && event?.target) {
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                const originalBg = btn.style.background;
+
+                btn.innerHTML = '✅ Copied!';
+                btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = originalBg || '';
+                }, 2000);
+            } else if (!success) {
+                window.utils.showError(
+                    document.getElementById('errorDiv'),
+                    'Failed to copy to clipboard. Please try selecting and copying manually.'
+                );
+            }
+
+            return success;
+        };
+    },
+
+    /**
+     * Create standard download function for tool
+     * Returns a function that can be assigned to window.downloadResult
+     * @param {Function} getContentFn - Function that returns current content
+     * @param {string} toolName - Base name for downloads
+     * @returns {Function} - Download function
+     */
+    createDownloadFunction(getContentFn, toolName) {
+        return function (format) {
+            const content = getContentFn();
+            if (!content) {
+                console.error('No content to download');
+                return false;
+            }
+
+            if (typeof downloadManager === 'undefined') {
+                console.error('downloadManager not loaded');
+                window.utils.showError(
+                    document.getElementById('errorDiv'),
+                    'Download manager not available. Please refresh the page.'
+                );
+                return false;
+            }
+
+            const filename = `${toolName}_${window.utils.getCurrentTimestamp()}`;
+            downloadManager.setContent(content, 'markdown');
+            downloadManager.download(format, filename);
+
+            return true;
+        };
     }
 };

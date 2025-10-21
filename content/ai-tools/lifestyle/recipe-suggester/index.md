@@ -26,9 +26,10 @@ social_media:
   #twitter_image: "/images/featured/aitools/recipe-suggester.png"
 ---
 
+<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="recipe-suggester.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">AI Recipe & Meal Suggester</h1>
+<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">🍳 AI Recipe & Meal Suggester</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Transform your available ingredients into creative, delicious meals. Get personalized recipe suggestions tailored to your preferences, meal type, and dietary needs.
 </p>
@@ -160,25 +161,18 @@ Transform your available ingredients into creative, delicious meals. Get persona
 <div id="errorDiv" style="display: none;"></div>
 <div id="resultDiv" style="display: none;">
   <h3 style="color: #ff6b35; margin-bottom: 20px;">📝 Your Recipe Suggestions</h3>
-  <div class="result-content" id="resultContent"></div>
-  <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-    <button class="btn-primary" onclick="copyResult(event)" style="width: auto; padding: 10px 20px;">
+  <div id="resultContent"></div>
+  <div class="result-actions">
+    <button class="btn-copy" onclick="copyResult(event)">
       📋 Copy to Clipboard
     </button>
-    <button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">
+    <button class="btn-download" onclick="downloadResult('markdown')">
       📄 Download Markdown
     </button>
-    <button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">
+    <button class="btn-download" onclick="downloadResult('html')">
       🌐 Download HTML
     </button>
   </div>
 </div>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="/shared/components/utils.js"></script>
-<script>
-  // Initialize API manager
-  const apiManager = new APIManager();
-  const downloadManager = new DownloadManager();
-</script>
+<!-- Shared components already loaded in head.html -->
 <script src="recipe-suggester.js"></script>

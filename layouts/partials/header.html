@@ -136,6 +136,7 @@
                         <option value="anthropic">Anthropic</option>
                         <option value="gemini">Google Gemini</option>
                         <option value="grok">Grok (X.AI)</option>
+                        <option value="mistral">Mistral AI</option>
                         <option value="custom">Custom Server (Ollama/LMStudio)</option>
                       </select>
                     </div>
@@ -202,7 +203,8 @@
                         target="_blank" rel="noopener noreferrer">Visit provider website</a></li>
                     <li>Enter your API key. <span id="key-format">Format: <code>sk-...</code></span></li>
                     <li>Optionally choose a specific model. <a href="#" id="pricing-link" target="_blank"
-                        rel="noopener noreferrer">View pricing</a></li>
+                        rel="noopener noreferrer">View pricing</a> // <a href="#" id="models-link" target="_blank"
+                        rel="noopener noreferrer">View models</a></li>
                     <li>Visit any AI tool page to start using powerful AI-driven features like story generators, quiz
                       creators, and more.</li>
                     <li>Your API key is stored securely in your browser session and never sent to our servers.</li>
@@ -436,6 +438,7 @@ background-position: 0% 50%;
         anthropic: 'Enter your Anthropic API key (sk-ant-...)',
         gemini: 'Enter your Gemini API key (AIza...)',
         grok: 'Enter your Grok API key (xai-...)',
+        mistral: 'Enter your Mistral API key',
         custom: 'API key (optional for local servers)'
       };
       aiKey.placeholder = placeholders[provider] || 'Enter your API key';
@@ -458,43 +461,57 @@ background-position: 0% 50%;
       const providerLink = document.getElementById('provider-link');
       const keyFormat = document.getElementById('key-format');
       const pricingLink = document.getElementById('pricing-link');
+      const modelsLink = document.getElementById('models-link');
 
       const providerInfo = {
         openai: {
           url: 'https://platform.openai.com/api-keys',
           name: 'OpenAI API website',
           keyFormat: 'sk-...',
-          pricing: 'https://openai.com/api/pricing/'
+          pricing: 'https://openai.com/api/pricing/',
+          models: 'https://platform.openai.com/docs/models'
         },
         deepseek: {
           url: 'https://platform.deepseek.com/api_keys',
           name: 'DeepSeek API website',
           keyFormat: 'sk-...',
-          pricing: 'https://platform.deepseek.com/api-docs/pricing'
+          pricing: 'https://platform.deepseek.com/api-docs/pricing',
+          models: 'https://platform.deepseek.com/api-docs/models'
         },
         anthropic: {
           url: 'https://console.anthropic.com/settings/keys',
           name: 'Anthropic API website',
           keyFormat: 'sk-ant-...',
-          pricing: 'https://www.anthropic.com/pricing'
+          pricing: 'https://www.anthropic.com/pricing',
+          models: 'https://docs.anthropic.com/en/docs/about-claude/models'
         },
         gemini: {
           url: 'https://aistudio.google.com/app/apikey',
           name: 'Google AI Studio',
           keyFormat: 'AIza...',
-          pricing: 'https://ai.google.dev/pricing'
+          pricing: 'https://ai.google.dev/pricing',
+          models: 'https://ai.google.dev/gemini-api/docs/models/gemini'
         },
         grok: {
           url: 'https://console.x.ai/',
           name: 'Grok (X.AI) Console',
           keyFormat: 'xai-...',
-          pricing: 'https://x.ai/api'
+          pricing: 'https://x.ai/api',
+          models: 'https://docs.x.ai/docs'
+        },
+        mistral: {
+          url: 'https://console.mistral.ai/',
+          name: 'Mistral AI Console',
+          keyFormat: 'Alphanumeric string',
+          pricing: 'https://mistral.ai/technology/#pricing',
+          models: 'https://docs.mistral.ai/getting-started/models/'
         },
         custom: {
           url: 'https://ollama.com/',
           name: 'Ollama / LM Studio',
           keyFormat: 'Optional',
-          pricing: 'https://github.com/ollama/ollama'
+          pricing: 'https://github.com/ollama/ollama',
+          models: 'https://ollama.com/library'
         }
       };
 
@@ -511,6 +528,10 @@ background-position: 0% 50%;
 
       if (pricingLink) {
         pricingLink.href = info.pricing;
+      }
+
+      if (modelsLink) {
+        modelsLink.href = info.models;
       }
     }
 

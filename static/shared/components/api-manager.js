@@ -44,6 +44,13 @@ class APIManager {
                 keyPattern: /^xai-[A-Za-z0-9_\-]+$/,
                 requiresKey: true
             },
+            mistral: {
+                name: 'Mistral AI',
+                baseURL: 'https://api.mistral.ai/v1',
+                defaultModel: 'mistral-small-latest',
+                keyPattern: /^[A-Za-z0-9_\-]+$/,
+                requiresKey: true
+            },
             custom: {
                 name: 'Custom Server (Ollama/LMStudio)',
                 baseURL: 'http://localhost:11434/v1', // Default Ollama
@@ -224,6 +231,7 @@ class APIManager {
             case 'openai':
             case 'deepseek':
             case 'grok':
+            case 'mistral':
             case 'custom': // Custom servers use OpenAI-compatible API
                 return this._makeOpenAIStyleRequest(config, apiKey, model, messages, options);
             case 'anthropic':
@@ -413,6 +421,7 @@ class APIManager {
             case 'openai':
             case 'deepseek':
             case 'grok':
+            case 'mistral':
                 return this._listOpenAIStyleModels(config, key);
             case 'custom':
                 return this._listOpenAIStyleModels(config, key, true); // Pass flag for optional key
@@ -464,8 +473,11 @@ class APIManager {
         }
 
         // Patterns to identify legacy/deprecated models
-        const datePattern = /\d{4}-\d{2}-\d{2}$/; // Matches YYYY-MM-DD at end
-        const versionPattern = /-(0\d{3,4}|1\d{3})$/; // Matches -0613, -0314, -1106, etc.
+        // Only filter models that ONLY have dates/versions (not legitimate versioned models)
+        const pureVersionPattern = /^(\w+-)?(gpt-3\.5-turbo|gpt-4|(dev|mi|code|magi|vox)stral)(-\w+)?-\d{4}$/; // Like gpt-4-0613 (pure version)
+        const legacyDateOnlyPattern = /^\w+-\d{4}-\d{2}-\d{2}$/; // Like davinci-2023-01-15 (only date)
+        const endingDatePattern = /-\d{4}-\d{2}-\d{2}$/; // Models ending with -YYYY-MM-DD pattern
+        const endingDatePattern2 = /-\d{8}$/; // Models ending with -YYYYMMDD pattern (like -20241022)
 
         // Known legacy model patterns
         const legacyPatterns = [
@@ -475,10 +487,8 @@ class APIManager {
             'text-curie',
             'text-babbage',
             'text-ada',
-            'davinci-002',
-            'babbage-002',
-            'curie-002',
-            'ada-002'
+            'code-davinci',
+            'code-cushman'
         ];
 
         // Categorize models
@@ -489,6 +499,7 @@ class APIManager {
             audio: [],
             video: [],
             transcribe: [],
+            ocr: [],
             other: []
         };
 
@@ -496,20 +507,27 @@ class APIManager {
             const modelId = model.id;
             const modelIdLower = modelId.toLowerCase();
 
-            // Skip models ending with dates (YYYY-MM-DD format)
-            if (datePattern.test(modelId)) {
-                console.log('Skipping date-versioned model:', modelId);
+            // Skip pure version-only models (like gpt-4-0613 which are outdated snapshots)
+            if (pureVersionPattern.test(modelId)) {
+                console.log('Skipping pure version model:', modelId);
                 return;
             }
 
-            // Skip models with version numbers (like -0613, -1106)
-            if (versionPattern.test(modelId)) {
-                console.log('Skipping version-numbered model:', modelId);
+            // Skip legacy date-only models (but allow models with dates as part of their name)
+            if (legacyDateOnlyPattern.test(modelId)) {
+                console.log('Skipping legacy date-only model:', modelId);
                 return;
             }
 
-            // Skip known legacy model patterns
-            if (legacyPatterns.some(pattern => modelIdLower.includes(pattern))) {
+            // Skip models ending with date patterns (like claude-3-opus-20240229 or gpt-4-20241022)
+            if (endingDatePattern.test(modelId) || endingDatePattern2.test(modelId)) {
+                console.log('Skipping model with ending date pattern:', modelId);
+                return;
+            }
+
+            // Skip known legacy model patterns (but be specific - don't block all *-002 models)
+            const isLegacy = legacyPatterns.some(pattern => modelIdLower.startsWith(pattern.toLowerCase()));
+            if (isLegacy) {
                 console.log('Skipping legacy model:', modelId);
                 return;
             }
@@ -522,8 +540,31 @@ class APIManager {
                 owned_by: model.owned_by || null
             };
 
-            // Categorize by model type
-            if (modelId.includes('gpt') || modelId.includes('chat') || modelId.includes('deepseek') || modelId.includes('grok')) {
+            // Categorize by model type (expanded patterns for custom models)
+            // Check OCR/Vision models FIRST (before text generation)
+            if (modelIdLower.includes('ocr') ||
+                modelIdLower.includes('-ocr') ||
+                modelIdLower.includes('vision') ||
+                modelIdLower.includes('document') ||
+                modelIdLower.includes('pixtral') ||
+                modelIdLower.includes('gpt-4o') ||
+                modelIdLower.includes('gpt-4-turbo') ||
+                modelIdLower.includes('claude-3') ||
+                (modelIdLower.includes('gemini') && modelIdLower.includes('vision'))) {
+                modelInfo.category = 'ocr';
+                categorizedModels.ocr.push(modelInfo);
+            } else if (modelId.includes('gpt') ||
+                modelId.includes('chat') ||
+                modelId.includes('deepseek') ||
+                modelId.includes('grok') ||
+                modelId.includes('llama') ||
+                modelId.includes('mistral') ||
+                modelId.includes('gemma') ||
+                modelId.includes('phi') ||
+                modelId.includes('qwen') ||
+                modelId.includes('claude') ||
+                modelIdLower.includes('instruct') ||
+                modelIdLower.includes('conversation')) {
                 modelInfo.category = 'text';
                 categorizedModels.text.push(modelInfo);
             } else if (modelId.includes('dall-e') || modelId.includes('dalle') || modelId.includes('gpt-image') || modelId.includes('image')) {
@@ -532,7 +573,7 @@ class APIManager {
             } else if (modelId.includes('tts') || modelId.includes('text-to-speech')) {
                 modelInfo.category = 'tts';
                 categorizedModels.tts.push(modelInfo);
-            } else if (modelId.includes('whisper') || modelId.includes('transcrib')) {
+            } else if (modelId.includes('whisper') || modelId.includes('transcrib') || modelId.includes('voxtral')) {
                 modelInfo.category = 'transcribe';
                 categorizedModels.transcribe.push(modelInfo);
             } else if (modelId.includes('audio')) {
@@ -541,6 +582,10 @@ class APIManager {
             } else if (modelId.includes('video') || modelId.includes('sora')) {
                 modelInfo.category = 'video';
                 categorizedModels.video.push(modelInfo);
+            } else {
+                // Uncategorized models go to "other" (likely custom models)
+                modelInfo.category = 'other';
+                categorizedModels.other.push(modelInfo);
             }
         });
 
@@ -550,10 +595,12 @@ class APIManager {
         const categoryLabels = {
             text: '💬 Text Generation',
             images: '🎨 Image Generation',
+            ocr: '👁️ Vision & OCR',
             tts: '🔊 Text-to-Speech',
             audio: '🎵 Audio Generation',
             video: '🎬 Video Generation',
-            transcribe: '📝 Transcription'
+            transcribe: '📝 Transcription',
+            other: '🔧 Other Models'
         };
 
         // Add models by category with headers
@@ -580,7 +627,13 @@ class APIManager {
     _getAnthropicModels() {
         return [
             { id: 'header-text', label: '💬 Text Generation', isHeader: true, category: 'text' },
-            { id: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet', category: 'text' },
+            // Claude 4 models (latest)
+            { id: 'claude-4-opus-20250514', label: 'Claude 4 Opus (Latest)', category: 'text' },
+            { id: 'claude-4-sonnet-20250514', label: 'Claude 4 Sonnet (Latest)', category: 'text' },
+            // Claude 3.5 models
+            { id: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet (Oct 2024)', category: 'text' },
+            { id: 'claude-3-5-sonnet-20240620', label: 'Claude 3.5 Sonnet (Jun 2024)', category: 'text' },
+            // Claude 3 models
             { id: 'claude-3-opus-20240229', label: 'Claude 3 Opus', category: 'text' },
             { id: 'claude-3-sonnet-20240229', label: 'Claude 3 Sonnet', category: 'text' },
             { id: 'claude-3-haiku-20240307', label: 'Claude 3 Haiku', category: 'text' }
