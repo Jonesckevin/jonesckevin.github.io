@@ -5,16 +5,14 @@
     {{ partial "head.html" . }}
     <script>
         // Apply theme before page renders to avoid flash
-        (function() {
+        (function () {
             const defaultTheme = '{{ .Site.Params.defaultTheme | default "auto" }}';
             const savedTheme = localStorage.getItem('theme');
             let theme = savedTheme || defaultTheme;
-            
             // If theme is auto, check system preference
             if (theme === 'auto') {
                 theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             }
-            
             if (theme === 'dark' || theme === 'light') {
                 document.documentElement.setAttribute('data-theme', theme);
             }

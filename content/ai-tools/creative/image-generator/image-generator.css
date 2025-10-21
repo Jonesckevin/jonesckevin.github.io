@@ -352,6 +352,7 @@
     border-radius: 10px;
     margin: 20px 0;
     flex-wrap: wrap;
+    box-shadow: 0px 1px 2px 0px rgba(255, 198, 177, 0.1);
 }
 
 .info-item {
@@ -363,36 +364,40 @@
 .info-label {
     font-size: 12px;
     text-transform: uppercase;
-    color: #666;
+    color: #05d800;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
 .info-item span:last-child {
     font-size: 15px;
-    color: #333;
+    color: #fff;
     font-weight: 500;
 }
 
 .prompt-used {
-    background: #f9f9f9;
+    background: #095411;
     padding: 20px;
     border-radius: 10px;
     border-left: 4px solid #ff6b35;
     margin: 20px 0;
+    box-shadow: 0px 0px 3px 0px, rgba(0, 0, 0, 0.2);
 }
 
 .prompt-used h4 {
     margin: 0 0 10px 0;
-    color: #ff6b35;
+    color: #c4c4c4;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.prompt-used p {
+Digital Forensics Women,
+highly detailed,
+ultra sharp,
+crisp quality .prompt-used p {
     margin: 0;
-    color: #555;
+    color: #c3c3c3;
     line-height: 1.6;
     font-size: 14px;
 }

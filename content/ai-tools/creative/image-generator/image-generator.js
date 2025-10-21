@@ -335,79 +335,139 @@ Please provide a JSON response with the following structure:
         currentImageUrl = imageData.url;
         currentImageData = imageData;
 
+        // Check if result structure exists, create if missing
+        let imgElement = document.getElementById('generatedImage');
+        if (resultDiv && !imgElement) {
+            console.log('generatedImage element missing, creating structure...');
+            
+            // Create the complete result structure
+            resultDiv.innerHTML = `
+                <h2>Generated Image</h2>
+                <div class="result-actions">
+                    <button onclick="window.downloadImage(event)" class="action-btn">Download Image</button>
+                    <button onclick="window.openImageModal()" class="action-btn">View Full Size</button>
+                    <button onclick="window.copyPromptToClipboard(event)" class="action-btn">Copy Prompt</button>
+                </div>
+                <div class="image-display">
+                    <img id="generatedImage" alt="Generated image" />
+                </div>
+                <div class="image-info">
+                    <p><strong>Model:</strong> <span id="imageModel"></span></p>
+                    <p><strong>Size:</strong> <span id="imageSize"></span></p>
+                    <p><strong>Style:</strong> <span id="imageStyleUsed"></span></p>
+                    <p><strong>Prompt:</strong> <span id="imagePromptUsed"></span></p>
+                </div>
+            `;
+            
+            imgElement = document.getElementById('generatedImage');
+        }
+
+        if (!imgElement) {
+            console.error('Cannot create generatedImage element');
+            alert('Image generated but cannot display. URL: ' + imageData.url);
+            return;
+        }
+
         // Update image
-        const imgElement = document.getElementById('generatedImage');
         imgElement.src = imageData.url;
         imgElement.alt = prompt;
 
-        // Update modal image
-        document.getElementById('modalImage').src = imageData.url;
+        // Update modal image if it exists
+        const modalImage = document.getElementById('modalImage');
+        if (modalImage) {
+            modalImage.src = imageData.url;
+        }
 
-        // Update info
-        document.getElementById('imageModel').textContent = model;
-        const dimensions = getImageDimensions(aspectRatio);
-        document.getElementById('imageSize').textContent = `${dimensions.width}x${dimensions.height} (${aspectRatio})`;
-        document.getElementById('imageStyleUsed').textContent = style || 'Default';
-        document.getElementById('promptUsed').textContent = imageData.revisedPrompt || prompt;
+        // Update info (with null checks)
+        const imageModelEl = document.getElementById('imageModel');
+        const imageSizeEl = document.getElementById('imageSize');
+        const imageStyleUsedEl = document.getElementById('imageStyleUsed');
+        const imagePromptUsedEl = document.getElementById('imagePromptUsed');
+        
+        if (imageModelEl) imageModelEl.textContent = model;
+        if (imageSizeEl) {
+            const dimensions = getImageDimensions(aspectRatio);
+            imageSizeEl.textContent = `${dimensions.width}x${dimensions.height} (${aspectRatio})`;
+        }
+        if (imageStyleUsedEl) imageStyleUsedEl.textContent = style || 'Default';
+        if (imagePromptUsedEl) imagePromptUsedEl.textContent = imageData.revisedPrompt || prompt;
 
         // Show result
-        loadingDiv.style.display = 'none';
-        resultDiv.style.display = 'block';
+        if (loadingDiv) loadingDiv.style.display = 'none';
+        if (resultDiv) resultDiv.style.display = 'block';
 
         // Scroll to result
-        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (resultDiv) resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     // Modal functions
-    window.viewFullImage = function () {
-        document.getElementById('imageModal').style.display = 'flex';
+    window.openImageModal = function () {
+        const modal = document.getElementById('imageModal');
+        if (modal) {
+            modal.style.display = 'flex';
+        } else {
+            // If modal doesn't exist, open image in new tab
+            if (currentImageUrl) {
+                window.open(currentImageUrl, '_blank');
+            }
+        }
     };
 
     window.closeModal = function () {
-        document.getElementById('imageModal').style.display = 'none';
+        const modal = document.getElementById('imageModal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
     };
 
     // Download image
-    window.downloadImage = async function () {
+    window.downloadImage = async function (event) {
         if (!currentImageUrl) return;
 
         try {
-            // Fetch the image
-            const response = await fetch(currentImageUrl);
-            const blob = await response.blob();
-
-            // Create download link
-            const url = window.URL.createObjectURL(blob);
+            // For CORS-protected URLs (like OpenAI), use a different approach
             const a = document.createElement('a');
-            a.href = url;
-            a.download = `ai-generated-image-${utils.getCurrentTimestamp()}.png`;
+            a.href = currentImageUrl;
+            a.download = `ai-generated-image-${new Date().getTime()}.png`;
+            a.target = '_blank'; // Fallback to opening in new tab if download fails
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
 
             // Show success message
-            const originalText = event.target.innerHTML;
-            event.target.innerHTML = '✓ Downloaded!';
-            setTimeout(() => {
-                event.target.innerHTML = originalText;
-            }, 2000);
+            if (event && event.target) {
+                const originalText = event.target.innerHTML;
+                event.target.innerHTML = '✓ Downloaded!';
+                setTimeout(() => {
+                    event.target.innerHTML = originalText;
+                }, 2000);
+            }
         } catch (error) {
             console.error('Download error:', error);
-            alert('Failed to download image. Please right-click the image and save manually.');
+            alert('Failed to download image directly. The image has been opened in a new tab - please right-click and save from there.');
         }
     };
 
     // Copy prompt
-    window.copyPrompt = async function () {
-        const promptText = document.getElementById('promptUsed').textContent;
+    window.copyPromptToClipboard = async function (event) {
+        const promptElement = document.getElementById('imagePromptUsed');
+        const promptText = promptElement ? promptElement.textContent : currentPrompt;
+        
+        if (!promptText) {
+            alert('No prompt to copy');
+            return;
+        }
+
         const success = await utils.copyToClipboard(promptText);
 
         if (success) {
-            event.target.textContent = '✓ Copied!';
-            setTimeout(() => {
-                event.target.textContent = 'Copy Prompt';
-            }, 2000);
+            if (event && event.target) {
+                const originalText = event.target.textContent;
+                event.target.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    event.target.textContent = originalText;
+                }, 2000);
+            }
         } else {
             alert('Failed to copy prompt to clipboard');
         }

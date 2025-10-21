@@ -252,8 +252,10 @@ class APIManager {
             ...options.extraParams
         };
 
-        // Add seed for randomization if available
-        if (options.seed !== undefined) {
+        // Add seed for randomization if available (not all providers support this)
+        // Mistral doesn't support 'seed' parameter, so skip it for Mistral
+        const provider = this.currentProvider;
+        if (options.seed !== undefined && provider !== 'mistral') {
             requestBody.seed = options.seed;
         }
 

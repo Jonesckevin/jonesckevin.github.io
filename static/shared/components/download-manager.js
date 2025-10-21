@@ -3,253 +3,256 @@
  * Provides standardized content conversion and download functionality
  */
 
-class DownloadManager {
-    constructor() {
-        this.currentContent = {
-            original: '',
-            html: '',
-            markdown: '',
-            txt: ''
-        };
-    }
+// Prevent duplicate class declaration by checking if already loaded
+if (!window.DownloadManager) {
 
-    // Set the content for download operations
-    setContent(content, format = 'markdown') {
-        this.currentContent.original = content;
-        if (format === 'markdown') {
-            // Clean up malformed markdown before setting
-            this.currentContent.markdown = this.cleanMarkdown(content);
-            this.currentContent.html = this.markdownToHtml(this.currentContent.markdown);
-            this.currentContent.txt = this.markdownToText(this.currentContent.markdown);
-        } else if (format === 'html') {
-            this.currentContent.html = content;
-            this.currentContent.markdown = this.htmlToMarkdown(content);
-            this.currentContent.txt = this.htmlToText(content);
+    window.DownloadManager = class DownloadManager {
+        constructor() {
+            this.currentContent = {
+                original: '',
+                html: '',
+                markdown: '',
+                txt: ''
+            };
         }
-    }
 
-    // Clean up malformed markdown formatting
-    cleanMarkdown(content) {
-        return content
-            // Fix standalone --- lines that might be malformed
-            .replace(/^---\s*$/gm, '\n---\n')
-            // Fix --- that appears mid-sentence by properly separating it
-            .replace(/\s+---\s+/g, '\n\n---\n\n')
-            .replace(/\s+---$/gm, '\n\n---\n')
-            .replace(/^---\s+/gm, '\n---\n\n')
-            // Clean up multiple consecutive newlines
-            .replace(/\n{3,}/g, '\n\n')
-            // Trim whitespace
-            .trim();
-    }
-
-    // Markdown to HTML with proper lists, headings, and paragraphs
-    markdownToHtml(markdown) {
-        const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        const inline = (s) => s
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/__(.*?)__/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/_(.*?)_/g, '<em>$1</em>')
-            .replace(/`([^`]+)`/g, '<code>$1</code>')
-            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-
-        const lines = (markdown || '').replace(/\r\n/g, '\n').split('\n');
-        let html = [];
-        let inCode = false, codeLines = [];
-        let listStack = []; // e.g., ['ul','ul'] depth 2
-        let paraBuf = [];
-
-        const closeParagraph = () => {
-            if (paraBuf.length) {
-                html.push('<p>' + inline(paraBuf.join(' ')) + '</p>');
-                paraBuf = [];
+        // Set the content for download operations
+        setContent(content, format = 'markdown') {
+            this.currentContent.original = content;
+            if (format === 'markdown') {
+                // Clean up malformed markdown before setting
+                this.currentContent.markdown = this.cleanMarkdown(content);
+                this.currentContent.html = this.markdownToHtml(this.currentContent.markdown);
+                this.currentContent.txt = this.markdownToText(this.currentContent.markdown);
+            } else if (format === 'html') {
+                this.currentContent.html = content;
+                this.currentContent.markdown = this.htmlToMarkdown(content);
+                this.currentContent.txt = this.htmlToText(content);
             }
-        };
-        const closeLists = (toDepth = 0) => {
-            while (listStack.length > toDepth) {
-                const type = listStack.pop();
-                html.push(`</${type}>`);
-            }
-        };
-        const ensureList = (type, depth) => {
-            // Close if changing type at same depth
-            while (listStack.length > depth) closeLists(depth);
-            const current = listStack[depth - 1];
-            if (listStack.length < depth) {
-                // Open missing levels as current type
-                while (listStack.length < depth) {
+        }
+
+        // Clean up malformed markdown formatting
+        cleanMarkdown(content) {
+            return content
+                // Fix standalone --- lines that might be malformed
+                .replace(/^---\s*$/gm, '\n---\n')
+                // Fix --- that appears mid-sentence by properly separating it
+                .replace(/\s+---\s+/g, '\n\n---\n\n')
+                .replace(/\s+---$/gm, '\n\n---\n')
+                .replace(/^---\s+/gm, '\n---\n\n')
+                // Clean up multiple consecutive newlines
+                .replace(/\n{3,}/g, '\n\n')
+                // Trim whitespace
+                .trim();
+        }
+
+        // Markdown to HTML with proper lists, headings, and paragraphs
+        markdownToHtml(markdown) {
+            const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            const inline = (s) => s
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/__(.*?)__/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/_(.*?)_/g, '<em>$1</em>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+            const lines = (markdown || '').replace(/\r\n/g, '\n').split('\n');
+            let html = [];
+            let inCode = false, codeLines = [];
+            let listStack = []; // e.g., ['ul','ul'] depth 2
+            let paraBuf = [];
+
+            const closeParagraph = () => {
+                if (paraBuf.length) {
+                    html.push('<p>' + inline(paraBuf.join(' ')) + '</p>');
+                    paraBuf = [];
+                }
+            };
+            const closeLists = (toDepth = 0) => {
+                while (listStack.length > toDepth) {
+                    const type = listStack.pop();
+                    html.push(`</${type}>`);
+                }
+            };
+            const ensureList = (type, depth) => {
+                // Close if changing type at same depth
+                while (listStack.length > depth) closeLists(depth);
+                const current = listStack[depth - 1];
+                if (listStack.length < depth) {
+                    // Open missing levels as current type
+                    while (listStack.length < depth) {
+                        listStack.push(type);
+                        html.push(`<${type}>`);
+                    }
+                } else if (current !== type) {
+                    // Switch type at this depth
+                    closeLists(depth - 1);
                     listStack.push(type);
                     html.push(`<${type}>`);
                 }
-            } else if (current !== type) {
-                // Switch type at this depth
-                closeLists(depth - 1);
-                listStack.push(type);
-                html.push(`<${type}>`);
-            }
-        };
+            };
 
-        for (let i = 0; i < lines.length; i++) {
-            const raw = lines[i];
-            const line = raw.replace(/\t/g, '    ');
+            for (let i = 0; i < lines.length; i++) {
+                const raw = lines[i];
+                const line = raw.replace(/\t/g, '    ');
 
-            // Code block fences
-            const fence = line.match(/^```(.*)$/);
-            if (fence) {
-                if (inCode) {
-                    // Close code block
-                    html.push('<pre><code>' + escapeHtml(codeLines.join('\n')) + '</code></pre>');
-                    codeLines = []; inCode = false;
-                } else {
-                    closeParagraph(); closeLists(0); inCode = true; codeLines = [];
+                // Code block fences
+                const fence = line.match(/^```(.*)$/);
+                if (fence) {
+                    if (inCode) {
+                        // Close code block
+                        html.push('<pre><code>' + escapeHtml(codeLines.join('\n')) + '</code></pre>');
+                        codeLines = []; inCode = false;
+                    } else {
+                        closeParagraph(); closeLists(0); inCode = true; codeLines = [];
+                    }
+                    continue;
                 }
-                continue;
-            }
-            if (inCode) { codeLines.push(raw); continue; }
+                if (inCode) { codeLines.push(raw); continue; }
 
-            // Horizontal rule (--- for paragraph breaks)
-            if (/^---+\s*$/.test(line)) {
-                closeParagraph();
-                closeLists(0);
-                html.push('<hr style="margin: 20px 0; border: none; border-top: 1px solid rgba(255, 107, 53, 0.3);">');
-                continue;
-            }
+                // Horizontal rule (--- for paragraph breaks)
+                if (/^---+\s*$/.test(line)) {
+                    closeParagraph();
+                    closeLists(0);
+                    html.push('<hr style="margin: 20px 0; border: none; border-top: 1px solid rgba(255, 107, 53, 0.3);">');
+                    continue;
+                }
 
-            // Blank line
-            if (/^\s*$/.test(line)) { closeParagraph(); closeLists(0); continue; }
+                // Blank line
+                if (/^\s*$/.test(line)) { closeParagraph(); closeLists(0); continue; }
 
-            // Headings H1..H6
-            let m = line.match(/^(#{1,6})\s+(.*)$/);
-            if (m) {
-                closeParagraph(); closeLists(0);
-                const level = m[1].length; const text = inline(m[2].trim());
-                html.push(`<h${level}>${text}</h${level}>`);
-                continue;
-            }
+                // Headings H1..H6
+                let m = line.match(/^(#{1,6})\s+(.*)$/);
+                if (m) {
+                    closeParagraph(); closeLists(0);
+                    const level = m[1].length; const text = inline(m[2].trim());
+                    html.push(`<h${level}>${text}</h${level}>`);
+                    continue;
+                }
 
-            // List items (unordered or ordered)
-            m = line.match(/^(\s*)([-*+])\s+(.+)$/);
-            let ordered = false;
-            if (!m) {
-                const mo = line.match(/^(\s*)(\d+)\.\s+(.+)$/);
-                if (mo) { m = mo; ordered = true; }
-            }
-            if (m) {
-                closeParagraph();
-                const indent = m[1].length;
-                const depth = Math.floor(indent / 2) + 1; // 0-1 spaces => depth 1; 2-3 => depth 2
-                const type = ordered ? 'ol' : 'ul';
-                ensureList(type, depth);
-                const content = inline(m[3].trim());
-                html.push(`<li>${content}</li>`);
-                continue;
-            }
+                // List items (unordered or ordered)
+                m = line.match(/^(\s*)([-*+])\s+(.+)$/);
+                let ordered = false;
+                if (!m) {
+                    const mo = line.match(/^(\s*)(\d+)\.\s+(.+)$/);
+                    if (mo) { m = mo; ordered = true; }
+                }
+                if (m) {
+                    closeParagraph();
+                    const indent = m[1].length;
+                    const depth = Math.floor(indent / 2) + 1; // 0-1 spaces => depth 1; 2-3 => depth 2
+                    const type = ordered ? 'ol' : 'ul';
+                    ensureList(type, depth);
+                    const content = inline(m[3].trim());
+                    html.push(`<li>${content}</li>`);
+                    continue;
+                }
 
-            // Paragraph text (accumulate)
-            paraBuf.push(line.trim());
+                // Paragraph text (accumulate)
+                paraBuf.push(line.trim());
+            }
+            // Close remaining
+            closeParagraph();
+            closeLists(0);
+
+            return html.join('');
         }
-        // Close remaining
-        closeParagraph();
-        closeLists(0);
 
-        return html.join('');
-    }
-
-    // Markdown to plain text
-    markdownToText(markdown) {
-        return markdown
-            .replace(/^#{1,6}\s+/gm, '')
-            .replace(/\*\*(.*?)\*\*/g, '$1')
-            .replace(/\*(.*?)\*/g, '$1')
-            .replace(/__(.*?)__/g, '$1')
-            .replace(/_(.*?)_/g, '$1')
-            .replace(/```[\s\S]*?```/g, function (match) {
-                return match.replace(/```[a-z]*\n?/gi, '').replace(/```/g, '').trim();
-            })
-            .replace(/`(.*?)`/g, '$1')
-            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-            .replace(/^---+\s*$/gm, '\n') // Convert horizontal rules to line breaks
-            .replace(/^\* /gm, '• ')
-            .replace(/^\- /gm, '• ')
-            .replace(/^\+ /gm, '• ')
-            .replace(/^\d+\. /gm, '')
-            .replace(/\n{3,}/g, '\n\n')
-            .replace(/\r\n/g, '\n')
-            .trim();
-    }
-
-    // HTML to plain text
-    htmlToText(html) {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const elements = tempDiv.querySelectorAll('*');
-        elements.forEach(function (el) {
-            switch (el.tagName ? el.tagName.toLowerCase() : '') {
-                case 'br':
-                    el.replaceWith('\n');
-                    break;
-                case 'p':
-                case 'div':
-                case 'h1':
-                case 'h2':
-                case 'h3':
-                case 'h4':
-                case 'h5':
-                case 'h6':
-                    el.insertAdjacentText('afterend', '\n\n');
-                    break;
-                case 'li':
-                    el.insertAdjacentText('beforebegin', '• ');
-                    el.insertAdjacentText('afterend', '\n');
-                    break;
-                case 'ul':
-                case 'ol':
-                    el.insertAdjacentText('afterend', '\n');
-                    break;
-                default:
-                    break;
-            }
-        });
-        let textContent = tempDiv.textContent || tempDiv.innerText || '';
-        return textContent
-            .replace(/\n{3,}/g, '\n\n')
-            .replace(/\r\n/g, '\n')
-            .replace(/^\s+|\s+$/gm, '')
-            .replace(/\n\s*\n/g, '\n\n')
-            .trim();
-    }
-
-    // Download helpers
-    download(format, filename) {
-        const timestamp = new Date().toISOString().slice(0, 10);
-        const baseFilename = filename + '_' + timestamp;
-        if (format === 'markdown') this._downloadFile(this.currentContent.markdown, baseFilename + '.md', 'text/markdown');
-        else if (format === 'html') this._downloadFile(this._createStyledHtml(this.currentContent.html), baseFilename + '.html', 'text/html');
-        else if (format === 'txt') this._downloadFile(this.currentContent.txt, baseFilename + '.txt', 'text/plain');
-        else throw new Error('Unsupported format. Use: markdown, html, or txt');
-    }
-
-    async copyToClipboard(format = 'markdown') {
-        let content = this.currentContent.markdown;
-        if (format === 'html') content = this.currentContent.html;
-        else if (format === 'txt') content = this.currentContent.txt;
-        try {
-            await navigator.clipboard.writeText(content);
-            return true;
-        } catch (err) {
-            console.error('Failed to copy to clipboard:', err);
-            return false;
+        // Markdown to plain text
+        markdownToText(markdown) {
+            return markdown
+                .replace(/^#{1,6}\s+/gm, '')
+                .replace(/\*\*(.*?)\*\*/g, '$1')
+                .replace(/\*(.*?)\*/g, '$1')
+                .replace(/__(.*?)__/g, '$1')
+                .replace(/_(.*?)_/g, '$1')
+                .replace(/```[\s\S]*?```/g, function (match) {
+                    return match.replace(/```[a-z]*\n?/gi, '').replace(/```/g, '').trim();
+                })
+                .replace(/`(.*?)`/g, '$1')
+                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+                .replace(/^---+\s*$/gm, '\n') // Convert horizontal rules to line breaks
+                .replace(/^\* /gm, '• ')
+                .replace(/^\- /gm, '• ')
+                .replace(/^\+ /gm, '• ')
+                .replace(/^\d+\. /gm, '')
+                .replace(/\n{3,}/g, '\n\n')
+                .replace(/\r\n/g, '\n')
+                .trim();
         }
-    }
 
-    // Public method to download any content as a file
-    downloadAsFile(content, filename, mimeType = 'text/plain') {
-        this._downloadFile(content, filename, mimeType);
-    }
+        // HTML to plain text
+        htmlToText(html) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            const elements = tempDiv.querySelectorAll('*');
+            elements.forEach(function (el) {
+                switch (el.tagName ? el.tagName.toLowerCase() : '') {
+                    case 'br':
+                        el.replaceWith('\n');
+                        break;
+                    case 'p':
+                    case 'div':
+                    case 'h1':
+                    case 'h2':
+                    case 'h3':
+                    case 'h4':
+                    case 'h5':
+                    case 'h6':
+                        el.insertAdjacentText('afterend', '\n\n');
+                        break;
+                    case 'li':
+                        el.insertAdjacentText('beforebegin', '• ');
+                        el.insertAdjacentText('afterend', '\n');
+                        break;
+                    case 'ul':
+                    case 'ol':
+                        el.insertAdjacentText('afterend', '\n');
+                        break;
+                    default:
+                        break;
+                }
+            });
+            let textContent = tempDiv.textContent || tempDiv.innerText || '';
+            return textContent
+                .replace(/\n{3,}/g, '\n\n')
+                .replace(/\r\n/g, '\n')
+                .replace(/^\s+|\s+$/gm, '')
+                .replace(/\n\s*\n/g, '\n\n')
+                .trim();
+        }
 
-    createDownloadButtons(baseName = 'generated-content') {
-        return `
+        // Download helpers
+        download(format, filename) {
+            const timestamp = new Date().toISOString().slice(0, 10);
+            const baseFilename = filename + '_' + timestamp;
+            if (format === 'markdown') this._downloadFile(this.currentContent.markdown, baseFilename + '.md', 'text/markdown');
+            else if (format === 'html') this._downloadFile(this._createStyledHtml(this.currentContent.html), baseFilename + '.html', 'text/html');
+            else if (format === 'txt') this._downloadFile(this.currentContent.txt, baseFilename + '.txt', 'text/plain');
+            else throw new Error('Unsupported format. Use: markdown, html, or txt');
+        }
+
+        async copyToClipboard(format = 'markdown') {
+            let content = this.currentContent.markdown;
+            if (format === 'html') content = this.currentContent.html;
+            else if (format === 'txt') content = this.currentContent.txt;
+            try {
+                await navigator.clipboard.writeText(content);
+                return true;
+            } catch (err) {
+                console.error('Failed to copy to clipboard:', err);
+                return false;
+            }
+        }
+
+        // Public method to download any content as a file
+        downloadAsFile(content, filename, mimeType = 'text/plain') {
+            this._downloadFile(content, filename, mimeType);
+        }
+
+        createDownloadButtons(baseName = 'generated-content') {
+            return `
             <div class="result-buttons">
                 <button onclick="downloadManager.copyToClipboard('markdown').then(success => downloadManager._showCopyFeedback(event.target, success))" 
                         class="btn-primary btn-download">
@@ -265,20 +268,20 @@ class DownloadManager {
                 </button>
             </div>
         `;
-    }
+        }
 
-    _downloadFile(content, filename, mimeType) {
-        const element = document.createElement('a');
-        const file = new Blob([content], { type: mimeType });
-        element.href = URL.createObjectURL(file);
-        element.download = filename;
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
-    }
+        _downloadFile(content, filename, mimeType) {
+            const element = document.createElement('a');
+            const file = new Blob([content], { type: mimeType });
+            element.href = URL.createObjectURL(file);
+            element.download = filename;
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
 
-    _createStyledHtml(htmlContent) {
-        return `<!DOCTYPE html>
+        _createStyledHtml(htmlContent) {
+            return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -367,24 +370,28 @@ class DownloadManager {
     </div>
 </body>
 </html>`;
-    }
-
-    _showCopyFeedback(button, success) {
-        const originalText = button.innerHTML;
-        const originalStyle = button.style.background;
-        if (success) {
-            button.innerHTML = '✅ Copied!';
-            button.style.background = 'linear-gradient(135deg, #44ff44, #66ff66)';
-        } else {
-            button.innerHTML = '❌ Failed';
-            button.style.background = 'linear-gradient(135deg, #ff4444, #ff6666)';
         }
-        setTimeout(function () {
-            button.innerHTML = originalText;
-            button.style.background = originalStyle;
-        }, 2000);
-    }
-}
 
-// Create global instance
-window.downloadManager = new DownloadManager();
+        _showCopyFeedback(button, success) {
+            const originalText = button.innerHTML;
+            const originalStyle = button.style.background;
+            if (success) {
+                button.innerHTML = '✅ Copied!';
+                button.style.background = 'linear-gradient(135deg, #44ff44, #66ff66)';
+            } else {
+                button.innerHTML = '❌ Failed';
+                button.style.background = 'linear-gradient(135deg, #ff4444, #ff6666)';
+            }
+            setTimeout(function () {
+                button.innerHTML = originalText;
+                button.style.background = originalStyle;
+            }, 2000);
+        }
+    };
+
+} // End of DownloadManager class definition guard
+
+// Create global instance (only if not already created)
+if (!window.downloadManager) {
+    window.downloadManager = new window.DownloadManager();
+}
