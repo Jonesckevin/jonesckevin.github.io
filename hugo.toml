@@ -35,6 +35,9 @@ ignoreLogs = ['warning-goldmark-raw-html']
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
 
+  # Theme settings
+  defaultTheme = "dark"              # Set default theme: "light", "dark", or "auto" (follows system preference)
+
   homeSubtitle = "The Posts, The WriteUps, The CTFs, The Enjoyment"         # Subtitle for home page
   disableReadOtherPosts = true       # Set disableReadOtherPosts to true in order to hide the links to other posts.
   enableSharingButtons = true        # Enable sharing buttons, if you like
