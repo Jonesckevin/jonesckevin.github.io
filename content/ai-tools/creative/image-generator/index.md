@@ -195,7 +195,7 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
     <div class="image-wrapper">
       <img id="generatedImage" alt="AI Generated Image" />
       <div class="image-overlay">
-        <button class="overlay-btn" onclick="viewFullImage()" title="View Full Size">
+        <button class="overlay-btn" onclick="window.openImageModal()" title="View Full Size">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
           </svg>
@@ -222,18 +222,18 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
 
   <div class="prompt-used">
     <h4>Prompt Used:</h4>
-    <p id="promptUsed"></p>
+    <p id="imagePromptUsed"></p>
   </div>
 
   <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-    <button class="btn-primary btn-download" onclick="downloadImage()">
+    <button class="btn-primary btn-download" onclick="window.downloadImage(event)">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
       </svg>
       Download Image
     </button>
-    <button class="btn-primary btn-download" onclick="copyPrompt()">Copy Prompt</button>
-    <button class="btn-primary btn-download" onclick="regenerateImage()">
+    <button class="btn-primary btn-download" onclick="window.copyPromptToClipboard(event)">Copy Prompt</button>
+    <button class="btn-primary btn-download" onclick="window.regenerateImage()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M1 4v6h6M23 20v-6h-6"/>
         <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>

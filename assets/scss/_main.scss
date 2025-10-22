@@ -470,7 +470,7 @@ hr {
 
 // Details/Summary Dropdown Styles - Enhanced Prominence
 details {
-  margin: 1.5em 0;
+  margin: 1em 0;
   padding: 0;
   border: 2px solid var(--accent, #d4af37);
   border-radius: 8px;
@@ -583,7 +583,7 @@ details[open] summary {
 details>*:not(summary) {
   padding: 1.5rem;
   animation: slideDown 0.3s ease-out;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  //border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes slideDown {

@@ -339,7 +339,7 @@ Please provide a JSON response with the following structure:
         let imgElement = document.getElementById('generatedImage');
         if (resultDiv && !imgElement) {
             console.log('generatedImage element missing, creating structure...');
-            
+
             // Create the complete result structure
             resultDiv.innerHTML = `
                 <h2>Generated Image</h2>
@@ -358,7 +358,7 @@ Please provide a JSON response with the following structure:
                     <p><strong>Prompt:</strong> <span id="imagePromptUsed"></span></p>
                 </div>
             `;
-            
+
             imgElement = document.getElementById('generatedImage');
         }
 
@@ -383,7 +383,7 @@ Please provide a JSON response with the following structure:
         const imageSizeEl = document.getElementById('imageSize');
         const imageStyleUsedEl = document.getElementById('imageStyleUsed');
         const imagePromptUsedEl = document.getElementById('imagePromptUsed');
-        
+
         if (imageModelEl) imageModelEl.textContent = model;
         if (imageSizeEl) {
             const dimensions = getImageDimensions(aspectRatio);
@@ -452,7 +452,7 @@ Please provide a JSON response with the following structure:
     window.copyPromptToClipboard = async function (event) {
         const promptElement = document.getElementById('imagePromptUsed');
         const promptText = promptElement ? promptElement.textContent : currentPrompt;
-        
+
         if (!promptText) {
             alert('No prompt to copy');
             return;
