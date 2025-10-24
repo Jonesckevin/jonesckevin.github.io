@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Resume Builder - Create Professional ATS-Optimized Resumes"
 canonical: "/ai-tools/core-services/resume-builder/"
-#featured_image: "/images/ai-tools/resume-builder.png"
+featured_image: "/images/featured/aitools/resume-builder.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Resume Builder - Professional Resume Generator"
   og_description: "Create professional, ATS-optimized resumes with our free AI-powered resume builder. Transform documents into polished resumes instantly."
-  og_image: "/images/ai-tools/resume-builder-social.png"
+  og_image: "/images/featured/aitools/resume-builder.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Resume Builder Tool"
   twitter_description: "Create professional ATS-optimized resumes with AI. Free resume generator for job applications."
-  twitter_image: "/images/ai-tools/resume-builder-twitter.png"
+  twitter_image: "/images/featured/aitools/resume-builder.png"
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">

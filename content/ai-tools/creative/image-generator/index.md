@@ -12,19 +12,19 @@ categories: ["AI Tools", "Image Generation"]
 type: ai-tools
 seo_title: "Free AI Image Generator - Create Art with AI Online"
 canonical: "/ai-tools/creative/image-generator/"
-#featured_image: "/images/ai-tools/image-generator.png"
+featured_image: "/images/featured/aitools/image-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Image Generator - Create Stunning Art with AI"
   og_description: "Generate beautiful images using advanced AI models. Create art, illustrations, and visual content with detailed prompts."
-  #og_image: "/images/ai-tools/image-generator-social.png"
+  og_image: "/images/featured/aitools/image-generator.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Image Generator"
   twitter_description: "Create stunning images with AI. Generate unique artwork and illustrations from text prompts."
-  #twitter_image: "/images/ai-tools/image-generator-twitter.png"
+  twitter_image: "/images/featured/aitools/image-generator.png"
 ---
 
 <link rel="stylesheet" href="image-generator.css">

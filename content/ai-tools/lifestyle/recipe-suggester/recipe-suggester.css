@@ -196,6 +196,7 @@ select option {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -246,6 +247,7 @@ select option {
 
 /* Print styles */
 @media print {
+
     .tooltip .tooltiptext,
     .helper-text,
     form,

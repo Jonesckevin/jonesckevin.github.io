@@ -11,19 +11,19 @@ categories: ["AI Tools", "Lifestyle"]
 type: ai-tools
 seo_title: "Free AI Recipe Suggester - Get Meal Ideas from Your Ingredients"
 canonical: "/ai-tools/lifestyle/recipe-suggester/"
-#featured_image: "/images/featured/aitools/recipe-suggester.png"
+featured_image: "/images/featured/aitools/meal-suggester.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Recipe & Meal Suggester - Turn Ingredients into Meals"
   og_description: "Transform your available ingredients into creative meal ideas with AI. Get personalized recipe suggestions for any meal type."
-  #og_image: "/images/featured/aitools/recipe-suggester.png"
+  og_image: "/images/featured/aitools/meal-suggester.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Recipe Suggester Tool"
   twitter_description: "Turn your ingredients into delicious meals with AI-powered recipe suggestions."
-  #twitter_image: "/images/featured/aitools/recipe-suggester.png"
+  twitter_image: "/images/featured/aitools/meal-suggester.png"
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">

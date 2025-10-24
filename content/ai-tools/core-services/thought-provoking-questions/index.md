@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Interview Questions Generator - Thought-Provoking Questions"
 canonical: "/ai-tools/core-services/thought-provoking-questions/"
-#featured_image: "/images/ai-tools/thought-provoking-questions.png"
+featured_image: "/images/featured/aitools/interview-questions.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Interview Questions Generator - Thought-Provoking Questions"
   og_description: "Generate insightful interview questions that reveal judgment and depth. Perfect for hiring managers and interview preparation."
-  og_image: "/images/ai-tools/thought-provoking-questions-social.png"
+  og_image: "/images/featured/aitools/interview-questions-social.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Interview Questions Generator"
   twitter_description: "Create thought-provoking interview questions with AI. Perfect for hiring managers and candidate evaluation."
-  twitter_image: "/images/ai-tools/thought-provoking-questions-twitter.png"
+  twitter_image: "/images/featured/aitools/interview-questions-twitter.png"
 ---
 
 

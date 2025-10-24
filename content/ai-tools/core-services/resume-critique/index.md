@@ -12,7 +12,7 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Resume Critique - Professional Resume Analysis & Review"
 canonical: "/ai-tools/core-services/resume-critique/"
-#featured_image: "/images/ai-tools/resume-critique.png"
+featured_image: "/images/featured/aitools/resume-analysis.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
@@ -24,7 +24,7 @@ social_media:
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Resume Critique Tool"
   twitter_description: "Professional resume analysis with AI. Get detailed feedback and scoring to improve your job applications."
-  twitter_image: "/images/ai-tools/resume-critique-twitter.png"
+  twitter_image: "/images/featured/aitools/resume-analysis.png"
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">

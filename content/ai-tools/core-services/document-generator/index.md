@@ -12,19 +12,19 @@ categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Business Document Generator - Professional Templates"
 canonical: "/ai-tools/core-services/document-generator/"
-#featured_image: "/images/ai-tools/document-generator.png"
+featured_image: "/images/featured/aitools/business-document.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Business Document Generator - Professional Templates"
   og_description: "Generate professional business documents with AI. Create contracts, proposals, and policies with industry-standard formatting."
-  og_image: "/images/ai-tools/document-generator-social.png"
+  og_image: "/images/featured/aitools/business-document.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Business Document Generator"
-  twitter_description: "Create professional business documents with AI. Contracts, proposals, policies, and more with perfect formatting."  
-  twitter_image: "/images/ai-tools/document-generator-twitter.png"
+  twitter_description: "Create professional business documents with AI. Contracts, proposals, policies, and more with perfect formatting."
+  twitter_image: "/images/featured/aitools/business-document.png"
 ---
 
 
