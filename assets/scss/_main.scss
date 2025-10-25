@@ -320,6 +320,7 @@ ul,
 ol {
   margin-left: 40px;
   padding: 0;
+  text-align: left;
 
   @media #{$media-size-phone} {
     margin-left: 20px;
@@ -581,7 +582,7 @@ details[open] summary {
 
 // Content inside details
 details>*:not(summary) {
-  padding: 1.5rem;
+  padding: 0.9rem;
   animation: slideDown 0.3s ease-out;
   //border-top: 1px solid rgba(255, 255, 255, 0.1);
 }

@@ -25,18 +25,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Validate API key format
+    // Validate API key using shared utils (supports mistral, custom, etc.)
     function validateApiKey(apiKey, provider) {
-        if (!apiKey) return false;
-
-        const patterns = {
-            'openai': /^sk-[A-Za-z0-9_-]+$/,
-            'deepseek': /^sk-[A-Za-z0-9_-]+$/,
-            'anthropic': /^sk-ant-[A-Za-z0-9_-]+$/,
-            'grok': /^xai-[A-Za-z0-9_-]+$/
-        };
-
-        return patterns[provider] ? patterns[provider].test(apiKey) : false;
+        if (window.utils && typeof window.utils.validateApiKey === 'function') {
+            return window.utils.validateApiKey(apiKey, provider);
+        }
+        // Fallback minimal check if utils not loaded
+        return !!apiKey;
     }
 
     // Global functions for intensity sliders
@@ -106,8 +101,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function convertVoice() {
-        const apiKey = document.getElementById('ai-key').value.trim();
-        const aiProvider = document.getElementById('ai-provider').value;
+        // Prefer global AI Settings from apiManager; fall back to header inputs if needed
+        const aiProvider = (window.apiManager && window.apiManager.getProvider && window.apiManager.getProvider())
+            || (document.getElementById('ai-provider')?.value) || 'openai';
+        const apiKey = (window.apiManager && window.apiManager.getApiKey && window.apiManager.getApiKey())
+            || (document.getElementById('ai-key')?.value?.trim()) || '';
         const originalText = document.getElementById('originalText').value.trim();
         const voiceStyle = document.getElementById('voiceStyle').value;
         const customVoice = document.getElementById('customVoice').value.trim();
@@ -120,12 +118,27 @@ document.addEventListener('DOMContentLoaded', function () {
         const addMannerisms = document.getElementById('addMannerisms').checked;
         const includeDialogueTags = document.getElementById('includeDialogueTags').checked;
 
-        // Validation
-        if (!validateApiKey(apiKey, aiProvider)) {
-            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', grok: 'Grok (X.AI)' };
-            document.getElementById('errorDiv').innerHTML = `<div class="error-message">Please enter a valid ${providerNames[aiProvider]} API key in the AI Provider section at the top of the page.</div>`;
+        // Provider/key validation with clear messaging
+        if (!aiProvider) {
+            document.getElementById('errorDiv').innerHTML = `<div class="error-message">Please select an AI provider in the AI Settings (top right) before converting.</div>`;
             document.getElementById('errorDiv').style.display = 'block';
             return;
+        }
+
+        if (!validateApiKey(apiKey, aiProvider)) {
+            let providerLabel = aiProvider;
+            try {
+                providerLabel = (window.apiManager && window.apiManager.getProviderConfig(aiProvider)?.name) || aiProvider;
+            } catch (_) { }
+
+            // For Custom provider, key is optional; if we get here for custom, bypass message
+            if (aiProvider === 'custom') {
+                // proceed without error
+            } else {
+                document.getElementById('errorDiv').innerHTML = `<div class="error-message">Please enter a valid ${providerLabel} API key in the AI Settings (top right).</div>`;
+                document.getElementById('errorDiv').style.display = 'block';
+                return;
+            }
         }
 
         if (!originalText) {
@@ -260,8 +273,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!currentResult) return;
 
         const originalText = document.getElementById('originalText').value.trim();
-        const apiKey = document.getElementById('ai-key').value.trim();
-        const aiProvider = document.getElementById('ai-provider').value;
+        const aiProvider = (window.apiManager && window.apiManager.getProvider && window.apiManager.getProvider())
+            || (document.getElementById('ai-provider')?.value) || 'openai';
+        const apiKey = (window.apiManager && window.apiManager.getApiKey && window.apiManager.getApiKey())
+            || (document.getElementById('ai-key')?.value?.trim()) || '';
 
         document.getElementById('loadingDiv').style.display = 'block';
 
@@ -279,28 +294,35 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('errorDiv').innerHTML = `<div class="error-message">Error: ${error.message}</div>`;
             document.getElementById('errorDiv').style.display = 'block';
         }
-    } function copyResult() {
+    }
+
+    function copyResult(evt) {
+        const btn = evt?.target;
+        if (window.utils && typeof window.utils.copyWithFeedback === 'function' && btn) {
+            window.utils.copyWithFeedback(currentResult, btn);
+            return;
+        }
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(currentResult).then(() => {
-                // Show success feedback
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = '✓ Copied!';
-                button.style.background = '#28a745';
+                if (!btn) return;
+                const originalText = btn.textContent;
+                const originalBg = btn.style.background;
+                btn.textContent = '✓ Copied!';
+                btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
                 setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '#ff6b35';
+                    btn.textContent = originalText;
+                    btn.style.background = originalBg || '';
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
-                fallbackCopyTextToClipboard(currentResult);
+                fallbackCopyTextToClipboard(currentResult, btn);
             });
         } else {
-            fallbackCopyTextToClipboard(currentResult);
+            fallbackCopyTextToClipboard(currentResult, btn);
         }
     }
 
-    function fallbackCopyTextToClipboard(text) {
+    function fallbackCopyTextToClipboard(text, btn) {
         const textArea = document.createElement("textarea");
         textArea.value = text;
         textArea.style.top = "0";
@@ -312,14 +334,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
             const successful = document.execCommand('copy');
-            if (successful) {
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = '✓ Copied!';
-                button.style.background = '#28a745';
+            if (successful && btn) {
+                const originalText = btn.textContent;
+                const originalBg = btn.style.background;
+                btn.textContent = '✓ Copied!';
+                btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
                 setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '#ff6b35';
+                    btn.textContent = originalText;
+                    btn.style.background = originalBg || '';
                 }, 2000);
             }
         } catch (err) {
@@ -329,45 +351,37 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.removeChild(textArea);
     }
 
-    function downloadResult(format) {
+    function downloadResult(format, evt) {
         const voiceStyle = document.getElementById('voiceStyle').value || 'voice-conversion';
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-        const filename = `voice-conversion_${voiceStyle}_${timestamp}`;
+        const base = `voice-conversion_${voiceStyle}_${new Date().toISOString().slice(0, 10)}`;
 
-        let content = currentResult;
-        let mimeType = 'text/plain';
-        let extension = 'txt';
-
-        if (format === 'markdown') {
-            content = `# Character Voice Conversion\n\n${currentResult}`;
-            mimeType = 'text/markdown';
-            extension = 'md';
-        } else if (format === 'html') {
-            content = `<!DOCTYPE html>
-<html>
-<head>
-    <title>Character Voice Conversion</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <h1>Character Voice Conversion</h1>
-    <div>${currentResult.replace(/\n/g, '<br>')}</div>
-</body>
-</html>`;
-            mimeType = 'text/html';
-            extension = 'html';
+        if (window.downloadManager) {
+            window.downloadManager.setContent(currentResult, 'markdown');
+            if (format === 'markdown') window.downloadManager.download('markdown', base);
+            else if (format === 'html') window.downloadManager.download('html', base);
+        } else {
+            // Fallback simple download as text
+            const blob = new Blob([currentResult], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `${base}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
 
-        const blob = new Blob([content], { type: mimeType });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = `${filename}.${extension}`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        // Button feedback
+        const btn = evt?.target;
+        if (btn) {
+            const originalText = btn.innerHTML;
+            const originalBg = btn.style.background;
+            btn.innerHTML = '⬇️ Saved!';
+            btn.style.background = 'linear-gradient(135deg, #17a2b8, #20c997)';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = originalBg || '';
+            }, 1500);
+        }
     }
 
     function resetForm() {

@@ -28,7 +28,7 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="/ai-tools/core-services/resume-critique/resume-critique.css">
+<link rel="stylesheet" href="resume-critique.css">
 
 <h1 style="text-align: center; margin-bottom: 20px; color: #ff6b35;">AI Resume Critique & Enhancement</h1>
 <p style="text-align: center; margin-bottom: 40px; opacity: 0.9; font-size: 1.1rem; line-height: 1.6;">

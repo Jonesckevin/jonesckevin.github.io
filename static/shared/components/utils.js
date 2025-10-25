@@ -55,6 +55,8 @@ window.utils = {
                 }
             </style>
         `;
+        container.style.display = 'block';
+        try { container.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (_) { }
     },
 
     // Error state management
@@ -67,6 +69,8 @@ window.utils = {
                 <div>${message}</div>
             </div>
         `;
+        container.style.display = 'block';
+        try { container.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (_) { }
     },
 
     // Success state management
@@ -79,57 +83,180 @@ window.utils = {
                 <div>${message}</div>
             </div>
         `;
+        container.style.display = 'block';
+        try { container.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (_) { }
     },
 
-    // Content formatting helpers
+    // Content formatting helpers (robust Markdown -> HTML)
     formatMarkdown(content) {
-        if (!content) return '';
+        if (!content || typeof content !== 'string') return '';
 
-        let html = content
-            .replace(/\n{3,}/g, '\n\n') // Remove excessive newlines
-            .replace(/^[\s\n]+|[\s\n]+$/g, ''); // Trim
+        const lines = content.replace(/\r\n?/g, '\n').split('\n');
+        const out = [];
 
-        // Headers (must come before bold formatting)
-        html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
-        html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
-        html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+        let inParagraph = false;
+        let inOl = false;
+        let inUl = false;
+        let inBlockquote = false;
+        let inCode = false;
+        let codeLang = '';
+        let codeBuffer = [];
 
-        // Lists - Ordered lists
-        html = html.replace(/^\d+\.\s+(.*$)/gm, '<li>$1</li>');
-        html = html.replace(/(<li>.*<\/li>)/s, '<ol>$1</ol>');
-
-        // Lists - Unordered lists  
-        html = html.replace(/^[-*+]\s+(.*$)/gm, '<li>$1</li>');
-        html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
-
-        // Fix nested lists
-        html = html.replace(/<\/ol>\s*<ol>/g, '');
-        html = html.replace(/<\/ul>\s*<ul>/g, '');
-
-        // Bold and italic
-        html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-        html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-        // Inline code
-        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-        // Links
-        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-
-        // Blockquotes
-        html = html.replace(/^>\s+(.*$)/gm, '<blockquote>$1</blockquote>');
-
-        // Paragraphs - split by double newlines and wrap in <p> tags
-        const paragraphs = html.split(/\n\s*\n/);
-        html = paragraphs.map(p => {
-            p = p.trim();
-            if (!p) return '';
-            // Don't wrap if it's already a block element
-            if (p.match(/^<(h[1-6]|ul|ol|blockquote|div)/)) {
-                return p;
+        function closeParagraph() {
+            if (inParagraph) {
+                out.push('</p>');
+                inParagraph = false;
             }
-            return `<p>${p.replace(/\n/g, '<br>')}</p>`;
-        }).filter(p => p).join('\n');
+        }
+        function closeLists() {
+            if (inOl) { out.push('</ol>'); inOl = false; }
+            if (inUl) { out.push('</ul>'); inUl = false; }
+        }
+        function closeBlockquote() {
+            if (inBlockquote) { out.push('</blockquote>'); inBlockquote = false; }
+        }
+        function flushCode() {
+            if (inCode) {
+                const langClass = codeLang ? ` class="language-${codeLang.toLowerCase()}"` : '';
+                const escaped = codeBuffer.join('\n').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+                out.push(`<pre><code${langClass}>${escaped}\n</code></pre>`);
+                inCode = false; codeLang = ''; codeBuffer = [];
+            }
+        }
+
+        // Inline transformers
+        const inline = (text) => {
+            if (!text) return '';
+            // Inline code first to protect contents from further formatting
+            text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+            // Links [text](url)
+            text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+            // Bold (**text**) and (__text__)
+            text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            // Underscore bold with word-boundary-like guards to avoid mid-word underscores
+            text = text.replace(/(^|[^A-Za-z0-9_])__([^_][\s\S]*?)__(?![A-Za-z0-9_])/g, '$1<strong>$2</strong>');
+            // Italic with asterisk (*text*)
+            text = text.replace(/(^|[^A-Za-z0-9*])\*([^*\n][^*]*?)\*(?!\*)/g, '$1<em>$2</em>');
+            // Italic with underscore (_text_) with guards to avoid mid-word matches and double underscores
+            text = text.replace(/(^|[^A-Za-z0-9_])_([^_\n][^_]*?)_(?!_)/g, '$1<em>$2</em>');
+            return text;
+        };
+
+        for (let i = 0; i < lines.length; i++) {
+            let line = lines[i];
+
+            // Fenced code blocks ```lang
+            const fenceMatch = line.match(/^```\s*([A-Za-z0-9_+-]*)\s*$/);
+            if (fenceMatch) {
+                if (inCode) {
+                    // closing fence
+                    flushCode();
+                } else {
+                    // opening fence
+                    closeParagraph();
+                    closeLists();
+                    closeBlockquote();
+                    inCode = true;
+                    codeLang = fenceMatch[1] || '';
+                }
+                continue;
+            }
+
+            if (inCode) { codeBuffer.push(line); continue; }
+
+            // Horizontal rule
+            if (/^\s*([-*_]){3,}\s*$/.test(line)) {
+                closeParagraph();
+                closeLists();
+                closeBlockquote();
+                out.push('<hr>');
+                continue;
+            }
+
+            // Headings
+            const hMatch = line.match(/^(#{1,6})\s+(.+)$/);
+            if (hMatch) {
+                const level = hMatch[1].length;
+                const text = inline(hMatch[2].trim());
+                closeParagraph();
+                closeLists();
+                closeBlockquote();
+                out.push(`<h${level}>${text}</h${level}>`);
+                continue;
+            }
+
+            // Blockquote (single level)
+            const bqMatch = line.match(/^>\s?(.*)$/);
+            if (bqMatch) {
+                closeParagraph();
+                closeLists();
+                if (!inBlockquote) { out.push('<blockquote>'); inBlockquote = true; }
+                const text = inline(bqMatch[1]);
+                out.push(`<p>${text}</p>`);
+                continue;
+            } else {
+                // Close blockquote if previously open and current line isn't a quote
+                if (inBlockquote && line.trim() !== '') {
+                    closeBlockquote();
+                }
+            }
+
+            // Ordered list
+            let olMatch = line.match(/^\s*\d+\.\s+(.+)$/);
+            if (olMatch) {
+                closeParagraph();
+                if (inUl) { out.push('</ul>'); inUl = false; }
+                if (!inOl) { out.push('<ol>'); inOl = true; }
+                out.push(`<li>${inline(olMatch[1].trim())}</li>`);
+                continue;
+            }
+
+            // Unordered list
+            let ulMatch = line.match(/^\s*[-*+]\s+(.+)$/);
+            if (ulMatch) {
+                closeParagraph();
+                if (inOl) { out.push('</ol>'); inOl = false; }
+                if (!inUl) { out.push('<ul>'); inUl = true; }
+                out.push(`<li>${inline(ulMatch[1].trim())}</li>`);
+                continue;
+            }
+
+            // Blank line: close paragraph and blockquote (keep lists until a non-list line)
+            if (line.trim() === '') {
+                closeParagraph();
+                if (inBlockquote) closeBlockquote();
+                continue;
+            }
+
+            // Normal paragraph text
+            const text = inline(line.trim());
+            if (!inParagraph) {
+                closeLists(); // lists end when a normal paragraph starts
+                out.push('<p>');
+                inParagraph = true;
+                out.push(text);
+            } else {
+                out.push('<br>' + text);
+            }
+        }
+
+        // Flush any open blocks
+        flushCode();
+        closeParagraph();
+        closeLists();
+        closeBlockquote();
+
+        const html = out.join('\n');
+
+        // Optional: trigger Prism highlighting if available
+        try {
+            if (window.Prism) {
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                window.Prism.highlightAllUnder(temp);
+                return temp.innerHTML;
+            }
+        } catch (_) { }
 
         return html;
     },

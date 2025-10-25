@@ -140,8 +140,9 @@ Rewards for success
 <div class="result-header">
 <h2>Generated Trap/Puzzle</h2>
 <div class="action-buttons">
-<button onclick="copyResult()" class="copy-btn">📋 Copy</button>
-<button onclick="downloadResult('txt')" class="download-btn">💾 Download</button>
+<button onclick="copyResult(event)" class="copy-btn">📋 Copy</button>
+<button onclick="downloadResult('markdown', event)" class="download-btn">� MD</button>
+<button onclick="downloadResult('html', event)" class="download-btn">🌐 HTML</button>
 </div>
 </div>
 <div id="resultContent" class="result-content"></div>

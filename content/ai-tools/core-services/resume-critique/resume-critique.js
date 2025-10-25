@@ -132,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log('Using global API manager');
         const aiProvider = window.apiManager.getProvider();
+        const apiKey = window.apiManager.getApiKey && window.apiManager.getApiKey();
         console.log('Provider:', aiProvider);
 
         // API key validation is handled by apiManager
@@ -299,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const aiProvider = window.apiManager.getProvider();
+        const apiKey = window.apiManager.getApiKey && window.apiManager.getApiKey();
         console.log('Using global API manager for enhancement');
 
         // API key validation is handled by apiManager

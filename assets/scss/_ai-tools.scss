@@ -104,6 +104,12 @@
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, var(--accent-soft) 100%);
     padding: 30px;
     position: relative;
+    text-align: left; // Ensure result text is left-aligned by default
+
+    // Common results container used by tools
+    .result-content {
+        text-align: left;
+    }
 
     &::before {
         content: '📊 Results & Output';

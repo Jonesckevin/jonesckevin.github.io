@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Validation
         if (!utils.validateApiKey(apiKey, aiProvider)) {
-            const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic' };
-            utils.showError(document.getElementById('errorDiv'), `Please enter a valid ${providerNames[aiProvider]} API key`);
+            let providerLabel = aiProvider;
+            try { providerLabel = (window.apiManager && window.apiManager.getProviderConfig(aiProvider)?.name) || aiProvider; } catch (_) { }
+            utils.showError(document.getElementById('errorDiv'), `Please enter a valid ${providerLabel} API key`);
             document.getElementById('errorDiv').style.display = 'block';
             return;
         }
@@ -194,22 +195,27 @@ Create something memorable that players will talk about after the session!`;
         }
     }
 
-    function copyResult() {
-        utils.copyToClipboard(currentResult).then(success => {
-            if (success) {
-                const button = event.target;
-                const originalText = button.innerHTML;
-                button.innerHTML = '✅ Copied!';
-                button.style.background = 'linear-gradient(135deg, #44ff44, #66ff66)';
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-                }, 2000);
-            }
-        });
+    function copyResult(evt) {
+        const btn = evt?.target;
+        if (window.utils && typeof window.utils.copyWithFeedback === 'function' && btn) {
+            window.utils.copyWithFeedback(currentResult, btn);
+        } else {
+            utils.copyToClipboard(currentResult).then(success => {
+                if (success && btn) {
+                    const originalText = btn.innerHTML;
+                    const originalBg = btn.style.background;
+                    btn.innerHTML = '✅ Copied!';
+                    btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.background = originalBg || '';
+                    }, 2000);
+                }
+            });
+        }
     }
 
-    function downloadResult(format) {
+    function downloadResult(format, evt) {
         const generationType = document.getElementById('generationType').value || 'trap-puzzle';
         const setting = document.getElementById('setting').value || 'dungeon';
         const timestamp = new Date().toISOString().slice(0, 10);
@@ -217,14 +223,24 @@ Create something memorable that players will talk about after the session!`;
         // Set content in download manager
         downloadManager.setContent(currentResult, 'markdown');
 
-        switch (format) {
-            case 'txt':
-            case 'markdown':
-                downloadManager.download('markdown', `trap_puzzle_${generationType}_${setting}_${timestamp}`);
-                break;
-            case 'html':
-                downloadManager.download('html', `trap_puzzle_${generationType}_${setting}_${timestamp}`);
-                break;
+        const base = `trap_puzzle_${generationType}_${setting}_${timestamp}`;
+        if (format === 'markdown') {
+            downloadManager.download('markdown', base);
+        } else if (format === 'html') {
+            downloadManager.download('html', base);
+        }
+
+        // Button feedback
+        const btn = evt?.target;
+        if (btn) {
+            const originalText = btn.innerHTML;
+            const originalBg = btn.style.background;
+            btn.innerHTML = '⬇️ Saved!';
+            btn.style.background = 'linear-gradient(135deg, #17a2b8, #20c997)';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = originalBg || '';
+            }, 1500);
         }
     }
 
