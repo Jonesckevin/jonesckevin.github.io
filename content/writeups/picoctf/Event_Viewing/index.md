@@ -1,8 +1,10 @@
 ---
 title: Event Viewing
 summary: A detailed writeup for the "Event Viewing" challenge from picoCTF, covering the analysis of Windows Event Logs to uncover hidden flags.
-keywords: ["picoCTF", "Event Viewing", "Windows Event Logs", "Forensics", "PCAP Analysis", "Cybersecurity Challenges", "picoCTF Writeup", "Flag Retrieval", "Malware Analysis"]
+description: "A detailed picoCTF Event Viewing write-up analyzing Windows Event Logs to uncover hidden flags, with step-by-step investigation and tooling."
+keywords: ["picoCTF", "Event Viewing", "Windows Event Logs", "Forensics", "PCAP Analysis", "Cybersecurity Challenges", "picoCTF Writeup", "Flag Retrieval"]
 date: 2025-10-24
+lastmod: 2025-10-24
 author: JonesCKevin
 tags:
   - PicoCTF
@@ -11,6 +13,12 @@ tags:
   - Windows Logs
   - Write-Up
   - Flag
+type: writeups
+categories: ["Writeups"]
+seo_title: "Event Viewing - picoCTF Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

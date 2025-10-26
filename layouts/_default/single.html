@@ -210,9 +210,25 @@
     }
 
     .post-content table {
+        display: block;
+        /* Change to block to take full width */
         width: 100%;
+        /* Set width to 100% */
+        max-width: 100%;
         margin: 2rem 0;
         border-collapse: collapse;
+        table-layout: auto;
+        /* allow natural column sizing */
+    }
+
+    .post-content table th,
+    .post-content table td {
+        white-space: normal;
+        /* allow wrapping */
+        overflow-wrap: anywhere;
+        /* break long strings/URLs */
+        word-break: break-word;
+        /* fallback for older browsers */
     }
 
     .post-content table th,
