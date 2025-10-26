@@ -27,4 +27,11 @@ schemaName: "Docker Containers Collection"
 schemaDescription: "Docker and Portainer container configurations and documentation"
 schemaItemType: "SoftwareSourceCode"
 schemaProgrammingLanguage: "Docker"
+# Defaults applied to all child pages unless overridden
+type: "dockers"
+categories: ["Docker"]
+draft: false
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+schema_type: "SoftwareApplication"
 ---

@@ -1,8 +1,14 @@
 ---
-title: CyberChef
-description: A web app for analyzing and decoding data.
-tags: [cyberchef, web app, data analysis, decoding, encoding,
-  encryption, decryption, data manipulation]
+title: "CyberChef - The Cyber Swiss Army Knife"
+description: "CyberChef is a web-based data analysis and decoding tool for encryption, encoding, compression, and data manipulation. Perfect for cybersecurity professionals, developers, and data analysts running in Docker."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker"]
+tags: ["cyberchef", "web app", "data analysis", "decoding", "encoding", "encryption", "decryption", "data manipulation", "cybersecurity", "forensics", "hashing", "base64", "hex"]
+keywords: ["cyberchef docker", "data decoding tool", "encryption analysis", "cybersecurity tools", "data manipulation web app"]
+slug: "cyberchef-data-analysis"
+draft: false
 ---
 
 Cyberchef is a web app for analyzing and decoding data. It provides a wide range of tools for encoding, decoding, encrypting, decrypting, and manipulating data in various formats.

@@ -1,7 +1,14 @@
 ---
-title: Velociraptor
-description: A web-based tool for endpoint visibility and management.
-tags: [velociraptor, endpoint management, visibility, web app, security, monitoring, open source, self-hosted]
+title: "Velociraptor - Endpoint Visibility & Digital Forensics"
+description: "Velociraptor is an advanced endpoint monitoring and digital forensics tool. Hunt threats, collect artifacts, and perform incident response across your entire fleet with VQL queries."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "Artifacts"]
+tags: ["velociraptor", "endpoint management", "digital forensics", "dfir", "endpoint visibility", "web app", "security", "monitoring", "open source", "self-hosted", "threat hunting", "incident response", "edr"]
+keywords: ["velociraptor docker", "endpoint detection", "digital forensics tool", "threat hunting", "velociraptor edr"]
+slug: "velociraptor-endpoint-forensics"
+draft: false
 ---
 
 Velociraptor is a web-based tool designed for endpoint visibility and management. It provides a user-friendly interface for monitoring and managing endpoints, making it an essential tool for security professionals and system administrators.

@@ -1,8 +1,14 @@
 ---
-title: Draw.io
-description: A web-based diagramming tool for creating flowcharts, UML diagrams, and more.
-tags: [draw.io, diagramming, flowcharts, UML, web app, collaboration,
-  design, visualization, prototyping]
+title: "Draw.io - Diagram & Flowchart Editor"
+description: "Draw.io (diagrams.net) is a free, open-source diagramming tool for flowcharts, UML, network diagrams, and more. Self-hosted alternative to Visio and Lucidchart."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "AI Tools"]
+tags: ["drawio", "diagrams.net", "diagramming", "flowcharts", "uml", "web app", "collaboration", "design", "visualization", "prototyping", "network diagrams", "visio alternative", "open source"]
+keywords: ["drawio docker", "diagrams.net", "self-hosted diagramming", "flowchart tool", "visio alternative"]
+slug: "drawio-diagram-editor"
+draft: false
 ---
 
 Draw.io is a web-based diagramming tool that allows users to create flowcharts, UML diagrams, and various other types of visual representations. It is designed for collaboration and can be used for prototyping, design, and visualization tasks.

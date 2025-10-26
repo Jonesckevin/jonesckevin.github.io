@@ -1,7 +1,14 @@
 ---
-title: Paperless-ngx
-description: A document management system for archiving and managing digital documents.
-tags: [paperless, document management, archiving, digital documents, web app, open source, productivity, self-hosted]
+title: "Paperless-ngx - Document Management System"
+description: "Paperless-ngx is a powerful document management system with OCR, tagging, and full-text search. Scan, archive, and organize all your documents in a self-hosted paperless office."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "AI Tools"]
+tags: ["paperless", "document management", "archiving", "digital documents", "web app", "open source", "productivity", "self-hosted", "ocr", "document scanning", "pdf management", "paperless office", "organization"]
+keywords: ["paperless-ngx docker", "document management system", "ocr docker", "paperless office", "document archive"]
+slug: "paperless-ngx-document-management"
+draft: false
 ---
 
 Paperless-ngx is a document management system designed for archiving and managing digital documents. It allows users to scan, upload, and organize documents efficiently, providing features like OCR (Optical Character Recognition) to make documents searchable. Paperless-ngx is self-hosted, ensuring data privacy and control over your documents.

@@ -1,12 +1,19 @@
 ---
-title: Linkwarden
-description: A self-hosted password manager that integrates with Bitwarden.
-tags: [linkwarden, password manager, self-hosted, bitwarden, security, web app, open source, docker]
+title: "Linkwarden - Bookmark & Link Manager"
+description: "Linkwarden is a self-hosted bookmark manager for saving and organizing web links with tags, archives, and collaboration. Privacy-focused alternative to Pocket and Raindrop."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "AI Tools"]
+tags: ["linkwarden", "bookmark manager", "link manager", "self-hosted", "web app", "open source", "docker", "organization", "productivity", "archiving", "collaboration", "tagging"]
+keywords: ["linkwarden docker", "self-hosted bookmarks", "bookmark manager", "link organizer", "pocket alternative"]
+slug: "linkwarden-bookmark-manager"
+draft: false
 ---
 
 **Ref:** <https://arstech.net/install-linkwarden-on-portainer/>
 
-Linkwarden is a self-hosted password manager that integrates with Bitwarden, allowing users to manage their passwords securely. It provides a web interface for accessing and managing passwords, making it easy to use while ensuring data privacy and security.
+Linkwarden is a self-hosted bookmark manager that allows users to save, organize, and share web links. It provides a web interface for managing bookmarks with features like tagging, archiving, and collaboration, ensuring data privacy and control.
 
 ## Portainer Stack
 

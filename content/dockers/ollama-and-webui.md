@@ -1,8 +1,14 @@
 ---
-title: Ollama and Open WebUI
-description: A Docker Compose setup for Ollama and Open WebUI, enabling easy access to AI models and a web interface.
-tags: [ollama, open-webui, docker-compose, ai models, web interface, machine learning, deployment,
-  self-hosted, open source, productivity, development, containerization, web app]
+title: "Ollama & Open WebUI - Self-Hosted AI Models"
+description: "Run local AI models with Ollama and manage them through Open WebUI's intuitive interface. Self-hosted LLM solution for privacy-focused AI deployment with Docker Compose."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker"]
+tags: ["ollama", "open-webui", "docker-compose", "ai models", "web interface", "machine learning", "deployment", "self-hosted", "open source", "productivity", "development", "containerization", "web app", "llm", "local ai", "privacy"]
+keywords: ["ollama docker", "self-hosted ai", "local llm", "open webui", "ai model management", "docker ai stack"]
+slug: "ollama-open-webui"
+draft: false
 ---
 
 **Ref**: [Docker Compose - usrbinkat](https://gist.githubusercontent.com/usrbinkat/de44facc683f954bf0cca6c87e2f9f88/raw/0402e8441de57ccd8b00fe0db8ad40cae7d5fdb8/docker-compose.yaml)

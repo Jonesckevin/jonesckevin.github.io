@@ -1,7 +1,14 @@
 ---
-title: VSCode Server
-description: A web-based version of Visual Studio Code for remote development.
-tags: [vscode, code-server, web app, development, remote development, productivity, open source, IDE, programming]
+title: "VS Code Server - Browser-Based IDE"
+description: "Code-server brings Visual Studio Code to your browser. Access your full development environment from anywhere with this self-hosted, web-based VS Code instance."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker"]
+tags: ["vscode", "code-server", "web app", "development", "remote development", "productivity", "open source", "ide", "programming", "browser ide", "web ide", "cloud ide", "self-hosted"]
+keywords: ["vscode server docker", "code-server", "web-based ide", "remote vscode", "browser code editor"]
+slug: "vscode-server-browser-ide"
+draft: false
 ---
 
 VSCode Server is a web-based version of Visual Studio Code that allows developers to work remotely on their projects using a web browser. It provides a full-featured development environment with support for extensions, debugging, and collaboration, making it an ideal tool for remote development workflows.

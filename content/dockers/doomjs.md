@@ -1,7 +1,14 @@
 ---
-title: DoomJS
-description: A fast, lightweight, and highly customizable game server for Doom.
-tags: [Doom, game server, lightweight, customizable]
+title: "Doom in Docker - Classic FPS Game Server"
+description: "Play the classic Doom FPS game directly in your browser with this lightweight Docker container. Fast, customizable game server for retro gaming enthusiasts."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "AI Tools"]
+tags: ["doom", "game server", "lightweight", "customizable", "retro gaming", "fps", "browser game", "web game", "entertainment", "docker gaming"]
+keywords: ["doom docker", "doom game server", "retro fps docker", "browser doom", "doom in container"]
+slug: "doom-js-docker-game"
+draft: false
 ---
 
 **Ref:** [DoomJS](https://github.com/treyyoder/doomjs-docker)

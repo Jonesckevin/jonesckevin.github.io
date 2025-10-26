@@ -1,9 +1,15 @@
 ---
-title: Cody
-description: Cody is a collaborative markdown editor.
-tags: [docker, markdown, editor, collaborative, codimd, hackmd, cody,
-       docker-compose, yml, portainer]
-image: hackmdio/hackmd:2.5.4
+title: "CodiMD (HackMD) - Collaborative Markdown Editor"
+description: "CodiMD is a real-time collaborative markdown editor with presentation mode. Self-hosted alternative to HackMD for team documentation and note-taking."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker"]
+tags: ["codimd", "hackmd", "markdown", "editor", "collaborative", "real-time", "documentation", "notes", "docker-compose", "presentation mode", "self-hosted", "team collaboration"]
+keywords: ["codimd docker", "hackmd self-hosted", "collaborative markdown", "markdown editor", "real-time notes"]
+slug: "codimd-markdown-editor"
+draft: false
+image: "hackmdio/hackmd:2.5.4"
 ---
 
 ## Portainer Stack

@@ -1,8 +1,14 @@
 ---
-title: Planka
-description: A kanban board application for managing tasks and projects.
-tags: [planka, kanban, task management, project management, web app, productivity, open source,
-  collaboration, team management, agile, software development]
+title: "Planka - Self-Hosted Kanban Board"
+description: "Planka is an elegant, open-source Trello alternative for kanban project management. Self-hosted task boards with real-time collaboration, labels, and card management."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "AI Tools"]
+tags: ["planka", "kanban", "task management", "project management", "web app", "productivity", "open source", "collaboration", "team management", "agile", "software development", "trello alternative", "scrum", "boards"]
+keywords: ["planka docker", "self-hosted kanban", "trello alternative", "kanban board docker", "project management tool"]
+slug: "planka-kanban-board"
+draft: false
 ---
 
 Planka is a kanban board application designed for managing tasks and projects. It provides a visual interface for organizing work, tracking progress, and collaborating with team members. Planka is suitable for agile project management and supports features like task assignment, due dates, and project boards.

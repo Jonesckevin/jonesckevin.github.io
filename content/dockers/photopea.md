@@ -1,8 +1,14 @@
 ---
-title: Photopea
-description: A web-based image editor similar to Adobe Photoshop, supporting various file formats.
-tags: [photopea, image editor, web app, graphics, design, photo editing, PSD support, online tool,
-  multimedia, creative, open source]
+title: "Photopea - Web-Based Image Editor"
+description: "Photopea is a free, self-hostable web-based image editor supporting PSD, XCF, Sketch, and more. Full-featured Photoshop alternative with layers, filters, and advanced editing tools."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker"]
+tags: ["photopea", "image editor", "web app", "graphics", "design", "photo editing", "psd support", "online tool", "multimedia", "creative", "photoshop alternative", "gimp alternative", "self-hosted"]
+keywords: ["photopea docker", "web-based photoshop", "psd editor", "self-hosted image editor", "photoshop alternative"]
+slug: "photopea-image-editor"
+draft: false
 ---
 
 Photopea is a web-based image editor that provides functionality similar to Adobe Photoshop. It supports a wide range of file formats, including PSD, XCF, Sketch, and more. Photopea is designed for graphic design, photo editing, and other creative tasks, making it a versatile tool for both professionals and hobbyists.

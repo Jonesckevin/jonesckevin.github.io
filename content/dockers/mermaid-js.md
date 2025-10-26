@@ -1,7 +1,14 @@
 ---
-title: Mermaid JS Live Editor
-description: A web-based live editor for creating and visualizing diagrams using Mermaid syntax.
-tags: [mermaid-js, live editor, diagrams, visualization, web app, open source, markdown, flowcharts, sequence diagrams]
+title: "Mermaid JS Live Editor - Diagram as Code"
+description: "Mermaid JS Live Editor lets you create flowcharts, sequence diagrams, and more using simple markdown-like syntax. Self-hosted live diagram editor with real-time preview."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "AI Tools"]
+tags: ["mermaid-js", "mermaidjs", "live editor", "diagrams", "visualization", "web app", "open source", "markdown", "flowcharts", "sequence diagrams", "diagram as code", "documentation", "uml"]
+keywords: ["mermaid js docker", "diagram editor", "flowchart tool", "mermaid live editor", "diagram as code"]
+slug: "mermaid-js-live-editor"
+draft: false
 ---
 
 **Ref:** <https://github.com/mermaid-js/mermaid-live-editor>

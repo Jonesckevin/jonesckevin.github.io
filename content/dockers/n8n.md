@@ -1,7 +1,14 @@
 ---
-title: n8n
-description: A powerful workflow automation tool that allows you to connect various services and automate tasks.
-tags: [n8n, workflow automation, integration, open source, task automation, web app, data processing]
+title: "n8n - Workflow Automation Platform"
+description: "n8n is a fair-code workflow automation tool for connecting apps and services. Build complex integrations visually with 350+ nodes. Self-hosted Zapier alternative with Docker."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker"]
+tags: ["n8n", "workflow automation", "integration", "open source", "task automation", "web app", "data processing", "zapier alternative", "workflow builder", "api integration", "no-code", "low-code", "self-hosted"]
+keywords: ["n8n docker", "workflow automation", "zapier alternative", "self-hosted automation", "n8n compose"]
+slug: "n8n-workflow-automation"
+draft: false
 ---
 
 n8n is a powerful workflow automation tool that allows users to connect various services and automate tasks. It provides a visual interface for creating workflows, enabling users to design complex automations without needing extensive programming knowledge. n8n supports a wide range of integrations with popular applications and services, making it a versatile solution for automating repetitive tasks and streamlining processes.

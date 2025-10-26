@@ -1,8 +1,14 @@
 ---
-title: IT Tools
-description: A collection of web-based tools for IT professionals, including CyberChef, Draw.io, and more.
-tags: [it-tools, web app, tools, cyberchef, draw.io, dashboard, productivity,
-  collaboration, data analysis, diagramming, open source]
+title: "IT Tools - Developer Utilities Collection"
+description: "IT Tools is a comprehensive collection of handy developer utilities including encoders, converters, generators, and formatters. All-in-one toolbox for developers and IT professionals."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker"]
+tags: ["it-tools", "web app", "developer tools", "utilities", "productivity", "encoding", "conversion", "formatters", "generators", "open source", "toolbox", "web utilities"]
+keywords: ["it tools docker", "developer utilities", "web tools collection", "encoding tools", "developer toolbox"]
+slug: "it-tools-developer-utilities"
+draft: false
 ---
 
 IT Tools is a collection of web-based tools designed for IT professionals. It includes applications like CyberChef for data analysis, Draw.io for diagramming, and other utilities that enhance productivity and collaboration in IT environments.

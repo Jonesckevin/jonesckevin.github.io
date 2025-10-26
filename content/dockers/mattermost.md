@@ -1,8 +1,14 @@
 ---
-title: MatterMost
-description: An open-source, self-hosted collaboration platform for team communication and project management.
-tags: [mattermost, collaboration, team communication, project management, self-hosted, open source, web app, docker,
-  messaging, chat, productivity, team collaboration]
+title: "Mattermost - Self-Hosted Team Collaboration Platform"
+description: "Mattermost is an open-source Slack alternative for secure team messaging, collaboration, and workflow automation. Self-hosted chat platform with full data control and enterprise features."
+date: 2024-01-15
+lastmod: 2025-01-18
+author: "Kevin Jones"
+categories: ["Docker", "AI Tools"]
+tags: ["mattermost", "collaboration", "team communication", "project management", "self-hosted", "open source", "web app", "docker", "messaging", "chat", "productivity", "team collaboration", "slack alternative", "secure messaging"]
+keywords: ["mattermost docker", "self-hosted slack", "team chat platform", "secure collaboration", "mattermost compose"]
+slug: "mattermost-team-chat"
+draft: false
 ---
 
 MatterMost is an open-source, self-hosted collaboration platform designed for team communication and project management. It provides a web-based interface for messaging, file sharing, and project tracking, making it suitable for teams of all sizes. MatterMost supports real-time chat, threaded conversations, and integrations with various tools, enhancing productivity and collaboration within teams.
