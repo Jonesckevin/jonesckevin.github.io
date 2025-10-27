@@ -48,7 +48,7 @@
 <meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
   {{ end }}
 {{ else }}
-<meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/banner.png">
+<meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/default.png">
 {{ end }}
 
 {{ if .Params.date }}
@@ -101,7 +101,7 @@
 <meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
   {{ end }}
 {{ else }}
-<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/banner.png">
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/default.png">
 {{ end }}
 
 {{/* JSON-LD Structured Data */}}
