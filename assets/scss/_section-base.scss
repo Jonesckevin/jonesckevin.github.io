@@ -39,7 +39,14 @@
         }
     }
 }
-
+.thumbnail-only-view .service-card .card-thumbnail img {
+    object-fit: contain;
+    padding: 2px;
+    background: transparent;
+    }
+.thumbnail-only-view .service-card .card-thumbnail {
+    border: none;
+}
 .card-thumbnail {
     flex: 0 0 140px;
     height: auto;

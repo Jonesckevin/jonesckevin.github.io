@@ -300,6 +300,10 @@ background-position: 0% 50%;
         document.querySelectorAll('p').forEach(function (paragraph) {
           paragraph.style.color = randomColor;
         });
+        // Apply color to SVG logo text elements
+        document.querySelectorAll('.logo__svg .logo-text').forEach(function (element) {
+          element.setAttribute('fill', randomColor);
+        });
       });
     }
 
@@ -323,6 +327,10 @@ background-position: 0% 50%;
         if (toggleControl) {
           toggleControl.style.color = '';
         }
+        // Reset SVG logo text elements to default darkorange
+        document.querySelectorAll('.logo__svg .logo-text').forEach(function (element) {
+          element.setAttribute('fill', 'darkorange');
+        });
       });
     }
 
@@ -347,6 +355,10 @@ background-position: 0% 50%;
         const paragraphs = container ? container.querySelectorAll('p') : document.querySelectorAll('p');
         paragraphs.forEach(function (paragraph) {
           paragraph.style.color = paragraphColor;
+        });
+        // Apply stored paragraph color to SVG logo text elements
+        document.querySelectorAll('.logo__svg .logo-text').forEach(function (element) {
+          element.setAttribute('fill', paragraphColor);
         });
       }
     };

@@ -71,6 +71,8 @@ ignoreLogs = ['warning-goldmark-raw-html']
     subtitle  = "The Truest of Subtitles"
 
     [languages.en.params.logo]
+      path = "/images/4n6post-logo.svg"
+      alt = "4n6Post"
       logoText = "MedaVerse"
       logoHomeLink = "/"
 

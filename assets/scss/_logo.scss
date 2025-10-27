@@ -10,6 +10,35 @@
     height: 44px;
   }
 
+  &__svg-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0;
+    
+    &:hover .logo__svg {
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+  }
+
+  &__svg {
+    height: 50px;
+    width: auto;
+    max-width: 200px;
+    display: block;
+    
+    @media (max-width: 768px) {
+      height: 40px;
+      max-width: 160px;
+    }
+    
+    @media (max-width: 480px) {
+      height: 35px;
+      max-width: 140px;
+    }
+  }
+
   &__mark {
     margin-right: 5px;
   }

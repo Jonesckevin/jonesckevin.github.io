@@ -100,6 +100,10 @@
   display: flex;
   align-items: center;
   position: relative;
+
+  @media #{$media-size-tablet} {
+    order: 1;
+  }
 }
 
 .header-center {
@@ -107,6 +111,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media #{$media-size-tablet} {
+    flex: 0 0 auto;
+    order: 3;
+  }
 }
 
 /* Main Navigation Styles */
@@ -279,6 +288,12 @@
 
   @media #{$media-size-phone-medium} {
     gap: 0.5rem;
+  }
+
+  @media #{$media-size-tablet} {
+    flex: 1 1 auto;
+    justify-content: center;
+    order: 2;
   }
 }
 

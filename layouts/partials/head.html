@@ -61,13 +61,10 @@
 {{/* Include specialized schema for specific content types */}}
 {{ partial "schema-specialized.html" . }}
 
-{{/* Removed Hugo internal schema - causes duplicates and incorrect types */}}
+{{/* Removed Hugo internal templates - they cause duplicates with our custom SEO partial */}}
 {{/* {{ template "_internal/schema.html" . }} */}}
-{{ template "_internal/twitter_cards.html" . }}
-
-{{ if isset .Site.Taxonomies "series" }}
-{{ template "_internal/opengraph.html" . }}
-{{ end }}
+{{/* {{ template "_internal/twitter_cards.html" . }} */}}
+{{/* {{ template "_internal/opengraph.html" . }} */}}
 
 {{ range .Params.categories }}
 <meta property="article:section" content="{{ . }}" />
