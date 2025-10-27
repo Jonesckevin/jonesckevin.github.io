@@ -11,11 +11,9 @@ body.section-ai-tools {
     --accent-glow: rgba(255, 107, 53, 0.3);
     --accent-button-text: #ffffff;
 
-    --card-bg: linear-gradient(135deg, #2a2020 0%, #1e1a1a 100%);
+    --card-bg: linear-gradient(135deg, rgba(58, 42, 42, 0.3) 0%, rgba(42, 32, 32, 0.3) 100%);
     --card-bg-hover: linear-gradient(135deg, #3a2a2a 0%, #2a2020 100%);
     --code-bg: #2a1a1a;
-
-    background: #232425;
 }
 
 /* Hero Header with Help Button */

@@ -1,5 +1,6 @@
 ---
 title: The Clock
+description: "Physical Table Clock challenge."
 author: JonesCKevin
 date: 2023-05-21
 tags:

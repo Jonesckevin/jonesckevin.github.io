@@ -11,9 +11,7 @@ body.section-dockers {
     --accent-glow: rgba(42, 169, 255, 0.3);
     --accent-button-text: #ffffff;
 
-    --card-bg: linear-gradient(135deg, #1a2a33 0%, #0f1f28 100%);
+    --card-bg: linear-gradient(135deg, rgba(26, 42, 51, 0.3) 0%, rgba(15, 31, 40, 0.3) 100%);
     --card-bg-hover: linear-gradient(135deg, #1f3540 0%, #142a35 100%);
     --code-bg: #0f2a37;
-
-    background: #232425;
 }

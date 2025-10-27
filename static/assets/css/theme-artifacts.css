@@ -11,9 +11,7 @@ body.section-artifacts {
     --accent-glow: rgba(212, 175, 55, 0.3);
     --accent-button-text: #1a1a1a;
 
-    --card-bg: linear-gradient(135deg, #242418 0%, #1a1a14 100%);
+    --card-bg: linear-gradient(135deg, rgba(36, 36, 24, 0.3) 0%, rgba(26, 26, 20, 0.3) 100%);
     --card-bg-hover: linear-gradient(135deg, #2a2a1e 0%, #22221a 100%);
     --code-bg: #1e1e14;
-
-    background: #232425;
 }

@@ -1,5 +1,5 @@
 ---
-title: "Linkwarden - Bookmark & Link Manager"
+title: "Linkwarden"
 description: "Linkwarden is a self-hosted bookmark manager for saving and organizing web links with tags, archives, and collaboration. Privacy-focused alternative to Pocket and Raindrop."
 date: 2024-01-15
 lastmod: 2025-01-18
@@ -9,6 +9,10 @@ tags: ["linkwarden", "bookmark manager", "link manager", "self-hosted", "web app
 keywords: ["linkwarden docker", "self-hosted bookmarks", "bookmark manager", "link organizer", "pocket alternative"]
 slug: "linkwarden-bookmark-manager"
 draft: false
+seo_title: "Linkwarden - Bookmark & Link Manager"
+seo_description: "Linkwarden is a self-hosted bookmark manager for saving and organizing web links with tags, archives, and collaboration. Privacy-focused alternative to Pocket and Raindrop."
+canonical: "/dockers/linkwarden/"
+featured_image: "https://linkwarden.app/linkwarden.png"
 ---
 
 **Ref:** <https://arstech.net/install-linkwarden-on-portainer/>

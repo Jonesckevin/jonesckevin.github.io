@@ -1,5 +1,6 @@
 ---
 title: Dream Server - DFIR
+description: "Multi-part DFIR challenge analyzing compromised server."
 author: JonesCKevin
 date: 2023-05-21
 tags:

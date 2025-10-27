@@ -5,7 +5,6 @@ keywords: ["MRU registry", "Most Recently Used", "Windows registry forensics", "
 type: "Artifacts"
 categories: ["Artifacts"]
 tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
-layout: "single"
 seo_title: "MRU Registry Forensics - Most Recently Used Files Analysis Guide"
 canonical: "/artifacts/MRU/"
 aliases: ["/artifacts/MRU/", "/2023/02/mru.html"]

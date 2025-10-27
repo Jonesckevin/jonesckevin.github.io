@@ -1,5 +1,5 @@
 ---
-title: "CodiMD (HackMD) - Collaborative Markdown Editor"
+title: "CodiMD (HackMD)"
 description: "CodiMD is a real-time collaborative markdown editor with presentation mode. Self-hosted alternative to HackMD for team documentation and note-taking."
 date: 2024-01-15
 lastmod: 2025-01-18
@@ -9,7 +9,12 @@ tags: ["codimd", "hackmd", "markdown", "editor", "collaborative", "real-time", "
 keywords: ["codimd docker", "hackmd self-hosted", "collaborative markdown", "markdown editor", "real-time notes"]
 slug: "codimd-markdown-editor"
 draft: false
-image: "hackmdio/hackmd:2.5.4"
+image: "https://hackmd.io/logo-full.svg"
+seo_title: "CodiMD (HackMD) - Collaborative Markdown Editor with Docker"
+seo_description: "Set up CodiMD, a real-time collaborative markdown editor, using Docker. Create and share documents with your team effortlessly in a self-hosted environment."
+seo_keywords: ["codimd docker", "hackmd self-hosted", "collaborative markdown", "markdown editor", "real-time notes", "docker markdown editor", "self-hosted documentation", "team collaboration tool"]
+schemaItemType: "WebPage"
+featured_image: "https://hackmd.io/logo-full.svg"
 ---
 
 ## Portainer Stack

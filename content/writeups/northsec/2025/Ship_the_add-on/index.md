@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Ship the add-on"
+description: "I dont remember."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -20,7 +21,11 @@ tags:
 >The instructions to upgrade the key are on-board and near the technical team near the casino, but we need to make it quick before they get destroyed. Go do some dumpster diving before “Copper Island” makes it.
 >
 >![Image](logo-copper-island.png)
+>
 >[Image](logo-copper-island.png)
+
+![Island Image1](1.png)
+
 ---
 
 >What is that? A whole manual to explain a faulty device? This is looking to be more complex than I expected. Good luck in deciphering all that and figure out that spaghetti. It looks that not only you need to get the device, you need to assemble it and to fix it? They really made our job harder… I hope your electronics skills are honed.

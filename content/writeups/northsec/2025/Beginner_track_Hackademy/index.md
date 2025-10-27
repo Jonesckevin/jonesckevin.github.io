@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Beginner Track - Hackademy"
+description: "Play on words for Hack Acadamy - Hackademy challenges walkthrough."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -70,7 +71,9 @@ small hints and pointers can be given to you to help with this track. Use !help 
 </html>
 ```
 
-`FLAG-z4MvKIRJGPQ8kkTwkePVOrsHc038ADfC`
+```flag
+FLAG-z4MvKIRJGPQ8kkTwkePVOrsHc038ADfC
+```
 
 ---
 
@@ -81,7 +84,9 @@ small hints and pointers can be given to you to help with this track. Use !help 
 ![Image](4.png)
 ![Image](5.png)
 
-`FLAG-mI4IZqUelrTlXibWbL06EbBxZomZbX2m (1/2)`
+```flag
+FLAG-mI4IZqUelrTlXibWbL06EbBxZomZbX2m (1/2)
+```
 
 ---
 
@@ -103,8 +108,9 @@ small hints and pointers can be given to you to help with this track. Use !help 
 
 ![Image](72.png)
 
-`FLAG-TJm18diOC5NZ6rKgPhqmiVxs2wzelS99`
-
+```flag
+FLAG-TJm18diOC5NZ6rKgPhqmiVxs2wzelS99
+```
 ---
 
 ## Inclusion 102
@@ -126,8 +132,8 @@ http://chal3.hackademy.ctf/page?html=<script>document.write("Cookies: " + docume
 ## Reverse 101
 
 >Reverse 101 :white_check_mark:
-
-[Image](reverse-1)
+>
+>~[Image](reverse-1)~
 
 ---
 

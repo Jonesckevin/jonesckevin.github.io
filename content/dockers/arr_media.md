@@ -1,5 +1,5 @@
 ---
-title: "*Arr Media Stack - Automated Media Management"
+title: "*Arr Media Stack"
 description: "Complete media automation stack with Radarr, Sonarr, Lidarr, Prowlarr, and download clients. Self-hosted media management system with automatic downloads and organization."
 date: 2024-01-15
 lastmod: 2025-01-18
@@ -9,6 +9,11 @@ tags: ["arr stack", "radarr", "sonarr", "lidarr", "prowlarr", "readarr", "bazarr
 keywords: ["arr stack docker", "radarr sonarr", "media automation", "docker media server", "arr compose"]
 slug: "arr-media-stack"
 draft: false
+seo_title: "*Arr Media Stack - Automated Media Management with Docker"
+seo_description: "Set up a complete media automation stack using Docker Compose with Radarr, Sonarr, Lidarr, Prowlarr, and more. Automate your media downloads and organization effortlessly."
+seo_keywords: ["arr stack docker", "radarr sonarr", "media automation", "docker media server", "arr compose", "self-hosted media", "plex automation", "jellyfin setup", "docker-compose media stack"]
+schemaItemType: "WebPage"
+#featured_image: "/images/arr-media-stack/arr-media-stack-banner.png"
 ---
 
 This guide provides a Docker Compose setup for various media management applications, including qBittorrent, Transmission, NZBGet, SABnzbd, Jackett, Prowlarr, Sonarr, Radarr, Lidarr, Readarr, Bazarr, and Tubesync. The setup is designed to work with a Synology NAS or similar systems.

@@ -1,14 +1,44 @@
 ---
-title: "4n6Post Artifact, CTF Write ups and Ai Tools"
-date: "2024-06-10T12:00:00-04:00"
-keywords: ["categories", "smelling salts", "reviews", "fitness", "supplements", "powerlifting", "strength training", "pre-workout", "ammonia inhalants", "product analysis", "digital forensics", "ctf writeups", "nsec", "4n6post", "memory forensics", "Docker", "artifacts", "forensics"]
+# Page Configuration
+title: "4n6Post Artifact, CTF Write ups and AI Tools"
+description: "Comprehensive cyber security resource covering digital forensics artifacts, CTF writeups, useful AI tools, and Docker container setups. Expert analysis for DFIR professionals and enthusiasts."
+type: "home"
+layout: "home"
 draft: false
-toc: true
-images: []
-tags: ["writeups", "ctf", "nsec", "northsec", "4n6post", "Digital Forensics", "Memory Forensics"]
-categories: ["Smelling Salts", "Artifacts", "Writeups", "Docker"]
-seo_title: "Content Categories - Smelling Salts Reviews & Digital Forensics Writeups"
-seo_description: "Explore our diverse content categories including in-depth smelling salts reviews for fitness enthusiasts and comprehensive digital forensics writeups for cybersecurity professionals."
-seo_keywords: ["content categories", "smelling salts reviews", "fitness supplements", "digital forensics writeups", "ctf writeups", "nsec ctf", "4n6post", "memory forensics", "docker forensics", "forensic artifacts"]
-canonical: "/categories/"
+
+# Content Organization
+tags: ["Digital Forensics", "CTF", "Writeups", "4n6post", "Memory Forensics", "AI Tools", "Docker", "Security"]
+categories: ["Artifacts", "Writeups", "AI Tools", "Docker", "Smelling Salts"]
+keywords: ["digital forensics", "ctf writeups", "nsec", "4n6post", "memory forensics", "Docker", "artifacts", "forensics", "smelling salts", "reviews", "fitness", "supplements", "powerlifting", "strength training", "pre-workout", "ammonia inhalants"]
+
+# SEO Configuration
+seo_title: "4n6Post - Digital Forensics, CTF Writeups & AI Tools Hub"
+seo_description: "Explore our diverse content including digital forensics artifacts, CTF writeups, AI-powered tools, Docker configurations, and smelling salts reviews for fitness enthusiasts and cybersecurity professionals."
+seo_keywords: ["digital forensics", "ctf writeups", "nsec ctf", "4n6post", "memory forensics", "docker forensics", "forensic artifacts", "smelling salts reviews", "fitness supplements", "AI tools", "productivity tools"]
+canonical: "/"
+
+# Theme Configuration
+# (No custom CSS for homepage - uses default)
+
+# Search Configuration
+# (Search not applicable to homepage)
+
+# Display Configuration
+# (Display settings handled by homepage layout)
+
+# Schema Configuration
+schemaType: false
+# Homepage uses WebSite schema from seo.html partial
+
+# Social Media
+social_media:
+  og_title: "4n6Post - Digital Forensics, CTF Writeups & AI Tools"
+  og_description: "Comprehensive cyber security resource covering digital forensics artifacts, CTF writeups, AI tools, Docker containers, and fitness reviews."
+  og_type: "website"
+  og_image: "/images/banner.png"
+  twitter_card: "summary_large_image"
+  twitter_title: "4n6Post - Digital Forensics & Cybersecurity Hub"
+  twitter_description: "Digital forensics artifacts, CTF writeups, AI tools, and Docker configurations for cybersecurity professionals."
+
+# No Child Page Defaults for Homepage
 ---

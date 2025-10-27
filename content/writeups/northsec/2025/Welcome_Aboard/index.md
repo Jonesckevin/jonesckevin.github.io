@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Welcome Aboard"
+description: "Easy to find challenge. But we got it near the end.. Womp Womp."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -45,10 +46,20 @@ Mod'ed to
 
 <img src="data:image/gif;base64,R0lGODlhFQAVAKEBAAAAAP///////////yH5BAEKAAIALAAAAAAVABUAAAJPhA9xqrgB2WOxtZQuvnZtuHmYQT3jWFFpFjmepE0rmFaomOUa9+6tzaKFXqwJzlIagoKzHSmGKz5VwqWS1FuFJFjeCUZ0/Gg2MiLpopohBQA7" alt="Base64 GIF" style="width:100px;height:100px;border-radius:0;" />
 
+<details>
+<summary>Click to reveal the flag</summary>
+```flag
+`FLAG-TakeASeat`
+```
 ![image](4.png)
+</details>
 
 >It looks like the cabin was bugged. Good thing you were curious.
 >
 >At the end of the CTF, one of you can keep the wooden cabin number! Please keep it in place for the duration of the CTF though.
 >
 >Trivia flag
+
+
+---
+

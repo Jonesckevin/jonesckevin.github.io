@@ -1,5 +1,5 @@
 ---
-title: "Homer - Static Application Dashboard"
+title: "Homer"
 description: "Homer is a simple, elegant static application dashboard and homepage. Organize your self-hosted services with a customizable, lightweight dashboard that requires no database."
 date: 2024-01-15
 lastmod: 2025-01-18
@@ -10,6 +10,10 @@ keywords: ["homer dashboard", "static dashboard", "self-hosted homepage", "servi
 slug: "homer-dashboard"
 draft: false
 images: ["https://raw.githubusercontent.com/bastienwirtz/homer/main/public/logo.png"]
+seo_title: "Homer - Static Application Dashboard"
+seo_description: "Homer is a simple, elegant static application dashboard and homepage. Organize your self-hosted services with a customizable, lightweight dashboard that requires no database."
+canonical: "/dockers/homer/"
+featured_image: "https://raw.githubusercontent.com/bastienwirtz/homer/main/public/logo.png"
 ---
 
 ## Portainer Stack

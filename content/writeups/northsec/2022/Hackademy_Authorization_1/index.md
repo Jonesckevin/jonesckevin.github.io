@@ -1,5 +1,6 @@
 ---
 title: "Hackademy – Authorization 1"
+description: "HTML and PCAP analysis challenge."
 date: "2022-06-01"
 tags: ["northsec", "nsec", "dfir", "ctf", "2022", "Writeups", "montreal"]
 ---

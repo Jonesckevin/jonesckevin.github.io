@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Life Saving Device"
+description: "Physical recontruction and analysis challenge."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -30,3 +31,5 @@ tags:
 >
 >~~<https://dl.nsec/safety-compartment/safety-pin.svg>~~
 >
+
+

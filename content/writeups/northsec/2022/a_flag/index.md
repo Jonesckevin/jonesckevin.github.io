@@ -1,5 +1,6 @@
 ---
 title: "A Flag"
+description: "Base64 encoded PNG flag extraction challenge."
 date: "2022-06-01"
 tags: ["nsec", "Writeups", "montreal", "ctf"]
 categories: ["writeups"]

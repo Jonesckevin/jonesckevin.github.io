@@ -1,5 +1,6 @@
 ---
 title: "Warm-up - MONTREAL (Semi-Solved)"
+description: "Audio steganography challenge with airport theme."
 date: "2022-06-01"
 tags: ["nsec", "2022", "montreal"]
 ---

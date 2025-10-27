@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Container"
+description: "Docker container analysis and exploitation."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -19,7 +20,7 @@ tags:
 >
 >This cargo is interesting to us. Try to extract the hidden secrets in this container.
 >
->- small.tar
+>- ~[small.tar](small.tar)~
 >
 >```bash
 >docker load -i small.tar
@@ -28,12 +29,13 @@ tags:
 
 ---
 
-### Solution
+## Solution - My weird way
 
 After figuring a few things out, the hostname should not be changed. However the Docker name does not matter. After loading the container images, and doing a `docker ps`, you will see there are 3 available containers. You will end up doing the same thing for each one.
 
-- **Create your dockers from 1-10**
-This script will start each container so you can interact with them using exec. In this version you would have to stop them to use `docker run --rm -it small:p1` or exec after the fact to interact with them.
+### Create your dockers from 1-10
+
+- This script will start each container so you can interact with them using exec. In this version you would have to stop them to use `docker run --rm -it small:p1` or exec after the fact to interact with them.
 
 ```bash
 for i in {1..3}; do
@@ -92,6 +94,8 @@ sudo docker cp small3:/253297732 small3_253297732
 -->
 ---
 
+### Decoding the Data
+
 Once you have the data, you will have something like this.
 
 ```ruby
@@ -101,20 +105,22 @@ __END__
 3230824790 3230824784 3230824794 3230824704 3230824704 3230824787 3230824786 3230824786 3230824790 3230824710 3230824711 3230824785 3230824708 3230824789 3230824788 3230824785 3230824795 3230824704 3230824788 3230824786 3230824794 3230824790 3230824795 3230824710 3230824710 3230824784 3230824704 3230824787 3230824789 3230824704 3230824791 3230824795
 ```
 
-This isn't overaly relevant to the challenge, but it is a good example of how to decode a Base64.
-
-Just for your awareness, the Char Code at the bottom after "END" translates to<br>
-`𤞐𤞄𤞔𤜄𤜄𤞇𤞆𤞆𤞐𤜐𤜑𤞅𤜈𤞉𤞈𤞅𤞕𤜄𤞈𤞆𤞔𤞐𤞕𤜐𤜐𤞄𤜄𤞇𤞉𤜄𤞑𤞕`<br>
-Which translate to:<br>
- `The sun rises in the east and sets in the west.`
-
-I used shell prinf, but you can also get the results in cyberchef using CharCode Base10
+> This isn't overaly relevant to the challenge, but it is a good example of how to decode a Base64.
+> 
+> Just for your awareness, the Char Code at the bottom after "END" translates to<br>
+> `𤞐𤞄𤞔𤜄𤜄𤞇𤞆𤞆𤞐𤜐𤜑𤞅𤜈𤞉𤞈𤞅𤞕𤜄𤞈𤞆𤞔𤞐𤞕𤜐𤜐𤞄𤜄𤞇𤞉𤜄𤞑𤞕`<br>
+> Which translate to:<br>
+>  `The sun rises in the east and sets in the west.`
+> 
+> I used shell prinf, but you can also get the results in cyberchef using CharCode Base10
 
 ```bash
 printf '%s' $(printf '\\x%x' 90 71 86 109 73 72 103 103 80 83 66 108 100 109 70 115 75 67 74 98 78 84 69 115 73 68 85 119 76 67 65 49 77 83 119 103 78 68 103 115 73 68 85 50 76 67 65 49 77 67 119 103 78 84 73 115 73 68 85 50 76 67 65 48 79 67 119 103 78 84 66 100 73 105 107 117 98 87 70 119 75 67 89 54 89 50 104 121 75 83 53 113 98 50 108 117 76 110 82 118 88 50 107 75 90 71 86 109 73 71 53 118 75 67 111 112 73 68 48 103 90 88 104 112 100 67 65 119 76 110 78 49 89 50 77 106 90 88 78 122 67 109 85 57 82 69 70 85 81 83 53 121 90 87 70 107 76 110 78 119 98 71 108 48 76 109 49 104 99 72 116 112 100 67 53 48 98 49 57 112 76 110 78 108 98 109 81 111 79 108 52 115 101 67 108 57 67 109 107 57 90 50 86 48 99 121 89 117 89 50 104 118 98 88 65 75 90 83 53 54 97 88 65 111 97 83 53 105 101 88 82 108 99 121 107 117 98 87 70 119 101 50 108 48 76 110 74 108 90 72 86 106 90 83 103 54 80 84 48 112 102 83 53 121 90 87 112 108 89 51 82 55 97 88 82 57 76 109 86 104 89 50 104 55 98 109 57 57 67 109 53 118 75 69 82 66 86 69 69 112 73 71 108 109 73 71 85 117 99 50 108 54 90 83 65 104 80 83 66 112 76 110 78 112 101 109 85 75)
 ```
 
 ![Container](2.png)
+
+### Decoding more using ruby
 
 Once you decode the Base64, you will get the following Ruby code:
 
@@ -129,19 +135,19 @@ no(DATA) if e.size != i.size
 
 ![Container](3.png)
 
-This Ruby code defines a simple obfuscated input validation routine, likely used for checking a password or flag. The first line defines a method `x` that evaluates a string representation of an array of ASCII codes, converts each code to its character, joins them into a string, and then converts that string to an integer. This integer is used as a `key for XOR operations` later in the code.
+- This Ruby code defines a simple obfuscated input validation routine, likely used for checking a password or flag. The first line defines a method `x` that evaluates a string representation of an array of ASCII codes, converts each code to its character, joins them into a string, and then converts that string to an integer. This integer is used as a `key for XOR operations` later in the code.
 
-The `no` method is a shortcut for exiting the program with a success status. The use of `0.succ` (which is 1) as the exit code is a playful way to write exit 1, but the comment suggests it is meant to indicate "success" in a tongue-in-cheek way.
+- The `no` method is a shortcut for exiting the program with a success status. The use of `0.succ` (which is 1) as the exit code is a playful way to write exit 1, but the comment suggests it is meant to indicate "success" in a tongue-in-cheek way.
 
-The variable `e` reads data from the DATA section at the end of the file, splits it into parts, converts each part to an integer, and then XORs each integer with the value of x. This produces an array of expected byte values.
+- The variable `e` reads data from the DATA section at the end of the file, splits it into parts, converts each part to an integer, and then XORs each integer with the value of x. This produces an array of expected byte values.
 
-The variable `i` reads a line of input from the user and removes the trailing newline. The code then zips together the array `e` and the bytes of the user input, compares each pair for equality, and if any comparison fails, calls the `no` method to exit the program.
+- The variable `i` reads a line of input from the user and removes the trailing newline. The code then zips together the array `e` and the bytes of the user input, compares each pair for equality, and if any comparison fails, calls the `no` method to exit the program.
 
-Finally, if the size of the processed data from `DATA` _(Which is the chinese characters from above)_ does not match the length of the user input, the program also exits. This ensures that the input is exactly the expected length.
+- Finally, if the size of the processed data from `DATA` _(Which is the chinese characters from above)_ does not match the length of the user input, the program also exits. This ensures that the input is exactly the expected length.
 
-Overall, this code is a compact and obfuscated way to check if user input matches a secret value, with the secret stored in an encoded form in the `DATA` section. The use of `XOR` and dynamic evaluation makes it harder to reverse-engineer the expected input.
+- Overall, this code is a compact and obfuscated way to check if user input matches a secret value, with the secret stored in an encoded form in the `DATA` section. The use of `XOR` and dynamic evaluation makes it harder to reverse-engineer the expected input.
 
-When you Convert the Eval from the ruby code you get: `3230824802`
+- When you Convert the Eval from the ruby code you get: `3230824802`
 
 ```bash
 printf '%s' $(printf '\\x%x' 51 50 51 48 56 50 52 56 48 50)
@@ -151,7 +157,7 @@ printf '%s' $(printf '\\x%x' 51 50 51 48 56 50 52 56 48 50)
 
 When you use this key to XOR the data from the DATA section, you will get the flag part. Now you just need to do it for each container.
 
-**Python**
+#### Free Python Script
 
 ```python
 def decode_bytecode(bytecode):
@@ -183,10 +189,10 @@ The `XOR` Output is your Container Password.
 
 ![Script](7.png)
 
-### **Container Keys:**
+### Container Keys:
 
 1. **small:p1**
-    - **Key**: `428bb1004de3f7639b60849dd2b17b59`
+    - *Key**: `428bb1004de3f7639b60849dd2b17b59`
     - **Flag**: `6b44cae751805`
 2. **small:p2**
     - **Key**: `b3e014e9725fa58c76a04defe9f9f15c`
@@ -195,9 +201,14 @@ The `XOR` Output is your Container Password.
     - **Key**: `6e049bc38a417522cf424b4f157bbd0f`
     - **Flag**: `7c8a9cafc1c3e1f`
 
+<details>
+<summary>Click to reveal the flag</summary>
+
 **Flag:** `FLAG-6b44cae75180580cb18e643e57c8a9cafc1c3e1f`
 
-### Delete when you are done for cleanup
+</details>
+
+## Cleanup - Delete when you are done
 
 ```bash
 ## Remove old images
@@ -215,14 +226,16 @@ done
 ```
 
 ---
+---
 
-## Medium Container
+
+# Medium Container
 
 >Good. This was a smaller container, but the merchandise inside will be important to the team for the operation.
 >
 >Now, try to steal more important loot from this container.
 >
-> - medium.tar
+> - ~[medium.tar](medium.tar)~
 >
 >```bash
 >docker load -i medium.tar
@@ -291,15 +304,20 @@ I did also try copying all files from all containers out to my host in hopes any
 
 ![Medium Container](12.png)
 
-### MFT
-
 ---
 
 ## Large Container
 
-> - [Large.Tar](large.tar)
+> - ~[Large.Tar](large.tar)~
 >
 >```bash
 >docker load -i large.tar
 >docker run --rm -it large:p1
 >```
+
+---
+
+
+## Resource
+
+See <https://cryptax.github.io/nsec2025/#container-p3> for Container Part 3

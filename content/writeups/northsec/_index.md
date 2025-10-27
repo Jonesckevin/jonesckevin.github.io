@@ -1,8 +1,11 @@
 ---
 title: "NorthSec"
-description: "NorthSec holds annual cybersecurity conferences in Canada, featuring CTF competitions and expert talks. This section contains CTF writeups, security challenges, and hacking tutorials from NorthSec competitions."
+description: "CTF writeups from NorthSec cybersecurity competitions in Canada."
 type: "writeups"
-layout: "section-list"
+layout: section-list
+thumbnailOnlyView: false
+hideThumbnails: true
+featured_image: "https://shop.nsec.io/cdn/shop/files/nsec_1200x1200.png"
 tags: ["CTF", "NorthSec", "NSEC", "Cybersecurity", "Challenges", "Writeups", "Capture The Flag", "Hacking", "Security", "Education"]
 categories: ["Writeups"]
 seo_title: "NorthSec - Cybersecurity CTF Competition Writeups"
@@ -15,8 +18,6 @@ searchPlaceholder: "Search writeups..."
 searchResultLabel: "writeup"
 searchNoResultsTitle: "Writeups"
 disableSearch: false
-# # Display Configuration
-hideThumbnails: false
 # # Schema Configuration
 schemaType: true
 schemaName: "Security Writeups Collection"

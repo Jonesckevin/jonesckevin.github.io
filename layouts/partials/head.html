@@ -61,7 +61,8 @@
 {{/* Include specialized schema for specific content types */}}
 {{ partial "schema-specialized.html" . }}
 
-{{ template "_internal/schema.html" . }}
+{{/* Removed Hugo internal schema - causes duplicates and incorrect types */}}
+{{/* {{ template "_internal/schema.html" . }} */}}
 {{ template "_internal/twitter_cards.html" . }}
 
 {{ if isset .Site.Taxonomies "series" }}

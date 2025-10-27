@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "ChatGPT"
+description: "Ai Created video challenges."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -25,7 +26,10 @@ LYRZIDU8LV9478OA
 
 ## Flag 1
 
+<details>
+<summary>Click to reveal the final flag</summary>
 **Flag:** `FLAG-LYRZIDU8LV9478OA`
+</details>
 
 ![ChatGPT_Video_Still](1.png)
 
@@ -38,11 +42,15 @@ LYRZIDU8LV9478OA
 
 You can find Flag two by looking at the Chapter Name in the video player or using `strings`.
 
+<details>
+<summary>Click to reveal the final flag</summary>
 **Flag:** `Chapter 2: FLAG-HK28BQZ2RDFZ0N6F`
+</details>
 
 ![Image2](2.png)
 
 ![Image3](3.png)
+
 
 ![Image4](4.png)
 
@@ -79,4 +87,9 @@ Video: [https://photos.app.goo.gl/CWwXqJ58m3rqHpKr8](https://photos.app.goo.gl/C
 
 ---
 
+<details>
+<summary>Click to reveal the final flag</summary>
+
 **Final Rebuilt:** `FLAG-FLKUKUABVPX11JGCF`
+
+</details>

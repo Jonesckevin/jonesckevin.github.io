@@ -1,5 +1,6 @@
 ---
 title: VFCrypter
+description: "VBE script malware analysis and decoding."
 date: 2022-05-21
 tags: [nsec, 2022, malware]
 ---

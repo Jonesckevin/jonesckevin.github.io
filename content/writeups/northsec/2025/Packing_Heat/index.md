@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Packing Heat"
+description: "Long Chain of Physical and Digital Challenges."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -14,18 +15,16 @@ tags:
 - Montreal
 ---
 
-```txt
-You don’t need to know why, but when time will come, I’ll need a weapon and ammo. Bringing something onboard this high security ship was impossible, but we have a way out. There is a weapon on this ship, usable in extreme cases such as a pirate attack.
-
-It looks like there is a pirate aboard, so I guess we can use it. The pirate is you, Wiz, you get it? Har har har.
-
-Alright. Listen. There’s an ammo cache hidden on the ship, and for security protocol reasons, the cache is emitting a continuous signal to keep track of its location. This way, they know that the weapon is still onboard.
-
-You will need to use your radio device to find that signal, leading to the ammo cache.
-The signal is live, and the frequency of the transmitter is around : 146.565 MHz
-
-Follow the trail, and it’ll lead you straight to the stash.
-```
+> You don’t need to know why, but when time will come, I’ll need a weapon and ammo. Bringing something onboard this high security ship was impossible, but we have a way out. There is a weapon on this ship, usable in extreme cases such as a pirate attack.
+> 
+> It looks like there is a pirate aboard, so I guess we can use it. The pirate is you, Wiz, you get it? Har har har.
+> 
+> Alright. Listen. There’s an ammo cache hidden on the ship, and for security protocol reasons, the cache is emitting a continuous signal to keep track of its location. This way, they know that the weapon is still onboard.
+> 
+> You will need to use your radio device to find that signal, leading to the ammo cache.
+> The signal is live, and the frequency of the transmitter is around : 146.565 MHz
+> 
+> Follow the trail, and it’ll lead you straight to the stash.
 
 ---
 
@@ -37,7 +36,12 @@ You can first find the AmmoBox in the corner of the physical room. It comes with
 
 ![Image3](2.png)
 
+<details>
+<summary>Click to reveal the flag</summary>
+```flag
 `FLAG-3f9c2a1b-5d8e-4c1a-91b3-7f4d6e2f9a6c`
+```
+</details>
 
 ![Image3](3.png)
 
@@ -96,4 +100,4 @@ Connect to the Open but hidden Wifi. Your method may vary. Iphones had a harder 
 >
 >![Image7](9.png)
 
-As this was near the end of the event, I only saw the Morse Code on Signal 144.225 MHz, once and it stopped transmitting. SO I never got to continue the challenge.
+As this was near the end of the event, I only saw the Morse Code on Signal `144.225 MHz`, once and it stopped transmitting. SO I never got to continue the challenge.

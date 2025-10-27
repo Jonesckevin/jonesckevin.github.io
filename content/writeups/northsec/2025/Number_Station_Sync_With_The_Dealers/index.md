@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Number Station - Sync With The Dealers"
+description: "Physical Challenge."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -46,14 +47,18 @@ Once you set the correct access, you can plug the badge into the dock at the bar
 
 ![Token](4.png)
 
-
-**Flag:** `FLAG-910b7263-9863-4781-b6c3-b16b3e99c96a`
+<details>
+<summary>Click to reveal the final flag</summary>
+```flag
+FLAG-910b7263-9863-4781-b6c3-b16b3e99c96a`
+```
+</details>
 
 ## Step 2
 
 >Wonderful. We’ve established contact.
 >
->The Dealer gang just sent you an [**audio file**](./petit_poney.mp3).
+>The Dealer gang just sent you an [audio file](petit_poney.mp3).
 >
 >Buried in this recording is the key to triggering their next radio transmission, the signal that mobilizes their crew.
 >
@@ -63,9 +68,11 @@ Once you set the correct access, you can plug the badge into the dock at the bar
 >
 >Your task is to decode the message, find the server endpoint and trigger the transmission.
 
-<audio controls preload="auto" style="width: 100%; max-width: 600px;">
-    <source src="./petit_poney.mp3" type="audio/mpeg">
+<audio controls preload="auto" style="text-align: center; width: 100%; background-color: #22cc00ff; border-radius: 40px; padding: 7px; margin: 10px;">
+    <source src="petit_poney.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
 >The Fence just told us to use /satcom/fence to send your requests!
+
+> I lost the remaining analysis I did. Maybe I'll do it again one day.

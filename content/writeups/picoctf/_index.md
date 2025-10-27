@@ -3,6 +3,10 @@ title: "PicoCTF"
 type: "writeups"
 date: "2024-06-01"
 lastmod: "2024-06-01"
+layout: "section-list"
+thumbnailOnlyView: false
+hideThumbnails: true
+featured_image: "https://www.picoctf.org/img/logos/picoctf-logo-horizontal-white.svg"
 draft: false
 tags: ["CTF", "Cybersecurity", "Challenges", "Learning", "Capture The Flag", "Hacking", "Security", "Education"]
 categories: ["Writeups", "AI Tools"]

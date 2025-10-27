@@ -90,6 +90,8 @@
 {{ end }}
 
 {{/* JSON-LD Structured Data */}}
+{{/* Only output Article schema for actual articles/posts, not homepage or list pages */}}
+{{ if and (not .IsHome) (not .IsSection) }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -129,15 +131,23 @@
     "@type": "WebPage",
     "@id": "{{ .Permalink }}"
   }
+  {{/* Clean keyword handling - only use page-specific keywords */}}
   {{ if .Params.keywords }},
   "keywords": [
     {{ range $index, $keyword := .Params.keywords }}
     {{ if $index }}, {{ end }}"{{ $keyword }}"
     {{ end }}
   ]
+  {{ else if .Params.tags }},
+  "keywords": [
+    {{ range $index, $tag := .Params.tags }}
+    {{ if $index }}, {{ end }}"{{ $tag }}"
+    {{ end }}
+  ]
   {{ end }}
 }
 </script>
+{{ end }}
 
 {{/* Breadcrumb Structured Data */}}
 {{ if not .IsHome }}

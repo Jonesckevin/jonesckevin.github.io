@@ -1,5 +1,5 @@
 ---
-title: "Etherpad - Collaborative Real-Time Document Editor"
+title: "Etherpad"
 description: "Etherpad is an open-source collaborative text editor with real-time editing, version control, and chat. Self-hosted alternative to Google Docs for team collaboration."
 date: 2024-01-15
 lastmod: 2025-01-18
@@ -9,6 +9,10 @@ tags: ["etherpad", "collaborative editor", "real-time editing", "document creati
 keywords: ["etherpad docker", "collaborative text editor", "real-time document editing", "google docs alternative", "self-hosted editor"]
 slug: "etherpad-collaborative-editor"
 draft: false
+seo_title: "Etherpad - Collaborative Real-Time Document Editor"
+seo_description: "Etherpad is an open-source collaborative text editor with real-time editing, version control, and chat. Self-hosted alternative to Google Docs for team collaboration."
+canonical: "/dockers/etherpad/"
+featured_image: "https://etherpad.org/_next/static/media/brand.9923586b.svg"
 ---
 
 Etherpad is a collaborative real-time editor that allows multiple users to create and edit documents simultaneously. It is designed for productivity and teamwork, providing features such as version control, chat, and document sharing.

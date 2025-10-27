@@ -1,9 +1,16 @@
 ---
 title: "NorthSec 2023"
+description: "Writeups from NorthSec 2023 CTF challenges."
 type: "writeups"
 date: "2024-10-10"
 lastmod: "2024-10-10"
 draft: false
+layout: "section-list"
+disableSearch: false       # Disable Search Bar
+hideThumbnails: true      # Display Configuration
+thumbnailOnlyView: false   # This will hide the title and description but it's still on the page
+hideDescriptions: true    # Hide Descriptions under Titles
+featured_image: "https://shop.nsec.io/cdn/shop/files/nsec_1200x1200.png"
 tags: ["CTF", "NorthSec", "NSEC", "Cybersecurity", "Challenges", "Writeups", "Capture The Flag", "Hacking", "Security", "Education"]
 categories: ["Writeups"]
 seo_title: "NorthSec 2023 - Cybersecurity CTF Competition Writeups"

@@ -208,15 +208,10 @@
                 {{ end }}
             </main>
         </div>
+        {{ block "footer" . }}
+        {{ partial "footer.html" . }}
+        {{ end }}
 
-        <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; 2025 TheGongShow. All rights reserved.</p>
-                {{ if .Params.footerNote }}
-                <p>{{ .Params.footerNote }}</p>
-                {{ end }}
-            </div>
-        </footer>
     </div>
 
     {{ partial "javascript.html" . }}

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Gift Shop"
+description: "Physical Challenge."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -34,3 +35,21 @@ tags:
 ---
 
 >Keep your eyes up. You are wasting time staring at your feet. Stay focused.
+
+---
+
+## Data 
+
+I didn't go through this one myself but here is some data if you want to try it yourself.
+
+![Gift_Shop_Machine_1](1.png)
+
+![Gift_Shop_Machine_2](2.jpg)
+
+![Gift_Shop_Machine_3](3.png)
+
+![Gift_Shop_Machine_4](4.png)
+
+![Gift_Shop_Machine_5](5.png)
+
+![Gift_Shop_Machine_6](6.png)

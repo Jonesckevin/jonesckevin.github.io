@@ -1,5 +1,6 @@
 ---
 title: Neck Tie Connection
+description: "Physical Badge challenge."
 author: JonesCKevin
 date: 2023-05-21
 tags:

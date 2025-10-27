@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Welcome To The CTF"
+description: "First challenge and CTF orientation."
 subtitle: "NorthSec 2025"
 author: JonesCKevin
 date: 2025-05-24
@@ -28,3 +29,11 @@ tags:
 ---
 
 >ah yes, very croissant, very baguette!
+
+---
+
+## Rules Flag
+
+![Rules Image](1.png)
+
+![Rules Image](2.png)

@@ -1,5 +1,6 @@
 ---
 title: The Rules
+description: "Read the rules bro."
 author: JonesCKevin
 date: 2023-05-21
 tags:

@@ -87,11 +87,11 @@
 
 .service-card {
     background: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid var(--accent-soft-border);
+    border-radius: 20px;
+    //border: 1px solid var(--accent-soft-border);
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(112, 70, 70, 0.3);
     display: flex;
     flex-direction: column;
     width: 100%;

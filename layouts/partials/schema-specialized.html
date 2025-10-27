@@ -1,3 +1,30 @@
+{{/* Specialized Schema for Specific Content Types */}}
+
+{{/* Homepage - WebSite Schema (already in seo.html, skip here) */}}
+
+{{/* Section Pages - CollectionPage Schema */}}
+{{ if and .IsSection (not .IsHome) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ .Title }}",
+  "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  }
+}
+</script>
+{{ end }}
+
 {{/* Specialized schema for AI Tools */}}
 {{ if eq .Params.schema_type "SoftwareApplication" }}
 <script type="application/ld+json">
@@ -49,7 +76,7 @@
 </script>
 {{ end }}
 
-{{/* Specialized schema for Technical Articles */}}
+{{/* Specialized schema for Technical Articles (Artifacts, DFIR) */}}
 {{ if eq .Params.schema_type "TechArticle" }}
 <script type="application/ld+json">
 {
@@ -104,6 +131,133 @@
   {{ end }}
   "genre": "Technical Documentation",
   "inLanguage": "en-US"
+}
+</script>
+{{ end }}
+
+{{/* Specialized schema for CTF Writeups */}}
+{{ if and (eq .Section "writeups") (not .IsSection) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ .Title }}",
+  "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  {{ if .Params.featured_image }}
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}{{ .Params.featured_image }}"
+  },
+  {{ end }}
+  {{ if .Params.date }}
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  {{ if .Params.lastmod }}
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  "author": {
+    "@type": "Person",
+    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}JonesCKevin{{ end }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "CTF Challenge"
+  },
+  "genre": "Security Writeup",
+  {{ if .Params.tags }}
+  "keywords": [
+    {{ range $index, $tag := .Params.tags }}
+    {{ if $index }}, {{ end }}"{{ $tag }}"
+    {{ end }}
+  ],
+  {{ end }}
+  "inLanguage": "en-US"
+}
+</script>
+{{ end }}
+
+{{/* Specialized schema for Docker Containers */}}
+{{ if and (eq .Section "dockers") (not .IsSection) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "{{ .Title }}",
+  "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "codeRepository": "Docker Container Configuration",
+  "programmingLanguage": "Docker",
+  {{ if .Params.date }}
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  {{ if .Params.lastmod }}
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  "author": {
+    "@type": "Person",
+    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}JonesCKevin{{ end }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  {{ if .Params.tags }}
+  "keywords": [
+    {{ range $index, $tag := .Params.tags }}
+    {{ if $index }}, {{ end }}"{{ $tag }}"
+    {{ end }}
+  ],
+  {{ end }}
+  "applicationCategory": "DevOps",
+  "runtimePlatform": "Docker"
+}
+</script>
+{{ end }}
+
+{{/* Specialized schema for Product Reviews (Smelling Salts) */}}
+{{ if and (eq .Section "smelling_salts") (not .IsSection) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "{{ .Title }}",
+    "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+    {{ if .Params.featured_image }}
+    "image": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}{{ .Params.featured_image }}",
+    {{ end }}
+    "category": "Fitness Supplement"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ if .Params.rating }}{{ .Params.rating }}{{ else }}4{{ end }}",
+    "bestRating": "5"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}JonesCKevin{{ end }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  {{ if .Params.date }}
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  "reviewBody": "{{ .Summary | plainify | truncate 300 }}"
 }
 </script>
 {{ end }}
