@@ -86,7 +86,7 @@
 {{ else if .Params.featured_image }}
 <meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
 {{ else }}
-<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/banner.png">
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}default.png">
 {{ end }}
 
 {{/* JSON-LD Structured Data */}}
