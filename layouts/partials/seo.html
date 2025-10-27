@@ -34,11 +34,19 @@
 <meta property="og:site_name" content="{{ .Site.Title }}">
 
 {{ if .Params.social_media.og_image }}
+  {{ if hasPrefix .Params.social_media.og_image "http" }}
+<meta property="og:image" content="{{ .Params.social_media.og_image }}">
+  {{ else }}
 <meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.social_media.og_image }}">
+  {{ end }}
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 {{ else if .Params.featured_image }}
+  {{ if hasPrefix .Params.featured_image "http" }}
+<meta property="og:image" content="{{ .Params.featured_image }}">
+  {{ else }}
 <meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
+  {{ end }}
 {{ else }}
 <meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/banner.png">
 {{ end }}
@@ -81,12 +89,19 @@
 {{ end }}
 
 {{ if .Params.social_media.twitter_image }}
-<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.social_media.twitter_image
-  }}">
+  {{ if hasPrefix .Params.social_media.twitter_image "http" }}
+<meta name="twitter:image" content="{{ .Params.social_media.twitter_image }}">
+  {{ else }}
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.social_media.twitter_image }}">
+  {{ end }}
 {{ else if .Params.featured_image }}
+  {{ if hasPrefix .Params.featured_image "http" }}
+<meta name="twitter:image" content="{{ .Params.featured_image }}">
+  {{ else }}
 <meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
+  {{ end }}
 {{ else }}
-<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}default.png">
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/banner.png">
 {{ end }}
 
 {{/* JSON-LD Structured Data */}}
