@@ -12,7 +12,7 @@ categories: ["AI Tools", "Image Generation"]
 type: ai-tools
 seo_title: "Free AI Image Generator - Create Art with AI Online"
 canonical: "/ai-tools/creative/image-generator/"
-featured_image: "/images/featured/aitools/image-generator.png"
+#featured_image: "/images/featured/aitools/image-generator.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"

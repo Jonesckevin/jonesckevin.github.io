@@ -17,18 +17,11 @@ seo_description: "Explore our diverse content including digital forensics artifa
 seo_keywords: ["digital forensics", "ctf writeups", "nsec ctf", "4n6post", "memory forensics", "docker forensics", "forensic artifacts", "smelling salts reviews", "fitness supplements", "AI tools", "productivity tools"]
 canonical: "/"
 
-# Theme Configuration
-# (No custom CSS for homepage - uses default)
-
-# Search Configuration
-# (Search not applicable to homepage)
-
 # Display Configuration
-# (Display settings handled by homepage layout)
-
-# Schema Configuration
-schemaType: false
-# Homepage uses WebSite schema from seo.html partial
+hideThumbnails: true
+thumbnailOnlyView: false
+hideDescriptions: false
+showAllDescendants: false
 
 # Social Media
 social_media:

@@ -1,6 +1,6 @@
 baseURL = "https://4n6post.com"
 
-title        = "The MedaVerse - The Posts, The WriteUps, The CTFs, The Enjoyment"
+title        = "4n6 Post - The Posts, The WriteUps, The CTFs, The Enjoyment"
 languageCode = "en"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
@@ -27,7 +27,9 @@ ignoreLogs = ['warning-goldmark-raw-html']
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    codeFences = false            # Disable Hugo's syntax highlighting to let Prism.js handle it
+    codeFences = true             # Enable code fences to use custom renderer
+    noClasses = false             # Use CSS classes instead of inline styles
+    lineNos = false               # Disable built-in line numbers (we handle this ourselves)
 
 [params]
   dateform        = "Jan 2, 2006"
@@ -63,7 +65,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
 
 [languages]
   [languages.en]
-    title = "MedaVerse"
+    title = "4n6Post"
     keywords = ""
     readOtherPosts = "Read other posts"
 
@@ -73,7 +75,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
     [languages.en.params.logo]
       path = "/images/4n6post-logo.svg"
       alt = "4n6Post"
-      logoText = "MedaVerse"
+      logoText = "4n6Post"
       logoHomeLink = "/"
 
   # Create  Header Menu

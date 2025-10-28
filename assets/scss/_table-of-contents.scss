@@ -1,0 +1,238 @@
+/* Table of Contents Styles */
+
+/* Auto TOC - Desktop Sidebar */
+#toc-auto {
+  position: fixed;
+  top: 140px;
+  right: 2rem;
+  width: 250px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  border-left: 1px solid var(--accent, #00d4ff);
+  border-radius: 8px;
+
+  .toc-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--accent, #00d4ff);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .toc-content {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+
+      ul {
+        padding-left: 0.5rem;
+        margin-top: 0;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        margin-left: 0.25rem;
+
+        li::before {
+          content: "─";
+          position: absolute;
+          left: -0.5rem;
+          color: rgba(255, 255, 255, 0.15);
+          font-size: 0.7em;
+          line-height: 1.8;
+        }
+      }
+    }
+
+    li {
+      position: relative;
+      padding-left: 0.5rem;
+      margin: 0;
+    }
+
+    > nav > ul > li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: transparent;
+    }
+
+    /* First level links */
+    > nav > ul > li > a {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: var(--accent-light, #f4d47f);
+      padding-top: 0.6rem;
+    }
+
+    /* Second level links */
+    > nav > ul > li ul > li > a {
+      font-size: 0.85em;
+      font-weight: 400;
+    }
+
+    /* Third level links */
+    > nav > ul > li ul > li ul > li > a {
+      font-size: 0.8em;
+      font-weight: 300;
+    }
+
+    /* Fourth level and deeper */
+    > nav > ul > li ul > li ul > li ul > li > a {
+      font-size: 0.75em;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    a {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 0.15rem 0;
+      line-height: 1.3;
+      transition: all 0.2s ease;
+      border-left: 2px solid transparent;
+      padding-left: 0.3rem;
+
+      &:hover {
+        color: var(--accent, #00d4ff);
+        border-left-color: var(--accent, #00d4ff);
+        padding-left: 0.75rem;
+      }
+
+      &.active {
+        color: var(--accent, #00d4ff);
+        font-weight: 500;
+        border-left-color: var(--accent, #00d4ff);
+      }
+    }
+  }
+
+  /* Hide auto TOC on smaller screens */
+  @media (max-width: 1400px) {
+    display: none;
+  }
+}
+
+/* Static TOC - Mobile/Tablet Dropdown */
+#toc-static {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+
+  .toc-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    color: var(--accent, #00d4ff);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .toc-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+
+      ul {
+        padding-left: 0.5rem;
+        margin-top: 0;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        margin-left: 0.25rem;
+
+        li::before {
+          content: "─";
+          position: absolute;
+          left: -0.5rem;
+          color: rgba(255, 255, 255, 0.15);
+          font-size: 0.7em;
+          line-height: 1.8;
+        }
+      }
+    }
+
+    li {
+      position: relative;
+      padding-left: 1rem;
+      margin: 0;
+    }
+
+    > nav > ul > li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: transparent;
+    }
+
+    /* First level links */
+    > nav > ul > li > a {
+      font-size: 0.95em;
+      font-weight: bolder;
+      padding-top: 1rem;
+      color: var(--accent-light, #f4d47f);
+    }
+
+    /* Second level links */
+    > nav > ul > li ul > li > a {
+      font-size: 0.9em;
+      font-weight: 400;
+    }
+
+    /* Third level links */
+    > nav > ul > li ul > li ul > li > a {
+      font-size: 0.85em;
+      font-weight: 300;
+    }
+
+    /* Fourth level and deeper */
+    > nav > ul > li ul > li ul > li ul > li > a {
+      font-size: 0.8em;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    a {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 0.15rem 0;
+      transition: color 0.2s ease;
+      line-height: 1.3;
+
+      &:hover {
+        color: var(--accent, #00d4ff);
+      }
+    }
+  }
+
+  &.open .toc-content {
+    max-height: none;
+    padding: 0.75rem;
+  }
+
+  /* Show static TOC only on smaller screens */
+  @media (min-width: 1401px) {
+    display: none !important;
+  }
+}

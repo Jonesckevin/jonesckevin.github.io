@@ -1,0 +1,34 @@
+{{- $lang := .Type | default "" -}}
+{{- $code := .Inner -}}
+{{- $lines := split $code "\n" -}}
+{{- $lineCount := len $lines -}}
+{{- $isPlainText := or (eq $lang "") (eq $lang "text") (eq $lang "plain") -}}
+
+{{- if $isPlainText -}}
+<div class="code-block-wrapper plain-text">
+  <details class="code-block-collapsible" open>
+    <summary class="code-block-header">
+      <span class="code-language">Plain Text</span>
+      <span class="code-line-count">{{ $lineCount }} lines</span>
+    </summary>
+    <div class="code-block-content">
+      <pre><code>{{- $code -}}</code></pre>
+    </div>
+  </details>
+</div>
+{{- else -}}
+<div class="code-block-wrapper">
+  <details class="code-block-collapsible" open>
+    <summary class="code-block-header">
+      <span class="code-language">{{ $lang }}</span>
+      <span class="code-line-count">{{ $lineCount }} lines</span>
+    </summary>
+    <div class="code-block-content">
+      <pre class="line-numbers language-{{ $lang }}"><code class="language-{{ $lang }}">{{- range $index, $line := $lines -}}
+<span class="line-number" data-line="{{ add $index 1 }}"></span>{{- $line -}}
+{{- if ne (add $index 1) $lineCount }}{{ print "\n" }}{{ end -}}
+{{- end -}}</code></pre>
+    </div>
+  </details>
+</div>
+{{- end -}}

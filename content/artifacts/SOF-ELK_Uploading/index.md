@@ -11,7 +11,7 @@ author: JonesCKevin
 seo_title: "SOF-ELK Uploading Guide - Digital Forensics with KAPE"
 canonical: "/artifacts/SOF-ELK_Uploading/"
 aliases: ["/artifacts/SOF-ELK_Uploading/", "/2023/11/installing-sof-elk-and-uploading-kape.html"]
-featured_image: "/images/SOF-ELK.png"
+featured_image: "/images/featured/artifacts/SOF-ELK.png"
 schema_type: "Article"
 sitemap_priority: 0.6
 sitemap_changefreq: "monthly"

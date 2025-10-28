@@ -35,16 +35,16 @@
 <link rel="stylesheet" href="/assets/css/theme-writeups.css">
 {{ end }}
 {{ if or (eq $sec "artifacts") (eq $sec "artifacts") }}
-<link rel="stylesheet" href="/assets/css/theme-artifacts.css">
+<link rel="stylesheet" href="/assets/css/section-artifacts.css">
 {{ end }}
 {{ if eq $sec "dockers" }}
-<link rel="stylesheet" href="/assets/css/theme-dockers.css">
+<link rel="stylesheet" href="/assets/css/section-dockers.css">
 {{ end }}
 {{ if eq $sec "ai-tools" }}
-<link rel="stylesheet" href="/assets/css/theme-ai-tools.css">
+<link rel="stylesheet" href="/assets/css/section-ai-tools.css">
 {{ end }}
 {{ if eq $sec "smelling_salts" }}
-<link rel="stylesheet" href="/assets/css/theme-smelling-salts.css">
+<link rel="stylesheet" href="/assets/css/section-smelling-salts.css">
 {{ end }}
 
 {{ range $val := $.Site.Params.customCSS }}
@@ -107,17 +107,3 @@
 <!-- Google Ads - In Page Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1449040832183171"
     crossorigin="anonymous"></script>
-
-<style>
-    body {
-        background-color: #181a1b;
-        background-image:
-            repeating-linear-gradient(135deg, #232526 0px, #232526 2px, transparent 2px, transparent 20px),
-            repeating-linear-gradient(225deg, #232526 0px, #232526 2px, transparent 2px, transparent 20px);
-        background-size: 15px 15px;
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: repeat;
-        color: #e0e0e0;
-    }
-</style>

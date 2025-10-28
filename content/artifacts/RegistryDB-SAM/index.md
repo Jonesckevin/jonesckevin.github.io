@@ -54,7 +54,7 @@ In the photo below, you can see the SAM file location within the Windows file sy
 
 The SAM database is organized hierarchically within the registry:
 
-```yaml
+```
 SAM
 ├── Domains
 │   ├── Account

@@ -18,7 +18,7 @@ seo_keywords: ["AI tools", "artificial intelligence", "productivity tools", "AI-
 canonical: "/ai-tools/"
 
 # Theme Configuration
-customCSS: "/assets/css/theme-ai-tools.css"
+customCSS: "/assets/css/section-ai-tools.css"
 
 # Search Configuration
 searchPlaceholder: "Search AI Tools..."

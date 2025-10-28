@@ -2,7 +2,6 @@
 @import "normalize";
 @import "prism";
 @import "syntax";
-@import "flag-icons";
 
 /* Main stuff */
 @import "variables";
@@ -29,3 +28,9 @@
 @import "common-layout";
 @import "section-base";
 @import "ai-tools";
+@import "ai-tools-page";
+//@import "side-menus";
+@import "post-single";
+@import "post-list";
+@import "table-of-contents";
+@import "shortcodes";
