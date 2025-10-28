@@ -17,6 +17,15 @@ seo_description: "Explore comprehensive CTF writeups, security challenges, and p
 seo_keywords: ["CTF writeups", "security challenges", "capture the flag", "hacking tutorials", "penetration testing", "cybersecurity", "DFIR", "forensics"]
 canonical: "/writeups/"
 
+# Social Media
+social_media:
+  og_title: "4n6Post - Docker Compose Stack configurations for Portainers"
+  og_description: "Digital forensics artifacts, CTF writeups, AI tools, and Docker configurations for cybersecurity professionals."
+  og_type: "website"
+  twitter_card: "summary_large_image"
+  twitter_title: "4n6Post - Digital Forensics & Cybersecurity Hub"
+  twitter_description: "Digital forensics artifacts, CTF writeups, AI tools, and Docker configurations for cybersecurity professionals."
+
 # Theme Configuration
 customCSS: "/assets/css/theme-writeups.css"
 

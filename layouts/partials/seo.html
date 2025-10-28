@@ -52,7 +52,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ if .Params.featured_image_alt }}{{ .Params.featured_image_alt }}{{ else }}{{ .Title }}{{ end }}">
 {{ else }}
-<meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/default.png">
+<meta property="og:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/default.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ .Site.Title }}">
@@ -108,7 +108,7 @@
 <meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}{{ .Params.featured_image }}">
   {{ end }}
 {{ else }}
-<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/default.png">
+<meta name="twitter:image" content="{{ .Site.BaseURL | strings.TrimSuffix " /" }}/default.webp">
 {{ end }}
 <meta name="twitter:image:alt" content="{{ if .Params.featured_image_alt }}{{ .Params.featured_image_alt }}{{ else }}{{ .Title }}{{ end }}">
 
@@ -124,7 +124,7 @@
   "url": "{{ .Permalink }}",
   "image": {
     "@type": "ImageObject",
-    "url": "{{ if .Params.featured_image }}{{ .Site.BaseURL | strings.TrimSuffix "/" }}{{ .Params.featured_image }}{{ else }}{{ .Site.BaseURL | strings.TrimSuffix "/" }}/default.png{{ end }}",
+    "url": "{{ if .Params.featured_image }}{{ .Site.BaseURL | strings.TrimSuffix "/" }}{{ .Params.featured_image }}{{ else }}{{ .Site.BaseURL | strings.TrimSuffix "/" }}/default.webp{{ end }}",
     "width": 1200,
     "height": 630
   },
@@ -145,7 +145,7 @@
     "url": "{{ .Site.BaseURL }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/default.png"
+      "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/default.webp"
     }
   },
   "mainEntityOfPage": {
@@ -234,7 +234,7 @@
     "url": "{{ .Site.BaseURL }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/default.png"
+      "url": "{{ .Site.BaseURL | strings.TrimSuffix "/" }}/default.webp"
     }
   }
 }
