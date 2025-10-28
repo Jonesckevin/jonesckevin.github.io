@@ -28,7 +28,7 @@ social_media:
   og_title: "4n6Post - Digital Forensics, CTF Writeups & AI Tools"
   og_description: "Comprehensive cyber security resource covering digital forensics artifacts, CTF writeups, AI tools, Docker containers, and fitness reviews."
   og_type: "website"
-  og_image: "/images/banner.png"
+  og_image: "/default.png"
   twitter_card: "summary_large_image"
   twitter_title: "4n6Post - Digital Forensics & Cybersecurity Hub"
   twitter_description: "Digital forensics artifacts, CTF writeups, AI tools, and Docker configurations for cybersecurity professionals."
