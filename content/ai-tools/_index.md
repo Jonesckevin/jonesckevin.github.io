@@ -57,7 +57,6 @@ infoItems:
 social_media:
   og_title: "AI Tools Hub - Professional AI-Powered Tools"
   og_description: "Discover powerful AI-driven tools for productivity, content creation, resume building, and professional development. Free online AI tools to enhance your workflow."
-  og_image: "/images/ai-tools-hub-social.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "AI Tools Hub - Professional AI-Powered Tools"
