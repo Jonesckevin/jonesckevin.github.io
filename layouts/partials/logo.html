@@ -3,30 +3,109 @@
     <span id="controlsToggle" class="logo__mark logo__mark--clickable" title="Toggle controls" style="font-size: 1.5em;">&gt;</span>
     <a href="{{ if .Site.Params.Logo.LogoHomeLink }}{{ .Site.Params.Logo.LogoHomeLink }}{{ else }}{{ .Site.BaseURL | relLangURL }}{{ end }}"
         class="logo__svg-link" aria-label="4n6Post Home">
-        <svg class="logo__svg" viewBox="30 85 450 120" width="100%" height="100%" style="max-width: 150px; max-height: 50px;" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="gAccent" x1="0" x2="1">
-                    <stop offset="0" stop-color="#2B90FF" />
-                    <stop offset="1" stop-color="#1ED760" />
-                </linearGradient>
-                <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0b1726" flood-opacity="0.15" />
-                </filter>
-            </defs>
-            <g filter="url(#textShadow)">
-                <text x="50" y="180" font-size="100" fill="darkorange" class="logo-text" font-family="PixelGame, Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" letter-spacing="-1">4n6</text>
-                <g font-family="Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" letter-spacing="-1">
-                    <text x="220" y="180" font-size="100" fill="darkorange" class="logo-text" font-weight="600">P</text>
-                    <text x="175" y="280" font-size="100" fill="rgba(0,0,0,0)" font-weight="600">o</text>
-                    <text x="345" y="175" font-size="100" fill="darkorange" class="logo-text" font-weight="600">st</text>
-                </g>
-                <g transform="translate(280,125)">
-                    <rect x="54" y="44" width="40" height="8" rx="4" transform="rotate(46 64 38)" fill="darkorange" class="logo-text" opacity="0.9" />
-                    <circle cx="30" cy="16" r="32" fill="none" stroke="url(#gAccent)" stroke-width="4" />
-                    <circle cx="30" cy="16" r="26" fill="none" stroke="rgba(11,23,38,0.09)" stroke-width="7" />
-                </g>
-            </g>
-        </svg>
+    <svg class="logo__svg" viewBox="30 85 450 120" width="100%" height="100%" style="max-width: 150px; max-height: 50px;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+        <linearGradient id="gAccent" x1="0" x2="1">
+        <stop offset="0" stop-color="#2B90FF" />
+        <stop offset="1" stop-color="#1ED760" />
+        </linearGradient>
+        <radialGradient id="glassGradient" cx="0.3" cy="0.3">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.4)" />
+        <stop offset="50%" stop-color="rgba(255,255,255,0.15)" />
+        <stop offset="100%" stop-color="rgba(255,255,255,0.05)" />
+        </radialGradient>
+        <linearGradient id="textGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#ff8c00" />
+        <stop offset="50%" stop-color="#ff6b00" />
+        <stop offset="100%" stop-color="#cc5500" />
+        </linearGradient>
+        <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0b1726" flood-opacity="0.15" />
+        <feDropShadow dx="2" dy="6" stdDeviation="3" flood-color="#000000" flood-opacity="0.3" />
+        </filter>
+        <filter id="glassBlur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" />
+        </filter>
+        <clipPath id="lensClip">
+        <circle cx="30" cy="16" r="24" />
+        </clipPath>
+        </defs>
+        <g filter="url(#textShadow)">
+        <!-- Dark shadow text layer -->
+        <text x="52" y="182" font-size="100" fill="#803300" class="logo-text" font-family="PixelGame, Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" letter-spacing="-1">4n6</text>
+        <text x="222" y="182" font-size="100" fill="#803300" class="logo-text" font-weight="600">P</text>
+        <text x="347" y="177" font-size="100" fill="#803300" class="logo-text" font-weight="600">st</text>
+        <!-- Main gradient text -->
+        <text x="50" y="180" font-size="100" fill="url(#textGradient)" class="logo-text" font-family="PixelGame, Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" letter-spacing="-1" stroke="#994400" stroke-width="1">4n6</text>
+        <text x="220" y="180" font-size="100" fill="url(#textGradient)" class="logo-text" font-weight="600" stroke="#994400" stroke-width="1">P</text>
+        <text x="345" y="175" font-size="100" fill="url(#textGradient)" class="logo-text" font-weight="600" stroke="#994400" stroke-width="1">st</text>
+        <!-- Highlight layer -->
+        <text x="50" y="180" font-size="100" fill="rgba(255,200,100,0.4)" class="logo-text" font-family="PixelGame, Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" letter-spacing="-1" stroke="rgba(255,255,255,0.3)" stroke-width="0.5">4n6</text>
+        <text x="220" y="180" font-size="100" fill="rgba(255,200,100,0.4)" class="logo-text" font-weight="600" stroke="rgba(255,255,255,0.3)" stroke-width="0.5">P</text>
+        <text x="345" y="175" font-size="100" fill="rgba(255,200,100,0.4)" class="logo-text" font-weight="600" stroke="rgba(255,255,255,0.3)" stroke-width="0.5">st</text>
+        </g>
+        <g transform="translate(280,125)">
+        <!-- Handle shadow -->
+        <rect x="54" y="46" width="40" height="8" rx="4" transform="rotate(46 64 38)" fill="rgba(0,0,0,0.2)" opacity="0.5" />
+        <!-- Handle -->
+        <rect x="54" y="44" width="40" height="8" rx="4" transform="rotate(46 64 38)" fill="darkorange" class="logo-text" opacity="0.9" />
+        <!-- Handle highlight -->
+        <rect x="54" y="44" width="38" height="3" rx="2" transform="rotate(46 64 38)" fill="rgba(255,255,255,0.3)" />
+        
+        <!-- Outer glow -->
+        <circle cx="30" cy="16" r="34" fill="none" stroke="url(#gAccent)" stroke-width="2" opacity="0.3" />
+        <!-- Outer ring with gradient -->
+        <circle cx="30" cy="16" r="32" fill="none" stroke="url(#gAccent)" stroke-width="5" />
+        <!-- Inner ring shadow -->
+        <circle cx="30" cy="16" r="27" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="2" />
+        <!-- Inner ring (frame) -->
+        <circle cx="30" cy="16" r="26" fill="none" stroke="rgba(11,23,38,0.12)" stroke-width="4" />
+        
+        <!-- Glass lens base with gradient -->
+        <circle cx="30" cy="16" r="24" fill="url(#glassGradient)" />
+        
+        <!-- Binary cascade (clipped to lens) -->
+        <g clip-path="url(#lensClip)" opacity="0.7" font-family="monospace" font-size="6" fill="#1ED760" font-weight="bold">
+        <text x="12" y="8">1</text>
+        <text x="12" y="16">0</text>
+        <text x="12" y="24">1</text>
+        <text x="12" y="32">1</text>
+        
+        <text x="20" y="4">0</text>
+        <text x="20" y="12">1</text>
+        <text x="20" y="20">0</text>
+        <text x="20" y="28">1</text>
+        <text x="20" y="36">0</text>
+        
+        <text x="28" y="10">1</text>
+        <text x="28" y="18">1</text>
+        <text x="28" y="26">0</text>
+        <text x="28" y="34">1</text>
+        
+        <text x="36" y="6">0</text>
+        <text x="36" y="14">1</text>
+        <text x="36" y="22">1</text>
+        <text x="36" y="30">0</text>
+        
+        <text x="44" y="8">1</text>
+        <text x="44" y="16">0</text>
+        <text x="44" y="24">0</text>
+        <text x="44" y="32">1</text>
+        </g>
+        
+        <!-- Glass depth effect -->
+        <circle cx="30" cy="16" r="22" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+        
+        <!-- Main highlight/reflection -->
+        <ellipse cx="22" cy="9" rx="12" ry="16" fill="rgba(255,255,255,0.4)" filter="url(#glassBlur)" />
+        <!-- Secondary highlight -->
+        <ellipse cx="38" cy="22" rx="6" ry="8" fill="rgba(255,255,255,0.15)" />
+        <!-- Bright highlight dot -->
+        <circle cx="19" cy="7" r="5" fill="rgba(255,255,255,0.6)" />
+        <!-- Small sparkle -->
+        <circle cx="36" cy="12" r="2" fill="rgba(255,255,255,0.8)" />
+        </g>
+    </svg>
     </a>
     {{ else }}
     <span id="controlsToggle" class="logo__mark logo__mark--clickable" title="Toggle controls">{{ with

@@ -76,11 +76,10 @@
             {{- end }}
           </div>
           <button class="main-nav-mobile-toggle" id="mainNavToggle" aria-label="Main Navigation">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
           <div class="main-nav-mobile-dropdown" id="mainNavDropdown">
@@ -193,6 +192,12 @@
                             font-weight: bold !important;
                             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
                               cursor: pointer;">Browse AI Hub</button>
+
+                      <!-- Close button: closes the AI Provider Settings dropdown -->
+                      <button class="ai-help-btn ai-close-btn" id="ai-close-btn" type="button" aria-label="Close AI Settings" title="Close AI Settings"
+                        style="margin-top:8px; width:100%; min-width:auto; padding:10px 12px; background:#444; border:1px solid #666; color:#fff; border-radius:6px; cursor:pointer;">
+                        Save
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -405,6 +410,17 @@
       aiDropdown.addEventListener('click', function (e) {
         e.stopPropagation();
       });
+
+      // Close button inside AI dropdown (explicit close)
+      const aiCloseBtn = document.getElementById('ai-close-btn');
+      if (aiCloseBtn) {
+        aiCloseBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (aiDropdown.classList.contains('open')) aiDropdown.classList.remove('open');
+          // Ensure click doesn't re-open the dropdown via other handlers
+          setTimeout(() => { aiProfileBtn.focus(); }, 10);
+        });
+      }
     }
 
     // AI Help Toggle

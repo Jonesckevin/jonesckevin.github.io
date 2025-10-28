@@ -196,6 +196,8 @@
   height: 44px;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1001;
 
   @media #{$media-size-tablet} {
     display: flex;
@@ -207,9 +209,38 @@
     transform: scale(1.05);
   }
 
-  &.active {
-    background: rgba(255, 107, 53, 0.2);
-    border-color: #ff6b35;
+    &.active {
+    background: rgba(255, 0, 0, 0.1);
+    border: none;
+    color: #ff0000;
+    
+    // Animate hamburger lines into X
+    svg line {
+      stroke: #ff0000;
+      stroke-width: 3;
+      
+      &:nth-child(1) {
+        transform: translateY(4px) rotate(45deg);
+      }
+      
+      &:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      
+      &:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+    }
+  }
+
+  svg {
+    overflow: visible;
+    
+    line {
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
   }
 }
 
@@ -231,7 +262,7 @@
   visibility: hidden;
   transform: translateX(-50%) translateY(-8px);
   transition: all 0.2s ease;
-  min-width: 200px;
+  min-width: 280px;
 
   &.show {
     opacity: 1;
@@ -239,17 +270,25 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  @media #{$media-size-phone} {
+  // At tablet breakpoint (1000px and below), use wider fixed positioning
+  @media #{$media-size-tablet} {
     position: fixed;
     top: 60px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 300px;
+    max-width: 500px;
+    min-width: 280px;
 
     &.show {
       transform: translateX(-50%) translateY(0);
     }
+  }
+
+  // At smaller screens, reduce width slightly
+  @media #{$media-size-phone} {
+    width: 95%;
+    max-width: 400px;
   }
 }
 
