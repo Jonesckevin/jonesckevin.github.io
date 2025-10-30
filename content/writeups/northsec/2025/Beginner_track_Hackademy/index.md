@@ -71,9 +71,13 @@ small hints and pointers can be given to you to help with this track. Use !help 
 </html>
 ```
 
+<details>
+<summary>Click to reveal the final flag</summary>
+
 ```flag
 FLAG-z4MvKIRJGPQ8kkTwkePVOrsHc038ADfC
 ```
+</details>
 
 ---
 
@@ -84,9 +88,13 @@ FLAG-z4MvKIRJGPQ8kkTwkePVOrsHc038ADfC
 ![Image](4.png)
 ![Image](5.png)
 
+<details>
+<summary>Click to reveal the final flag</summary>
+
 ```flag
 FLAG-mI4IZqUelrTlXibWbL06EbBxZomZbX2m (1/2)
 ```
+</details>
 
 ---
 

@@ -16,7 +16,6 @@ img[src*="images/featured"] {
   max-height: 200px;
 }
 
-*,
 *:before,
 *:after {
   box-sizing: inherit;
@@ -86,20 +85,19 @@ h6 {
 }
 
 h1 {
-  font-size: 2.625rem;
+  font-size: 2.5rem;
 }
 
 h2 {
   font-size: 1.625rem;
-  margin-top: 2.5em;
 }
 
 h3 {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
 }
 
 h4 {
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 @media #{$media-size-phone} {
@@ -681,11 +679,10 @@ ol ol {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  max-width: 1200px;
+  max-width: 1500px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box;
 
   @media #{$media-size-tablet} {
     padding: 0 16px;

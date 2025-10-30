@@ -7,8 +7,7 @@ categories: ["Artifacts"]
 tags: ["4n6", "digital forensics", "windows forensics", "registry", "DFIR"]
 type: "Artifacts"
 seo_title: "Windows OS Install Date & Time Registry Analysis"
-canonical: "/artifacts/OSInstallDateTime/"
-aliases: ["/artifacts/OSInstallDateTime/", "/2023/02/registry-os-install-date-time.html"]
+aliases: ["/2023/02/registry-os-install-date-time.html"]
 featured_image: "/images/featured/artifacts/RegistryBlock.png"
 schema_type: "Article"
 ---

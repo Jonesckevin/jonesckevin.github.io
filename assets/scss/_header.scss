@@ -325,6 +325,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding-right: 2em;
 
   @media #{$media-size-phone-medium} {
     gap: 0.5rem;

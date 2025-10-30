@@ -52,8 +52,7 @@
     height: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 15px;
+    justify-content: center;  
     order: 2;
 
     img {
@@ -61,7 +60,7 @@
         max-height: 100px;
         width: auto;
         height: auto;
-        object-fit: contain;
+        object-fit: fill;
         border: none;
     }
 }

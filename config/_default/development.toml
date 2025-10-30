@@ -1,0 +1,58 @@
+# Development-specific Hugo configuration
+# This extends the base hugo.toml configuration
+
+# Development server settings
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      # Development CORS headers
+      Access-Control-Allow-Origin = "*"
+      
+# Build settings optimized for development
+[build]
+  writeStats = true
+  useResourceCacheWhen = "fallback"
+
+# Disable minification for easier debugging
+[minify]
+  disableCSS = true
+  disableHTML = true
+  disableJS = true
+  disableJSON = true
+  disableSVG = true
+  disableXML = true
+
+# Enable live reload
+enableLiveReload = true
+
+# Build drafts and future content in development
+buildDrafts = true
+buildFuture = true
+buildExpired = true
+
+# Verbose logging for development
+verbose = true
+verboseLog = true
+
+[caches]
+  [caches.assets]
+    dir = ":cacheDir/:project/assets"
+    maxAge = "1h"
+  [caches.getcsv]
+    dir = ":cacheDir/:project/getcsv"
+    maxAge = "1h"
+  [caches.getjson]
+    dir = ":cacheDir/:project/getjson"
+    maxAge = "1h"
+  [caches.images]
+    dir = ":cacheDir/:project/images"
+    maxAge = "1h"
+  [caches.modules]
+    dir = ":cacheDir/modules"
+    maxAge = "1h"
+
+# Development-specific params
+[params]
+  env = "development"
+  enableDebugComments = true

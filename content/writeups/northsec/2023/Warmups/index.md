@@ -40,17 +40,39 @@ tshark -r mypcap.pcap -Tfields -e data \
    - `r` means reverse operation (from hex to binary).
    - `-p` means plain hexdump style (no whitespace).
 
-**Flag:** `FLAG-GoodJobReadingTheNetwork`
+<details>
+<summary>Click to reveal the final flag</summary>
+
+```flag
+FLAG-GoodJobReadingTheNetwork
+```
+
+</details>
 
 ---
 ---
 
 [Download main64.exe](main64-the-password-is-northsec.zip)
 
-Use `strings | grep FLAG` on the binary at the beginning to get the flag:
+Use `strings | grep FLAG` on the binary at the beginning to get the flag.
 
-- **Flag:** `FLAG-GoodJobOnRebOnReadingBins!`
+<details>
+<summary>Click to reveal the final flag</summary>
+
+```flag
+FLAG-GoodJobOnRebOnReadingBins!
+```
+
+</details>
+
+---
 
 **Remove the duplicate part ("JobOnReading") to get the correct flag.**
 
-- **Flag:** `FLAG-GoodJobOnReadingBins!`
+<details>
+<summary>Click to reveal the final flag</summary>
+
+```flag
+FLAG-GoodJobOnReadingBins!
+```
+</details>

@@ -62,9 +62,11 @@ Garbage
 
 <details>
 <summary>Click to reveal the final flag</summary>
+
 ```flag
 FLAG-089f37ec30aaff06e06d8c371ec8e8ed3786417c
 ```
+
 </details>
 
 ---

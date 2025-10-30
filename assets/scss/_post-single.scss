@@ -3,12 +3,12 @@
 /* Center posts area with proper spacing */
 main.posts {
   max-width: 1000px;
-  margin: 120px auto 0 auto;
+  margin: auto auto 0 auto;
   padding: 0 2rem;
 
   @media (max-width: 768px) {
     padding: 0 1rem;
-    margin-top: 120px;
+    padding-top: 140px;
   }
 }
 

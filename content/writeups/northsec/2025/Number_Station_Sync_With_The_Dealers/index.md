@@ -49,9 +49,11 @@ Once you set the correct access, you can plug the badge into the dock at the bar
 
 <details>
 <summary>Click to reveal the final flag</summary>
+
 ```flag
-FLAG-910b7263-9863-4781-b6c3-b16b3e99c96a`
+FLAG-910b7263-9863-4781-b6c3-b16b3e99c96a
 ```
+
 </details>
 
 ## Step 2

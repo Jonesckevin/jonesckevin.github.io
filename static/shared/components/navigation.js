@@ -1,10 +1,30 @@
 // Shared Navigation Component with optional dynamic manifest support
+// Optimized with caching and debouncing
 class NavigationComponent {
     constructor() {
         this.currentPath = window.location.pathname.replace(/\\/g, '/');
         this.basePath = this.getBasePath();
         // Deprecated: Only used as last resort fallback
         this.manifestPath = `${this.basePath}shared/components/ai-tools-manifest.json`;
+        
+        // Performance optimizations
+        this.manifestCache = new Map();
+        this.navigationCache = null;
+        this.cacheExpiry = 5 * 60 * 1000; // 5 minutes cache
+        this.lastCacheTime = null;
+    }
+    
+    // Utility: Debounce function for performance
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
     getBasePath() {
         // For Hugo sites, always use root-relative paths
@@ -35,10 +55,21 @@ class NavigationComponent {
         return name && currentPath.includes(name);
     }
     async loadManifest() {
+        // Check cache first
+        if (this.navigationCache && this.lastCacheTime) {
+            const cacheAge = Date.now() - this.lastCacheTime;
+            if (cacheAge < this.cacheExpiry) {
+                console.log('✓ Using cached navigation data');
+                return this.navigationCache;
+            }
+        }
+        
         try {
             // Primary: Use Hugo-generated data
             if (window.aiToolsData && window.aiToolsData.categories) {
                 console.log('✓ Using Hugo-generated AI tools data, categories:', window.aiToolsData.categories.length);
+                this.navigationCache = window.aiToolsData;
+                this.lastCacheTime = Date.now();
                 return window.aiToolsData;
             }
 
@@ -47,15 +78,23 @@ class NavigationComponent {
             await new Promise(resolve => setTimeout(resolve, 100));
             if (window.aiToolsData && window.aiToolsData.categories) {
                 console.log('✓ Using Hugo-generated AI tools data (after wait), categories:', window.aiToolsData.categories.length);
+                this.navigationCache = window.aiToolsData;
+                this.lastCacheTime = Date.now();
                 return window.aiToolsData;
             }
 
             // Fallback: Use default structure (Hugo data not configured)
             console.log('ℹ Hugo data not configured, using default navigation structure');
-            return this.getDefaultStructure();
+            const defaultStructure = this.getDefaultStructure();
+            this.navigationCache = defaultStructure;
+            this.lastCacheTime = Date.now();
+            return defaultStructure;
         } catch (e) {
             console.log('ℹ Using default navigation structure');
-            return this.getDefaultStructure();
+            const defaultStructure = this.getDefaultStructure();
+            this.navigationCache = defaultStructure;
+            this.lastCacheTime = Date.now();
+            return defaultStructure;
         }
     }
     getDefaultStructure() {

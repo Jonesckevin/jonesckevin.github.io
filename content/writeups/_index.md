@@ -26,9 +26,6 @@ social_media:
   twitter_title: "4n6Post - Digital Forensics & Cybersecurity Hub"
   twitter_description: "Digital forensics artifacts, CTF writeups, AI tools, and Docker configurations for cybersecurity professionals."
 
-# Theme Configuration
-customCSS: "/assets/css/theme-writeups.css"
-
 # Search Configuration
 searchPlaceholder: "Search writeups..."
 searchResultLabel: "writeup"
@@ -47,6 +44,17 @@ schemaName: "Security Writeups Collection"
 schemaDescription: "CTF writeups, security challenges, and penetration testing tutorials"
 schemaItemType: "Article"
 defaultAuthor: "JonesCKevin"
+
+# Info Section Configuration
+showInfoSection: true
+infoSectionTitle: "About NorthSec"
+infoItems:
+  - title: "What is a CTF?"
+    description: "Capture The Flag (CTF) competitions are cybersecurity contests where participants solve security-related challenges to earn points. They cover various topics such as web security, cryptography, reverse engineering, and forensics."
+  - title: "Learning Opportunity"
+    description: "Engaging with CTF writeups helps individuals enhance their cybersecurity skills and gain practical experience in solving real-world security problems."
+  - title: "Community Engagement"
+    description: "CTF writeups foster a collaborative community where security professionals and enthusiasts share knowledge and learn from each other's experiences."
 
 # Child Page Defaults
 cascade:

@@ -21,7 +21,6 @@
 
     /* Changes the overall layout for the AI Tools page section */
     @media (min-width: 1024px) {
-        grid-template-columns: 550px 4px 1fr; // Left Form section width
         min-height: 600px; // Overall size
         min-width: 900px;
     }

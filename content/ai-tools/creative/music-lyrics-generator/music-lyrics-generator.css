@@ -29,10 +29,6 @@
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 15px 20px;
-    margin-top: 10px;
-    padding: 10px 0;
-    width: 100%;
-    max-width: 100%;
 }
 
 @media (max-width: 768px) {

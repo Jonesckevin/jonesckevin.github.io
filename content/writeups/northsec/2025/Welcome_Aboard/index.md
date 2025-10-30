@@ -48,9 +48,11 @@ Mod'ed to
 
 <details>
 <summary>Click to reveal the flag</summary>
+
 ```flag
-`FLAG-TakeASeat`
+FLAG-TakeASeat
 ```
+
 ![image](4.png)
 </details>
 

@@ -38,9 +38,11 @@ You can first find the AmmoBox in the corner of the physical room. It comes with
 
 <details>
 <summary>Click to reveal the flag</summary>
+
 ```flag
-`FLAG-3f9c2a1b-5d8e-4c1a-91b3-7f4d6e2f9a6c`
+FLAG-3f9c2a1b-5d8e-4c1a-91b3-7f4d6e2f9a6c
 ```
+
 </details>
 
 ![Image3](3.png)

@@ -1,5 +1,31 @@
+// Theme Manager with localStorage optimization
+const themeManager = {
+  cache: null,
+  
+  get() {
+    if (!this.cache) {
+      this.cache = window.localStorage && window.localStorage.getItem("theme");
+    }
+    return this.cache;
+  },
+  
+  set(value) {
+    this.cache = value;
+    if (window.localStorage) {
+      localStorage.setItem("theme", value);
+    }
+  },
+  
+  remove() {
+    this.cache = null;
+    if (window.localStorage) {
+      localStorage.removeItem("theme");
+    }
+  }
+};
+
 const themeToggle = document.querySelector(".theme-toggle");
-const chosenTheme = window.localStorage && window.localStorage.getItem("theme");
+const chosenTheme = themeManager.get();
 const chosenThemeIsDark = chosenTheme == "dark";
 const chosenThemeIsLight = chosenTheme == "light";
 
@@ -17,14 +43,14 @@ function detectOSColorTheme() {
 
 function switchTheme(e) {
   if (chosenThemeIsDark) {
-    localStorage.setItem("theme", "light");
+    themeManager.set("light");
   } else if (chosenThemeIsLight) {
-    localStorage.setItem("theme", "dark");
+    themeManager.set("dark");
   } else {
     if (document.documentElement.getAttribute("data-theme") == "dark") {
-      localStorage.setItem("theme", "light");
+      themeManager.set("light");
     } else {
-      localStorage.setItem("theme", "dark");
+      themeManager.set("dark");
     }
   }
 
@@ -43,7 +69,7 @@ if (themeToggle) {
 
   detectOSColorTheme();
 } else {
-  localStorage.removeItem("theme");
+  themeManager.remove();
 }
 
 // Code Block Enhancement

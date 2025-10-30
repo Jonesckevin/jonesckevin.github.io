@@ -32,7 +32,7 @@
 {{/* Section-specific CSS theme overrides (just color variables) */}}
 {{ $sec := lower .Section }}
 {{ if eq $sec "writeups" }}
-<link rel="stylesheet" href="/assets/css/theme-writeups.css">
+<link rel="stylesheet" href="/assets/css/section-writeups.css">
 {{ end }}
 {{ if or (eq $sec "artifacts") (eq $sec "artifacts") }}
 <link rel="stylesheet" href="/assets/css/section-artifacts.css">
@@ -43,7 +43,7 @@
 {{ if eq $sec "ai-tools" }}
 <link rel="stylesheet" href="/assets/css/section-ai-tools.css">
 {{ end }}
-{{ if eq $sec "smelling_salts" }}
+{{ if eq $sec "smelling-salts" }}
 <link rel="stylesheet" href="/assets/css/section-smelling-salts.css">
 {{ end }}
 

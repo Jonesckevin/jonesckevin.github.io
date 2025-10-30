@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main class="posts" style="max-width: 1000px; margin: 120px auto 0 auto; padding: 0 2rem;">
+<main class="posts">
     <!-- Breadcrumb Navigation -->
     <nav class="breadcrumb">
         <a href="/">Home</a>
@@ -80,7 +80,7 @@
         {{ if gt (len .TableOfContents) 100 }}
         <div id="toc-static" data-kept="true">
             <div class="toc-title" onclick="this.parentElement.classList.toggle('open')">
-                <span>Table of Contents</span>
+                <span>Header Content</span>
                 <span style="cursor: pointer;">▼</span>
             </div>
             <div class="toc-content">
@@ -99,7 +99,7 @@
         {{ if ne .Params.toc false }}
         {{ if gt (len .TableOfContents) 100 }}
         <aside id="toc-auto">
-            <div class="toc-title">Table of Contents</div>
+            <div class="toc-title">Header Content</div>
             <div class="toc-content always-active">
                 {{ .TableOfContents }}
             </div>

@@ -1,0 +1,82 @@
+# Production-specific Hugo configuration
+# This extends the base hugo.toml configuration
+
+# Production build settings
+[build]
+  writeStats = true
+  useResourceCacheWhen = "always"
+
+# Enable full minification for production
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+  
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      keepCSS2 = true
+      precision = 0
+    [minify.tdewolff.html]
+      keepComments = false
+      keepConditionalComments = true
+      keepDefaultAttrVals = true
+      keepDocumentTags = true
+      keepEndTags = true
+      keepQuotes = false
+      keepWhitespace = false
+    [minify.tdewolff.js]
+      keepVarNames = false
+      precision = 0
+      version = 2022
+    [minify.tdewolff.json]
+      keepNumbers = false
+      precision = 0
+    [minify.tdewolff.svg]
+      keepComments = false
+      precision = 0
+    [minify.tdewolff.xml]
+      keepWhitespace = false
+
+# Disable development features
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableLiveReload = false
+
+# Production caching (longer durations)
+[caches]
+  [caches.assets]
+    dir = ":cacheDir/:project/assets"
+    maxAge = "1h"
+  [caches.getcsv]
+    dir = ":cacheDir/:project/getcsv"
+    maxAge = "1h"
+  [caches.getjson]
+    dir = ":cacheDir/:project/getjson"
+    maxAge = "1h"
+  [caches.images]
+    dir = ":cacheDir/:project/images"
+    maxAge = "1h"
+  [caches.modules]
+    dir = ":cacheDir/modules"
+    maxAge = "1h"
+
+# Production-specific params
+[params]
+  env = "production"
+  enableDebugComments = false
+
+# Security headers for production
+[[server.headers]]
+  for = "/**"
+  [server.headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';"

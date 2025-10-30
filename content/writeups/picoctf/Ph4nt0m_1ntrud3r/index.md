@@ -169,7 +169,12 @@ tshark -r myNetworkTraffic.pcap -T fields -e frame.time -e frame.number -e tcp.p
   66513d3d                  : }
 ```
 
-**Flag:** `picoCTF{1t_w4snt_th4t_34sy_tbh_4r_8e10e839}`
+<details>
+<summary>Click to reveal the final flag</summary>
+
+```flag
+picoCTF{1t_w4snt_th4t_34sy_tbh_4r_8e10e839}
+```
 
 </details>
 

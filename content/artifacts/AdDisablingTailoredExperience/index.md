@@ -5,14 +5,16 @@ draft: false
 tags: ["registry", "4n6", "digital forensics", "windows forensics"]
 categories: ["Artifacts"]
 type: "Artifacts"
-seo_title: "Ad Disabling and Tailored Experience in Windows - Registry Tweaks"
 canonical: "/artifacts/ad-disabling-tailored-experience/"
-aliases: ["/artifacts/ad-disabling-tailored-experience/", "/2023/12/windows-mod-ad-disabling-and-tailored.html"]
 featured_image: "/images/featured/artifacts/RegistryBlock.png"
 schema_type: "TechArticle"
 sitemap_priority: 0.7
 description: "Guide to disabling ads and controlling tailored experience in Windows via registry tweaks. Learn forensic implications, privacy settings, and how to optimize Windows forensics investigations."
 keywords: ["Windows ads", "disable tailored experience", "registry tweaks", "Windows privacy", "forensic implications", "Windows customization", "ad settings", "Windows telemetry", "digital forensics", "privacy optimization", "Windows registry", "forensic analysis"]
+seo_title: "Ad Disabling and Tailored Experience in Windows - Registry Tweaks"
+seo_description: "Explore how to disable ads and control tailored experiences in Windows through registry modifications. Understand the forensic implications and enhance your Windows forensics investigations with this comprehensive guide."
+seo_keywords: ["Windows ads", "disable tailored experience", "registry tweaks", "Windows privacy", "forensic implications", "Windows customization", "ad settings", "Windows telemetry", "digital forensics", "privacy optimization", "Windows registry", "forensic analysis"]
+seo_image: "/images/featured/artifacts/RegistryBlock.png"
 ---
 
 ![Registry Block](/images/featured/artifacts/RegistryBlock.png)

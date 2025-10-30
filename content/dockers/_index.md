@@ -17,9 +17,6 @@ seo_description: "Explore Docker container configurations and Portainer manageme
 seo_keywords: ["Docker", "Portainer", "Containerization", "DevOps Tools", "Microservices", "Docker Compose", "Kubernetes", "CI/CD Pipelines", "Cloud Computing", "Virtualization", "Infrastructure Automation", "Deployment Strategies", "Scalability Solutions", "Container Networking", "Container Security"]
 canonical: "/dockers/"
 
-# Theme Configuration
-customCSS: "/assets/css/theme-dockers.css"
-
 # Search Configuration
 searchPlaceholder: "Search Docker containers..."
 searchResultLabel: "container"

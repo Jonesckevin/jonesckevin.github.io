@@ -17,9 +17,6 @@ seo_description: "Explore comprehensive digital forensics articles covering Wind
 seo_keywords: ["4N6Post", "Digital Forensics Articles", "Windows Artifacts", "Registry Analysis", "MFT Analysis", "DFIR Techniques", "Forensic Techniques", "Incident Response", "File System Forensics", "Memory Forensics", "Log Analysis", "Timeline Analysis", "Malware Analysis", "Data Recovery", "Forensic Tools", "Cybersecurity"]
 canonical: "/artifacts/"
 
-# Theme Configuration
-customCSS: "/assets/css/theme-artifacts.css"
-
 # Search Configuration
 searchPlaceholder: "Search forensic articles..."
 searchResultLabel: "article"

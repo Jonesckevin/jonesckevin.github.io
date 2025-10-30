@@ -17,9 +17,6 @@ seo_description: "Explore powerful AI-driven tools for productivity, content cre
 seo_keywords: ["AI tools", "artificial intelligence", "productivity tools", "AI-powered applications", "resume builder", "content generator", "document summarizer", "free AI tools", "professional tools", "workflow automation"]
 canonical: "/ai-tools/"
 
-# Theme Configuration
-customCSS: "/assets/css/section-ai-tools.css"
-
 # Search Configuration
 searchPlaceholder: "Search AI Tools..."
 searchResultLabel: "tool"
@@ -31,6 +28,9 @@ hideThumbnails: false
 thumbnailOnlyView: false
 hideDescriptions: false
 showAllDescendants: true
+
+# Featured Image
+#featured_image: "/images/ai-tools-hub-featured.png"
 
 # Schema Configuration
 schemaType: true
@@ -61,7 +61,6 @@ social_media:
   twitter_card: "summary_large_image"
   twitter_title: "AI Tools Hub - Professional AI-Powered Tools"
   twitter_description: "Free AI-powered tools for productivity, content creation, and professional development. Enhance your workflow with our AI applications."
-  twitter_image: "/images/ai-tools-hub-twitter.png"
 
 # Child Page Defaults
 cascade:

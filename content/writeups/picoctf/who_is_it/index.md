@@ -22,4 +22,10 @@ Download the email file here. Flag: picoCTF{FirstnameLastname}
 
 ## Flag
 
-`picoCTF{WilhelmZwalina}`
+<details>
+<summary>Click to reveal the final flag</summary>
+
+```flag
+picoCTF{WilhelmZwalina}
+```
+</details>

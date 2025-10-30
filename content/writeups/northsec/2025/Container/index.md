@@ -204,9 +204,13 @@ The `XOR` Output is your Container Password.
 <details>
 <summary>Click to reveal the flag</summary>
 
-**Flag:** `FLAG-6b44cae75180580cb18e643e57c8a9cafc1c3e1f`
+```flag
+FLAG-6b44cae75180580cb18e643e57c8a9cafc1c3e1f
+```
 
 </details>
+
+---
 
 ## Cleanup - Delete when you are done
 
@@ -296,7 +300,20 @@ done | sort | uniq -c
 >X=785
 >```
 >
->**NOT a flag:** `FLAG-674834236874917697425856897785`
+<details>
+<summary>Click to reveal the final flag</summary>
+
+**NOT a flag**
+
+```flag
+FLAG-674834236874917697425856897785
+```
+
+</details>
+
+---
+
+## What I Tried
 
 We did find `/usr/local/go/src/flag` but it was unable to do much. My containers were not being very nice to me, where others had different results but still incomplete.
 

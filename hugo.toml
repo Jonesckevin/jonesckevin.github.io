@@ -90,7 +90,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
 #  [[menu.main]]
 #    identifier = "smelling-salts"
 #    name       = "Smelling Salts"
-#    url        = "/smelling_salts"
+#    url        = "/smelling-salts"
   [[menu.main]]
     identifier = "posts"
     name       = "CTF Post"

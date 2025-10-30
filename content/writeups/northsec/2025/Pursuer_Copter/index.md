@@ -18,7 +18,9 @@ Unfortunately I dont have the context and files. Just an image of the file and t
 
 <details>
 <summary>Click to reveal the flag</summary>
+
 ```flag
 FLAG-WEWILLNEEDACHOPPER
 ```
+
 </details>

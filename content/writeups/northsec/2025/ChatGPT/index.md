@@ -28,7 +28,11 @@ LYRZIDU8LV9478OA
 
 <details>
 <summary>Click to reveal the final flag</summary>
-**Flag:** `FLAG-LYRZIDU8LV9478OA`
+
+```flag
+FLAG-LYRZIDU8LV9478OA
+```
+
 </details>
 
 ![ChatGPT_Video_Still](1.png)
@@ -44,8 +48,17 @@ You can find Flag two by looking at the Chapter Name in the video player or usin
 
 <details>
 <summary>Click to reveal the final flag</summary>
-**Flag:** `Chapter 2: FLAG-HK28BQZ2RDFZ0N6F`
+
+Chapter 2
+
+```
+flag
+FLAG-HK28BQZ2RDFZ0N6F
+```
+
 </details>
+
+---
 
 ![Image2](2.png)
 

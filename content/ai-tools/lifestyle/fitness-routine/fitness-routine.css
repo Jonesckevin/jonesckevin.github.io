@@ -77,7 +77,6 @@
 /* Select styling */
 select {
     width: 100%;
-    padding: 12px 15px;
     border: 2px solid #444;
     border-radius: 8px;
     background: #1a1a1a;
@@ -98,7 +97,6 @@ select:focus {
 /* Textarea styling */
 textarea {
     width: 100%;
-    padding: 12px 15px;
     border: 2px solid #444;
     border-radius: 8px;
     background: #1a1a1a;
