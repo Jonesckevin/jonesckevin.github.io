@@ -28,7 +28,6 @@
 .form-group textarea,
 .form-group select {
     width: 100%;
-    padding: 12px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     font-size: 14px;
@@ -43,77 +42,7 @@
     border-color: #ff6b35;
 }
 
-.form-group input[type="range"] {
-    width: 100%;
-    margin-top: 10px;
-    height: 8px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: linear-gradient(to right, #ff6b35 0%, #f44336 100%);
-    border-radius: 5px;
-    outline: none;
-    opacity: 0.9;
-    transition: opacity 0.2s;
-}
-
-.form-group input[type="range"]:hover {
-    opacity: 1;
-}
-
-.form-group input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    border: 3px solid #ff6b35;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.form-group input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
-}
-
-.form-group input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    border: 3px solid #ff6b35;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.form-group input[type="range"]::-moz-range-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
-}
-
-.slider-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #ff6b35;
-    font-weight: 600;
-    margin-top: 8px;
-}
-
-.slider-labels span {
-    padding: 4px 8px;
-    background: rgba(255, 107, 53, 0.1);
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.slider-labels span:hover {
-    background: rgba(255, 107, 53, 0.2);
-    transform: translateY(-2px);
-}
+/* Slider styles now unified in _ai-tools-page.scss */
 
 /* Creativity Display Value Styling */
 #creativityDisplay {
@@ -157,48 +86,7 @@
     height: 18px;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: help;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 300px;
-    background-color: #333;
-    color: #fff;
-    text-align: left;
-    border-radius: 8px;
-    padding: 12px;
-    position: absolute;
-    z-index: 1000;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -150px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 13px;
-    line-height: 1.4;
-    font-weight: normal;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
+/* Tooltip styles now unified in _ai-tools-page.scss */
 
 .btn-primary {
     background: linear-gradient(135deg, #ff6b35 0%, #f44336 100%);
@@ -497,12 +385,6 @@ crisp quality .prompt-used p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .tooltip .tooltiptext {
-        width: 250px;
-        margin-left: -125px;
-        font-size: 12px;
-    }
-
     .image-info {
         flex-direction: column;
         gap: 15px;

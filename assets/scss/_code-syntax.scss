@@ -1,0 +1,497 @@
+/* Code Syntax Highlighting - Unified for all code blocks across the site */
+/* This file combines Hugo's Chroma syntax highlighting with custom syntax classes */
+
+/* ===== HUGO CHROMA SYNTAX HIGHLIGHTING ===== */
+/* Generated using: hugo gen chromastyles --style=github */
+
+/* Background */ 
+.bg { background-color: #fff; }
+
+/* PreWrapper */ 
+.chroma { background-color: #fff; }
+
+/* Error */ 
+.chroma .err { color: #f6f8fa; background-color: #82071e; }
+
+/* LineLink */ 
+.chroma .lnlinks { outline: none; text-decoration: none; color: inherit; }
+
+/* LineTableTD */ 
+.chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+
+/* LineTable */ 
+.chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+
+/* LineHighlight */ 
+.chroma .hl { background-color: #e5e5e5; }
+
+/* LineNumbersTable */ 
+.chroma .lnt { 
+  white-space: pre; 
+  -webkit-user-select: none; 
+  user-select: none; 
+  margin-right: 0.4em; 
+  padding: 0 0.4em 0 0.4em; 
+  color: #7f7f7f; 
+}
+
+/* LineNumbers */ 
+.chroma .ln { 
+  white-space: pre; 
+  -webkit-user-select: none; 
+  user-select: none; 
+  margin-right: 0.4em; 
+  padding: 0 0.4em 0 0.4em; 
+  color: #7f7f7f; 
+}
+
+/* Line */ 
+.chroma .line { display: flex; }
+
+/* Keyword */ 
+.chroma .k { color: #cf222e; }
+
+/* KeywordConstant */ 
+.chroma .kc { color: #cf222e; }
+
+/* KeywordDeclaration */ 
+.chroma .kd { color: #cf222e; }
+
+/* KeywordNamespace */ 
+.chroma .kn { color: #cf222e; }
+
+/* KeywordPseudo */ 
+.chroma .kp { color: #cf222e; }
+
+/* KeywordReserved */ 
+.chroma .kr { color: #cf222e; }
+
+/* KeywordType */ 
+.chroma .kt { color: #cf222e; }
+
+/* NameAttribute */ 
+.chroma .na { color: #1f2328; }
+
+/* NameClass */ 
+.chroma .nc { color: #1f2328; }
+
+/* NameConstant */ 
+.chroma .no { color: #0550ae; }
+
+/* NameDecorator */ 
+.chroma .nd { color: #0550ae; }
+
+/* NameEntity */ 
+.chroma .ni { color: #6639ba; }
+
+/* NameLabel */ 
+.chroma .nl { color: #900; font-weight: bold; }
+
+/* NameNamespace */ 
+.chroma .nn { color: #24292e; }
+
+/* NameOther */ 
+.chroma .nx { color: #1f2328; }
+
+/* NameTag */ 
+.chroma .nt { color: #0550ae; }
+
+/* NameBuiltin */ 
+.chroma .nb { color: #6639ba; }
+
+/* NameBuiltinPseudo */ 
+.chroma .bp { color: #6a737d; }
+
+/* NameVariable */ 
+.chroma .nv { color: #953800; }
+
+/* NameVariableClass */ 
+.chroma .vc { color: #953800; }
+
+/* NameVariableGlobal */ 
+.chroma .vg { color: #953800; }
+
+/* NameVariableInstance */ 
+.chroma .vi { color: #953800; }
+
+/* NameVariableMagic */ 
+.chroma .vm { color: #953800; }
+
+/* NameFunction */ 
+.chroma .nf { color: #6639ba; }
+
+/* NameFunctionMagic */ 
+.chroma .fm { color: #6639ba; }
+
+/* LiteralString */ 
+.chroma .s { color: #0a3069; }
+
+/* LiteralStringAffix */ 
+.chroma .sa { color: #0a3069; }
+
+/* LiteralStringBacktick */ 
+.chroma .sb { color: #0a3069; }
+
+/* LiteralStringChar */ 
+.chroma .sc { color: #0a3069; }
+
+/* LiteralStringDelimiter */ 
+.chroma .dl { color: #0a3069; }
+
+/* LiteralStringDoc */ 
+.chroma .sd { color: #0a3069; }
+
+/* LiteralStringDouble */ 
+.chroma .s2 { color: #0a3069; }
+
+/* LiteralStringEscape */ 
+.chroma .se { color: #0a3069; }
+
+/* LiteralStringHeredoc */ 
+.chroma .sh { color: #0a3069; }
+
+/* LiteralStringInterpol */ 
+.chroma .si { color: #0a3069; }
+
+/* LiteralStringOther */ 
+.chroma .sx { color: #0a3069; }
+
+/* LiteralStringRegex */ 
+.chroma .sr { color: #0a3069; }
+
+/* LiteralStringSingle */ 
+.chroma .s1 { color: #0a3069; }
+
+/* LiteralStringSymbol */ 
+.chroma .ss { color: #032f62; }
+
+/* LiteralNumber */ 
+.chroma .m { color: #0550ae; }
+
+/* LiteralNumberBin */ 
+.chroma .mb { color: #0550ae; }
+
+/* LiteralNumberFloat */ 
+.chroma .mf { color: #0550ae; }
+
+/* LiteralNumberHex */ 
+.chroma .mh { color: #0550ae; }
+
+/* LiteralNumberInteger */ 
+.chroma .mi { color: #0550ae; }
+
+/* LiteralNumberIntegerLong */ 
+.chroma .il { color: #0550ae; }
+
+/* LiteralNumberOct */ 
+.chroma .mo { color: #0550ae; }
+
+/* Operator */ 
+.chroma .o { color: #0550ae; }
+
+/* OperatorWord */ 
+.chroma .ow { color: #0550ae; }
+
+/* Punctuation */ 
+.chroma .p { color: #1f2328; }
+
+/* Comment */ 
+.chroma .c { color: #57606a; }
+
+/* CommentHashbang */ 
+.chroma .ch { color: #57606a; }
+
+/* CommentMultiline */ 
+.chroma .cm { color: #57606a; }
+
+/* CommentSingle */ 
+.chroma .c1 { color: #57606a; }
+
+/* CommentSpecial */ 
+.chroma .cs { color: #57606a; }
+
+/* CommentPreproc */ 
+.chroma .cp { color: #57606a; }
+
+/* CommentPreprocFile */ 
+.chroma .cpf { color: #57606a; }
+
+/* GenericDeleted */ 
+.chroma .gd { color: #82071e; background-color: #ffebe9; }
+
+/* GenericEmph */ 
+.chroma .ge { color: #1f2328; }
+
+/* GenericInserted */ 
+.chroma .gi { color: #116329; background-color: #dafbe1; }
+
+/* GenericOutput */ 
+.chroma .go { color: #1f2328; }
+
+/* GenericUnderline */ 
+.chroma .gl { text-decoration: underline; }
+
+/* TextWhitespace */ 
+.chroma .w { color: #fff; }
+
+
+/* ===== CUSTOM SYNTAX HIGHLIGHTING CLASSES ===== */
+/* Used for AI-generated code blocks and dynamic syntax highlighting */
+
+/* Base Code Block Styling */
+.code-block {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.sql-code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+/* SQL Syntax Highlighting */
+.sql-keyword {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+.sql-string {
+  color: #ce9178;
+}
+
+.sql-comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.sql-number {
+  color: #b5cea8;
+}
+
+.sql-function {
+  color: #dcdcaa;
+}
+
+/* Bash/Shell Syntax Highlighting */
+.bash-keyword {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.bash-string {
+  color: #f1fa8c;
+}
+
+.bash-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* PowerShell Syntax Highlighting */
+.powershell-keyword {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+.powershell-cmdlet {
+  color: #dcdcaa;
+}
+
+.powershell-string {
+  color: #ce9178;
+}
+
+.powershell-comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+/* Python Syntax Highlighting */
+.python-keyword {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.python-string {
+  color: #f1fa8c;
+}
+
+.python-function {
+  color: #50fa7b;
+}
+
+.python-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.python-number {
+  color: #bd93f9;
+}
+
+/* JavaScript/Node.js Syntax Highlighting */
+.js-keyword {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.js-function {
+  color: #50fa7b;
+}
+
+.js-string {
+  color: #f1fa8c;
+}
+
+.js-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.js-number {
+  color: #bd93f9;
+}
+
+/* YAML Syntax Highlighting */
+.yaml-key {
+  color: #50fa7b;
+}
+
+.yaml-value {
+  color: #f1fa8c;
+}
+
+.yaml-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* JSON Syntax Highlighting */
+.json-key {
+  color: #50fa7b;
+}
+
+.json-string {
+  color: #f1fa8c;
+}
+
+.json-number {
+  color: #bd93f9;
+}
+
+.json-boolean {
+  color: #ff79c6;
+}
+
+.json-null {
+  color: #ff79c6;
+}
+
+/* HTML/XML Syntax Highlighting */
+.html-tag {
+  color: #ff79c6;
+}
+
+.html-attribute {
+  color: #50fa7b;
+}
+
+.html-string {
+  color: #f1fa8c;
+}
+
+.html-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* CSS Syntax Highlighting */
+.css-selector {
+  color: #50fa7b;
+}
+
+.css-property {
+  color: #66d9ef;
+}
+
+.css-value {
+  color: #f1fa8c;
+}
+
+.css-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* Markdown Syntax Highlighting */
+.md-header {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.md-bold {
+  font-weight: bold;
+  color: #50fa7b;
+}
+
+.md-italic {
+  font-style: italic;
+  color: #f1fa8c;
+}
+
+.md-link {
+  color: #8be9fd;
+  text-decoration: underline;
+}
+
+.md-code {
+  color: #f1fa8c;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* Generic Syntax Elements */
+.syntax-keyword {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.syntax-string {
+  color: #f1fa8c;
+}
+
+.syntax-number {
+  color: #bd93f9;
+}
+
+.syntax-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.syntax-function {
+  color: #50fa7b;
+}
+
+.syntax-operator {
+  color: #ff79c6;
+}
+
+.syntax-variable {
+  color: #8be9fd;
+}
+
+.syntax-constant {
+  color: #bd93f9;
+}

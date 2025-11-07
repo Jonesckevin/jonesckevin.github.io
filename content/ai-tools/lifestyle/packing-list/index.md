@@ -98,16 +98,46 @@ Create comprehensive, customized packing lists for any trip. From weekend getawa
       <span class="tooltiptext">Select all activities you plan to do on your trip</span>
     </label>
     <div class="checkbox-group">
-      <div class="checkbox-row">
-        <label class="checkbox-inline"><input type="checkbox" id="actBeach"> 🏖️ Beach / Swimming</label>
-        <label class="checkbox-inline"><input type="checkbox" id="actHiking"> 🥾 Hiking / Trekking</label>
-        <label class="checkbox-inline"><input type="checkbox" id="actFormal"> 👔 Formal Events</label>
-        <label class="checkbox-inline"><input type="checkbox" id="actSports"> 🏃 Sports / Fitness</label>
-        <label class="checkbox-inline"><input type="checkbox" id="actDining"> 🍽️ Fine Dining</label>
-        <label class="checkbox-inline"><input type="checkbox" id="actPhotography"> 📸 Photography</label>
-        <label class="checkbox-inline"><input type="checkbox" id="actWater"> 🌊 Water Sports</label>
-        <label class="checkbox-inline"><input type="checkbox" id="actNightlife"> 🌃 Nightlife / Clubs</label>
-      </div>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actBeach">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🏖️ Beach / Swimming</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actHiking">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🥾 Hiking / Trekking</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actFormal">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">👔 Formal Events</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actSports">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🏃 Sports / Fitness</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actDining">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🍽️ Fine Dining</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actPhotography">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">📸 Photography</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actWater">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🌊 Water Sports</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="actNightlife">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🌃 Nightlife / Clubs</span>
+      </label>
     </div>
   </div>
   <div class="form-group">
@@ -127,14 +157,36 @@ Create comprehensive, customized packing lists for any trip. From weekend getawa
       <span class="tooltiptext">Select any special requirements or situations</span>
     </label>
     <div class="checkbox-group">
-      <div class="checkbox-row">
-        <label class="checkbox-inline"><input type="checkbox" id="needBaby"> 👶 Traveling with Baby</label>
-        <label class="checkbox-inline"><input type="checkbox" id="needKids"> 🧒 Traveling with Kids</label>
-        <label class="checkbox-inline"><input type="checkbox" id="needMedical"> 💊 Medical Needs</label>
-        <label class="checkbox-inline"><input type="checkbox" id="needPets"> 🐕 Traveling with Pets</label>
-        <label class="checkbox-inline"><input type="checkbox" id="needWork"> 💻 Remote Work</label>
-        <label class="checkbox-inline"><input type="checkbox" id="needElectronics"> 🔌 Tech Heavy</label>
-      </div>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="needBaby">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">👶 Traveling with Baby</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="needKids">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🧒 Traveling with Kids</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="needMedical">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">💊 Medical Needs</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="needPets">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🐕 Traveling with Pets</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="needWork">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">💻 Remote Work</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="needElectronics">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🔌 Tech Heavy</span>
+      </label>
     </div>
   </div>
   <div class="form-group">

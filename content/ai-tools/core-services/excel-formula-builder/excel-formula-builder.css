@@ -1,0 +1,530 @@
+/* Excel Formula Builder Specific Styles */
+
+/* Ensure parent containers allow proper wrapping */
+.ai-results-section {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Loading State */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #ff6b35;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Result Container - Ensure proper wrapping */
+#resultDiv {
+    max-width: 100%;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#resultContent {
+    max-width: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#resultDiv > h3 {
+    margin-top: 0;
+}
+
+/* Formula Code Block */
+.formula-code-block {
+    background: #1e1e1e;
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.formula-code {
+    padding: 20px;
+    margin: 0;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d4d4d4;
+    background: #1e1e1e;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Excel Syntax Highlighting */
+.excel-function {
+    color: #4ec9b0;
+    font-weight: 600;
+}
+
+.excel-cell {
+    color: #9cdcfe;
+    font-weight: 500;
+}
+
+.excel-named {
+    color: #dcdcaa;
+}
+
+.excel-string {
+    color: #ce9178;
+}
+
+.excel-number {
+    color: #b5cea8;
+}
+
+.excel-operator {
+    color: #d4d4d4;
+    font-weight: 600;
+}
+
+.excel-paren {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+.excel-bracket {
+    color: #da70d6;
+    font-weight: 600;
+}
+
+.excel-delimiter {
+    color: #d4d4d4;
+}
+
+/* Content Blocks */
+.formatting-block,
+.explanation-block,
+.step-by-step-block,
+.examples-block,
+.alternatives-block,
+.best-practices-block,
+.vba-macro-block {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.formatting-block {
+    border-left-color: #ff6b9d;
+}
+
+.explanation-block {
+    border-left-color: #4299e1;
+}
+
+.step-by-step-block {
+    border-left-color: #48bb78;
+}
+
+.examples-block {
+    border-left-color: #ed8936;
+}
+
+.alternatives-block {
+    border-left-color: #9f7aea;
+}
+
+.best-practices-block {
+    border-left-color: #38b2ac;
+}
+
+.vba-macro-block {
+    border-left-color: #e53e3e;
+    background: #1e1e1e;
+}
+
+.formatting-block h4,
+.explanation-block h4,
+.step-by-step-block h4,
+.examples-block h4,
+.alternatives-block h4,
+.best-practices-block h4,
+.vba-macro-block h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.formatting-block h4 {
+    color: #ff6b9d;
+}
+
+.explanation-block h4 {
+    color: #4299e1;
+}
+
+.step-by-step-block h4 {
+    color: #48bb78;
+}
+
+.examples-block h4 {
+    color: #ed8936;
+}
+
+.alternatives-block h4 {
+    color: #9f7aea;
+}
+
+.best-practices-block h4 {
+    color: #38b2ac;
+}
+
+.vba-macro-block h4 {
+    color: #e53e3e;
+}
+
+/* Content styling - remove excessive line-height */
+.formatting-block > div,
+.explanation-block > div,
+.step-by-step-block > div,
+.examples-block > div,
+.alternatives-block > div,
+.best-practices-block > div {
+    line-height: 1.6;
+}
+
+.formatting-block p,
+.explanation-block p,
+.step-by-step-block p,
+.examples-block p,
+.alternatives-block p,
+.best-practices-block p {
+    margin: 0.5em 0;
+}
+
+.formatting-block ul,
+.explanation-block ul,
+.step-by-step-block ul,
+.examples-block ul,
+.alternatives-block ul,
+.best-practices-block ul {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+}
+
+.formatting-block ol,
+.explanation-block ol,
+.step-by-step-block ol,
+.examples-block ol,
+.alternatives-block ol,
+.best-practices-block ol {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+}
+
+.formatting-block li,
+.explanation-block li,
+.step-by-step-block li,
+.examples-block li,
+.alternatives-block li,
+.best-practices-block li {
+    margin: 0.3em 0;
+}
+
+.vba-macro-block .code-block {
+    background: #2d2d30;
+    color: #d4d4d4;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Safety Overlay */
+.safety-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.safety-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.safety-popup {
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.popup-header {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7941d 100%);
+    padding: 25px;
+    border-radius: 12px 12px 0 0;
+}
+
+.popup-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.warning-icon {
+    font-size: 1.8rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.popup-content {
+    padding: 30px;
+}
+
+.popup-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #2d3748;
+}
+
+.popup-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+.popup-content ul li {
+    padding: 12px 0 12px 35px;
+    position: relative;
+    line-height: 1.6;
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.popup-content ul li:last-child {
+    border-bottom: none;
+}
+
+.popup-content ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #48bb78;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-acknowledge {
+    padding: 14px 35px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.btn-acknowledge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(72, 187, 120, 0.4);
+}
+
+.btn-acknowledge:active {
+    transform: translateY(0);
+}
+
+/* Safety Toggle Button */
+.safety-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7941d 100%);
+    border: none;
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.safety-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+}
+
+.caution-triangle {
+    font-size: 1.8rem;
+    animation: pulse 2s infinite;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #718096;
+    color: white;
+    box-shadow: 0 4px 12px rgba(113, 128, 150, 0.3);
+}
+
+.btn-secondary:hover {
+    background: #4a5568;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(113, 128, 150, 0.4);
+}
+
+.btn-danger {
+    background: #e53e3e;
+    color: white;
+    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+.btn-danger:hover {
+    background: #c53030;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(229, 62, 62, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .safety-popup {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .popup-header {
+        padding: 20px;
+    }
+
+    .popup-title {
+        font-size: 1.1rem;
+    }
+
+    .popup-content {
+        padding: 20px;
+    }
+
+    .safety-toggle-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .formatting-block,
+    .explanation-block,
+    .step-by-step-block,
+    .examples-block,
+    .alternatives-block,
+    .best-practices-block {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+
+    .safety-popup {
+        background: #2d3748;
+    }
+
+    .popup-content p,
+    .popup-content ul li {
+        color: #e2e8f0;
+    }
+}

@@ -96,19 +96,31 @@ social_media:
 <div class="checkbox-group">
 <label class="checkbox-inline">
 <input type="checkbox" id="includeVariations" checked>
-Difficulty variations
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Difficulty variations</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeFailsafes" checked>
-Failsafes and bypasses
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Failsafes and bypasses</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeClues">
-Hidden clues and hints
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Hidden clues and hints</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeRewards">
-Rewards for success
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Rewards for success</span>
 </label>
 </div>
 </div>

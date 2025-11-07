@@ -94,16 +94,46 @@ Create personalized cleaning schedules and chore lists that fit your lifestyle. 
       <span class="tooltiptext">Select all areas that need regular cleaning</span>
     </label>
     <div class="checkbox-group">
-      <div class="checkbox-row">
-        <label class="checkbox-inline"><input type="checkbox" id="areaKitchen" checked> 🍳 Kitchen</label>
-        <label class="checkbox-inline"><input type="checkbox" id="areaBathrooms" checked> 🚿 Bathrooms</label>
-        <label class="checkbox-inline"><input type="checkbox" id="areaBedrooms" checked> 🛏️ Bedrooms</label>
-        <label class="checkbox-inline"><input type="checkbox" id="areaLiving" checked> 🛋️ Living Areas</label>
-        <label class="checkbox-inline"><input type="checkbox" id="areaLaundry"> 🧺 Laundry Room</label>
-        <label class="checkbox-inline"><input type="checkbox" id="areaGarage"> 🚗 Garage</label>
-        <label class="checkbox-inline"><input type="checkbox" id="areaOutdoor"> 🌳 Outdoor Spaces</label>
-        <label class="checkbox-inline"><input type="checkbox" id="areaOffice"> 💼 Home Office</label>
-      </div>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaKitchen" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🍳 Kitchen</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaBathrooms" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🚿 Bathrooms</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaBedrooms" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🛏️ Bedrooms</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaLiving" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🛋️ Living Areas</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaLaundry">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🧺 Laundry Room</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaGarage">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🚗 Garage</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaOutdoor">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🌳 Outdoor Spaces</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="areaOffice">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">💼 Home Office</span>
+      </label>
     </div>
   </div>
   <div class="form-group">
@@ -112,14 +142,36 @@ Create personalized cleaning schedules and chore lists that fit your lifestyle. 
       <span class="tooltiptext">Select any special situations that affect your cleaning needs</span>
     </label>
     <div class="checkbox-group">
-      <div class="checkbox-row">
-        <label class="checkbox-inline"><input type="checkbox" id="considerPets"> 🐕 Pets</label>
-        <label class="checkbox-inline"><input type="checkbox" id="considerKids"> 👶 Young Children</label>
-        <label class="checkbox-inline"><input type="checkbox" id="considerAllergies"> 🤧 Allergies/Sensitivities</label>
-        <label class="checkbox-inline"><input type="checkbox" id="considerBusy"> 💼 Very Busy Schedule</label>
-        <label class="checkbox-inline"><input type="checkbox" id="considerSharing"> 👥 Shared Chores</label>
-        <label class="checkbox-inline"><input type="checkbox" id="considerGuests"> 🎉 Frequent Guests</label>
-      </div>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="considerPets">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🐕 Pets</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="considerKids">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">👶 Young Children</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="considerAllergies">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🤧 Allergies/Sensitivities</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="considerBusy">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">💼 Very Busy Schedule</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="considerSharing">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">👥 Shared Chores</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="considerGuests">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🎉 Frequent Guests</span>
+      </label>
     </div>
   </div>
   <div class="form-group">

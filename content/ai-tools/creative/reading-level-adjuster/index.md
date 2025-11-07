@@ -83,35 +83,63 @@ social_media:
 <div class="form-group">
 <label for="adjustmentOptions">Adjustment Options</label>
 <div class="checkbox-group">
-<div class="checkbox-row">
-<label class="checkbox-inline"><input checked="" id="simplifyVocabulary" type="checkbox"/> Simplify vocabulary</label>
-<label class="checkbox-inline"><input checked="" id="shortenSentences" type="checkbox"/> Shorten sentences</label>
-<label class="checkbox-inline"><input id="addDefinitions" type="checkbox"/> Add definitions for complex terms</label>
-<label class="checkbox-inline"><input id="useExamples" type="checkbox"/> Include examples and analogies</label>
-</div>
-<div class="checkbox-row">
-<label class="checkbox-inline"><input id="improveStructure" type="checkbox"/> Improve text structure</label>
-<label class="checkbox-inline"><input id="addTransitions" type="checkbox"/> Add transition words</label>
-<label class="checkbox-inline"><input checked="" id="removeJargon" type="checkbox"/> Remove or explain jargon</label>
-<label class="checkbox-inline"><input id="activeVoice" type="checkbox"/> Convert to active voice</label>
-</div>
+<label class="checkbox-inline">
+<input checked="" id="simplifyVocabulary" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Simplify vocabulary</span>
+</label>
+<label class="checkbox-inline">
+<input checked="" id="shortenSentences" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Shorten sentences</span>
+</label>
+<label class="checkbox-inline">
+<input id="addDefinitions" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Add definitions for complex terms</span>
+</label>
+<label class="checkbox-inline">
+<input id="useExamples" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Include examples and analogies</span>
+</label>
+<label class="checkbox-inline">
+<input id="improveStructure" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Improve text structure</span>
+</label>
+<label class="checkbox-inline">
+<input id="addTransitions" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Add transition words</span>
+</label>
+<label class="checkbox-inline">
+<input checked="" id="removeJargon" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Remove or explain jargon</span>
+</label>
+<label class="checkbox-inline">
+<input id="activeVoice" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Convert to active voice</span>
+</label>
 </div>
 </div>
 <div class="form-group">
-<label for="outputFormat">Output Format</label>
-<select id="outputFormat">
-<option value="text-only">Adjusted Text Only</option>
-<option value="comparison">Side-by-Side Comparison</option>
-<option value="highlighted">With Changes Highlighted</option>
-<option value="analysis">Include Readability Analysis</option>
-<option value="suggestions">With Improvement Suggestions</option>
-</select>
+  <label for="outputFormat">Output Format</label>
+  <select id="outputFormat">
+    <option value="text-only">Adjusted Text Only</option>
+    <option value="comparison">Side-by-Side Comparison</option>
+    <option value="highlighted">With Changes Highlighted</option>
+    <option value="analysis">Include Readability Analysis</option>
+    <option value="suggestions">With Improvement Suggestions</option>
+  </select>
+
+  <label for="specialInstructions">Special Instructions (Optional)</label>
+  <textarea id="specialInstructions" placeholder="Any specific requirements, terminology to preserve, target audience details, or special considerations..." rows="2"></textarea>
+
+  <button type="submit" class="btn-primary">Adjust Reading Level</button>
 </div>
-<div class="form-group">
-<label for="specialInstructions">Special Instructions (Optional)</label>
-<textarea id="specialInstructions" placeholder="Any specific requirements, terminology to preserve, target audience details, or special considerations..." rows="2"></textarea>
-</div>
-<button type="submit" class="btn-primary">Adjust Reading Level</button>
 </form>
 <div class="ai-loading" id="loadingDiv" style="display: none;">
     <div class="ai-loading-spinner"></div>

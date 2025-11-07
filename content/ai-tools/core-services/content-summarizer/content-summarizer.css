@@ -1,62 +1,11 @@
 /* Content Summarizer Specific Styles */
-
-.file-upload-area {
-    border: 2px dashed #666;
-    padding: 30px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 8px;
-    background: #1a1a1a;
-    transition: all 0.3s ease;
-    margin-bottom: 15px;
-}
-
-.file-upload-area:hover {
-    border-color: #ff6b35;
-    background: rgba(255, 107, 53, 0.1);
-}
-
-.upload-text {
-    color: #e0e0e0;
-    font-size: 16px;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
-
-.upload-subtext {
-    color: #999;
-    font-size: 14px;
-}
-
-.file-name {
-    color: #4CAF50;
-    margin-top: 10px;
-    font-weight: bold;
-    padding: 8px;
-    background: rgba(76, 175, 80, 0.1);
-    border-radius: 4px;
-    display: inline-block;
-}
-
-/* Form styling improvements */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #e0e0e0;
-}
-
 /* Radio button styling */
 input[type="radio"] {
     margin-right: 10px;
     accent-color: #ff6b35;
 }
 
-/* Textarea improvements */
+/* Textarea improvements - specific to content summarizer */
 #textContent {
     width: 100%;
     min-height: 200px;
@@ -81,102 +30,15 @@ input[type="radio"] {
     font-style: italic;
 }
 
-/* Select dropdown styling */
+/* Select dropdown styling - specific overrides */
 select {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #666;
-    border-radius: 4px;
     background: #1a1a1a;
-    color: #e0e0e0;
-    font-size: 14px;
 }
 
-select:focus {
-    border-color: #ff6b35;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
-}
-
-/* Checkbox styling */
-.checkbox-group {
-    margin-top: 10px;
-}
-
-.checkbox-row {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
+/* Checkbox styling - specific overrides */
 .checkbox-inline {
-    display: flex;
-    align-items: center;
     color: #e0e0e0;
     font-size: 14px;
-    cursor: pointer;
-}
-
-.checkbox-inline input[type="checkbox"] {
-    margin-right: 8px;
-    accent-color: #ff6b35;
-}
-
-/* Button styling */
-.btn-primary {
-    background: linear-gradient(135deg, #ff6b35, #ff8c69);
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, #ff5722, #ff7043);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-}
-
-.btn-download {
-    padding: 8px 16px;
-    font-size: 14px;
-    margin: 0 5px;
-}
-
-/* Loading state */
-.loading {
-    text-align: center;
-    padding: 30px;
-    color: #ff6b35;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-/* Result content styling */
-.result-content {
-    margin-bottom: 20px;
-}
-
-.result-content h3 {
-    color: #ff6b35;
-    margin-bottom: 15px;
-    font-size: 20px;
-}
-
-/* Error styling */
-#errorDiv {
-    background: rgba(255, 68, 68, 0.1);
-    border: 1px solid #ff4444;
-    border-radius: 6px;
-    padding: 15px;
-    margin: 15px 0;
-    color: #ff6666;
 }
 
 /* Input method styling */
@@ -190,15 +52,6 @@ input[name="inputMethod"] {
     transition: opacity 0.3s ease;
 }
 
-/* Result display improvements */
-#resultDiv {
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(255, 107, 53, 0.05);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 107, 53, 0.2);
-}
-
 /* Button container styling */
 .button-container {
     display: flex;
@@ -210,10 +63,6 @@ input[name="inputMethod"] {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    .checkbox-row {
-        flex-direction: column;
-    }
-
     .button-container {
         flex-direction: column;
         align-items: center;

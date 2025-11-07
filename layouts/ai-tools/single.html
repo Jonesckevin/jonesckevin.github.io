@@ -163,8 +163,13 @@
                 // Update grid template
                 wrapper.style.gridTemplateColumns = `${newWidth}px 4px 1fr`;
 
-                // Save to localStorage
-                localStorage.setItem('ai-tools-form-width', newWidth);
+                // Save to localStorage (gracefully handle incognito mode)
+                try {
+                    localStorage.setItem('ai-tools-form-width', newWidth);
+                } catch (e) {
+                    // Silently fail if localStorage is not available (incognito mode)
+                    console.log('localStorage not available:', e);
+                }
             });
 
             document.addEventListener('mouseup', function () {
@@ -176,12 +181,21 @@
                 }
             });
 
-            // Load saved width from localStorage
-            const savedWidth = localStorage.getItem('ai-tools-form-width');
-            if (savedWidth && window.innerWidth >= 1024) {
-                const width = parseInt(savedWidth);
-                if (width >= minWidth && width <= maxWidth) {
-                    wrapper.style.gridTemplateColumns = `${width}px 4px 1fr`;
+            // Load saved width from localStorage (gracefully handle incognito mode)
+            try {
+                const savedWidth = localStorage.getItem('ai-tools-form-width');
+                if (savedWidth && window.innerWidth >= 1024) {
+                    const width = parseInt(savedWidth);
+                    if (width >= minWidth && width <= maxWidth) {
+                        wrapper.style.gridTemplateColumns = `${width}px 4px 1fr`;
+                    }
+                }
+            } catch (e) {
+                // Silently fail if localStorage is not available (incognito mode)
+                console.log('localStorage not available:', e);
+                // Set default desktop layout
+                if (window.innerWidth >= 1024) {
+                    wrapper.style.gridTemplateColumns = '500px 4px 1fr';
                 }
             }
         }

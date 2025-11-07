@@ -114,12 +114,26 @@ social_media:
 <div class="form-group">
 <label for="includeOptions">Include in Output</label>
 <div class="checkbox-group">
-<div class="checkbox-row">
-<label class="checkbox-inline"><input checked="" id="includeForeshadowing" type="checkbox"/> Foreshadowing suggestions</label>
-<label class="checkbox-inline"><input checked="" id="includeClues" type="checkbox"/> Clues to plant earlier</label>
-<label class="checkbox-inline"><input id="includeReactions" type="checkbox"/> Character reactions</label>
-<label class="checkbox-inline"><input id="includeConsequences" type="checkbox"/> Story consequences</label>
-</div>
+<label class="checkbox-inline">
+<input checked="" id="includeForeshadowing" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Foreshadowing suggestions</span>
+</label>
+<label class="checkbox-inline">
+<input checked="" id="includeClues" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Clues to plant earlier</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeReactions" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Character reactions</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeConsequences" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Story consequences</span>
+</label>
 </div>
 </div>
 <button type="submit" class="btn-primary">Generate Plot Twist</button>

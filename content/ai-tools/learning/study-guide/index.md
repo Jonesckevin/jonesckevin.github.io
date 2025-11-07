@@ -66,11 +66,21 @@ social_media:
 <div class="form-group">
 <label for="includeQuestions">Include Practice Elements</label>
 <div class="checkbox-group">
-<div class="checkbox-row">
-<label class="checkbox-inline"><input checked="" id="includeQuizzes" type="checkbox"/> Practice Questions</label>
-<label class="checkbox-inline"><input checked="" id="includeFlashcards" type="checkbox"/> Flashcard Terms</label>
-<label class="checkbox-inline"><input id="includeMnemonics" type="checkbox"/> Memory Techniques</label>
-</div>
+<label class="checkbox-inline">
+<input checked="" id="includeQuizzes" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Practice Questions</span>
+</label>
+<label class="checkbox-inline">
+<input checked="" id="includeFlashcards" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Flashcard Terms</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeMnemonics" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Memory Techniques</span>
+</label>
 </div>
 </div>
 <div class="form-group">

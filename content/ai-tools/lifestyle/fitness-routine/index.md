@@ -114,16 +114,46 @@ Create personalized workout routines designed for your specific goals, fitness l
       <span class="tooltiptext">Select all equipment you have access to</span>
     </label>
     <div class="checkbox-group">
-      <div class="checkbox-row">
-        <label class="checkbox-inline"><input type="checkbox" id="equipDumbbells" checked> 🏋️ Dumbbells</label>
-        <label class="checkbox-inline"><input type="checkbox" id="equipBarbell" checked> 💪 Barbell</label>
-        <label class="checkbox-inline"><input type="checkbox" id="equipBands"> 🎀 Resistance Bands</label>
-        <label class="checkbox-inline"><input type="checkbox" id="equipKettlebells"> ⚫ Kettlebells</label>
-        <label class="checkbox-inline"><input type="checkbox" id="equipMachines"> 🤖 Weight Machines</label>
-        <label class="checkbox-inline"><input type="checkbox" id="equipCardio"> 🏃 Cardio Equipment</label>
-        <label class="checkbox-inline"><input type="checkbox" id="equipBodyweight" checked> 🧘 Bodyweight Only</label>
-        <label class="checkbox-inline"><input type="checkbox" id="equipPullupBar"> 📊 Pull-up Bar</label>
-      </div>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipDumbbells" checked>
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🏋️ Dumbbells</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipBarbell" checked>
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">💪 Barbell</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipBands">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🎀 Resistance Bands</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipKettlebells">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">⚫ Kettlebells</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipMachines">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🤖 Weight Machines</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipCardio">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🏃 Cardio Equipment</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipBodyweight" checked>
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🧘 Bodyweight Only</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="equipPullupBar">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">📊 Pull-up Bar</span>
+        </label>
     </div>
   </div>
   <div class="form-group">
@@ -132,14 +162,36 @@ Create personalized workout routines designed for your specific goals, fitness l
       <span class="tooltiptext">Select specific muscle groups or body areas you want to emphasize</span>
     </label>
     <div class="checkbox-group">
-      <div class="checkbox-row">
-        <label class="checkbox-inline"><input type="checkbox" id="focusChest"> 💪 Chest</label>
-        <label class="checkbox-inline"><input type="checkbox" id="focusBack"> 🔙 Back</label>
-        <label class="checkbox-inline"><input type="checkbox" id="focusLegs"> 🦵 Legs</label>
-        <label class="checkbox-inline"><input type="checkbox" id="focusArms"> 💪 Arms</label>
-        <label class="checkbox-inline"><input type="checkbox" id="focusShoulders"> 🏔️ Shoulders</label>
-        <label class="checkbox-inline"><input type="checkbox" id="focusCore"> 🎯 Core/Abs</label>
-      </div>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="focusChest">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">💪 Chest</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="focusBack">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🔙 Back</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="focusLegs">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🦵 Legs</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="focusArms">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">💪 Arms</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="focusShoulders">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🏔️ Shoulders</span>
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="focusCore">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">🎯 Core/Abs</span>
+        </label>
     </div>
   </div>
   <div class="form-group">

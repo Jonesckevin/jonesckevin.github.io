@@ -68,12 +68,26 @@ Plan your entire week with personalized meal suggestions, complete grocery lists
       <span class="tooltiptext">Select which meals you want planned for each day</span>
     </label>
     <div class="checkbox-group">
-      <div class="checkbox-row">
-        <label class="checkbox-inline"><input type="checkbox" id="includeBreakfast" checked> 🌅 Breakfast</label>
-        <label class="checkbox-inline"><input type="checkbox" id="includeLunch" checked> 🌞 Lunch</label>
-        <label class="checkbox-inline"><input type="checkbox" id="includeDinner" checked> 🌙 Dinner</label>
-        <label class="checkbox-inline"><input type="checkbox" id="includeSnacks"> 🍿 Snacks</label>
-      </div>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="includeBreakfast" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🌅 Breakfast</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="includeLunch" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🌞 Lunch</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="includeDinner" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🌙 Dinner</span>
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="includeSnacks">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">🍿 Snacks</span>
+      </label>
     </div>
   </div>
   <div class="form-row">

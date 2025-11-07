@@ -79,10 +79,16 @@ social_media:
 </div>
 <div class="form-group">
 <div class="checkbox-group">
-<div class="checkbox-row">
-<label class="checkbox-inline"><input type="checkbox" id="includeFollowups" checked> Include follow-up probes</label>
-<label class="checkbox-inline"><input type="checkbox" id="includeRubric" checked> Include scoring rubric (1–5) and red flags</label>
-</div>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeFollowups" checked>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Include follow-up probes</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeRubric" checked>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Include scoring rubric (1–5) and red flags</span>
+</label>
 </div>
 </div>
 <button type="button" class="btn-primary" onclick="generateTPQ()">Generate Questions</button>

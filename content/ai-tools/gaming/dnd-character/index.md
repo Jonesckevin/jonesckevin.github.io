@@ -116,7 +116,11 @@ Generate rich backstories and compelling lore for your D&D characters. Create le
 <div class="form-group">
 <div class="checkbox-group">
 <label class="checkbox-inline">
-<input type="checkbox" id="includeBonus" checked> Include Bonus Flavor Elements
+<input type="checkbox" id="includeBonus" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Include Bonus Flavor Elements</span>
 </label>
 <small style="display: block; opacity: 0.8; margin-top: 5px;">Battle cries, favorite drinks, recurring dreams, mysterious prophecies, etc.</small>
 </div>

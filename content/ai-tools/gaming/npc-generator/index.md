@@ -99,13 +99,25 @@ Create compelling NPCs for any system or genre with detailed personalities, back
 <div class="form-group">
 <div class="checkbox-group">
 <label class="checkbox-inline">
-<input type="checkbox" id="includeSecrets" checked> Include secrets or hidden motivations
+<input type="checkbox" id="includeSecrets" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Include secrets or hidden motivations</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="includeQuirks" checked> Include personality quirks and mannerisms
+<input type="checkbox" id="includeQuirks" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Include personality quirks and mannerisms</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="includeHooks" checked> Include plot hooks and story connections
+<input type="checkbox" id="includeHooks" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Include plot hooks and story connections</span>
 </label>
 </div>
 </div>

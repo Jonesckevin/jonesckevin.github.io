@@ -101,16 +101,32 @@ Generate balanced treasure parcels and bespoke magic items with lore, attunement
 <div class="form-group">
 <div class="checkbox-group">
 <label class="checkbox-inline">
-<input type="checkbox" id="drawbacks"> Allow drawbacks/curses when appropriate
+<input type="checkbox" id="drawbacks">
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Allow drawbacks/curses when appropriate</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="attunement" checked> Prefer attunement (5e-style)
+<input type="checkbox" id="attunement" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Prefer attunement (5e-style)</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="includeValues" checked> Include gold/credits value ranges
+<input type="checkbox" id="includeValues" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Include gold/credits value ranges</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="includeHooks" checked> Include a plot hook per item
+<input type="checkbox" id="includeHooks" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Include a plot hook per item</span>
 </label>
 </div>
 </div>

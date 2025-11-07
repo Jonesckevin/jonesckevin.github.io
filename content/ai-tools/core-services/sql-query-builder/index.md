@@ -117,27 +117,47 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 
 <div class="form-group">
 <label>Query Options</label>
-<div class="options-two-column">
-<div class="options-column">
-<label class="checkbox-block"><input id="includeExplanation" type="checkbox" checked/> Include
-                                query explanation</label>
-<label class="checkbox-block"><input id="optimizePerformance" type="checkbox" checked/> Optimize
-                                for performance</label>
-<label class="checkbox-block"><input id="includeIndexSuggestions" type="checkbox"/> Suggest
-                                indexes</label>
-<label class="checkbox-block"><input id="generateTestData" type="checkbox"/> Generate test
-                                data</label>
-</div>
-<div class="options-column">
-<label class="checkbox-block"><input id="includeErrorHandling" type="checkbox"/> Include
-                                error handling</label>
-<label class="checkbox-block"><input id="includeTransactions" type="checkbox"/> Use
-                                transactions</label>
-<label class="checkbox-block"><input id="includeLogging" type="checkbox"/> Add logging/audit
-                                trail</label>
-<label class="checkbox-block"><input id="includeDocumentation" type="checkbox"/> Generate
-                                documentation</label>
-</div>
+<div class="checkbox-group">
+<label class="checkbox-inline">
+<input id="includeExplanation" type="checkbox" checked/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Include query explanation</span>
+</label>
+<label class="checkbox-inline">
+<input id="optimizePerformance" type="checkbox" checked/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Optimize for performance</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeIndexSuggestions" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Suggest indexes</span>
+</label>
+<label class="checkbox-inline">
+<input id="generateTestData" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Generate test data</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeErrorHandling" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Include error handling</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeTransactions" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Use transactions</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeLogging" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Add logging/audit trail</span>
+</label>
+<label class="checkbox-inline">
+<input id="includeDocumentation" type="checkbox"/>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Generate documentation</span>
+</label>
 </div>
 </div>
 

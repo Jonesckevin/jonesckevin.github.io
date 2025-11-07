@@ -130,16 +130,32 @@ Transform any text to match specific character voices and speaking styles. Perfe
 </label>
 <div class="checkbox-group">
 <label class="checkbox-inline">
-<input type="checkbox" id="preserveMeaning" checked> Preserve original meaning
+<input type="checkbox" id="preserveMeaning" checked>
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Preserve original meaning</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="preserveLength"> Keep similar length
+<input type="checkbox" id="preserveLength">
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Keep similar length</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="addMannerisms"> Add character mannerisms
+<input type="checkbox" id="addMannerisms">
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Add character mannerisms</span>
 </label>
 <label class="checkbox-inline">
-<input type="checkbox" id="includeDialogueTags"> Include dialogue tags
+<input type="checkbox" id="includeDialogueTags">
+<span class="toggle-switch">
+<span class="toggle-slider"></span>
+</span>
+<span class="toggle-label">Include dialogue tags</span>
 </label>
 </div>
 </div>

@@ -146,19 +146,27 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
     <label>Image Enhancement Options</label>
     <div class="checkbox-group">
       <label class="checkbox-inline tooltip">
-        <input type="checkbox" id="enhanceDetails" checked> Enhanced Details
+        <input type="checkbox" id="enhanceDetails" checked>
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">Enhanced Details</span>
         <span class="tooltiptext">Add extra detail and sharpness to the generated image for a more refined result.</span>
       </label>
       <label class="checkbox-inline tooltip">
-        <input type="checkbox" id="enhanceColors"> Vibrant Colors
+        <input type="checkbox" id="enhanceColors">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">Vibrant Colors</span>
         <span class="tooltiptext">Boost color saturation and vibrancy for a more eye-catching result.</span>
       </label>
       <label class="checkbox-inline tooltip">
-        <input type="checkbox" id="cinematicLook"> Cinematic Look
+        <input type="checkbox" id="cinematicLook">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">Cinematic Look</span>
         <span class="tooltiptext">Apply cinematic color grading and composition for a movie-like aesthetic.</span>
       </label>
       <label class="checkbox-inline tooltip">
-        <input type="checkbox" id="professionalPhoto"> Professional Photography
+        <input type="checkbox" id="professionalPhoto">
+        <span class="toggle-switch"><span class="toggle-slider"></span></span>
+        <span class="toggle-label">Professional Photography</span>
         <span class="tooltiptext">Emulate professional camera settings with proper depth of field and bokeh effects.</span>
       </label>
     </div>

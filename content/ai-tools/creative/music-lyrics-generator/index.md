@@ -139,27 +139,45 @@ Create professional song lyrics with proper structure including intro, verses, c
     <div class="checkbox-group">
       <label class="checkbox-inline">
         <input type="checkbox" id="includeMetaphors" checked>
-        Metaphors & Similes
+        <span class="toggle-switch">
+          <span class="toggle-slider"></span>
+        </span>
+        <span class="toggle-label">Metaphors & Similes</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeRhyming" checked>
-        Rhyming Scheme
+        <span class="toggle-switch">
+          <span class="toggle-slider"></span>
+        </span>
+        <span class="toggle-label">Rhyming Scheme</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeHooks" checked>
-        Catchy Hooks
+        <span class="toggle-switch">
+          <span class="toggle-slider"></span>
+        </span>
+        <span class="toggle-label">Catchy Hooks</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeWordplay">
-        Wordplay & Puns
+        <span class="toggle-switch">
+          <span class="toggle-slider"></span>
+        </span>
+        <span class="toggle-label">Wordplay & Puns</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeRepetition" checked>
-        Repetition for Effect
+        <span class="toggle-switch">
+          <span class="toggle-slider"></span>
+        </span>
+        <span class="toggle-label">Repetition for Effect</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeImagery" checked>
-        Vivid Imagery
+        <span class="toggle-switch">
+          <span class="toggle-slider"></span>
+        </span>
+        <span class="toggle-label">Vivid Imagery</span>
       </label>
     </div>
   </div>
