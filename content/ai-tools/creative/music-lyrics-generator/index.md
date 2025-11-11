@@ -29,10 +29,45 @@ social_media:
 
 <link rel="stylesheet" href="music-lyrics-generator.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Music Lyrics Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+# Music Lyrics Generator 
+
 Create professional song lyrics with proper structure including intro, verses, chorus, and bridge. Generate original songs based on your theme or write in the style of your favorite artists.
-</p>
+
+<details>
+<summary>About the Music Lyrics Generator</summary>
+<div class="info-section">
+
+## About the Music Lyrics Generator
+Our AI-powered lyrics generator helps you create professional song lyrics with proper structure and creative elements. Whether you're a songwriter looking for inspiration, a musician working on a new track, or just exploring your creative side, this tool provides high-quality lyrics tailored to your needs.
+
+### Features:
+
+1. **Proper Song Structure:** Generate lyrics with intro, verses, chorus, bridge, and outro
+2. **Style Emulation:** Write in the style of your favorite artists or songs
+3. **Multiple Genres:** Support for pop, rock, hip-hop, country, and many more
+4. **Customizable Elements:** Control rhyming, metaphors, hooks, and other lyrical features
+5. **Multiple Languages:** Generate lyrics in English, Spanish, French, and more
+6. **Professional Quality:** AI-generated lyrics suitable for recording or performance\
+
+### How to Use:
+1. Configure your AI provider and API key in the header settings (click the "AI" button)
+2. Enter your song theme or topic
+3. Choose between original composition or style-based generation
+4. Select your genre and mood
+5. Pick your preferred song structure
+6. Customize lyrical features and additional options
+7. Click "Generate Lyrics" to create your song
+
+### Tips for Best Results:
+
+- Be specific about your theme - concrete topics work better than abstract concepts
+- When using style-based mode, reference well-known songs or artists for better results
+- Experiment with different structures to find what works best for your song
+- Use additional notes to provide context or specific phrases you want included
+- Generate multiple versions and combine the best elements
+
+</div>
+</details>
 
 <form id="lyricsForm">
   <div class="form-group">
