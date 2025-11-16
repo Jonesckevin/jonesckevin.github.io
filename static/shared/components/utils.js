@@ -12,6 +12,7 @@ window.utils = {
 
         const patterns = {
             openai: /^sk-[A-Za-z0-9_-]+$/,
+            cohere: /^[A-Za-z0-9_-]+$/,
             deepseek: /^sk-[A-Za-z0-9_-]+$/,
             anthropic: /^sk-ant-[A-Za-z0-9_-]+$/,
             gemini: /^AIza[A-Za-z0-9_-]+$/,
@@ -649,4 +650,42 @@ window.utils = {
             return true;
         };
     }
+
+    ,
+
+    // Normalize legacy buttons site-wide to ensure shared styles apply
+    normalizeButtons(scope = document) {
+        try {
+            const buttons = scope.querySelectorAll('button');
+            buttons.forEach(btn => {
+                const id = btn.id || '';
+                const cls = btn.className || '';
+                // Primary generate actions
+                if (/generate/i.test(id) || /generate-btn/.test(cls)) {
+                    if (!btn.classList.contains('generate-btn')) btn.classList.add('generate-btn');
+                    if (!btn.classList.contains('btn-primary')) btn.classList.add('btn-primary');
+                    if (!btn.classList.contains('action-btn')) btn.classList.add('action-btn');
+                }
+                // Secondary actions (copy/download/regenerate)
+                if (/(copy|download|regenerate)/i.test(id) || /(copy-btn|download-btn|regenerate-btn)/.test(cls)) {
+                    if (!btn.classList.contains('action-btn')) btn.classList.add('action-btn');
+                    if (!btn.classList.contains('btn-primary')) btn.classList.add('btn-primary');
+                }
+                if (/regenerate/i.test(id) && !btn.classList.contains('secondary')) {
+                    btn.classList.add('secondary');
+                }
+            });
+        } catch (e) {
+            console.warn('Global button normalization failed:', e);
+        }
+    }
 };
+
+// Global, non-invasive enhancement: normalize buttons after DOM load
+try {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => window.utils && window.utils.normalizeButtons(document));
+    } else {
+        window.utils && window.utils.normalizeButtons(document);
+    }
+} catch (_) { }

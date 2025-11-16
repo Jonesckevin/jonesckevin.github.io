@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
             resultDiv.innerHTML = `
                 <h3 style="color: #ff6b35; margin-bottom: 20px;">Interview Question Set</h3>
                 <div id="resultContent" class="result-content"></div>
-                <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn-primary btn-download" onclick="copyResult()">Copy Output</button>
-                    <button class="btn-primary btn-download" onclick="downloadResult('markdown')">MD</button>
-                    <button class="btn-primary btn-download" onclick="downloadResult('html')">HTML</button>
+                <div class="result-actions" style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
+                    <button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
+                    <button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
+                    <button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
                 </div>
             `;
             if (form && form.parentNode) {

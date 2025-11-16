@@ -19,12 +19,12 @@ sitemap_changefreq: "monthly"
 social_media:
   og_title: "Open Prompt AI Assistant - Customizable AI Tool"
   og_description: "Flexible AI assistant with customizable settings for tone, style, and length. Get exactly the response you need."
-  og_image: "/images/featured/aitools/open-prompt-social.png"
+  og_image: "/images/featured/aitools/open-prompt.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free Open Prompt AI Assistant"
   twitter_description: "Versatile AI tool with customizable response settings. Perfect for any task."
-  twitter_image: "/images/featured/aitools/open-prompt-twitter.png"
+  twitter_image: "/images/featured/aitools/open-prompt.png"
 ---
 <div class="tpq-hero">
 <h1>Open Prompt Assistant <span class="pill">Customizable AI</span></h1>
@@ -120,12 +120,19 @@ Generating your response...
 <div id="resultDiv" class="result-container" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">AI Response</h3>
 <div id="resultContent" class="result-content"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary btn-download" onclick="copyResult()">Copy Output</button>
-<button class="btn-primary btn-download" onclick="downloadResult('markdown')">MD</button>
-<button class="btn-primary btn-download" onclick="downloadResult('html')">HTML</button>
-<button class="btn-primary btn-download" onclick="generateVariation()">Generate Variation</button>
+<div class="result-actions" style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
+<button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
+<button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
+<button class="action-btn regenerate-btn" onclick="generateVariation()">Generate Variation</button>
 </div>
 </div>
 
 <script src="open-prompt.js"></script>
+
+
+
+
+
+
+

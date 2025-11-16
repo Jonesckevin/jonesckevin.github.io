@@ -27,12 +27,10 @@ social_media:
   twitter_image: "/images/featured/aitools/css-generator.png"
 ---
 
-<link rel="stylesheet" href="css-generator.css">
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">AI-Powered CSS Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-    Generate custom CSS styles with AI assistance. Describe what you want, and watch your styles come to life
-    with live examples for text, tables, images, and more.
-</p>
+
+# AI-Powered CSS Generator
+
+Generate custom CSS styles with AI assistance. Describe what you want, and watch your styles come to life with live examples for text, tables, images, and more.
 <form id="cssForm" onsubmit="generateCSS(event); return false;">
     <!-- CSS Request -->
     <div class="form-group">
@@ -90,7 +88,7 @@ social_media:
             <span>CSS Code (Editable)</span>
             <div class="editor-actions">
                 <button onclick="applyCSS()" class="apply-btn">✨ Apply Changes</button>
-                <button onclick="copyCSSCode()" class="copy-btn">📋 Copy CSS</button>
+                <button onclick="copyCSSCode()" class="action-btn copy-btn">📋 Copy CSS</button>
             </div>
         </div>
         <textarea id="cssCodeEditor" class="css-code-editor" spellcheck="false"></textarea>
@@ -174,7 +172,7 @@ social_media:
                         </select>
                         <label class="preview-element">Textarea:</label>
                         <textarea class="preview-element" rows="3" placeholder="Enter message..."></textarea>
-                        <button type="submit" class="preview-element">Submit</button>
+                        <button type="submit" class="btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

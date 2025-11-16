@@ -27,12 +27,11 @@ social_media:
 ---
 
 
-<link rel="stylesheet" href="story-generator.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">📚 AI Story Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+
+# 📚 AI Story Generator
+
 Create compelling stories with AI assistance. Choose your genre, setting, and characters to generate unique narratives for entertainment, writing practice, or creative inspiration.
-</p>
 
 <form id="storyForm">
 <div class="form-group">

@@ -27,12 +27,11 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="packing-list.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">🧳 AI Packing List Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+
+# 🧳 AI Packing List Generator
+
 Create comprehensive, customized packing lists for any trip. From weekend getaways to international adventures, pack smart and never forget essentials!
-</p>
 
 <form id="packingForm">
   <div class="form-row">
@@ -221,15 +220,22 @@ Create comprehensive, customized packing lists for any trip. From weekend getawa
   <h3 style="color: #ff6b35; margin-bottom: 20px;">📋 Your Packing List</h3>
   <div id="resultContent"></div>
   <div class="result-actions">
-    <button class="btn-copy" onclick="copyResult(event)">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">
       📋 Copy to Clipboard
     </button>
-    <button class="btn-download" onclick="downloadResult('markdown')">
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
       📄 Download Markdown
     </button>
-    <button class="btn-download" onclick="downloadResult('html')">
+  <button class="action-btn download-btn" onclick="downloadResult('html')">
       🌐 Download HTML
     </button>
   </div>
 </div>
 <script src="packing-list.js"></script>
+
+
+
+
+
+
+

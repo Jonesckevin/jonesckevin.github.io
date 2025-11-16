@@ -29,14 +29,13 @@ social_media:
 <link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="powerbi-dax-builder.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">PowerBI DAX & Filter Builder</h1>
+ 
+# PowerBI DAX & Filter Builder
 <button class="safety-toggle-btn" id="safetyToggleBtn" onclick="showSafetyNotice()" aria-label="Show safety guidelines" title="Safety Guidelines" style="display: none;">
     <span class="caution-triangle">⚠️</span>
 </button>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Generate PowerBI DAX formulas and filter code from natural language descriptions. Specify your data model and requirements 
-                to get optimized, production-ready DAX measures, calculated columns, and visual-level filters.
-            </p>
+ 
+Generate PowerBI DAX formulas and filter code from natural language descriptions. Specify your data model and requirements to get optimized, production-ready DAX measures, calculated columns, and visual-level filters.
 
 <form id="daxBuilderForm">
 <div class="form-group">
@@ -199,10 +198,10 @@ Calendar table: Date, Year, Quarter, Month, Week" rows="6"></textarea>
     <h3 style="color: #ff6b35; margin-bottom: 20px;">📊 Generated DAX Code</h3>
     <div id="resultContent"></div>
     <div class="result-actions">
-        <button class="btn-copy" onclick="copyResult(event)">📋 Copy DAX</button>
-        <button class="btn-download" onclick="downloadResult('dax')">📊 DAX File</button>
-        <button class="btn-download" onclick="downloadResult('pbix-template')" id="pbixTemplateBtn" style="display: none;">📦 PBIX Template</button>
-        <button class="btn-download" onclick="downloadResult('markdown')">📄 Markdown</button>
+    <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy DAX</button>
+    <button class="action-btn download-btn" onclick="downloadResult('dax')">📊 DAX File</button>
+    <button class="action-btn download-btn" onclick="downloadResult('pbix-template')" id="pbixTemplateBtn" style="display: none;">📦 PBIX Template</button>
+    <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Markdown</button>
         <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px;">🔄 Alternative</button>
     </div>
 </div>
@@ -237,3 +236,10 @@ Calendar table: Date, Year, Quarter, Month, Week" rows="6"></textarea>
 
 <!-- Shared components already loaded in head.html -->
 <script src="powerbi-dax-builder.js"></script>
+
+
+
+
+
+
+

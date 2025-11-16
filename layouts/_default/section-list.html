@@ -91,7 +91,7 @@
                                 {{ end }}
                                 {{/* Show brand/category for context when showing all items */}}
                                 {{ if or .Params.brand .Params.model }}
-                                <div class="item-meta" style="margin-top: 0.5rem; font-size: 0.85em; opacity: 0.7;">
+                                <div class="item-meta item-meta-compact">
                                     {{ if .Params.brand }}<span class="brand-label">{{ .Params.brand }}</span>{{ end }}
                                     {{ if .Params.model }}<span class="model-label">{{ .Params.model }}</span>{{ end }}
                                 </div>
@@ -255,22 +255,20 @@
                 });
 
                 if (visibleCount > 0) {
-                    searchResults.innerHTML = `<span style="color: var(--accent); font-weight: bold;">${visibleCount} {{ .Params.searchResultLabel | default "item" }}${visibleCount !== 1 ? 's' : ''} found</span>`;
+                    searchResults.innerHTML = `<span class="search-results-count">${visibleCount} {{ .Params.searchResultLabel | default "item" }}${visibleCount !== 1 ? 's' : ''} found</span>`;
                     searchResults.style.display = 'block';
                     if (noResultsDiv) noResultsDiv.remove();
                 } else {
-                    searchResults.innerHTML = '<span style="color: var(--accent);">No {{ .Params.searchResultLabel | default "items" }} found matching your search</span>';
+                    searchResults.innerHTML = '<span class="search-results-empty">No {{ .Params.searchResultLabel | default "items" }} found matching your search</span>';
                     searchResults.style.display = 'block';
 
                     if (!noResultsDiv) {
                         noResultsDiv = document.createElement('div');
                         noResultsDiv.className = 'no-results-message';
                         noResultsDiv.innerHTML = `
-                            <div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">
-                                <h3 style="color: var(--accent); margin-bottom: 15px;">No {{ .Params.searchNoResultsTitle | default "Items" }} Found</h3>
-                                <p style="opacity: 0.8; margin-bottom: 20px;">Try a different search term or browse all available {{ .Params.searchResultLabel | default "items" }}.</p>
-                                <button onclick="document.getElementById('sectionSearch').value = ''; document.getElementById('sectionSearch').dispatchEvent(new Event('input'));" style="background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: var(--accent-button-text); border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">Clear Search</button>
-                            </div>
+                            <h3 class="no-results-title">No {{ .Params.searchNoResultsTitle | default "Items" }} Found</h3>
+                            <p class="no-results-description">Try a different search term or browse all available {{ .Params.searchResultLabel | default "items" }}.</p>
+                            <button class="clear-search-btn" onclick="document.getElementById('sectionSearch').value = ''; document.getElementById('sectionSearch').dispatchEvent(new Event('input'));">Clear Search</button>
                         `;
                         servicesGrid.appendChild(noResultsDiv);
                     }

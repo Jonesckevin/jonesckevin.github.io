@@ -30,10 +30,9 @@ social_media:
 <link rel="stylesheet" href="npc-generator.css">
 
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">NPC Forge: Character Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+# NPC Forge: Character Generator
+
 Create compelling NPCs for any system or genre with detailed personalities, backgrounds, and roleplay notes.
-</p>
 
 <div id="ai-interface"></div>
 
@@ -146,6 +145,12 @@ Forging your NPC character...
 </main>
 
 <script src="npc-generator.js"></script>
+
+
+
+
+
+
 
 
 

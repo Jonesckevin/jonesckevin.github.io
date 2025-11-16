@@ -131,6 +131,7 @@
                       <label for="ai-provider">Provider</label>
                       <select id="ai-provider">
                         <option value="openai">OpenAI</option>
+                        <option value="cohere">Cohere</option>
                         <option value="deepseek">DeepSeek</option>
                         <option value="anthropic">Anthropic</option>
                         <option value="gemini">Google Gemini</option>
@@ -457,6 +458,7 @@
       if (!aiKey) return;
       const placeholders = {
         openai: 'Enter your OpenAI API key (sk-...)',
+        cohere: 'Enter your Cohere API key',
         deepseek: 'Enter your DeepSeek API key (sk-...)',
         anthropic: 'Enter your Anthropic API key (sk-ant-...)',
         gemini: 'Enter your Gemini API key (AIza...)',
@@ -493,6 +495,13 @@
           keyFormat: 'sk-...',
           pricing: 'https://openai.com/api/pricing/',
           models: 'https://platform.openai.com/docs/models'
+        },
+        cohere: {
+          url: 'https://dashboard.cohere.com/api-keys',
+          name: 'Cohere Dashboard',
+          keyFormat: 'Alphanumeric string',
+          pricing: 'https://cohere.com/pricing',
+          models: 'https://docs.cohere.com/docs/models'
         },
         deepseek: {
           url: 'https://platform.deepseek.com/api_keys',

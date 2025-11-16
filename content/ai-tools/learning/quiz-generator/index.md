@@ -28,12 +28,11 @@ social_media:
 ---
 
 
-<link rel="stylesheet" href="quiz-generator.css">
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Interactive Learning Quiz Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Test your knowledge across educational topics with AI-generated quizzes. Track your progress 
-                and improve your understanding.
-            </p>
+
+
+# Interactive Learning Quiz Generator
+
+Test your knowledge across educational topics with AI-generated quizzes. Track your progress and improve your understanding.
 <!-- Setup Form -->
 <form id="setupForm" onsubmit="startQuiz(); return false;">
 <div class="form-group">

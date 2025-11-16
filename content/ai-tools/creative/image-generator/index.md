@@ -29,10 +29,9 @@ social_media:
 
 <link rel="stylesheet" href="image-generator.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">🎨 AI Image Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+# 🎨 AI Image Generator
+
 Create stunning, unique images using advanced AI models. Transform your ideas into beautiful visual art with detailed prompts and customizable settings.
-</p>
 
 <form id="imageGeneratorForm">
   <div class="form-group">
@@ -234,14 +233,14 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
   </div>
 
   <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-    <button class="btn-primary btn-download" onclick="window.downloadImage(event)">
+  <button class="action-btn download-btn" onclick="window.downloadImage(event)">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
       </svg>
       Download Image
     </button>
-    <button class="btn-primary btn-download" onclick="window.copyPromptToClipboard(event)">Copy Prompt</button>
-    <button class="btn-primary btn-download" onclick="window.regenerateImage()">
+  <button class="action-btn copy-btn" onclick="window.copyPromptToClipboard(event)">Copy Prompt</button>
+  <button class="action-btn regenerate-btn" onclick="window.regenerateImage()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M1 4v6h6M23 20v-6h-6"/>
         <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
@@ -269,3 +268,10 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
 </div>
 
 <script src="image-generator.js"></script>
+
+
+
+
+
+
+

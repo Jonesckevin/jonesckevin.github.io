@@ -26,13 +26,12 @@ social_media:
   twitter_description: "Summarize articles and documents with AI. Quick, accurate text summarization in multiple formats."
   twitter_image: "/images/featured/aitools/content-summarizer.png"
 ---
-<link rel="stylesheet" href="content-summarizer.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">AI-Powered Content Summarizer</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Quickly digest articles, documents, and text blocks with AI-powered summaries. Choose your
-                preferred length and tone for optimal results.
-            </p>
+# AI-Powered Content Summarizer
+
+Quickly digest articles, documents, and text blocks with AI-powered summaries. Choose your
+preferred length and tone for optimal results.
+
 <form id="summarizerForm">
 <div class="form-group">
 <label>Input Method *</label>
@@ -110,11 +109,18 @@ social_media:
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Content Summary</h3>
 <div class="result-content" id="resultContent"></div>
 <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary btn-download" onclick="copyResult()">Copy Output</button>
-<button class="btn-primary btn-download" onclick="downloadResult('markdown')">MD</button>
-<button class="btn-primary btn-download" onclick="downloadResult('html')">HTML</button>
+<button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
+<button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
 
 </div>
 </div>
 
 <script src="content-summarizer.js"></script>
+
+
+
+
+
+
+

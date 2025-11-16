@@ -30,6 +30,14 @@
     }
 }
 
+/* Desktop: Side-by-side with resizable divider */
+@media (min-width: 1024px) {
+    .ai-tools-layout {
+        /* Default desktop split; JS resizer will override inline when used */
+        grid-template-columns: minmax(380px, 500px) 4px 1fr;
+    }
+}
+
 /* Resizable divider */
 .layout-divider {
     display: none;

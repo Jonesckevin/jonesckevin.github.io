@@ -204,9 +204,9 @@
     flex-wrap: wrap;
 }
 
-/* Button base styles */
-.btn-copy,
-.btn-download {
+/* Button base styles for result actions */
+.action-btn.copy-btn,
+.action-btn.download-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
@@ -220,51 +220,104 @@
 }
 
 /* Copy button */
-.btn-copy {
+.action-btn.copy-btn,
+.result-actions #copyBtn {
     background: linear-gradient(135deg, #ff6b35, #ff8855);
 }
 
-.btn-copy:hover {
+.action-btn.copy-btn:hover,
+.result-actions #copyBtn:hover {
     background: linear-gradient(135deg, #ff8855, #ffa575);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
-.btn-copy:active {
+.action-btn.copy-btn:active,
+.result-actions #copyBtn:active {
     transform: translateY(0);
     box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
 }
 
 /* Download buttons */
-.btn-download {
+.action-btn.download-btn,
+.result-actions #downloadBtn {
     background: linear-gradient(135deg, #28a745, #34ce57);
 }
 
-.btn-download:hover {
+.action-btn.download-btn:hover,
+.result-actions #downloadBtn:hover {
     background: linear-gradient(135deg, #34ce57, #40d970);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
 }
 
-.btn-download:active {
+.action-btn.download-btn:active,
+.result-actions #downloadBtn:active {
     transform: translateY(0);
     box-shadow: 0 2px 10px rgba(40, 167, 69, 0.3);
 }
 
-/* Alternate download button style */
-.btn-download-alt {
-    background: linear-gradient(135deg, #17a2b8, #20c997);
+/* Removed deprecated .btn-download-alt */
+
+/* Shared generate / action button styles for AI tools
+   Provides a canonical look for Generate, Regenerate, Copy, Download buttons
+   so individual tool CSS files can be smaller and only override colors if needed. */
+.generate-btn,
+.btn-primary,
+.action-btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff6b35, #ff8855);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.btn-download-alt:hover {
-    background: linear-gradient(135deg, #20c997, #30e0b0);
+.generate-btn:hover,
+.action-btn:hover,
+.btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.35);
+}
+
+/* Secondary / muted action (e.g., Regenerate) */
+.action-btn.secondary,
+.generate-btn.secondary,
+.btn-primary.secondary {
+    background: linear-gradient(135deg, #6c757d, #495057);
+}
+
+/* Specific useful modifiers that tools commonly reference */
+.regenerate-btn { background: linear-gradient(135deg, #17a2b8, #20c997) !important; }
+
+/* Ensure legacy ID-based buttons follow the standardized palette */
+.result-actions #copyBtn { background: linear-gradient(135deg, #ff6b35, #ff8855) !important; }
+.result-actions #downloadBtn { background: linear-gradient(135deg, #28a745, #34ce57) !important; }
+.result-actions #regenerateBtn { background: linear-gradient(135deg, #17a2b8, #20c997) !important; }
+
+.copy-btn { background: linear-gradient(135deg, #ff6b35, #ff8855) !important; color: #fff !important; border: none !important; }
+
+.download-btn { background: linear-gradient(135deg,#28a745,#34ce57) !important; }
+
+/* Ensure action buttons compress nicely on narrow screens */
+@media (max-width: 768px) {
+    .generate-btn,
+    .action-btn,
+    .btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* Disabled state */
-.btn-copy:disabled,
-.btn-download:disabled {
+.action-btn:disabled {
     background: #666;
     cursor: not-allowed;
     opacity: 0.6;
@@ -284,11 +337,7 @@
         align-items: stretch;
     }
 
-    .btn-copy,
-    .btn-download {
-        width: 100%;
-        padding: 12px;
-    }
+    .action-btn { width: 100%; padding: 12px; }
 
     .result-display h1 {
         font-size: 1.5em;

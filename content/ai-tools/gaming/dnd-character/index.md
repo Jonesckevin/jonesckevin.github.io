@@ -19,21 +19,18 @@ sitemap_changefreq: "monthly"
 social_media:
   og_title: "MythMaker: D&D Character Lore Generator - AI DnD Backstories"
   og_description: "Generate rich backstories for your D&D characters. Create legendary heroes with detailed backgrounds and lore for your campaigns."
-  og_image: "/images/featured/aitools/dnd-character-social.png"
+  og_image: "/images/featured/aitools/dnd-character.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free D&D Character Generator"
   twitter_description: "Create compelling D&D character backstories with AI. Generate rich lore and backgrounds for your RPG campaigns."
-  twitter_image: "/images/featured/aitools/dnd-character-twitter.png"
+  twitter_image: "/images/featured/aitools/dnd-character.png"
 ---
 
-<link rel="stylesheet" href="dnd-character.css">
 
+# MythMaker: D&D 5E Character Lore Generator
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">MythMaker: D&D 5E Character Lore Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Generate rich backstories and compelling lore for your D&D characters. Create legendary heroes with detailed backgrounds, flaws, and divine connections that bring depth to your campaigns.
-</p>
 
 <form id="dndCharacterForm">
 <div class="form-group">
@@ -150,6 +147,12 @@ Forging your character's legend...
 
 
 <script src="dnd-character.js"></script>
+
+
+
+
+
+
 
 
 

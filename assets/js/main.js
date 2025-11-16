@@ -74,6 +74,38 @@ if (themeToggle) {
 
 // Code Block Enhancement
 document.addEventListener('DOMContentLoaded', function() {
+  // Legacy AI Tools button class normalization (consolidation safety net)
+  try {
+    const upgradeBtn = (el, role) => {
+      if (!el) return;
+      el.classList.add('action-btn');
+      if (role === 'copy') el.classList.add('copy-btn');
+      if (role === 'download') el.classList.add('download-btn');
+      el.classList.remove('btn-copy');
+      el.classList.remove('btn-download');
+      // Clean accidental primary styling on non-generate buttons
+      if (role !== 'generate') el.classList.remove('btn-primary');
+    };
+
+    // Upgrade standalone legacy copy/download buttons
+    document.querySelectorAll('.btn-copy').forEach(btn => upgradeBtn(btn, 'copy'));
+    document.querySelectorAll('.btn-download').forEach(btn => upgradeBtn(btn, 'download'));
+
+    // Fix hybrid patterns like "btn-primary btn-download"
+    document.querySelectorAll('button.btn-primary.btn-download').forEach(btn => upgradeBtn(btn, 'download'));
+
+    // Normalize ad-hoc custom classes to standard roles
+    document.querySelectorAll('.analogy-copy-btn, .hook-copy-btn, .copy-btn:not(.action-btn)').forEach(btn => upgradeBtn(btn, 'copy'));
+
+    // Normalize legacy container class if present
+    document.querySelectorAll('.action-buttons').forEach(box => {
+      box.classList.remove('action-buttons');
+      box.classList.add('result-actions');
+    });
+  } catch (e) {
+    console.warn('Legacy button normalization skipped:', e);
+  }
+
   // Add copy button to code blocks
   const codeBlocks = document.querySelectorAll('.code-block-wrapper');
   

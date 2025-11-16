@@ -114,13 +114,7 @@
     transform: translateY(0);
 }
 
-.btn-download {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-    padding: 12px 24px;
-    font-size: 14px;
-}
-
-.btn-download svg {
+.action-btn.download-btn svg {
     width: 18px;
     height: 18px;
     vertical-align: middle;

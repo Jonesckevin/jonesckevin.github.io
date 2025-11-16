@@ -27,12 +27,11 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="meal-planner.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">🗓️ Weekly Meal Planner & Smart Grocery List</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+
+# 🗓️ Weekly Meal Planner & Smart Grocery List
+
 Plan your entire week with personalized meal suggestions, complete grocery lists, and helpful prep recommendations. Make meal planning effortless and enjoyable!
-</p>
 
 <form id="mealPlannerForm">
   <div class="form-row">
@@ -177,15 +176,22 @@ Plan your entire week with personalized meal suggestions, complete grocery lists
   <h3 style="color: #ff6b35; margin-bottom: 20px;">📝 Your Weekly Meal Plan</h3>
   <div id="resultContent"></div>
   <div class="result-actions">
-    <button class="btn-copy" onclick="copyResult(event)">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">
       📋 Copy to Clipboard
     </button>
-    <button class="btn-download" onclick="downloadResult('markdown')">
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
       📄 Download Markdown
     </button>
-    <button class="btn-download" onclick="downloadResult('html')">
+  <button class="action-btn download-btn" onclick="downloadResult('html')">
       🌐 Download HTML
     </button>
   </div>
 </div>
 <script src="meal-planner.js"></script>
+
+
+
+
+
+
+

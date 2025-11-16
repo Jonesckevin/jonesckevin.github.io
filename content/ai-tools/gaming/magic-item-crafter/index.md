@@ -27,13 +27,11 @@ social_media:
   twitter_image: "/images/featured/aitools/dnd-magic-item.png"
 ---
 
-<link rel="stylesheet" href="magic-item-crafter.css">
 
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Loot & Magic Item Crafter</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+# Loot & Magic Item Crafter
+
 Generate balanced treasure parcels and bespoke magic items with lore, attunement, and hooks for your campaigns.
-</p>
 
 <form id="magicItemForm">
 <div class="form-group">
@@ -155,6 +153,12 @@ Crafting magical treasures...
 
 
 <script src="magic-item-crafter.js"></script>
+
+
+
+
+
+
 
 
 

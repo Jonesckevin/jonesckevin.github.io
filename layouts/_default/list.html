@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $paginator := .Paginate .Data.Pages }}
-<main class="posts" style="max-width: 1000px; margin: auto auto auto auto; padding: 0 2rem;">
+<main class="posts posts-container">
     <!-- Hero Section -->
     <div class="hero-section">
         <h1 class="hero-title">{{ .Title }}</h1>
@@ -16,7 +16,7 @@
     </div>
 
     {{ if .Content }}
-    <div class="content" style="margin-bottom: 2rem;">{{ .Content }}</div>
+    <div class="content">{{ .Content }}</div>
     {{ end }}
 
     <!-- Posts Grid -->
@@ -96,10 +96,10 @@
             });
 
             if (visibleCount > 0) {
-                searchResults.innerHTML = `<span style="color: var(--accent); font-weight: bold;">${visibleCount} item${visibleCount !== 1 ? 's' : ''} found</span>`;
+                searchResults.innerHTML = `<span class="search-results-count">${visibleCount} item${visibleCount !== 1 ? 's' : ''} found</span>`;
                 searchResults.style.display = 'block';
             } else {
-                searchResults.innerHTML = '<span style="color: var(--accent);">No items found matching your search</span>';
+                searchResults.innerHTML = '<span class="search-results-empty">No items found matching your search</span>';
                 searchResults.style.display = 'block';
             }
         });

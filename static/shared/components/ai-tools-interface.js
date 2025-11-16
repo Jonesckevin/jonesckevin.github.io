@@ -103,7 +103,7 @@ class AIInterface {
 
                 ${responseLengthHTML}
 
-                <button type="submit" class="btn-primary">${this.submitButtonIcon} ${this.submitButtonText}</button>
+                <button type="submit" class="generate-btn btn-primary action-btn">${this.submitButtonIcon} ${this.submitButtonText}</button>
             </form>
 
             <div id="${this.resultId}" class="result-container" style="display: none;">
@@ -141,7 +141,7 @@ class AIInterface {
 
             // Validation
             if (!window.utils || !window.utils.validateApiKey(apiKey, provider)) {
-                const providerNames = { openai: 'OpenAI', deepseek: 'DeepSeek', anthropic: 'Anthropic', gemini: 'Gemini', grok: 'Grok (X.AI)' };
+                const providerNames = { openai: 'OpenAI', cohere: 'Cohere', deepseek: 'DeepSeek', anthropic: 'Anthropic', gemini: 'Gemini', grok: 'Grok (X.AI)' };
                 if (window.utils) {
                     window.utils.showError(resultDiv, `Please enter a valid ${providerNames[provider]} API key`);
                 } else {
@@ -249,9 +249,11 @@ class AIInterface {
 
             // Display result with grouped output and download buttons
             resultDiv.innerHTML = `
-                <h3 style="color: #ff6b35; margin-bottom: 20px;">${title}</h3>
-                <div class="ai-result-stack">${groupedHtml}</div>
-                ${window.downloadManager ? window.downloadManager.createDownloadButtons(downloadBaseName) : ''}
+                <div class="result-display">
+                    <h3 style="color: #ff6b35; margin-bottom: 20px;">${title}</h3>
+                    <div class="ai-result-stack">${groupedHtml}</div>
+                    <div class="result-actions">${window.downloadManager ? window.downloadManager.createDownloadButtons(downloadBaseName) : ''}</div>
+                </div>
             `;
 
             // Store for backward compatibility (legacy download functions)
@@ -267,6 +269,7 @@ class AIInterface {
         }
 
         resultDiv.style.display = 'block';
+        try { this.normalizeLegacyButtons(resultDiv); } catch(_) {}
     }
 
     showError(message) {
@@ -354,6 +357,31 @@ class AIInterface {
             }
         }
         flush();
+    }
+
+    // Add btn-primary/action-btn classes to legacy buttons that pre-date shared styling
+    normalizeLegacyButtons(scope = document) {
+        try {
+            const buttons = scope.querySelectorAll('button');
+            buttons.forEach(btn => {
+                const id = btn.id || '';
+                const cls = btn.className || '';
+                if (/generate/i.test(id) || /generate-btn/.test(cls)) {
+                    if (!btn.classList.contains('generate-btn')) btn.classList.add('generate-btn');
+                    if (!btn.classList.contains('btn-primary')) btn.classList.add('btn-primary');
+                    if (!btn.classList.contains('action-btn')) btn.classList.add('action-btn');
+                }
+                if (/(copy|download|regenerate)/i.test(id) || /(copy-btn|download-btn|regenerate-btn)/.test(cls)) {
+                    if (!btn.classList.contains('action-btn')) btn.classList.add('action-btn');
+                    if (!btn.classList.contains('btn-primary')) btn.classList.add('btn-primary');
+                }
+                if (/regenerate/i.test(id) && !btn.classList.contains('secondary')) {
+                    btn.classList.add('secondary');
+                }
+            });
+        } catch (e) {
+            console.warn('Button normalization failed:', e);
+        }
     }
 }
 

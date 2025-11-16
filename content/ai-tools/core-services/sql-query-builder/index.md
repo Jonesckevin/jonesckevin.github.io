@@ -29,14 +29,13 @@ social_media:
 <link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="sql-query-builder.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">SQL Query Builder</h1>
+ 
+# SQL Query Builder
 <button class="safety-toggle-btn" id="safetyToggleBtn" onclick="showSafetyNotice()" aria-label="Show safety guidelines" title="Safety Guidelines" style="display: none;">
 <span class="caution-triangle">⚠️</span>
 </button>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Generate SQL queries from natural language descriptions. Specify your database schema and requirements 
-                to get optimized, production-ready SQL queries for any database system.
-            </p>
+ 
+Generate SQL queries from natural language descriptions. Specify your database schema and requirements to get optimized, production-ready SQL queries for any database system.
 
 <form id="sqlBuilderForm">
 <div class="form-group">
@@ -179,11 +178,11 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 <h3 style="color: #ff6b35; margin-bottom: 20px;">💾 Generated SQL Query</h3>
 <div id="resultContent"></div>
 <div class="result-actions" id="downloadButtons">
-<button class="btn-copy" onclick="copyResult(event)">📋 Copy Query</button>
-<button class="btn-download" onclick="downloadResult('sql')">🗄️ SQL File</button>
-<button class="btn-download" onclick="downloadResult('script')" id="scriptDownloadBtn" style="display: none;">📜 Script</button>
-<button class="btn-download" onclick="downloadResult('docker')" id="dockerDownloadBtn" style="display: none;">🐳 Docker</button>
-<button class="btn-download" onclick="downloadResult('markdown')">📄 Markdown</button>
+<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy Query</button>
+<button class="action-btn download-btn" onclick="downloadResult('sql')">🗄️ SQL File</button>
+<button class="action-btn download-btn" onclick="downloadResult('script')" id="scriptDownloadBtn" style="display: none;">📜 Script</button>
+<button class="action-btn download-btn" onclick="downloadResult('docker')" id="dockerDownloadBtn" style="display: none;">🐳 Docker</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Markdown</button>
 <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px;">🔄 Alternative</button>
 </div>
 </div>
@@ -217,3 +216,9 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 
 <!-- Shared components already loaded in head.html -->
 <script src="sql-query-builder.js"></script>
+
+
+
+
+
+

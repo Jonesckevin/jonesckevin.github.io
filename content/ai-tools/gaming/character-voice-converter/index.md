@@ -27,13 +27,10 @@ social_media:
   twitter_image: "/images/featured/aitools/dnd-personality-convert.png"
 ---
 
-<link rel="stylesheet" href="character-voice-converter.css">
 
+# Character Voice Converter
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Character Voice Converter</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
 Transform any text to match specific character voices and speaking styles. Perfect for dialogue writing, character development, and creating authentic voices for stories, games, and roleplaying.
-</p>
 
 <form id="voiceConverterForm">
 <div class="form-group">
@@ -173,15 +170,23 @@ Converting text to character voice...
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Converted Character Voice</h3>
 <div class="result-content" id="resultContent"></div>
 <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary btn-download" onclick="copyResult(event)">Copy Output</button>
-<button class="btn-primary btn-download" onclick="downloadResult('markdown', event)">MD</button>
-<button class="btn-primary btn-download" onclick="downloadResult('html', event)">HTML</button>
+<div class="result-actions" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+<button class="action-btn copy-btn" onclick="copyResult(event)">Copy Output</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown', event)">MD</button>
+<button class="action-btn download-btn" onclick="downloadResult('html', event)">HTML</button>
+</div>
 
 </div>
 </div>
 
 
 <script src="character-voice-converter.js"></script>
+
+
+
+
+
+
 
 
 

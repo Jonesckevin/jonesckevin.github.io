@@ -27,11 +27,13 @@ social_media:
   twitter_image: "/images/featured/aitools/trapsnpuzzles.png"
 ---
 
-<link rel="stylesheet" href="traps-and-puzzles.css">
 
 
-<h1 style="text-align:center;margin-bottom:30px;color:#ff6b35;">🗝️ Traps & Puzzles Generator</h1>
-<p style="text-align:center;margin-bottom:40px;opacity:.9;">Create ready-to-run traps and puzzles with triggers, effects, clues, disarm methods, and scaling options for your tabletop RPG sessions.</p>
+
+
+# 🗝️ Traps & Puzzles Generator
+
+Create ready-to-run traps and puzzles with triggers, effects, clues, disarm methods, and scaling options for your tabletop RPG sessions.
 
 <form id="trapPuzzleForm">
 <div class="form-group">
@@ -131,7 +133,7 @@ social_media:
 </div>
 
 <div class="action-buttons">
-<button type="button" onclick="generateTrapPuzzle()" class="generate-btn">
+<button type="button" onclick="generateTrapPuzzle()" class="generate-btn btn-primary action-btn">
 🎲 Generate Trap/Puzzle
 </button>
 <button type="button" onclick="generateVariation()" class="variation-btn">
@@ -151,19 +153,13 @@ social_media:
 <div id="resultDiv" class="result-section" style="display:none;">
 <div class="result-header">
 <h2>Generated Trap/Puzzle</h2>
-<div class="action-buttons">
-<button onclick="copyResult(event)" class="copy-btn">📋 Copy</button>
-<button onclick="downloadResult('markdown', event)" class="download-btn">� MD</button>
-<button onclick="downloadResult('html', event)" class="download-btn">🌐 HTML</button>
-</div>
 </div>
 <div id="resultContent" class="result-content"></div>
+<div class="action-buttons">
+  <button onclick="copyResult(event)" class="copy-btn action-btn btn-primary">📋 Copy</button>
+  <button onclick="downloadResult('markdown', event)" class="download-btn action-btn btn-primary">MD</button>
+  <button onclick="downloadResult('html', event)" class="download-btn action-btn btn-primary">🌐 HTML</button>
+</div>
 </div>
 
-
 <script src="traps-and-puzzles.js"></script>
-
-
-
-
-

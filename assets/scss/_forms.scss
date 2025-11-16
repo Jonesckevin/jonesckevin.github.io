@@ -127,6 +127,9 @@ input[type="checkbox"] {
     flex-direction: column !important;
     gap: 10px !important;
     margin-top: 6px;
+    text-align: left;
+    align-self: center;
+    vertical-align: middle; 
 
     .checkbox-row {
         display: grid;

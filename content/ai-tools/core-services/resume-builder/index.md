@@ -30,11 +30,10 @@ social_media:
 <link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="/ai-tools/core-services/resume-builder/resume-builder.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Resume Builder</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                    Transform your documents into professional, ATS-optimized resumes. Upload your content files
-                    and get a polished resume ready for any application.
-                </p>
+
+# Resume Builder
+
+Transform your documents into professional, ATS-optimized resumes. Upload your content files and get a polished resume ready for any application.
 <form id="resumeForm">
 <div class="form-group">
 <label>Upload Document *</label>
@@ -76,9 +75,9 @@ social_media:
 <h3 style="color: #ff6b35; margin-bottom: 20px;">📄 Professional Resume</h3>
 <div id="resultContent"></div>
 <div class="result-actions">
-<button class="btn-copy" onclick="copyResult(event)">📋 Copy to Clipboard</button>
-<button class="btn-download" onclick="downloadResult('markdown')">📄 Download Markdown</button>
-<button class="btn-download" onclick="downloadResult('html')">🌐 Download HTML</button>
+<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy to Clipboard</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Download Markdown</button>
+<button class="action-btn download-btn" onclick="downloadResult('html')">🌐 Download HTML</button>
 </div>
 </div>
 

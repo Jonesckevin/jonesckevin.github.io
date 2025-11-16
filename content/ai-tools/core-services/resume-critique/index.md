@@ -19,7 +19,7 @@ sitemap_changefreq: "monthly"
 social_media:
   og_title: "AI Resume Critique - Professional Resume Analysis"
   og_description: "Get expert AI-powered resume analysis with detailed feedback and scoring. Improve your resume for better job applications."
-  og_image: "/images/ai-tools/resume-critique-social.png"
+  og_image: "/images/ai-tools/resume-critique.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Resume Critique Tool"
@@ -28,24 +28,22 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="resume-critique.css">
 
-<h1 style="text-align: center; margin-bottom: 20px; color: #ff6b35;">AI Resume Critique & Enhancement</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9; font-size: 1.1rem; line-height: 1.6;">
-Get professional AI-powered analysis of your resume with detailed feedback, scoring, section-by-section critiques, and an enhanced version tailored for your target job.
-<br><strong style="color: #ff6b35;">Transform your resume into an interview-winning document!</strong>
-</p>
+<div class="tool-header">
+  <h1 class="tool-title">AI Resume Critique & Enhancement</h1>
+  <p class="tool-subtitle">Get professional AI-powered analysis of your resume with detailed feedback, scoring, section-by-section critiques, and an enhanced version tailored for your target job.<br><strong>Transform your resume into an interview-winning document!</strong></p>
+</div>
 
 <form id="resumeCritiqueForm">
 <div class="form-group">
 <label>Input Method *</label>
-<div style="display: flex; gap: 20px; margin-bottom: 15px;">
-<label style="display: flex; align-items: left; color: #e0e0e0;">
-<input checked="" name="inputMethod" style="margin-right: 10px;" type="radio" value="text"/>
+<div class="input-method-options">
+<label class="radio-inline">
+<input checked="" name="inputMethod" type="radio" value="text"/>
 Paste Resume Text
 </label>
-<label style="display: flex; align-items: left; color: #e0e0e0;">
-<input name="inputMethod" style="margin-right: 10px;" type="radio" value="file"/>
+<label class="radio-inline">
+<input name="inputMethod" type="radio" value="file"/>
 Upload Resume File
 </label>
 </div>
@@ -58,12 +56,12 @@ Upload Resume File
 
 <div class="form-group" id="fileInputGroup" style="display: none;">
 <label>Upload Resume</label>
-<div class="file-upload-area" id="uploadArea" style="border: 3px dashed #ff6b35; background: #2a2a2a; min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<div class="file-upload-area" id="uploadArea">
 <div class="upload-text">Click to upload or drag and drop</div>
 <div class="upload-subtext">Supports TXT and MD files</div>
-<div class="file-name" id="fileName" style="display: none;"></div>
+<div class="file-name" id="fileName"></div>
 </div>
-<input accept=".txt,.md" id="fileInput" style="display: none;" type="file"/>
+<input accept=".txt,.md" id="fileInput" type="file"/>
 </div>
 
 <div class="form-group">
@@ -94,9 +92,9 @@ Analyzing your resume with AI...
 <h3 style="color: #ff6b35; margin-bottom: 20px;">📊 Resume Analysis Results</h3>
 <div id="resultContent"></div>
 <div class="result-actions">
-<button class="btn-copy" onclick="copyResult(event)">📋 Copy Analysis</button>
-<button class="btn-download" onclick="downloadResult('markdown')">📄 Download MD</button>
-<button class="btn-download" onclick="downloadResult('html')">🌐 Download HTML</button>
+<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy Analysis</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Download MD</button>
+<button class="action-btn download-btn" onclick="downloadResult('html')">🌐 Download HTML</button>
 <button class="btn-primary" onclick="generateEnhanced()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">✨ Enhanced Version</button>
 </div>
 </div>

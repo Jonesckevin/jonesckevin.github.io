@@ -18,12 +18,12 @@ sitemap_changefreq: "monthly"
 social_media:
   og_title: "SOF-ELK Uploading - Digital Forensics with KAPE"
   og_description: "A comprehensive guide on using SOF-ELK with KAPE for digital forensics, including MFT and Event Log analysis"
-  og_image: "/images/SOF-ELK-social.png"
+  og_image: "/images/SOF-ELK.png"
   og_type: "article"
   twitter_card: "summary_large_image"
   twitter_title: "SOF-ELK Uploading Guide"
   twitter_description: "Learn how to use SOF-ELK with KAPE for effective digital forensics, focusing on MFT and Event Log analysis."
-  twitter_image: "/images/SOF-ELK-twitter.png"
+  twitter_image: "/images/SOF-ELK.png"
 ---
 
 ![SOF-ELK Logo](images/SOF-ELK.png)

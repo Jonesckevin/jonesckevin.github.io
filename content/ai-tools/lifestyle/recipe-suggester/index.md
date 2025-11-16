@@ -27,12 +27,11 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="recipe-suggester.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">🍳 AI Recipe & Meal Suggester</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+
+# 🍳 AI Recipe & Meal Suggester
+
 Transform your available ingredients into creative, delicious meals. Get personalized recipe suggestions tailored to your preferences, meal type, and dietary needs.
-</p>
 
 <form id="recipeForm">
   <div class="form-group">
@@ -163,13 +162,13 @@ Transform your available ingredients into creative, delicious meals. Get persona
   <h3 style="color: #ff6b35; margin-bottom: 20px;">📝 Your Recipe Suggestions</h3>
   <div id="resultContent"></div>
   <div class="result-actions">
-    <button class="btn-copy" onclick="copyResult(event)">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">
       📋 Copy to Clipboard
     </button>
-    <button class="btn-download" onclick="downloadResult('markdown')">
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
       📄 Download Markdown
     </button>
-    <button class="btn-download" onclick="downloadResult('html')">
+  <button class="action-btn download-btn" onclick="downloadResult('html')">
       🌐 Download HTML
     </button>
   </div>

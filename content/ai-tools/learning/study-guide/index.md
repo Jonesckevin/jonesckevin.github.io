@@ -28,13 +28,11 @@ social_media:
 ---
 
 
-<link rel="stylesheet" href="study-guide.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">AI Study Guide Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Transform your course material into comprehensive study guides. Create structured learning aids 
-                with summaries, key concepts, practice questions, and memory techniques.
-            </p>
+
+# AI Study Guide Generator
+
+Transform your course material into comprehensive study guides. Create structured learning aids with summaries, key concepts, practice questions, and memory techniques.
 <form onsubmit="generateStudyGuide(); return false;">
 <div class="form-group">
 <label for="subject">Subject/Course *</label>
@@ -106,6 +104,13 @@ social_media:
 
 
 <script src="study-guide.js"></script>
+
+
+
+
+
+
+
 
 
 

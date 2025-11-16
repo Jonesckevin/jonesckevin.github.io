@@ -27,12 +27,11 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="cleaning-scheduler.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">🧹 Home Cleaning & Chore Scheduler</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+
+# 🧹 Home Cleaning & Chore Scheduler
+
 Create personalized cleaning schedules and chore lists that fit your lifestyle. Stay on top of household tasks with organized, manageable cleaning routines!
-</p>
 
 <form id="cleaningForm">
   <div class="form-row">
@@ -211,15 +210,22 @@ Create personalized cleaning schedules and chore lists that fit your lifestyle. 
   <h3 style="color: #ff6b35; margin-bottom: 20px;">📋 Your Cleaning Schedule</h3>
   <div id="resultContent"></div>
   <div class="result-actions">
-    <button class="btn-copy" onclick="copyResult(event)">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">
       📋 Copy to Clipboard
     </button>
-    <button class="btn-download" onclick="downloadResult('markdown')">
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
       📄 Download Markdown
     </button>
-    <button class="btn-download" onclick="downloadResult('html')">
+  <button class="action-btn download-btn" onclick="downloadResult('html')">
       🌐 Download HTML
     </button>
   </div>
 </div>
 <script src="cleaning-scheduler.js"></script>
+
+
+
+
+
+
+

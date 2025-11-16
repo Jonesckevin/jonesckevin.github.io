@@ -234,7 +234,7 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
     </select>
   </div>
 
-  <button type="submit" class="generate-btn">🎵 Generate Lyrics</button>
+  <button type="submit" class="btn-primary">🎵 Generate Lyrics</button>
 </form>
 
 <div id="errorDiv" class="error-message" style="display: none;"></div>
@@ -243,9 +243,9 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
   <h2>Your Song Lyrics</h2>
   <div id="resultContent"></div>
   <div class="action-buttons">
-    <button onclick="copyToClipboard()" class="action-btn copy-btn">📋 Copy Lyrics</button>
-    <button onclick="downloadLyrics()" class="action-btn download-btn">💾 Download</button>
-    <button onclick="generateNewLyrics()" class="action-btn regenerate-btn">🔄 Generate New</button>
+    <button onclick="copyToClipboard()" class="action-btn btn-primary copy-btn">📋 Copy Lyrics</button>
+    <button onclick="downloadLyrics()" class="action-btn btn-primary download-btn">💾 Download</button>
+    <button onclick="generateNewLyrics()" class="action-btn btn-primary regenerate-btn secondary">🔄 Generate New</button>
   </div>
 </div>
 
@@ -284,3 +284,9 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
 </div>
 <script src="/shared/components/utils.js"></script>
 <script src="music-lyrics-generator.js"></script>
+
+
+
+
+
+

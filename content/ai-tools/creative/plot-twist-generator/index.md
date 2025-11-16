@@ -27,14 +27,11 @@ social_media:
   twitter_image: "/images/featured/aitools/dnd-plot-twist.png"
 ---
 
-<link rel="stylesheet" href="plot-twist-generator.css">
 
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Plot Twist Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Generate contextual plot twists that fit seamlessly into your story. Create surprising reveals, 
-                character reversals, and dramatic turns with proper foreshadowing and logical foundations.
-            </p>
+# Plot Twist Generator
+
+Generate contextual plot twists that fit seamlessly into your story. Create surprising reveals, character reversals, and dramatic turns with proper foreshadowing and logical foundations.
 <form onsubmit="generateTwist(); return false;">
 <div class="form-group">
 <label for="storyContext">Current Story Context *</label>
@@ -157,6 +154,13 @@ social_media:
 
 
 <script src="plot-twist-generator.js"></script>
+
+
+
+
+
+
+
 
 
 

@@ -1,10 +1,12 @@
 /**
  * API Manager - Centralized AI provider management
- * Features:
- * - Multi-provider support (OpenAI, DeepSeek, Anthropic, Gemini, Grok)
- * - Automatic seed randomization for unique responses
- * - Centralized configuration and error handling
+ * Wrapped in an IIFE to avoid re-declaration when included multiple times.
  */
+(function () {
+    if (window.APIManager) {
+        console.log('APIManager constructor already defined; skipping redefinition');
+        return;
+    }
 
 class APIManager {
     constructor() {
@@ -14,6 +16,16 @@ class APIManager {
                 baseURL: 'https://api.openai.com/v1',
                 defaultModel: 'gpt-4o-mini',
                 keyPattern: /^sk-[A-Za-z0-9_\-]+$/,
+                requiresKey: true
+            },
+            cohere: {
+                name: 'Cohere',
+                // Cohere OpenAI-compatible base. If this changes, swap to native adapter.
+                baseURL: 'https://api.cohere.ai/compatibility/v1',
+                // Use a common Cohere chat-capable default; user can pick others from list
+                defaultModel: 'command-r-plus',
+                // Cohere keys vary; accept permissive non-empty token format
+                keyPattern: /^[A-Za-z0-9_\-]+$/,
                 requiresKey: true
             },
             deepseek: {
@@ -26,7 +38,7 @@ class APIManager {
             anthropic: {
                 name: 'Anthropic',
                 baseURL: 'https://api.anthropic.com/v1',
-                defaultModel: 'claude-3-haiku-20240307',
+                defaultModel: 'claude-sonnet-4-5-20250929',
                 keyPattern: /^sk-ant-[A-Za-z0-9_\-]+$/,
                 requiresKey: true
             },
@@ -67,6 +79,15 @@ class APIManager {
         this.currentProvider = this.getStoredProvider() || 'openai';
         this.currentApiKey = this.getStoredApiKey() || '';
         this.currentModels = {};
+
+        // Defaults for auto-continuation; can be overridden per call
+        this.defaults = {
+            autoContinue: false,
+            autoContinueMaxSteps: 1,
+            ensureCompleteStory: false,
+            fullStoryMode: false,
+            fullStoryMaxLoops: 4
+        };
     }
 
     // Provider management
@@ -201,11 +222,314 @@ class APIManager {
         console.log('Custom seed cleared, returning to time-based randomization');
     }
 
-    // Helper function to remove <thinking> tags and their content
+    // Helper function to remove thinking/reasoning tags and their content
+    // Supports multiple formats used by different AI models:
+    // - <thinking>...</thinking> (standard XML-style)
+    // - ◁think▷...◁/think▷ (DeepSeek R1 and similar models)
     _stripThinkingTags(text) {
         if (!text) return text;
-        // Remove <thinking>...</thinking> blocks (including multiline)
-        return text.replace(/<thinking>[\s\S]*?<\/thinking>/gi, '').trim();
+
+        const original = text;
+
+        // Use a small state machine to reliably strip only the content between
+        // well-formed thinking tags without truncating the remainder.
+        const OPEN = '◁think▷';
+        const CLOSE = '◁/think▷';
+        const OPEN_XML = '<thinking>';
+        const CLOSE_XML = '</thinking>';
+
+        let i = 0;
+        let depth = 0; // support nested just in case
+        let cleanedBuilder = '';
+
+        while (i < text.length) {
+            // Opening tags
+            if (text.startsWith(OPEN, i)) {
+                depth++;
+                i += OPEN.length;
+                continue;
+            }
+            if (text.startsWith(OPEN_XML, i)) {
+                depth++;
+                i += OPEN_XML.length;
+                continue;
+            }
+
+            // When inside a thinking block, skip until the matching close
+            if (depth > 0) {
+                if (text.startsWith(CLOSE, i)) {
+                    depth = Math.max(0, depth - 1);
+                    i += CLOSE.length;
+                    continue;
+                }
+                if (text.startsWith(CLOSE_XML, i)) {
+                    depth = Math.max(0, depth - 1);
+                    i += CLOSE_XML.length;
+                    continue;
+                }
+                // Skip current character (we're inside thinking content)
+                i++;
+                continue;
+            }
+
+            // Outside of any thinking block, keep the character
+            cleanedBuilder += text[i];
+            i++;
+        }
+
+        // If we ended while still "inside" a thinking block (unbalanced tags),
+        // fall back to a conservative strategy: remove only the tag tokens
+        // themselves and leave content intact to avoid cutting off the reply.
+        let cleaned = cleanedBuilder;
+        if (depth > 0) {
+            cleaned = original
+                .replaceAll(OPEN, '')
+                .replaceAll(CLOSE, '')
+                .replaceAll(OPEN_XML, '')
+                .replaceAll(CLOSE_XML, '');
+        }
+
+        // After core removal, strip additional common bracketed variants for 'thinking'/'think'
+        const blockPatterns = [
+            /\[thinking\][\s\S]*?\[\/thinking\]/gi,
+            /\(thinking\)[\s\S]*?\(\/thinking\)/gi,
+            /\{thinking\}[\s\S]*?\{\/thinking\}/gi,
+            /«thinking»[\s\S]*?«\/thinking»/gi,
+            /〈thinking〉[\s\S]*?〈\/thinking〉/gi,
+            /《thinking》[\s\S]*?《\/thinking》/gi,
+            /「thinking」[\s\S]*?「\/thinking」/gi,
+            /『thinking』[\s\S]*?『\/thinking』/gi,
+            /⟪thinking⟫[\s\S]*?⟪\/thinking⟫/gi,
+            /⟨thinking⟩[\s\S]*?⟨\/thinking⟩/gi,
+            // also support 'think' keyword
+            /\[think\][\s\S]*?\[\/think\]/gi,
+            /\(think\)[\s\S]*?\(\/think\)/gi,
+            /\{think\}[\s\S]*?\{\/think\}/gi,
+            /«think»[\s\S]*?«\/think»/gi,
+            /〈think〉[\s\S]*?〈\/think〉/gi,
+            /《think》[\s\S]*?《\/think》/gi,
+            /「think」[\s\S]*?「\/think」/gi,
+            /『think』[\s\S]*?『\/think』/gi,
+            /⟪think⟫[\s\S]*?⟪\/think⟫/gi,
+            /⟨think⟩[\s\S]*?⟨\/think⟩/gi,
+        ];
+        blockPatterns.forEach(rx => {
+            cleaned = cleaned.replace(rx, '');
+        });
+
+        // Remove stray open/close tokens if blocks were malformed
+        const tokenPatterns = [
+            /\[\/?thinking\]/gi, /\(\/?thinking\)/gi, /\{\/?thinking\}/gi,
+            /«\/?thinking»/gi, /〈\/?thinking〉/gi, /《\/?thinking》/gi,
+            /「\/?thinking」/gi, /『\/?thinking』/gi, /⟪\/?thinking⟫/gi, /⟨\/?thinking⟩/gi,
+            /\[\/?think\]/gi, /\(\/?think\)/gi, /\{\/?think\}/gi,
+            /«\/?think»/gi, /〈\/?think〉/gi, /《\/?think》/gi,
+            /「\/?think」/gi, /『\/?think』/gi, /⟪\/?think⟫/gi, /⟨\/?think⟩/gi
+        ];
+        tokenPatterns.forEach(rx => {
+            cleaned = cleaned.replace(rx, '');
+        });
+
+        // Heuristic: remove 'thinking' or 'think' if surrounded by non-space characters
+        // Examples: .thinking.  ./thinking.  <thinking>  (thinking)
+        try {
+            cleaned = cleaned.replace(/(?<=\S)thinking(?=\S)/gi, '');
+            cleaned = cleaned.replace(/(?<=\S)think(?=\S)/gi, '');
+        } catch (e) {
+            // Older JS engines without lookbehind: fallback manual replace
+            cleaned = cleaned.replace(/(\S)thinking(\S)/gi, '$1$2');
+            cleaned = cleaned.replace(/(\S)think(\S)/gi, '$1$2');
+        }
+
+        // Normalize any excessive blank lines introduced by removals
+        cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
+
+        // Debug logging when thinking tags are detected
+        if (original !== cleaned && (original.includes('◁think▷') || original.includes('<thinking>'))) {
+            console.log('[API Manager] Stripped thinking tags from response');
+            console.log('[API Manager] Original length:', original.length, 'Cleaned length:', cleaned.length);
+        }
+
+        // Trim only at the ends to avoid altering interior spacing
+        return cleaned.trim();
+    }
+
+    // Extract only the story/narrative content, stripping tool/meta wrappers.
+    _purifyStory(text) {
+        if (!text) return text;
+        let t = text;
+
+        // Common prefixes to drop
+        t = t.replace(/^(?:Here is (?:the )?story:?|Sure, (?:here'?s|here is) (?:a|the) story:?|Story:?|Narrative:?|Output:?)[\s\-]*\n?/i, '');
+        t = t.replace(/^```(?:markdown|text)?\n([\s\S]*?)```\s*$/i, '$1');
+
+        // Drop trailing analysis or meta sections if present
+        t = t.replace(/\n+(?:Analysis|Notes|Explanation|Outline|Postscript|Epilogue):[\s\S]*$/i, '');
+
+        // Remove accidental "assistant:" or role headers
+        t = t.replace(/^\s*(?:assistant|system|user)\s*:\s*/i, '');
+
+        // Trim repeated leading/trailing quotes or code fences
+        t = t.replace(/^"{3,}/, '').replace(/"{3,}$/,'');
+
+        // Ensure we end on a sentence terminator if present nearby
+        const lastSentence = t.match(/[\s\S]*[.!?)(\]](?=\s*$)/);
+        if (lastSentence) t = lastSentence[0];
+
+        return t.trim();
+    }
+
+    // Common post-processing pipeline for model outputs
+    _postProcess(text, options) {
+        let out = this._stripThinkingTags(text || '');
+        if (options?.storyOnly) out = this._purifyStory(out);
+        return out;
+    }
+
+    // Unified cutoff heuristic
+    _isLikelyCutoffText(text) {
+        if (!text) return false;
+        const trimmed = String(text).trim();
+        if (!trimmed) return false;
+        // Ends with awkward punctuation
+        if (/[,:;]$/.test(trimmed)) return true;
+        // No sentence terminator and reasonably long
+        if (!/[.!?)]$/.test(trimmed) && trimmed.length > 160) return true;
+        // Dangling articles / prepositions / conjunctions
+        if (/(?:\b(?:and|or|but|as|with|to|that|while|because|when|the|a|an|his|her|their|its|this|that|these|those|of|for|in|on|by|into|onto|from|at|over|under|through)\b)$/i.test(trimmed)) return true;
+        return false;
+    }
+
+    _bumpMaxTokens(currentMax) {
+        return Math.min(Math.max(1024, Math.floor((currentMax || 1500) * 1.5)), 4096);
+    }
+
+    _hasTerminalEnding(text) {
+        if (!text) return false;
+        const trimmed = text.trim();
+        // Accept terminal punctuation or closing quote/bracket following punctuation
+        return /[.!?]['")\]]?$/.test(trimmed);
+    }
+
+    _isCompleteStory(text) {
+        if (!text) return false;
+        const t = text.trim();
+        // Explicit end markers
+        if (/\bTHE\s+END\b/i.test(t)) return true;
+        // Terminal punctuation heuristics (last 2 sentences end cleanly)
+        const sentences = t.split(/(?<=[.!?])\s+/);
+        if (sentences.length >= 2) {
+            const last = sentences[sentences.length - 1];
+            const penultimate = sentences[sentences.length - 2];
+            if (/[.!?]['")\]]?$/.test(last) && penultimate.length > 20) return true;
+        }
+        // Length threshold with terminal ending
+        if (t.length > 800 && this._hasTerminalEnding(t)) return true;
+        return false;
+    }
+
+    // Get a short tail anchor from the end of the text for safe continuation
+    _getTailAnchor(text, charCount = 600) {
+        if (!text) return '';
+        const slice = String(text).slice(-Math.max(150, charCount));
+        const candidates = ['\n\n', '. ', '? ', '! '];
+        let idx = -1;
+        for (const sep of candidates) {
+            const found = slice.lastIndexOf(sep);
+            if (found > idx) idx = found;
+        }
+        // Start after the boundary, keep only the most recent fragment
+        return idx >= 0 ? slice.slice(idx + 2) : slice;
+    }
+
+    // Trim leading overlap where the new chunk repeats the end of the prior text
+    _trimLeadingOverlap(prevText, newChunk, maxOverlap = 400) {
+        if (!prevText || !newChunk) return newChunk || '';
+        const win = prevText.slice(-Math.max(50, Math.min(maxOverlap, prevText.length)));
+        const maxK = Math.min(win.length, newChunk.length);
+        for (let k = maxK; k >= 20; k--) {
+            const suffix = win.slice(win.length - k);
+            if (newChunk.startsWith(suffix)) {
+                return newChunk.slice(k);
+            }
+        }
+        return newChunk;
+    }
+
+    _continuationMaxTokens(options) {
+        const base = options?.maxTokens || 1500;
+        const capped = Math.min(Math.floor(base * 0.6), 768); // keep continuations tight
+        return Math.max(196, capped);
+    }
+
+    // Shared continuation handler to reduce duplicate code across providers
+    async _finalizeWithContinuation({ content, baseMessages, adjustedMessages, options, isInitiallyTruncated, reRequest }) {
+        let result = content || '';
+        let steps = Math.max(0, options?.autoContinueMaxSteps ?? 1);
+
+        const shouldContinue = (chunk, wasTruncated) => {
+            if (!options?.autoContinue) return false;
+            if (wasTruncated) return true;
+            return this._isLikelyCutoffText(chunk);
+        };
+
+        while (steps > 0 && shouldContinue(result, isInitiallyTruncated)) {
+            try {
+                const tail = this._getTailAnchor(result, options?.anchorChars || 600);
+                const msgs = [
+                    ...((adjustedMessages && adjustedMessages.length) ? adjustedMessages : baseMessages),
+                    { role: 'assistant', content: tail },
+                    { role: 'user', content: 'Repeat the overlap and finish the cut-off sentence/paragraph ONLY. Do not add new scenes or plot points. Stop after completing the thought.' }
+                ];
+
+                const followOptions = {
+                    ...options,
+                    maxTokens: this._continuationMaxTokens(options),
+                    autoContinue: false,
+                    autoContinueMaxSteps: 0
+                };
+
+                const nextChunk = await reRequest(msgs, followOptions);
+                const trimmed = this._trimLeadingOverlap(result, nextChunk);
+                const before = result;
+                result = before + (before.endsWith('\n') ? '' : '\n') + trimmed;
+
+                // For subsequent iterations, evaluate only by text shape
+                isInitiallyTruncated = false;
+                steps -= 1;
+                if (!this._isLikelyCutoffText(nextChunk)) break;
+            } catch (e) {
+                console.warn('Continuation request failed:', e);
+                break;
+            }
+        }
+        // Ensure story ends cleanly if requested
+        if (options?.ensureCompleteStory && !this._hasTerminalEnding(result)) {
+            try {
+                const tail = this._getTailAnchor(result, options?.anchorChars || 600);
+                const msgs = [
+                    ...((adjustedMessages && adjustedMessages.length) ? adjustedMessages : baseMessages),
+                    { role: 'assistant', content: tail },
+                    { role: 'user', content: 'Finish the final sentence naturally by repeating the last words and completing the sentence. Provide ONLY the continuation. No new events.' }
+                ];
+                const followOptions = {
+                    ...options,
+                    maxTokens: this._continuationMaxTokens(options),
+                    autoContinue: false,
+                    autoContinueMaxSteps: 0,
+                    ensureCompleteStory: false
+                };
+                const finalTailChunk = await reRequest(msgs, followOptions);
+                if (finalTailChunk && finalTailChunk.trim()) {
+                    // Avoid duplication: remove any leading overlap
+                    const cleanedTail = this._trimLeadingOverlap(result, finalTailChunk.replace(/^\s+/, ''));
+                    result += (result.endsWith('\n') ? '' : '\n') + cleanedTail;
+                }
+            } catch (e) {
+                console.warn('ensureCompleteStory tail request failed:', e);
+            }
+        }
+        return result;
     }
 
     // API operations
@@ -227,26 +551,85 @@ class APIManager {
             console.log('Using seed for unique response: ' + options.seed + ' ' + (this.customSeed ? '(custom)' : '(time-based)'));
         }
 
+        // Merge defaults
+        options = { ...this.defaults, ...options };
+
+        // If fullStoryMode enabled, override continuation flags to avoid nested loops
+        if (options.fullStoryMode) {
+            options.autoContinue = false; // we'll manage loops manually
+            options.ensureCompleteStory = false; // handled by _isCompleteStory
+        }
+
+        let baseCall;
         switch (provider) {
             case 'openai':
+            case 'cohere':
             case 'deepseek':
             case 'grok':
             case 'mistral':
             case 'custom': // Custom servers use OpenAI-compatible API
-                return this._makeOpenAIStyleRequest(config, apiKey, model, messages, options);
+                baseCall = (msgs, opts) => this._makeOpenAIStyleRequest(config, apiKey, model, msgs, opts);
+                break;
             case 'anthropic':
-                return this._makeAnthropicRequest(config, apiKey, model, messages, options);
+                baseCall = (msgs, opts) => this._makeAnthropicRequest(config, apiKey, model, msgs, opts);
+                break;
             case 'gemini':
-                return this._makeGeminiRequest(config, apiKey, model, messages, options);
+                baseCall = (msgs, opts) => this._makeGeminiRequest(config, apiKey, model, msgs, opts);
+                break;
             default:
                 throw new Error('Unsupported provider: ' + provider);
         }
+
+        // Standard single request path
+        if (!options.fullStoryMode) {
+            return baseCall(messages, options);
+        }
+
+        // Full story iterative retrieval
+        let loop = 0;
+        let assembled = '';
+        let workingMessages = [...messages];
+        let lastChunk = '';
+
+        while (loop < options.fullStoryMaxLoops) {
+            const chunkOptions = { ...options, autoContinue: false, ensureCompleteStory: false };
+            const chunk = await baseCall(workingMessages, chunkOptions);
+            lastChunk = chunk.trim();
+            // Avoid duplication: if chunk starts with previous tail segment, trim overlap
+            if (assembled) lastChunk = this._trimLeadingOverlap(assembled, lastChunk, 400);
+            assembled += (assembled && !assembled.endsWith('\n') ? '\n' : '') + lastChunk;
+
+            if (this._isCompleteStory(assembled)) break;
+
+            // Prepare continuation prompt
+            const tail = this._getTailAnchor(assembled, options?.anchorChars || 600);
+            workingMessages = [
+                ...messages,
+                { role: 'assistant', content: tail },
+                { role: 'user', content: 'Repeat the overlap and finish the cut-off sentence/paragraph ONLY. Do not add new scenes or plot points. Provide ONLY the continuation.' }
+            ];
+
+            loop += 1;
+        }
+
+        // Final polish if not terminal but loops exhausted
+        if (!this._isCompleteStory(assembled) && this._hasTerminalEnding(assembled) === false) {
+            assembled = assembled.trimEnd() + '...'; // indicate unresolved ending
+        }
+        return assembled;
     }
 
     async _makeOpenAIStyleRequest(config, apiKey, model, messages, options) {
+        // If storyOnly is requested, inject a system instruction to output only the story text
+        let adjustedMessages = messages;
+        if (options.storyOnly) {
+            const storySystem = { role: 'system', content: 'Output only the story narrative as plain text. Do not include prefaces, analysis, titles, or meta commentary.' };
+            const hasSystem = messages.some(m => m.role === 'system');
+            adjustedMessages = hasSystem ? messages.map((m, i) => (i === 0 && m.role === 'system' ? { ...m, content: storySystem.content + '\n' + m.content } : m)) : [storySystem, ...messages];
+        }
         const requestBody = {
             model: model,
-            messages: messages,
+            messages: adjustedMessages,
             max_tokens: options.maxTokens || 2000,
             temperature: options.temperature || 0.7,
             ...options.extraParams
@@ -293,8 +676,19 @@ class APIManager {
             throw new Error('Invalid JSON response from API');
         }
 
-        const content = data.choices?.[0]?.message?.content || '';
-        return this._stripThinkingTags(content);
+        let content = data.choices?.[0]?.message?.content || '';
+        content = this._postProcess(content, options);
+
+        const finishReason = data.choices?.[0]?.finish_reason;
+        const isInitiallyTruncated = finishReason === 'length' || false;
+        return await this._finalizeWithContinuation({
+            content,
+            baseMessages: messages,
+            adjustedMessages,
+            options,
+            isInitiallyTruncated,
+            reRequest: (msgs, opts) => this._makeOpenAIStyleRequest(config, apiKey, model, msgs, opts)
+        });
     }
 
     async _makeAnthropicRequest(config, apiKey, model, messages, options) {
@@ -324,7 +718,8 @@ class APIManager {
             headers: {
                 'Content-Type': 'application/json',
                 'x-api-key': apiKey,
-                'anthropic-version': '2023-06-01'
+                'anthropic-version': '2023-06-01',
+                'anthropic-dangerous-direct-browser-access': 'true'
             },
             body: JSON.stringify(requestBody)
         });
@@ -348,8 +743,19 @@ class APIManager {
             throw new Error('Invalid JSON response from API');
         }
 
-        const content = data.content?.[0]?.text || '';
-        return this._stripThinkingTags(content);
+        let content = data.content?.[0]?.text || '';
+        content = this._postProcess(content, options);
+        const stopReason = data.stop_reason;
+
+        const isInitiallyTruncated = stopReason === 'max_tokens' || false;
+        return await this._finalizeWithContinuation({
+            content,
+            baseMessages: messages,
+            adjustedMessages: null,
+            options,
+            isInitiallyTruncated,
+            reRequest: (msgs, opts) => this._makeAnthropicRequest(config, apiKey, model, msgs, opts)
+        });
     }
 
     async _makeGeminiRequest(config, apiKey, model, messages, options) {
@@ -405,8 +811,19 @@ class APIManager {
             throw new Error('Invalid JSON response from API');
         }
 
-        const content = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        return this._stripThinkingTags(content);
+        let content = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        content = this._postProcess(content, options);
+        const finish = data.candidates?.[0]?.finishReason;
+
+        const isInitiallyTruncated = finish === 'MAX_TOKENS' || false;
+        return await this._finalizeWithContinuation({
+            content,
+            baseMessages: messages,
+            adjustedMessages: null,
+            options,
+            isInitiallyTruncated,
+            reRequest: (msgs, opts) => this._makeGeminiRequest(config, apiKey, model, msgs, opts)
+        });
     }
 
     async listModels(provider = null, apiKey = null) {
@@ -425,32 +842,192 @@ class APIManager {
             case 'grok':
             case 'mistral':
                 return this._listOpenAIStyleModels(config, key);
+            case 'cohere':
+                // Use Cohere native models endpoint; compatibility /models may not be available
+                return this._listCohereModelsNative(key);
             case 'custom':
                 return this._listOpenAIStyleModels(config, key, true); // Pass flag for optional key
             case 'anthropic':
-                // Anthropic currently requires manual model enumeration (API model listing limited)
-                return this._getAnthropicModels();
+                return this._listAnthropicModels(config, key);
             case 'gemini':
-                return this._getGeminiModels();
+                return this._listGeminiModels(config, key);
             default:
                 throw new Error('Unsupported provider: ' + p);
         }
     }
 
+    async _listCohereModelsNative(apiKey) {
+        const url = 'https://api.cohere.ai/v1/models';
+        const response = await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + apiKey
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch models: ' + response.status);
+        }
+
+        const data = await response.json();
+        const ids = [];
+        // Cohere commonly returns { models: [{ name: 'command-r' }, ...] }
+        if (Array.isArray(data?.models)) {
+            data.models.forEach(m => {
+                const name = m?.name || m?.id || '';
+                if (name) ids.push(name);
+            });
+        } else if (Array.isArray(data?.data)) {
+            data.data.forEach(m => { if (m?.id) ids.push(m.id); });
+        }
+        return this._categorizeAndFlatten(ids);
+    }
+
+    async _listAnthropicModels(config, apiKey) {
+        let response;
+        try {
+            response = await fetch(config.baseURL + '/models', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'x-api-key': apiKey,
+                    'anthropic-version': '2023-06-01',
+                    'anthropic-dangerous-direct-browser-access': 'true'
+                }
+            });
+        } catch (e) {
+            // Network error
+            throw new Error('Failed to fetch Anthropic models: ' + e.message);
+        }
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch models: ' + response.status);
+        }
+
+        const data = await response.json();
+        // Normalize to a list of ids. Anthropic may return { data: [{ id: ... }] } or { models: [...] }
+        const ids = [];
+        if (Array.isArray(data?.data)) {
+            data.data.forEach(m => { if (m?.id) ids.push(m.id); });
+        } else if (Array.isArray(data?.models)) {
+            data.models.forEach(m => { if (m?.id) ids.push(m.id); else if (m?.name) ids.push(m.name); });
+        }
+        return this._categorizeAndFlatten(ids);
+    }
+
+    async _listGeminiModels(config, apiKey) {
+        const url = config.baseURL + '/models?key=' + encodeURIComponent(apiKey);
+        const response = await fetch(url, { headers: { 'Content-Type': 'application/json' } });
+        if (!response.ok) {
+            throw new Error('Failed to fetch models: ' + response.status);
+        }
+        const data = await response.json();
+        // Google returns { models: [ { name: 'models/gemini-1.5-flash', ... }, ... ] }
+        const ids = [];
+        if (Array.isArray(data?.models)) {
+            data.models.forEach(m => {
+                const name = m?.name || '';
+                const id = name.includes('/') ? name.split('/').pop() : name;
+                if (id) ids.push(id);
+            });
+        }
+        return this._categorizeAndFlatten(ids);
+    }
+
+    _categorizeAndFlatten(modelIds) {
+        // Reuse categorization rules from _listOpenAIStyleModels
+        const categorizedModels = {
+            text: [], images: [], tts: [], audio: [], video: [], transcribe: [], ocr: [], other: []
+        };
+
+        const legacyPatterns = [
+            'gpt-3.5-turbo-16k', 'gpt-4-32k', 'text-davinci', 'text-curie', 'text-babbage', 'text-ada', 'code-davinci', 'code-cushman'
+        ];
+
+        modelIds.forEach(modelId => {
+            const modelIdLower = String(modelId || '').toLowerCase();
+            if (!modelIdLower) return;
+            if (legacyPatterns.some(pattern => modelIdLower.startsWith(pattern.toLowerCase()))) return;
+
+            const modelInfo = { id: modelId, label: modelId, category: 'other' };
+
+            if (modelIdLower.includes('ocr') || modelIdLower.includes('-ocr') || modelIdLower.includes('vision') ||
+                modelIdLower.includes('document') || modelIdLower.includes('pixtral') || modelIdLower.includes('gpt-4o') ||
+                modelIdLower.includes('gpt-4-turbo') || modelIdLower.includes('claude-3') ||
+                (modelIdLower.includes('gemini') && modelIdLower.includes('vision'))) {
+                modelInfo.category = 'ocr'; categorizedModels.ocr.push(modelInfo);
+            } else if (modelIdLower.includes('gpt') || modelIdLower.includes('chat') || modelIdLower.includes('deepseek') ||
+                modelIdLower.includes('grok') || modelIdLower.includes('llama') || modelIdLower.includes('mistral') ||
+                modelIdLower.includes('gemma') || modelIdLower.includes('phi') || modelIdLower.includes('qwen') ||
+                modelIdLower.includes('claude') || modelIdLower.includes('instruct') || modelIdLower.includes('conversation') ||
+                modelIdLower.includes('command')) {
+                modelInfo.category = 'text'; categorizedModels.text.push(modelInfo);
+            } else if (modelIdLower.includes('dall-e') || modelIdLower.includes('dalle') || modelIdLower.includes('gpt-image') || modelIdLower.includes('image')) {
+                modelInfo.category = 'images'; categorizedModels.images.push(modelInfo);
+            } else if (modelIdLower.includes('tts') || modelIdLower.includes('text-to-speech')) {
+                modelInfo.category = 'tts'; categorizedModels.tts.push(modelInfo);
+            } else if (modelIdLower.includes('whisper') || modelIdLower.includes('transcrib') || modelIdLower.includes('voxtral')) {
+                modelInfo.category = 'transcribe'; categorizedModels.transcribe.push(modelInfo);
+            } else if (modelIdLower.includes('audio')) {
+                modelInfo.category = 'audio'; categorizedModels.audio.push(modelInfo);
+            } else if (modelIdLower.includes('video') || modelIdLower.includes('sora')) {
+                modelInfo.category = 'video'; categorizedModels.video.push(modelInfo);
+            } else {
+                categorizedModels.other.push(modelInfo);
+            }
+        });
+
+        const categoryLabels = {
+            text: '💬 Text Generation', images: '🎨 Image Generation', ocr: '👁️ Vision & OCR', tts: '🔊 Text-to-Speech',
+            audio: '🎵 Audio Generation', video: '🎬 Video Generation', transcribe: '📝 Transcription', other: '🔧 Other Models'
+        };
+
+        const flattened = [];
+        Object.keys(categoryLabels).forEach(category => {
+            if (categorizedModels[category].length > 0) {
+                flattened.push({ id: `header-${category}`, label: categoryLabels[category], isHeader: true, category });
+                categorizedModels[category]
+                    .sort((a, b) => a.label.localeCompare(b.label))
+                    .forEach(m => flattened.push(m));
+            }
+        });
+        return flattened;
+    }
+
     async _listOpenAIStyleModels(config, apiKey, optionalKey = false) {
-        const headers = {};
+        const headers = {
+            'Accept': 'application/json'
+        };
 
         // Only add Authorization header if API key is provided
         if (apiKey) {
             headers['Authorization'] = 'Bearer ' + apiKey;
         }
 
-        const response = await fetch(config.baseURL + '/models', {
-            headers: headers
-        });
+        let response;
+        try {
+            response = await fetch(config.baseURL + '/models', { headers });
+        } catch (e) {
+            throw new Error('Failed to fetch models (network): ' + (e?.message || e));
+        }
+
+        // Provider-specific fallback for DeepSeek: try without /v1 if first attempt fails
+        if (!response.ok && (config.baseURL.includes('api.deepseek.com'))) {
+            try {
+                const altBase = config.baseURL.replace(/\/v1$/, '');
+                const altResp = await fetch(altBase + '/models', { headers });
+                if (altResp.ok) {
+                    response = altResp;
+                }
+            } catch (_) { /* ignore and fall through to error */ }
+        }
 
         if (!response.ok) {
-            throw new Error('Failed to fetch models: ' + response.status);
+            const status = response.status;
+            if (config.baseURL.includes('api.deepseek.com') && status === 401) {
+                throw new Error('DeepSeek: Unauthorized (401). Verify API key; /models may not be enabled for your key.');
+            }
+            throw new Error('Failed to fetch models: ' + status);
         }
 
         const data = await response.json();
@@ -468,20 +1045,9 @@ class APIManager {
         //     ...
         //   ]
         // }
-        // Log first model to see available properties (for debugging)
-        if (data.data && data.data.length > 0) {
-            console.log('Sample model properties:', Object.keys(data.data[0]));
-            console.log('Sample model:', data.data[0]);
-        }
+        // Log can stay silent in production
 
-        // Patterns to identify legacy/deprecated models
-        // Only filter models that ONLY have dates/versions (not legitimate versioned models)
-        const pureVersionPattern = /^(\w+-)?(gpt-3\.5-turbo|gpt-4|(dev|mi|code|magi|vox)stral)(-\w+)?-\d{4}$/; // Like gpt-4-0613 (pure version)
-        const legacyDateOnlyPattern = /^\w+-\d{4}-\d{2}-\d{2}$/; // Like davinci-2023-01-15 (only date)
-        const endingDatePattern = /-\d{4}-\d{2}-\d{2}$/; // Models ending with -YYYY-MM-DD pattern
-        const endingDatePattern2 = /-\d{8}$/; // Models ending with -YYYYMMDD pattern (like -20241022)
-
-        // Known legacy model patterns
+        // Known legacy model patterns (specific, safe skips)
         const legacyPatterns = [
             'gpt-3.5-turbo-16k',
             'gpt-4-32k',
@@ -505,27 +1071,10 @@ class APIManager {
             other: []
         };
 
-        data.data.forEach(model => {
+        const list = Array.isArray(data?.data) ? data.data : (Array.isArray(data?.models) ? data.models : []);
+        list.forEach(model => {
             const modelId = model.id;
             const modelIdLower = modelId.toLowerCase();
-
-            // Skip pure version-only models (like gpt-4-0613 which are outdated snapshots)
-            if (pureVersionPattern.test(modelId)) {
-                console.log('Skipping pure version model:', modelId);
-                return;
-            }
-
-            // Skip legacy date-only models (but allow models with dates as part of their name)
-            if (legacyDateOnlyPattern.test(modelId)) {
-                console.log('Skipping legacy date-only model:', modelId);
-                return;
-            }
-
-            // Skip models ending with date patterns (like claude-3-opus-20240229 or gpt-4-20241022)
-            if (endingDatePattern.test(modelId) || endingDatePattern2.test(modelId)) {
-                console.log('Skipping model with ending date pattern:', modelId);
-                return;
-            }
 
             // Skip known legacy model patterns (but be specific - don't block all *-002 models)
             const isLegacy = legacyPatterns.some(pattern => modelIdLower.startsWith(pattern.toLowerCase()));
@@ -626,12 +1175,23 @@ class APIManager {
         return flattenedModels;
     }
 
+    _getCohereModels() {
+        return [
+            { id: 'header-text', label: '💬 Text Generation', isHeader: true, category: 'text' },
+            { id: 'command-r-plus', label: 'Cohere Command R+', category: 'text' },
+            { id: 'command-r', label: 'Cohere Command R', category: 'text' },
+            { id: 'command', label: 'Cohere Command', category: 'text' },
+            { id: 'command-light', label: 'Cohere Command Light', category: 'text' }
+        ];
+    }
+
     _getAnthropicModels() {
         return [
             { id: 'header-text', label: '💬 Text Generation', isHeader: true, category: 'text' },
             // Claude 4 models (latest)
             { id: 'claude-4-opus-20250514', label: 'Claude 4 Opus (Latest)', category: 'text' },
             { id: 'claude-4-sonnet-20250514', label: 'Claude 4 Sonnet (Latest)', category: 'text' },
+            { id: 'claude-sonnet-4-5-20250929', label: 'Claude Sonnet 4.5 (Sep 2024)', category: 'text' },
             // Claude 3.5 models
             { id: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet (Oct 2024)', category: 'text' },
             { id: 'claude-3-5-sonnet-20240620', label: 'Claude 3.5 Sonnet (Jun 2024)', category: 'text' },
@@ -683,3 +1243,5 @@ document.addEventListener('DOMContentLoaded', () => {
 if (!window.APIManager) {
     window.APIManager = APIManager;
 }
+
+})();

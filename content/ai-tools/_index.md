@@ -45,11 +45,11 @@ showInfoSection: true
 infoSectionTitle: "Security & Privacy"
 infoItems:
   - title: "Your API Key"
-    description: "Your API key (OpenAI, DeepSeek, Anthropic, Gemini, Grok) or custom AI server (Ollama, LM Studio) is used only for the current session and is never stored."
+    description: "Your API key (OpenAI, Cohere, DeepSeek, Anthropic, Gemini, Grok) or custom AI server (Ollama, LM Studio) is used only for the current session and is never stored. Note: Using API keys in a browser is convenient but exposes them to inspection. For production use, consider using a backend proxy."
   - title: "Data Privacy"
     description: "All uploaded documents and generated content are processed securely and not retained after your session."
   - title: "Multi-Provider Support"
-    description: "Switch between cloud AI providers or use your own locally-hosted AI server (Ollama, LM Studio) seamlessly while maintaining the same security standards."
+    description: "Switch between cloud AI providers (OpenAI, Cohere, DeepSeek, Anthropic, Gemini) or use your own locally-hosted AI server (Ollama, LM Studio) seamlessly while maintaining the same security standards."
   - title: "Rich Output Formats"
     description: "All AI responses are converted to HTML and available for download in Markdown, HTML, and MD formats."
 

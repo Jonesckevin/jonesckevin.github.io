@@ -27,14 +27,11 @@ social_media:
   twitter_image: "/images/featured/aitools/reading-level-adjust.png"
 ---
 
-<link rel="stylesheet" href="reading-level-adjuster.css">
 
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Reading Level Adjuster</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-                Convert text to different reading levels while preserving meaning and essential information. 
-                Perfect for educational materials, accessibility, technical documentation, and audience adaptation.
-            </p>
+# Reading Level Adjuster
+
+Convert text to different reading levels while preserving meaning and essential information. Perfect for educational materials, accessibility, technical documentation, and audience adaptation.
 <form onsubmit="adjustReadingLevel(); return false;">
 <div class="form-group">
 <label for="originalText">Original Text *</label>
@@ -160,6 +157,13 @@ social_media:
 
 
 <script src="reading-level-adjuster.js"></script>
+
+
+
+
+
+
+
 
 
 
