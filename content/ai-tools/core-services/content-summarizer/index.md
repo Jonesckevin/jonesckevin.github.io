@@ -116,6 +116,9 @@ preferred length and tone for optimal results.
 </div>
 </div>
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="content-summarizer.js"></script>
 
 

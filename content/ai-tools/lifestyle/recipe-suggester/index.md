@@ -174,4 +174,7 @@ Transform your available ingredients into creative, delicious meals. Get persona
   </div>
 </div>
 <!-- Shared components already loaded in head.html -->
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="recipe-suggester.js"></script>

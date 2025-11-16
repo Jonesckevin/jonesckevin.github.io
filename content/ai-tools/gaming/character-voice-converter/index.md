@@ -180,6 +180,9 @@ Converting text to character voice...
 </div>
 
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="character-voice-converter.js"></script>
 
 

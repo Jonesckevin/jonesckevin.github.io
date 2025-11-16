@@ -187,6 +187,9 @@ Plan your entire week with personalized meal suggestions, complete grocery lists
     </button>
   </div>
 </div>
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="meal-planner.js"></script>
 
 

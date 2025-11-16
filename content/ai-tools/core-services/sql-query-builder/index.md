@@ -215,6 +215,9 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 </div>
 
 <!-- Shared components already loaded in head.html -->
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="sql-query-builder.js"></script>
 
 

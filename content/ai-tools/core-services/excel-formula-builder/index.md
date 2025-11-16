@@ -168,6 +168,7 @@ Data starts in row 2, headers in row 1" rows="6"></textarea>
 
 <script src="/shared/components/utils.js"></script>
 <script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="excel-formula-builder.js"></script>
 
 

@@ -221,6 +221,9 @@ Create personalized cleaning schedules and chore lists that fit your lifestyle. 
     </button>
   </div>
 </div>
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="cleaning-scheduler.js"></script>
 
 

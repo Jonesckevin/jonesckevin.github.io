@@ -267,6 +267,9 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
   </div>
 </div>
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="image-generator.js"></script>
 
 

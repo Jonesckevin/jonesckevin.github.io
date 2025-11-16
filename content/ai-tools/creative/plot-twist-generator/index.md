@@ -153,6 +153,9 @@ Generate contextual plot twists that fit seamlessly into your story. Create surp
 </div>
 
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="plot-twist-generator.js"></script>
 
 

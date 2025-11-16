@@ -100,6 +100,7 @@ Discover relationships and connections between concepts to deepen understanding 
 </div>
 </div>
 
+<script src="/shared/components/utils.js"></script>
 <script src="/shared/components/api-manager.js"></script>
 <script src="/shared/components/ai-interface.js"></script>
 <script src="/shared/components/download-manager.js"></script>

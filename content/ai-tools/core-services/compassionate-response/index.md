@@ -75,4 +75,7 @@ Generate empathetic and hopeful responses to global tragedies. This tool crafts 
 </div>
 </div>
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="compassionate-response.js"></script>

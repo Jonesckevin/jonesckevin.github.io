@@ -162,4 +162,7 @@ Create ready-to-run traps and puzzles with triggers, effects, clues, disarm meth
 </div>
 </div>
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="traps-and-puzzles.js"></script>

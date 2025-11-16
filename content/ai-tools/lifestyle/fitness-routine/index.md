@@ -229,6 +229,9 @@ Create personalized workout routines designed for your specific goals, fitness l
     </button>
   </div>
 </div>
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="fitness-routine.js"></script>
 
 

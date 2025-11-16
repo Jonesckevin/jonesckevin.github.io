@@ -30,4 +30,7 @@ Bridge from what you know to what you want to learn via layered analogies.
 <div id="errorDiv" style="display:none;"></div>
 <div id="resultDiv" style="display:none;"></div>
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="concept-bridge.js"></script>

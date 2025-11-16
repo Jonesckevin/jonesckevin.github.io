@@ -120,5 +120,8 @@ Creating your visual roadmap...
 
 <!-- Include CSS and JavaScript for Visual Roadmap -->
 <link rel="stylesheet" href="visual-roadmap.css">
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="visual-roadmap.js"></script>
 

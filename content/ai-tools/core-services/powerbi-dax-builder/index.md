@@ -235,6 +235,9 @@ Calendar table: Date, Year, Quarter, Month, Week" rows="6"></textarea>
 </div>
 
 <!-- Shared components already loaded in head.html -->
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="powerbi-dax-builder.js"></script>
 
 

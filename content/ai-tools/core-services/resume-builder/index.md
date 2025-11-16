@@ -82,4 +82,7 @@ Transform your documents into professional, ATS-optimized resumes. Upload your c
 </div>
 
 <!-- Shared components already loaded in head.html -->
-<script src="/ai-tools/core-services/resume-builder/resume-builder.js"></script>
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
+<script src="resume-builder.js"></script>

@@ -114,6 +114,9 @@ Test your knowledge across educational topics with AI-generated quizzes. Track y
 </div>
 <div id="errorDiv" style="display: none;"></div>
 
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="quiz-generator.js"></script>
 
 

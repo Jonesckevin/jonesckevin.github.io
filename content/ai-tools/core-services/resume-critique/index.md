@@ -100,4 +100,7 @@ Analyzing your resume with AI...
 </div>
 
 <!-- Shared components already loaded in head.html -->
-<script src="/ai-tools/core-services/resume-critique/resume-critique.js"></script>
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
+<script src="resume-critique.js"></script>

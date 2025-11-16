@@ -222,6 +222,7 @@ Discover unique song combinations and mashup concepts. Perfect for DJs, producer
   <div id="resultContent" class="result-content"></div>
 </div>
 
+<script src="/shared/components/utils.js"></script>
 <script src="/shared/components/api-manager.js"></script>
 <script src="/shared/components/ai-interface.js"></script>
 <script src="/shared/components/download-manager.js"></script>

@@ -106,6 +106,9 @@ Generating interview questions...
 <button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
 </div>
 </div>
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="thought-provoking-questions.js"></script>
 
 

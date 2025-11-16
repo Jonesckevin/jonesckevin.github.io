@@ -77,6 +77,7 @@ Paste your code below to automatically generate explanatory comments.
   <pre><code id="resultContent" class="language-javascript"></code></pre>
 </div>
 
+<script src="/shared/components/utils.js"></script>
 <script src="/shared/js/api-manager.js"></script>
 <script src="/shared/js/download-manager.js"></script>
 <script src="code-commenter.js"></script>

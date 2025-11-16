@@ -231,6 +231,9 @@ Create comprehensive, customized packing lists for any trip. From weekend getawa
     </button>
   </div>
 </div>
+<script src="/shared/components/utils.js"></script>
+<script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="packing-list.js"></script>
 
 
