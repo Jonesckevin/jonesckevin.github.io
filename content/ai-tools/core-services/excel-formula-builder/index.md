@@ -27,16 +27,12 @@ social_media:
   twitter_image: "/images/featured/aitools/excel-formula-builder.png"
 ---
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="excel-formula-builder.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">Excel Formula Builder</h1>
+# Excel Formula Builder
 <button class="safety-toggle-btn" id="safetyToggleBtn" onclick="showSafetyNotice()" aria-label="Show safety guidelines" title="Safety Guidelines" style="display: none;">
     <span class="caution-triangle">⚠️</span>
 </button>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
-    Generate Excel formulas from natural language descriptions. Specify your data structure and requirements 
-    to get optimized, production-ready Excel formulas for any task.
-</p>
+Generate Excel formulas from natural language descriptions. Specify your data structure and requirements to get optimized, production-ready Excel formulas for any task.
 
 <form id="excelBuilderForm">
     <div class="form-group">
@@ -173,3 +169,10 @@ Data starts in row 2, headers in row 1" rows="6"></textarea>
 <script src="/shared/components/utils.js"></script>
 <script src="/shared/components/api-manager.js"></script>
 <script src="excel-formula-builder.js"></script>
+
+
+
+
+
+
+

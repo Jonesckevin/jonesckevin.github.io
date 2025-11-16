@@ -27,12 +27,11 @@ social_media:
 ---
 
 <link rel="stylesheet" href="/shared/styles/result-display.css">
-<link rel="stylesheet" href="fitness-routine.css">
 
-<h1 style="text-align: center; margin-bottom: 30px; color: #ff6b35;">💪 AI Fitness Routine Generator</h1>
-<p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">
+
+# 💪 AI Fitness Routine Generator
+
 Create personalized workout routines designed for your specific goals, fitness level, and available equipment. Get started on your fitness journey with a plan that works for you!
-</p>
 
 <form id="fitnessForm">
   <div class="form-row">
@@ -219,15 +218,22 @@ Create personalized workout routines designed for your specific goals, fitness l
   <h3 style="color: #ff6b35; margin-bottom: 20px;">📋 Your Fitness Routine</h3>
   <div id="resultContent"></div>
   <div class="result-actions">
-    <button class="btn-copy" onclick="copyResult(event)">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">
       📋 Copy to Clipboard
     </button>
-    <button class="btn-download" onclick="downloadResult('markdown')">
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
       📄 Download Markdown
     </button>
-    <button class="btn-download" onclick="downloadResult('html')">
+  <button class="action-btn download-btn" onclick="downloadResult('html')">
       🌐 Download HTML
     </button>
   </div>
 </div>
 <script src="fitness-routine.js"></script>
+
+
+
+
+
+
+

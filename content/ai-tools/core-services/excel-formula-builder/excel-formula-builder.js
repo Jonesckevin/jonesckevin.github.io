@@ -601,20 +601,20 @@ ${options.useMixedReferences ? '8. Use mixed references ($A1 or A$1) where appro
             resultDiv.innerHTML = `
                 <h3 style="color: #ff6b35; margin-bottom: 20px;">📊 Generated Excel Formula</h3>
                 ${resultHTML}
-                <div class="action-buttons" style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                    <button class="btn-primary" onclick="utils.copyToClipboard(currentResult, 'Excel formula copied to clipboard!')">
+                <div class="result-actions" style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <button class="action-btn btn-primary copy-btn" onclick="utils.copyToClipboard(currentResult, 'Excel formula copied to clipboard!')">
                         📋 Copy Formula
                     </button>
-                    <button class="btn-secondary" onclick="downloadResult('markdown')">
+                    <button class="action-btn btn-primary download-btn" onclick="downloadResult('markdown')">
                         💾 Download as Markdown
                     </button>
-                    <button class="btn-secondary" onclick="downloadResult('html')">
+                    <button class="action-btn btn-primary download-btn" onclick="downloadResult('html')">
                         💾 Download as HTML
                     </button>
-                    <button class="btn-secondary" onclick="downloadResult('txt')">
+                    <button class="action-btn btn-primary download-btn" onclick="downloadResult('txt')">
                         💾 Download as Text
                     </button>
-                    <button class="btn-danger" onclick="resetForm()">
+                    <button class="action-btn btn-danger" onclick="resetForm()">
                         🔄 Reset Form
                     </button>
                 </div>

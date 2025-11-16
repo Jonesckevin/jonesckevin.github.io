@@ -19,12 +19,12 @@ sitemap_changefreq: "monthly"
 social_media:
   og_title: "Compassionate Response Generator - AI Empathetic Messages"
   og_description: "Generate compassionate responses to global tragedies with AI. Create meaningful content that expresses solidarity and support."
-  og_image: "/images/ai-tools/compassionate-response-social.png"
+  og_image: "/images/ai-tools/compassionate-response.png"
   og_type: "website"
   twitter_card: "summary_large_image"
   twitter_title: "Free Compassionate Response Generator"
   twitter_description: "Create empathetic responses to difficult situations with AI. Express solidarity and support with meaningful content."
-  twitter_image: "/images/ai-tools/compassionate-response-twitter.png"
+  twitter_image: "/images/ai-tools/compassionate-response.png"
 ---
 
 # Compassionate Response Generator
