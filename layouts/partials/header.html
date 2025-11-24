@@ -137,6 +137,7 @@
                         <option value="gemini">Google Gemini</option>
                         <option value="grok">Grok (X.AI)</option>
                         <option value="mistral">Mistral AI</option>
+                        <option value="perplexity">Perplexity</option>
                         <option value="custom">Custom Server (Ollama/LMStudio)</option>
                       </select>
                     </div>
@@ -464,6 +465,7 @@
         gemini: 'Enter your Gemini API key (AIza...)',
         grok: 'Enter your Grok API key (xai-...)',
         mistral: 'Enter your Mistral API key',
+        perplexity: 'Enter your Perplexity API key (pplx-...)',
         custom: 'API key (optional for local servers)'
       };
       aiKey.placeholder = placeholders[provider] || 'Enter your API key';
@@ -537,6 +539,13 @@
           keyFormat: 'Alphanumeric string',
           pricing: 'https://mistral.ai/technology/#pricing',
           models: 'https://docs.mistral.ai/getting-started/models/'
+        },
+        perplexity: {
+          url: 'https://www.perplexity.ai/settings/api',
+          name: 'Perplexity Settings',
+          keyFormat: 'pplx-...',
+          pricing: 'https://www.perplexity.ai/settings/api',
+          models: 'https://docs.perplexity.ai/guides/model-cards'
         },
         custom: {
           url: 'https://ollama.com/',
