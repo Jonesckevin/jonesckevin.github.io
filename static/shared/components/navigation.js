@@ -173,6 +173,7 @@ class NavigationComponent {
                                             <option value="deepseek">DeepSeek</option>
                                             <option value="anthropic">Anthropic (Claude)</option>
                                             <option value="gemini">Google Gemini</option>
+                                            <option value="perplexity">Perplexity</option>
                                         </select>
                                     </div>
                                     <div class="ai-field">
@@ -278,7 +279,8 @@ class NavigationComponent {
                 cohere: 'Enter your Cohere API key',
                 deepseek: 'Enter your DeepSeek API key (sk-...)',
                 anthropic: 'Enter your Anthropic API key (sk-ant-...)',
-                gemini: 'Enter your Gemini API key (AIza...)'
+                gemini: 'Enter your Gemini API key (AIza...)',
+                perplexity: 'Enter your Perplexity API key (pplx-...)'
             };
             keyEl.placeholder = placeholders[provider] || 'Enter your API key';
         };

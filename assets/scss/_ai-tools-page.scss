@@ -542,7 +542,6 @@ input[type="range"],
   display: flex;
   gap: 15px;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 /* Back-compat: keep styling if older markup slips through before runtime normalization */

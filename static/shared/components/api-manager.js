@@ -63,6 +63,13 @@ class APIManager {
                 keyPattern: /^[A-Za-z0-9_\-]+$/,
                 requiresKey: true
             },
+            perplexity: {
+                name: 'Perplexity',
+                baseURL: 'https://api.perplexity.ai',
+                defaultModel: 'sonar',
+                keyPattern: /^pplx-[A-Za-z0-9_\-]+$/,
+                requiresKey: true
+            },
             custom: {
                 name: 'Custom Server (Ollama/LMStudio)',
                 baseURL: 'http://localhost:11434/v1', // Default Ollama
@@ -100,6 +107,7 @@ class APIManager {
             throw new Error('Unsupported provider: ' + provider);
         }
         this.currentProvider = provider;
+        localStorage.setItem('ai-provider', provider);
         sessionStorage.setItem('ai_provider', provider);
     }
 
@@ -158,6 +166,7 @@ class APIManager {
 
     setApiKey(key) {
         this.currentApiKey = key;
+        localStorage.setItem('ai-api-key', key);
         sessionStorage.setItem('ai_api_key', key);
     }
 
@@ -170,20 +179,21 @@ class APIManager {
     setModel(model, provider = null) {
         const p = provider || this.currentProvider;
         this.currentModels[p] = model;
+        localStorage.setItem('ai-model-' + p, model);
         sessionStorage.setItem('ai_model_' + p, model);
     }
 
     // Storage helpers
     getStoredProvider() {
-        return sessionStorage.getItem('ai_provider');
+        return localStorage.getItem('ai-provider') || sessionStorage.getItem('ai_provider');
     }
 
     getStoredApiKey() {
-        return sessionStorage.getItem('ai_api_key');
+        return localStorage.getItem('ai-api-key') || sessionStorage.getItem('ai_api_key');
     }
 
     getStoredModel(provider) {
-        return sessionStorage.getItem('ai_model_' + provider);
+        return localStorage.getItem('ai-model-' + provider) || sessionStorage.getItem('ai_model_' + provider);
     }
 
     // Generate a random seed based on current time for unique responses
@@ -567,6 +577,7 @@ class APIManager {
             case 'deepseek':
             case 'grok':
             case 'mistral':
+            case 'perplexity':
             case 'custom': // Custom servers use OpenAI-compatible API
                 baseCall = (msgs, opts) => this._makeOpenAIStyleRequest(config, apiKey, model, msgs, opts);
                 break;
@@ -842,6 +853,8 @@ class APIManager {
             case 'grok':
             case 'mistral':
                 return this._listOpenAIStyleModels(config, key);
+            case 'perplexity':
+                return this._listPerplexityModels(config, key);
             case 'cohere':
                 // Use Cohere native models endpoint; compatibility /models may not be available
                 return this._listCohereModelsNative(key);
@@ -934,6 +947,55 @@ class APIManager {
         return this._categorizeAndFlatten(ids);
     }
 
+    async _listPerplexityModels(config, apiKey) {
+        // Perplexity is OpenAI-compatible but doesn't have a /models endpoint yet
+        // Try to query it anyway to validate the API key, fall back to static list
+        const headers = {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + apiKey
+        };
+
+        let apiAvailable = false;
+        try {
+            const response = await fetch(config.baseURL + '/models', { headers });
+            if (response.ok) {
+                // If they've added the endpoint, use it
+                const data = await response.json();
+                if (Array.isArray(data?.data)) {
+                    const ids = data.data.map(m => m?.id).filter(Boolean);
+                    if (ids.length > 0) {
+                        return this._categorizeAndFlatten(ids);
+                    }
+                }
+                apiAvailable = true;
+            } else if (response.status === 401) {
+                throw new Error('Invalid API key');
+            } else if (response.status === 404) {
+                // Endpoint doesn't exist yet, use static list (expected)
+                apiAvailable = true; // Key is likely valid, endpoint just doesn't exist
+            }
+        } catch (e) {
+            // If it's an auth error, propagate it
+            if (e.message === 'Invalid API key') {
+                throw e;
+            }
+            // Otherwise, network error - will use static list
+        }
+
+        // Return static list of Perplexity models
+        // Based on: https://docs.perplexity.ai/getting-started/models
+        const modelIds = [
+            'sonar',
+            'sonar-pro',
+            'sonar-reasoning',
+            'sonar-reasoning-pro',
+            'sonar-deep-research'
+        ];
+
+        // Use the standard categorization function
+        return this._categorizeAndFlatten(modelIds);
+    }
+
     _categorizeAndFlatten(modelIds) {
         // Reuse categorization rules from _listOpenAIStyleModels
         const categorizedModels = {
@@ -960,7 +1022,7 @@ class APIManager {
                 modelIdLower.includes('grok') || modelIdLower.includes('llama') || modelIdLower.includes('mistral') ||
                 modelIdLower.includes('gemma') || modelIdLower.includes('phi') || modelIdLower.includes('qwen') ||
                 modelIdLower.includes('claude') || modelIdLower.includes('instruct') || modelIdLower.includes('conversation') ||
-                modelIdLower.includes('command')) {
+                modelIdLower.includes('command') || modelIdLower.includes('sonar')) {
                 modelInfo.category = 'text'; categorizedModels.text.push(modelInfo);
             } else if (modelIdLower.includes('dall-e') || modelIdLower.includes('dalle') || modelIdLower.includes('gpt-image') || modelIdLower.includes('image')) {
                 modelInfo.category = 'images'; categorizedModels.images.push(modelInfo);

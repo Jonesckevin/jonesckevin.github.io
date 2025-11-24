@@ -18,6 +18,7 @@ window.utils = {
             gemini: /^AIza[A-Za-z0-9_-]+$/,
             grok: /^xai-[A-Za-z0-9_-]+$/,
             mistral: /^[A-Za-z0-9_-]+$/, // Flexible pattern for Mistral keys
+            perplexity: /^pplx-[A-Za-z0-9_-]+$/,
             custom: null // No pattern required - API key is optional
         };
 

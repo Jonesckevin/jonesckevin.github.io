@@ -96,6 +96,10 @@
             if (errorDiv) resultsSection.appendChild(errorDiv);
             if (resultDiv) resultsSection.appendChild(resultDiv);
 
+            // Preserve modals by moving them before clearing
+            const modals = mainContent.querySelectorAll('.modal');
+            const modalArray = Array.from(modals);
+
             // Append sections to wrapper
             wrapper.appendChild(formSection);
             wrapper.appendChild(divider);
@@ -104,6 +108,11 @@
             // Clear main content and append wrapper
             mainContent.innerHTML = '';
             mainContent.appendChild(wrapper);
+
+            // Re-add modals after wrapper (they should be at body level ideally, but main level works)
+            modalArray.forEach(modal => {
+                mainContent.appendChild(modal);
+            });
 
             // Add navigation back if it exists
             if (navigation) {
