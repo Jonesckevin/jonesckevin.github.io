@@ -41,7 +41,6 @@
 .result-display h4,
 .result-display h5,
 .result-display h6 {
-    color: #ff6b35;
     text-align: left;
     font-weight: 600;
 }
@@ -49,32 +48,34 @@
 .result-display h1 {
     font-size: 1.8em;
     margin: 25px 0 15px 0;
+    color: #4a9eff;
 }
 
 .result-display h2 {
     font-size: 1.5em;
     margin: 25px 0 12px 0;
-    border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+    border-bottom: 2px solid rgba(74, 158, 255, 0.3);
     padding-bottom: 8px;
+    color: #4a9eff;
 }
 
 .result-display h3 {
     font-size: 1.2em;
     margin: 18px 0 10px 0;
-    color: #ff8855;
+    color: #5cb85c;
 }
 
 .result-display h4 {
     font-size: 1.1em;
     margin: 15px 0 8px 0;
-    color: #ffa575;
+    color: #f0ad4e;
 }
 
 .result-display h5,
 .result-display h6 {
     font-size: 1em;
     margin: 12px 0 6px 0;
-    color: #ffb896;
+    color: #d9534f;
 }
 
 /* Typography - Paragraphs */
@@ -108,8 +109,15 @@
 
 /* Text formatting */
 .result-display strong {
-    color: #ff8855;
+    color: #66d9ef;
     font-weight: 600;
+}
+
+/* Numbered list items with bold/strong text */
+.result-display ol li strong,
+.result-display ol li b {
+    color: #a6e22e;
+    font-weight: 700;
 }
 
 .result-display em {

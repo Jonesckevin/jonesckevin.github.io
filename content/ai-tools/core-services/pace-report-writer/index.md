@@ -98,6 +98,55 @@ Do not put sensitive information into the form.
     <textarea id="eventDescription" rows="8" placeholder="Describe the event, member's actions, responsibilities, challenges overcome, and contributions made. Include specific examples and measurable outcomes where possible." required></textarea>
   </div>
 
+  <!-- Optional CCG Assessment (toggleable) -->
+  <div class="form-group">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+      <label class="tooltip" style="flex:1;margin:0;">
+        CCG Assessment
+        <span class="tooltiptext">Enable to include Complexity, Consistency, and Guidance context assessment in the note.</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="ccgToggle" onchange="toggleCCG()" aria-controls="ccgInfo" aria-expanded="true" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div id="ccgInfo" style="display:block; margin-top:8px;">
+      <div class="helper-text">ℹ️ The AI will assess Complexity (task difficulty), Consistency (performance patterns), and Guidance (level of supervision needed).</div>
+    </div>
+  </div>
+
+  <!-- Optional Meta-Competency Assessment (two-tier toggleable) -->
+  <div class="form-group">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+      <label class="tooltip" style="flex:1;margin:0;">
+        Meta-Competency
+        <span class="tooltiptext">Enable to identify which of the 5 meta-competencies (Expertise, Cognitive Capacities, Social Capacities, Change Capacities, Professional Ideology) are relevant to the event.</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="metaCompetencyToggle" onchange="toggleMetaCompetency()" aria-controls="metaCompetencyOptions" aria-expanded="true" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div id="metaCompetencyOptions" style="display:block; margin-top:8px;">
+      <div class="helper-text">ℹ️ Identify which meta-competencies.<br>(Rarely/Occasionally/Frequently/Consistently)</div>
+      <!-- Nested toggle for detailed analysis -->
+      <div style="margin-top:15px;padding-left:10px;border-left:3px solid #ff6b35;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <label class="tooltip" style="flex:1;margin:0;font-size:0.95em;">
+            Meta-Competency Details ⚠️ <i>(Loud)</i>
+            <span class="tooltiptext">ℹ️ Enable detailed analysis including frequency ratings, inclusive behaviours demonstrated, evidence, and impact for each relevant meta-competency.</span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" id="metaCompetencyDetailedToggle" onchange="toggleMetaCompetencyDetailed()" aria-controls="metaCompetencyDetailedInfo" aria-expanded="false">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div id="metaCompetencyDetailedInfo" style="display:none; margin-top:8px;">
+          <div class="helper-text">Frequency, sub-inclusive behaviours, and impact assessment for next-rank readiness.</div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="form-group">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
       <label class="tooltip" style="flex:1;margin:0;">
@@ -123,37 +172,24 @@ Do not put sensitive information into the form.
     </div>
   </div>
 
-  <!-- Optional CCG Assessment (toggleable) -->
-  <div class="form-group">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-      <label class="tooltip" style="flex:1;margin:0;">
-        CCG Assessment
-        <span class="tooltiptext">Enable to include Complexity, Consistency, and Guidance context assessment in the note.</span>
-      </label>
-      <label class="switch">
-        <input type="checkbox" id="ccgToggle" aria-controls="ccgInfo" aria-expanded="false">
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div id="ccgInfo" style="display:none; margin-top:8px;">
-      <div class="helper-text">ℹ️ The AI will assess Complexity (task difficulty), Consistency (performance patterns), and Guidance (level of supervision needed).</div>
-    </div>
-  </div>
 
   <!-- Optional Competency Demonstration Analysis (toggleable) -->
   <div class="form-group">
-    <div style="display:flex;align-items:left;gap:12px;margin-bottom:10px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
       <label class="tooltip" style="flex:1;margin:0;">
         Competency Analysis
         <span class="tooltiptext">Enable to include detailed analysis of how each competency was demonstrated during the event.</span>
       </label>
       <label class="switch">
-        <input type="checkbox" id="analysisToggle" aria-controls="analysisInfo" aria-expanded="false">
+        <input type="checkbox" id="analysisToggle" onchange="toggleAnalysis()" aria-controls="analysisInfo" aria-expanded="false">
         <span class="slider"></span>
       </label>
     </div>
+    <div id="analysisInfo" style="display:none; margin-top:8px;">
+      <div class="helper-text">ℹ️ The AI will provide detailed analysis of how each competency was demonstrated with concrete examples and impact.</div>
+    </div>
   </div>
-
+  
   <button type="button" class="btn-primary" onclick="generatePaceReport()" style="display:flex;align-items:center;justify-content:center;gap:10px;">
     <img src="/ai-tools/core-services/pace-report-writer/PaCE.svg" alt="" style="width:28px;height:28px;border:none!important;box-shadow:none!important;outline:none;background:transparent;margin:0;padding:0;" loading="lazy" decoding="async" />
     <span>Generate PaCEr</span>
@@ -167,7 +203,7 @@ Do not put sensitive information into the form.
 <div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" style="display: none;">
-  <h3 style="color: #ff6b35; margin-bottom: 20px;">PaCE Report</h3>
+  <h3 style="color: #ff6b35; margin-bottom: 20px;">PaCEr</h3>
   <div id="resultContent"></div>
   <div class="result-actions">
     <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy to Clipboard</button>
@@ -199,20 +235,18 @@ Do not put sensitive information into the form.
 <div id="referencesModal" class="modal" style="display: none;">
   <div class="modal-content">
     <div class="modal-header">
-      <h3>🔗 Reference Links & Resources</h3>
+      <h3>🔗 Reference Links </h3>
       <button class="modal-close" onclick="closeReferencesModal()">&times;</button>
     </div>
     <div class="modal-body">
-      <div class="helper-text" style="margin-bottom: 20px;">
-        Quick access to official CAF resources and policies. These are for your reference only and will not be included in the generated report.
-      </div>
       <div class="reference-links">
         <div class="reference-link">
-          <strong>Official CAF Resources:</strong>
           <ul>
-            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" target="_blank">PaCE - Training Documentation</a></li>
-            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives.html" target="_blank">Defence Administrative Orders and Directives (DAODs)</a></li>
+            <li><a href="https://www.canada.ca/en/department-national-defence/services/benefits-military-members/learning-development/career-development/performance-career-evaluation.html" target="_blank">PaCE Overview</a></li>
             <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/canadian-forces-military-personnel-instructions/performance-and-competency-evaluation-pace.html" target="_blank">PaCE Official Guidelines</a></li>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" target="_blank">PaCE Training Documentation</a></li>
+            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives.html" target="_blank">PaCE - DAOD</a></li>
+            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/canadian-forces-military-personnel-instructions/inclusion-and-the-performance-appraisal-process/canadian-armed-forces-military-personnel-instruction-03-21-annexes-inclusion-and-the-performance-appraisal-process.html#annc" target="_blank">CAF Inclusive Behaviours Framework</a></li>
           </ul>
         </div>
       </div>

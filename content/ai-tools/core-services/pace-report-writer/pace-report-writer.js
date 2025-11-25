@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Load competency data from JSONL file
     await loadCompetencyData();
     
+    // Load inclusive behaviours data from JSONL file
+    await loadInclusiveBehavioursData();
+    
     // Move modals to body level to fix positioning issues
     moveModalsToBody();
     
@@ -218,6 +221,39 @@ async function loadCompetencyData() {
         
         // Update dropdown even on error
         updateRankDropdownState();
+    }
+}
+
+// Function to load and parse inclusive behaviours JSONL data
+async function loadInclusiveBehavioursData() {
+    try {
+        const response = await fetch('/ai-tools/core-services/pace-report-writer/inclusive-behaviours.jsonl');
+        const text = await response.text();
+        const lines = text.trim().split('\n');
+        
+        // Parse each JSONL line
+        const rawData = lines.map(line => JSON.parse(line));
+        
+        // Transform data into meta-competency-indexed structure
+        window.inclusiveBehavioursData = {};
+        
+        rawData.forEach(item => {
+            const metaCompetencyName = item.MetaCompetency;
+            const definition = item.Definition;
+            const behaviours = item.InclusiveBehaviours;
+            const frequencyScale = item.FrequencyScale;
+            
+            window.inclusiveBehavioursData[metaCompetencyName] = {
+                definition: definition,
+                behaviours: behaviours,
+                frequencyScale: frequencyScale
+            };
+        });
+        
+        console.log('Inclusive behaviours (meta-competencies) data loaded successfully', window.inclusiveBehavioursData);
+    } catch (error) {
+        console.error('Error loading inclusive behaviours data:', error);
+        window.inclusiveBehavioursData = {};
     }
 }
 
@@ -490,6 +526,8 @@ window.generatePaceReport = async function () {
     const competency3 = document.getElementById('competency3').value;
     const includeCCG = document.getElementById('ccgToggle')?.checked || false;
     const includeAnalysis = document.getElementById('analysisToggle')?.checked || false;
+    const includeMetaCompetency = document.getElementById('metaCompetencyToggle')?.checked || false;
+    const includeMetaCompetencyDetailed = document.getElementById('metaCompetencyDetailedToggle')?.checked || false;
     const competencyCount = parseInt(document.getElementById('competencyCount')?.value) || 3;
     
     // Validation
@@ -568,6 +606,33 @@ window.generatePaceReport = async function () {
         competencyFramework += `8. Change Management: Initiative, Innovation Implementation, Continuous Improvement, Change Leadership\n`;
     }
     
+    // Build meta-competency framework based on toggle states
+    let metaCompetencyFramework = '';
+    if ((includeMetaCompetency || includeMetaCompetencyDetailed) && window.inclusiveBehavioursData) {
+        metaCompetencyFramework = `\n\nMETA-COMPETENCIES FOR POTENTIAL ASSESSMENT (Next Rank Level):\n`;
+        metaCompetencyFramework += `Potential is a member's readiness to perform at the next rank. Evaluate five meta-competencies with inclusive behaviours.\n\n`;
+        
+        Object.keys(window.inclusiveBehavioursData).forEach((metaCompetency, index) => {
+            const data = window.inclusiveBehavioursData[metaCompetency];
+            metaCompetencyFramework += `${index + 1}. ${metaCompetency}\n`;
+            
+            // Only include detailed information if detailed toggle is enabled
+            if (includeMetaCompetencyDetailed) {
+                metaCompetencyFramework += `   Definition: ${data.definition}\n\n`;
+                metaCompetencyFramework += `   Inclusive Behaviours:\n`;
+                data.behaviours.forEach(behaviour => {
+                    metaCompetencyFramework += `   • ${behaviour}\n`;
+                });
+                metaCompetencyFramework += `\n   Frequency Scale:\n`;
+                metaCompetencyFramework += `   • Rarely (Unexploited): ${data.frequencyScale.Rarely}\n`;
+                metaCompetencyFramework += `   • Occasionally (Developing): ${data.frequencyScale.Occasionally}\n`;
+                metaCompetencyFramework += `   • Frequently (Consolidating): ${data.frequencyScale.Frequently}\n`;
+                metaCompetencyFramework += `   • Consistently (Mastered): ${data.frequencyScale.Consistently}\n`;
+            }
+            metaCompetencyFramework += '\n';
+        });
+    }
+    
     // Build the AI prompt
     let systemPrompt = `You are a professional Canadian Armed Forces (CAF) PaCE (Performance and Career Evaluation) report writer with expertise in the CAF competency framework. You help members create structured, professional performance evaluations that highlight their achievements using appropriate competencies.
 
@@ -582,7 +647,15 @@ Your task is to analyze the provided event description and generate a PaCE repor
 **Event Title:** [2-5 word capitalized summary of the event, e.g., "OPERATIONAL READINESS TRAINING EXERCISE" or "LEADERSHIP MENTORSHIP PROGRAM"]
 
 **Relevant Competencies:**
-[List ${competencyCount} most relevant competencies in order of priority, in format: "1. [Category] -> [Competency Name]"]
+[List EXACTLY ${competencyCount} competencies in this EXACT format - each competency MUST include both category and specific competency name:
+"1. [Category Name] -> [Specific Competency Name]"
+"2. [Category Name] -> [Specific Competency Name]"
+etc.
+
+CRITICAL: Do NOT list only category names. ALWAYS include the arrow (->) and the specific competency name.
+Example CORRECT format: "1. Leadership -> Team Building"
+Example INCORRECT format: "1. Leadership" (missing specific competency)
+]
 
 **Performance Summary:**
 [Provide a 2-3 sentence summary of the member's performance during the evaluation period, focusing on key actions and contributions]
@@ -605,23 +678,62 @@ ${includeAnalysis ? `
 - Concrete examples from the event description that showcase the competency in action
 - The impact or significance of demonstrating this competency]` : ''}
 
+${includeMetaCompetency && !includeMetaCompetencyDetailed ? `
+
+### Meta-Competency Assessment (Next Rank Potential)
+[Identify which of the five meta-competencies (Expertise, Cognitive Capacities, Social Capacities, Change Capacities, Professional Ideology) are relevant to this event. List only the names of relevant meta-competencies.
+
+**Relevant Meta-Competencies:**
+- [List each relevant meta-competency name]
+
+Note: Only list meta-competencies where clear evidence exists in the event description.]` : ''}
+
+${includeMetaCompetencyDetailed ? `
+
+### Meta-Competency Assessment (Next Rank Potential)
+[Conduct detailed assessment of member's readiness to perform at the next rank level by evaluating each of the five meta-competencies. For each meta-competency that was demonstrated:
+
+1. **Meta-Competency Name** (e.g., Expertise, Cognitive Capacities, Social Capacities, Change Capacities, Professional Ideology)
+   - **Definition:** [Provide the definition of this meta-competency]
+   - **Frequency Assessment:** [Rarely/Occasionally/Frequently/Consistently]
+   - **Inclusive Behaviours Demonstrated:** List specific inclusive behaviours from the framework that were evident
+   - **Evidence from Event:** Concrete examples showing demonstration at next rank level
+   - **Impact:** How these behaviours contribute to readiness for next rank
+
+Note: Only assess meta-competencies where clear evidence exists in the event description. If insufficient evidence for a meta-competency, note "Insufficient evidence to assess at next rank level."]` : ''}
+
 ${uniqueCompetencies.length > 0 ? `
 
 ### Competency Selection Rationale
-The member pre-selected the following competencies: ${uniqueCompetencies.join(', ')}
+List ${uniqueCompetencies.join(', ')}
 
 If you chose DIFFERENT competencies than the member's selections, provide a brief explanation for each pre-selected competency that you did NOT include in the final report, explaining why it was not the best fit for this specific event. If you used all of the member's selections, state that they were appropriate and briefly explain why.` : ''}
 ${competencyFramework}
+${metaCompetencyFramework}
 IMPORTANT GUIDELINES:
+- **CRITICAL FORMATTING RULE:** When listing competencies under "Relevant Competencies", you MUST use the format "1. [Category Name] -> [Specific Competency Name]". NEVER list only the category name without the specific competency.
 - Select exactly ${competencyCount} competencies that are MOST relevant to the event description, listed in order of priority (most relevant first)
-- Use the rank-specific competency framework provided above
+- Each competency listed MUST include BOTH the category AND the specific competency name separated by an arrow (->)
+- Use the rank-specific competency framework provided above to identify both category names and specific competency names
 - Use proper markdown formatting with headers (##, ###) and bullet points
 - Be specific and provide concrete examples
 - Focus on measurable outcomes and impacts
-- Maintain professional military tone${includeCCG ? `
+- Maintain professional military tone
+- Follow the EXACT format template provided above - do not add or remove sections
+- Ensure every section follows the template structure precisely${includeCCG ? `
 - Assess CCG (Complexity, Consistency, Guidance) realistically based on the event description` : ''}${includeAnalysis ? `
-- Provide detailed competency demonstration analysis with concrete examples from the event` : `
-- DO NOT include a "Competency Analysis" section - only provide the Event Outcome`}
+- Provide detailed competency demonstration analysis with concrete examples from the event
+- Ensure the Competency Analysis section analyzes EACH competency listed in the Event Summary` : `
+- DO NOT include a "Competency Analysis" section - only provide the Event Outcome`}${includeMetaCompetency && !includeMetaCompetencyDetailed ? `
+- Identify which of the five meta-competencies are relevant to this event for next-rank readiness
+- List only the meta-competency names without detailed descriptions
+- Only identify meta-competencies with clear evidence from the event description` : ''}${includeMetaCompetencyDetailed ? `
+- Assess member's potential for next rank using the five meta-competencies framework with detailed analysis
+- Include definitions, frequency ratings (Rarely/Occasionally/Frequently/Consistently), and inclusive behaviours
+- Identify specific inclusive behaviours demonstrated that support next-rank readiness
+- Provide concrete evidence and impact assessment for each meta-competency
+- Only assess meta-competencies with clear evidence from the event description` : includeMetaCompetency ? '' : `
+- DO NOT include a "Meta-Competency Assessment" section`}
 - Ensure competencies selected match the responsibilities expected at the ${rankData.fullName} rank level
 - Follow the EXACT format template provided above - do not add or remove sections`;
 
@@ -632,7 +744,11 @@ IMPORTANT GUIDELINES:
         userPrompt += `Note: Evaluate whether these pre-selected competencies are the best fit. If not, choose more appropriate ones and explain why the pre-selected ones were not optimal for this specific event.\n\n`;
     }
     
-    userPrompt += `Please generate a complete PaCE report following the exact format specified in your system instructions.`;
+    userPrompt += `Please generate a complete PaCE report following the exact format specified in your system instructions.\n\n`;
+    userPrompt += `REMINDER: Under "Relevant Competencies" section, you MUST format each competency as:\n`;
+    userPrompt += `"1. [Category Name] -> [Specific Competency Name]"\n`;
+    userPrompt += `"2. [Category Name] -> [Specific Competency Name]"\n`;
+    userPrompt += `Do NOT write only the category name without the specific competency.`;
     
     console.log('Prompt prepared');
     
@@ -757,4 +873,57 @@ window.toggleCompetencySelectors = function() {
             if (el) el.value = '';
         });
     }
+};
+
+// Toggle visibility of CCG info
+window.toggleCCG = function() {
+    const infoDiv = document.getElementById('ccgInfo');
+    const toggle = document.getElementById('ccgToggle');
+    console.log('toggleCCG called', {infoDiv, toggle, checked: toggle?.checked});
+    if (!infoDiv || !toggle) return;
+    const show = !!toggle.checked;
+    infoDiv.style.display = show ? 'block' : 'none';
+    toggle.setAttribute('aria-expanded', show.toString());
+    console.log('CCG toggled to:', show);
+};
+
+// Toggle visibility of competency analysis info
+window.toggleAnalysis = function() {
+    const infoDiv = document.getElementById('analysisInfo');
+    const toggle = document.getElementById('analysisToggle');
+    console.log('toggleAnalysis called', {infoDiv, toggle, checked: toggle?.checked});
+    if (!infoDiv || !toggle) return;
+    const show = !!toggle.checked;
+    infoDiv.style.display = show ? 'block' : 'none';
+    toggle.setAttribute('aria-expanded', show.toString());
+    console.log('Analysis toggled to:', show);
+};
+
+// Toggle visibility of meta-competency options
+window.toggleMetaCompetency = function() {
+    const optionsDiv = document.getElementById('metaCompetencyOptions');
+    const toggle = document.getElementById('metaCompetencyToggle');
+    const detailedToggle = document.getElementById('metaCompetencyDetailedToggle');
+    
+    if (!optionsDiv || !toggle) return;
+    
+    const show = !!toggle.checked;
+    optionsDiv.style.display = show ? 'block' : 'none';
+    toggle.setAttribute('aria-expanded', show.toString());
+    
+    // If hiding primary toggle, also hide and uncheck secondary toggle
+    if (!show && detailedToggle) {
+        detailedToggle.checked = false;
+        toggleMetaCompetencyDetailed();
+    }
+};
+
+// Toggle visibility of detailed meta-competency analysis
+window.toggleMetaCompetencyDetailed = function() {
+    const infoDiv = document.getElementById('metaCompetencyDetailedInfo');
+    const toggle = document.getElementById('metaCompetencyDetailedToggle');
+    if (!infoDiv || !toggle) return;
+    const show = !!toggle.checked;
+    infoDiv.style.display = show ? 'block' : 'none';
+    toggle.setAttribute('aria-expanded', show.toString());
 };
