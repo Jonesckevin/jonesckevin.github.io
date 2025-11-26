@@ -27,6 +27,7 @@ social_media:
   twitter_image: "/images/featured/aitools/excel-formula-builder.png"
 ---
 <link rel="stylesheet" href="/shared/styles/result-display.css">
+<link rel="stylesheet" href="excel-formula-builder.css">
 
 # Excel Formula Builder
 <button class="safety-toggle-btn" id="safetyToggleBtn" onclick="showSafetyNotice()" aria-label="Show safety guidelines" title="Safety Guidelines" style="display: none;">
