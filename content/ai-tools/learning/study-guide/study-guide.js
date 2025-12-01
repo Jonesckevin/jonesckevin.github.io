@@ -146,38 +146,9 @@ Make it educational, well-organized, and study-friendly with clear headings and 
         }
     }
 
-    function copyResult() {
-        utils.copyToClipboard(currentResult).then(success => {
-            if (success) {
-                const button = event.target;
-                const originalText = button.innerHTML;
-                button.innerHTML = '✅ Copied!';
-                button.style.background = 'linear-gradient(135deg, #44ff44, #66ff66)';
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-                }, 2000);
-            }
-        });
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('study-guide', () => currentResult);
 
-    function downloadResult(format) {
-        const subject = document.getElementById('subject').value || 'study-guide';
-        const filename = `study-guide_${subject.replace(/[^a-zA-Z0-9]/g,'_')}_${utils.getCurrentTimestamp()}`;
-        downloadManager.setContent(currentResult, 'markdown');
-        downloadManager.download(format, filename);
-    }
-
-    function generateNew() {
-        document.getElementById('resultDiv').style.display = 'none';
-        document.getElementById('studyContent').value = '';
-        document.getElementById('focusAreas').value = '';
-        document.getElementById('studyContent').focus();
-    }
-
-    // Make functions globally available for onclick handlers
+    // Keep generate-specific function
     window.generateStudyGuide = generateStudyGuide;
-    window.copyResult = copyResult;
-    window.downloadResult = downloadResult;
-    window.generateNew = generateNew;
 });

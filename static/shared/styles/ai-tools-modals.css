@@ -1,0 +1,192 @@
+/* ==========================================================================
+   AI TOOLS - MODALS & OVERLAYS
+   Standard modal and safety popup styling for all AI Tools
+   ========================================================================== */
+
+/* Safety/Modal Overlay */
+.safety-overlay,
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.safety-overlay.show,
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Popup/Modal Container */
+.safety-popup,
+.modal-content {
+  background: linear-gradient(135deg, var(--background-dark, #1a1a1a) 0%, var(--background-light, #2d2d2d) 100%);
+  border: 2px solid rgba(255, 152, 0, 0.4);
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.safety-overlay.show .safety-popup,
+.modal-overlay.show .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Popup Header */
+.popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 25px 15px 25px;
+  border-bottom: 1px solid rgba(255, 152, 0, 0.2);
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 107, 53, 0.05));
+}
+
+.popup-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ff9800;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Warning Icon */
+.warning-icon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 5px rgba(255, 152, 0, 0.5));
+  animation: warning-pulse 2s ease-in-out infinite;
+}
+
+@keyframes warning-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Popup Content */
+.popup-content {
+  padding: 20px 25px 25px 25px;
+  color: var(--text-primary, #e0e0e0);
+}
+
+.popup-content p {
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.popup-content ul {
+  margin: 0 0 25px 0;
+  padding-left: 20px;
+}
+
+.popup-content li {
+  margin-bottom: 10px;
+  color: var(--text-secondary, #d0d0d0);
+  line-height: 1.5;
+}
+
+/* Popup Actions */
+.popup-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Acknowledge Button */
+.btn-acknowledge {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--border-radius, 8px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.btn-acknowledge:hover {
+  background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+/* Safety Toggle Button (Fixed Position) */
+.safety-toggle-btn {
+  position: fixed;
+  top: 130px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: gentle-pulse 3s ease-in-out infinite;
+  z-index: 1000;
+}
+
+.safety-toggle-btn:hover {
+  background: rgba(255, 152, 0, 0.1);
+  border-color: rgba(255, 152, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.caution-triangle {
+  font-size: 18px;
+  filter: drop-shadow(0 0 3px rgba(255, 152, 0, 0.5));
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+  }
+}
+
+/* Close Button for Modals */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #b3b3bd);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--text-primary, #e0e0e0);
+}

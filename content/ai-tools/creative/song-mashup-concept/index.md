@@ -3,7 +3,6 @@ title: "Song Mashup Concept Generator"
 subtitle: "AI-Powered Music Mashup & Remix Ideas"
 description: "Create innovative song mashup concepts combining different tracks, genres, and artists. Get detailed arrangement notes, tempo matching suggestions, and creative mixing ideas for DJs, producers, and music enthusiasts."
 keywords: ["song mashup", "music mashup", "remix ideas", "DJ tools", "music production", "mashup generator", "song combination", "AI music tool", "remix concepts", "music creation"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -208,15 +207,9 @@ Discover unique song combinations and mashup concepts. Perfect for DJs, producer
   <div class="result-header">
     <h2 id="resultTitle">Mashup Concepts</h2>
     <div class="result-actions">
-  <button id="copyBtn" class="action-btn btn-primary copy-btn" title="Copy to clipboard">
-        <span class="btn-icon">📋</span> Copy
-      </button>
-  <button id="downloadBtn" class="action-btn btn-primary download-btn" title="Download as text file">
-        <span class="btn-icon">💾</span> Download
-      </button>
-  <button id="regenerateBtn" class="action-btn btn-primary regenerate-btn secondary" title="Generate new concepts">
-        <span class="btn-icon">🔄</span> Regenerate
-      </button>
+      <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+      <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+      <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
     </div>
   </div>
   <div id="resultContent" class="result-content"></div>

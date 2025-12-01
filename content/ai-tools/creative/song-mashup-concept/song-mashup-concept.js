@@ -26,9 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('discoverForm').addEventListener('submit', handleDiscoverSubmit);
     document.getElementById('analyzeForm').addEventListener('submit', handleAnalyzeSubmit);
-    document.getElementById('copyBtn')?.addEventListener('click', () => copyToClipboard());
-    document.getElementById('downloadBtn')?.addEventListener('click', downloadResult);
-    document.getElementById('regenerateBtn')?.addEventListener('click', handleRegenerate);
 
     function switchMode(mode) {
         currentMode = mode;
@@ -55,16 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Make switchMode available globally
     window.switchMode = switchMode;
 
-    function showError(msg) {
-        document.getElementById('errorDiv').innerHTML = `<div style="color: #e74c3c; padding: 15px; background: rgba(231, 76, 60, 0.1); border-radius: 6px; border-left: 4px solid #e74c3c;">${msg}</div>`;
-        document.getElementById('errorDiv').style.display = 'block';
-    }
-
     async function handleDiscoverSubmit(event) {
         event.preventDefault();
 
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -76,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const additionalPreferences = document.getElementById('additionalPreferences').value.trim();
 
         if (!primarySong) {
-            showError('Please enter a primary song or artist.');
+            utils.showError(document.getElementById('errorDiv'), 'Please enter a primary song or artist.');
             return;
         }
 
@@ -159,7 +151,7 @@ Make suggestions creative, unexpected, and technically sound. Focus on mashups t
 
         } catch (error) {
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(`Error generating mashup concepts: ${error.message}`);
+            utils.showError(document.getElementById('errorDiv'), `Error generating mashup concepts: ${error.message}`);
         }
     }
 
@@ -167,7 +159,7 @@ Make suggestions creative, unexpected, and technically sound. Focus on mashups t
         event.preventDefault();
 
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -180,7 +172,7 @@ Make suggestions creative, unexpected, and technically sound. Focus on mashups t
         const specificGoals = document.getElementById('specificGoals').value.trim();
 
         if (!song1 || !song2) {
-            showError('Please enter both songs to analyze.');
+            utils.showError(document.getElementById('errorDiv'), 'Please enter both songs to analyze.');
             return;
         }
 
@@ -277,7 +269,7 @@ Be honest and technical. If the mashup is challenging, explain why and provide s
 
         } catch (error) {
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(`Error analyzing mashup: ${error.message}`);
+            utils.showError(document.getElementById('errorDiv'), `Error analyzing mashup: ${error.message}`);
         }
     }
 
@@ -338,25 +330,6 @@ Be honest and technical. If the mashup is challenging, explain why and provide s
         document.getElementById('resultContent').innerHTML = formattedContent;
     }
 
-    function copyToClipboard() {
-        const textContent = currentResult;
-        navigator.clipboard.writeText(textContent).then(() => {
-            const copyBtn = document.getElementById('copyBtn');
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<span class="btn-icon">✓</span> Copied!';
-            setTimeout(() => {
-                copyBtn.innerHTML = originalText;
-            }, 2000);
-        }).catch(err => {
-            showError('Failed to copy to clipboard');
-        });
-    }
-
-    function downloadResult() {
-        const mode = currentMode === 'discover' ? 'mashup-concepts' : 'mashup-analysis';
-        const filename = mode;
-        
-        window.downloadManager.setContent(currentResult, 'markdown');
-        window.downloadManager.download('markdown', filename);
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('song-mashup-concept', () => currentResult);
 });

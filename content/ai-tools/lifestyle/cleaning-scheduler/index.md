@@ -97,41 +97,49 @@ Create personalized cleaning schedules and chore lists that fit your lifestyle. 
         <input type="checkbox" id="areaKitchen" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🍳 Kitchen</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="areaBathrooms" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🚿 Bathrooms</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="areaBedrooms" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🛏️ Bedrooms</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="areaLiving" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🛋️ Living Areas</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="areaLaundry">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🧺 Laundry Room</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="areaGarage">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🚗 Garage</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="areaOutdoor">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🌳 Outdoor Spaces</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="areaOffice">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">💼 Home Office</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
     </div>
   </div>
@@ -145,31 +153,37 @@ Create personalized cleaning schedules and chore lists that fit your lifestyle. 
         <input type="checkbox" id="considerPets">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🐕 Pets</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="considerKids">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">👶 Young Children</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="considerAllergies">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🤧 Allergies/Sensitivities</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="considerBusy">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">💼 Very Busy Schedule</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="considerSharing">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">👥 Shared Chores</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="considerGuests">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🎉 Frequent Guests</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
     </div>
   </div>

@@ -727,17 +727,21 @@ Please provide a different method or optimization technique while maintaining th
         const sections = parseResponse(currentResult, document.getElementById('outputFormat').value);
         const textToCopy = sections.dax || currentResult;
 
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            const btn = event.target.closest('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '✅ Copied!';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy:', err);
-            const errorDiv = document.getElementById('errorDiv');
-            utils.showError(errorDiv, 'Failed to copy to clipboard.');
+        // Use utils.copyToClipboard with fallback mechanism
+        utils.copyToClipboard(textToCopy).then(success => {
+            if (success && event?.target) {
+                const btn = event.target.closest('button');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            } else if (!success) {
+                const errorDiv = document.getElementById('errorDiv');
+                utils.showError(errorDiv, 'Failed to copy to clipboard.');
+            }
         });
     }
 

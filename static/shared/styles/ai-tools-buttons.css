@@ -1,0 +1,157 @@
+/* ==========================================================================
+   AI TOOLS - BUTTONS
+   Standard button styling for all AI Tools
+   ========================================================================== */
+
+/* Base Button Styles */
+.btn,
+button[class*="btn-"] {
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius, 8px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+/* Primary Button - Orange */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color, #ff6b35), var(--primary-light, #ff8855));
+  color: white;
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.2));
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-dark, #e55a25), var(--primary-color, #ff6b35));
+  box-shadow: var(--shadow-md, 0 4px 8px rgba(0,0,0,0.3));
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Secondary Button - Gray */
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #5a6268, #3d4349);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Success Button - Green */
+.btn-success {
+  background: linear-gradient(135deg, #28a745, #34ce57);
+  color: white;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #218838, #28a745);
+  transform: translateY(-2px);
+}
+
+/* Info Button - Teal */
+.btn-info {
+  background: linear-gradient(135deg, #17a2b8, #20c997);
+  color: white;
+}
+
+.btn-info:hover {
+  background: linear-gradient(135deg, #138496, #17a2b8);
+  transform: translateY(-2px);
+}
+
+/* Warning Button - Orange/Yellow */
+.btn-warning {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+}
+
+.btn-warning:hover {
+  background: linear-gradient(135deg, #f57c00, #e65100);
+  transform: translateY(-2px);
+}
+
+/* Danger Button - Red */
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #c82333, #a71d2a);
+  transform: translateY(-2px);
+}
+
+/* Button Icon */
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Full Width Button */
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* Button Group */
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Form Actions Container */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+/* Disabled State */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+  }
+}

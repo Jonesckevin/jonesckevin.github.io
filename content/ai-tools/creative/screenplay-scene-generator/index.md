@@ -3,7 +3,6 @@ title: "Screenplay Scene Generator"
 subtitle: "Professional Screenplay Writing with AI"
 description: "Generate professionally formatted screenplay scenes with authentic dialogue, stage directions, and cinematic structure. Free AI-powered screenwriting tool."
 keywords: ["screenplay generator", "script writer", "screenwriting tool", "film script", "movie script", "dialogue generator", "scene writer", "scriptwriting AI", "screenplay format", "film writing"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -149,10 +148,9 @@ Create professionally formatted screenplay scenes with authentic dialogue, stage
   <h2>Your Screenplay Scene</h2>
   <div id="resultContent" class="result-content"></div>
   <div class="result-actions">
-    <button class="copy-btn" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
-    <button class="download-btn" onclick="downloadResult('markdown')">📄 Download Markdown</button>
-    <button class="download-btn" onclick="downloadResult('html')">🌐 Download HTML</button>
-    <button class="download-btn" onclick="downloadResult('txt')">📝 Download TXT</button>
+    <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+    <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+    <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
   </div>
 </div>
 

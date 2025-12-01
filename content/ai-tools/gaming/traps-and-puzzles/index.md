@@ -3,7 +3,6 @@ title: "D&D Traps & Puzzles"
 subtitle: "AI-Powered Trap and Puzzle Generator for RPGs"
 description: "Generate creative traps and challenging puzzles for your D&D dungeons and RPG campaigns. Create engaging obstacles with solutions, mechanics, and difficulty scaling."
 keywords: ["D&D traps generator", "RPG puzzle generator", "dungeon traps", "DnD puzzles", "trap creator", "puzzle maker", "RPG obstacles", "dungeon mechanics", "DM tools", "tabletop RPG"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
@@ -102,6 +101,7 @@ Create ready-to-run traps and puzzles with triggers, effects, clues, disarm meth
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Difficulty variations</span>
+<span class="toggle-helper">Includes scaling options.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeFailsafes" checked>
@@ -109,6 +109,7 @@ Create ready-to-run traps and puzzles with triggers, effects, clues, disarm meth
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Failsafes and bypasses</span>
+<span class="toggle-helper">Adds alternative solutions.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeClues">
@@ -116,6 +117,7 @@ Create ready-to-run traps and puzzles with triggers, effects, clues, disarm meth
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Hidden clues and hints</span>
+<span class="toggle-helper">Provides discovery details.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeRewards">
@@ -123,6 +125,7 @@ Create ready-to-run traps and puzzles with triggers, effects, clues, disarm meth
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Rewards for success</span>
+<span class="toggle-helper">Defines completion loot.</span>
 </label>
 </div>
 </div>
@@ -155,10 +158,10 @@ Create ready-to-run traps and puzzles with triggers, effects, clues, disarm meth
 <h2>Generated Trap/Puzzle</h2>
 </div>
 <div id="resultContent" class="result-content"></div>
-<div class="action-buttons">
-  <button onclick="copyResult(event)" class="copy-btn action-btn btn-primary">📋 Copy</button>
-  <button onclick="downloadResult('markdown', event)" class="download-btn action-btn btn-primary">MD</button>
-  <button onclick="downloadResult('html', event)" class="download-btn action-btn btn-primary">🌐 HTML</button>
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

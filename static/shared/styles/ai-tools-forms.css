@@ -1,0 +1,240 @@
+/* ==========================================================================
+   AI TOOLS - FORMS
+   Standard form element styling for all AI Tools
+   ========================================================================== */
+
+/* Form Container */
+.ai-tool-form {
+  background: var(--background-secondary, #232425);
+  padding: 2rem;
+  border-radius: var(--border-radius, 8px);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.2));
+  border: 1px solid var(--border-color, #4e4e57);
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Labels */
+.form-group label,
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #e0e0e0);
+  font-size: 1rem;
+}
+
+/* Text Inputs, Selects, Textareas */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group select,
+.form-group textarea,
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--border-color, #4e4e57);
+  border-radius: var(--border-radius, 8px);
+  font-size: 1rem;
+  background: var(--background-dark, #1a1a1a);
+  color: var(--text-primary, #e0e0e0);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="url"]:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color, #ff6b35);
+  box-shadow: var(--focus-ring, 0 0 0 3px rgba(255, 107, 53, 0.2));
+}
+
+/* Placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.form-control::placeholder {
+  color: var(--text-muted, #888);
+}
+
+/* Small Help Text */
+.form-group small,
+.form-text {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--text-secondary, #b3b3bd);
+  font-size: 0.875rem;
+}
+
+/* Form Row (Grid Layout) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Textarea Specific */
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Select Styling */
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23e0e0e0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+/* Slider Container */
+.slider-container {
+  background: var(--background-light, #2a2a2a);
+  padding: 1.5rem;
+  border-radius: var(--border-radius, 8px);
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color, #4e4e57);
+}
+
+/* Intensity Slider Container */
+.intensity-slider {
+  margin-top: 15px;
+}
+
+.intensity-slider label {
+  font-size: 14px;
+  color: var(--text-primary, #e0e0e0);
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 500;
+}
+
+/* Slider Group */
+.slider-group {
+  margin-bottom: 1.5rem;
+}
+
+.slider-group:last-child {
+  margin-bottom: 0;
+}
+
+.slider-group label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary, #e0e0e0);
+}
+
+.slider-group label span {
+  background: var(--primary-color, #ff6b35);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Range Slider - Multi-color gradient (green → yellow → orange → red) */
+.slider,
+input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #28a745 0%, #ffc107 33%, #fd7e14 66%, #dc3545 100%);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin: 10px 0;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.slider:hover,
+input[type="range"]:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb,
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary-color, #ff6b35);
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider::-webkit-slider-thumb:hover,
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 3px 10px rgba(255, 107, 53, 0.5);
+}
+
+.slider::-moz-range-thumb,
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary-color, #ff6b35);
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider::-moz-range-thumb:hover,
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 3px 10px rgba(255, 107, 53, 0.5);
+}
+
+.slider::-moz-range-track,
+input[type="range"]::-moz-range-track {
+  background: linear-gradient(to right, #28a745 0%, #ffc107 33%, #fd7e14 66%, #dc3545 100%);
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+/* Slider Labels (for min/max indicators) */
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted, #888);
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.slider-labels span {
+  padding: 4px 8px;
+  background: rgba(255, 107, 53, 0.1);
+  border-radius: 4px;
+}

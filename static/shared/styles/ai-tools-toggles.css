@@ -1,0 +1,111 @@
+/* ==========================================================================
+   AI TOOLS - TOGGLE SWITCHES
+   Standard toggle switch styling for all AI Tools
+   ========================================================================== */
+
+/* Toggle Container */
+.checkbox-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--background-light, #2a2a2a);
+  border-radius: var(--border-radius, 8px);
+  border: 1px solid var(--border-color, #4e4e57);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.checkbox-inline:hover {
+  background: var(--background-secondary, #232425);
+  border-color: var(--primary-color, #ff6b35);
+}
+
+.checkbox-inline input[type="checkbox"] {
+  display: none;
+}
+
+/* Toggle Switch Track */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  background-color: var(--border-color, #4e4e57);
+  border-radius: 12px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Toggle Switch Slider/Knob */
+.toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Checked State - Orange with glow */
+.checkbox-inline input[type="checkbox"]:checked + .toggle-switch {
+  background-color: var(--primary-color, #ff6b35);
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+}
+
+.checkbox-inline input[type="checkbox"]:checked + .toggle-switch .toggle-slider {
+  transform: translateX(20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 107, 53, 0.3);
+}
+
+/* Toggle Label Text */
+.toggle-label {
+  font-size: 0.95em;
+  color: var(--text-primary, #e0e0e0);
+  user-select: none;
+  font-weight: 500;
+}
+
+/* Toggle Helper Text - shows only when enabled */
+.toggle-helper {
+  display: none;
+  width: 100%;
+  font-size: 0.8em;
+  font-style: italic;
+  color: var(--text-muted, #888);
+  margin-top: 4px;
+  padding-left: 54px; /* Align with toggle label (44px toggle + 10px gap) */
+}
+
+/* Show helper text when toggle is checked */
+.checkbox-inline input[type="checkbox"]:checked ~ .toggle-helper {
+  display: block;
+}
+
+/* Checkbox Group Grid */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+  
+  .checkbox-inline {
+    padding: 10px 12px;
+  }
+  
+  .toggle-helper {
+    padding-left: 0;
+  }
+}

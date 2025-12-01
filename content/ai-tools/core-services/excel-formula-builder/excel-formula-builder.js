@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     let currentResult = '';
+    if (!window.downloadManager) window.downloadManager = new DownloadManager();
+    const downloadManager = window.downloadManager;
 
     console.log('Excel Formula Builder: DOMContentLoaded event fired');
 
@@ -155,10 +157,37 @@ document.addEventListener('DOMContentLoaded', function () {
     window.dismissSafetyNotice = dismissSafetyNotice;
     window.resetForm = resetForm;
     window.generateFormula = generateFormula;
-    window.downloadResult = downloadResult;
+
+    // Register standardized copy/download actions
+    utils.registerToolActions('excel-formula-builder', () => currentResult);
 
     // Check safety notice status on load
     checkSafetyNoticeStatus();
+
+    // Override downloadResult to keep specialized Excel formula download handling
+    window.downloadResult = function(format) {
+        if (!currentResult) {
+            alert('No formula to download');
+            return;
+        }
+
+        const formulaDescription = document.getElementById('formulaDescription').value.trim();
+        const timestamp = new Date().toISOString().split('T')[0];
+        const filename = `excel-formula-${timestamp}`;
+
+        if (format === 'txt') {
+            // Plain text format
+            const resultDiv = document.getElementById('resultDiv');
+            const resultText = resultDiv ? resultDiv.innerText : '';
+            const content = `Excel Formula\n${'='.repeat(50)}\n\nGenerated: ${new Date().toLocaleDateString()}\n\nDescription:\n${formulaDescription}\n\nFormula:\n${currentResult}\n\nAdditional Information:\n${resultText}`;
+            downloadManager.downloadRaw(content, 'txt', filename);
+        } else {
+            // Use standard downloadManager for MD/HTML
+            const fullContent = `# Excel Formula\n\nGenerated on ${new Date().toLocaleDateString()}\n\n## Description\n${formulaDescription}\n\n## Formula\n\`\`\`excel\n${currentResult}\n\`\`\``;
+            downloadManager.setContent(fullContent, 'markdown');
+            downloadManager.download(format, filename);
+        }
+    };
 
     function highlightFormula(formula) {
         if (!formula) return '';
@@ -601,22 +630,11 @@ ${options.useMixedReferences ? '8. Use mixed references ($A1 or A$1) where appro
             resultDiv.innerHTML = `
                 <h3 style="color: #ff6b35; margin-bottom: 20px;">📊 Generated Excel Formula</h3>
                 ${resultHTML}
-                <div class="result-actions" style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                    <button class="action-btn btn-primary copy-btn" onclick="utils.copyToClipboard(currentResult, 'Excel formula copied to clipboard!')">
-                        📋 Copy Formula
-                    </button>
-                    <button class="action-btn btn-primary download-btn" onclick="downloadResult('markdown')">
-                        💾 Download as Markdown
-                    </button>
-                    <button class="action-btn btn-primary download-btn" onclick="downloadResult('html')">
-                        💾 Download as HTML
-                    </button>
-                    <button class="action-btn btn-primary download-btn" onclick="downloadResult('txt')">
-                        💾 Download as Text
-                    </button>
-                    <button class="action-btn btn-danger" onclick="resetForm()">
-                        🔄 Reset Form
-                    </button>
+                <div class="result-actions" style="margin-top: 30px;">
+                    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+                    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+                    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
+                    <button class="download-btn-alt" onclick="downloadResult('txt')">📝 TXT</button>
                 </div>
             `;
             
@@ -637,75 +655,5 @@ ${options.useMixedReferences ? '8. Use mixed references ($A1 or A$1) where appro
             loadingDiv.style.display = 'none';
             utils.showError(errorDiv, error.message || 'Failed to generate formula. Please try again.');
         }
-    }
-
-    function downloadResult(format) {
-        if (!currentResult) {
-            alert('No formula to download');
-            return;
-        }
-
-        const formulaDescription = document.getElementById('formulaDescription').value.trim();
-        const timestamp = new Date().toISOString().split('T')[0];
-        let filename = `excel-formula-${timestamp}`;
-        let content = '';
-        let mimeType = 'text/plain';
-
-        // Get the result div content
-        const resultDiv = document.getElementById('resultDiv');
-        const resultText = resultDiv ? resultDiv.innerText : '';
-
-        switch (format) {
-            case 'markdown':
-                filename += '.md';
-                content = `# Excel Formula\n\nGenerated on ${new Date().toLocaleDateString()}\n\n## Description\n${formulaDescription}\n\n## Formula\n\`\`\`excel\n${currentResult}\n\`\`\`\n\n## Additional Information\n${resultText}`;
-                mimeType = 'text/markdown';
-                break;
-
-            case 'html':
-                filename += '.html';
-                content = `<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Excel Formula</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
-        h1 { color: #ff6b35; }
-        .formula { background: #f5f5f5; padding: 15px; border-radius: 5px; font-family: monospace; }
-    </style>
-</head>
-<body>
-    <h1>Excel Formula</h1>
-    <p><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
-    <h2>Description</h2>
-    <p>${formulaDescription}</p>
-    <h2>Formula</h2>
-    <div class="formula">${currentResult}</div>
-    ${resultDiv ? resultDiv.innerHTML : ''}
-</body>
-</html>`;
-                mimeType = 'text/html';
-                break;
-
-            case 'txt':
-                filename += '.txt';
-                content = `Excel Formula\n${'='.repeat(50)}\n\nGenerated: ${new Date().toLocaleDateString()}\n\nDescription:\n${formulaDescription}\n\nFormula:\n${currentResult}\n\nAdditional Information:\n${resultText}`;
-                mimeType = 'text/plain';
-                break;
-        }
-
-        // Create and download file
-        const blob = new Blob([content], { type: mimeType });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-
-        console.log(`✅ Downloaded as ${filename}`);
     }
 });

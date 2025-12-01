@@ -65,10 +65,10 @@ window.utils = {
     showError(container, message = 'An error occurred') {
         if (!container) return;
         container.innerHTML = `
-            <div style="background: rgba(255, 68, 68, 0.1); border: 2px solid #ff4444; border-radius: 10px; padding: 20px; text-align: center; color: #ff4444;">
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">⚠️</div>
-                <div style="font-weight: 600; margin-bottom: 5px;">Error</div>
-                <div>${message}</div>
+            <div class="error-display">
+                <div class="error-icon">⚠️</div>
+                <div class="error-title">Error</div>
+                <div class="error-message">${message}</div>
             </div>
         `;
         container.style.display = 'block';
@@ -90,7 +90,9 @@ window.utils = {
     },
 
     // Content formatting helpers (robust Markdown -> HTML)
-    formatMarkdown(content) {
+    // options.wrap: if true (default), wraps output in .result-display div for color-coded headings
+    formatMarkdown(content, options = {}) {
+        const { wrap = true } = options;
         if (!content || typeof content !== 'string') return '';
 
         const lines = content.replace(/\r\n?/g, '\n').split('\n');
@@ -251,16 +253,21 @@ window.utils = {
         const html = out.join('\n');
 
         // Optional: trigger Prism highlighting if available
+        let finalHtml = html;
         try {
             if (window.Prism) {
                 const temp = document.createElement('div');
                 temp.innerHTML = html;
                 window.Prism.highlightAllUnder(temp);
-                return temp.innerHTML;
+                finalHtml = temp.innerHTML;
             }
         } catch (_) { }
 
-        return html;
+        // Wrap in .result-display for color-coded headings (unless disabled or already wrapped)
+        if (wrap && !finalHtml.includes('class="result-display"')) {
+            return `<div class="result-display">${finalHtml}</div>`;
+        }
+        return finalHtml;
     },
 
     // Date/time helpers
@@ -650,9 +657,72 @@ window.utils = {
 
             return true;
         };
-    }
+    },
 
-    ,
+    /**
+     * Register standard copy/download actions for a tool
+     * Wires up window.copyResult and window.downloadResult with 2s visual feedback
+     * @param {string} toolName - Base name for downloaded files
+     * @param {Function} getContentFn - Function that returns current result content
+     * @param {Object} options - Optional configuration
+     * @param {Function} options.getFilenameFn - Custom filename generator (receives format)
+     */
+    registerToolActions(toolName, getContentFn, options = {}) {
+        const { getFilenameFn } = options;
+
+        // Standard copy with 2s feedback
+        window.copyResult = async function(event) {
+            const content = getContentFn();
+            if (!content) {
+                console.error('No content to copy');
+                return false;
+            }
+
+            const success = await window.utils.copyToClipboard(content);
+            const btn = event?.target?.closest('button') || event?.target;
+
+            if (success && btn) {
+                const originalText = btn.innerHTML;
+                const originalBg = btn.style.background;
+
+                btn.innerHTML = '✅ Copied!';
+                btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = originalBg || '';
+                }, 2000);
+            }
+
+            return success;
+        };
+
+        // Standard download with format support
+        window.downloadResult = function(format) {
+            const content = getContentFn();
+            if (!content) {
+                console.error('No content to download');
+                return false;
+            }
+
+            if (typeof downloadManager === 'undefined') {
+                console.error('downloadManager not loaded');
+                return false;
+            }
+
+            // Use custom filename or default pattern
+            const filename = getFilenameFn 
+                ? getFilenameFn(format) 
+                : `${toolName}_${window.utils.getCurrentTimestamp()}`;
+
+            downloadManager.setContent(content, 'markdown');
+            downloadManager.download(format, filename);
+
+            return true;
+        };
+
+        console.log(`✅ Tool actions registered for: ${toolName}`);
+    },
 
     // Normalize legacy buttons site-wide to ensure shared styles apply
     normalizeButtons(scope = document) {
@@ -667,18 +737,55 @@ window.utils = {
                     if (!btn.classList.contains('btn-primary')) btn.classList.add('btn-primary');
                     if (!btn.classList.contains('action-btn')) btn.classList.add('action-btn');
                 }
-                // Secondary actions (copy/download/regenerate)
-                if (/(copy|download|regenerate)/i.test(id) || /(copy-btn|download-btn|regenerate-btn)/.test(cls)) {
+                // Secondary actions (copy/download) - removed regenerate
+                if (/(copy|download)/i.test(id) || /(copy-btn|download-btn)/.test(cls)) {
                     if (!btn.classList.contains('action-btn')) btn.classList.add('action-btn');
-                    if (!btn.classList.contains('btn-primary')) btn.classList.add('btn-primary');
-                }
-                if (/regenerate/i.test(id) && !btn.classList.contains('secondary')) {
-                    btn.classList.add('secondary');
                 }
             });
         } catch (e) {
             console.warn('Global button normalization failed:', e);
         }
+    },
+
+    /**
+     * Render color swatches for color palette preview
+     * Used by color-palette-story-prompt and similar color-aware tools
+     * @param {Array<string>} colors - Array of color values (hex, rgb, etc.)
+     * @param {string} containerId - ID of container element to render swatches into
+     * @param {Object} options - Optional configuration
+     * @param {boolean} options.large - Use large swatches with labels (default: false)
+     * @param {boolean} options.showLabels - Show color value labels (default: false for small, true for large)
+     * @returns {void}
+     */
+    renderColorSwatches(colors, containerId, options = {}) {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.error(`Container #${containerId} not found`);
+            return;
+        }
+
+        if (!Array.isArray(colors) || colors.length === 0) {
+            container.innerHTML = '';
+            container.style.display = 'none';
+            return;
+        }
+
+        const { large = false, showLabels = large } = options;
+        const swatchClass = large ? 'color-swatch-large' : 'color-swatch';
+
+        const swatchesHtml = colors.map(color => {
+            const colorValue = color.trim();
+            if (large && showLabels) {
+                return `<div class="${swatchClass}" style="background-color: ${colorValue};" title="${colorValue}">
+                    <span class="color-label">${colorValue}</span>
+                </div>`;
+            }
+            return `<div class="${swatchClass}" style="background-color: ${colorValue};" title="${colorValue}"></div>`;
+        }).join('');
+
+        container.innerHTML = swatchesHtml;
+        container.className = 'color-preview-grid';
+        container.style.display = colors.length > 0 ? 'grid' : 'none';
     }
 };
 

@@ -18,16 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('downloadBtn')?.addEventListener('click', downloadResult);
     document.getElementById('regenerateBtn')?.addEventListener('click', handleRegenerate);
 
-    function showError(msg) {
-        document.getElementById('errorDiv').innerHTML = `<div style="color: #e74c3c; padding: 15px; background: rgba(231, 76, 60, 0.1); border-radius: 6px; border-left: 4px solid #e74c3c;">${msg}</div>`;
-        document.getElementById('errorDiv').style.display = 'block';
-    }
-
     async function handleSubmit(event) {
         event.preventDefault();
 
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -39,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const includeAnalogies = document.getElementById('includeAnalogies').checked;
 
         if (!mainConcept) {
-            showError('Please enter a main concept.');
+            utils.showError(document.getElementById('errorDiv'), 'Please enter a main concept.');
             return;
         }
 
@@ -125,7 +120,7 @@ Make connections clear, meaningful, and memorable!`;
 
         } catch (error) {
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(`Error mapping concepts: ${error.message}`);
+            utils.showError(document.getElementById('errorDiv'), `Error mapping concepts: ${error.message}`);
         }
     }
 
@@ -158,28 +153,6 @@ Make connections clear, meaningful, and memorable!`;
         document.getElementById('resultContent').innerHTML = formattedContent;
     }
 
-    function copyToClipboard() {
-        navigator.clipboard.writeText(currentResult).then(() => {
-            const copyBtn = document.getElementById('copyBtn');
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<span class="btn-icon">✓</span> Copied!';
-            setTimeout(() => {
-                copyBtn.innerHTML = originalText;
-            }, 2000);
-        }).catch(() => {
-            showError('Failed to copy');
-        });
-    }
-
-    function downloadResult() {
-        if (currentResult) {
-            const conceptName = document.getElementById('mainConcept').value.trim().replace(/\s+/g, '_');
-            const filename = `concept-map-${conceptName.substring(0, 30).toLowerCase()}`;
-            
-            downloadManager.setContent(currentResult, 'markdown');
-            downloadManager.download('markdown', filename);
-        } else {
-            console.error('No content to download');
-        }
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('concept-connection-mapper', () => currentResult);
 });

@@ -117,41 +117,49 @@ Create personalized workout routines designed for your specific goals, fitness l
           <input type="checkbox" id="equipDumbbells" checked>
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🏋️ Dumbbells</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="equipBarbell" checked>
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">💪 Barbell</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="equipBands">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🎀 Resistance Bands</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="equipKettlebells">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">⚫ Kettlebells</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="equipMachines">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🤖 Weight Machines</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="equipCardio">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🏃 Cardio Equipment</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="equipBodyweight" checked>
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🧘 Bodyweight Only</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="equipPullupBar">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">📊 Pull-up Bar</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
     </div>
   </div>
@@ -165,31 +173,37 @@ Create personalized workout routines designed for your specific goals, fitness l
           <input type="checkbox" id="focusChest">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">💪 Chest</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="focusBack">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🔙 Back</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="focusLegs">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🦵 Legs</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="focusArms">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">💪 Arms</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="focusShoulders">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🏔️ Shoulders</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
         <label class="checkbox-inline">
           <input type="checkbox" id="focusCore">
           <span class="toggle-switch"><span class="toggle-slider"></span></span>
           <span class="toggle-label">🎯 Core/Abs</span>
+          <span class="toggle-helper">Enabled.</span>
         </label>
     </div>
   </div>

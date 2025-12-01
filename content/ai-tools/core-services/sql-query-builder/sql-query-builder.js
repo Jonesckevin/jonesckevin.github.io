@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     let currentResult = '';
+    if (!window.downloadManager) window.downloadManager = new DownloadManager();
 
     console.log('SQL Query Builder: DOMContentLoaded event fired');
+
+    // Register standardized copy action (download is specialized for SQL)
+    utils.registerToolActions('sql-query-builder', () => currentResult);
 
     // Create safety overlay dynamically if it doesn't exist
     const existingOverlay = document.getElementById('safetyOverlay');
@@ -51,10 +55,19 @@ document.addEventListener('DOMContentLoaded', function () {
     window.generateSQLQuery = generateSQLQuery;
     window.generateVariation = generateVariation;
     window.resetForm = resetForm;
-    window.copyResult = copyResult;
-    window.downloadResult = downloadResult;
     window.dismissSafetyNotice = dismissSafetyNotice;
     window.showSafetyNotice = showSafetyNotice;
+    
+    // Override copyResult to extract just the SQL query
+    window.copyResult = async function(event) {
+        if (!currentResult) return;
+        const sections = parseResponse(currentResult);
+        const queryToCopy = sections.query || currentResult;
+        const success = await utils.copyToClipboard(queryToCopy, event?.target);
+    };
+    
+    // Keep specialized downloadResult for SQL-specific formats
+    window.downloadResult = downloadResult;
 
     // Utility functions now use centralized utils.js
     // showError -> utils.utils.showError()
@@ -641,40 +654,6 @@ Database Type: ${databaseType.toUpperCase()}`;
             console.error('Error generating alternative query:', error);
             document.getElementById('loadingDiv').style.display = 'none';
             utils.showError(document.getElementById('errorDiv'), error.message || 'Failed to generate alternative query. Please try again.');
-            document.getElementById('errorDiv').style.display = 'block';
-        }
-    }
-
-    async function copyResult(event) {
-        if (!currentResult) {
-            utils.showError(document.getElementById('errorDiv'), 'No content to copy');
-            document.getElementById('errorDiv').style.display = 'block';
-            return;
-        }
-
-        // Extract just the SQL query for copying
-        const sections = parseResponse(currentResult);
-        const queryToCopy = sections.query || currentResult;
-
-        const success = await utils.copyToClipboard(queryToCopy);
-
-        if (success && event?.target) {
-            const btn = event.target;
-            const originalText = btn.textContent;
-            const originalBg = btn.style.background;
-
-            btn.textContent = '✅ Copied!';
-            btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = originalBg || '';
-            }, 2000);
-        } else if (!success) {
-            utils.showError(
-                document.getElementById('errorDiv'),
-                'Failed to copy to clipboard. Please try selecting and copying manually.'
-            );
             document.getElementById('errorDiv').style.display = 'block';
         }
     }

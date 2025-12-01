@@ -233,6 +233,35 @@ if (!window.DownloadManager) {
             else throw new Error('Unsupported format. Use: markdown, html, or txt');
         }
 
+        /**
+         * Download raw content without markdown conversion
+         * Used for specialized formats like SQL, DAX, JSON, CSS
+         * @param {string} content - Raw content to download
+         * @param {string} extension - File extension (e.g., 'sql', 'dax', 'json')
+         * @param {string} filename - Base filename without extension
+         */
+        downloadRaw(content, extension, filename) {
+            const timestamp = new Date().toISOString().slice(0, 10);
+            const fullFilename = `${filename}_${timestamp}.${extension}`;
+            
+            const mimeTypes = {
+                'sql': 'text/plain',
+                'dax': 'text/plain',
+                'json': 'application/json',
+                'css': 'text/css',
+                'txt': 'text/plain',
+                'yml': 'text/yaml',
+                'yaml': 'text/yaml',
+                'sh': 'text/plain',
+                'ps1': 'text/plain',
+                'py': 'text/plain',
+                'js': 'text/javascript'
+            };
+            
+            const mimeType = mimeTypes[extension] || 'text/plain';
+            this._downloadFile(content, fullFilename, mimeType);
+        }
+
         async copyToClipboard(format = 'markdown') {
             let content = this.currentContent.markdown;
             if (format === 'html') content = this.currentContent.html;
@@ -253,18 +282,18 @@ if (!window.DownloadManager) {
 
         createDownloadButtons(baseName = 'generated-content') {
             return `
-            <div class="result-buttons">
+            <div class="result-actions">
                 <button onclick="downloadManager.copyToClipboard('markdown').then(success => downloadManager._showCopyFeedback(event.target, success))" 
-                        class="btn-primary btn-download">
-                    Copy Output
+                        class="action-btn copy-btn">
+                    📋 Copy
                 </button>
                 <button onclick="downloadManager.download('markdown', '${baseName}')" 
-                        class="btn-primary btn-download">
-                    MD
+                        class="action-btn download-btn">
+                    📄 MD
                 </button>
                 <button onclick="downloadManager.download('html', '${baseName}')" 
-                        class="btn-primary btn-download">
-                    HTML
+                        class="action-btn download-btn-alt">
+                    🌐 HTML
                 </button>
             </div>
         `;

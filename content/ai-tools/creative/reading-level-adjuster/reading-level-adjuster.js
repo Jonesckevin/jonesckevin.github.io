@@ -141,9 +141,7 @@ Adjust the text according to these specifications.`;
             // Convert to HTML and display
             const htmlContent = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <div style="line-height: 1.7; color: #e0e0e0;">${htmlContent}</div>
-                </div>
+                <div class="result-display">${htmlContent}</div>
             `;
 
             // Show result
@@ -191,12 +189,12 @@ Adjust the text according to these specifications.`;
 
             const analysisHtml = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <h4 style="color: #ff6b35; margin-bottom: 15px;">Adjusted Text:</h4>
-                    <div style="line-height: 1.7; color: #e0e0e0; margin-bottom: 25px;">${utils.formatMarkdown(currentResult)}</div>
-                    <hr style="border: 1px solid rgba(255, 107, 53, 0.3); margin: 20px 0;">
-                    <h4 style="color: #ff6b35; margin-bottom: 15px;">📊 Readability Analysis:</h4>
-                    <div style="line-height: 1.7; color: #e0e0e0;">${analysisHtml}</div>
+                <div class="result-display">
+                    <h4>📝 Adjusted Text:</h4>
+                    ${utils.formatMarkdown(currentResult)}
+                    <hr>
+                    <h4>📊 Readability Analysis:</h4>
+                    ${analysisHtml}
                 </div>
             `;
 
@@ -238,9 +236,7 @@ Adjust the text according to these specifications.`;
             currentResult = response;
             const htmlContent = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <div style="line-height: 1.7; color: #e0e0e0;">${htmlContent}</div>
-                </div>
+                <div class="result-display">${htmlContent}</div>
             `;
 
             document.getElementById('loadingDiv').style.display = 'none';
@@ -254,27 +250,8 @@ Adjust the text according to these specifications.`;
         }
     }
 
-    function copyResult() {
-        utils.copyToClipboard(currentResult).then(success => {
-            if (success) {
-                const button = event.target;
-                const originalText = button.innerHTML;
-                button.innerHTML = '✅ Copied!';
-                button.style.background = 'linear-gradient(135deg, #44ff44, #66ff66)';
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-                }, 2000);
-            }
-        });
-    }
-
-    function downloadResult(format) {
-        const targetLevel = document.getElementById('targetLevel').value || 'adjusted-text';
-        const filename = `reading-level-${targetLevel}_${utils.getCurrentTimestamp()}`;
-        downloadManager.setContent(currentResult, 'markdown');
-        downloadManager.download(format, filename);
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('reading-level-adjuster', () => currentResult);
 
     function adjustNew() {
         document.getElementById('resultDiv').style.display = 'none';
@@ -291,7 +268,5 @@ Adjust the text according to these specifications.`;
     window.adjustReadingLevel = adjustReadingLevel;
     window.analyzeReadability = analyzeReadability;
     window.generateVariation = generateVariation;
-    window.copyResult = copyResult;
-    window.downloadResult = downloadResult;
     window.adjustNew = adjustNew;
 });

@@ -3,7 +3,6 @@ title: "Mermaid Flowcharts & Timelines"
 subtitle: "AI-Powered Mermaid Diagram Generator"
 description: "Create visual roadmaps and timelines using Mermaid flowcharts. Generate interactive diagrams for learning paths, project planning, and goal visualization with AI assistance."
 keywords: ["visual roadmap", "mermaid diagrams", "flowchart generator", "timeline creator", "project planning", "learning path visualization", "AI diagram generator", "roadmap visualization"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -108,12 +107,11 @@ Creating your visual roadmap...
 <!-- Mermaid diagram will be inserted here -->
 </div>
 
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyMermaidCode()" style="width: auto; padding: 10px 20px;">📋 Copy Mermaid Code</button>
-<button class="btn-primary" onclick="downloadRoadmap('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
-<button class="btn-primary" onclick="downloadRoadmap('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-<button class="btn-primary" onclick="downloadRoadmap('svg')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #fd7e14, #ff8c42);">🎨 Download SVG</button>
-
+<div class="result-actions" style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
+<button class="action-btn copy-btn" onclick="copyMermaidCode(event)">📋 Copy Mermaid</button>
+<button class="action-btn download-btn" onclick="downloadRoadmap('markdown')">📄 MD</button>
+<button class="action-btn download-btn-alt" onclick="downloadRoadmap('html')">🌐 HTML</button>
+<button class="action-btn download-btn" onclick="downloadRoadmap('svg')" style="background: linear-gradient(135deg, #fd7e14, #ff8c42);">🎨 SVG</button>
 </div>
 </div>
 

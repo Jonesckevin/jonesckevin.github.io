@@ -3,7 +3,6 @@ title: "Newsletter Hook Generator"
 subtitle: "Craft Compelling Newsletter Openings"
 description: "Create engaging newsletter opening paragraphs that grab attention and boost open rates. Generate compelling hooks for email newsletters with AI."
 keywords: ["newsletter hook", "email opening", "newsletter generator", "email marketing", "compelling hook", "newsletter writing", "email copywriting", "content marketing", "engagement tool"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -125,9 +124,9 @@ Create compelling opening paragraphs that capture attention and keep readers eng
   <div class="result-header">
     <h3>🎯 Generated Newsletter Hooks</h3>
     <div class="result-actions">
-      <button id="copyBtn">📋 Copy All</button>
-      <button id="downloadBtn">📄 Download</button>
-      <button id="regenerateBtn">🔄 Regenerate</button>
+      <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+      <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+      <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
     </div>
   </div>
   <div id="resultContent"></div>

@@ -3,7 +3,6 @@ title: "Wardrobe Capsule Planner"
 subtitle: "Create Your Perfect Capsule Wardrobe"
 description: "Design personalized capsule wardrobe plans based on lifestyle, climate, and style preferences. AI-powered minimalist fashion planning tool. Free online."
 keywords: ["capsule wardrobe", "minimalist wardrobe", "wardrobe planning", "fashion minimalism", "clothing organization", "style planning", "sustainable fashion", "wardrobe essentials", "outfit planning", "minimalist fashion"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false

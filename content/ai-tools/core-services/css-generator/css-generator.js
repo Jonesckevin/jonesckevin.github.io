@@ -37,6 +37,21 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Wait for managers to be ready
     apiManager = await waitForAPIManager();
     downloadManager = await waitForDownloadManager();
+
+    // Register standardized copy action (gets CSS from editor)
+    utils.registerToolActions('css-generator', () => {
+        const editor = document.getElementById('cssCodeEditor');
+        return editor ? editor.value : '';
+    });
+
+    // Override downloadResult for CSS-specific downloads
+    window.downloadResult = function(format) {
+        const editor = document.getElementById('cssCodeEditor');
+        if (!editor) return;
+        const cssCode = editor.value;
+        if (!cssCode) return;
+        downloadManager.downloadRaw(cssCode, 'css', 'generated-styles');
+    };
 });
 
 // Generate CSS function
@@ -267,60 +282,10 @@ function applyCSS() {
     }, 2000);
 }
 
-// Copy CSS code
-function copyCSSCode() {
-    const editor = document.getElementById('cssCodeEditor');
-    if (!editor) {
-        alert('CSS editor not found.');
-        return;
-    }
-
-    const cssCode = editor.value;
-
-    navigator.clipboard.writeText(cssCode).then(() => {
-        // Show success feedback
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = '✅ Copied!';
-        btn.style.background = '#28a745';
-
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-        }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy:', err);
-        alert('Failed to copy to clipboard. Please select and copy manually.');
-    });
-}
-
-// Download CSS file
-function downloadCSS() {
-    const editor = document.getElementById('cssCodeEditor');
-    if (!editor) {
-        alert('CSS editor not found.');
-        return;
-    }
-
-    const cssCode = editor.value;
-    const blob = new Blob([cssCode], { type: 'text/css' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'generated-styles.css';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-}
-
 // Copy full code (CSS + HTML example)
-function copyFullCode() {
+async function copyFullCode(event) {
     const editor = document.getElementById('cssCodeEditor');
-    if (!editor) {
-        alert('CSS editor not found.');
-        return;
-    }
+    if (!editor) return;
 
     const cssCode = editor.value;
     const previewContent = document.querySelector('.preview-content');
@@ -330,29 +295,23 @@ function copyFullCode() {
         htmlExample = previewContent.innerHTML;
     }
 
-    const fullCode = `<!-- CSS Styles -->
-<style>
-${cssCode}
-</style>
+    const fullCode = `<!-- CSS Styles -->\n<style>\n${cssCode}\n</style>\n\n<!-- HTML Examples -->\n${htmlExample}`;
 
-<!-- HTML Examples (All Sections) -->
-${htmlExample}`;
+    const success = await utils.copyToClipboard(fullCode);
+    const btn = event?.target?.closest('button') || event?.target;
 
-    navigator.clipboard.writeText(fullCode).then(() => {
-        // Show success feedback
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = '✅ Copied!';
-        btn.style.background = '#28a745';
+    if (success && btn) {
+        const originalText = btn.innerHTML;
+        const originalBg = btn.style.background;
+
+        btn.innerHTML = '✅ Copied!';
+        btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
 
         setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
+            btn.innerHTML = originalText;
+            btn.style.background = originalBg || '';
         }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy:', err);
-        alert('Failed to copy to clipboard. Please select and copy manually.');
-    });
+    }
 }
 
 // Generate variation

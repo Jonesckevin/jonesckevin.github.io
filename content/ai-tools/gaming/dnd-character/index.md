@@ -3,7 +3,6 @@ title: "D&D Character Lore"
 subtitle: "AI-Powered D&D Character Background Generator"
 description: "Generate rich backstories and compelling lore for your D&D characters. Create legendary heroes with detailed backgrounds, flaws, and divine connections for your RPG campaigns."
 keywords: ["D&D character generator", "DnD backstory generator", "RPG character creator", "D&D 5E character", "tabletop RPG", "character background", "DnD lore generator", "RPG backstory", "character development"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -118,6 +117,7 @@ Generate rich backstories and compelling lore for your D&D characters. Create le
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Include Bonus Flavor Elements</span>
+<span class="toggle-helper">Adds unique character details.</span>
 </label>
 <small style="display: block; opacity: 0.8; margin-top: 5px;">Battle cries, favorite drinks, recurring dreams, mysterious prophecies, etc.</small>
 </div>
@@ -136,12 +136,10 @@ Forging your character's legend...
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Character Lore</h3>
 <div class="result-content" id="resultContent"></div>
 
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭 Alternative Backstory</button>
-
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

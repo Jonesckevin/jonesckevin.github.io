@@ -3,7 +3,6 @@ title: "PowerBI DAX & Filter Builder"
 subtitle: "AI-Powered DAX Formula and Filter Code Generator"
 description: "Generate optimized PowerBI DAX formulas and filter code from natural language descriptions. Create measures, calculated columns, and advanced filters with AI assistance. Free online PowerBI DAX builder for analysts and developers."
 keywords: ["PowerBI DAX builder", "DAX formula generator", "PowerBI filter builder", "AI DAX tool", "PowerBI measures", "DAX optimization", "calculated columns", "PowerBI assistant", "business intelligence tools", "DAX automation"]
-author: JonesCKevin
 date: 2025-11-03
 lastmod: 2025-11-03
 draft: false
@@ -141,41 +140,49 @@ Calendar table: Date, Year, Quarter, Month, Week" rows="6"></textarea>
 <input id="includeComments" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include inline comments</span>
+<span class="toggle-helper">Adds explanatory comments to DAX.</span>
 </label>
 <label class="checkbox-inline">
 <input id="optimizePerformance" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Optimize for performance</span>
+<span class="toggle-helper">Focuses on DAX efficiency.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeErrorHandling" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include error handling</span>
+<span class="toggle-helper">Adds error checks to DAX.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeFormatting" type="checkbox" checked/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include format strings</span>
+<span class="toggle-helper">Adds formatting specifications.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeTestData" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Generate test data</span>
+<span class="toggle-helper">Creates sample data for testing.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeAlternatives" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Show alternative approaches</span>
+<span class="toggle-helper">Provides alternative DAX patterns.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includePerformanceTips" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Performance optimization tips</span>
+<span class="toggle-helper">Includes performance guidance.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeBestPractices" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Best practices guidance</span>
+<span class="toggle-helper">Includes DAX best practices.</span>
 </label>
 </div>
 </div>

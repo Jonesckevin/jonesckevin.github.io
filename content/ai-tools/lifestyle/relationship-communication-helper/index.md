@@ -3,7 +3,6 @@ title: "Relationship Communication Helper"
 subtitle: "Craft Constructive Difficult Conversations"
 description: "Get help crafting empathetic, constructive messages for difficult conversations. Navigate sensitive topics with clarity and respect."
 keywords: ["communication helper", "difficult conversations", "relationship advice", "conflict resolution", "empathetic communication", "conversation guide", "interpersonal skills", "communication skills"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -95,6 +94,7 @@ Craft thoughtful, empathetic messages for difficult conversations. Navigate sens
       <input type="checkbox" id="includeExamples" checked>
       <span class="toggle-switch"><span class="toggle-slider"></span></span>
       <span class="toggle-label">Include example phrases and approaches</span>
+      <span class="toggle-helper">Shows example phrases and communication approaches.</span>
     </label>
   </div>
 
@@ -103,6 +103,7 @@ Craft thoughtful, empathetic messages for difficult conversations. Navigate sens
       <input type="checkbox" id="includeAvoid">
       <span class="toggle-switch"><span class="toggle-slider"></span></span>
       <span class="toggle-label">Include what to avoid saying</span>
+      <span class="toggle-helper">Lists phrases and approaches to avoid.</span>
     </label>
   </div>
 
@@ -123,17 +124,17 @@ Craft thoughtful, empathetic messages for difficult conversations. Navigate sens
   <h2>Communication Guidance</h2>
   <div id="resultContent" class="result-content"></div>
   <div class="result-actions">
-  <button id="copyBtn" class="action-btn btn-primary copy-btn">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">
       <span class="btn-icon">📋</span>
-      Copy Guidance
+      Copy
     </button>
-  <button id="downloadBtn" class="action-btn btn-primary download-btn">
-      <span class="btn-icon">💾</span>
-      Download
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
+      <span class="btn-icon">📄</span>
+      MD
     </button>
-  <button id="regenerateBtn" class="action-btn btn-primary regenerate-btn secondary">
-      <span class="btn-icon">🔄</span>
-      Get Alternative Approach
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">
+      <span class="btn-icon">🌐</span>
+      HTML
     </button>
   </div>
 </div>

@@ -3,7 +3,6 @@ title: "NIST NICE Framework Position Mapper"
 subtitle: "Generate Job Descriptions from NICE Framework"
 description: "Create comprehensive cybersecurity job descriptions based on NIST NICE Framework components and the 11 Strategies of a World-Class SOC."
 keywords: ["nist nice framework", "cybersecurity job description", "workforce framework", "job role mapper", "soc strategies"]
-author: JonesCKevin
 date: 2025-11-25
 lastmod: 2025-11-25
 draft: false
@@ -114,6 +113,7 @@ Generate comprehensive cybersecurity job descriptions based on the **NIST NICE W
       <input type="checkbox" id="outputFormat">
       <span class="toggle-switch"><span class="toggle-slider"></span></span>
       <span class="toggle-label">📄 Output Format: <span id="formatLabel">Role Definition</span></span>
+      <span class="toggle-helper">Switches between Role Definition and Job Advertisement.</span>
     </label>
     <small style="display: block; margin-left: 54px; margin-top: 5px; color: #b3b3bd;">Toggle between Role Definition (for current employees) and Job Advertisement (for hiring)</small>
   </div>
@@ -125,6 +125,7 @@ Generate comprehensive cybersecurity job descriptions based on the **NIST NICE W
     <span class="toggle-label">
         📋 Include <a href="https://www.mitre.org/sites/default/files/2022-04/11-strategies-of-a-world-class-cybersecurity-operations-center.pdf" target="_blank" rel="noopener">11 SOC Strategies</a>
     </span>
+    <span class="toggle-helper">Incorporates MITRE SOC best practices.</span>
     </label>
     <small style="display: block; margin-left: 54px; margin-top: 5px; color: #b3b3bd;">Incorporate best practices from MITRE's SOC strategies document</small>
   </div>
@@ -134,6 +135,7 @@ Generate comprehensive cybersecurity job descriptions based on the **NIST NICE W
       <input type="checkbox" id="useAI">
       <span class="toggle-switch"><span class="toggle-slider"></span></span>
       <span class="toggle-label">🤖 Enhance with AI</span>
+      <span class="toggle-helper">Customizes output using AI enhancement.</span>
     </label>
     <small style="display: block; margin-left: 54px; margin-top: 5px; color: #b3b3bd;">Use AI to customize and refine the output based on format and tier level</small>
   </div>
@@ -157,9 +159,9 @@ Generate comprehensive cybersecurity job descriptions based on the **NIST NICE W
   <div class="result-header">
     <h3>📄 Job Description Generated</h3>
     <div class="result-actions">
-      <button id="copyBtn" title="Copy to clipboard">📋 Copy</button>
-      <button id="downloadBtn" title="Download as Markdown">💾 Download</button>
-      <button id="regenerateBtn" title="Generate again">🔄 Regenerate</button>
+      <button class="action-btn copy-btn" onclick="copyResult(event)" title="Copy to clipboard">📋 Copy</button>
+      <button class="action-btn download-btn" onclick="downloadResult('markdown')" title="Download as Markdown">📄 MD</button>
+      <button class="action-btn download-btn-alt" onclick="downloadResult('html')" title="Download as HTML">🌐 HTML</button>
     </div>
   </div>
   <div id="resultContent" class="prose job-description-output"></div>
@@ -223,4 +225,5 @@ The tool will:
 
 <script src="/shared/components/utils.js"></script>
 <script src="/shared/components/api-manager.js"></script>
+<script src="/shared/components/download-manager.js"></script>
 <script src="nist-nice-framework.js"></script>

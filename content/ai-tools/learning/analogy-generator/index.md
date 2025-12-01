@@ -3,7 +3,6 @@ title: "Analogy Generator"
 subtitle: "Explain Complex Concepts with Analogies"
 description: "Generate clear, relatable analogies to explain difficult concepts. Perfect for teachers, communicators, and anyone explaining technical topics to diverse audiences."
 keywords: ["analogy generator", "explain concepts", "teaching tool", "metaphor generator", "learning aid", "educational tool", "concept explanation", "teaching assistant"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -106,13 +105,11 @@ Transform complex concepts into relatable analogies. Make difficult ideas access
     <h2>🎯 Generated Analogies</h2>
     <div id="resultContent"></div>
     <div class="result-actions">
-      <button id="copyBtn">📋 Copy All</button>
-      <button id="downloadBtn">📄 Download</button>
-      <button id="regenerateBtn">🔄 Regenerate</button>
+      <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+      <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+      <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
   </div>
 </div>
 
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="/shared/components/utils.js"></script>
+<!-- api-manager.js, utils.js, and download-manager.js are already loaded in head.html -->
 <script src="analogy-generator.js"></script>

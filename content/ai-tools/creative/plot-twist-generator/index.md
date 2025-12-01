@@ -3,7 +3,6 @@ title: "DnD Story Twist Creator"
 subtitle: "AI-Powered Plot Twist and Story Surprise Tool"
 description: "Generate contextual plot twists that fit seamlessly into your story. Create surprising reveals, unexpected turns, and shocking moments for any narrative genre."
 keywords: ["plot twist generator", "story twist creator", "narrative surprise", "story generator", "creative writing tool", "plot device", "story development", "writing inspiration", "twist ideas", "story elements"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -115,21 +114,25 @@ Generate contextual plot twists that fit seamlessly into your story. Create surp
 <input checked="" id="includeForeshadowing" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Foreshadowing suggestions</span>
+<span class="toggle-helper">Enabled.</span>
 </label>
 <label class="checkbox-inline">
 <input checked="" id="includeClues" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Clues to plant earlier</span>
+<span class="toggle-helper">Enabled.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeReactions" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Character reactions</span>
+<span class="toggle-helper">Enabled.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeConsequences" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Story consequences</span>
+<span class="toggle-helper">Enabled.</span>
 </label>
 </div>
 </div>
@@ -143,13 +146,10 @@ Generate contextual plot twists that fit seamlessly into your story. Create surp
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Your Plot Twist</h3>
 <div class="result-content" id="resultContent"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="generateAlternative()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #ff6b35, #ff8555);">🔄 Alternative Twist</button>
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">� Download Markdown</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎭 Refine Twist</button>
-
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 
 

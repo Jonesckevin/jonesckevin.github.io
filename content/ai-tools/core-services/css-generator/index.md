@@ -3,7 +3,6 @@ title: "CSS Generator"
 subtitle: "AI-Powered CSS Generator with Live Preview"
 description: "Generate custom CSS styles with AI assistance and preview them in real-time. Create styles for text, tables, images, and more with live examples. Free AI CSS generator."
 keywords: ["CSS generator", "AI CSS creator", "CSS maker", "style generator", "web design tool", "CSS preview", "live CSS editor", "AI styling", "web development", "CSS examples"]
-author: JonesCKevin
 date: 2025-10-07
 lastmod: 2025-10-07
 draft: false
@@ -88,7 +87,7 @@ Generate custom CSS styles with AI assistance. Describe what you want, and watch
             <span>CSS Code (Editable)</span>
             <div class="editor-actions">
                 <button onclick="applyCSS()" class="apply-btn">✨ Apply Changes</button>
-                <button onclick="copyCSSCode()" class="action-btn copy-btn">📋 Copy CSS</button>
+                <button class="copy-btn" onclick="copyResult(event)">📋 Copy CSS</button>
             </div>
         </div>
         <textarea id="cssCodeEditor" class="css-code-editor" spellcheck="false"></textarea>
@@ -199,13 +198,10 @@ Generate custom CSS styles with AI assistance. Describe what you want, and watch
         </div>
     </div>
     <!-- Download Options -->
-    <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-        <button class="btn-primary" onclick="downloadCSS()" style="width: auto; padding: 10px 20px;">
-            💾 Download CSS File
-        </button>
-        <button class="btn-primary" onclick="copyFullCode()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">
-            📋 Copy CSS + HTML Example
-        </button>
+    <div class="result-actions" style="margin-top: 30px; justify-content: center;">
+        <button class="copy-btn" onclick="copyResult(event)">📋 Copy CSS</button>
+        <button class="download-btn" onclick="downloadResult('css')">💾 CSS</button>
+        <button class="download-btn-alt" onclick="copyFullCode(event)">📋 CSS+HTML</button>
     </div>
 </div>
     

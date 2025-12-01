@@ -7,8 +7,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     
     // Initialize download manager
     if (!window.downloadManager) {
-        console.warn('Download manager not loaded');
+        window.downloadManager = new DownloadManager();
     }
+
+    // Register standardized copy/download actions
+    utils.registerToolActions('pace-report-writer', () => currentResult);
     
     // Load competency data from JSONL file
     await loadCompetencyData();
@@ -520,6 +523,7 @@ window.generatePaceReport = async function () {
     
     // Get form values
     const rankSelect = document.getElementById('rankSelect').value;
+    const jobTrade = document.getElementById('jobTrade')?.value.trim() || '';
     const eventDescription = document.getElementById('eventDescription').value.trim();
     const competency1 = document.getElementById('competency1').value;
     const competency2 = document.getElementById('competency2').value;
@@ -641,7 +645,7 @@ Your task is to analyze the provided event description and generate a PaCE repor
 ## PaCE Report
 
 ### Member Information
-- **Rank/Position:** ${rankData.fullName}
+- **Rank/Position:** ${rankData.fullName}${jobTrade ? `\n- **Military Occupation/Trade:** ${jobTrade}` : ''}
 
 ### Event Summary
 **Event Title:** [2-5 word capitalized summary of the event, e.g., "OPERATIONAL READINESS TRAINING EXERCISE" or "LEADERSHIP MENTORSHIP PROGRAM"]
@@ -658,7 +662,7 @@ Example INCORRECT format: "1. Leadership" (missing specific competency)
 ]
 
 **Performance Summary:**
-[Provide a 2-3 sentence summary of the member's performance during the evaluation period, focusing on key actions and contributions]
+[Provide a 2-3 sentence summary of the member's performance during the evaluation period, focusing on key actions and contributions${jobTrade ? `. Consider how this event relates to their ${jobTrade} occupation` : ''}]
 
 ### Event Outcome
 [Describe the tangible outcome or impact of the member's actions on individual, team, unit, or organizational performance. Include measurable results where possible. Focus on what was achieved or improved.]
@@ -666,7 +670,7 @@ Example INCORRECT format: "1. Leadership" (missing specific competency)
 ${includeCCG ? `
 
 **Assessment Context (CCG):**
-- **Complexity:** [Low/Medium/High - based on task difficulty and scope]
+- **Complexity:** [Low/Medium/High - based on task difficulty and scope${jobTrade ? `. Consider: tasks within normal ${jobTrade} scope are typically Low-Medium; tasks significantly outside ${jobTrade} responsibilities (e.g., an Armored soldier developing software) are High complexity due to requiring skills beyond primary trade` : ''}]
 - **Consistency:** [Occasional/Frequent/Sustained - based on performance patterns]
 - **Guidance:** [Independent/Minimum/Moderate/Close - level of supervision needed]` : ''}
 
@@ -714,14 +718,15 @@ IMPORTANT GUIDELINES:
 - **CRITICAL FORMATTING RULE:** When listing competencies under "Relevant Competencies", you MUST use the format "1. [Category Name] -> [Specific Competency Name]". NEVER list only the category name without the specific competency.
 - Select exactly ${competencyCount} competencies that are MOST relevant to the event description, listed in order of priority (most relevant first)
 - Each competency listed MUST include BOTH the category AND the specific competency name separated by an arrow (->)
-- Use the rank-specific competency framework provided above to identify both category names and specific competency names
+- Use the rank-specific competency framework provided above to identify both category names and specific competency names${jobTrade ? `
+- **Military Occupation Context:** The member's trade is ${jobTrade}. When assessing complexity, consider whether tasks align with typical ${jobTrade} responsibilities or demonstrate versatility beyond their primary role. Tasks outside normal trade scope indicate higher complexity and broader capability.` : ''}
 - Use proper markdown formatting with headers (##, ###) and bullet points
 - Be specific and provide concrete examples
 - Focus on measurable outcomes and impacts
 - Maintain professional military tone
 - Follow the EXACT format template provided above - do not add or remove sections
 - Ensure every section follows the template structure precisely${includeCCG ? `
-- Assess CCG (Complexity, Consistency, Guidance) realistically based on the event description` : ''}${includeAnalysis ? `
+- Assess CCG (Complexity, Consistency, Guidance) realistically based on the event description${jobTrade ? `. For Complexity: tasks within ${jobTrade} normal duties = Low-Medium; tasks significantly outside ${jobTrade} scope = High (demonstrates exceptional versatility and learning agility)` : ''}` : ''}${includeAnalysis ? `
 - Provide detailed competency demonstration analysis with concrete examples from the event
 - Ensure the Competency Analysis section analyzes EACH competency listed in the Event Summary` : `
 - DO NOT include a "Competency Analysis" section - only provide the Event Outcome`}${includeMetaCompetency && !includeMetaCompetencyDetailed ? `
@@ -738,6 +743,11 @@ IMPORTANT GUIDELINES:
 - Follow the EXACT format template provided above - do not add or remove sections`;
 
     let userPrompt = `**Event Description:**\n${eventDescription}\n\n`;
+    
+    if (jobTrade) {
+        userPrompt += `**Member's Military Occupation/Trade:**\n${jobTrade}\n\n`;
+        userPrompt += `Context: Use this occupation to assess task complexity and relevance. Tasks aligned with ${jobTrade} duties show normal competency development. Tasks significantly outside ${jobTrade} scope demonstrate exceptional versatility, learning agility, and higher complexity (e.g., an Armored soldier developing software, an Infantry member doing supply chain analysis).\n\n`;
+    }
     
     if (uniqueCompetencies.length > 0) {
         userPrompt += `**Member's Pre-Selected Competencies:**\n${uniqueCompetencies.map((c, i) => `${i + 1}. ${c}`).join('\n')}\n\n`;
@@ -822,40 +832,6 @@ IMPORTANT GUIDELINES:
         utils.showError(document.getElementById('errorDiv'), errorMessage);
         document.getElementById('errorDiv').style.display = 'block';
     }
-};
-
-// Copy result to clipboard
-window.copyResult = function(event) {
-    if (event) event.preventDefault();
-    
-    if (currentResult) {
-        utils.copyToClipboard(currentResult);
-        
-        // Visual feedback
-        const button = event ? event.target : document.querySelector('.copy-btn');
-        const originalText = button.textContent;
-        button.textContent = '✅ Copied!';
-        button.style.background = 'linear-gradient(135deg, #00cc44, #00ff55)';
-        
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.style.background = '';
-        }, 2000);
-    }
-};
-
-// Download result in specified format
-window.downloadResult = function(format) {
-    if (!currentResult) {
-        console.error('No content to download');
-        return;
-    }
-    
-    const rank = document.getElementById('rank').value.trim() || 'member';
-    const sanitizedRank = rank.replace(/[^a-z0-9]/gi, '-').toLowerCase();
-    const filename = `pace-report-${sanitizedRank}`;
-    
-    window.downloadManager.download(format, filename);
 };
 
 // Toggle visibility of optional competency selectors

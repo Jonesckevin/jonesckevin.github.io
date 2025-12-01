@@ -3,7 +3,6 @@ title: "SQL Query Builder"
 subtitle: "AI-Powered SQL Query Generation Tool"
 description: "Generate optimized SQL queries from natural language descriptions. Create database queries for any SQL system with AI assistance. Free online SQL query builder for developers."
 keywords: ["SQL query builder", "database query generator", "AI SQL tool", "SQL generator", "database development", "SQL optimization", "query builder", "SQL assistant", "database tools", "SQL automation"]
-author: JonesCKevin
 date: 2025-09-30
 lastmod: 2025-09-30
 draft: false
@@ -121,41 +120,49 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 <input id="includeExplanation" type="checkbox" checked/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include query explanation</span>
+<span class="toggle-helper">Adds detailed SQL explanation.</span>
 </label>
 <label class="checkbox-inline">
 <input id="optimizePerformance" type="checkbox" checked/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Optimize for performance</span>
+<span class="toggle-helper">Focuses on query efficiency.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeIndexSuggestions" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Suggest indexes</span>
+<span class="toggle-helper">Recommends database indexes.</span>
 </label>
 <label class="checkbox-inline">
 <input id="generateTestData" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Generate test data</span>
+<span class="toggle-helper">Creates sample data for testing.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeErrorHandling" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include error handling</span>
+<span class="toggle-helper">Adds error handling logic.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeTransactions" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Use transactions</span>
+<span class="toggle-helper">Wraps in transaction blocks.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeLogging" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Add logging/audit trail</span>
+<span class="toggle-helper">Includes audit logging.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeDocumentation" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Generate documentation</span>
+<span class="toggle-helper">Creates query documentation.</span>
 </label>
 </div>
 </div>
@@ -178,12 +185,11 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 <h3 style="color: #ff6b35; margin-bottom: 20px;">💾 Generated SQL Query</h3>
 <div id="resultContent"></div>
 <div class="result-actions" id="downloadButtons">
-<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy Query</button>
-<button class="action-btn download-btn" onclick="downloadResult('sql')">🗄️ SQL File</button>
-<button class="action-btn download-btn" onclick="downloadResult('script')" id="scriptDownloadBtn" style="display: none;">📜 Script</button>
-<button class="action-btn download-btn" onclick="downloadResult('docker')" id="dockerDownloadBtn" style="display: none;">🐳 Docker</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Markdown</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px;">🔄 Alternative</button>
+    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+    <button class="download-btn" onclick="downloadResult('sql')">🗄️ SQL</button>
+    <button class="download-btn" onclick="downloadResult('script')" id="scriptDownloadBtn" style="display: none;">📜 Script</button>
+    <button class="download-btn" onclick="downloadResult('docker')" id="dockerDownloadBtn" style="display: none;">🐳 Docker</button>
+    <button class="download-btn-alt" onclick="downloadResult('markdown')">📄 MD</button>
 </div>
 </div>
 

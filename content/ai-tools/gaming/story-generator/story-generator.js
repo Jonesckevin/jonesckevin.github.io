@@ -81,9 +81,7 @@ Write a complete, polished story that readers will enjoy and remember.`;
             // Convert to HTML and display
             const htmlContent = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <div style="line-height: 1.7; color: #e0e0e0;">${htmlContent}</div>
-                </div>
+                <div class="result-display">${htmlContent}</div>
             `;
 
             // Show result
@@ -128,9 +126,7 @@ Write a complete, polished story that readers will enjoy and remember.`;
             currentResult = response;
             const htmlContent = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <div style="line-height: 1.7; color: #e0e0e0;">${htmlContent}</div>
-                </div>
+                <div class="result-display">${htmlContent}</div>
             `;
 
             document.getElementById('loadingDiv').style.display = 'none';
@@ -144,16 +140,14 @@ Write a complete, polished story that readers will enjoy and remember.`;
         }
     }
 
-    function copyResult() {
+    function copyResult(event) {
         utils.copyToClipboard(currentResult).then(success => {
-            if (success) {
+            if (success && event && event.target) {
                 const button = event.target;
                 const originalText = button.innerHTML;
                 button.innerHTML = '✅ Copied!';
-                button.style.background = 'linear-gradient(135deg, #44ff44, #66ff66)';
                 setTimeout(() => {
                     button.innerHTML = originalText;
-                    button.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
                 }, 2000);
             }
         });

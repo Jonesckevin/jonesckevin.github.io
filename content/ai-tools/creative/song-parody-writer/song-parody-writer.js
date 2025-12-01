@@ -128,31 +128,6 @@ Make it memorable, clever, and fun to perform!`;
         }
     }
 
-    // Copy to clipboard
-    window.copyResult = function (event) {
-        if (currentResult) {
-            navigator.clipboard.writeText(currentResult).then(() => {
-                const btn = event?.target || document.querySelector('.copy-btn');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✓ Copied!';
-                btn.style.background = 'linear-gradient(135deg, #45a049 0%, #3d8b40 100%)';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                }, 2000);
-            });
-        }
-    };
-
-    // Download result in specified format
-    window.downloadResult = function (format) {
-        if (!currentResult) return;
-        
-        const songTitle = document.getElementById('songTitle').value.trim();
-        const topic = document.getElementById('parodyTopic').value.trim();
-        const filename = `parody-${songTitle.replace(/\s+/g, '-')}-${topic.replace(/\s+/g, '-')}`;
-        
-        downloadManager.setContent(currentResult, 'markdown');
-        downloadManager.download(format, filename);
-    };
+    // Register standard copy/download actions
+    utils.registerToolActions('song-parody-writer', () => currentResult);
 });

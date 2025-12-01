@@ -71,21 +71,25 @@ Plan your entire week with personalized meal suggestions, complete grocery lists
         <input type="checkbox" id="includeBreakfast" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🌅 Breakfast</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeLunch" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🌞 Lunch</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeDinner" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🌙 Dinner</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeSnacks">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🍿 Snacks</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
     </div>
   </div>

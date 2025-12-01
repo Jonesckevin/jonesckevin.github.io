@@ -130,9 +130,7 @@ Create something memorable that players will talk about after the session!`;
             // Convert to HTML and display
             const htmlContent = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <div style="line-height: 1.7; color: #e0e0e0;">${htmlContent}</div>
-                </div>
+                <div class="result-display">${htmlContent}</div>
             `;
 
             // Show result
@@ -179,9 +177,7 @@ Create something memorable that players will talk about after the session!`;
             currentResult = response;
             const htmlContent = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <div style="line-height: 1.7; color: #e0e0e0;">${htmlContent}</div>
-                </div>
+                <div class="result-display">${htmlContent}</div>
             `;
 
             document.getElementById('loadingDiv').style.display = 'none';

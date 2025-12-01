@@ -842,39 +842,27 @@ Provide both a DESCRIPTION and MERMAID_CODE as in the previous format.`;
         }
     }
 
-    function copyMermaidCode() {
+    function copyMermaidCode(event) {
         if (!currentMermaidCode) {
             console.warn('No Mermaid code available to copy');
             return;
         }
 
-        // Find the copy button or use event target
-        let button = null;
-        if (event && event.target) {
-            button = event.target;
-        } else {
-            // Fallback: find the copy button by its text content
-            const buttons = document.querySelectorAll('button');
-            for (let btn of buttons) {
-                if (btn.textContent.includes('Copy Mermaid Code')) {
-                    button = btn;
-                    break;
-                }
+        // Use utils.copyToClipboard with fallback mechanism
+        utils.copyToClipboard(currentMermaidCode).then(success => {
+            if (success && event?.target) {
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            } else if (!success) {
+                console.error('Failed to copy Mermaid code');
             }
-        }
-
-        if (button) {
-            safeCopyToClipboard(currentMermaidCode, button);
-        } else {
-            // Final fallback: just copy to clipboard without button feedback
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(currentMermaidCode).then(() => {
-                    console.log('Mermaid code copied to clipboard');
-                }).catch(err => {
-                    console.error('Failed to copy Mermaid code:', err);
-                });
-            }
-        }
+        });
     }
 
     function downloadRoadmap(format) {

@@ -3,7 +3,6 @@ title: "DnD Personality Converter"
 subtitle: "AI-Powered Character Voice and Dialogue Tool"
 description: "Transform text to match specific character voices and speaking styles. Perfect for dialogue writing, character development, and creating authentic voices for stories and games."
 keywords: ["character voice converter", "dialogue generator", "character voice AI", "writing tool", "story dialogue", "character development", "voice generator", "creative writing", "roleplay tool", "character speech"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -132,6 +131,7 @@ Transform any text to match specific character voices and speaking styles. Perfe
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Preserve original meaning</span>
+<span class="toggle-helper">Keeps the core message intact.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="preserveLength">
@@ -139,6 +139,7 @@ Transform any text to match specific character voices and speaking styles. Perfe
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Keep similar length</span>
+<span class="toggle-helper">Maintains approximate word count.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="addMannerisms">
@@ -146,6 +147,7 @@ Transform any text to match specific character voices and speaking styles. Perfe
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Add character mannerisms</span>
+<span class="toggle-helper">Includes gestures and quirks.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeDialogueTags">
@@ -153,6 +155,7 @@ Transform any text to match specific character voices and speaking styles. Perfe
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Include dialogue tags</span>
+<span class="toggle-helper">Adds "he said", "she whispered", etc.</span>
 </label>
 </div>
 </div>
@@ -168,12 +171,11 @@ Converting text to character voice...
 
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Converted Character Voice</h3>
-<div class="result-content" id="resultContent"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<div class="result-actions" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-<button class="action-btn copy-btn" onclick="copyResult(event)">Copy Output</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown', event)">MD</button>
-<button class="action-btn download-btn" onclick="downloadResult('html', event)">HTML</button>
+<div id="resultContent" class="result-content"></div>
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 
 </div>

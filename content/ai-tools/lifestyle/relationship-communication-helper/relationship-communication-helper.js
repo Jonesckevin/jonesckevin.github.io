@@ -4,20 +4,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!window.downloadManager) window.downloadManager = new DownloadManager();
 
     document.getElementById('communicationForm').addEventListener('submit', generateGuidance);
-    document.getElementById('copyBtn')?.addEventListener('click', () => copyToClipboard());
-    document.getElementById('downloadBtn')?.addEventListener('click', downloadResult);
-    document.getElementById('regenerateBtn')?.addEventListener('click', generateGuidance);
 
-    function showError(msg) {
-        document.getElementById('errorDiv').innerHTML = `<div style="color: #ff6666; padding: 15px; background: rgba(255,68,68,0.1); border-radius: 6px; border-left: 4px solid #ff6666;">${msg}</div>`;
-        document.getElementById('errorDiv').style.display = 'block';
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('relationship-communication-helper', () => currentResult);
 
     async function generateGuidance(event) {
         if (event) event.preventDefault();
         
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -31,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const includeAvoid = document.getElementById('includeAvoid').checked;
 
         if (!relationshipType || !conversationType || !situation || !yourFeelings) {
-            showError('Please fill in all required fields.');
+            utils.showError(document.getElementById('errorDiv'), 'Please fill in all required fields.');
             return;
         }
 
@@ -121,7 +116,7 @@ Be compassionate, realistic about relationship dynamics, and focused on healthy 
 
         } catch (error) {
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(`Failed to generate communication guidance: ${error.message}`);
+            utils.showError(document.getElementById('errorDiv'), `Failed to generate communication guidance: ${error.message}`);
         }
     }
 
@@ -140,24 +135,5 @@ Be compassionate, realistic about relationship dynamics, and focused on healthy 
         htmlOutput = htmlOutput.replace(/(<li class="numbered-item".*<\/li>\n?)+/g, '<ol>$&</ol>');
         
         contentDiv.innerHTML = `<div class="communication-guidance-output">${htmlOutput}</div>`;
-    }
-
-    function copyToClipboard() {
-        if (currentResult) {
-            navigator.clipboard.writeText(currentResult).then(() => {
-                const btn = document.getElementById('copyBtn');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<span class="btn-icon">✓</span> Copied!';
-                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
-            });
-        }
-    }
-
-    function downloadResult() {
-        if (currentResult) {
-            const filename = 'communication-guidance';
-            downloadManager.setContent(currentResult, 'markdown');
-            downloadManager.download('markdown', filename);
-        }
     }
 });

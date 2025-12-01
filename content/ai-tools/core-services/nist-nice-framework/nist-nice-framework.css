@@ -196,16 +196,6 @@
   display: none;
 }
 
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 24px;
-  background-color: var(--border-color);
-  border-radius: 12px;
-  transition: background-color 0.3s ease;
-  flex-shrink: 0;
-}
 
 .toggle-slider {
   position: absolute;
@@ -234,52 +224,11 @@
   font-weight: 500;
 }
 
-/* Button Styling */
+/* Form Actions Layout */
 .form-actions {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
-}
-
-.btn-primary,
-.btn-secondary {
-  flex: 1;
-  padding: 0.875rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.btn-primary {
-  background: var(--primary-color);
-  color: white;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:hover {
-  background: var(--primary-dark);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-.btn-secondary {
-  background: #6c757d;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: #5a6268;
 }
 
 .btn-icon {

@@ -9,6 +9,7 @@
     // State management
     let nistData = null;
     let socStrategies = null;
+    let currentResult = '';  // Track current markdown result for copy/download
     
     // DOM elements
     const elements = {
@@ -31,10 +32,7 @@
         loadingDiv: document.getElementById('loadingDiv'),
         errorDiv: document.getElementById('errorDiv'),
         resultDiv: document.getElementById('resultDiv'),
-        resultContent: document.getElementById('resultContent'),
-        copyBtn: document.getElementById('copyBtn'),
-        downloadBtn: document.getElementById('downloadBtn'),
-        regenerateBtn: document.getElementById('regenerateBtn')
+        resultContent: document.getElementById('resultContent')
     };
 
     // SOC Strategies content
@@ -266,6 +264,9 @@
         if (!window.apiManager) {
             window.apiManager = new APIManager();
         }
+        if (!window.downloadManager) {
+            window.downloadManager = new DownloadManager();
+        }
         
         setupEventListeners();
         loadNISTData();
@@ -276,9 +277,9 @@
     function setupEventListeners() {
         elements.form.addEventListener('submit', handleFormSubmit);
         elements.resetBtn.addEventListener('click', handleReset);
-        elements.copyBtn.addEventListener('click', handleCopy);
-        elements.downloadBtn.addEventListener('click', handleDownload);
-        elements.regenerateBtn.addEventListener('click', handleRegenerate);
+        
+        // Register standardized copy/download actions
+        utils.registerToolActions('nist-nice-framework', () => currentResult);
         
         // Format toggle
         elements.outputFormat.addEventListener('change', updateFormatLabel);
@@ -322,7 +323,7 @@
             console.log('NIST data loaded successfully');
         } catch (error) {
             console.error('Error loading NIST data:', error);
-            showError('Failed to load NIST NICE Framework data. Please refresh the page.');
+            utils.showError(elements.errorDiv, 'Failed to load NIST NICE Framework data. Please refresh the page.');
         }
     }
 
@@ -343,7 +344,7 @@
             displayResult(jobDescription);
         } catch (error) {
             console.error('Error generating job description:', error);
-            showError('Failed to generate job description. Please try again.');
+            utils.showError(elements.errorDiv, 'Failed to generate job description. Please try again.');
         } finally {
             hideLoading();
         }
@@ -352,18 +353,18 @@
     // Validate form
     function validateForm() {
         if (!elements.jobTitle.value.trim()) {
-            showError('Please enter a job title.');
+            utils.showError(elements.errorDiv, 'Please enter a job title.');
             return false;
         }
 
         if (!nistData) {
-            showError('NIST data is still loading. Please wait a moment and try again.');
+            utils.showError(elements.errorDiv, 'NIST data is still loading. Please wait a moment and try again.');
             return false;
         }
 
         // Check for API key if AI enhancement is enabled
         if (elements.useAI.checked && !window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️) to use AI enhancement.');
+            utils.showError(elements.errorDiv, 'Please set up your API key using the settings menu (⚙️) to use AI enhancement.');
             return false;
         }
 
@@ -765,13 +766,14 @@ Guidelines:
             return response;
         } catch (error) {
             console.error('AI enhancement failed:', error);
-            showError('AI enhancement failed. Using basic job description. ' + error.message);
+            utils.showError(elements.errorDiv, 'AI enhancement failed. Using basic job description. ' + error.message);
             return markdown;
         }
     }
 
     // Display result
     function displayResult(markdown) {
+        currentResult = markdown;  // Store for copy/download
         // Convert markdown to HTML (basic conversion)
         const html = convertMarkdownToHTML(markdown);
         elements.resultContent.innerHTML = html;
@@ -806,42 +808,6 @@ Guidelines:
         return html;
     }
 
-    // Handle copy
-    function handleCopy() {
-        const text = elements.resultContent.innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            showTemporaryMessage(elements.copyBtn, '✓ Copied!');
-        }).catch(err => {
-            console.error('Failed to copy:', err);
-            showError('Failed to copy to clipboard.');
-        });
-    }
-
-    // Handle download
-    function handleDownload() {
-        const markdown = elements.resultContent.innerText;
-        const jobTitle = elements.jobTitle.value.trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        const isJobAd = elements.outputFormat.checked;
-        const filename = `${jobTitle}_${isJobAd ? 'job_ad' : 'role_definition'}.md`;
-        
-        const blob = new Blob([markdown], { type: 'text/markdown' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        
-        showTemporaryMessage(elements.downloadBtn, '✓ Downloaded!');
-    }
-
-    // Handle regenerate
-    function handleRegenerate() {
-        handleFormSubmit(new Event('submit'));
-    }
-
     // Handle reset
     function handleReset() {
         elements.form.reset();
@@ -867,11 +833,6 @@ Guidelines:
     function hideLoading() {
         elements.loadingDiv.style.display = 'none';
         elements.generateBtn.disabled = false;
-    }
-
-    function showError(message) {
-        elements.errorDiv.innerHTML = `<strong>Error:</strong> ${message}`;
-        elements.errorDiv.style.display = 'block';
     }
 
     function hideError() {

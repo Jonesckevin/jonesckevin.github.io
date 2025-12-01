@@ -3,7 +3,6 @@ title: "Debate Argument Builder"
 subtitle: "Build Structured Arguments For & Against"
 description: "Generate well-structured debate arguments with evidence, counterarguments, and rebuttals. Perfect for students, debaters, and critical thinkers."
 keywords: ["debate arguments", "argument builder", "debate tool", "critical thinking", "argumentation", "debate preparation", "logic tool", "reasoning assistant"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -82,18 +81,36 @@ Build comprehensive debate arguments with structured reasoning, evidence, and co
   <div class="form-group">
     <label>Include in Arguments</label>
     <div class="checkbox-group">
-      <label><input type="checkbox" name="includes" value="statistics" >
-      <span class="toggle-switch"><span class="toggle-slider"></span></span> Stat</label>
-      <label><input type="checkbox" name="includes" value="examples" >
-      <span class="toggle-switch"><span class="toggle-slider"></span></span> Examples</label>
-      <label><input type="checkbox" name="includes" value="expert" >
-      <span class="toggle-switch"><span class="toggle-slider"></span></span> Exp. Opinion</label>
-      <label><input type="checkbox" name="includes" value="moral">
-      <span class="toggle-switch"><span class="toggle-slider"></span></span> Ethics</label>
-      <label><input type="checkbox" name="includes" value="economic">
-      <span class="toggle-switch"><span class="toggle-slider"></span></span> Eco Impact</label>
-      <label><input type="checkbox" name="includes" value="social">
-      <span class="toggle-switch"><span class="toggle-slider"></span></span> Social Implications</label>
+      <label class="checkbox-inline"><input type="checkbox" name="includes" value="statistics">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Stat</span>
+      <span class="toggle-helper">Adds statistics.</span>
+      </label>
+      <label class="checkbox-inline"><input type="checkbox" name="includes" value="examples">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Examples</span>
+      <span class="toggle-helper">Enabled.</span>
+      </label>
+      <label class="checkbox-inline"><input type="checkbox" name="includes" value="expert">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Exp. Opinion</span>
+      <span class="toggle-helper">Cites experts.</span>
+      </label>
+      <label class="checkbox-inline"><input type="checkbox" name="includes" value="moral">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Ethics</span>
+      <span class="toggle-helper">Adds moral reasoning.</span>
+      </label>
+      <label class="checkbox-inline"><input type="checkbox" name="includes" value="economic">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Eco Impact</span>
+      <span class="toggle-helper">Adds economic analysis.</span>
+      </label>
+      <label class="checkbox-inline"><input type="checkbox" name="includes" value="social">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Social Implications</span>
+      <span class="toggle-helper">Adds social analysis.</span>
+      </label>
     </div>
   </div>
   <div class="form-group">
@@ -102,8 +119,11 @@ Build comprehensive debate arguments with structured reasoning, evidence, and co
   </div>
 
   <div class="form-group">
-    <label><input type="checkbox" id="includeRebuttals">
-      <span class="toggle-switch"><span class="toggle-slider"></span></span> Include Counterarguments & Rebuttals</label>
+    <label class="checkbox-inline"><input type="checkbox" id="includeRebuttals">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Include Counterarguments & Rebuttals</span>
+      <span class="toggle-helper">Adds opposing views and responses.</span>
+    </label>
   </div>
 
   <div class="form-actions">
@@ -122,9 +142,9 @@ Build comprehensive debate arguments with structured reasoning, evidence, and co
   <div class="result-header">
     <h3>📜 Debate Arguments</h3>
     <div class="result-actions">
-      <button id="copyBtn">📋 Copy</button>
-      <button id="downloadBtn">📄 Download</button>
-      <button id="regenerateBtn">🔄 Regenerate</button>
+      <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+      <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+      <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
     </div>
   </div>
   <div id="resultContent"></div>

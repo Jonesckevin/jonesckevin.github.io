@@ -5,16 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('screenplayForm').addEventListener('submit', generateScreenplay);
 
-    function showError(msg) {
-        document.getElementById('errorDiv').innerHTML = `<div style="color: #ff6666; padding: 15px; background: rgba(255,68,68,0.1); border-radius: 6px; border-left: 4px solid #ff6666;">${msg}</div>`;
-        document.getElementById('errorDiv').style.display = 'block';
-    }
-
     async function generateScreenplay(event) {
         if (event) event.preventDefault();
         
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -30,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const additionalNotes = document.getElementById('additionalNotes').value.trim();
 
         if (!genre || !location || !characters || !sceneDescription) {
-            showError('Please fill in all required fields.');
+            utils.showError(document.getElementById('errorDiv'), 'Please fill in all required fields.');
             return;
         }
 
@@ -130,7 +125,7 @@ Deliver the screenplay scene in clean markdown format. No preamble, just the for
 
         } catch (error) {
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(`Failed to generate screenplay: ${error.message}`);
+            utils.showError(document.getElementById('errorDiv'), `Failed to generate screenplay: ${error.message}`);
         }
     }
 
@@ -149,28 +144,9 @@ Deliver the screenplay scene in clean markdown format. No preamble, just the for
         }
     }
 
-    function copyToClipboard() {
-        if (currentResult) {
-            navigator.clipboard.writeText(currentResult).then(() => {
-                const btn = event?.target || document.querySelector('.copy-btn');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✓ Copied!';
-                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
-            });
-        }
-    }
-
-    function downloadResult(format) {
-        if (!currentResult) return;
-        
-        const location = document.getElementById('location').value.trim().replace(/[^a-z0-9]/gi, '-').toLowerCase();
-        const filename = `screenplay-scene-${location}`;
-        
-        window.downloadManager.setContent(currentResult, 'markdown');
-        window.downloadManager.download(format, filename);
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('screenplay-scene-generator', () => currentResult);
 
     // Make functions globally accessible for onclick handlers
-    window.copyToClipboard = copyToClipboard;
-    window.downloadResult = downloadResult;
+    window.generateScreenplay = generateScreenplay;
 });

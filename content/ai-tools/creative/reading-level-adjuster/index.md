@@ -3,7 +3,6 @@ title: "Text Simplification Tool"
 subtitle: "AI-Powered Reading Level Conversion Tool"
 description: "Convert text to different reading levels while preserving meaning. Simplify complex content for accessibility, education, and broader audience reach with AI assistance."
 keywords: ["reading level adjuster", "text simplification", "readability tool", "AI text converter", "content accessibility", "educational tool", "text complexity", "plain language", "reading comprehension"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -84,41 +83,49 @@ Convert text to different reading levels while preserving meaning and essential 
 <input checked="" id="simplifyVocabulary" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Simplify vocabulary</span>
+<span class="toggle-helper">Replaces complex words with simpler alternatives.</span>
 </label>
 <label class="checkbox-inline">
 <input checked="" id="shortenSentences" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Shorten sentences</span>
+<span class="toggle-helper">Breaks long sentences into shorter ones.</span>
 </label>
 <label class="checkbox-inline">
 <input id="addDefinitions" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Add definitions for complex terms</span>
+<span class="toggle-helper">Inserts explanations for technical words.</span>
 </label>
 <label class="checkbox-inline">
 <input id="useExamples" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include examples and analogies</span>
+<span class="toggle-helper">Adds relatable comparisons for clarity.</span>
 </label>
 <label class="checkbox-inline">
 <input id="improveStructure" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Improve text structure</span>
+<span class="toggle-helper">Reorganizes content for better flow.</span>
 </label>
 <label class="checkbox-inline">
 <input id="addTransitions" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Add transition words</span>
+<span class="toggle-helper">Connects ideas with linking phrases.</span>
 </label>
 <label class="checkbox-inline">
 <input checked="" id="removeJargon" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Remove or explain jargon</span>
+<span class="toggle-helper">Eliminates or clarifies specialized terms.</span>
 </label>
 <label class="checkbox-inline">
 <input id="activeVoice" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Convert to active voice</span>
+<span class="toggle-helper">Changes passive constructions to active.</span>
 </label>
 </div>
 </div>
@@ -146,13 +153,10 @@ Convert text to different reading levels while preserving meaning and essential 
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Adjusted Text</h3>
 <div class="result-content" id="resultContent"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="analyzeReadability()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #ff6b35, #ff8555);">📊 Analyze Readability</button>
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">� Download Markdown</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🔄 Try Different Approach</button>
-
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 
 

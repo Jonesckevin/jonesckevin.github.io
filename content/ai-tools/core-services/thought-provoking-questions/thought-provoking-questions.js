@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     let currentResult = '';
+    if (!window.downloadManager) window.downloadManager = new DownloadManager();
+
+    // Register standardized copy/download actions
+    utils.registerToolActions('thought-provoking-questions', () => currentResult);
 
     // Ensure result containers exist; create them if missing
     function ensureResultContainers() {
@@ -18,10 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
             resultDiv.innerHTML = `
                 <h3 style="color: #ff6b35; margin-bottom: 20px;">Interview Question Set</h3>
                 <div id="resultContent" class="result-content"></div>
-                <div class="result-actions" style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-                    <button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
-                    <button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
-                    <button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
+                <div class="result-actions">
+                    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+                    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+                    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
                 </div>
             `;
             if (form && form.parentNode) {
@@ -121,7 +125,7 @@ CONTEXT:
 - Topics: General plus ${topicsCsv || 'General only'}
 - Target count: ${numQuestions || 20}
 - Include follow-ups: ${includeFollowups ? 'Yes' : 'No'}
-- Include rubric/red flags: ${includeRubric ? 'Yes' : 'No'}
+- Include ## rubric/red flags: ${includeRubric ? 'Yes' : 'No'}
 INSTRUCTIONS:
 1) Mix General questions with the chosen topic areas. Avoid trivia; prefer judgment, tradeoffs, systems thinking, and self-awareness.
 2) Each question should include: intent (what it reveals), the question, and if enabled, 1–2 follow-up probes.
@@ -245,26 +249,7 @@ Create a comprehensive interview question set now.`;
             }
         }
     }
-    function copyResult() {
-        utils.copyToClipboard(currentResult).then(success => {
-            if (success) {
-                const button = event.target;
-                const originalText = button.innerHTML;
-                button.innerHTML = '✅ Copied!';
-                button.style.background = 'linear-gradient(135deg, #44ff44, #66ff66)';
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-                }, 2000);
-            }
-        });
-    }
-    function downloadResult(format) {
-        const roleTitle = document.getElementById('roleTitle').value || 'general';
-        const filename = `interview-questions_${roleTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${utils.getCurrentTimestamp()}`;
-        downloadManager.setContent(currentResult, 'markdown');
-        downloadManager.download(format, filename);
-    }
+
     function resetForm() {
         document.getElementById('resultDiv').style.display = 'none';
         document.getElementById('roleTitle').value = '';
@@ -276,10 +261,9 @@ Create a comprehensive interview question set now.`;
         document.getElementById('includeFollowups').checked = true;
         document.getElementById('includeRubric').checked = true;
     }
+
     // Make functions globally available for onclick handlers
     window.generateTPQ = generateTPQ;
     window.generateVariation = generateVariation;
-    window.copyResult = copyResult;
-    window.downloadResult = downloadResult;
     window.resetForm = resetForm;
 });

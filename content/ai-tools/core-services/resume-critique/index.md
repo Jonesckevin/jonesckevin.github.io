@@ -3,15 +3,17 @@ title: "Resume Analysis Tool"
 subtitle: "AI-Powered Resume Review and Enhancement Service"
 description: "Get professional AI-powered resume analysis with detailed feedback and scoring. Improve your resume with expert critiques and ATS optimization suggestions. Free resume reviewer."
 keywords: ["resume critique", "resume analysis", "AI resume reviewer", "resume feedback", "ATS optimization", "resume scoring", "professional resume review", "resume improvement", "career tools", "job application help"]
-author: JonesCKevin
 date: 2025-09-13
-lastmod: 2025-09-30
-draft: false
+lastmod: 2025-11-30
+draft: true
+aliases:
+  - /ai-tools/core-services/resume-critique/
+redirect: /ai-tools/core-services/resume-builder/
 tags: ["Core Services", "Productivity", "Resume", "Career", "Analysis", "Professional Development", "AI", "Tools"]
 categories: ["AI Tools"]
 type: ai-tools
 seo_title: "Free AI Resume Critique - Professional Resume Analysis & Review"
-canonical: "/ai-tools/core-services/resume-critique/"
+canonical: "/ai-tools/core-services/resume-builder/"
 featured_image: "/images/featured/aitools/resume-analysis.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
@@ -26,8 +28,6 @@ social_media:
   twitter_description: "Professional resume analysis with AI. Get detailed feedback and scoring to improve your job applications."
   twitter_image: "/images/featured/aitools/resume-analysis.png"
 ---
-
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 
 <div class="tool-header">
   <h1 class="tool-title">AI Resume Critique & Enhancement</h1>
@@ -79,6 +79,60 @@ Upload Resume File
 </select>
 </div>
 
+<div class="form-group">
+<label>Analysis Options</label>
+<div class="checkbox-group">
+<label class="checkbox-inline">
+<input type="checkbox" id="includeAtsAnalysis" checked>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">ATS Compatibility Analysis</span>
+<span class="toggle-helper">Checks keyword optimization and formatting.</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeScoring" checked>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Section-by-Section Scoring</span>
+<span class="toggle-helper">Rates each section from 1-10.</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeEnhanced" >
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Generate Enhanced Version</span>
+<span class="toggle-helper">Creates an improved resume version.</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeRedFlags" checked>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Red Flag Detection</span>
+<span class="toggle-helper">Identifies gaps and potential concerns.</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeKeywordSuggestions" checked>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Keyword Suggestions</span>
+<span class="toggle-helper">Recommends industry-specific keywords to add.</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeCompetitiveAnalysis">
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Competitive Analysis</span>
+<span class="toggle-helper">Compares against industry standards.</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="includeActionItems" checked>
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Priority Action Items</span>
+<span class="toggle-helper">Top 5 changes to make immediately.</span>
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" id="fullRewrite">
+<span class="toggle-switch"><span class="toggle-slider"></span></span>
+<span class="toggle-label">Full Optimization Rewrite</span>
+<span class="toggle-helper">Keeps high-value content, removes low-priority data.</span>
+</label>
+</div>
+</div>
+
 <button type="button" class="btn-primary" onclick="analyzeResume()">Analyze Resume</button>
 </form>
 
@@ -88,14 +142,13 @@ Analyzing your resume with AI...
 
 <div id="errorDiv" style="display: none;"></div>
 
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">📊 Resume Analysis Results</h3>
-<div id="resultContent"></div>
+<div id="resultDiv" class="result-container" style="display: none;">
+<h3 class="result-header">📊 Resume Analysis Results</h3>
+<div id="resultContent" class="result-content"></div>
 <div class="result-actions">
-<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy Analysis</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Download MD</button>
-<button class="action-btn download-btn" onclick="downloadResult('html')">🌐 Download HTML</button>
-<button class="btn-primary" onclick="generateEnhanced()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">✨ Enhanced Version</button>
+    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

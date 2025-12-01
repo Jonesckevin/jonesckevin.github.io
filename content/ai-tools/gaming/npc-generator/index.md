@@ -3,7 +3,6 @@ title: "D&D NPC Forge"
 subtitle: "AI-Powered NPC and Character Generator"
 description: "Generate detailed NPCs for D&D and RPG campaigns. Create compelling non-player characters with backgrounds, motivations, and personality traits for your tabletop games."
 keywords: ["NPC generator", "D&D NPC creator", "RPG character generator", "non-player character", "DnD NPC", "tabletop RPG", "character creator", "RPG NPC", "DM tools", "campaign NPCs"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
@@ -103,6 +102,7 @@ Create compelling NPCs for any system or genre with detailed personalities, back
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Include secrets or hidden motivations</span>
+<span class="toggle-helper">Adds depth for roleplay.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeQuirks" checked>
@@ -110,6 +110,7 @@ Create compelling NPCs for any system or genre with detailed personalities, back
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Include personality quirks and mannerisms</span>
+<span class="toggle-helper">Makes NPCs memorable.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeHooks" checked>
@@ -117,6 +118,7 @@ Create compelling NPCs for any system or genre with detailed personalities, back
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Include plot hooks and story connections</span>
+<span class="toggle-helper">Links NPC to campaign threads.</span>
 </label>
 </div>
 </div>
@@ -134,12 +136,10 @@ Forging your NPC character...
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Generated NPC</h3>
 <div class="result-content" id="resultContent"></div>
 
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎲 Generate Alternative</button>
-
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div> 
 </main>

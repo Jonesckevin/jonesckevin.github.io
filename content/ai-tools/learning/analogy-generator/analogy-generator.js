@@ -9,16 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('downloadBtn')?.addEventListener('click', downloadResult);
     document.getElementById('regenerateBtn')?.addEventListener('click', generateAnalogies);
 
-    function showError(msg) {
-        document.getElementById('errorDiv').innerHTML = `<div style="color: #ff6666; padding: 15px; background: rgba(255,68,68,0.1); border-radius: 6px; border-left: 4px solid #ff6666;">${msg}</div>`;
-        document.getElementById('errorDiv').style.display = 'block';
-    }
-
     async function generateAnalogies(event) {
         if (event) event.preventDefault();
         
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -31,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const avoidTerms = document.getElementById('avoidTerms').value.trim();
 
         if (!concept) {
-            showError('Please enter a concept to explain.');
+            utils.showError(document.getElementById('errorDiv'), 'Please enter a concept to explain.');
             return;
         }
 
@@ -121,7 +116,7 @@ ${analogyCount > 1 ? 'Make each analogy distinctly different, approaching the co
                 }
             }
             msg += `<div style="margin-top:8px; font-size:0.85em;">Provider: <code>${provider}</code> | Model: <code>${model}</code></div>`;
-            showError(msg);
+            utils.showError(document.getElementById('errorDiv'), msg);
         }
     }
 
@@ -197,29 +192,6 @@ ${analogyCount > 1 ? 'Make each analogy distinctly different, approaching the co
         }
     };
 
-    function copyAllToClipboard() {
-        if (currentResult) {
-            navigator.clipboard.writeText(currentResult).then(() => {
-                const btn = document.getElementById('copyBtn');
-                const originalText = btn.textContent;
-                btn.textContent = '✓ Copied All!';
-                btn.style.background = '#45a049';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = '#4CAF50';
-                }, 2000);
-            }, () => {
-                alert('Failed to copy to clipboard.');
-            });
-        }
-    }
-
-    function downloadResult() {
-        if (currentResult) {
-            const concept = document.getElementById('concept').value.trim();
-            const filename = `analogies-${concept.substring(0, 30).replace(/[^a-z0-9]/gi, '-').toLowerCase()}`;
-            downloadManager.setContent(currentResult, 'markdown');
-            downloadManager.download('markdown', filename);
-        }
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('analogy-generator', () => currentResult);
 });

@@ -4,19 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!window.downloadManager) window.downloadManager = new DownloadManager();
 
     document.getElementById('giftForm').addEventListener('submit', generateGiftIdeas);
-    document.getElementById('copyBtn')?.addEventListener('click', () => copyToClipboard());
-    document.getElementById('downloadBtn')?.addEventListener('click', downloadResult);
-    document.getElementById('regenerateBtn')?.addEventListener('click', generateGiftIdeas);
 
-    function showError(msg) {
-        document.getElementById('errorDiv').innerHTML = `<div style="color: #ff6666; padding: 10px; background: rgba(255,68,68,0.1); border-radius: 4px;">${msg}</div>`;
-        document.getElementById('errorDiv').style.display = 'block';
-    }
+    // Register standard copy/download actions
+    utils.registerToolActions('gift-idea-generator', () => currentResult);
 
     async function generateGiftIdeas(event) {
         if (event) event.preventDefault();
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -30,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const ecoFriendly = document.getElementById('ecoFriendly').checked;
         const lastMinute = document.getElementById('lastMinute').checked;
 
-        if (!recipient) { showError('Please select a recipient.'); return; }
+        if (!recipient) { utils.showError(document.getElementById('errorDiv'), 'Please select a recipient.'); return; }
 
         document.getElementById('errorDiv').style.display = 'none';
         document.getElementById('resultDiv').style.display = 'none';
@@ -72,7 +67,7 @@ Be creative, thoughtful, and consider the relationship and occasion. Format as a
 
         } catch (error) {
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(`Failed to generate gift ideas: ${error.message}`);
+            utils.showError(document.getElementById('errorDiv'), `Failed to generate gift ideas: ${error.message}`);
         }
     }
 
@@ -198,24 +193,5 @@ Be creative, thoughtful, and consider the relationship and occasion. Format as a
         html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
         
         return html;
-    }
-
-    function copyToClipboard() {
-        if (!currentResult) return;
-        navigator.clipboard.writeText(currentResult).then(() => {
-            const btn = document.getElementById('copyBtn');
-            const orig = btn.innerHTML;
-            btn.innerHTML = '✓ Copied!';
-            setTimeout(() => btn.innerHTML = orig, 2000);
-        });
-    }
-
-    function downloadResult() {
-        if (!currentResult) return;
-        const recipient = document.getElementById('recipient').value;
-        const occasion = document.getElementById('occasion').value;
-        const filename = `gift-ideas-${recipient.toLowerCase().replace(/\s+/g, '-')}-${occasion.toLowerCase().replace(/\s+/g, '-')}`;
-        downloadManager.setContent(currentResult, 'markdown');
-        downloadManager.download('markdown', filename);
     }
 });

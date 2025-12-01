@@ -3,7 +3,6 @@ title: "D&D Magic Item"
 subtitle: "AI-Powered Magic Item and Treasure Generator"
 description: "Generate balanced treasure parcels and bespoke magic items with lore, attunement, and campaign hooks. Perfect for D&D DMs and RPG creators."
 keywords: ["magic item generator", "D&D loot generator", "RPG treasure", "magic item creator", "DnD magic items", "tabletop RPG", "treasure generator", "magic weapon generator", "RPG loot"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -104,6 +103,7 @@ Generate balanced treasure parcels and bespoke magic items with lore, attunement
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Allow drawbacks/curses when appropriate</span>
+<span class="toggle-helper">Adds risk/reward complexity.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="attunement" checked>
@@ -111,6 +111,7 @@ Generate balanced treasure parcels and bespoke magic items with lore, attunement
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Prefer attunement (5e-style)</span>
+<span class="toggle-helper">Limits active magic items.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeValues" checked>
@@ -118,6 +119,7 @@ Generate balanced treasure parcels and bespoke magic items with lore, attunement
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Include gold/credits value ranges</span>
+<span class="toggle-helper">Shows estimated item worth.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeHooks" checked>
@@ -125,6 +127,7 @@ Generate balanced treasure parcels and bespoke magic items with lore, attunement
 <span class="toggle-slider"></span>
 </span>
 <span class="toggle-label">Include a plot hook per item</span>
+<span class="toggle-helper">Adds story potential to each item.</span>
 </label>
 </div>
 </div>
@@ -142,12 +145,10 @@ Crafting magical treasures...
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Crafted Magic Items</h3>
 <div class="result-content" id="resultContent"></div>
 
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-<button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎲 Generate Different Items</button>
-
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

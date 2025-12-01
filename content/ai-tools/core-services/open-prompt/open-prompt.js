@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     let currentResult = '';
     let currentSettings = {};
+    if (!window.downloadManager) window.downloadManager = new DownloadManager();
+
+    // Register standardized copy/download actions
+    utils.registerToolActions('open-prompt', () => currentResult);
 
     // Ensure result containers exist; create them if missing
     function ensureResultContainers() {
@@ -19,11 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
             resultDiv.innerHTML = `
                 <h3 style="color: #ff6b35; margin-bottom: 20px;">AI Response</h3>
                 <div id="resultContent" class="result-content"></div>
-                <div class="result-actions" style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-                    <button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
-                    <button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
-                    <button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
-                    <button class="action-btn regenerate-btn" onclick="generateVariation()">Generate Variation</button>
+                <div class="result-actions">
+                    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+                    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+                    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
                 </div>
             `;
             if (form && form.parentNode) {
@@ -363,73 +366,6 @@ INSTRUCTIONS:
                 errorDiv.style.display = 'block';
             }
         }
-    };
-
-    // Copy result to clipboard
-    window.copyResult = function() {
-        if (!currentResult) return;
-        
-        navigator.clipboard.writeText(currentResult).then(() => {
-            // Visual feedback
-            // Prefer specific role-based button for feedback
-            const copyBtn = document.querySelector('.action-btn.copy-btn');
-            if (copyBtn) {
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyBtn.textContent = originalText;
-                }, 2000);
-            }
-        }).catch(err => {
-            console.error('Failed to copy:', err);
-            alert('Failed to copy to clipboard');
-        });
-    };
-
-    // Download result in specified format
-    window.downloadResult = function(format) {
-        if (!currentResult) return;
-
-        let content, filename, mimeType;
-
-        if (format === 'markdown') {
-            content = currentResult;
-            filename = 'open-prompt-response.md';
-            mimeType = 'text/markdown';
-        } else if (format === 'html') {
-            const htmlContent = utils.formatMarkdown(currentResult);
-            content = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Prompt Response</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
-               line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
-        h1, h2, h3 { color: #ff6b35; }
-        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
-        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
-        blockquote { border-left: 4px solid #ff6b35; margin: 0; padding-left: 20px; color: #666; }
-    </style>
-</head>
-<body>
-${htmlContent}
-</body>
-</html>`;
-            filename = 'open-prompt-response.html';
-            mimeType = 'text/html';
-        }
-
-        const blob = new Blob([content], { type: mimeType });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
     };
 
     // Handle Enter key in textarea (Ctrl+Enter to submit)

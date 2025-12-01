@@ -3,7 +3,6 @@ title: "Open Prompt AI Assistant"
 subtitle: "Flexible AI Tool with Customizable Response Settings"
 description: "A versatile AI assistant that takes your input and provides customized responses. Configure tone, style, length, and focus to get exactly the output you need. Free AI prompt tool."
 keywords: ["AI assistant", "custom prompt", "flexible AI tool", "AI response generator", "customizable AI", "open prompt", "AI chat tool", "versatile AI assistant", "AI writing assistant"]
-author: JonesCKevin
 date: 2025-11-06
 lastmod: 2025-11-06
 draft: false
@@ -99,11 +98,13 @@ social_media:
 <input type="checkbox" id="includeExamples">
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include examples and use cases</span>
+<span class="toggle-helper">Adds practical examples.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeSources" checked>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Cite reasoning and sources when applicable</span>
+<span class="toggle-helper">Includes citations and reasoning.</span>
 </label>
 </div>
 </div>
@@ -120,11 +121,10 @@ Generating your response...
 <div id="resultDiv" class="result-container" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">AI Response</h3>
 <div id="resultContent" class="result-content"></div>
-<div class="result-actions" style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
-<button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
-<button class="action-btn regenerate-btn" onclick="generateVariation()">Generate Variation</button>
+<div class="result-actions">
+    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

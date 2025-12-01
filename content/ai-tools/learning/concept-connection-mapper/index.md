@@ -3,7 +3,6 @@ title: "Concept Connection Mapper"
 subtitle: "AI-Powered Concept Relationship Visualizer"
 description: "Map connections and relationships between concepts, ideas, and topics to enhance understanding. Perfect for students, researchers, and anyone learning complex subjects."
 keywords: ["concept mapping", "mind mapping", "concept relationships", "learning connections", "knowledge mapping", "visual learning", "AI concept mapper", "idea connections"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -67,6 +66,7 @@ Discover relationships and connections between concepts to deepen understanding 
       <input type="checkbox" id="includeExamples" checked>
       <span class="toggle-switch"><span class="toggle-slider"></span></span>
       <span class="toggle-label">Include Real-world Examples</span>
+      <span class="toggle-helper">Enabled.</span>
     </label>
   </div>
 
@@ -75,6 +75,7 @@ Discover relationships and connections between concepts to deepen understanding 
       <input type="checkbox" id="includeAnalogies" checked>
       <span class="toggle-switch"><span class="toggle-slider"></span></span>
       <span class="toggle-label">Include Analogies & Metaphors</span>
+      <span class="toggle-helper">Enabled.</span>
     </label>
   </div>
 
@@ -94,9 +95,9 @@ Discover relationships and connections between concepts to deepen understanding 
   </div>
   <div id="resultContent" class="result-content"></div>
   <div class="result-actions">
-    <button id="copyBtn" class="action-btn btn-primary copy-btn"><span class="btn-icon">📋</span> Copy</button>
-    <button id="downloadBtn" class="action-btn btn-primary download-btn"><span class="btn-icon">💾</span> Download</button>
-    <button id="regenerateBtn" class="action-btn btn-primary regenerate-btn secondary"><span class="btn-icon">🔄</span> Regenerate</button>
+    <button class="action-btn copy-btn" onclick="copyResult(event)"><span class="btn-icon">📋</span> Copy</button>
+    <button class="action-btn download-btn" onclick="downloadResult('markdown')"><span class="btn-icon">📄</span> MD</button>
+    <button class="action-btn download-btn-alt" onclick="downloadResult('html')"><span class="btn-icon">🌐</span> HTML</button>
 </div>
 </div>
 

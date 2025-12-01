@@ -3,7 +3,6 @@ title: "AI Interviewer Questions"
 subtitle: "AI-Powered Interview Question Generation Tool"
 description: "Generate insightful interview questions that reveal judgment, clarity, and depth. Create thought-provoking questions for job interviews, hiring, and assessments. Free AI question generator."
 keywords: ["interview questions generator", "thought-provoking questions", "AI interview tool", "hiring questions", "behavioral interview questions", "job interview prep", "assessment questions", "candidate evaluation", "interview preparation"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -53,7 +52,7 @@ social_media:
 </div>
 <div class="form-group">
 <label for="numQuestions">How many questions?</label>
-<input type="number" id="numQuestions" min="8" max="60" value="20">
+<input type="number" id="numQuestions" min="5" max="60" value="2">
 </div>
 <div class="form-group">
 <label for="distribution">Emphasis</label>
@@ -66,14 +65,6 @@ social_media:
 </select>
 </div>
 <div class="form-group">
-<label for="responseLength">Response Length</label>
-<select id="responseLength">
-<option value="short">Concise (~10-15 questions)</option>
-<option value="medium">Standard (~20-30 questions)</option>
-<option value="long">Expanded (~40+ questions)</option>
-</select>
-</div>
-<div class="form-group">
 <label for="topicsCsv">Topics (comma-separated, in addition to General)</label>
 <textarea id="topicsCsv" rows="2" placeholder="Leadership, Ownership, Problem Solving, Communication, Product Thinking, Ethics, ..."></textarea>
 </div>
@@ -83,11 +74,13 @@ social_media:
 <input type="checkbox" id="includeFollowups" checked>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include follow-up probes</span>
+<span class="toggle-helper">Adds follow-up questions.</span>
 </label>
 <label class="checkbox-inline">
 <input type="checkbox" id="includeRubric" checked>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Include scoring rubric (1–5) and red flags</span>
+<span class="toggle-helper">Adds evaluation criteria.</span>
 </label>
 </div>
 </div>
@@ -100,10 +93,10 @@ Generating interview questions...
 <div id="resultDiv" class="result-container" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Interview Question Set</h3>
 <div id="resultContent" class="result-content"></div>
-<div class="result-actions" style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
-<button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
+<div class="result-actions">
+    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 <script src="/shared/components/utils.js"></script>

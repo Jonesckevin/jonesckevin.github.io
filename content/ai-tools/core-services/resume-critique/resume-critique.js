@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let uploadedFile = null;
     const uploadArea = document.getElementById('uploadArea');
     const fileInput = document.getElementById('fileInput');
+    if (!window.downloadManager) window.downloadManager = new DownloadManager();
+
+    // Register standardized copy/download actions
+    utils.registerToolActions('resume-critique', () => currentResult);
 
     // Input method handlers
     document.querySelector('input[name="inputMethod"][value="text"]').addEventListener('change', function () {
@@ -98,8 +102,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const inputMethod = document.querySelector('input[name="inputMethod"]:checked').value;
         const targetJob = document.getElementById('targetJob').value.trim();
         const experienceLevel = document.getElementById('experienceLevel').value;
+        
+        // Get toggle options
+        const includeAtsAnalysis = document.getElementById('includeAtsAnalysis')?.checked ?? true;
+        const includeScoring = document.getElementById('includeScoring')?.checked ?? true;
+        const includeEnhanced = document.getElementById('includeEnhanced')?.checked ?? false;
+        const includeRedFlags = document.getElementById('includeRedFlags')?.checked ?? true;
+        const includeKeywordSuggestions = document.getElementById('includeKeywordSuggestions')?.checked ?? true;
+        const includeCompetitiveAnalysis = document.getElementById('includeCompetitiveAnalysis')?.checked ?? false;
+        const includeActionItems = document.getElementById('includeActionItems')?.checked ?? true;
+        const fullRewrite = document.getElementById('fullRewrite')?.checked ?? false;
 
         console.log('Form values:', { inputMethod, targetJob, experienceLevel });
+        console.log('Toggle options:', { includeAtsAnalysis, includeScoring, includeEnhanced, includeRedFlags, includeKeywordSuggestions, includeCompetitiveAnalysis, includeActionItems, fullRewrite });
 
         // Get resume content
         let resumeContent = '';
@@ -156,40 +171,102 @@ document.addEventListener('DOMContentLoaded', function () {
                 'executive': 'Focus on organizational impact, vision, board experience, and transformational leadership.'
             };
 
+            // Build dynamic sections based on toggles
+            const analysisSections = [];
+            
+            analysisSections.push(`## Overall Score (1-10)
+            Rate the resume overall with justification.`);
+            
+            analysisSections.push(`## Strengths
+            - List 3-5 key strengths`);
+            
+            analysisSections.push(`## Areas for Improvement
+            - List 3-5 specific areas that need work`);
+            
+            if (includeScoring) {
+                analysisSections.push(`## Section-by-Section Analysis
+            Analyze each section with a score (1-10):
+            - **Professional Summary/Objective** - Score: X/10
+            - **Work Experience** - Score: X/10
+            - **Education** - Score: X/10
+            - **Skills** - Score: X/10
+            - **Additional Sections** - Score: X/10`);
+            } else {
+                analysisSections.push(`## Section-by-Section Analysis
+            Analyze each section:
+            - **Professional Summary/Objective**
+            - **Work Experience** 
+            - **Education**
+            - **Skills**
+            - **Additional Sections**`);
+            }
+            
+            if (includeAtsAnalysis) {
+                analysisSections.push(`## ATS Optimization
+            - Keyword optimization status
+            - Formatting recommendations
+            - Common ATS issues found`);
+            }
+            
+            analysisSections.push(`## Specific Recommendations
+            - 5-7 actionable improvement suggestions
+            - Industry-specific advice if target job provided`);
+            
+            if (includeRedFlags) {
+                analysisSections.push(`## Red Flags
+            - Any concerning elements that could hurt candidacy
+            - Employment gaps or inconsistencies
+            - Potential areas of concern for recruiters`);
+            }
+            
+            if (includeKeywordSuggestions) {
+                analysisSections.push(`## Keyword Suggestions
+            - List 10-15 industry-specific keywords missing from the resume
+            - Suggest where each keyword should be incorporated
+            - Prioritize keywords by importance for ATS`);
+            }
+            
+            if (includeCompetitiveAnalysis) {
+                analysisSections.push(`## Competitive Analysis
+            - How does this resume compare to industry standards?
+            - What do top candidates in this field typically include?
+            - Gaps compared to competitive resumes`);
+            }
+            
+            if (includeActionItems) {
+                analysisSections.push(`## Priority Action Items
+            List the TOP 5 most impactful changes to make immediately:
+            1. [Highest priority change]
+            2. [Second priority]
+            3. [Third priority]
+            4. [Fourth priority]
+            5. [Fifth priority]`);
+            }
+            
+            if (includeEnhanced) {
+                analysisSections.push(`## Enhanced Resume Version
+            Provide a complete rewritten version of the resume with all improvements applied. This should be ready to copy and use.`);
+            }
+            
+            if (fullRewrite) {
+                analysisSections.push(`## Full Optimization Rewrite
+            Create a completely optimized version of this resume:
+            - Keep ONLY high-impact, valuable information
+            - Remove all low-priority items, redundant phrases, and filler content
+            - Eliminate outdated skills and irrelevant experience
+            - Prioritize achievements over responsibilities
+            - Condense verbose descriptions into punchy, impactful statements
+            - Maximum impact with minimum words
+            - Ready to copy and use immediately`);
+            }
+
             const systemPrompt = `You are a professional resume critique expert with 15+ years of HR and recruiting experience. 
             ${targetJobInstruction} 
             ${levelInstructions[experienceLevel]}
 
             Provide a comprehensive resume analysis with:
 
-            ## Overall Score (1-10)
-            Rate the resume overall with justification.
-
-            ## Strengths
-            - List 3-5 key strengths
-
-            ## Areas for Improvement
-            - List 3-5 specific areas that need work
-
-            ## Section-by-Section Analysis
-            Analyze each section:
-            - **Professional Summary/Objective**
-            - **Work Experience** 
-            - **Education**
-            - **Skills**
-            - **Additional Sections**
-
-            ## ATS Optimization
-            - Keyword optimization status
-            - Formatting recommendations
-            - Common ATS issues found
-
-            ## Specific Recommendations
-            - 5-7 actionable improvement suggestions
-            - Industry-specific advice if target job provided
-
-            ## Red Flags
-            - Any concerning elements that could hurt candidacy
+            ${analysisSections.join('\n\n            ')}
 
             Be constructive, specific, and actionable. Use professional language while being encouraging.`;
 
@@ -210,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('User message length:', messages[1].content.length);
 
             console.log('Making API request to provider:', aiProvider);
-            const response = await makeApiRequest(messages, aiProvider, apiKey, {
+            const response = await makeApiRequest(messages, aiProvider, null, {
                 maxTokens: 3000,
                 temperature: 0.3
             });
@@ -227,9 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('HTML conversion complete. HTML length:', htmlContent.length);
 
             console.log('Updating DOM with result...');
-            document.getElementById('resultContent').innerHTML = `
-                <div class="result-display">${htmlContent}</div>
-            `;
+            document.getElementById('resultContent').innerHTML = htmlContent;
 
             // Show result
             console.log('Showing result div...');
@@ -354,7 +429,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ];
 
             console.log('Making API request for enhancement...');
-            const response = await makeApiRequest(messages, aiProvider, apiKey, {
+            const response = await makeApiRequest(messages, aiProvider, null, {
                 maxTokens: 3000,
                 temperature: 0.4
             });
@@ -364,10 +439,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // Update the result with enhanced version
             const htmlContent = utils.formatMarkdown(response);
             document.getElementById('resultContent').innerHTML = `
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 15px;">
-                    <h3 style="color: #ff6b35; margin-bottom: 20px;">✨ Enhanced Resume Version</h3>
-                    <div style="line-height: 1.6; color: #e0e0e0;">${htmlContent}</div>
-                </div>
+                <h3>✨ Enhanced Resume Version</h3>
+                ${htmlContent}
             `;
 
             currentResult = response; // Update current result to the enhanced version
@@ -382,48 +455,6 @@ document.addEventListener('DOMContentLoaded', function () {
             utils.showError(document.getElementById('errorDiv'), error.message || 'Failed to generate enhanced version. Please try again.');
             document.getElementById('errorDiv').style.display = 'block';
         }
-    }
-
-    async function copyResult(event) {
-        if (!currentResult) {
-            utils.showError(document.getElementById('errorDiv'), 'No content to copy');
-            document.getElementById('errorDiv').style.display = 'block';
-            return;
-        }
-
-        const success = await utils.copyToClipboard(currentResult);
-
-        if (success && event?.target) {
-            const btn = event.target;
-            const originalText = btn.innerHTML;
-            const originalBg = btn.style.background;
-
-            btn.innerHTML = '✅ Copied!';
-            btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = originalBg || '';
-            }, 2000);
-        } else if (!success) {
-            utils.showError(
-                document.getElementById('errorDiv'),
-                'Failed to copy to clipboard. Please try selecting and copying manually.'
-            );
-            document.getElementById('errorDiv').style.display = 'block';
-        }
-    }
-
-    function downloadResult(format) {
-        if (!currentResult) {
-            utils.showError(document.getElementById('errorDiv'), 'No content to download');
-            document.getElementById('errorDiv').style.display = 'block';
-            return;
-        }
-
-        const filename = `resume-critique_${utils.getCurrentTimestamp()}`;
-        downloadManager.setContent(currentResult, 'markdown');
-        downloadManager.download(format, filename);
     }
 
     function resetForm() {
@@ -445,9 +476,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Make functions globally available for onclick handlers
     window.analyzeResume = analyzeResume;
-    window.generateEnhanced = generateEnhanced; // Now using the proper generateEnhanced function
-    window.copyResult = copyResult;
-    window.downloadResult = downloadResult;
+    window.generateEnhanced = generateEnhanced;
     window.resetForm = resetForm;
 });
 

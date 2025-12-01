@@ -9,16 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('downloadBtn')?.addEventListener('click', downloadResult);
     document.getElementById('regenerateBtn')?.addEventListener('click', generateHooks);
 
-    function showError(msg) {
-        document.getElementById('errorDiv').innerHTML = `<div style="color: #ff6666; padding: 15px; background: rgba(255,68,68,0.1); border-radius: 6px; border-left: 4px solid #ff6666;">${msg}</div>`;
-        document.getElementById('errorDiv').style.display = 'block';
-    }
-
     async function generateHooks(event) {
         if (event) event.preventDefault();
         
         if (!window.apiManager?.getApiKey()) {
-            showError('Please set up your API key using the settings menu (⚙️).');
+            utils.showError(document.getElementById('errorDiv'), 'Please set up your API key using the settings menu (⚙️).');
             return;
         }
 
@@ -32,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const variations = parseInt(document.getElementById('variations').value);
 
         if (!mainTopic || !keyMessage) {
-            showError('Please fill in the main topic and key message.');
+            utils.showError(document.getElementById('errorDiv'), 'Please fill in the main topic and key message.');
             return;
         }
 
@@ -113,7 +108,7 @@ Format: Number each hook (1., 2., 3., etc.) and provide only the hook text, no e
 
         } catch (error) {
             document.getElementById('loadingDiv').style.display = 'none';
-            showError(`Failed to generate hooks: ${error.message}`);
+            utils.showError(document.getElementById('errorDiv'), `Failed to generate hooks: ${error.message}`);
         }
     }
 

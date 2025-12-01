@@ -77,6 +77,15 @@ Do not put sensitive information into the form.
   </div>
 
   <div class="form-group">
+    <label for="jobTrade" class="tooltip">
+      Military Occupation / Trade (Optional)
+      <span class="tooltiptext">Enter the member's military occupation or trade (e.g., Cyber Operator, Signal Operator, Infantry, Armored, Cook, Supply Technician). This helps assess task complexity and relevance to their primary role.</span>
+    </label>
+    <input type="text" id="jobTrade" placeholder="e.g., Cyber Operator, Infantry, Armored, Cook, Supply Technician" aria-label="Military Occupation or Trade">
+    <div class="helper-text">💡 Helps assess if tasks are within normal scope or demonstrate versatility beyond primary role</div>
+  </div>
+
+  <div class="form-group">
     <label for="competencyCount" class="tooltip">
       Number of Competencies: <span id="competencyCountValue" style="color:#ff6b35;font-weight:600;">3</span>
       <span class="tooltiptext">Select how many competencies (1-15) the AI should identify in order of priority/relevance.</span>
@@ -100,16 +109,12 @@ Do not put sensitive information into the form.
 
   <!-- Optional CCG Assessment (toggleable) -->
   <div class="form-group">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-      <label class="tooltip" style="flex:1;margin:0;">
-        CCG Assessment
-        <span class="tooltiptext">Enable to include Complexity, Consistency, and Guidance context assessment in the note.</span>
-      </label>
-      <label class="switch">
-        <input type="checkbox" id="ccgToggle" onchange="toggleCCG()" aria-controls="ccgInfo" aria-expanded="true" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="ccgToggle" onchange="toggleCCG()" aria-controls="ccgInfo" aria-expanded="true" checked>
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">CCG Assessment</span>
+      <span class="toggle-helper">Assess Complexity, Consistency, and Guidance context.</span>
+    </label>
     <div id="ccgInfo" style="display:block; margin-top:8px;">
       <div class="helper-text">ℹ️ The AI will assess Complexity (task difficulty), Consistency (performance patterns), and Guidance (level of supervision needed).</div>
     </div>
@@ -117,30 +122,22 @@ Do not put sensitive information into the form.
 
   <!-- Optional Meta-Competency Assessment (two-tier toggleable) -->
   <div class="form-group">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-      <label class="tooltip" style="flex:1;margin:0;">
-        Meta-Competency
-        <span class="tooltiptext">Enable to identify which of the 5 meta-competencies (Expertise, Cognitive Capacities, Social Capacities, Change Capacities, Professional Ideology) are relevant to the event.</span>
-      </label>
-      <label class="switch">
-        <input type="checkbox" id="metaCompetencyToggle" onchange="toggleMetaCompetency()" aria-controls="metaCompetencyOptions" aria-expanded="true" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="metaCompetencyToggle" onchange="toggleMetaCompetency()" aria-controls="metaCompetencyOptions" aria-expanded="true" checked>
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Meta-Competency</span>
+      <span class="toggle-helper">Identify which of the 5 meta-competencies are relevant.</span>
+    </label>
     <div id="metaCompetencyOptions" style="display:block; margin-top:8px;">
       <div class="helper-text">ℹ️ Identify which meta-competencies.<br>(Rarely/Occasionally/Frequently/Consistently)</div>
       <!-- Nested toggle for detailed analysis -->
       <div style="margin-top:15px;padding-left:10px;border-left:3px solid #ff6b35;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <label class="tooltip" style="flex:1;margin:0;font-size:0.95em;">
-            Meta-Competency Details ⚠️ <i>(Loud)</i>
-            <span class="tooltiptext">ℹ️ Enable detailed analysis including frequency ratings, inclusive behaviours demonstrated, evidence, and impact for each relevant meta-competency.</span>
-          </label>
-          <label class="switch">
-            <input type="checkbox" id="metaCompetencyDetailedToggle" onchange="toggleMetaCompetencyDetailed()" aria-controls="metaCompetencyDetailedInfo" aria-expanded="false">
-            <span class="slider"></span>
-          </label>
-        </div>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="metaCompetencyDetailedToggle" onchange="toggleMetaCompetencyDetailed()" aria-controls="metaCompetencyDetailedInfo" aria-expanded="false">
+          <span class="toggle-switch"><span class="toggle-slider"></span></span>
+          <span class="toggle-label">Meta-Competency Details ⚠️ <i>(Loud)</i></span>
+          <span class="toggle-helper">Include frequency ratings, behaviours, evidence & impact.</span>
+        </label>
         <div id="metaCompetencyDetailedInfo" style="display:none; margin-top:8px;">
           <div class="helper-text">Frequency, sub-inclusive behaviours, and impact assessment for next-rank readiness.</div>
         </div>
@@ -148,16 +145,12 @@ Do not put sensitive information into the form.
     </div>
   </div>
   <div class="form-group">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-      <label class="tooltip" style="flex:1;margin:0;">
-        Pre-Select Competencies
-        <span class="tooltiptext">Enable the toggle to reveal up to 3 optional competencies you believe are most relevant. The AI may choose different ones if more appropriate and will explain why.</span>
-      </label>
-      <label class="switch">
-        <input type="checkbox" id="competencyToggle" onchange="toggleCompetencySelectors()" aria-controls="competencySelectors" aria-expanded="false">
-        <span class="slider"></span>
-      </label>
-    </div>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="competencyToggle" onchange="toggleCompetencySelectors()" aria-controls="competencySelectors" aria-expanded="false">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Pre-Select Competencies</span>
+      <span class="toggle-helper">Select up to 3 competencies you believe are most relevant.</span>
+    </label>
     <div id="competencySelectors" style="display:none; margin-top:10px;">
       <div class="helper-text">⚠️ Select up to 3 competencies. AI will evaluate your selections and may suggest alternatives with explanation.</div>
       <select id="competency1" class="competency-select" aria-label="Optional competency 1">
@@ -175,16 +168,12 @@ Do not put sensitive information into the form.
 
   <!-- Optional Competency Demonstration Analysis (toggleable) -->
   <div class="form-group">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-      <label class="tooltip" style="flex:1;margin:0;">
-        Competency Analysis
-        <span class="tooltiptext">Enable to include detailed analysis of how each competency was demonstrated during the event.</span>
-      </label>
-      <label class="switch">
-        <input type="checkbox" id="analysisToggle" onchange="toggleAnalysis()" aria-controls="analysisInfo" aria-expanded="false">
-        <span class="slider"></span>
-      </label>
-    </div>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="analysisToggle" onchange="toggleAnalysis()" aria-controls="analysisInfo" aria-expanded="false">
+      <span class="toggle-switch"><span class="toggle-slider"></span></span>
+      <span class="toggle-label">Competency Analysis</span>
+      <span class="toggle-helper">Include detailed analysis of how each competency was demonstrated.</span>
+    </label>
     <div id="analysisInfo" style="display:none; margin-top:8px;">
       <div class="helper-text">ℹ️ The AI will provide detailed analysis of how each competency was demonstrated with concrete examples and impact.</div>
     </div>
@@ -206,9 +195,9 @@ Do not put sensitive information into the form.
   <h3 style="color: #ff6b35; margin-bottom: 20px;">PaCEr</h3>
   <div id="resultContent"></div>
   <div class="result-actions">
-    <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy to Clipboard</button>
-    <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Download Markdown</button>
-    <button class="action-btn download-btn" onclick="downloadResult('html')">🌐 Download HTML</button>
+    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
+    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
   </div>
 </div>
 

@@ -3,7 +3,6 @@ title: "Text Summarization Tool"
 subtitle: "AI-Powered Content Summarization Tool"
 description: "Quickly summarize articles, documents, and text with our AI-powered content summarizer. Get concise summaries in multiple formats and tones. Free online text summarization tool."
 keywords: ["AI content summarizer", "text summarizer", "document summarizer", "article summarizer", "AI text processing", "content analysis", "automatic summarization", "text condensing", "reading comprehension", "productivity tools", "free summarizer"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -91,11 +90,13 @@ preferred length and tone for optimal results.
 <input id="generateHeadline" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Generate headline suggestion</span>
+<span class="toggle-helper">Includes a suggested headline.</span>
 </label>
 <label class="checkbox-inline">
 <input id="generateHashtags" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Generate hashtag suggestions</span>
+<span class="toggle-helper">Includes social media hashtags.</span>
 </label>
 </div>
 </div>
@@ -108,11 +109,10 @@ preferred length and tone for optimal results.
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Content Summary</h3>
 <div class="result-content" id="resultContent"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="action-btn copy-btn" onclick="copyResult()">Copy Output</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">MD</button>
-<button class="action-btn download-btn" onclick="downloadResult('html')">HTML</button>
-
+<div class="result-actions" style="margin-top: 30px;">
+<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+<button class="action-btn download-btn" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

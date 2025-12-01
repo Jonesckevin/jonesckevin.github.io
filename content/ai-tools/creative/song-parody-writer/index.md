@@ -3,7 +3,6 @@ title: "Song Parody Writer"
 subtitle: "AI-Powered Song Parody & Lyric Rewriter"
 description: "Transform popular songs into clever parodies on any topic. Create funny song rewrites for events, education, presentations, or entertainment."
 keywords: ["song parody", "parody generator", "lyric rewriter", "funny songs", "parody lyrics", "song writer", "comedy songs", "custom lyrics", "parody maker", "AI lyrics"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false
@@ -84,16 +83,19 @@ Transform popular songs into clever parodies on any topic. Perfect for comedy, e
         <input type="checkbox" id="matchMeter" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Match Original Meter/Rhythm</span>
+        <span class="toggle-helper">Preserves the original song's syllable count.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeChords">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Include Chord Progression</span>
+        <span class="toggle-helper">Adds chord symbols above the lyrics.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="familyFriendly" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Keep Family-Friendly</span>
+        <span class="toggle-helper">Avoids adult themes and language.</span>
       </label>
     </div>
   </div>
@@ -117,10 +119,9 @@ Transform popular songs into clever parodies on any topic. Perfect for comedy, e
   <h2>🎵 Your Song Parody</h2>
   <div id="resultContent" class="result-content parody-display"></div>
   <div class="result-actions">
-    <button class="copy-btn" onclick="copyResult(event)">📋 Copy to Clipboard</button>
-    <button class="download-btn" onclick="downloadResult('markdown')">📄 Download Markdown</button>
-    <button class="download-btn" onclick="downloadResult('html')">🌐 Download HTML</button>
-    <button class="download-btn" onclick="downloadResult('txt')">📝 Download TXT</button>
+    <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+    <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+    <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
   </div>
 </div>
 

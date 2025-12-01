@@ -1,0 +1,71 @@
+/* AI Tools Shared Utilities
+ * Helper text, tooltips, and other common utility classes
+ * Standard classes for all AI tools
+ */
+
+/* ============================================
+   HELPER TEXT
+   ============================================ */
+.helper-text {
+    font-size: 0.85em;
+    color: var(--text-secondary, #b3b3bd);
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* ============================================
+   TOOLTIP
+   ============================================ */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px 12px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -125px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85em;
+    line-height: 1.4;
+    border: 1px solid var(--primary-color, #ff6b35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-color, #ff6b35) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    .tooltip .tooltiptext {
+        width: 200px;
+        margin-left: -100px;
+        font-size: 0.8em;
+    }
+}

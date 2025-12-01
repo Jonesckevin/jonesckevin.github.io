@@ -3,7 +3,6 @@ title: "Twitter/X Compassion Post"
 subtitle: "AI-Powered Empathetic Response Creation Tool"
 description: "Generate compassionate and empathetic responses to global tragedies and difficult situations. Create meaningful content that expresses solidarity and support with AI assistance."
 keywords: ["compassionate response", "empathetic messages", "AI empathy tool", "crisis response", "supportive messaging", "solidarity statements", "community support", "tragedy response", "emotional intelligence AI"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-09-30
 draft: false
@@ -64,14 +63,10 @@ Generate empathetic and hopeful responses to global tragedies. This tool crafts 
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Compassionate Response</h3>
 <div class="result-content" id="resultContent"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy
-                        to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄
-                        Download Markdown</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐
-                        Download HTML</button>
-
+<div class="result-actions" style="margin-top: 30px;">
+<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+<button class="action-btn download-btn" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

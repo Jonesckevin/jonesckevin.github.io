@@ -3,7 +3,6 @@ title: "Cognitive Load Optimizer"
 subtitle: "Break Learning into Optimal Chunks"
 description: "Analyze learning material and optimize it for cognitive load. AI-powered tool that breaks content into digestible chunks with ideal spacing. Free educational tool."
 keywords: ["cognitive load", "learning optimizer", "chunking", "spaced learning", "educational tool", "teaching strategy", "learning science", "instructional design", "study optimization", "memory retention"]
-author: JonesCKevin
 date: 2025-11-11
 lastmod: 2025-11-11
 draft: false

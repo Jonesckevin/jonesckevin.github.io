@@ -1,6 +1,8 @@
 // Wardrobe Capsule Planner Script
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Wardrobe Capsule Planner loaded');
+    // Register standard copy/download actions
+    utils.registerToolActions('wardrobe-capsule-planner', () => window.currentResult);
 });
 
 let currentResult = '';
@@ -175,25 +177,5 @@ Format in clear, organized markdown with visual hierarchy.`;
         document.getElementById('loadingDiv').style.display = 'none';
         utils.showError(document.getElementById('errorDiv'), `Error: ${error.message}`);
         document.getElementById('errorDiv').style.display = 'block';
-    }
-}
-
-function copyResult(event) {
-    if (event) event.preventDefault();
-    if (window.currentResult) {
-        utils.copyToClipboard(window.currentResult, event ? event.target : null);
-    }
-}
-
-function downloadResult(format) {
-    if (!window.currentResult) return;
-
-    const timestamp = utils.getCurrentTimestamp();
-    const filename = `capsule-wardrobe-${timestamp}`;
-
-    if (format === 'markdown') {
-        utils.downloadAsMarkdown(window.currentResult, filename);
-    } else if (format === 'html') {
-        utils.downloadAsHTML(window.currentResult, filename, 'Capsule Wardrobe Plan');
     }
 }

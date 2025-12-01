@@ -3,7 +3,6 @@ title: "Gift Idea Generator"
 subtitle: "AI-Powered Personalized Gift Suggestions"
 description: "Find the perfect gift with AI-powered suggestions. Get personalized gift ideas for any occasion, person, and budget. Never struggle with gift-giving again!"
 keywords: ["gift idea generator", "gift suggestions", "present ideas", "gift finder", "birthday gifts", "holiday gifts", "personalized gifts", "gift guide", "what to buy", "gift recommendations"]
-author: JonesCKevin
 date: 2025-11-10
 lastmod: 2025-11-10
 draft: false
@@ -102,21 +101,25 @@ Discover the perfect gift with AI-powered personalized suggestions. Get creative
         <input type="checkbox" id="unique">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Unique</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="personalized">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Personalized</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="ecoFriendly">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Eco-Friendly</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="lastMinute">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Last-Minute</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
     </div>
   </div>
@@ -141,10 +144,10 @@ Discover the perfect gift with AI-powered personalized suggestions. Get creative
     <h2>🎁 Gift Ideas</h2>
   </div>
   <div id="resultContent" class="result-content gift-display"></div>
-  <div class="button-container">
-  <button id="copyBtn" class="action-btn copy-btn">📋 Copy</button>
-  <button id="downloadBtn" class="action-btn download-btn">💾 Download MD</button>
-    <button id="regenerateBtn" class="btn-secondary">🔄 Try Again</button>
+  <div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
   </div>
 </div>
 

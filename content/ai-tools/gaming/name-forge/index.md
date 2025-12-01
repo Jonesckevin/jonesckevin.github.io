@@ -3,7 +3,6 @@ title: "D&D Name Forger"
 subtitle: "AI-Powered Character and Place Name Generator"
 description: "Generate unique names for characters, places, and fantasy elements across multiple genres. Perfect for RPG campaigns, creative writing, and world-building."
 keywords: ["name generator", "fantasy name generator", "RPG name generator", "character names", "place names", "fantasy names", "D&D names", "creative names", "world building", "character creator"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
@@ -131,12 +130,10 @@ Forging unique names...
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Generated Names</h3>
 <div class="result-content" id="resultContent"></div>
-
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
-<button class="btn-primary" onclick="generateMoreNames()" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #6f42c1, #8e5bcd);">🎲 Generate More</button>
-
+<div class="result-actions">
+  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 </div>
 

@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Global variable to store current result
     let currentResult = '';
 
+    // Register standard copy/download actions
+    utils.registerToolActions('fitness-routine', () => currentResult);
+
     // Main fitness routine generation function
     window.generateFitnessRoutine = async function () {
         console.log('=== GENERATE FITNESS ROUTINE FUNCTION CALLED ===');
@@ -181,58 +184,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('errorDiv').style.display = 'block';
         }
     };
-
-    // Copy function using centralized utils
-    window.copyResult = async function (event) {
-        if (!currentResult) {
-            utils.showError(document.getElementById('errorDiv'), 'No content to copy');
-            document.getElementById('errorDiv').style.display = 'block';
-            return;
-        }
-
-        const success = await utils.copyToClipboard(currentResult);
-
-        if (success && event?.target) {
-            const btn = event.target;
-            const originalText = btn.innerHTML;
-            const originalBg = btn.style.background;
-
-            btn.innerHTML = '✅ Copied!';
-            btn.style.background = 'linear-gradient(135deg, #28a745, #34ce57)';
-
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = originalBg || '';
-            }, 2000);
-        } else if (!success) {
-            utils.showError(
-                document.getElementById('errorDiv'),
-                'Failed to copy to clipboard. Please try selecting and copying manually.'
-            );
-            document.getElementById('errorDiv').style.display = 'block';
-        }
-    };
-
-    // Download function using centralized downloadManager
-    window.downloadResult = function (format) {
-        if (!currentResult) {
-            utils.showError(document.getElementById('errorDiv'), 'No content to download');
-            document.getElementById('errorDiv').style.display = 'block';
-            return;
-        }
-
-        try {
-            const timestamp = utils.getCurrentTimestamp();
-            const filename = `fitness-routine-${timestamp}`;
-
-            downloadManager.setContent(currentResult, 'markdown');
-            downloadManager.download(format, filename);
-
-            console.log('Download initiated successfully');
-        } catch (err) {
-            console.error('Download failed:', err);
-            utils.showError(document.getElementById('errorDiv'), 'Failed to download file. Please try again.');
-            document.getElementById('errorDiv').style.display = 'block';
-        }
+});
     };
 });

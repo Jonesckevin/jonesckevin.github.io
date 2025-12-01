@@ -101,41 +101,49 @@ Create comprehensive, customized packing lists for any trip. From weekend getawa
         <input type="checkbox" id="actBeach">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🏖️ Beach / Swimming</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="actHiking">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🥾 Hiking / Trekking</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="actFormal">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">👔 Formal Events</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="actSports">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🏃 Sports / Fitness</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="actDining">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🍽️ Fine Dining</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="actPhotography">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">📸 Photography</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="actWater">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🌊 Water Sports</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="actNightlife">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🌃 Nightlife / Clubs</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
     </div>
   </div>
@@ -160,31 +168,37 @@ Create comprehensive, customized packing lists for any trip. From weekend getawa
         <input type="checkbox" id="needBaby">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">👶 Traveling with Baby</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="needKids">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🧒 Traveling with Kids</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="needMedical">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">💊 Medical Needs</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="needPets">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🐕 Traveling with Pets</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="needWork">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">💻 Remote Work</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="needElectronics">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">🔌 Tech Heavy</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
     </div>
   </div>

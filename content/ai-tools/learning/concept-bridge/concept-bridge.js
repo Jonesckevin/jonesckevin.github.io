@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded',()=>{
+  if (!window.downloadManager) window.downloadManager = new DownloadManager();
+  let currentResult = '';
+  
   async function buildBridge(e){
     if(e) e.preventDefault();
     const known = document.getElementById('known').value.trim();
@@ -17,7 +20,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         { role:'user', content:`Known: ${known}\nTarget: ${target}\nReturn: 1) bridging analogy, 2) 3-step explanation ladder, 3) a quick practice exercise, 4) one misconception to avoid.` }
       ];
       const response = await apiManager.makeRequest(messages,{ provider:'anthropic', apiKey:key, model:'claude-4-sonnet-20250514', maxTokens:900, temperature:0.3 });
-      load.style.display='none'; res.style.display='block'; res.innerHTML=`<div class='result-display'>${window.utils?window.utils.formatMarkdown(response):response}</div>`; res.scrollIntoView({behavior:'smooth'});
+      currentResult = response;
+      downloadManager.setContent(response, 'markdown');
+      load.style.display='none'; res.style.display='block'; res.innerHTML=`<div class='result-display'>${window.utils?window.utils.formatMarkdown(response):response}</div>${downloadManager.createDownloadButtons('concept-bridge')}`; res.scrollIntoView({behavior:'smooth'});
     }catch(ex){ load.style.display='none'; err.innerHTML=`<div style='color:#ff6666;'>${ex.message||'Generation failed'}</div>`; err.style.display='block'; }
   }
   window.buildBridge = buildBridge;

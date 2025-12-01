@@ -3,7 +3,6 @@ title: "Personalized Study Materials"
 subtitle: "AI-Powered Study Guide and Review Creator"
 description: "Generate comprehensive study guides tailored to your learning needs. Create personalized study materials, practice questions, and review notes for any subject with AI assistance."
 keywords: ["study guide generator", "AI study materials", "personalized study guide", "exam preparation", "study notes", "learning assistant", "educational AI", "review materials", "study planner", "academic tools"]
-author: JonesCKevin
 date: 2025-09-13
 lastmod: 2025-10-01
 draft: false
@@ -68,16 +67,19 @@ Transform your course material into comprehensive study guides. Create structure
 <input checked="" id="includeQuizzes" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Practice Questions</span>
+<span class="toggle-helper">Enabled.</span>
 </label>
 <label class="checkbox-inline">
 <input checked="" id="includeFlashcards" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Flashcard Terms</span>
+<span class="toggle-helper">Enabled.</span>
 </label>
 <label class="checkbox-inline">
 <input id="includeMnemonics" type="checkbox"/>
 <span class="toggle-switch"><span class="toggle-slider"></span></span>
 <span class="toggle-label">Memory Techniques</span>
+<span class="toggle-helper">Adds mnemonics and memory aids.</span>
 </label>
 </div>
 </div>
@@ -95,11 +97,10 @@ Transform your course material into comprehensive study guides. Create structure
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Your Study Guide</h3>
 <div class="result-content" id="resultContent"></div>
-<div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="copyResult()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadResult('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
-<button class="btn-primary" onclick="downloadResult('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
-
+<div class="result-actions" style="margin-top: 30px;">
+<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
+<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
+<button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
 </div>
 
 

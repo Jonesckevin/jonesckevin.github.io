@@ -3,7 +3,6 @@ title: "Excel Formula Builder"
 subtitle: "AI-Powered Excel Formula Generator"
 description: "Generate optimized Excel formulas from natural language descriptions. Create complex formulas, array formulas, and advanced functions with AI assistance. Free online Excel formula builder for analysts and professionals."
 keywords: ["Excel formula builder", "Excel formula generator", "AI Excel tool", "Excel automation", "spreadsheet formulas", "Excel functions", "formula helper", "Excel assistant", "productivity tools", "Excel automation"]
-author: JonesCKevin
 date: 2025-11-06
 lastmod: 2025-11-06
 draft: false
@@ -112,41 +111,49 @@ Data starts in row 2, headers in row 1" rows="6"></textarea>
                 <input id="useAbsoluteReferences" type="checkbox"/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Use absolute references ($A$1)</span>
+                <span class="toggle-helper">Enabled.</span>
             </label>
             <label class="checkbox-inline">
                 <input id="useMixedReferences" type="checkbox"/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Use mixed references ($A1 or A$1)</span>
+                <span class="toggle-helper">Enabled.</span>
             </label>
             <label class="checkbox-inline">
                 <input id="includeComments" type="checkbox" checked/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Include formula comments</span>
+                <span class="toggle-helper">Adds explanatory comments.</span>
             </label>
             <label class="checkbox-inline">
                 <input id="optimizePerformance" type="checkbox"/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Optimize for large datasets</span>
+                <span class="toggle-helper">Improves performance on big data.</span>
             </label>
             <label class="checkbox-inline">
                 <input id="includeCellFormatting" type="checkbox"/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Include cell formatting suggestions</span>
+                <span class="toggle-helper">Adds formatting recommendations.</span>
             </label>
             <label class="checkbox-inline">
                 <input id="includeAlternatives" type="checkbox"/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Show alternative approaches</span>
+                <span class="toggle-helper">Provides alternative formulas.</span>
             </label>
             <label class="checkbox-inline">
                 <input id="includeStepByStep" type="checkbox"/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Step-by-step breakdown</span>
+                <span class="toggle-helper">Breaks down formula logic.</span>
             </label>
             <label class="checkbox-inline">
                 <input id="includeBestPractices" type="checkbox"/>
                 <span class="toggle-switch"><span class="toggle-slider"></span></span>
                 <span class="toggle-label">Best practices guidance</span>
+                <span class="toggle-helper">Includes Excel best practices.</span>
             </label>
         </div>
     </div>

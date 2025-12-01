@@ -3,7 +3,6 @@ title: "Create Song Lyrics"
 subtitle: "AI-Powered Song Writing & Lyrics Creation Tool"
 description: "Generate professional song lyrics with proper structure including intro, verses, chorus, and bridge. Create original songs or write in the style of your favorite artists with AI."
 keywords: ["music lyrics generator", "song lyrics creator", "AI songwriting", "lyrics writer", "song generator", "music composition", "creative writing", "AI music tool", "lyric creator"]
-author: JonesCKevin
 date: 2025-10-12
 lastmod: 2025-10-12
 draft: false
@@ -178,6 +177,7 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
           <span class="toggle-slider"></span>
         </span>
         <span class="toggle-label">Metaphors & Similes</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeRhyming" checked>
@@ -185,6 +185,7 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
           <span class="toggle-slider"></span>
         </span>
         <span class="toggle-label">Rhyming Scheme</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeHooks" checked>
@@ -192,6 +193,7 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
           <span class="toggle-slider"></span>
         </span>
         <span class="toggle-label">Catchy Hooks</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeWordplay">
@@ -199,6 +201,7 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
           <span class="toggle-slider"></span>
         </span>
         <span class="toggle-label">Wordplay & Puns</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeRepetition" checked>
@@ -206,6 +209,7 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
           <span class="toggle-slider"></span>
         </span>
         <span class="toggle-label">Repetition for Effect</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
       <label class="checkbox-inline">
         <input type="checkbox" id="includeImagery" checked>
@@ -213,6 +217,7 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
           <span class="toggle-slider"></span>
         </span>
         <span class="toggle-label">Vivid Imagery</span>
+        <span class="toggle-helper">Enabled.</span>
       </label>
     </div>
   </div>
@@ -242,10 +247,10 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
 <div id="resultDiv" class="result-section" style="display: none;">
   <h2>Your Song Lyrics</h2>
   <div id="resultContent"></div>
-  <div class="action-buttons">
-    <button onclick="copyToClipboard()" class="action-btn btn-primary copy-btn">📋 Copy Lyrics</button>
-    <button onclick="downloadLyrics()" class="action-btn btn-primary download-btn">💾 Download</button>
-    <button onclick="generateNewLyrics()" class="action-btn btn-primary regenerate-btn secondary">🔄 Generate New</button>
+  <div class="action-buttons result-actions">
+    <button onclick="copyResult(event)" class="action-btn copy-btn">📋 Copy</button>
+    <button onclick="downloadResult('markdown')" class="action-btn download-btn">📄 MD</button>
+    <button onclick="downloadResult('html')" class="action-btn download-btn-alt">🌐 HTML</button>
   </div>
 </div>
 

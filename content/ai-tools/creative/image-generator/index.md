@@ -3,7 +3,6 @@ title: "AI Image Generator"
 subtitle: "Create Stunning Images with AI"
 description: "Generate beautiful, unique images using advanced AI models. Create art, illustrations, and visual content with detailed prompts and customizable settings."
 keywords: ["AI image generator", "AI art creator", "image generation", "AI artwork", "text to image", "AI illustration", "creative AI", "image creator", "AI art tool"]
-author: JonesCKevin
 date: 2025-10-19
 lastmod: 2025-10-19
 draft: false
@@ -148,24 +147,28 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
         <input type="checkbox" id="enhanceDetails" checked>
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Enhanced Details</span>
+        <span class="toggle-helper">Enabled.</span>
         <span class="tooltiptext">Add extra detail and sharpness to the generated image for a more refined result.</span>
       </label>
       <label class="checkbox-inline tooltip">
         <input type="checkbox" id="enhanceColors">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Vibrant Colors</span>
+        <span class="toggle-helper">Enabled.</span>
         <span class="tooltiptext">Boost color saturation and vibrancy for a more eye-catching result.</span>
       </label>
       <label class="checkbox-inline tooltip">
         <input type="checkbox" id="cinematicLook">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Cinematic Look</span>
+        <span class="toggle-helper">Enabled.</span>
         <span class="tooltiptext">Apply cinematic color grading and composition for a movie-like aesthetic.</span>
       </label>
       <label class="checkbox-inline tooltip">
         <input type="checkbox" id="professionalPhoto">
         <span class="toggle-switch"><span class="toggle-slider"></span></span>
         <span class="toggle-label">Professional Photography</span>
+        <span class="toggle-helper">Enabled.</span>
         <span class="tooltiptext">Emulate professional camera settings with proper depth of field and bokeh effects.</span>
       </label>
     </div>
@@ -232,21 +235,14 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
     <p id="imagePromptUsed"></p>
   </div>
 
-  <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-  <button class="action-btn download-btn" onclick="window.downloadImage(event)">
+  <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;" class="result-actions">
+    <button class="action-btn download-btn" onclick="window.downloadImage(event)">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
       </svg>
       Download Image
     </button>
-  <button class="action-btn copy-btn" onclick="window.copyPromptToClipboard(event)">Copy Prompt</button>
-  <button class="action-btn regenerate-btn" onclick="window.regenerateImage()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M1 4v6h6M23 20v-6h-6"/>
-        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
-      </svg>
-      Regenerate
-    </button>
+    <button class="action-btn copy-btn" onclick="window.copyPromptToClipboard(event)">📋 Copy Prompt</button>
   </div>
 </div>
 
