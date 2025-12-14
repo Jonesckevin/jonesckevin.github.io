@@ -5,28 +5,28 @@
 
 .content {
   display: block;
-  padding: 20px 0; // Space for fixed header
+  padding: 140px 0 20px 0; // Space for fixed header
 
     @media (max-width: 1024px) {
-        padding: 20px 0;
+        padding: 140px 0 20px 0;
     }
     @media (max-width: 900px) {
-        padding: 20px 0;
+        padding: 140px 0 20px 0;
     }
     @media (max-width: 768px) {
-        padding: 20px 0;
+        padding: 140px 0 20px 0;
     }
     @media (max-width: 600px) {
-        padding: 20px 0;
+        padding: 140px 0 20px 0;
     }
     @media (max-width: 480px) {
-        padding: 20px 0;
+        padding: 140px 0 20px 0;
     }
     @media (max-width: 400px) {
-        padding: 20px 0;
+        padding: 140px 0 20px 0;
     }
     @media (max-width: 320px) {
-        padding: 20px 0;
+        padding: 140px 0 20px 0;
     }
 }
 /* ==========================================================================
