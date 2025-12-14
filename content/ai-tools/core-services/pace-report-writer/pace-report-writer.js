@@ -468,7 +468,7 @@ window.updateCompetencyFramework = function() {
             <div style="background: rgba(107, 255, 107, 0.1); border: 2px solid #6bff6b; border-radius: 8px; padding: 12px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <span style="font-size: 1.2em;">✅</span>
-                    <span style="color: #6bff6b; font-weight: 500;">Loaded ${rankData.fullName} Competency Framework</span>
+                    <span style="color: #6bff6b; font-weight: 500;">Loaded ${rankData.fullName} </span>
                 </div>
             </div>
         `;

@@ -33,10 +33,10 @@ social_media:
 
 # <img src="/ai-tools/core-services/pace-report-writer/PaCE.svg" alt="PaCE Report Writer" width="50" height="50" style="width:75px;height:75px;border:none!important;box-shadow:none!important;outline:none;background:transparent;display:inline-block;vertical-align:middle;" loading="lazy" decoding="async" /> CAF PaCE Writer
 
-<div style="gap: 7px; flex-wrap: wrap;">
-  <button type="button" class="btn-secondary" onclick="openFrameworkModal()" style="font-size: 0.95em; padding: 5px 5px;">📚 Competency</button>
-  <button type="button" class="btn-secondary" onclick="openReferencesModal()" style="font-size: 0.95em; padding: 5px 5px;">🔗 Reference</button>
-  <button type="button" class="btn-secondary info-toggle-btn" id="infoToggleBtn" onclick="showInfoNotice()" aria-label="Show tool information" title="Tool Information" style="font-size: 0.95em; padding: 5px 5px; display: none;">ℹ️ Info</button>
+<div style="gap: 4px; flex-wrap: wrap; margin-bottom: 10px;">
+  <button type="button" class="btn-secondary" onclick="openFrameworkModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">📚 Competency</button>
+  <button type="button" class="btn-secondary" onclick="openReferencesModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">🔗 Reference</button>
+  <button type="button" class="btn-secondary info-toggle-btn" id="infoToggleBtn" onclick="showInfoNotice()" aria-label="Show tool information" title="Tool Information" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important; display: none;">ℹ️ Info</button>
 </div>
 
 **⚠️ Security Notice:**  
