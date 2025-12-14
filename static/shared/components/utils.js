@@ -477,7 +477,7 @@ window.utils = {
         );
     },
 
-    // File reading helper
+    // File reading helper - text
     readFileAsText(file) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -485,6 +485,45 @@ window.utils = {
             reader.onerror = () => reject(new Error('Failed to read file'));
             reader.readAsText(file);
         });
+    },
+
+    // File reading helper - binary (for audio/video uploads)
+    readFileAsArrayBuffer(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result);
+            reader.onerror = () => reject(new Error('Failed to read file'));
+            reader.readAsArrayBuffer(file);
+        });
+    },
+
+    // Validate file size (default 100MB for audio/video)
+    validateFileSize(file, maxMB = 100) {
+        const maxBytes = maxMB * 1024 * 1024;
+        return {
+            valid: file.size <= maxBytes,
+            size: file.size,
+            limit: maxBytes,
+            sizeFormatted: this.formatFileSize(file.size),
+            limitFormatted: this.formatFileSize(maxBytes)
+        };
+    },
+
+    // Format bytes to human-readable size
+    formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    },
+
+    // Format seconds to [HH:MM:SS] timestamp
+    formatTimestamp(seconds) {
+        const hrs = Math.floor(seconds / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+        return `[${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}]`;
     },
 
     // ===== CENTRALIZED RESULT DISPLAY FUNCTIONS =====

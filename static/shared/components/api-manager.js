@@ -1277,6 +1277,114 @@ class APIManager {
         // Deprecated: explicit fallback removed per requirements.
         return [];
     }
+
+    /**
+     * Transcribe audio/video file using OpenAI Whisper or Mistral Voxtral API
+     * @param {File} file - Audio/video file to transcribe
+     * @param {Object} options - Transcription options
+     * @param {string} options.provider - 'openai' or 'mistral'
+     * @param {string} options.apiKey - API key for the provider
+     * @param {string} options.model - Model to use (e.g., 'whisper-1' for OpenAI)
+     * @param {string} options.language - ISO-639-1 language code (e.g., 'en')
+     * @param {boolean} options.timestamps - Whether to include timestamps
+     * @param {function} options.onProgress - Progress callback (0-100)
+     * @returns {Promise<Object>} - { text, segments (if timestamps) }
+     */
+    async transcribeAudio(file, options = {}) {
+        const {
+            provider = this.currentProvider,
+            apiKey = this.currentApiKey,
+            model,
+            language = 'en',
+            timestamps = false,
+            onProgress = null
+        } = options;
+
+        // Validate provider supports transcription
+        if (provider !== 'openai' && provider !== 'mistral') {
+            throw new Error(`Transcription is only supported for OpenAI (Whisper) and Mistral (Voxtral). Current provider: ${provider}`);
+        }
+
+        const config = this.getProviderConfig(provider);
+        if (!apiKey) {
+            throw new Error(`API key required for ${config.name} transcription`);
+        }
+
+        // Build FormData
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        // Set model based on provider if not specified
+        const transcribeModel = model || (provider === 'openai' ? 'whisper-1' : 'mistral-large-latest');
+        formData.append('model', transcribeModel);
+        
+        if (language) {
+            formData.append('language', language);
+        }
+
+        // Request verbose_json for timestamps, otherwise just text
+        if (timestamps) {
+            formData.append('response_format', 'verbose_json');
+            formData.append('timestamp_granularities[]', 'segment');
+        } else {
+            formData.append('response_format', 'json');
+        }
+
+        const endpoint = config.baseURL + '/audio/transcriptions';
+
+        // Use XMLHttpRequest for progress tracking
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+
+            // Upload progress
+            if (onProgress && xhr.upload) {
+                xhr.upload.addEventListener('progress', (e) => {
+                    if (e.lengthComputable) {
+                        const percent = Math.round((e.loaded / e.total) * 100);
+                        onProgress(percent);
+                    }
+                });
+            }
+
+            xhr.addEventListener('load', () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        resolve({
+                            text: response.text || '',
+                            segments: response.segments || [],
+                            language: response.language || language,
+                            duration: response.duration || null
+                        });
+                    } catch (e) {
+                        reject(new Error('Failed to parse transcription response'));
+                    }
+                } else {
+                    // Return API error directly to user
+                    let errorMsg = `Transcription failed (${xhr.status})`;
+                    try {
+                        const errorData = JSON.parse(xhr.responseText);
+                        errorMsg = errorData.error?.message || errorData.message || errorMsg;
+                    } catch (_) {
+                        errorMsg = xhr.responseText || errorMsg;
+                    }
+                    reject(new Error(errorMsg));
+                }
+            });
+
+            xhr.addEventListener('error', () => {
+                reject(new Error('Network error during transcription upload'));
+            });
+
+            xhr.addEventListener('abort', () => {
+                reject(new Error('Transcription upload was cancelled'));
+            });
+
+            xhr.open('POST', endpoint);
+            xhr.setRequestHeader('Authorization', 'Bearer ' + apiKey);
+            xhr.send(formData);
+        });
+    }
 }
 
 // Initialize stored models on load (only if not already initialized)

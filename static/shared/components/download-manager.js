@@ -76,26 +76,83 @@ if (!window.DownloadManager) {
                 }
             };
             const ensureList = (type, depth) => {
-                // Close if changing type at same depth
-                while (listStack.length > depth) closeLists(depth);
-                const current = listStack[depth - 1];
+                // If we need to go deeper, add new list levels
                 if (listStack.length < depth) {
-                    // Open missing levels as current type
                     while (listStack.length < depth) {
                         listStack.push(type);
                         html.push(`<${type}>`);
                     }
-                } else if (current !== type) {
+                    return;
+                }
+                
+                // If we need to go shallower, close extra levels
+                if (listStack.length > depth) {
+                    closeLists(depth);
+                }
+                
+                // At the right depth - check if type matches
+                const current = listStack[depth - 1];
+                if (listStack.length === depth && current !== type) {
                     // Switch type at this depth
                     closeLists(depth - 1);
                     listStack.push(type);
                     html.push(`<${type}>`);
+                } else if (listStack.length === 0) {
+                    // No list open at all, start one
+                    listStack.push(type);
+                    html.push(`<${type}>`);
                 }
+                // Otherwise, we're at the right depth with the right type - continue using it
             };
 
             for (let i = 0; i < lines.length; i++) {
                 const raw = lines[i];
                 const line = raw.replace(/\t/g, '    ');
+
+                // Table detection (markdown tables with | separators)
+                if (line.trim().match(/^\|(.+)\|$/)) {
+                    closeParagraph();
+                    closeLists(0);
+                    
+                    // Collect table lines
+                    const tableLines = [];
+                    let j = i;
+                    while (j < lines.length && lines[j].trim().match(/^\|(.+)\|$/)) {
+                        tableLines.push(lines[j]);
+                        j++;
+                    }
+                    i = j - 1; // Adjust index
+                    
+                    // Parse table
+                    if (tableLines.length >= 2) {
+                        html.push('<table>');
+                        
+                        // Header row
+                        const headerCells = tableLines[0].split('|').map(c => c.trim()).filter(c => c);
+                        html.push('<thead><tr>');
+                        headerCells.forEach(cell => {
+                            html.push(`<th>${inline(cell)}</th>`);
+                        });
+                        html.push('</tr></thead>');
+                        
+                        // Body rows (skip separator line at index 1)
+                        if (tableLines.length > 2) {
+                            html.push('<tbody>');
+                            for (let k = 2; k < tableLines.length; k++) {
+                                const rowCells = tableLines[k].split('|').map(c => c.trim()).filter(c => c);
+                                html.push('<tr>');
+                                rowCells.forEach(cell => {
+                                    html.push(`<td>${inline(cell)}</td>`);
+                                });
+                                html.push('</tr>');
+                            }
+                            html.push('</tbody>');
+                        }
+                        
+                        html.push('</table>');
+                    }
+                    continue;
+                }
 
                 // Code block fences
                 const fence = line.match(/^```(.*)$/);
@@ -320,17 +377,17 @@ if (!window.DownloadManager) {
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
             line-height: 1.6; 
-            max-width: 800px; 
+            max-width: 900px; 
             margin: 40px auto; 
             padding: 20px;
-            background: #f5f5f5;
-            color: #333;
+            background: #0f0f0f;
+            color: #e0e0e0;
         }
         .content {
-            background: white;
+            background: #1a1a1a;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
         h1, h2, h3, h4, h5, h6 { 
             color: #ff6b35; 
@@ -338,17 +395,18 @@ if (!window.DownloadManager) {
             margin-bottom: 0.5em;
         }
         h1 { font-size: 2em; }
-        h2 { font-size: 1.5em; }
-        h3 { font-size: 1.3em; }
+        h2 { font-size: 1.5em; border-bottom: 2px solid #4e4e57; padding-bottom: 0.3em; }
+        h3 { font-size: 1.3em; color: #4a9eff; }
         code { 
-            background: #f0f0f0; 
-            padding: 2px 4px; 
+            background: #2a2a2a; 
+            padding: 2px 6px; 
             border-radius: 3px;
             font-family: 'Courier New', monospace;
             font-size: 0.9em;
+            color: #5cb85c;
         }
         pre { 
-            background: #f8f8f8; 
+            background: #232425; 
             padding: 15px; 
             border-radius: 5px; 
             overflow-x: auto;
@@ -358,38 +416,107 @@ if (!window.DownloadManager) {
         pre code {
             background: none;
             padding: 0;
+            color: #e0e0e0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            background: #232425;
+        }
+        th {
+            background: #2a2a2a;
+            color: #4a9eff;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #4e4e57;
+        }
+        td {
+            background: #1a1a1a;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid #4e4e57;
+            color: #e0e0e0;
+        }
+        td strong {
+            font-size: 1.3em;
+            color: #ff6b35;
         }
         ul, ol { 
             padding-left: 28px; 
             margin: 1em 0;
         }
+        ul {
+            list-style-type: disc;
+        }
+        ol {
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
         ul ul, ol ul, ul ol, ol ol { padding-left: 24px; }
         li { 
             margin: 6px 0; 
+            color: #e0e0e0;
+            display: list-item;
+        }
+        /* 4-column grid for first-level ul (skills/tools sections) */
+        .content > ul {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            list-style: none;
+            padding-left: 0;
+        }
+        .content > ul > li {
+            background: #232425;
+            padding: 10px 15px;
+            border-left: 3px solid #ff6b35;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        /* Keep nested lists as normal */
+        .content > ul ul,
+        .content > ul ol {
+            display: block;
+            grid-template-columns: none;
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .content > ul ul li,
+        .content > ul ol li {
+            background: none;
+            padding: 4px 0;
+            border: none;
         }
         p {
             margin: 1em 0;
+            color: #e0e0e0;
         }
         hr {
             border: none;
-            height: 1px;
-            background-color: #ddd;
-            margin: 1.5em 0;
+            height: 2px;
+            background-color: #4e4e57;
+            margin: 2em 0;
         }
         a { 
-            color: #ff6b35; 
+            color: #4a9eff; 
             text-decoration: none; 
         }
         a:hover { 
             text-decoration: underline; 
+            color: #ff6b35;
         }
-        strong { font-weight: 600; }
+        strong { font-weight: 600; color: #ff6b35; }
         em { font-style: italic; }
         blockquote {
             border-left: 4px solid #ff6b35;
             margin: 1em 0;
             padding-left: 1em;
-            color: #666;
+            color: #b3b3bd;
+            background: #232425;
+            padding: 15px;
+            border-radius: 5px;
         }
     </style>
 </head>
