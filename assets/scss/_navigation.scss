@@ -91,6 +91,8 @@
 
     @media #{$media-size-phone-xs} {
         width: 90vw;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     &.open {
@@ -106,6 +108,8 @@
         transform: translateX(-50%) !important;
         width: 90vw !important;
         max-width: 95vw !important;
+        max-height: calc(100vh - 70px) !important;
+        overflow-y: auto !important;
         box-sizing: border-box !important;
         z-index: 2000 !important;
     }
@@ -117,20 +121,60 @@
         }
     }
 
+    // Center dropdown on screens under 1000px
+    @media (max-width: 999px) {
+        &.open {
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            max-width: 90vw;
+        }
+    }
+
     // Expand dropdown width on wider screens when help is visible
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 999px) {
         &.open:has(.ai-help-section[style*="display: block"]) {
             width: 800px; // Wider to accommodate 400px help content + 320px settings + gaps/padding
-            max-width: 90vw; // Prevent overflow on smaller screens
+        }
+    }
+
+    @media (min-width: 1000px) and (max-width: 1199px) {
+        &.open:has(.ai-help-section[style*="display: block"]) {
+            width: 800px;
+            max-width: 90vw;
         }
     }
 
     // Even wider on large screens
     @media (min-width: 1200px) {
         &.open:has(.ai-help-section[style*="display: block"]) {
-            width: 950px; // Wider for 480px help content + settings + gaps/padding
+            width: 950px;
+            max-width: 90vw;
         }
     }
+
+    // Custom scrollbar styling for mobile
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 107, 53, 0.05);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 107, 53, 0.3);
+        border-radius: 4px;
+        
+        &:hover {
+            background: rgba(255, 107, 53, 0.5);
+        }
+    }
+
+    // Firefox scrollbar
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 53, 0.3) rgba(255, 107, 53, 0.05);
 }
 
 .ai-dropdown-inner {
