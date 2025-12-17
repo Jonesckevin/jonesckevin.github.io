@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["drawio", "diagrams.net", "diagramming", "flowcharts", "uml", "web app", "collaboration", "design", "visualization", "prototyping", "network diagrams", "visio alternative", "open source"]
 keywords: ["drawio docker", "diagrams.net", "self-hosted diagramming", "flowchart tool", "visio alternative"]
-slug: "drawio-diagram-editor"
+slug: "drawio"
 draft: false
 seo_title: "Draw.io - Free Diagram & Flowchart Editor"
 seo_description: "Draw.io (diagrams.net) is a free, open-source diagramming tool for flowcharts, UML, network diagrams, and more. Self-hosted alternative to Visio and Lucidchart."

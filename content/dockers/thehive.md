@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "Artifacts"]
 tags: ["thehive", "security incident response", "sirp", "soc", "open source", "web app", "cybersecurity", "incident management", "collaboration", "threat intelligence", "misp", "cortex", "forensics"]
 keywords: ["thehive docker", "incident response platform", "soc platform", "security orchestration", "thehive sirp"]
-slug: "thehive-incident-response"
+slug: "thehive"
 draft: false
 ---
 

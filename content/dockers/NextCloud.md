@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["nextcloud", "cloud storage", "self-hosted", "file sync", "file sharing", "productivity", "collaboration", "office suite", "calendar", "contacts", "tasks", "docker-compose", "privacy", "data ownership"]
 keywords: ["nextcloud docker", "self-hosted cloud", "private cloud storage", "nextcloud compose", "dropbox alternative"]
-slug: "nextcloud-self-hosted-cloud"
+slug: "nextcloud"
 draft: false
 images: ["https://nextcloud.com/wp-content/uploads/2020/03/nextcloud-logo.png"]
 ---

@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["bookstack", "documentation", "wiki", "self-hosted", "docker-compose", "productivity", "collaboration", "knowledge-base", "open-source", "documentation-platform", "wiki-software", "content-management", "cms", "markdown"]
 keywords: ["bookstack docker", "self-hosted wiki", "documentation platform", "knowledge base docker", "bookstack compose"]
-slug: "bookstack-documentation-wiki"
+slug: "bookstack"
 draft: false
 images: ["https://w7.pngwing.com/pngs/70/626/png-transparent-bookstack-logo-tech-companies.png"]
 seo_title: "BookStack - Self-Hosted Documentation Wiki with Docker"

@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["linkwarden", "bookmark manager", "link manager", "self-hosted", "web app", "open source", "docker", "organization", "productivity", "archiving", "collaboration", "tagging"]
 keywords: ["linkwarden docker", "self-hosted bookmarks", "bookmark manager", "link organizer", "pocket alternative"]
-slug: "linkwarden-bookmark-manager"
+slug: "linkwarden"
 draft: false
 seo_title: "Linkwarden - Bookmark & Link Manager"
 seo_description: "Linkwarden is a self-hosted bookmark manager for saving and organizing web links with tags, archives, and collaboration. Privacy-focused alternative to Pocket and Raindrop."

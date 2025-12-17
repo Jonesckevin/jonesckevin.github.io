@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["vaultwarden", "password manager", "self-hosted", "security", "web app", "open source", "docker", "productivity", "data security", "encryption", "user management", "bitwarden", "2fa", "authentication"]
 keywords: ["vaultwarden docker", "self-hosted password manager", "bitwarden alternative", "secure password storage", "docker password vault"]
-slug: "vaultwarden-password-manager"
+slug: "vaultwarden"
 draft: false
 ---
 

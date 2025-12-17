@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "Training"]
 tags: ["backdoors and breaches", "cybersecurity game", "card game", "incident response", "security training", "docker-compose", "educational", "infosec", "tabletop game", "cyber training", "gamification"]
 keywords: ["backdoors and breaches docker", "cybersecurity card game", "incident response training", "security game", "infosec training"]
-slug: "backdoors-breaches-game"
+slug: "backdoors"
 draft: false
 images: ["https://raw.githubusercontent.com/BackdoorsAndBreaches/BackdoorsAndBreaches/master/images/logo.png"]
 seo_title: "Backdoors & Breaches - Cybersecurity Card Game in Docker"

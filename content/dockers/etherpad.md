@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["etherpad", "collaborative editor", "real-time editing", "document creation", "web app", "open source", "text editor", "productivity", "google docs alternative", "team collaboration", "version control", "document sharing"]
 keywords: ["etherpad docker", "collaborative text editor", "real-time document editing", "google docs alternative", "self-hosted editor"]
-slug: "etherpad-collaborative-editor"
+slug: "etherpad"
 draft: false
 seo_title: "Etherpad - Collaborative Real-Time Document Editor"
 seo_description: "Etherpad is an open-source collaborative text editor with real-time editing, version control, and chat. Self-hosted alternative to Google Docs for team collaboration."

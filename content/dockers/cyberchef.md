@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["cyberchef", "web app", "data analysis", "decoding", "encoding", "encryption", "decryption", "data manipulation", "cybersecurity", "forensics", "hashing", "base64", "hex"]
 keywords: ["cyberchef docker", "data decoding tool", "encryption analysis", "cybersecurity tools", "data manipulation web app"]
-slug: "cyberchef-data-analysis"
+slug: "cyberchef"
 draft: false
 featured_image: "https://cyberchef.io/images/cyberchef-128x128.png"
 seo_title: "CyberChef - The Cyber Swiss Army Knife in Docker"

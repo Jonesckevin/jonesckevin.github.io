@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["portainer", "docker management", "container management", "web app", "open source", "productivity", "self-hosted", "monitoring", "deployment", "devops", "infrastructure"]
 keywords: ["portainer docker", "docker gui", "container management ui", "docker web interface", "self-hosted docker management"]
-slug: "portainer-docker-management"
+slug: "portainer"
 draft: false
 ---
 

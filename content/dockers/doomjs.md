@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["doom", "game server", "lightweight", "customizable", "retro gaming", "fps", "browser game", "web game", "entertainment", "docker gaming"]
 keywords: ["doom docker", "doom game server", "retro fps docker", "browser doom", "doom in container"]
-slug: "doom-js-docker-game"
+slug: "doomjs"
 draft: false
 featured_image: "https://www.pngmart.com/files/22/Doom-Logo-PNG-Transparent.png"
 ---

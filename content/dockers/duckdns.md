@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["duckdns", "dynamic dns", "ddns", "self-hosted", "domain", "ip address", "networking", "dns service", "free dns", "home server", "port forwarding"]
 keywords: ["duckdns docker", "dynamic dns docker", "free ddns", "duckdns container", "home server dns"]
-slug: "duckdns-dynamic-dns"
+slug: "duckdns"
 draft: false
 seo_title: "DuckDNS - Free Dynamic DNS Service"
 seo_description: "DuckDNS provides free dynamic DNS with automatic IP updates. Keep your domain pointing to your home server even with changing IP addresses. Docker container for auto-updates."

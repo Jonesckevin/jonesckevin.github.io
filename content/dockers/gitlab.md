@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["gitlab", "devops", "git repository", "issue tracking", "ci/cd", "web app", "open source", "collaboration", "version control", "software development", "project management", "continuous integration", "continuous deployment", "code review"]
 keywords: ["gitlab docker", "self-hosted git", "gitlab ce", "devops platform docker", "git repository manager"]
-slug: "gitlab-devops-platform"
+slug: "gitlab"
 draft: false
 seo_title: "GitLab - Complete DevOps Platform"
 seo_description: "GitLab is a comprehensive DevOps platform with Git repository management, CI/CD pipelines, issue tracking, and project management. Self-host your complete development workflow with Docker."

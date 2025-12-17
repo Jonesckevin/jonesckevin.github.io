@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["tosios", "web game", "multiplayer", "browser game", "self-hosted", "open-source", "io game", "real-time", "nodejs", "phaser", "action game", "gaming"]
 keywords: ["tosios docker", "multiplayer web game", "io game", "self-hosted game", "browser multiplayer"]
-slug: "tosios-multiplayer-game"
+slug: "tosios"
 draft: false
 ---
 

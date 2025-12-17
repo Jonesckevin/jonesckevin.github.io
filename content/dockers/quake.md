@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["quake", "quakejs", "game server", "fps", "browser game", "multiplayer", "retro gaming", "web game", "quake 3", "arena shooter", "lightweight", "customizable", "self-hosted"]
 keywords: ["quakejs docker", "quake 3 browser", "web-based quake", "quake game server", "quake docker"]
-slug: "quakejs-browser-game"
+slug: "quakejs"
 draft: false
 ---
 

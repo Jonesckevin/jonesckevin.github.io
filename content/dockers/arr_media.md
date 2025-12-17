@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["arr stack", "radarr", "sonarr", "lidarr", "prowlarr", "readarr", "bazarr", "media automation", "docker-compose", "qbittorrent", "nzbget", "jackett", "media server", "self-hosted", "plex", "jellyfin"]
 keywords: ["arr stack docker", "radarr sonarr", "media automation", "docker media server", "arr compose"]
-slug: "arr-media-stack"
+slug: "arr_media"
 draft: false
 seo_title: "*Arr Media Stack - Automated Media Management with Docker"
 seo_description: "Set up a complete media automation stack using Docker Compose with Radarr, Sonarr, Lidarr, Prowlarr, and more. Automate your media downloads and organization effortlessly."

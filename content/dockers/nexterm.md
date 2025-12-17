@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["nexterm", "remote desktop", "rdp", "vnc", "ssh", "telnet", "web app", "open source", "productivity", "it tools", "remote access", "cross-platform", "self-hosted", "guacamole alternative"]
 keywords: ["nexterm docker", "web-based remote desktop", "rdp vnc ssh", "remote access tool", "nexterm client"]
-slug: "nexterm-remote-access"
+slug: "nexterm"
 draft: false
 ---
 

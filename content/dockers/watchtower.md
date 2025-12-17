@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["watchtower", "docker", "automation", "container management", "updates", "monitoring", "open source", "auto-update", "devops", "continuous deployment", "container maintenance"]
 keywords: ["watchtower docker", "automatic container updates", "docker auto-update", "watchtower automation", "container updater"]
-slug: "watchtower-auto-updates"
+slug: "watchtower"
 draft: false
 ---
 

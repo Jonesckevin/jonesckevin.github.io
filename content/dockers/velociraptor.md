@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "Artifacts"]
 tags: ["velociraptor", "endpoint management", "digital forensics", "dfir", "endpoint visibility", "web app", "security", "monitoring", "open source", "self-hosted", "threat hunting", "incident response", "edr"]
 keywords: ["velociraptor docker", "endpoint detection", "digital forensics tool", "threat hunting", "velociraptor edr"]
-slug: "velociraptor-endpoint-forensics"
+slug: "velociraptor"
 draft: false
 ---
 

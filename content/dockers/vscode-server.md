@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["vscode", "code-server", "web app", "development", "remote development", "productivity", "open source", "ide", "programming", "browser ide", "web ide", "cloud ide", "self-hosted"]
 keywords: ["vscode server docker", "code-server", "web-based ide", "remote vscode", "browser code editor"]
-slug: "vscode-server-browser-ide"
+slug: "vscode"
 draft: false
 ---
 

@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["mermaid-js", "mermaidjs", "live editor", "diagrams", "visualization", "web app", "open source", "markdown", "flowcharts", "sequence diagrams", "diagram as code", "documentation", "uml"]
 keywords: ["mermaid js docker", "diagram editor", "flowchart tool", "mermaid live editor", "diagram as code"]
-slug: "mermaid-js-live-editor"
+slug: "mermaid-js"
 draft: false
 ---
 

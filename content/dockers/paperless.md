@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["paperless", "document management", "archiving", "digital documents", "web app", "open source", "productivity", "self-hosted", "ocr", "document scanning", "pdf management", "paperless office", "organization"]
 keywords: ["paperless-ngx docker", "document management system", "ocr docker", "paperless office", "document archive"]
-slug: "paperless-ngx-document-management"
+slug: "paperless-ngx"
 draft: false
 ---
 

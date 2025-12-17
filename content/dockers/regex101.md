@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["regex101", "regex", "regular expressions", "web app", "debugging", "testing", "open source", "productivity", "development", "software engineering", "data validation", "pattern matching", "text processing"]
 keywords: ["regex101 docker", "regex tester", "regular expression debugger", "regex tool", "pattern testing"]
-slug: "regex101-tester"
+slug: "regex101"
 draft: false
 ---
 

@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["homer", "dashboard", "homepage", "self-hosted", "web app", "static site", "service organizer", "landing page", "docker-compose", "lightweight", "customizable", "yaml config"]
 keywords: ["homer dashboard", "static dashboard", "self-hosted homepage", "service dashboard docker", "homer docker"]
-slug: "homer-dashboard"
+slug: "homer"
 draft: false
 images: ["https://raw.githubusercontent.com/bastienwirtz/homer/main/public/logo.png"]
 seo_title: "Homer - Static Application Dashboard"

@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["codimd", "hackmd", "markdown", "editor", "collaborative", "real-time", "documentation", "notes", "docker-compose", "presentation mode", "self-hosted", "team collaboration"]
 keywords: ["codimd docker", "hackmd self-hosted", "collaborative markdown", "markdown editor", "real-time notes"]
-slug: "codimd-markdown-editor"
+slug: "codimd"
 draft: false
 image: "https://hackmd.io/logo-full.svg"
 seo_title: "CodiMD (HackMD) - Collaborative Markdown Editor with Docker"

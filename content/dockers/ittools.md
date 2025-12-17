@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["it-tools", "web app", "developer tools", "utilities", "productivity", "encoding", "conversion", "formatters", "generators", "open source", "toolbox", "web utilities"]
 keywords: ["it tools docker", "developer utilities", "web tools collection", "encoding tools", "developer toolbox"]
-slug: "it-tools-developer-utilities"
+slug: "ittools"
 draft: false
 seo_title: "IT Tools - Developer Utilities Collection"
 seo_description: "IT Tools is a comprehensive collection of handy developer utilities including encoders, converters, generators, and formatters. All-in-one toolbox for developers and IT professionals."

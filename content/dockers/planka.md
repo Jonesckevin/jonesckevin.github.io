@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["planka", "kanban", "task management", "project management", "web app", "productivity", "open source", "collaboration", "team management", "agile", "software development", "trello alternative", "scrum", "boards"]
 keywords: ["planka docker", "self-hosted kanban", "trello alternative", "kanban board docker", "project management tool"]
-slug: "planka-kanban-board"
+slug: "planka"
 draft: false
 ---
 

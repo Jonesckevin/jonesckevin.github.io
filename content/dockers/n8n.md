@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["n8n", "workflow automation", "integration", "open source", "task automation", "web app", "data processing", "zapier alternative", "workflow builder", "api integration", "no-code", "low-code", "self-hosted"]
 keywords: ["n8n docker", "workflow automation", "zapier alternative", "self-hosted automation", "n8n compose"]
-slug: "n8n-workflow-automation"
+slug: "n8n"
 draft: false
 ---
 

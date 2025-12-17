@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["metube", "youtube downloader", "yt-dlp", "youtube-dl", "web app", "open source", "media", "video download", "streaming", "multimedia", "user-friendly", "media management", "self-hosted"]
 keywords: ["metube docker", "youtube-dl web ui", "video downloader", "yt-dlp docker", "self-hosted youtube downloader"]
-slug: "metube-video-downloader"
+slug: "metube"
 draft: false
 ---
 

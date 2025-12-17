@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["photopea", "image editor", "web app", "graphics", "design", "photo editing", "psd support", "online tool", "multimedia", "creative", "photoshop alternative", "gimp alternative", "self-hosted"]
 keywords: ["photopea docker", "web-based photoshop", "psd editor", "self-hosted image editor", "photoshop alternative"]
-slug: "photopea-image-editor"
+slug: "photopea"
 draft: false
 ---
 

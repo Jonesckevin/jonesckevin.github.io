@@ -7,7 +7,7 @@ author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["mattermost", "collaboration", "team communication", "project management", "self-hosted", "open source", "web app", "docker", "messaging", "chat", "productivity", "team collaboration", "slack alternative", "secure messaging"]
 keywords: ["mattermost docker", "self-hosted slack", "team chat platform", "secure collaboration", "mattermost compose"]
-slug: "mattermost-team-chat"
+slug: "mattermost"
 draft: false
 seo_title: "Mattermost - Self-Hosted Team Collaboration Platform"
 seo_description: "Mattermost is an open-source Slack alternative for secure team messaging, collaboration, and workflow automation. Self-hosted chat platform with full data control and enterprise features."
