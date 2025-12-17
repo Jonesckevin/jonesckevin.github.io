@@ -1,11 +1,19 @@
 ---
-title: So Meta
-description: "Find the flag in this picture."
+title: "So Meta"
+description: "picoCTF Writeup for the So Meta challenge involving image metadata analysis using exiftool."
+keywords: ["picoCTF", "So Meta", "Exiftool", "Metadata Analysis", "Image Forensics", "Steganography", "picoCTF Writeup", "Flag Retrieval"]
+author: JonesCKevin
 date: 2023-10-01
-tags: ["picoctf", "stego", "steganography", "exiftool"]
+lastmod: 2023-10-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Steganography", "Exiftool", "Metadata"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "So Meta - picoCTF Metadata Analysis Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
-
-# So Meta
 
 ## Description
 

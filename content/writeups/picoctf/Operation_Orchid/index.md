@@ -1,19 +1,18 @@
 ---
-title: Operation_Orchid
-date: 2024-01-01T00:00:00+00:00
+title: "Operation Orchid"
+description: "picoCTF Writeup for the Operation Orchid challenge involving disk image analysis, OpenSSL decryption, and command history examination."
+keywords: ["picoCTF", "Operation Orchid", "Disk Image", "OpenSSL", "Encryption", "Ash History", "File Decryption", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Disk Image
-  - Flag
-  - Encryption
-  - OpenSSL
-  - Ash History
-  - Command History
-  - File Decryption
-  - File Analysis
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Disk Image", "OpenSSL", "Encryption"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Operation Orchid - picoCTF Disk Forensics and Encryption Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

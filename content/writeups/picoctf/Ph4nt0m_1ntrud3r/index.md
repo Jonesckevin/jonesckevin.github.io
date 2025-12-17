@@ -1,14 +1,18 @@
 ---
-title: Ph4nt0m 1ntrud3r
-date: 2025-10-24
+title: "Ph4nt0m 1ntrud3r"
+description: "picoCTF Writeup for the Ph4nt0m 1ntrud3r challenge involving PCAP network traffic analysis to uncover digital intrusion methods."
+keywords: ["picoCTF", "Ph4nt0m 1ntrud3r", "PCAP Analysis", "Network Forensics", "Network Traffic", "Digital Intrusion", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Network
-  - PCAP
-  - Write-Up
-  - Flag
+date: 2025-10-24
+lastmod: 2025-10-24
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "PCAP", "Network Analysis"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Ph4nt0m 1ntrud3r - picoCTF Network Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

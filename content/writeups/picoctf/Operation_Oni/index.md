@@ -1,17 +1,18 @@
 ---
-title: Operation Oni
-date: 2024-01-01T00:00:00+00:00
+title: "Operation Oni"
+description: "picoCTF Writeup for the Operation Oni challenge involving disk image analysis and SSH key extraction."
+keywords: ["picoCTF", "Operation Oni", "Disk Image", "SSH Keys", "Forensics", "Remote Access", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Disk Image
-  - Flag
-  - SSH
-  - Key
-  - Remote Access
-  - Disk Analysis
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Disk Image", "SSH"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Operation Oni - picoCTF Disk Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

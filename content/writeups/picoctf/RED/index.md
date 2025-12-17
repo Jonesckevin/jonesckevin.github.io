@@ -1,14 +1,18 @@
 ---
-title: RED
-date: 2025-10-24
+title: "RED"
+description: "picoCTF Writeup for the RED challenge involving image steganography and color channel analysis."
+keywords: ["picoCTF", "RED", "Steganography", "Image Analysis", "Color Channels", "PNG Forensics", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Stego
-  - Flag
-  - File Analysis
+date: 2025-10-24
+lastmod: 2025-10-24
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Steganography", "Image Analysis"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "RED - picoCTF Image Steganography Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

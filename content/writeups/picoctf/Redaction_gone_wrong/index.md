@@ -1,4 +1,19 @@
-# Redaction gone wrong
+---
+title: "Redaction gone wrong"
+description: "picoCTF Writeup for the Redaction gone wrong challenge involving PDF analysis and improper redaction techniques."
+keywords: ["picoCTF", "Redaction gone wrong", "PDF Analysis", "Document Forensics", "Improper Redaction", "picoCTF Writeup", "Flag Retrieval"]
+author: JonesCKevin
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "PDF", "Redaction"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Redaction gone wrong - picoCTF PDF Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
+---
 
 ## Description
 

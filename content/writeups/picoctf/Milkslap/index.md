@@ -1,19 +1,18 @@
 ---
-title: Milkslap
-date: 2024-01-01T00:00:00+00:00
+title: "Milkslap"
+description: "picoCTF Writeup for the Milkslap challenge involving PNG steganography and zsteg analysis."
+keywords: ["picoCTF", "Milkslap", "Steganography", "PNG Analysis", "Zsteg", "Stego Toolkit", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Stego
-  - Image Analysis
-  - PNG
-  - Steganography
-  - Zlib
-  - Zsteg
-  - Stego Toolkit
-  - Flag
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Steganography", "PNG", "Zsteg"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Milkslap - picoCTF Steganography Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

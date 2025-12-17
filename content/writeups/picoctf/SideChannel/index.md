@@ -1,17 +1,18 @@
 ---
-title: SideChannel
-date: 2024-01-01T00:00:00+00:00
+title: "SideChannel"
+description: "picoCTF Writeup for the SideChannel challenge involving timing side-channel attacks to extract PIN codes."
+keywords: ["picoCTF", "SideChannel", "Side Channel Attack", "Timing Attack", "PIN Cracking", "Network Security", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Side Channel Attack
-  - PIN Code
-  - Network Connection
-  - Flag
-  - Network Security
-  - Network Protocols
+date: 2024-01-01T00:00:00+00:00
+lastmod: 2024-01-01T00:00:00+00:00
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Side Channel", "Timing Attack"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "SideChannel - picoCTF Side Channel Attack Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

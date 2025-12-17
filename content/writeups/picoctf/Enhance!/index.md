@@ -1,14 +1,18 @@
 ---
-title: Enhance!
-date: 2024-01-01T00:00:00+00:00
+title: "Enhance!"
+description: "picoCTF Writeup for the Enhance! challenge involving SVG image analysis and hidden text with microscopic font sizes."
+keywords: ["picoCTF", "Enhance!", "SVG Analysis", "Image Forensics", "Hidden Text", "Font Size", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Image
-  - SVG
-  - Flag
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "SVG", "Image Analysis"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Enhance! - picoCTF SVG Image Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

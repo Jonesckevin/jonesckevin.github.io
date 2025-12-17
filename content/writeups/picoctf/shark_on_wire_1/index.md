@@ -1,22 +1,18 @@
 ---
-title: Shark on wire
-date: 2024-01-01T00:00:00+00:00
+title: "Shark on wire 1"
+description: "picoCTF Writeup for the Shark on wire 1 challenge involving PCAP network traffic analysis and Wireshark investigation."
+keywords: ["picoCTF", "Shark on wire 1", "PCAP Analysis", "Wireshark", "Network Forensics", "Packet Capture", "UDP Stream", "TCP Analysis", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - PCAP
-  - Wireshark
-  - Flag
-  - Network Analysis
-  - UDP
-  - TCP
-  - Packet Capture
-  - Network Forensics
-  - Network Traffic
-  - Network Protocols
-  - Network Security
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "PCAP", "Wireshark", "Network Analysis", "Network Forensics"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Shark on wire 1 - picoCTF Network Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

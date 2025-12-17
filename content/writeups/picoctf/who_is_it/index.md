@@ -1,8 +1,18 @@
 ---
-title: Who is it
-description: "Someone just sent you an email claiming to be Google's co-founder Larry Page but you suspect a scam. Can you help us identify whose mail server the email actually originated from?"
+title: "Who is it"
+description: "picoCTF Writeup for the 'Who is it' challenge involving email header analysis, IP tracking, and WHOIS investigation to identify email origin."
+keywords: ["picoCTF", "Who is it", "Email Forensics", "Email Headers", "IP Analysis", "WHOIS", "picoCTF Writeup", "Flag Retrieval"]
+author: JonesCKevin
 date: 2023-10-01
-tags: ["picoctf", "email", "forensics", "ip"]
+lastmod: 2023-10-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Email", "IP Analysis"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Who is it - picoCTF Email Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

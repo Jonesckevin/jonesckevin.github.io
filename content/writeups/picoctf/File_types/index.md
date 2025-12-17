@@ -1,15 +1,18 @@
 ---
-title: File Types
-date: 2024-01-01T00:00:00+00:00
+title: "File Types"
+description: "picoCTF Writeup for the File Types challenge involving PDF corruption and bash script analysis."
+keywords: ["picoCTF", "File Types", "PDF Analysis", "Bash Script", "File Type Forensics", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - File Types
-  - Flag
-  - PDF
-  - Bash
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "File Types", "PDF", "Bash"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "File Types - picoCTF File Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

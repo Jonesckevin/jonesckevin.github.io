@@ -1,21 +1,18 @@
 ---
 title: "hideme"
-date: 2024-01-01T00:00:00+00:00
+description: "picoCTF Writeup for the hideme challenge involving steganography and hidden zip archives in PNG images."
+keywords: ["picoCTF", "hideme", "Steganography", "Binwalk", "Foremost", "PNG Analysis", "Hidden Files", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Image Analysis
-  - Binwalk
-  - Foremost
-  - Scalpel
-  - Flag
-  - PNG
-  - Zlib
-  - Zip
-  - Steganography
-  - Stego
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Steganography", "Binwalk", "PNG"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "hideme - picoCTF Steganography Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

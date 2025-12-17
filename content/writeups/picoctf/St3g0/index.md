@@ -1,8 +1,18 @@
 ---
-title: St3g0
-description: "Download this image and find the flag."
+title: "St3g0"
+description: "picoCTF Writeup for the St3g0 challenge involving PNG steganography and zsteg analysis to extract hidden flags."
+keywords: ["picoCTF", "St3g0", "Steganography", "Zsteg", "PNG Analysis", "LSB Steganography", "picoCTF Writeup", "Flag Retrieval"]
+author: JonesCKevin
 date: 2023-10-01
-tags: ["picoctf", "stegano", "steganography", "zsteg"]
+lastmod: 2023-10-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Steganography", "Zsteg", "PNG"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "St3g0 - picoCTF Steganography Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description

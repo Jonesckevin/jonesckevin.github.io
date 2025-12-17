@@ -1,10 +1,19 @@
 ---
-title: Sleughkit Apprentice
-date: 2023-10-01
-tags: ["picoctf", "sleuthkit", "disk image", "ash history", "shred"]
+title: "Sleuthkit Apprentice"
+description: "picoCTF Writeup for the Sleuthkit Apprentice challenge involving disk image analysis and forensic investigation using Sleuthkit tools."
+keywords: ["picoCTF", "Sleuthkit Apprentice", "Sleuthkit", "Disk Image", "Forensics", "Ash History", "picoCTF Writeup", "Flag Retrieval"]
+author: JonesCKevin
+date: 2023-10-01T00:00:00+00:00
+lastmod: 2023-10-01T00:00:00+00:00
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "Sleuthkit", "Disk Image"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Sleuthkit Apprentice - picoCTF Disk Forensics Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
-
-# Sleughkit Apprentice
 
 ## Description
 

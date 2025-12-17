@@ -1,16 +1,18 @@
 ---
-title: Lookey here
-date: 2024-01-01T00:00:00+00:00
+title: "Lookey here"
+description: "picoCTF Writeup for the Lookey here challenge involving grep and text file analysis to find hidden flags."
+keywords: ["picoCTF", "Lookey here", "grep", "Text Analysis", "Text Search", "File Search", "picoCTF Writeup", "Flag Retrieval"]
 author: JonesCKevin
-tags:
-  - PicoCTF
-  - Forensics
-  - Write-Up
-  - Flag
-  - grep
-  - Text Analysis
-  - Text File
-  - Text Search
+date: 2024-01-01
+lastmod: 2024-01-01
+draft: false
+tags: ["picoCTF", "Writeups", "Forensics", "grep", "Text Analysis"]
+type: writeups
+categories: ["Writeups"]
+seo_title: "Lookey here - picoCTF Text Analysis Writeup"
+schema_type: "TechArticle"
+sitemap_priority: 0.6
+sitemap_changefreq: "monthly"
 ---
 
 ## Description
