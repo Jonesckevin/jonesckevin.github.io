@@ -4,7 +4,7 @@ subtitle: "D&D-Style Character Sheets for Cybersecurity Professionals"
 description: "Create D&D-inspired character sheets for cybersecurity roles with stats, skills, and AI-generated backstories. Perfect for team building, training exercises, and gamifying cyber defence education."
 keywords: ["cybersecurity character sheet", "cyber defence RPG", "security training game", "D&D cybersecurity", "infosec character generator", "SOC analyst RPG", "cyber defence gamification", "security team building"]
 date: 2025-12-04
-lastmod: 2025-12-04
+lastmod: 2025-12-14
 draft: false
 tags: ["Gaming", "Cybersecurity", "Character Generator", "RPG", "Training", "Team Building", "AI", "Tools"]
 categories: ["AI Tools", "Gaming"]
@@ -26,7 +26,6 @@ social_media:
   twitter_image: "/images/featured/aitools/cyber-character-sheet.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="cyber-defence-character.css">
 
 # 🛡️ Cyber Defence Character Sheet Generator

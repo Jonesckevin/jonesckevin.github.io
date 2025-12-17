@@ -4,7 +4,7 @@ subtitle: "AI-Powered DAX Formula and Filter Code Generator"
 description: "Generate optimized PowerBI DAX formulas and filter code from natural language descriptions. Create measures, calculated columns, and advanced filters with AI assistance. Free online PowerBI DAX builder for analysts and developers."
 keywords: ["PowerBI DAX builder", "DAX formula generator", "PowerBI filter builder", "AI DAX tool", "PowerBI measures", "DAX optimization", "calculated columns", "PowerBI assistant", "business intelligence tools", "DAX automation"]
 date: 2025-11-03
-lastmod: 2025-11-03
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "PowerBI", "DAX", "Business Intelligence", "Analytics", "Data Visualization", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -25,7 +25,6 @@ social_media:
   twitter_description: "Generate DAX formulas and filters from natural language. AI-powered PowerBI tool for analysts and developers."
   twitter_image: "/images/featured/aitools/powerbi-dax-builder.png"
 ---
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="powerbi-dax-builder.css">
 
  

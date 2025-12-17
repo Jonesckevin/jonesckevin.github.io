@@ -4,7 +4,7 @@ subtitle: "Professional Screenplay Writing with AI"
 description: "Generate professionally formatted screenplay scenes with authentic dialogue, stage directions, and cinematic structure. Free AI-powered screenwriting tool."
 keywords: ["screenplay generator", "script writer", "screenwriting tool", "film script", "movie script", "dialogue generator", "scene writer", "scriptwriting AI", "screenplay format", "film writing"]
 date: 2025-11-11
-lastmod: 2025-11-11
+lastmod: 2025-12-14
 draft: false
 tags: ["Creative", "Screenwriting", "Film", "Script", "Dialogue", "Writing", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -26,7 +26,6 @@ social_media:
   twitter_image: "/images/featured/aitools/screenplay-scene-generator.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 
 
 

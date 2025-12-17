@@ -4,7 +4,7 @@ subtitle: "Plan Your Week with AI-Powered Meal Planning"
 description: "Generate personalized weekly meal plans with smart grocery lists and recommended next steps. Organize your meals efficiently and shop with confidence using AI-powered meal planning."
 keywords: ["meal planner", "weekly meal plan", "grocery list generator", "meal prep", "AI meal planning", "shopping list", "meal planning tool", "weekly menu planner", "smart grocery list", "meal organization"]
 date: 2025-10-24
-lastmod: 2025-10-24
+lastmod: 2025-12-14
 draft: false
 tags: ["Lifestyle", "Meal Planning", "Grocery Shopping", "Health", "Nutrition", "AI", "Tools"]
 categories: ["AI Tools", "Lifestyle"]
@@ -26,7 +26,6 @@ social_media:
   twitter_image: "/images/featured/aitools/grocery-planner.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 
 
 # 🗓️ Weekly Meal Planner & Smart Grocery List

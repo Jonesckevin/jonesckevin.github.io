@@ -799,10 +799,7 @@ IMPORTANT GUIDELINES:
             console.log('Result stored, length:', currentResult.length);
             
             // Use centralized formatMarkdown from utils
-            const formattedHtml = utils.formatMarkdown(currentResult);
-            document.getElementById('resultContent').innerHTML = `
-                <div class="result-display">${formattedHtml}</div>
-            `;
+            document.getElementById('resultContent').innerHTML = utils.formatMarkdown(currentResult);
             document.getElementById('resultDiv').style.display = 'block';
             
             // Set content for download manager

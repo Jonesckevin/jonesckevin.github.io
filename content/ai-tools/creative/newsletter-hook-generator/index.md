@@ -4,7 +4,7 @@ subtitle: "Craft Compelling Newsletter Openings"
 description: "Create engaging newsletter opening paragraphs that grab attention and boost open rates. Generate compelling hooks for email newsletters with AI."
 keywords: ["newsletter hook", "email opening", "newsletter generator", "email marketing", "compelling hook", "newsletter writing", "email copywriting", "content marketing", "engagement tool"]
 date: 2025-11-11
-lastmod: 2025-11-11
+lastmod: 2025-12-14
 draft: false
 tags: ["Creative", "Marketing", "Copywriting", "Newsletter", "Email", "Content", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -26,7 +26,6 @@ social_media:
   twitter_image: "/images/featured/aitools/newsletter-hook-generator.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 
 # 📬 Newsletter Hook Generator
 

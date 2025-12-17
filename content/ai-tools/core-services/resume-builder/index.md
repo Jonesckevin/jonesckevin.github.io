@@ -4,7 +4,7 @@ subtitle: "AI-Powered Resume Creation and Analysis Tool"
 description: "Create professional, ATS-optimized resumes or get detailed analysis and feedback. Transform your documents into polished resumes ready for any job application. Free online tool."
 keywords: ["AI resume builder", "resume generator", "resume critique", "resume analysis", "ATS optimized resume", "professional resume maker", "AI-powered resume", "resume creator", "job application tool", "resume template", "free resume builder", "career tools", "professional documents"]
 date: 2025-09-13
-lastmod: 2025-11-30
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Productivity", "Resume Builder", "Resume Analysis", "Career Tools", "ATS Optimization", "Professional Development", "AI", "Tools"]
 categories: ["AI Tools"]

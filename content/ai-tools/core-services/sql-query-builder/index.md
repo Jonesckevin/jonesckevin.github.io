@@ -4,7 +4,7 @@ subtitle: "AI-Powered SQL Query Generation Tool"
 description: "Generate optimized SQL queries from natural language descriptions. Create database queries for any SQL system with AI assistance. Free online SQL query builder for developers."
 keywords: ["SQL query builder", "database query generator", "AI SQL tool", "SQL generator", "database development", "SQL optimization", "query builder", "SQL assistant", "database tools", "SQL automation"]
 date: 2025-09-30
-lastmod: 2025-09-30
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Database", "SQL", "Productivity", "Development", "Query Builder", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -25,10 +25,8 @@ social_media:
   twitter_description: "Generate SQL queries from natural language. AI-powered database query builder for all SQL systems."
   twitter_image: "/images/featured/aitools/sql-builder.png"
 ---
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="sql-query-builder.css">
 
- 
 # SQL Query Builder
 <button class="safety-toggle-btn" id="safetyToggleBtn" onclick="showSafetyNotice()" aria-label="Show safety guidelines" title="Safety Guidelines" style="display: none;">
 <span class="caution-triangle">⚠️</span>

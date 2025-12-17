@@ -4,7 +4,7 @@ subtitle: "Turn Your Ingredients into Delicious Meals"
 description: "Transform your available ingredients into creative meal ideas. Get personalized recipe suggestions for breakfast, lunch, dinner, or snacks based on your preferences and dietary needs."
 keywords: ["recipe generator", "meal planner", "ingredient-based recipes", "AI cooking assistant", "meal ideas", "recipe suggester", "cooking AI", "meal planning tool", "what to cook", "recipe finder"]
 date: 2025-10-20
-lastmod: 2025-10-20
+lastmod: 2025-12-14
 draft: false
 tags: ["Lifestyle", "Cooking", "Recipes", "Meal Planning", "Food", "AI", "Tools"]
 categories: ["AI Tools", "Lifestyle"]
@@ -25,9 +25,6 @@ social_media:
   twitter_description: "Turn your ingredients into delicious meals with AI-powered recipe suggestions."
   twitter_image: "/images/featured/aitools/meal-suggester.png"
 ---
-
-<link rel="stylesheet" href="/shared/styles/result-display.css">
-
 
 # 🍳 AI Recipe & Meal Suggester
 

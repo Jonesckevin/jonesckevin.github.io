@@ -4,7 +4,7 @@ subtitle: "Flexible AI Tool with Customizable Response Settings"
 description: "A versatile AI assistant that takes your input and provides customized responses. Configure tone, style, length, and focus to get exactly the output you need. Free AI prompt tool."
 keywords: ["AI assistant", "custom prompt", "flexible AI tool", "AI response generator", "customizable AI", "open prompt", "AI chat tool", "versatile AI assistant", "AI writing assistant"]
 date: 2025-11-06
-lastmod: 2025-11-06
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Productivity", "AI Assistant", "Custom Prompt", "AI", "Tools"]
 categories: ["AI Tools"]

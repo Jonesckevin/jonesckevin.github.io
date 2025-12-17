@@ -4,7 +4,7 @@ subtitle: "AI-Powered Concept Relationship Visualizer"
 description: "Map connections and relationships between concepts, ideas, and topics to enhance understanding. Perfect for students, researchers, and anyone learning complex subjects."
 keywords: ["concept mapping", "mind mapping", "concept relationships", "learning connections", "knowledge mapping", "visual learning", "AI concept mapper", "idea connections"]
 date: 2025-11-11
-lastmod: 2025-11-11
+lastmod: 2025-12-14
 draft: false
 tags: ["Learning", "Education", "Concept Mapping", "Visual Learning", "Study", "Understanding", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -16,10 +16,6 @@ schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
 ---
-
-<link rel="stylesheet" href="/shared/styles/result-display.css">
-
-
 
 # 🧠 Concept Connection Mapper
 

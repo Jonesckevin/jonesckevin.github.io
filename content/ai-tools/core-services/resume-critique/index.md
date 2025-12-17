@@ -4,7 +4,7 @@ subtitle: "AI-Powered Resume Review and Enhancement Service"
 description: "Get professional AI-powered resume analysis with detailed feedback and scoring. Improve your resume with expert critiques and ATS optimization suggestions. Free resume reviewer."
 keywords: ["resume critique", "resume analysis", "AI resume reviewer", "resume feedback", "ATS optimization", "resume scoring", "professional resume review", "resume improvement", "career tools", "job application help"]
 date: 2025-09-13
-lastmod: 2025-11-30
+lastmod: 2025-12-14
 draft: true
 aliases:
   - /ai-tools/core-services/resume-critique/

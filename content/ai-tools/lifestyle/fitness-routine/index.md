@@ -4,7 +4,7 @@ subtitle: "Personalized Workout Plans for Your Goals"
 description: "Generate customized fitness routines tailored to your goals, fitness level, and available equipment. Get AI-powered workout plans that fit your lifestyle and help you achieve your fitness objectives."
 keywords: ["fitness routine", "workout generator", "exercise plan", "AI fitness", "workout planner", "personalized fitness", "gym routine", "home workout", "fitness AI", "workout schedule"]
 date: 2025-10-24
-lastmod: 2025-10-24
+lastmod: 2025-12-14
 draft: false
 tags: ["Lifestyle", "Fitness", "Health", "Exercise", "Wellness", "AI", "Tools"]
 categories: ["AI Tools", "Lifestyle"]
@@ -26,7 +26,6 @@ social_media:
   twitter_image: "/images/featured/aitools/fitness-routine.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 
 
 # 💪 AI Fitness Routine Generator

@@ -4,7 +4,7 @@ subtitle: "Describe a schedule → get a cron with examples"
 description: "Turn natural language schedules into cron expressions. Includes next run times and human-readable breakdown."
 keywords: ["cron generator", "cron expression", "scheduler", "devops", "automation"]
 date: 2025-11-10
-lastmod: 2025-11-10
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Developer Tools", "Automation", "Cron", "AI"]
 categories: ["AI Tools"]
@@ -14,7 +14,6 @@ canonical: "/ai-tools/core-services/cron-expression-builder/"
 featured_image: "/images/featured/aitools/cronjob.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 
 # ⏰ Cron Expression Builder
 

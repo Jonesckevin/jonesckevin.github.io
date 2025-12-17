@@ -2,7 +2,7 @@
 
 /* Center posts area with proper spacing */
 main.posts {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto auto 0 auto;
   padding: 0 2rem;
 
@@ -209,7 +209,7 @@ main.posts {
 /* Adjust main content width when TOC is visible */
 @media (min-width: 1401px) {
   main.posts {
-    max-width: 900px;
+    max-width: 1200px;
     margin-right: 320px;
   }
 }

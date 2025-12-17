@@ -4,7 +4,7 @@ subtitle: "AI-Powered Audio/Video to Text Transcription"
 description: "Transcribe audio and video files to text using OpenAI Whisper or Mistral Voxtral. Supports timestamps, multiple languages, and common media formats. Free online transcription tool."
 keywords: ["AI transcription", "audio to text", "video transcription", "Whisper API", "Voxtral", "speech to text", "transcribe audio", "transcribe video", "free transcription", "AI tools"]
 date: 2025-11-30
-lastmod: 2025-11-30
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Productivity", "Transcription", "Audio", "Video", "Speech to Text", "AI", "Tools"]
 categories: ["AI Tools"]

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const response = await apiManager.makeRequest(messages,{ provider:'anthropic', apiKey:key, model:'claude-4-sonnet-20250514', maxTokens:900, temperature:0.3 });
       currentResult = response;
       downloadManager.setContent(response, 'markdown');
-      load.style.display='none'; res.style.display='block'; res.innerHTML=`<div class='result-display'>${window.utils?window.utils.formatMarkdown(response):response}</div>${downloadManager.createDownloadButtons('concept-bridge')}`; res.scrollIntoView({behavior:'smooth'});
+      load.style.display='none'; res.style.display='block'; res.innerHTML=`${window.utils?window.utils.formatMarkdown(response):response}${downloadManager.createDownloadButtons('concept-bridge')}`; res.scrollIntoView({behavior:'smooth'});
     }catch(ex){ load.style.display='none'; err.innerHTML=`<div style='color:#ff6666;'>${ex.message||'Generation failed'}</div>`; err.style.display='block'; }
   }
   window.buildBridge = buildBridge;

@@ -17,12 +17,12 @@ sitemap_changefreq: "monthly"
 social_media:
   og_title: "UserAssist Registry Analysis - Windows Forensics Guide"
   og_description: "Complete guide to UserAssist registry analysis for tracking program execution in Windows digital forensics investigations."
-  og_image: "/images/4n6post/userassist-social.png"
+  og_image: "/images/4n6post/userassist.png"
   og_type: "article"
   twitter_card: "summary_large_image"
   twitter_title: "UserAssist Registry Forensics Guide"
   twitter_description: "Learn UserAssist registry analysis for Windows forensics - program execution tracking and DFIR techniques."
-  twitter_image: "/images/4n6post/userassist-twitter.png"
+  twitter_image: "/images/4n6post/userassist.png"
 ---
 
 ## UserAssist Registry Analysis - Windows Program Execution Tracking

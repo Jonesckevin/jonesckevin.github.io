@@ -4,7 +4,7 @@ subtitle: "Explain Complex Concepts with Analogies"
 description: "Generate clear, relatable analogies to explain difficult concepts. Perfect for teachers, communicators, and anyone explaining technical topics to diverse audiences."
 keywords: ["analogy generator", "explain concepts", "teaching tool", "metaphor generator", "learning aid", "educational tool", "concept explanation", "teaching assistant"]
 date: 2025-11-11
-lastmod: 2025-11-11
+lastmod: 2025-12-14
 draft: false
 tags: ["Learning", "Education", "Teaching", "Communication", "Explanation", "Analogies", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -26,10 +26,7 @@ social_media:
   twitter_image: "/images/featured/aitools/analogy-generator.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
-
-
-# 💡 Analogy Generator
+# 🔗 Analogy Generator
 
 Transform complex concepts into relatable analogies. Make difficult ideas accessible through familiar comparisons.
 

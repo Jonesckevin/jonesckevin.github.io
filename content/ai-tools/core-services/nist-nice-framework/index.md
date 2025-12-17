@@ -4,7 +4,7 @@ subtitle: "Generate Job Descriptions from NICE Framework"
 description: "Create comprehensive cybersecurity job descriptions based on NIST NICE Framework components and the 11 Strategies of a World-Class SOC."
 keywords: ["nist nice framework", "cybersecurity job description", "workforce framework", "job role mapper", "soc strategies"]
 date: 2025-11-25
-lastmod: 2025-11-25
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Cybersecurity", "NIST", "Workforce", "Job Descriptions"]
 categories: ["AI Tools"]
@@ -16,7 +16,6 @@ sitemap_priority: 0.8
 sitemap_changefreq: "monthly"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="nist-nice-framework.css">
 
 # 🎯 NIST NICE Framework Position Mapper

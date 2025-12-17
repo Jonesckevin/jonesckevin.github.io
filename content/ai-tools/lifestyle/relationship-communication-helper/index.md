@@ -4,7 +4,7 @@ subtitle: "Craft Constructive Difficult Conversations"
 description: "Get help crafting empathetic, constructive messages for difficult conversations. Navigate sensitive topics with clarity and respect."
 keywords: ["communication helper", "difficult conversations", "relationship advice", "conflict resolution", "empathetic communication", "conversation guide", "interpersonal skills", "communication skills"]
 date: 2025-11-11
-lastmod: 2025-11-11
+lastmod: 2025-12-14
 draft: false
 tags: ["Lifestyle", "Communication", "Relationships", "Conflict Resolution", "Empathy", "Interpersonal Skills", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -25,9 +25,6 @@ social_media:
   twitter_description: "Navigate difficult conversations with empathy and clarity. Relationship communication guide."
   twitter_image: "/images/featured/aitools/communication-helper.png"
 ---
-
-<link rel="stylesheet" href="/shared/styles/result-display.css">
-
 
 # 💬 Relationship Communication Helper
 

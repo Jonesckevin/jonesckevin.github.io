@@ -3,8 +3,8 @@ title: "PaCE Writer"
 subtitle: "Canadian Armed Forces Performance and Career Evaluation Report Generator"
 description: "Create PaCE Feedback Notes by providing some information. The more details you provide, the better the AI can assist you."
 keywords: ["PaCE report", "CAF evaluation", "performance report", "military evaluation", "competency framework", "career evaluation", "Canadian Armed Forces", "military report writer", "performance assessment", "CAF tools"]
-date: 2025-11-22
-lastmod: 2025-11-24
+date: 2025-11-24
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Military", "PaCE Report", "Performance Evaluation", "Career Assessment", "CAF", "Professional Development", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -28,7 +28,6 @@ social_media:
 
 <link rel="icon" type="image/svg+xml" href="/ai-tools/core-services/pace-report-writer/PaCE.svg">
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="/ai-tools/core-services/pace-report-writer/pace-report-writer.css">
 
 # <img src="/ai-tools/core-services/pace-report-writer/PaCE.svg" alt="PaCE Report Writer" width="50" height="50" style="width:75px;height:75px;border:none!important;box-shadow:none!important;outline:none;background:transparent;display:inline-block;vertical-align:middle;" loading="lazy" decoding="async" /> CAF PaCE Writer

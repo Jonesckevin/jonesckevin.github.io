@@ -180,30 +180,38 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Home",
-      "item": "{{ .Site.BaseURL }}"
+      "item": {
+        "@id": "{{ .Site.BaseURL }}",
+        "name": "Home"
+      }
     }
     {{ if .Section }},
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "{{ .Section | title }}",
-      "item": "{{ .Site.BaseURL }}{{ .Section }}/"
+      "item": {
+        "@id": "{{ .Site.BaseURL }}{{ .Section }}/",
+        "name": "{{ .Section | title }}"
+      }
     }
     {{ end }}
     {{ if and .Section (ne .Type .Section) }},
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "{{ .Title }}",
-      "item": "{{ .Permalink }}"
+      "item": {
+        "@id": "{{ .Permalink }}",
+        "name": "{{ .Title }}"
+      }
     }
     {{ else if not .IsSection }},
     {
       "@type": "ListItem",
       "position": {{ if .Section }}3{{ else }}2{{ end }},
-      "name": "{{ .Title }}",
-      "item": "{{ .Permalink }}"
+      "item": {
+        "@id": "{{ .Permalink }}",
+        "name": "{{ .Title }}"
+      }
     }
     {{ end }}
   ]

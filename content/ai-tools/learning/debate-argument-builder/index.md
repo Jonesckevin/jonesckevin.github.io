@@ -4,7 +4,7 @@ subtitle: "Build Structured Arguments For & Against"
 description: "Generate well-structured debate arguments with evidence, counterarguments, and rebuttals. Perfect for students, debaters, and critical thinkers."
 keywords: ["debate arguments", "argument builder", "debate tool", "critical thinking", "argumentation", "debate preparation", "logic tool", "reasoning assistant"]
 date: 2025-11-11
-lastmod: 2025-11-11
+lastmod: 2025-12-14
 draft: false
 tags: ["Learning", "Debate", "Critical Thinking", "Argumentation", "Education", "Logic", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -26,10 +26,7 @@ social_media:
   twitter_image: "/images/featured/aitools/debate-argument-builder.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
-
-
-# ⚖️ Debate Argument Builder
+# 🎯 Debate Argument Builder
 
 Build comprehensive debate arguments with structured reasoning, evidence, and counterarguments. Perfect for competitive debate, essays, and critical analysis.
 

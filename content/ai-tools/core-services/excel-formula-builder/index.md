@@ -4,7 +4,7 @@ subtitle: "AI-Powered Excel Formula Generator"
 description: "Generate optimized Excel formulas from natural language descriptions. Create complex formulas, array formulas, and advanced functions with AI assistance. Free online Excel formula builder for analysts and professionals."
 keywords: ["Excel formula builder", "Excel formula generator", "AI Excel tool", "Excel automation", "spreadsheet formulas", "Excel functions", "formula helper", "Excel assistant", "productivity tools", "Excel automation"]
 date: 2025-11-06
-lastmod: 2025-11-06
+lastmod: 2025-12-14
 draft: false
 tags: ["Core Services", "Excel", "Spreadsheets", "Productivity", "Analytics", "Data Analysis", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -25,7 +25,6 @@ social_media:
   twitter_description: "Generate Excel formulas from natural language. AI-powered spreadsheet formula builder for all Excel versions."
   twitter_image: "/images/featured/aitools/excel-formula-builder.png"
 ---
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 <link rel="stylesheet" href="excel-formula-builder.css">
 
 # Excel Formula Builder

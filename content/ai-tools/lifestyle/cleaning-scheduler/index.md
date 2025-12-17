@@ -4,7 +4,7 @@ subtitle: "Organized Cleaning Plans for a Tidy Home"
 description: "Generate personalized cleaning schedules and chore lists tailored to your home, lifestyle, and preferences. Stay organized and maintain a clean home with AI-powered cleaning plans."
 keywords: ["cleaning schedule", "chore list", "home organization", "cleaning planner", "AI cleaning assistant", "household chores", "cleaning checklist", "home maintenance", "cleaning routine", "chore scheduler"]
 date: 2025-10-24
-lastmod: 2025-10-24
+lastmod: 2025-12-14
 draft: false
 tags: ["Lifestyle", "Home", "Organization", "Cleaning", "Productivity", "AI", "Tools"]
 categories: ["AI Tools", "Lifestyle"]
@@ -23,11 +23,8 @@ social_media:
   twitter_card: "summary_large_image"
   twitter_title: "Free AI Cleaning & Chore Scheduler"
   twitter_description: "Create organized cleaning schedules for your home with AI. Maintain a tidy home effortlessly."
-  twitter_image: "/images/featured/aitools/chore-scheduler.png"
+  twitter_image: "/images/featured/aitools/cleaning-scheduler.png"
 ---
-
-<link rel="stylesheet" href="/shared/styles/result-display.css">
-
 
 # 🧹 Home Cleaning & Chore Scheduler
 

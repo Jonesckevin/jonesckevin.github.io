@@ -4,7 +4,7 @@ subtitle: "AI-Powered Music Mashup & Remix Ideas"
 description: "Create innovative song mashup concepts combining different tracks, genres, and artists. Get detailed arrangement notes, tempo matching suggestions, and creative mixing ideas for DJs, producers, and music enthusiasts."
 keywords: ["song mashup", "music mashup", "remix ideas", "DJ tools", "music production", "mashup generator", "song combination", "AI music tool", "remix concepts", "music creation"]
 date: 2025-11-11
-lastmod: 2025-11-11
+lastmod: 2025-12-14
 draft: false
 tags: ["Creative", "Music", "Mashup", "DJ", "Production", "Audio", "AI", "Tools"]
 categories: ["AI Tools"]
@@ -26,7 +26,6 @@ social_media:
   twitter_image: "/images/featured/aitools/song-mashup-concept.png"
 ---
 
-<link rel="stylesheet" href="/shared/styles/result-display.css">
 
 
 
