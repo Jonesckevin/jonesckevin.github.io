@@ -1,0 +1,88 @@
+{{- /* Get all smelling salts pages */ -}}
+{{- $pages := where .Site.Pages "Type" "smelling-salts" -}}
+{{- $pages = where $pages "Kind" "page" -}}
+{{- $pages = where $pages "Title" "!=" "Smelling Salts Rankings" -}}
+{{- $pages = where $pages ".File.LogicalName" "!=" "_index.md" -}}
+
+{{- /* Function to convert number to stars */ -}}
+{{- $getStars := dict -}}
+
+<div class="rankings-table-wrapper">
+    <div class="rankings-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Odour</th>
+                    <th>Overall</th>
+                    <th>Odour Rank</th>
+                    <th>Strength</th>
+                    <th>Longevity</th>
+                    <th>First Whiff</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{- range $pages.ByParam "brand" -}}
+                {{- $brand := .Params.brand -}}
+                {{- $model := .Params.model -}}
+                {{- $odour := .Params.odour | default "Natural" -}}
+                {{- $overallRating := .Params.overall_rating | default 0 -}}
+                {{- $odourRank := .Params.odour_rank | default 0 -}}
+                {{- $strengthRank := .Params.strength_rank | default 0 -}}
+                {{- $longevityRank := .Params.longevity_rank | default 0 -}}
+                {{- $firstWhiffRank := .Params.first_whiff_rank | default 0 -}}
+
+                {{- /* Convert numbers to stars */ -}}
+                {{- $starOverall := "" -}}
+                {{- $starOdour := "" -}}
+                {{- $starStrength := "" -}}
+                {{- $starLongevity := "" -}}
+                {{- $starFirstWhiff := "" -}}
+
+                {{- range seq (int $overallRating) -}}
+                {{- $starOverall = print $starOverall "★" -}}
+                {{- end -}}
+                {{- range seq (int $odourRank) -}}
+                {{- $starOdour = print $starOdour "★" -}}
+                {{- end -}}
+                {{- range seq (int $strengthRank) -}}
+                {{- $starStrength = print $starStrength "★" -}}
+                {{- end -}}
+                {{- range seq (int $longevityRank) -}}
+                {{- $starLongevity = print $starLongevity "★" -}}
+                {{- end -}}
+                {{- range seq (int $firstWhiffRank) -}}
+                {{- $starFirstWhiff = print $starFirstWhiff "★" -}}
+                {{- end -}}
+
+                <tr>
+                    <td><strong class="brand-name">{{ $brand }}</strong></td>
+                    <td><a href="{{ .RelPermalink }}" class="model-link">{{ $model }}</a></td>
+                    <td><em>{{ $odour }}</em></td>
+                    <td class="rating-stars">
+                        <span class="stars">{{ $starOverall }}</span>
+                        <span class="rating-number">{{ $overallRating }}</span>
+                    </td>
+                    <td class="rating-stars">
+                        <span class="stars">{{ $starOdour }}</span>
+                        <span class="rating-number">{{ $odourRank }}</span>
+                    </td>
+                    <td class="rating-stars">
+                        <span class="stars">{{ $starStrength }}</span>
+                        <span class="rating-number">{{ $strengthRank }}</span>
+                    </td>
+                    <td class="rating-stars">
+                        <span class="stars">{{ $starLongevity }}</span>
+                        <span class="rating-number">{{ $longevityRank }}</span>
+                    </td>
+                    <td class="rating-stars">
+                        <span class="stars">{{ $starFirstWhiff }}</span>
+                        <span class="rating-number">{{ $firstWhiffRank }}</span>
+                    </td>
+                </tr>
+                {{- end -}}
+            </tbody>
+        </table>
+    </div>
+</div>

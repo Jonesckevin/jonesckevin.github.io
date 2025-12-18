@@ -1,0 +1,83 @@
+{{ define "main" }}
+<main class="posts posts-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1 class="hero-title">All Categories</h1>
+        <p class="hero-description">Browse all available categories</p>
+    </div>
+
+    <!-- Categories List -->
+    <div class="taxonomy-list">
+        {{ range .Data.Terms.Alphabetical }}
+        <a href="{{ .Page.Permalink }}" class="taxonomy-item">
+            <div class="taxonomy-item-header">
+                <h3 class="taxonomy-item-title">{{ .Page.Title }}</h3>
+                <span class="taxonomy-item-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+            </div>
+            {{ with .Page.Description }}
+            <p class="taxonomy-item-description">{{ . }}</p>
+            {{ end }}
+        </a>
+        {{ end }}
+    </div>
+</main>
+
+<style>
+
+main.posts {
+    margin-right: auto;
+}
+.taxonomy-list {
+    display: grid;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.taxonomy-item {
+    padding: 1.5rem;
+    background: var(--background-secondary, #1f2937);
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text-primary, #f9fafb);
+    transition: all 0.2s ease;
+}
+
+.taxonomy-item:hover {
+    border-color: var(--accent-color, #10b981);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.taxonomy-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.taxonomy-item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary, #f9fafb);
+}
+
+.taxonomy-item-count {
+    background: var(--background-tertiary, #111827);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-color, #10b981);
+}
+
+.taxonomy-item-description {
+    margin: 0;
+    color: var(--text-secondary, #9ca3af);
+    font-size: 0.9rem;
+}
+</style>
+{{ end }}

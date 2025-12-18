@@ -1,0 +1,68 @@
+{{ define "main" }}
+<main class="posts posts-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1 class="hero-title">All Tags</h1>
+        <p class="hero-description">Browse all available tags</p>
+    </div>
+
+    <!-- Tags Cloud -->
+    <div class="taxonomy-cloud">
+        {{ range .Data.Terms.Alphabetical }}
+        <a href="{{ .Page.Permalink }}" class="taxonomy-term" title="{{ .Count }} posts">
+            <span class="term-name">{{ .Page.Title }}</span>
+            <span class="term-count">{{ .Count }}</span>
+        </a>
+        {{ end }}
+    </div>
+</main>
+
+<style>
+main.posts {
+    margin-right: auto;
+}
+.taxonomy-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.taxonomy-term {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--background-secondary, #1f2937);
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text-primary, #f9fafb);
+    transition: all 0.2s ease;
+}
+
+.taxonomy-term:hover {
+    background: var(--accent-color, #10b981);
+    border-color: var(--accent-color, #10b981);
+    transform: translateY(-2px);
+}
+
+.term-name {
+    font-weight: 500;
+}
+
+.term-count {
+    background: var(--background-tertiary, #111827);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.taxonomy-term:hover .term-count {
+    background: rgba(0, 0, 0, 0.2);
+}
+</style>
+{{ end }}

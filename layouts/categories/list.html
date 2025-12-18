@@ -1,0 +1,105 @@
+{{ define "main" }}
+{{ $paginator := .Paginate .Data.Pages }}
+<main class="posts posts-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1 class="hero-title">Category: {{ .Title }}</h1>
+        <p class="hero-description">All posts in the "{{ .Title }}" category</p>
+
+        <!-- Search Filter -->
+        <div class="search-filter">
+            <input type="text" id="listSearch" placeholder="🔍 Search posts..." class="search-input">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <div class="items-grid" id="itemsGrid">
+        {{ range $paginator.Pages }}
+        <a href="{{ .Permalink }}" class="item-card" data-title="{{ .Title | lower }}"
+            data-description="{{ with .Summary }}{{ . | plainify | lower }}{{ end }}"
+            data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}"
+            data-categories="{{ if .Params.categories }}{{ delimit .Params.categories " " | lower }}{{ end }}">
+            <div class="item-content">
+                <h3 class="item-title">{{ .Title }}</h3>
+                <div class="item-meta">
+                    <span class="item-date">
+                        {{ if .Site.Params.dateformShort }}
+                        {{ time.Format .Site.Params.dateformShort .Date }}
+                        {{ else }}
+                        {{ time.Format "January 2, 2006" .Date }}
+                        {{ end }}
+                    </span>
+                    {{ if .ReadingTime }}
+                    <span class="item-separator">•</span>
+                    <span class="item-reading-time">{{ .ReadingTime }} min read</span>
+                    {{ end }}
+                </div>
+                {{ with .Summary }}
+                <p class="item-description">{{ . | plainify | truncate 150 }}</p>
+                {{ end }}
+                {{ with .Params.categories }}
+                <div class="item-categories">
+                    {{ range . }}
+                    <span class="category-badge">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+                {{ with .Params.tags }}
+                <div class="item-tags">
+                    {{ range first 3 . }}
+                    <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </a>
+        {{ end }}
+    </div>
+
+    <!-- Pagination -->
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="pagination-link pagination-prev">← Previous</a>
+        {{ end }}
+
+        <span class="pagination-info">
+            Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+        </span>
+
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="pagination-link pagination-next">Next →</a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</main>
+
+<script>
+    // Search functionality
+    document.getElementById('listSearch').addEventListener('input', function (e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.item-card');
+
+        cards.forEach(card => {
+            const title = card.getAttribute('data-title');
+            const description = card.getAttribute('data-description');
+            const tags = card.getAttribute('data-tags');
+            const categories = card.getAttribute('data-categories');
+
+            if (title.includes(searchTerm) || description.includes(searchTerm) || 
+                tags.includes(searchTerm) || categories.includes(searchTerm)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
+<style>
+
+main.posts {
+    margin-right: auto;
+}
+</style>
+{{ end }}

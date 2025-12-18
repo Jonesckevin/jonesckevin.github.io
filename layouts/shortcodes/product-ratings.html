@@ -1,0 +1,98 @@
+{{- $brand := .Get "brand" | default .Page.Params.brand -}}
+{{- $model := .Get "model" | default .Page.Params.model -}}
+{{- $odour := .Get "odour" | default .Page.Params.odour -}}
+{{- $overallRating := .Get "overall_rating" | default .Page.Params.overall_rating -}}
+{{- $odourRank := .Get "odour_rank" | default .Page.Params.odour_rank -}}
+{{- $strengthRank := .Get "strength_rank" | default .Page.Params.strength_rank -}}
+{{- $longevityRank := .Get "longevity_rank" | default .Page.Params.longevity_rank -}}
+{{- $firstWhiffRank := .Get "first_whiff_rank" | default .Page.Params.first_whiff_rank -}}
+
+{{- $starOverall := "" -}}
+{{- $starOdour := "" -}}
+{{- $starStrength := "" -}}
+{{- $starLongevity := "" -}}
+{{- $starFirstWhiff := "" -}}
+
+{{- range seq (int $overallRating) -}}
+{{- $starOverall = print $starOverall "★" -}}
+{{- end -}}
+{{- range seq (int $odourRank) -}}
+{{- $starOdour = print $starOdour "★" -}}
+{{- end -}}
+{{- range seq (int $strengthRank) -}}
+{{- $starStrength = print $starStrength "★" -}}
+{{- end -}}
+{{- range seq (int $longevityRank) -}}
+{{- $starLongevity = print $starLongevity "★" -}}
+{{- end -}}
+{{- range seq (int $firstWhiffRank) -}}
+{{- $starFirstWhiff = print $starFirstWhiff "★" -}}
+{{- end -}}
+
+<div class="product-ratings-container">
+
+    <div class="rating-tables-wrapper">
+        <!-- Main Product Info Table -->
+        <table class="product-details-table">
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Odour</th>
+                    <th>Overall Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="brand-cell"><strong>{{ $brand }}</strong></td>
+                    <td class="model-cell">{{ $model }}</td>
+                    <td class="odour-cell">{{ $odour }}</td>
+                    <td class="rating-cell">
+                        <span class="stars overall-stars">{{ $starOverall }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Detailed Ratings Table -->
+        <table class="detailed-ratings-table">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="rating-icon">👃</span>
+                        <span>Odour</span>
+                    </th>
+                    <th>
+                        <span class="rating-icon">💪</span>
+                        <span>Strength</span>
+                    </th>
+                    <th>
+                        <span class="rating-icon">⏱️</span>
+                        <span>Longevity</span>
+                    </th>
+                    <th>
+                        <span class="rating-icon">⚡</span>
+                        <span>First Whiff</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="rating-cell">
+                        <span class="stars">{{ $starOdour }}</span>
+                    </td>
+
+                    <td class="rating-cell">
+                        <span class="stars">{{ $starStrength }}</span>
+                    </td>
+                    <td class="rating-cell">
+                        <span class="stars">{{ $starLongevity }}</span>
+                    </td>
+                    <td class="rating-cell">
+                        <span class="stars">{{ $starFirstWhiff }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
