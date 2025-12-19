@@ -1,7 +1,6 @@
 ---
 title: Neck Tie QR Code
 description: "Physical Badge QR code decoding and analysis challenge."
-author: JonesCKevin
 date: 2023-05-21
 tags:
 - NorthSec

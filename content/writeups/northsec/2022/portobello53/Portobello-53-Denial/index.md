@@ -1,7 +1,6 @@
 ---
 title: Portobello 53 - Denial (2 of 2)
 description: "Network traffic analysis for DNS tunneling."
-author: JonesCKevin
 date: 2022-06-01
 tags:
 - NorthSec

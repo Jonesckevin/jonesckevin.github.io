@@ -3,7 +3,6 @@ title: "Velociraptor - Endpoint Visibility & Digital Forensics"
 description: "Velociraptor is an advanced endpoint monitoring and digital forensics tool. Hunt threats, collect artifacts, and perform incident response across your entire fleet with VQL queries."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker", "Artifacts"]
 tags: ["velociraptor", "endpoint management", "digital forensics", "dfir", "endpoint visibility", "web app", "security", "monitoring", "open source", "self-hosted", "threat hunting", "incident response", "edr"]
 keywords: ["velociraptor docker", "endpoint detection", "digital forensics tool", "threat hunting", "velociraptor edr"]

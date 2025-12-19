@@ -2,7 +2,6 @@
 title: "Sleuthkit Apprentice"
 description: "picoCTF Writeup for the Sleuthkit Apprentice challenge involving disk image analysis and forensic investigation using Sleuthkit tools."
 keywords: ["picoCTF", "Sleuthkit Apprentice", "Sleuthkit", "Disk Image", "Forensics", "Ash History", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2023-10-01T00:00:00+00:00
 lastmod: 2023-10-01T00:00:00+00:00
 draft: false

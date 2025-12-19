@@ -1,7 +1,6 @@
 ---
 title: Key Replicator
 description: "Physical key molding replication challenge."
-author: JonesCKevin
 date: 2023-05-21
 tags:
 - NorthSec

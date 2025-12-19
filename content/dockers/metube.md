@@ -3,7 +3,6 @@ title: "MeTube - Web-Based Video Downloader"
 description: "MeTube is a self-hosted web UI for youtube-dl/yt-dlp. Download videos from YouTube and 1000+ sites with a simple, elegant interface. Queue management and format selection."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["metube", "youtube downloader", "yt-dlp", "youtube-dl", "web app", "open source", "media", "video download", "streaming", "multimedia", "user-friendly", "media management", "self-hosted"]
 keywords: ["metube docker", "youtube-dl web ui", "video downloader", "yt-dlp docker", "self-hosted youtube downloader"]

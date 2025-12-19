@@ -3,7 +3,6 @@ title: "Regex101 - Regular Expression Tester"
 description: "Regex101 is a powerful online regex tester and debugger with real-time highlighting and explanations. Test and debug regular expressions for multiple programming languages."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["regex101", "regex", "regular expressions", "web app", "debugging", "testing", "open source", "productivity", "development", "software engineering", "data validation", "pattern matching", "text processing"]
 keywords: ["regex101 docker", "regex tester", "regular expression debugger", "regex tool", "pattern testing"]

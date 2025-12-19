@@ -3,7 +3,6 @@ title: "CodiMD (HackMD)"
 description: "CodiMD is a real-time collaborative markdown editor with presentation mode. Self-hosted alternative to HackMD for team documentation and note-taking."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["codimd", "hackmd", "markdown", "editor", "collaborative", "real-time", "documentation", "notes", "docker-compose", "presentation mode", "self-hosted", "team collaboration"]
 keywords: ["codimd docker", "hackmd self-hosted", "collaborative markdown", "markdown editor", "real-time notes"]

@@ -3,7 +3,6 @@ layout: post
 title: "Ship the add-on"
 description: "I dont remember."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

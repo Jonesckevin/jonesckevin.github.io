@@ -3,7 +3,6 @@ layout: post
 title: "Number Station - Sync With The Dealers"
 description: "Physical Challenge."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

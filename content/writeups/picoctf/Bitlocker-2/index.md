@@ -2,7 +2,6 @@
 title: "Bitlocker 2"
 description: "picoCTF Writeup for the Bitlocker 2 challenge involving Bitlocker-encrypted Windows images."
 keywords: ["picoCTF", "Bitlocker 2", "Bitlocker Encryption", "Windows Forensics", "Disk Encryption", "Cybersecurity Challenges", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2025-10-25
 lastmod: 2025-10-25
 draft: false

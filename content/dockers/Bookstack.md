@@ -3,7 +3,6 @@ title: "BookStack"
 description: "BookStack is an elegant open-source platform for creating documentation, wikis, and knowledge bases. Organize content with shelves, books, chapters, and pages in a self-hosted environment."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["bookstack", "documentation", "wiki", "self-hosted", "docker-compose", "productivity", "collaboration", "knowledge-base", "open-source", "documentation-platform", "wiki-software", "content-management", "cms", "markdown"]
 keywords: ["bookstack docker", "self-hosted wiki", "documentation platform", "knowledge base docker", "bookstack compose"]

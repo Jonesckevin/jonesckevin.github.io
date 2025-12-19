@@ -2,7 +2,6 @@
 title: "Operation Orchid"
 description: "picoCTF Writeup for the Operation Orchid challenge involving disk image analysis, OpenSSL decryption, and command history examination."
 keywords: ["picoCTF", "Operation Orchid", "Disk Image", "OpenSSL", "Encryption", "Ash History", "File Decryption", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

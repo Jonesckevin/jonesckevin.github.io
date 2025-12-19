@@ -3,7 +3,6 @@ title: "Watchtower - Automatic Docker Container Updates"
 description: "Watchtower automatically updates your running Docker containers when new images are available. Set-and-forget container update automation with scheduling and notifications."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["watchtower", "docker", "automation", "container management", "updates", "monitoring", "open source", "auto-update", "devops", "continuous deployment", "container maintenance"]
 keywords: ["watchtower docker", "automatic container updates", "docker auto-update", "watchtower automation", "container updater"]

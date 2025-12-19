@@ -1,7 +1,6 @@
 ---
 title: Warmups
 description: "Collection of warm-up challenges for beginners."
-author: JonesCKevin
 date: 2023-05-21
 tags:
 - NorthSec

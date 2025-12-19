@@ -2,7 +2,6 @@
 title: "RED"
 description: "picoCTF Writeup for the RED challenge involving image steganography and color channel analysis."
 keywords: ["picoCTF", "RED", "Steganography", "Image Analysis", "Color Channels", "PNG Forensics", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2025-10-24
 lastmod: 2025-10-24
 draft: false

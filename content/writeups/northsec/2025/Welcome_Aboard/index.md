@@ -3,7 +3,6 @@ layout: post
 title: "Welcome Aboard"
 description: "Easy to find challenge. But we got it near the end.. Womp Womp."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

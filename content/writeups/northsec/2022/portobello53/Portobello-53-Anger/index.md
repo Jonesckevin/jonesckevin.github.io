@@ -1,7 +1,6 @@
 ---
 title: Portobello-53-Anger (2/2)
 description: "PCAP analysis challenge focusing on network forensics."
-author: JonesCKevin
 date: 2022-06-01
 tags:
 - NorthSec

@@ -2,7 +2,6 @@
 title: "Sleuthkit Intro"
 description: "picoCTF Writeup for the Sleuthkit Intro challenge introducing disk image analysis using mmls and Sleuthkit tools."
 keywords: ["picoCTF", "Sleuthkit Intro", "Sleuthkit", "mmls", "Disk Image", "Partition Analysis", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2023-10-01
 lastmod: 2023-10-01
 draft: false

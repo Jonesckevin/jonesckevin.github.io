@@ -3,7 +3,6 @@ layout: post
 title: "Beginner Track - Hackademy"
 description: "Play on words for Hack Acadamy - Hackademy challenges walkthrough."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

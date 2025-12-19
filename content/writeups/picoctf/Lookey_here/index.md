@@ -2,7 +2,6 @@
 title: "Lookey here"
 description: "picoCTF Writeup for the Lookey here challenge involving grep and text file analysis to find hidden flags."
 keywords: ["picoCTF", "Lookey here", "grep", "Text Analysis", "Text Search", "File Search", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

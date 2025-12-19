@@ -5,7 +5,6 @@ description: "A detailed picoCTF Event Viewing write-up analyzing Windows Event 
 keywords: ["picoCTF", "Event Viewing", "Windows Event Logs", "Forensics", "PCAP Analysis", "Cybersecurity Challenges", "picoCTF Writeup", "Flag Retrieval"]
 date: 2025-10-24
 lastmod: 2025-10-24
-author: JonesCKevin
 tags:
   - PicoCTF
   - Forensics

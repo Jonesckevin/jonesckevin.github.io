@@ -2,7 +2,6 @@
 title: "Ph4nt0m 1ntrud3r"
 description: "picoCTF Writeup for the Ph4nt0m 1ntrud3r challenge involving PCAP network traffic analysis to uncover digital intrusion methods."
 keywords: ["picoCTF", "Ph4nt0m 1ntrud3r", "PCAP Analysis", "Network Forensics", "Network Traffic", "Digital Intrusion", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2025-10-24
 lastmod: 2025-10-24
 draft: false

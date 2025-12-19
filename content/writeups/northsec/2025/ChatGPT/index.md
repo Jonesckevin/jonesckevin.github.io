@@ -3,7 +3,6 @@ layout: post
 title: "ChatGPT"
 description: "Ai Created video challenges."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

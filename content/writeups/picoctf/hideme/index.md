@@ -2,7 +2,6 @@
 title: "hideme"
 description: "picoCTF Writeup for the hideme challenge involving steganography and hidden zip archives in PNG images."
 keywords: ["picoCTF", "hideme", "Steganography", "Binwalk", "Foremost", "PNG Analysis", "Hidden Files", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

@@ -3,7 +3,6 @@ title: "Photopea - Web-Based Image Editor"
 description: "Photopea is a free, self-hostable web-based image editor supporting PSD, XCF, Sketch, and more. Full-featured Photoshop alternative with layers, filters, and advanced editing tools."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["photopea", "image editor", "web app", "graphics", "design", "photo editing", "psd support", "online tool", "multimedia", "creative", "photoshop alternative", "gimp alternative", "self-hosted"]
 keywords: ["photopea docker", "web-based photoshop", "psd editor", "self-hosted image editor", "photoshop alternative"]

@@ -3,7 +3,6 @@ title: "Nginx Proxy Manager - Reverse Proxy with SSL"
 description: "Nginx Proxy Manager makes it easy to manage reverse proxy hosts with free SSL certificates. Beautiful UI for configuring Nginx without command line, perfect for self-hosted services."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["nginx", "proxy manager", "reverse proxy", "ssl", "lets encrypt", "docker", "web server", "ssl certificates", "self-hosted", "networking", "nginx gui", "proxy", "https"]
 keywords: ["nginx proxy manager docker", "reverse proxy gui", "free ssl certificates", "nginx docker", "proxy manager compose"]

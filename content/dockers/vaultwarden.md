@@ -3,7 +3,6 @@ title: "Vaultwarden - Self-Hosted Password Manager"
 description: "Vaultwarden is a lightweight, self-hosted password manager and Bitwarden-compatible server. Secure your passwords with end-to-end encryption, 2FA support, and complete data ownership in a Docker container."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["vaultwarden", "password manager", "self-hosted", "security", "web app", "open source", "docker", "productivity", "data security", "encryption", "user management", "bitwarden", "2fa", "authentication"]
 keywords: ["vaultwarden docker", "self-hosted password manager", "bitwarden alternative", "secure password storage", "docker password vault"]

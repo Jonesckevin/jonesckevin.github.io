@@ -3,7 +3,6 @@ title: "NexTerm - Multi-Protocol Remote Access Client"
 description: "NexTerm is a web-based remote desktop client supporting RDP, VNC, SSH, and Telnet. Self-hosted alternative to Apache Guacamole with a modern interface."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["nexterm", "remote desktop", "rdp", "vnc", "ssh", "telnet", "web app", "open source", "productivity", "it tools", "remote access", "cross-platform", "self-hosted", "guacamole alternative"]
 keywords: ["nexterm docker", "web-based remote desktop", "rdp vnc ssh", "remote access tool", "nexterm client"]

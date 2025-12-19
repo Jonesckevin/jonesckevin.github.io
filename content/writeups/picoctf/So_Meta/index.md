@@ -2,7 +2,6 @@
 title: "So Meta"
 description: "picoCTF Writeup for the So Meta challenge involving image metadata analysis using exiftool."
 keywords: ["picoCTF", "So Meta", "Exiftool", "Metadata Analysis", "Image Forensics", "Steganography", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2023-10-01
 lastmod: 2023-10-01
 draft: false

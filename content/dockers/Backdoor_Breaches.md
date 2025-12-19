@@ -3,7 +3,6 @@ title: "Backdoors & Breaches"
 description: "Backdoors & Breaches is an engaging tabletop card game for cybersecurity training and incident response practice. Digital version for teaching security concepts through gameplay."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker", "Training"]
 tags: ["backdoors and breaches", "cybersecurity game", "card game", "incident response", "security training", "docker-compose", "educational", "infosec", "tabletop game", "cyber training", "gamification"]
 keywords: ["backdoors and breaches docker", "cybersecurity card game", "incident response training", "security game", "infosec training"]

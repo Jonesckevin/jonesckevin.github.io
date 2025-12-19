@@ -7,7 +7,6 @@ draft: false
 tags: ["SOF-ELK", "KAPE", "Digital Forensics", "MFT", "Event Logs", "EVTX", "Forensics Analysis", "Incident Response"]
 categories: ["Artifacts"]
 type: artifacts
-author: JonesCKevin
 seo_title: "SOF-ELK Uploading Guide - Digital Forensics with KAPE"
 canonical: "/artifacts/SOF-ELK_Uploading/"
 aliases: ["/artifacts/SOF-ELK_Uploading/", "/2023/11/installing-sof-elk-and-uploading-kape.html"]

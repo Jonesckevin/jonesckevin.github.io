@@ -3,7 +3,6 @@ title: "VS Code Server - Browser-Based IDE"
 description: "Code-server brings Visual Studio Code to your browser. Access your full development environment from anywhere with this self-hosted, web-based VS Code instance."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["vscode", "code-server", "web app", "development", "remote development", "productivity", "open source", "ide", "programming", "browser ide", "web ide", "cloud ide", "self-hosted"]
 keywords: ["vscode server docker", "code-server", "web-based ide", "remote vscode", "browser code editor"]

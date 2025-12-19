@@ -3,7 +3,6 @@ title: "TheHive - Security Incident Response Platform"
 description: "TheHive is a scalable, open-source SIRP (Security Incident Response Platform) for SOC teams. Manage security incidents, collaborate on investigations, and integrate with MISP and Cortex."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker", "Artifacts"]
 tags: ["thehive", "security incident response", "sirp", "soc", "open source", "web app", "cybersecurity", "incident management", "collaboration", "threat intelligence", "misp", "cortex", "forensics"]
 keywords: ["thehive docker", "incident response platform", "soc platform", "security orchestration", "thehive sirp"]

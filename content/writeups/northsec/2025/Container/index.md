@@ -3,7 +3,6 @@ layout: post
 title: "Container"
 description: "Docker container analysis and exploitation."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

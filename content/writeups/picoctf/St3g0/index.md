@@ -2,7 +2,6 @@
 title: "St3g0"
 description: "picoCTF Writeup for the St3g0 challenge involving PNG steganography and zsteg analysis to extract hidden flags."
 keywords: ["picoCTF", "St3g0", "Steganography", "Zsteg", "PNG Analysis", "LSB Steganography", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2023-10-01
 lastmod: 2023-10-01
 draft: false

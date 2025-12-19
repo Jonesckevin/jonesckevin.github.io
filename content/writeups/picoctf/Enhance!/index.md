@@ -2,7 +2,6 @@
 title: "Enhance!"
 description: "picoCTF Writeup for the Enhance! challenge involving SVG image analysis and hidden text with microscopic font sizes."
 keywords: ["picoCTF", "Enhance!", "SVG Analysis", "Image Forensics", "Hidden Text", "Font Size", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

@@ -2,7 +2,6 @@
 title: "Milkslap"
 description: "picoCTF Writeup for the Milkslap challenge involving PNG steganography and zsteg analysis."
 keywords: ["picoCTF", "Milkslap", "Steganography", "PNG Analysis", "Zsteg", "Stego Toolkit", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

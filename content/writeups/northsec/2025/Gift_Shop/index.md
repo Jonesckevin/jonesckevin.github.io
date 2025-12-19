@@ -3,7 +3,6 @@ layout: post
 title: "Gift Shop"
 description: "Physical Challenge."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

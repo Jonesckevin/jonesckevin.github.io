@@ -2,7 +2,6 @@
 title: "extensions"
 description: "picoCTF Writeup for the extensions challenge involving file type identification and extension analysis."
 keywords: ["picoCTF", "extensions", "File Extensions", "PNG", "File Type Analysis", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

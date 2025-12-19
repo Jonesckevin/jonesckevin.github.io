@@ -2,7 +2,6 @@
 title: "Who is it"
 description: "picoCTF Writeup for the 'Who is it' challenge involving email header analysis, IP tracking, and WHOIS investigation to identify email origin."
 keywords: ["picoCTF", "Who is it", "Email Forensics", "Email Headers", "IP Analysis", "WHOIS", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2023-10-01
 lastmod: 2023-10-01
 draft: false

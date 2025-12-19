@@ -2,7 +2,6 @@
 title: "File Types"
 description: "picoCTF Writeup for the File Types challenge involving PDF corruption and bash script analysis."
 keywords: ["picoCTF", "File Types", "PDF Analysis", "Bash Script", "File Type Forensics", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

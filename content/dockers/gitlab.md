@@ -3,7 +3,6 @@ title: "GitLab"
 description: "GitLab is a comprehensive DevOps platform with Git repository management, CI/CD pipelines, issue tracking, and project management. Self-host your complete development workflow with Docker."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["gitlab", "devops", "git repository", "issue tracking", "ci/cd", "web app", "open source", "collaboration", "version control", "software development", "project management", "continuous integration", "continuous deployment", "code review"]
 keywords: ["gitlab docker", "self-hosted git", "gitlab ce", "devops platform docker", "git repository manager"]

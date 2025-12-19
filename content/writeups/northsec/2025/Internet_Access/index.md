@@ -3,7 +3,6 @@ layout: post
 title: "Internet Access"
 description: "Network protocols and PCAP forensics challenge."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

@@ -3,7 +3,6 @@ title: "TOSIOS - Multiplayer Web Game"
 description: "TOSIOS (The Open-Source IO Game) is a real-time multiplayer game built with Node.js and Phaser. Self-hosted browser-based action game with customizable gameplay."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["tosios", "web game", "multiplayer", "browser game", "self-hosted", "open-source", "io game", "real-time", "nodejs", "phaser", "action game", "gaming"]
 keywords: ["tosios docker", "multiplayer web game", "io game", "self-hosted game", "browser multiplayer"]

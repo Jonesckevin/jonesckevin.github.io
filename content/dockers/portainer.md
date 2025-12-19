@@ -3,7 +3,6 @@ title: "Portainer - Docker Container Management UI"
 description: "Portainer is a lightweight, open-source Docker management UI that simplifies container, image, network, and volume administration through an intuitive web interface. Perfect for DevOps teams and self-hosted environments."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["portainer", "docker management", "container management", "web app", "open source", "productivity", "self-hosted", "monitoring", "deployment", "devops", "infrastructure"]
 keywords: ["portainer docker", "docker gui", "container management ui", "docker web interface", "self-hosted docker management"]

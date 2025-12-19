@@ -2,7 +2,6 @@
 title: "Disk, disk, sleuth! II"
 description: "picoCTF Writeup for the 'Disk, disk, sleuth! II' challenge involving Alpine Linux disk image analysis and file recovery."
 keywords: ["picoCTF", "Disk sleuth II", "Disk Image", "Alpine Linux", "FTK Imager", "Arsenal Image Mounter", "Forensics", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

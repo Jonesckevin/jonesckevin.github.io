@@ -2,7 +2,6 @@
 title: "SailorKidz"
 description: "Image Analysis Challenge."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

@@ -12,6 +12,11 @@ Disallow: /admin/
 Disallow: /tmp/
 Disallow: /_gen/
 
+# Disallow specific tag RSS feeds
+Disallow: /tags/graphics/index.xml
+Disallow: /tags/image/index.xml
+Disallow: /tags/plex/index.xml
+
 # Allow all major search engines
 User-agent: Googlebot
 Allow: /

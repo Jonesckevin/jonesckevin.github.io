@@ -1,7 +1,6 @@
 ---
 title: Portobello-53-Bargaining
 description: "DNS exfiltration PCAP analysis."
-author: JonesCKevin
 date: 2022-06-01
 tags:
 - NorthSec

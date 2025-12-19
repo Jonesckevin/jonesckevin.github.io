@@ -1,7 +1,6 @@
 ---
 title: Portobello-53-Depression
 description: "DNS query forensics and data extraction."
-author: JonesCKevin
 date: 2022-06-01
 tags:
 - NorthSec

@@ -2,7 +2,6 @@
 title: "Operation Oni"
 description: "picoCTF Writeup for the Operation Oni challenge involving disk image analysis and SSH key extraction."
 keywords: ["picoCTF", "Operation Oni", "Disk Image", "SSH Keys", "Forensics", "Remote Access", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

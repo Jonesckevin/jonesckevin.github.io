@@ -2,7 +2,6 @@
 title: "Shark on wire 1"
 description: "picoCTF Writeup for the Shark on wire 1 challenge involving PCAP network traffic analysis and Wireshark investigation."
 keywords: ["picoCTF", "Shark on wire 1", "PCAP Analysis", "Wireshark", "Network Forensics", "Packet Capture", "UDP Stream", "TCP Analysis", "picoCTF Writeup", "Flag Retrieval"]
-author: JonesCKevin
 date: 2024-01-01
 lastmod: 2024-01-01
 draft: false

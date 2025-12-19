@@ -3,7 +3,6 @@ title: "Homer"
 description: "Homer is a simple, elegant static application dashboard and homepage. Organize your self-hosted services with a customizable, lightweight dashboard that requires no database."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["homer", "dashboard", "homepage", "self-hosted", "web app", "static site", "service organizer", "landing page", "docker-compose", "lightweight", "customizable", "yaml config"]
 keywords: ["homer dashboard", "static dashboard", "self-hosted homepage", "service dashboard docker", "homer docker"]

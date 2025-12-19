@@ -3,7 +3,6 @@ title: "NextCloud - Self-Hosted Cloud Storage & Collaboration"
 description: "NextCloud is a powerful self-hosted cloud platform offering file storage, sync, sharing, calendar, contacts, and office suite. Full-featured alternative to Google Drive and Dropbox with complete data ownership."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["nextcloud", "cloud storage", "self-hosted", "file sync", "file sharing", "productivity", "collaboration", "office suite", "calendar", "contacts", "tasks", "docker-compose", "privacy", "data ownership"]
 keywords: ["nextcloud docker", "self-hosted cloud", "private cloud storage", "nextcloud compose", "dropbox alternative"]

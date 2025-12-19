@@ -3,7 +3,6 @@ title: "Planka - Self-Hosted Kanban Board"
 description: "Planka is an elegant, open-source Trello alternative for kanban project management. Self-hosted task boards with real-time collaboration, labels, and card management."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker", "AI Tools"]
 tags: ["planka", "kanban", "task management", "project management", "web app", "productivity", "open source", "collaboration", "team management", "agile", "software development", "trello alternative", "scrum", "boards"]
 keywords: ["planka docker", "self-hosted kanban", "trello alternative", "kanban board docker", "project management tool"]

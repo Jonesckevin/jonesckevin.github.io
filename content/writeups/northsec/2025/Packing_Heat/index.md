@@ -3,7 +3,6 @@ layout: post
 title: "Packing Heat"
 description: "Long Chain of Physical and Digital Challenges."
 subtitle: "NorthSec 2025"
-author: JonesCKevin
 date: 2025-05-24
 tags:
 - NorthSec

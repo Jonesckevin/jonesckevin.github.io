@@ -3,7 +3,6 @@ title: "Ollama & Open WebUI - Self-Hosted AI Models"
 description: "Run local AI models with Ollama and manage them through Open WebUI's intuitive interface. Self-hosted LLM solution for privacy-focused AI deployment with Docker Compose."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["ollama", "open-webui", "docker-compose", "ai models", "web interface", "machine learning", "deployment", "self-hosted", "open source", "productivity", "development", "containerization", "web app", "llm", "local ai", "privacy"]
 keywords: ["ollama docker", "self-hosted ai", "local llm", "open webui", "ai model management", "docker ai stack"]

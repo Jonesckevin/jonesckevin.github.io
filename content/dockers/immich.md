@@ -3,7 +3,6 @@ title: "Immich"
 description: "Immich is a high-performance self-hosted photo and video backup solution with AI-powered facial recognition, automatic tagging, and mobile apps. Privacy-focused Google Photos alternative."
 date: 2024-01-15
 lastmod: 2025-01-18
-author: "Kevin Jones"
 categories: ["Docker"]
 tags: ["immich", "photo backup", "video backup", "self-hosted", "ai search", "media management", "web app", "open source", "google photos alternative", "facial recognition", "mobile app", "privacy", "photo gallery"]
 keywords: ["immich docker", "self-hosted photos", "google photos alternative", "photo backup solution", "immich compose"]
