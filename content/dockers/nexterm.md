@@ -19,10 +19,12 @@ NexTerm is a versatile remote desktop client that supports multiple protocols, i
 ```yaml
 services:
   nexterm:
-    image: germannewsmaker/nexterm:1.0.2-OPEN-PREVIEW
+    image: germannewsmaker/nexterm:1.0.6-OPEN-PREVIEW
     container_name: nexterm
     hostname: nexterm
     restart: ${SHUFFLE_RESTART_POLICY:-unless-stopped}
+    environment:
+      - ENCRYPTION_KEY: $(openssl rand -hex 32)
     ports:
       - "${NEXTERMPORT:-6989}:6989"
     volumes:
