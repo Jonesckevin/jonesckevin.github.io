@@ -226,21 +226,75 @@ Do not put sensitive information into the form.
       <h3>🔗 Reference Links </h3>
       <button class="modal-close" onclick="closeReferencesModal()">&times;</button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" style="padding:16px;">
+      <style>
+        /* layout: stack on small, two-column on wide */
+        .reference-links { display:block; gap:24px; }
+        @media (min-width:900px) {
+          .reference-links { display:flex; align-items:flex-start; }
+          .reference-links .downloads { margin-left:auto; width:320px; }
+        }
+        /* remove bullets and control indents */
+        .reference-links ul { list-style:none; margin:0 0 12px 0; padding:0; }
+        .reference-links ul ul { margin-left:20px; padding-left:0; list-style:none; }
+        .reference-links li { margin:6px 0; }
+        /* keep inline-flex anchors consistent */
+        .reference-links a { display:inline-flex; align-items:center; gap:6px; text-decoration:none; }
+        .chatgpt-logo { display:inline-block; margin-right:6px; }
+        /* align downloads content right */
+        .reference-links .downloads { text-align:right; }
+        .reference-links .downloads ul { padding-right:0; }
+        .reference-links .downloads a { justify-content:flex-end; }
+      </style>
       <div class="reference-links">
-        <div class="reference-link">
+        <div class="links" style="flex:1;">
           <ul>
-            <li><a href="https://www.canada.ca/en/department-national-defence/services/benefits-military-members/learning-development/career-development/performance-career-evaluation.html" target="_blank">PaCE Overview</a></li>
-            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/canadian-forces-military-personnel-instructions/performance-and-competency-evaluation-pace.html" target="_blank">PaCE Official Guidelines</a></li>
-            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" target="_blank">PaCE Training Documentation</a></li>
-            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives.html" target="_blank">PaCE - DAOD</a></li>
-            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/canadian-forces-military-personnel-instructions/inclusion-and-the-performance-appraisal-process/canadian-armed-forces-military-personnel-instruction-03-21-annexes-inclusion-and-the-performance-appraisal-process.html#annc" target="_blank">CAF Inclusive Behaviours Framework</a></li>
+            <li>
+              <a href="https://chatgpt.com/g/g-67ec6a02d44c8191a150cc65560a15c0-unofficial-caf-pace-competency-analyst-3-0"
+                 target="_blank" rel="noopener noreferrer">
+                <span class="chatgpt-logo" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+                    <circle cx="32" cy="32" r="30" fill="#10a37f" />
+                    <g fill="#ffffff" stroke="none">
+                      <polygon points="28,28 36,28 38,34 36,38 28,38 26,34" />
+                      <ellipse cx="32" cy="14" rx="5" ry="9" />
+                      <ellipse cx="32" cy="14" rx="5" ry="9" transform="rotate(60 32 32)" />
+                      <ellipse cx="32" cy="14" rx="5" ry="9" transform="rotate(120 32 32)" />
+                      <ellipse cx="32" cy="14" rx="5" ry="9" transform="rotate(180 32 32)" />
+                      <ellipse cx="32" cy="14" rx="5" ry="9" transform="rotate(240 32 32)" />
+                      <ellipse cx="32" cy="14" rx="5" ry="9" transform="rotate(300 32 32)" />
+                    </g>
+                  </svg>
+                </span>
+                <span>ChatGPT - Unofficial CAF PaCE Competency</span><br>
+              </a>
+            </li><br>
+            <li>
+              <a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" target="_blank" rel="noopener noreferrer">🔗 Official - PaCE Resources</a>
+              <ul>
+                <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/pace-user-guide.pdf" target="_blank" rel="noopener noreferrer">⬇️ User Guide</a></li>
+                <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/pace-manager-technical-manual.pdf" target="_blank" rel="noopener noreferrer">⬇️ Manager Manual </a></li>
+                <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/performance-appraisal-par-writing-guidelines.pdf" target="_blank" rel="noopener noreferrer">⬇️ PAR Guidelines</a></li>
+              </ul>
+            </li>
+            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/canadian-forces-military-personnel-instructions/performance-and-competency-evaluation-pace.html" target="_blank" rel="noopener noreferrer">🔗 CAF Personnel Instruction</a></li>
+            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives.html" target="_blank" rel="noopener noreferrer">🔗 DAOD - 5002</a></li>
+            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/policies-standards/canadian-forces-military-personnel-instructions/inclusion-and-the-performance-appraisal-process/canadian-armed-forces-military-personnel-instruction-03-21-annexes-inclusion-and-the-performance-appraisal-process.html#annc" target="_blank" rel="noopener noreferrer">🔗 Inclusive Behaviours Framework</a></li>
+            <br>
+            <li><a href="https://www.canada.ca/en/department-national-defence/corporate/video/other/2024/03-01-pace.html" target="_blank" rel="noopener noreferrer">📽️ PaCE Video - PaCE Turns One!</a></li>
+          </ul>
+        </div><br>
+        <div class="downloads" style="min-width:260px;">
+          <h3 style="margin:0 0 8px 20px; font-size:14px;">Additional Downloads</h3>
+          <ul>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" alt="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/quick-reference-card-members.pdf">⬇️ Quick Ref - Members</a></li>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" alt="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/quick-reference-card-supervisors.pdf">⬇️ Quick Ref - Supervisors</a></li>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp">⬇️ PaCE Cycle Aide</a></li>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" alt="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/understanding-the-ibr-mieux-comprendre-la-cci-bil.pdf" >⬇️ Understanding IBR</a></li>
           </ul>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 <!-- Shared components already loaded in head.html -->
 <script src="/shared/components/utils.js"></script>
