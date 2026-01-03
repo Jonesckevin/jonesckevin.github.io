@@ -24,10 +24,13 @@ social_media:
   twitter_title: "Free D&D NPC Generator"
   twitter_description: "Create detailed NPCs for your RPG campaigns with AI. Perfect for D&D DMs and tabletop gamers."
   twitter_image: "/images/featured/aitools/dnd-npc-creator.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Forging your NPC character..."
 ---
 
 <link rel="stylesheet" href="npc-generator.css">
-
 
 # NPC Forge: Character Generator
 
@@ -123,14 +126,8 @@ Create compelling NPCs for any system or genre with detailed personalities, back
 </div>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateNPC()">🧙 Forge NPC</button>
+<button type="button" class="btn btn-primary" onclick="generateNPC()">🧙 Forge NPC</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-Forging your NPC character...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Generated NPC</h3>
@@ -143,19 +140,4 @@ Forging your NPC character...
 </div>
 </div> 
 </main>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="npc-generator.js"></script>
-
-
-
-
-
-
-
-
-
-
 

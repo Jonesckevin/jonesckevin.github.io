@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Recipe Suggester Tool"
   twitter_description: "Turn your ingredients into delicious meals with AI-powered recipe suggestions."
   twitter_image: "/images/featured/aitools/meal-suggester.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
 
 # 🍳 AI Recipe & Meal Suggester
@@ -148,13 +152,9 @@ Transform your available ingredients into creative, delicious meals. Get persona
     </label>
     <textarea id="additionalNotes" rows="3" placeholder="e.g., No nuts, prefer spicy food, need kid-friendly options, etc."></textarea>
   </div>
-  <button type="button" class="btn-primary" onclick="generateRecipes()">🔍 Generate Recipe Suggestions</button>
+  <button type="button" class="btn btn-primary" onclick="generateRecipes()">🔍 Generate Recipe Suggestions</button>
 </form>
-<div class="loading" id="loadingDiv" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Creating delicious recipe suggestions for you...</p>
-</div>
-<div id="errorDiv" style="display: none;"></div>
+
 <div id="resultDiv" style="display: none;">
   <h3 style="color: #ff6b35; margin-bottom: 20px;">📝 Your Recipe Suggestions</h3>
   <div id="resultContent"></div>
@@ -170,8 +170,3 @@ Transform your available ingredients into creative, delicious meals. Get persona
     </button>
   </div>
 </div>
-<!-- Shared components already loaded in head.html -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="recipe-suggester.js"></script>

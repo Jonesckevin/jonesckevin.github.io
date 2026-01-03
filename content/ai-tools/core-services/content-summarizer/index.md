@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Content Summarizer Tool"
   twitter_description: "Summarize articles and documents with AI. Quick, accurate text summarization in multiple formats."
   twitter_image: "/images/featured/aitools/content-summarizer.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating summary..."
 ---
 
 # AI-Powered Content Summarizer
@@ -100,30 +104,5 @@ preferred length and tone for optimal results.
 </label>
 </div>
 </div>
-<button type="button" class="btn-primary" onclick="generateSummary(event)">Generate Summary</button>
+<button type="button" class="btn btn-primary" onclick="generateSummary(event)">Generate Summary</button>
 </form>
-<div class="loading" id="loadingDiv" style="display: none;">
-                Generating summary...
-            </div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Content Summary</h3>
-<div class="result-content" id="resultContent"></div>
-<div class="result-actions" style="margin-top: 30px;">
-<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-<button class="action-btn download-btn" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="content-summarizer.js"></script>
-
-
-
-
-
-
-

@@ -1,0 +1,14 @@
+{{/*
+    Pill Shortcode - Feature badge/pill for AI tools
+    
+    Usage: {{< pill text="Mermaid Diagrams" >}}
+    Or:    {{< pill text="Beta" color="blue" >}}
+    Or:    {{< pill >}}Custom Text{{< /pill >}}
+    
+    Colors: orange (default), blue, green, purple, red, cyan
+*/}}
+
+{{ $text := .Get "text" | default .Inner }}
+{{ $color := .Get "color" | default "orange" }}
+
+<span class="pill pill-{{ $color }}">{{- $text -}}</span>

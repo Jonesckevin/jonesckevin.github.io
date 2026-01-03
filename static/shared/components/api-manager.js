@@ -70,6 +70,20 @@ class APIManager {
                 keyPattern: /^pplx-[A-Za-z0-9_\-]+$/,
                 requiresKey: true
             },
+            groq: {
+                name: 'Groq',
+                baseURL: 'https://api.groq.com/openai/v1',
+                defaultModel: 'llama-3.3-70b-versatile',
+                keyPattern: /^gsk_[A-Za-z0-9_\-]+$/,
+                requiresKey: true
+            },
+            cerebras: {
+                name: 'Cerebras',
+                baseURL: 'https://api.cerebras.ai/v1',
+                defaultModel: 'llama-3.3-70b',
+                keyPattern: /^[A-Za-z0-9_\-]+$/,
+                requiresKey: true
+            },
             custom: {
                 name: 'Custom Server (Ollama/LMStudio)',
                 baseURL: 'http://localhost:11434/v1', // Default Ollama
@@ -578,6 +592,8 @@ class APIManager {
             case 'grok':
             case 'mistral':
             case 'perplexity':
+            case 'groq':
+            case 'cerebras':
             case 'custom': // Custom servers use OpenAI-compatible API
                 baseCall = (msgs, opts) => this._makeOpenAIStyleRequest(config, apiKey, model, msgs, opts);
                 break;
@@ -638,13 +654,33 @@ class APIManager {
             const hasSystem = messages.some(m => m.role === 'system');
             adjustedMessages = hasSystem ? messages.map((m, i) => (i === 0 && m.role === 'system' ? { ...m, content: storySystem.content + '\n' + m.content } : m)) : [storySystem, ...messages];
         }
+        
+        // GPT-5 and newer reasoning models use max_completion_tokens instead of max_tokens
+        const modelLower = (model || '').toLowerCase();
+        const usesMaxCompletionTokens = modelLower.includes('gpt-5') || 
+                                         modelLower.includes('o1') || 
+                                         modelLower.includes('o3');
+        
+        // Some models (like gpt-5-nano, o1, o3) don't support custom temperature
+        const supportsTemperature = !usesMaxCompletionTokens;
+        
         const requestBody = {
             model: model,
             messages: adjustedMessages,
-            max_tokens: options.maxTokens || 2000,
-            temperature: options.temperature || 0.7,
             ...options.extraParams
         };
+        
+        // Only add temperature if the model supports it
+        if (supportsTemperature) {
+            requestBody.temperature = options.temperature || 0.7;
+        }
+        
+        // Use the correct token parameter based on model
+        if (usesMaxCompletionTokens) {
+            requestBody.max_completion_tokens = options.maxTokens || 2000;
+        } else {
+            requestBody.max_tokens = options.maxTokens || 2000;
+        }
 
         // Add seed for randomization if available (not all providers support this)
         // Mistral doesn't support 'seed' parameter, so skip it for Mistral
@@ -852,6 +888,8 @@ class APIManager {
             case 'deepseek':
             case 'grok':
             case 'mistral':
+            case 'groq':
+            case 'cerebras':
                 return this._listOpenAIStyleModels(config, key);
             case 'perplexity':
                 return this._listPerplexityModels(config, key);
@@ -1301,8 +1339,8 @@ class APIManager {
         } = options;
 
         // Validate provider supports transcription
-        if (provider !== 'openai' && provider !== 'mistral') {
-            throw new Error(`Transcription is only supported for OpenAI (Whisper) and Mistral (Voxtral). Current provider: ${provider}`);
+        if (provider !== 'openai' && provider !== 'mistral' && provider !== 'groq') {
+            throw new Error(`Transcription is only supported for OpenAI (Whisper), Mistral (Voxtral), and Groq. Current provider: ${provider}`);
         }
 
         const config = this.getProviderConfig(provider);

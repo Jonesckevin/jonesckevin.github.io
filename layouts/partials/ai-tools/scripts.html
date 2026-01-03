@@ -1,0 +1,33 @@
+{{/* 
+    AI Tools Script Loading Partial
+    
+    Automatically includes shared AI tool scripts and tool-specific JS.
+    
+    Frontmatter param:
+    - tool_script: Filename of tool-specific JS (e.g., "story-generator.js")
+                   If not specified, looks for a .js file matching the page slug
+*/}}
+
+<!-- Shared AI Tool Scripts (loaded via head.html with defer) -->
+<!-- utils.js, api-manager.js, download-manager.js, ai-interface.js -->
+
+<!-- Panel Resizer for AI Tools Layout -->
+<script src="/shared/components/panel-resizer.js" defer></script>
+
+<!-- Tool-Specific Script -->
+{{ $toolScript := .Params.tool_script }}
+{{ if not $toolScript }}
+    {{/* Auto-detect: use page slug or bundle file */}}
+    {{ $jsFile := printf "%s.js" .File.ContentBaseName }}
+    {{ with .Resources.GetMatch "*.js" }}
+        <script src="{{ .RelPermalink }}" defer></script>
+    {{ else }}
+        {{/* Fallback: try slug-based naming in page directory */}}
+        {{ $pagePath := .RelPermalink }}
+        <script src="{{ $pagePath }}{{ $.File.ContentBaseName }}.js" defer></script>
+    {{ end }}
+{{ else }}
+    {{/* Explicit tool_script specified */}}
+    {{ $pagePath := .RelPermalink }}
+    <script src="{{ $pagePath }}{{ $toolScript }}" defer></script>
+{{ end }}

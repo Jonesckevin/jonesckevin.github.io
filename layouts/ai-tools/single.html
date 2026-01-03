@@ -1,3 +1,16 @@
+{{/* 
+    AI Tools Single Page Template
+    Native 3-column layout with JS to relocate result elements
+    
+    Frontmatter params used:
+    - result_title: Title shown in result header
+    - loading_text: Loading message
+    - show_svg_download: Show SVG download button
+    - show_pdf_download: Show PDF download button
+    - tool_script: Custom JS filename (auto-detected if not specified)
+    - pageScript: Legacy param for additional scripts
+    - toggles_columns: Number of columns for toggle groups (default: 1)
+*/}}
 <!DOCTYPE html>
 <html lang="{{ .Site.Language }}">
 
@@ -5,19 +18,31 @@
     {{ partial "head.html" . }}
 </head>
 
-<body class="section-{{ lower .Section }}">
-
+<body class="section-{{ lower .Section }}{{ if eq (.Params.toggles_columns | default 1) 2 }} toggles-two-columns{{ end }}">
     <div class="container">
         {{ partial "header.html" . }}
-        <!--{{ partial "side-menu-LR.html" . }}-->
 
         <div class="content">
             <main class="main-content">
-                <!-- AI Tools Interface Layout. Shows you the MD Page Data -->
-                {{ .Content }}
+                <!-- AI Tools 3-Column Layout -->
+                <div class="ai-tools-layout">
+                    <!-- Left: Form Section (renders markdown content) -->
+                    <div class="ai-form-section">
+                        {{ .Content }}
+                    </div>
+
+                    <!-- Resizable Divider -->
+                    <div class="layout-divider" title="Drag to resize" aria-label="Drag to resize panels"></div>
+
+                    <!-- Right: Results Section -->
+                    <div class="ai-results-section">
+                        {{/* Include result partial - JS will skip if custom resultDiv exists */}}
+                        {{ partial "ai-tools/result-section.html" . }}
+                    </div>
+                </div>
 
                 <!-- Navigation to Previous/Next AI Tools -->
-                <nav class="post-navigation">
+                <nav class="post-navigation" aria-label="AI Tools Navigation">
                     {{ with .NextInSection }}
                     <a href="{{ .Permalink }}" class="nav-link prev">
                         <span class="nav-label">← Previous</span>
@@ -34,187 +59,39 @@
                 </nav>
 
                 {{ if .Params.pageScript }}
-                <script src="{{ .Site.BaseURL }}{{ .Params.pageScript }}"></script>
+                <script src="{{ .Site.BaseURL }}{{ .Params.pageScript }}" defer></script>
                 {{ end }}
             </main>
         </div>
     </div>
 
+    {{ partial "footer.html" . }}
     {{ partial "javascript.html" . }}
-
-    <!-- Sets the Content Design and Shape for the AI Tools Layout -->
+    
+    <!-- AI Tools Scripts (panel resizer + tool-specific JS) -->
+    {{ partial "ai-tools/scripts.html" . }}
+    
+    <!-- Relocate result elements from form section to results section -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Reorganize content into side-by-side layout
-            const mainContent = document.querySelector('.main-content');
-            if (!mainContent) return;
-
-            // Find form and result elements
-            const form = mainContent.querySelector('form');
-            const loadingDiv = document.getElementById('loadingDiv');
-            const errorDiv = document.getElementById('errorDiv');
-            const resultDiv = document.getElementById('resultDiv');
-            const navigation = mainContent.querySelector('.post-navigation');
-
-            // Only proceed if we have a form
-            if (!form) return;
-
-            // Create wrapper structure
-            const wrapper = document.createElement('div');
-            wrapper.className = 'ai-tools-layout';
-
-            const formSection = document.createElement('div');
-            formSection.className = 'ai-form-section';
-
-            const divider = document.createElement('div');
-            divider.className = 'layout-divider';
-            divider.title = 'Drag to resize';
-
-            const resultsSection = document.createElement('div');
-            resultsSection.className = 'ai-results-section';
-
-            // Get all content before the form
-            const elementsBeforeForm = [];
-            let currentElement = mainContent.firstElementChild;
-            while (currentElement && currentElement !== form) {
-                elementsBeforeForm.push(currentElement);
-                currentElement = currentElement.nextElementSibling;
-            }
-
-            // Move header content (h1, p, etc.) before the form to form section
-            elementsBeforeForm.forEach(el => {
-                formSection.appendChild(el);
+    (function() {
+        const formSection = document.querySelector('.ai-form-section');
+        const resultsSection = document.querySelector('.ai-results-section');
+        if (!formSection || !resultsSection) return;
+        
+        // Find result-related elements in form section (legacy pages have them there)
+        const elementsToMove = formSection.querySelectorAll('#loadingDiv, #errorDiv, #resultDiv, #progressDiv, .loading-container, .error-container, .result-container');
+        
+        if (elementsToMove.length > 0) {
+            // Remove the template-injected partial elements (we'll use the custom ones)
+            const partialElements = resultsSection.querySelectorAll('#loadingDiv, #errorDiv, #resultDiv');
+            partialElements.forEach(el => el.remove());
+            
+            // Move custom elements to results section
+            elementsToMove.forEach(el => {
+                resultsSection.appendChild(el);
             });
-
-            // Move form to form section
-            if (form) {
-                formSection.appendChild(form);
-            }
-
-            // Move result-related divs to results section
-            if (loadingDiv) resultsSection.appendChild(loadingDiv);
-            if (errorDiv) resultsSection.appendChild(errorDiv);
-            if (resultDiv) resultsSection.appendChild(resultDiv);
-
-            // Preserve modals by moving them before clearing
-            const modals = mainContent.querySelectorAll('.modal');
-            const modalArray = Array.from(modals);
-
-            // Append sections to wrapper
-            wrapper.appendChild(formSection);
-            wrapper.appendChild(divider);
-            wrapper.appendChild(resultsSection);
-
-            // Clear main content and append wrapper
-            mainContent.innerHTML = '';
-            mainContent.appendChild(wrapper);
-
-            // Re-add modals after wrapper (they should be at body level ideally, but main level works)
-            modalArray.forEach(modal => {
-                mainContent.appendChild(modal);
-            });
-
-            // Add navigation back if it exists
-            if (navigation) {
-                mainContent.appendChild(navigation);
-            }
-
-            // Add resize functionality for larger screens
-            if (window.innerWidth >= 1024) {
-                initLeftResizer(wrapper, formSection, divider, resultsSection);
-                // Right resizer removed - no right sidebar in current layout
-                // initRightResizer(wrapper, sidebarSection, rightDivider, resultsSection);
-            }
-
-            // Reinitialize resizer on window resize
-            let resizeTimeout;
-            window.addEventListener('resize', function () {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(function () {
-                    if (window.innerWidth >= 1024) {
-                        initLeftResizer(wrapper, formSection, divider, resultsSection);
-                    } else {
-                        // Reset to default grid on mobile
-                        wrapper.style.gridTemplateColumns = '1fr';
-                        formSection.style.width = '';
-                        resultsSection.style.width = '';
-                    }
-                }, 250);
-            });
-        });
-
-        function initLeftResizer(wrapper, formSection, divider, resultsSection) {
-            let isResizing = false;
-            let startX = 0;
-            let startWidth = 0;
-            const minWidth = 300;
-            const maxWidth = 800;
-
-            divider.addEventListener('mousedown', function (e) {
-                isResizing = true;
-                startX = e.clientX;
-                startWidth = formSection.offsetWidth;
-                divider.classList.add('dragging');
-                document.body.style.cursor = 'col-resize';
-                document.body.style.userSelect = 'none';
-                e.preventDefault();
-            });
-
-            document.addEventListener('mousemove', function (e) {
-                if (!isResizing) return;
-
-                const deltaX = e.clientX - startX;
-                let newWidth = startWidth + deltaX;
-
-                // Constrain width
-                newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
-
-                // Update grid template
-                wrapper.style.gridTemplateColumns = `${newWidth}px 4px 1fr`;
-
-                // Save to localStorage (gracefully handle incognito mode)
-                try {
-                    localStorage.setItem('ai-tools-form-width', newWidth);
-                } catch (e) {
-                    // Silently fail if localStorage is not available (incognito mode)
-                    console.log('localStorage not available:', e);
-                }
-            });
-
-            document.addEventListener('mouseup', function () {
-                if (isResizing) {
-                    isResizing = false;
-                    divider.classList.remove('dragging');
-                    document.body.style.cursor = '';
-                    document.body.style.userSelect = '';
-                }
-            });
-
-            // Load saved width from localStorage (gracefully handle incognito mode)
-            try {
-                const savedWidth = localStorage.getItem('ai-tools-form-width');
-                if (savedWidth && window.innerWidth >= 1024) {
-                    const width = parseInt(savedWidth);
-                    if (width >= minWidth && width <= maxWidth) {
-                        wrapper.style.gridTemplateColumns = `${width}px 4px 1fr`;
-                    }
-                }
-            } catch (e) {
-                // Silently fail if localStorage is not available (incognito mode)
-                console.log('localStorage not available:', e);
-                // Set default desktop layout
-                if (window.innerWidth >= 1024) {
-                    wrapper.style.gridTemplateColumns = '500px 4px 1fr';
-                }
-            }
         }
-
-        function initRightResizer(wrapper, sidebarSection, rightDivider, resultsSection) {
-            // Right resizer functionality (currently placeholder)
-            // This can be implemented similarly to initLeftResizer if needed
-            // For now, we'll just make it a no-op to prevent the error
-            console.log('Right resizer initialized (placeholder)');
-        }
+    })();
     </script>
 </body>
 

@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Excel Formula Builder"
   twitter_description: "Generate Excel formulas from natural language. AI-powered spreadsheet formula builder for all Excel versions."
   twitter_image: "/images/featured/aitools/excel-formula-builder.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating Excel formula..."
 ---
 <link rel="stylesheet" href="excel-formula-builder.css">
 
@@ -160,27 +164,6 @@ Data starts in row 2, headers in row 1" rows="6"></textarea>
         <label for="additionalRequirements">Additional Requirements (Optional)</label>
         <textarea id="additionalRequirements" placeholder="Any specific constraints, special conditions, or formatting preferences..." rows="3"></textarea>
     </div>
-    <button type="button" class="btn-primary" onclick="generateFormula(event)">Generate Excel Formula</button>
+    <button type="button" class="btn btn-primary" onclick="generateFormula(event)">Generate Excel Formula</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-    Generating Excel formula...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" style="display: none;">
-    <!-- Content will be dynamically inserted here -->
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="excel-formula-builder.js"></script>
-
-
-
-
-
-
 

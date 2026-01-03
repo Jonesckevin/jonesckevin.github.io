@@ -24,8 +24,11 @@ social_media:
   twitter_title: "Free D&D Character Generator"
   twitter_description: "Create compelling D&D character backstories with AI. Generate rich lore and backgrounds for your RPG campaigns."
   twitter_image: "/images/featured/aitools/dnd-character.png"
----
 
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Forging your character's legend..."
+---
 
 # MythMaker: D&D 5E Character Lore Generator
 
@@ -123,39 +126,6 @@ Generate rich backstories and compelling lore for your D&D characters. Create le
 </div>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateDnDCharacter()">⚔️ Generate Character Lore</button>
+<button type="button" class="btn btn-primary" onclick="generateDnDCharacter()">⚔️ Generate Character Lore</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-Forging your character's legend...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Character Lore</h3>
-<div class="result-content" id="resultContent"></div>
-
-<div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="dnd-character.js"></script>
-
-
-
-
-
-
-
-
-
-
 

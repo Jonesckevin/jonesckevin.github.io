@@ -138,6 +138,8 @@
                         <option value="grok">Grok (X.AI)</option>
                         <option value="mistral">Mistral AI</option>
                         <option value="perplexity">Perplexity</option>
+                        <option value="groq">Groq</option>
+                        <option value="cerebras">Cerebras</option>
                         <option value="custom">Custom Server (Ollama/LMStudio)</option>
                       </select>
                     </div>
@@ -466,6 +468,8 @@
         grok: 'Enter your Grok API key (xai-...)',
         mistral: 'Enter your Mistral API key',
         perplexity: 'Enter your Perplexity API key (pplx-...)',
+        groq: 'Enter your Groq API key (gsk_...)',
+        cerebras: 'Enter your Cerebras API key',
         custom: 'API key (optional for local servers)'
       };
       aiKey.placeholder = placeholders[provider] || 'Enter your API key';
@@ -546,6 +550,20 @@
           keyFormat: 'pplx-...',
           pricing: 'https://www.perplexity.ai/settings/api',
           models: 'https://docs.perplexity.ai/guides/model-cards'
+        },
+        groq: {
+          url: 'https://console.groq.com/keys',
+          name: 'Groq Console',
+          keyFormat: 'gsk_...',
+          pricing: 'https://groq.com/pricing/',
+          models: 'https://console.groq.com/docs/models'
+        },
+        cerebras: {
+          url: 'https://cloud.cerebras.ai/',
+          name: 'Cerebras Cloud',
+          keyFormat: 'Alphanumeric string',
+          pricing: 'https://cerebras.ai/inference',
+          models: 'https://inference-docs.cerebras.ai/models'
         },
         custom: {
           url: 'https://ollama.com/',

@@ -18,7 +18,7 @@
 /* Unified tool header (replaces inline-styled h1/p in content pages) */
 .tool-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 5%;
 }
 
 .tool-title {
@@ -45,6 +45,79 @@
   margin: 25px 0 12px 0;
   border-bottom: 2px solid rgba(255, 107, 53, 0.3);
   padding-bottom: 8px;
+  text-align: center;
+}
+
+/* Form Card Styling - Applied to all AI tools forms */
+.section-ai-tools form {
+  background: #232425;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #4e4e57;
+}
+
+/* Pill Badge Styling */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 2px 4px;
+  white-space: nowrap;
+  
+  /* Default orange color */
+  background: rgba(255, 107, 53, 0.15);
+  color: #ff6b35;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  
+  /* Color variants */
+  &.pill-orange {
+    background: rgba(255, 107, 53, 0.15);
+    color: #ff6b35;
+    border-color: rgba(255, 107, 53, 0.3);
+  }
+  
+  &.pill-blue {
+    background: rgba(74, 158, 255, 0.15);
+    color: #4a9eff;
+    border-color: rgba(74, 158, 255, 0.3);
+  }
+  
+  &.pill-green {
+    background: rgba(92, 184, 92, 0.15);
+    color: #5cb85c;
+    border-color: rgba(92, 184, 92, 0.3);
+  }
+  
+  &.pill-purple {
+    background: rgba(155, 89, 182, 0.15);
+    color: #9b59b6;
+    border-color: rgba(155, 89, 182, 0.3);
+  }
+  
+  &.pill-red {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    border-color: rgba(231, 76, 60, 0.3);
+  }
+  
+  &.pill-cyan {
+    background: rgba(26, 188, 156, 0.15);
+    color: #1abc9c;
+    border-color: rgba(26, 188, 156, 0.3);
+  }
+}
+
+/* Pill container for grouping multiple pills */
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
 }
 
 /* Form Row Layouts - Side by side forms */
@@ -68,15 +141,22 @@
   }
 }
 
-/* Toggle Switch Group Styling - 2 Column Layout */
+/* Toggle Switch Group Styling - Single Column by Default */
 .checkbox-group {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 15px 20px;
+  display: flex !important;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 10px;
   padding: 10px 0;
   width: 100%;
   max-width: 100%;
+}
+
+/* Two-column toggles (opt-in via frontmatter: toggles_columns: 2) */
+.toggles-two-columns .checkbox-group {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 15px 20px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr !important;
@@ -84,29 +164,12 @@
   }
 }
 
-.checkbox-inline {
-  display: flex !important;
-  align-items: center;
-  cursor: pointer;
-  font-size: 16px;
-  color: inherit;
-  user-select: none;
-  gap: 12px;
-  min-width: 0;
-  margin-bottom: 0 !important;
-  text-align: left;
-
-  /* Hide the default checkbox */
-  input[type="checkbox"] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
-  }
-
-  &:hover {
-    color: #ff6b35;
-  }
+/* Toggle Switch Styles - checkbox hiding handled inline */
+.checkbox-inline input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
 }
 
 /* Toggle Switch Styles */
@@ -477,49 +540,7 @@ input[type="checkbox"]:focus + .toggle-switch .toggle-slider {
   }
 }
 
-/* Form Group Styles */
-.form-group {
-  margin-bottom: 25px;
-
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #ff6b35;
-  }
-
-  input[type="text"],
-  input[type="password"],
-  select,
-  textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(255, 107, 53, 0.3);
-    border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: inherit;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-
-    &:focus {
-      outline: none;
-      border-color: #ff6b35;
-      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-    }
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
-
-  small {
-    display: block;
-    margin-top: 5px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
-  }
-}
+/* Form group styles inherited from _forms.scss */
 
 /* Inline-style migrations for common patterns used in content pages */
 .input-method-options {
@@ -538,17 +559,7 @@ input[type="checkbox"]:focus + .toggle-switch .toggle-slider {
   margin-right: 10px;
 }
 
-.file-upload-area {
-  border: 3px dashed #ff6b35;
-  background: #2a2a2a;
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-}
-
+/* File upload area base styles inherited from _forms.scss */
 .file-upload-area .file-name {
   display: none;
 }
@@ -735,40 +746,10 @@ input[type="range"],
   }
 }
 
-/* Button Styles */
-.generate-btn,
-.btn-primary {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-top: 20px;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &:disabled {
-    background: #666;
-    cursor: not-allowed;
-    transform: none;
-  }
-}
+/* Button styles inherited from _forms.scss */
 
 /* Action Buttons */
 .result-actions {
-  display: flex;
   gap: 15px;
   justify-content: center;
 }
@@ -844,11 +825,10 @@ input[type="range"],
 /* Result Section */
 .result-section,
 #resultDiv {
-  margin-top: 40px;
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.03);
+  //padding: 0 30px 15px;
+  //background-color: rgba(255, 255, 255, 0.03);
   border-radius: 10px;
-  border: 2px solid rgba(255, 107, 53, 0.2);
+  //border: 2px solid rgba(255, 107, 53, 0.2);
 
   h2 {
     color: #ff6b35;
@@ -858,13 +838,13 @@ input[type="range"],
 }
 
 #resultContent {
-  background-color: rgba(0, 0, 0, 0.2);
+  //background-color: rgba(0, 0, 0, 0.2);
   padding: 25px;
   border-radius: 8px;
   margin-bottom: 5px;
   font-family: 'Courier New', monospace;
   line-height: 1.8;
-  max-height: 600px;
+  max-height: auto;
   overflow-y: auto;
 }
 
@@ -1188,13 +1168,13 @@ body.section-ai-tools {
    ============================================ */
 
 .result-display {
-  background: #1a1a1a;
-  padding: 25px;
+  //background: #1a1a1a;
+  padding: 5px;
   border-radius: 8px;
   line-height: 1.6;
   color: #e0e0e0;
   text-align: left;
-  max-height: 600px;
+  max-height: auto;
   overflow-y: auto;
 
   /* Custom scrollbar */
@@ -1376,7 +1356,6 @@ body.section-ai-tools {
   /* Responsive */
   @media (max-width: 768px) {
     padding: 20px;
-    max-height: 500px;
 
     h1 { font-size: 1.5em; }
     h2 { font-size: 1.3em; }
@@ -1488,27 +1467,9 @@ body.section-ai-tools {
    ============================================ */
 
 @media (max-width: 420px) {
-  /* Force all form elements to respect container width */
-  .form-group {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-
-    input[type="text"],
-    input[type="password"],
-    input[type="number"],
-    input[type="email"],
-    select,
-    textarea {
-      width: 100% !important;
-      max-width: 100% !important;
-      box-sizing: border-box !important;
-      padding: 10px !important;
-      font-size: 14px !important;
-    }
-  }
-
-  /* Constrain result display */
+  /* Form element mobile styles inherited from _forms.scss */
+  
+  /* AI-tools specific result display constraints */
   .result-display,
   .result-section,
   #resultDiv,
@@ -1520,7 +1481,7 @@ body.section-ai-tools {
     overflow-x: hidden !important;
   }
 
-  /* Constrain mode selectors */
+  /* AI-tools specific mode selectors */
   .mode-segmented,
   .input-method-btns,
   .mode-selector {
@@ -1529,39 +1490,13 @@ body.section-ai-tools {
     box-sizing: border-box !important;
   }
 
-  /* Constrain buttons */
-  .generate-btn,
-  .btn-primary,
-  .action-btn {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px 16px !important;
-  }
-
-  /* Constrain file upload area */
-  .file-upload-area {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 20px 10px !important;
-  }
-
-  /* Constrain checkbox groups */
-  .checkbox-group {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    grid-template-columns: 1fr !important;
-  }
-
   /* Ensure text doesn't overflow */
   * {
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
 
-  /* Constrain body and main sections */
+  /* AI-tools body and main sections */
   body.section-ai-tools {
     main {
       padding: 0 0.5rem !important;

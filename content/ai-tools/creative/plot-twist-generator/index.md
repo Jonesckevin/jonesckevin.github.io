@@ -24,9 +24,11 @@ social_media:
   twitter_title: "Free AI Plot Twist Generator"
   twitter_description: "Create surprising plot twists for your stories with AI. Generate unexpected turns and shocking reveals."
   twitter_image: "/images/featured/aitools/dnd-plot-twist.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
-
-
 
 # Plot Twist Generator
 
@@ -136,35 +138,5 @@ Generate contextual plot twists that fit seamlessly into your story. Create surp
 </label>
 </div>
 </div>
-<button type="submit" class="btn-primary">Generate Plot Twist</button>
+<button type="submit" class="btn btn-primary">Generate Plot Twist</button>
 </form>
-<div class="ai-loading" id="loadingDiv" style="display: none;">
-    <div class="ai-loading-spinner"></div>
-    <div>Crafting your plot twist...</div>
-</div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Your Plot Twist</h3>
-<div class="result-content" id="resultContent"></div>
-<div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="plot-twist-generator.js"></script>
-
-
-
-
-
-
-
-
-
-
-

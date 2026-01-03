@@ -24,11 +24,11 @@ social_media:
   twitter_title: "Free D&D Traps & Puzzles Generator"
   twitter_description: "Create challenging traps and puzzles for your D&D dungeons with AI. Perfect for DMs and campaign creators."
   twitter_image: "/images/featured/aitools/trapsnpuzzles.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
-
-
-
-
 
 # 🗝️ Traps & Puzzles Generator
 
@@ -145,27 +145,3 @@ Create ready-to-run traps and puzzles with triggers, effects, clues, disarm meth
 
 </div>
 </form>
-
-<div id="loadingDiv" class="loading-message" style="display:none;">
-<div class="spinner"></div>
-<p>Creating your trap/puzzle...</p>
-</div>
-
-<div id="errorDiv" class="error-message" style="display:none;"></div>
-
-<div id="resultDiv" class="result-section" style="display:none;">
-<div class="result-header">
-<h2>Generated Trap/Puzzle</h2>
-</div>
-<div id="resultContent" class="result-content"></div>
-<div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="traps-and-puzzles.js"></script>

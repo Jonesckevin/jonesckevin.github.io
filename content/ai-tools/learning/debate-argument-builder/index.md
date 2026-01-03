@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free Debate Argument Builder"
   twitter_description: "Generate structured arguments for debates with AI assistance."
   twitter_image: "/images/featured/aitools/debate-argument-builder.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
 
 # 🎯 Debate Argument Builder
@@ -124,32 +128,6 @@ Build comprehensive debate arguments with structured reasoning, evidence, and co
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn-primary" id="generateBtn">⚖️ Build Arguments</button>
+    <button type="submit" class="btn btn-primary" id="generateBtn">⚖️ Build Arguments</button>
   </div>
 </form>
-
-<div id="loadingDiv" style="display: none; text-align: center; margin-top: 20px;">
-  <div class="spinner"></div>
-  <p>Building debate arguments...</p>
-</div>
-
-<div id="errorDiv" style="display: none; margin-top: 20px;"></div>
-
-<div id="resultDiv" style="display: none; margin-top: 20px;">
-  <div class="result-header">
-    <h3>📜 Debate Arguments</h3>
-    <div class="result-actions">
-      <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-      <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-      <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-    </div>
-  </div>
-  <div id="resultContent"></div>
-</div>
-
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="/shared/components/utils.js"></script>
-<script src="debate-argument-builder.js"></script>
-
-

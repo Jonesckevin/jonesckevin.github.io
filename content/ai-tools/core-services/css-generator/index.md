@@ -24,8 +24,11 @@ social_media:
   twitter_title: "Free AI CSS Generator Tool"
   twitter_description: "Create CSS styles with AI assistance. Live preview with text, tables, and image examples."
   twitter_image: "/images/featured/aitools/css-generator.png"
----
 
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
+---
 
 # AI-Powered CSS Generator
 
@@ -69,143 +72,5 @@ Generate custom CSS styles with AI assistance. Describe what you want, and watch
             <option value="retro">Retro & Vintage</option>
         </select>
     </div>
-    <button type="submit" class="btn-primary">Generate CSS</button>
+    <button type="submit" class="btn btn-primary">Generate CSS</button>
 </form>
-<!-- Loading State -->
-<div class="ai-loading" id="loadingDiv" style="display: none;">
-    <div class="ai-loading-spinner"></div>
-    <div>Generating your custom CSS styles...</div>
-</div>
-<!-- Error Display -->
-<div id="errorDiv" style="display: none;"></div>
-<!-- Results -->
-<div id="resultDiv" style="display: none;">
-    <h3 style="color: #ff6b35; margin-bottom: 20px;">Generated CSS</h3>
-    <!-- CSS Editor -->
-    <div class="css-editor-container">
-        <div class="editor-header">
-            <span>CSS Code (Editable)</span>
-            <div class="editor-actions">
-                <button onclick="applyCSS()" class="apply-btn">✨ Apply Changes</button>
-                <button class="copy-btn" onclick="copyResult(event)">📋 Copy CSS</button>
-            </div>
-        </div>
-        <textarea id="cssCodeEditor" class="css-code-editor" spellcheck="false"></textarea>
-    </div>
-    <!-- Live Preview -->
-    <div class="preview-container" id="previewContainer">
-        <h3 style="color: #ff6b35; margin-top: 30px; margin-bottom: 20px;">Live Preview</h3>
-        <!-- Style Tag for Live CSS -->
-        <style id="liveStyleTag"></style>
-        <!-- Preview Content - All Sections Visible -->
-        <div class="preview-content">
-            <!-- Text Preview -->
-            <div class="preview-section">
-                <h4 class="section-title">Text & Typography</h4>
-                <div class="section-content">
-                    <h1 class="preview-element">Heading 1 Example</h1>
-                    <h2 class="preview-element">Heading 2 Example</h2>
-                    <h3 class="preview-element">Heading 3 Example</h3>
-                    <p class="preview-element">
-                        This is a paragraph with <strong>bold text</strong>, <em>italic text</em>, 
-                        and <a href="#" class="preview-element">a sample link</a>. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                    <ul class="preview-element">
-                        <li>List item one</li>
-                        <li>List item two</li>
-                        <li>List item three</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Table Preview -->
-            <div class="preview-section">
-                <h4 class="section-title">Table</h4>
-                <div class="section-content">
-                    <table class="preview-element">
-                        <thead>
-                            <tr>
-                                <th>Column 1</th>
-                                <th>Column 2</th>
-                                <th>Column 3</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                            </tr>
-                            <tr>
-                                <td>Data 4</td>
-                                <td>Data 5</td>
-                                <td>Data 6</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- Buttons Preview -->
-            <div class="preview-section">
-                <h4 class="section-title">Buttons</h4>
-                <div class="section-content">
-                    <button class="preview-element">Primary Button</button>
-                    <button class="preview-element secondary">Secondary Button</button>
-                    <a href="#" class="preview-element link-button">Link Button</a>
-                </div>
-            </div>
-            <!-- Form Preview -->
-            <div class="preview-section">
-                <h4 class="section-title">Form Elements</h4>
-                <div class="section-content">
-                    <form class="preview-element">
-                        <label class="preview-element">Text Input:</label>
-                        <input type="text" class="preview-element" placeholder="Enter text...">
-                        <label class="preview-element">Email Input:</label>
-                        <input type="email" class="preview-element" placeholder="email@example.com">
-                        <label class="preview-element">Select Dropdown:</label>
-                        <select class="preview-element">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
-                        <label class="preview-element">Textarea:</label>
-                        <textarea class="preview-element" rows="3" placeholder="Enter message..."></textarea>
-                        <button type="submit" class="btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-            <!-- Card Preview -->
-            <div class="preview-section">
-                <h4 class="section-title">Card Component</h4>
-                <div class="section-content">
-                    <div class="preview-element card">
-                        <div class="card-header">Card Title</div>
-                        <div class="card-body">
-                            <p>This is a sample card with content. Cards are commonly used for displaying grouped information.</p>
-                            <ul>
-                                <li>Feature one</li>
-                                <li>Feature two</li>
-                                <li>Feature three</li>
-                            </ul>
-                        </div>
-                        <div class="card-footer">
-                            <button class="preview-element">Action</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Download Options -->
-    <div class="result-actions" style="margin-top: 30px; justify-content: center;">
-        <button class="copy-btn" onclick="copyResult(event)">📋 Copy CSS</button>
-        <button class="download-btn" onclick="downloadResult('css')">💾 CSS</button>
-        <button class="download-btn-alt" onclick="copyFullCode(event)">📋 CSS+HTML</button>
-    </div>
-</div>
-    
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="css-generator.js"></script>

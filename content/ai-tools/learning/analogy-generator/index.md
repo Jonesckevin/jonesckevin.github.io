@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free Analogy Generator Tool"
   twitter_description: "Create relatable analogies with AI. Perfect for teaching and explaining."
   twitter_image: "/images/featured/aitools/analogy-generator.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
 
 # 🔗 Analogy Generator
@@ -87,16 +91,9 @@ Transform complex concepts into relatable analogies. Make difficult ideas access
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn-primary">Generate Analogies</button>
+    <button type="submit" class="btn btn-primary">Generate Analogies</button>
   </div>
 </form>
-
-<div id="loadingDiv" style="display: none; text-align: center; margin-top: 20px;">
-  <div class="spinner"></div>
-  <p>Crafting perfect analogies...</p>
-</div>
-
-<div id="errorDiv" style="display: none; margin-top: 20px;"></div>
 
 <div id="resultDiv" style="display: none; margin-top: 20px;">
     <h2>🎯 Generated Analogies</h2>
@@ -109,4 +106,3 @@ Transform complex concepts into relatable analogies. Make difficult ideas access
 </div>
 
 <!-- api-manager.js, utils.js, and download-manager.js are already loaded in head.html -->
-<script src="analogy-generator.js"></script>

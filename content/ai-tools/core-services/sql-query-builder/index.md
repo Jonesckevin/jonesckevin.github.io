@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI SQL Query Builder"
   twitter_description: "Generate SQL queries from natural language. AI-powered database query builder for all SQL systems."
   twitter_image: "/images/featured/aitools/sql-builder.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating SQL query..."
 ---
 <link rel="stylesheet" href="sql-query-builder.css">
 
@@ -170,14 +174,8 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 <textarea id="additionalRequirements" placeholder="Any specific constraints, sorting preferences, limits, or special conditions..." rows="3"></textarea>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateSQLQuery(event)">Generate SQL Query</button>
+<button type="button" class="btn btn-primary" onclick="generateSQLQuery(event)">Generate SQL Query</button>
 </form>
-
-<div class="loading" id="loadingDiv" style="display: none;">
-                Generating SQL query...
-            </div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">💾 Generated SQL Query</h3>
@@ -190,8 +188,6 @@ Products table: id, name, price, category_id" rows="6"></textarea>
     <button class="download-btn-alt" onclick="downloadResult('markdown')">📄 MD</button>
 </div>
 </div>
-
-
 
 <!-- Safety Notice Popup Overlay -->
 <div class="safety-overlay" id="safetyOverlay">
@@ -219,13 +215,3 @@ Products table: id, name, price, category_id" rows="6"></textarea>
 </div>
 
 <!-- Shared components already loaded in head.html -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="sql-query-builder.js"></script>
-
-
-
-
-
-

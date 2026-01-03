@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free Capsule Wardrobe Planner"
   twitter_description: "Design your perfect minimalist wardrobe with AI. Sustainable fashion planning."
   twitter_image: "/images/featured/aitools/wardrobe-capsule.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Designing your personalized capsule wardrobe..."
 ---
 
 # 👗 Wardrobe Capsule Planner
@@ -101,12 +105,6 @@ Build a versatile, minimalist wardrobe tailored to your life. Get curated recomm
     </button>
 </form>
 
-<div class="loading" id="loadingDiv" style="display: none;">
-    Designing your personalized capsule wardrobe...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
 <div id="resultDiv" style="display: none;">
     <h3 style="color: #e67e22; margin-bottom: 20px;">👗 Your Capsule Wardrobe Plan</h3>
     <div id="resultContent"></div>
@@ -162,7 +160,3 @@ small {
 }
 </style>
 
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="wardrobe-capsule-planner.js"></script>

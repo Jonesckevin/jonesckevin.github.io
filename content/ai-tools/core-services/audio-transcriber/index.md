@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Audio & Video Transcriber"
   twitter_description: "Convert audio and video to text with AI. Supports timestamps and multiple languages."
   twitter_image: "/images/featured/aitools/audio-transcription.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
 
 <link rel="stylesheet" href="audio-transcriber.css">
@@ -121,20 +125,15 @@ social_media:
 </div>
 </div>
 
-<button type="button" class="btn-primary" id="submitBtn" onclick="transcribeAudio()">🎙️ Transcribe</button>
+<button type="button" class="btn btn-primary" id="submitBtn" onclick="transcribeAudio()">🎙️ Transcribe</button>
 </form>
 
 <!-- Progress Section -->
 <div id="progressDiv" style="display: none;">
-<div class="loading-container">
-<div class="loading-spinner"></div>
 <div id="progressText">Uploading file...</div>
 <progress id="progressBar" value="0" max="100" style="width: 100%; height: 20px; margin-top: 15px;"></progress>
 <div id="progressPercent" style="margin-top: 8px; font-size: 14px; opacity: 0.8;">0%</div>
 </div>
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" class="result-container" style="display: none;">
 <h3 class="result-header">📝 Transcription</h3>
@@ -146,9 +145,3 @@ social_media:
     <button class="download-btn-alt" onclick="downloadResult('srt')">🎬 SRT</button>
 </div>
 </div>
-
-<!-- Shared components already loaded in head.html -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="audio-transcriber.js"></script>

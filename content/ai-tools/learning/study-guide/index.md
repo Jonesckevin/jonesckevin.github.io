@@ -24,10 +24,11 @@ social_media:
   twitter_title: "Free AI Study Guide Generator"
   twitter_description: "Create personalized study guides and review materials with AI. Perfect for students and exam preparation."
   twitter_image: "/images/featured/aitools/study-guide.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
-
-
-
 
 # AI Study Guide Generator
 
@@ -87,34 +88,5 @@ Transform your course material into comprehensive study guides. Create structure
 <label for="focusAreas">Specific Focus Areas (Optional)</label>
 <textarea id="focusAreas" placeholder="List specific topics, chapters, or concepts you want to emphasize in the study guide" rows="3"></textarea>
 </div>
-<button type="submit" class="btn-primary">Generate Study Guide</button>
+<button type="submit" class="btn btn-primary">Generate Study Guide</button>
 </form>
-<div class="ai-loading" id="loadingDiv" style="display: none;">
-    <div class="ai-loading-spinner"></div>
-    <div>Creating your personalized study guide...</div>
-</div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Your Study Guide</h3>
-<div class="result-content" id="resultContent"></div>
-<div class="result-actions" style="margin-top: 30px;">
-<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-<button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="study-guide.js"></script>
-
-
-
-
-
-
-
-
-
-

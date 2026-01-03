@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Cyber Defence Character Sheet Generator"
   twitter_description: "Gamify cybersecurity with D&D-inspired character sheets for security professionals."
   twitter_image: "/images/featured/aitools/cyber-character-sheet.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
 
 <link rel="stylesheet" href="cyber-defence-character.css">
@@ -404,7 +408,7 @@ Create D&D-inspired character sheets for cybersecurity professionals! Generate u
   </div>
 
   <div class="form-row">
-    <button type="button" class="btn-primary" onclick="generateCharacter()">
+    <button type="button" class="btn btn-primary" onclick="generateCharacter()">
       🎲 Generate Character Sheet
     </button>
     <button type="button" class="btn-secondary" onclick="randomizeCharacter()">
@@ -412,13 +416,6 @@ Create D&D-inspired character sheets for cybersecurity professionals! Generate u
     </button>
   </div>
 </form>
-
-<div class="loading" id="loadingDiv" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Forging your cyber warrior...</p>
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" style="display: none;">
   <h3 style="color: #ff6b35;">📜 Your Character Sheet</h3>
@@ -486,12 +483,5 @@ Create D&D-inspired character sheets for cybersecurity professionals! Generate u
 </div>
 
 <!-- Load jsPDF Library -->
-<script src="/shared/libs/jspdf.umd.min.js"></script>
-
 <!-- Load Shared Components -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-
 <!-- Load Tool-Specific Script -->
-<script src="cyber-defence-character.js"></script>

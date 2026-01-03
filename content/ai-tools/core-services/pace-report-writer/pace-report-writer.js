@@ -517,9 +517,13 @@ window.updateCompetencyFramework = function() {
 window.generatePaceReport = async function () {
     console.log('=== GENERATE PACE REPORT FUNCTION CALLED ===');
     
-    // Hide previous results/errors
-    document.getElementById('errorDiv').style.display = 'none';
-    document.getElementById('resultDiv').style.display = 'none';
+    // Hide previous results/errors (safely check for existence)
+    const errorDiv = document.getElementById('errorDiv');
+    const resultDiv = document.getElementById('resultDiv');
+    const loadingDiv = document.getElementById('loadingDiv');
+    
+    if (errorDiv) errorDiv.style.display = 'none';
+    if (resultDiv) resultDiv.style.display = 'none';
     
     // Get form values
     const rankSelect = document.getElementById('rankSelect').value;

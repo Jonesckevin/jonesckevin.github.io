@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free Communication Helper Tool"
   twitter_description: "Navigate difficult conversations with empathy and clarity. Relationship communication guide."
   twitter_image: "/images/featured/aitools/communication-helper.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
 
 # 💬 Relationship Communication Helper
@@ -104,46 +108,8 @@ Craft thoughtful, empathetic messages for difficult conversations. Navigate sens
     </label>
   </div>
 
-  <div id="errorDiv" class="error-message" style="display: none;"></div>
-
-  <button type="submit" class="btn-primary">
+  <button type="submit" class="btn btn-primary">
     <span class="btn-icon">💬</span>
     Get Communication Guidance
   </button>
 </form>
-
-<div id="loadingDiv" class="loading-container" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Crafting thoughtful communication guidance...</p>
-</div>
-
-<div id="resultDiv" class="result-container" style="display: none;">
-  <h2>Communication Guidance</h2>
-  <div id="resultContent" class="result-content"></div>
-  <div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">
-      <span class="btn-icon">📋</span>
-      Copy
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
-      <span class="btn-icon">📄</span>
-      MD
-    </button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">
-      <span class="btn-icon">🌐</span>
-      HTML
-    </button>
-  </div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="relationship-communication-helper.js"></script>
-
-
-
-
-
-
-

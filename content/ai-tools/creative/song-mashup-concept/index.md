@@ -24,10 +24,11 @@ social_media:
   twitter_title: "Free AI Song Mashup Generator"
   twitter_description: "Create innovative music mashups with AI-powered concepts and mixing suggestions. DJ and producer tool."
   twitter_image: "/images/featured/aitools/song-mashup-concept.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
-
-
-
 
 # 🎵 Song Mashup Concept Generator
 
@@ -110,7 +111,7 @@ Discover unique song combinations and mashup concepts. Perfect for DJs, producer
   <div id="ai-interface-discover"></div>
 
   <div class="button-group">
-  <button type="submit" class="btn-primary">
+  <button type="submit" class="btn btn-primary">
       <span class="btn-icon">🎨</span>
       <span>Generate Mashup Concepts</span>
     </button>
@@ -188,34 +189,9 @@ Discover unique song combinations and mashup concepts. Perfect for DJs, producer
   <div id="ai-interface-analyze"></div>
 
   <div class="button-group">
-  <button type="submit" class="btn-primary">
+  <button type="submit" class="btn btn-primary">
       <span class="btn-icon">🔬</span>
       <span>Analyze Mashup Potential</span>
     </button>
   </div>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-  <div class="spinner"></div>
-  <p>Crafting your perfect mashup concepts...</p>
-</div>
-
-<div id="errorDiv" class="error-message" style="display: none;"></div>
-
-<div id="resultDiv" class="result-container" style="display: none;">
-  <div class="result-header">
-    <h2 id="resultTitle">Mashup Concepts</h2>
-    <div class="result-actions">
-      <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-      <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-      <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-    </div>
-  </div>
-  <div id="resultContent" class="result-content"></div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/ai-interface.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="song-mashup-concept.js"></script>

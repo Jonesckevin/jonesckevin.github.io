@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Music Lyrics Generator"
   twitter_description: "Create professional song lyrics with AI. Generate original songs or write in the style of existing artists."
   twitter_image: "/images/featured/aitools/song-lyric-customizer.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
 
 <link rel="stylesheet" href="music-lyrics-generator.css">
@@ -239,61 +243,6 @@ Our AI-powered lyrics generator helps you create professional song lyrics with p
     </select>
   </div>
 
-  <button type="submit" class="btn-primary">🎵 Generate Lyrics</button>
+  <button type="submit" class="btn btn-primary">🎵 Generate Lyrics</button>
 </form>
-
-<div id="errorDiv" class="error-message" style="display: none;"></div>
-
-<div id="resultDiv" class="result-section" style="display: none;">
-  <h2>Your Song Lyrics</h2>
-  <div id="resultContent"></div>
-  <div class="action-buttons result-actions">
-    <button onclick="copyResult(event)" class="action-btn copy-btn">📋 Copy</button>
-    <button onclick="downloadResult('markdown')" class="action-btn download-btn">📄 MD</button>
-    <button onclick="downloadResult('html')" class="action-btn download-btn-alt">🌐 HTML</button>
-  </div>
-</div>
-
-<div class="info-section">
-  <h2>About the Music Lyrics Generator</h2>
-  <p>
-    Our AI-powered lyrics generator helps you create professional song lyrics with proper structure and creative elements. Whether you're a songwriter looking for inspiration, a musician working on a new track, or just exploring your creative side, this tool provides high-quality lyrics tailored to your needs.
-  </p>
-  <h3>Features:</h3>
-  <ul>
-    <li><strong>Proper Song Structure:</strong> Generate lyrics with intro, verses, chorus, bridge, and outro</li>
-    <li><strong>Style Emulation:</strong> Write in the style of your favorite artists or songs</li>
-    <li><strong>Multiple Genres:</strong> Support for pop, rock, hip-hop, country, and many more</li>
-    <li><strong>Customizable Elements:</strong> Control rhyming, metaphors, hooks, and other lyrical features</li>
-    <li><strong>Multiple Languages:</strong> Generate lyrics in English, Spanish, French, and more</li>
-    <li><strong>Professional Quality:</strong> AI-generated lyrics suitable for recording or performance</li>
-  </ul>
-  <h3>How to Use:</h3>
-  <ol>
-    <li>Configure your AI provider and API key in the header settings (click the "AI" button)</li>
-    <li>Enter your song theme or topic</li>
-    <li>Choose between original composition or style-based generation</li>
-    <li>Select your genre and mood</li>
-    <li>Pick your preferred song structure</li>
-    <li>Customize lyrical features and additional options</li>
-    <li>Click "Generate Lyrics" to create your song</li>
-  </ol>
-  <h3>Tips for Best Results:</h3>
-  <ul>
-    <li>Be specific about your theme - concrete topics work better than abstract concepts</li>
-    <li>When using style-based mode, reference well-known songs or artists for better results</li>
-    <li>Experiment with different structures to find what works best for your song</li>
-    <li>Use additional notes to provide context or specific phrases you want included</li>
-    <li>Generate multiple versions and combine the best elements</li>
-  </ul>
-</div>
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="music-lyrics-generator.js"></script>
-
-
-
-
-
 

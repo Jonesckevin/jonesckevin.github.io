@@ -24,8 +24,11 @@ social_media:
   twitter_title: "Free Cognitive Load Optimizer"
   twitter_description: "Break learning material into optimal chunks with AI. Improve retention and understanding."
   twitter_image: "/images/featured/aitools/cognitive-load-optimizer.png"
----
 
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Analyzing cognitive load and optimizing chunks..."
+---
 
 # 🧠 Cognitive Load Optimizer
 
@@ -71,29 +74,8 @@ Transform dense learning material into cognitively optimized chunks. Get scienti
         <input type="text" id="learningGoal" placeholder="e.g., Master basic Python syntax, Understand photosynthesis"/>
         <small style="opacity: 0.7;">What should learners be able to do after?</small>
     </div>
-    <button type="button" class="btn-primary" onclick="optimizeCognitive()">
+    <button type="button" class="btn btn-primary" onclick="optimizeCognitive()">
         🧠 Optimize Learning Path
     </button>
 </form>
-
-<div class="loading" id="loadingDiv" style="display: none;">
-    Analyzing cognitive load and optimizing chunks...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" style="display: none;">
-    <h3 style="color: #3498db; margin-bottom: 20px;">🧠 Optimized Learning Plan</h3>
-    <div id="resultContent"></div>
-    <div class="result-actions">
-    <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy to Clipboard</button>
-    <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Download Markdown</button>
-    <button class="action-btn download-btn" onclick="downloadResult('html')">🌐 Download HTML</button>
-    </div>
-</div>
-
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="/shared/components/utils.js"></script>
-<script src="/ai-tools/learning/cognitive-load-optimizer/cognitive-load-optimizer.js"></script>
 

@@ -27,6 +27,10 @@ social_media:
   twitter_title: "Free AI Resume Critique Tool"
   twitter_description: "Professional resume analysis with AI. Get detailed feedback and scoring to improve your job applications."
   twitter_image: "/images/featured/aitools/resume-analysis.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Analyzing your resume with AI..."
 ---
 
 <div class="tool-header">
@@ -133,14 +137,8 @@ Upload Resume File
 </div>
 </div>
 
-<button type="button" class="btn-primary" onclick="analyzeResume()">Analyze Resume</button>
+<button type="button" class="btn btn-primary" onclick="analyzeResume()">Analyze Resume</button>
 </form>
-
-<div class="loading" id="loadingDiv" style="display: none;">
-Analyzing your resume with AI...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" class="result-container" style="display: none;">
 <h3 class="result-header">📊 Resume Analysis Results</h3>
@@ -153,7 +151,3 @@ Analyzing your resume with AI...
 </div>
 
 <!-- Shared components already loaded in head.html -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="resume-critique.js"></script>

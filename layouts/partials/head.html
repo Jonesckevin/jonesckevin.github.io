@@ -4,6 +4,12 @@
 <meta name="robots" content="noindex" />
 {{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Resource hints for performance -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 <meta name="author"
     content="{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ range .Site.Author }}{{ . }} {{ end }}{{ end }}">
 <meta name="description"
@@ -34,7 +40,7 @@
 {{ if eq $sec "writeups" }}
 <link rel="stylesheet" href="/assets/css/section-writeups.css">
 {{ end }}
-{{ if or (eq $sec "artifacts") (eq $sec "artifacts") }}
+{{ if eq $sec "artifacts" }}
 <link rel="stylesheet" href="/assets/css/section-artifacts.css">
 {{ end }}
 {{ if eq $sec "dockers" }}

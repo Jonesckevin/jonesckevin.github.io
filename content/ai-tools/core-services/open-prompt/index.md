@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free Open Prompt AI Assistant"
   twitter_description: "Versatile AI tool with customizable response settings. Perfect for any task."
   twitter_image: "/images/featured/aitools/open-prompt.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating your response..."
 ---
 <div class="tpq-hero">
 <h1>Open Prompt Assistant <span class="pill">Customizable AI</span></h1>
@@ -109,33 +113,6 @@ social_media:
 </div>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateResponse()">Generate Response</button>
+<button type="button" class="btn btn-primary" onclick="generateResponse()">Generate Response</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-Generating your response...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" class="result-container" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">AI Response</h3>
-<div id="resultContent" class="result-content"></div>
-<div class="result-actions">
-    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
-    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="open-prompt.js"></script>
-
-
-
-
-
-
 

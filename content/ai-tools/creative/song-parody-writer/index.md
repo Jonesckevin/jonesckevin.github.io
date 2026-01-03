@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Song Parody Generator"
   twitter_description: "Write hilarious song parodies with AI. Create custom lyrics for any occasion."
   twitter_image: "/images/featured/aitools/song-parody-writer.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Writing your parody lyrics..."
 ---
 
 # 🎵 Song Parody Writer
@@ -98,19 +102,12 @@ Transform popular songs into clever parodies on any topic. Perfect for comedy, e
   </div>
 
   <div class="button-container">
-    <button type="submit" class="btn-primary">
+    <button type="submit" class="btn btn-primary">
       <span class="btn-icon">🎤</span>
       <span class="btn-text">Create Parody</span>
     </button>
   </div>
 </form>
-
-<div id="loadingDiv" class="loading-container" style="display: none;">
-  <div class="loading-spinner"></div>
-  <div class="loading-text">Writing your parody lyrics...</div>
-</div>
-
-<div id="errorDiv" class="error-container" style="display: none;"></div>
 
 <div id="resultDiv" class="result-container" style="display: none;">
   <h2>🎵 Your Song Parody</h2>
@@ -123,14 +120,3 @@ Transform popular songs into clever parodies on any topic. Perfect for comedy, e
 </div>
 
 <!-- Shared components -->
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="/shared/components/utils.js"></script>
-<script src="song-parody-writer.js"></script>
-
-
-
-
-
-
-

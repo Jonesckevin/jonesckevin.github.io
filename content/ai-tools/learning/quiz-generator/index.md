@@ -24,10 +24,11 @@ social_media:
   twitter_title: "Free Interactive Quiz Generator"
   twitter_description: "Generate educational quizzes and assessments with AI. Perfect for study and teaching materials."
   twitter_image: "/images/featured/aitools/quiz-generator.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
-
-
-
 
 # Interactive Learning Quiz Generator
 
@@ -76,7 +77,7 @@ Test your knowledge across educational topics with AI-generated quizzes. Track y
 <span>100</span>
 </div>
 </div>
-<button type="submit" class="btn-primary">Start Quiz</button>
+<button type="submit" class="btn btn-primary">Start Quiz</button>
 </form>
 <!-- Quiz Interface -->
 <div id="quizInterface" style="display: none;">
@@ -89,7 +90,7 @@ Test your knowledge across educational topics with AI-generated quizzes. Track y
 <div class="question-container">
 <div class="question-text" id="questionText">Loading question...</div>
 <div id="answerOptions"></div>
-<button class="btn-primary" id="nextButton" onclick="nextQuestion()" style="margin-top: 20px; display: none;">Next Question</button>
+<button class="btn btn-primary" id="nextButton" onclick="nextQuestion()" style="margin-top: 20px; display: none;">Next Question</button>
 </div>
 </div>
 <!-- Results Interface -->
@@ -99,23 +100,13 @@ Test your knowledge across educational topics with AI-generated quizzes. Track y
 <div class="score-display" id="scoreDisplay">0/10</div>
 <div id="resultsDetails"></div>
 <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary" onclick="retakeQuiz()" style="width: auto; padding: 10px 20px;">Retake Quiz</button>
+<button class="btn btn-primary" onclick="retakeQuiz()" style="width: auto; padding: 10px 20px;">Retake Quiz</button>
 
-<button class="btn-primary" onclick="copyQuizResults()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
-<button class="btn-primary" onclick="downloadQuizResults('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
-<button class="btn-primary" onclick="downloadQuizResults('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
+<button class="btn btn-primary" onclick="copyQuizResults()" style="width: auto; padding: 10px 20px;">📋 Copy to Clipboard</button>
+<button class="btn btn-primary" onclick="downloadQuizResults('markdown')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #28a745, #34ce57);">📄 Download Markdown</button>
+<button class="btn btn-primary" onclick="downloadQuizResults('html')" style="width: auto; padding: 10px 20px; background: linear-gradient(135deg, #17a2b8, #20c997);">🌐 Download HTML</button>
 </div>
 </div>
 </div>
-<div class="ai-loading" id="loadingDiv" style="display: none;">
-    <div class="ai-loading-spinner"></div>
-    <div>Generating quiz questions...</div>
+<div>Generating quiz questions...</div>
 </div>
-<div id="errorDiv" style="display: none;"></div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="quiz-generator.js"></script>
-
-

@@ -5,17 +5,29 @@
         </p>
         <div class="banner-404">
             <h1>404</h1>
-            <p>{{ i18n "notFound" }}</p>
+            <p>{{ i18n "notFound" | default "Page not found" }}</p>
+            
+            <!-- Quick Navigation -->
             <p class="btn-404">
-                <a href="{{.Site.BaseURL}}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    {{- i18n "home" -}}
+                <a href="{{.Site.BaseURL}}" aria-label="Go to Home">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    {{- i18n "home" | default "Home" -}}
                 </a>
-                <a href="{{ "posts" | absLangURL }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
-                    {{- i18n "archives" -}}
+                <a href="{{ "writeups" | absLangURL }}" aria-label="Browse CTF Writeups">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+                    {{- i18n "archives" | default "CTF Writeups" -}}
                 </a>
             </p>
+
+            <!-- Popular Sections -->
+            <div class="error-404-sections">
+                <p style="margin-top: 2rem; opacity: 0.7;">Or try one of these sections:</p>
+                <nav class="error-404-nav" aria-label="Site sections">
+                    <a href="{{ "ai-tools" | absLangURL }}">🤖 AI Tools Hub</a>
+                    <a href="{{ "artifacts" | absLangURL }}">🔍 DFIR Artifacts</a>
+                    <a href="{{ "dockers" | absLangURL }}">🐳 Docker Guides</a>
+                </nav>
+            </div>
         </div>
     </div>
 {{ end }}

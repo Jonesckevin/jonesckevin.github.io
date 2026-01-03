@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Image Generator"
   twitter_description: "Create stunning images with AI. Generate unique artwork and illustrations from text prompts."
   twitter_image: "/images/featured/aitools/image-generator.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Creating your image..."
 ---
 
 <link rel="stylesheet" href="image-generator.css">
@@ -187,90 +191,6 @@ Create stunning, unique images using advanced AI models. Transform your ideas in
     </div>
   </div>
 
-  <button type="button" class="btn-primary" onclick="generateImage()">🎨 Generate Image</button>
+  <button type="button" class="btn btn-primary" onclick="generateImage()">🎨 Generate Image</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-  <div class="loading-spinner"></div>
-  <div class="loading-text">Creating your image...</div>
-  <div class="loading-subtext">This may take 30-60 seconds depending on complexity</div>
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" style="display: none;">
-  <h3 style="color: #ff6b35; margin-bottom: 20px;">✨ Your Generated Image</h3>
-  
-  <div class="image-container">
-    <div class="image-wrapper">
-      <img id="generatedImage" alt="AI Generated Image" />
-      <div class="image-overlay">
-        <button class="overlay-btn" onclick="window.openImageModal()" title="View Full Size">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-          </svg>
-          Expand
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="image-info">
-    <div class="info-item">
-      <span class="info-label">Model:</span>
-      <span id="imageModel">-</span>
-    </div>
-    <div class="info-item">
-      <span class="info-label">Size:</span>
-      <span id="imageSize">-</span>
-    </div>
-    <div class="info-item">
-      <span class="info-label">Style:</span>
-      <span id="imageStyleUsed">-</span>
-    </div>
-  </div>
-
-  <div class="prompt-used">
-    <h4>Prompt Used:</h4>
-    <p id="imagePromptUsed"></p>
-  </div>
-
-  <div style="margin-top: 30px; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap;" class="result-actions">
-    <button class="action-btn download-btn" onclick="window.downloadImage(event)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-      </svg>
-      Download Image
-    </button>
-    <button class="action-btn copy-btn" onclick="window.copyPromptToClipboard(event)">📋 Copy Prompt</button>
-  </div>
-</div>
-
-<!-- Full Image Modal -->
-<div id="imageModal" class="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modalImage" alt="Full size image" />
-    <div class="modal-controls">
-      <button class="modal-btn" onclick="downloadImage()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-        </svg>
-        Download
-      </button>
-      <button class="modal-btn" onclick="closeModal()">Close</button>
-    </div>
-  </div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="image-generator.js"></script>
-
-
-
-
-
-
 

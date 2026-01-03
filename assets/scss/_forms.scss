@@ -26,7 +26,9 @@
     input[type="email"],
     input[type="password"],
     textarea {
+        text-align: center;
         width: 95% !important;
+        padding: 10px 1px 10px 1px;
         background: linear-gradient(135deg, #1a1a1a 0%, rgba(45, 45, 45, 0.8) 100%) !important;
         border: 2px solid rgba(255, 107, 53, 0.3) !important;
         border-radius: 10px !important;

@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI PowerBI DAX & Filter Builder"
   twitter_description: "Generate DAX formulas and filters from natural language. AI-powered PowerBI tool for analysts and developers."
   twitter_image: "/images/featured/aitools/powerbi-dax-builder.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating DAX formula..."
 ---
 <link rel="stylesheet" href="powerbi-dax-builder.css">
 
@@ -191,14 +195,8 @@ Calendar table: Date, Year, Quarter, Month, Week" rows="6"></textarea>
 <textarea id="additionalRequirements" placeholder="Any specific constraints, business rules, special conditions, or formatting preferences..." rows="3"></textarea>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateDAX(event)">Generate DAX Code</button>
+<button type="button" class="btn btn-primary" onclick="generateDAX(event)">Generate DAX Code</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-    Generating DAX formula...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" style="display: none;">
     <h3 style="color: #ff6b35; margin-bottom: 20px;">📊 Generated DAX Code</h3>
@@ -208,11 +206,9 @@ Calendar table: Date, Year, Quarter, Month, Week" rows="6"></textarea>
     <button class="action-btn download-btn" onclick="downloadResult('dax')">📊 DAX File</button>
     <button class="action-btn download-btn" onclick="downloadResult('pbix-template')" id="pbixTemplateBtn" style="display: none;">📦 PBIX Template</button>
     <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 Markdown</button>
-        <button class="btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px;">🔄 Alternative</button>
+        <button class="btn btn-primary" onclick="generateVariation()" style="width: auto; padding: 10px 20px;">🔄 Alternative</button>
     </div>
 </div>
-
-
 
 <!-- Safety Notice Popup Overlay -->
 <div class="safety-overlay" id="safetyOverlay">
@@ -241,14 +237,3 @@ Calendar table: Date, Year, Quarter, Month, Week" rows="6"></textarea>
 </div>
 
 <!-- Shared components already loaded in head.html -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="powerbi-dax-builder.js"></script>
-
-
-
-
-
-
-

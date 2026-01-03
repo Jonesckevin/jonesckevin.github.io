@@ -1,0 +1,43 @@
+{{/* 
+    AI Tools Result Section Partial
+    
+    Frontmatter params:
+    - result_title: Title shown in result header (default: "Generated Result")
+    - loading_text: Text shown during loading (default: "Generating...")
+    - show_svg_download: Show SVG download button (default: false)
+    - show_pdf_download: Show PDF download button (default: false)
+*/}}
+
+{{ $resultTitle := .Params.result_title | default "Generated Result" }}
+{{ $loadingText := .Params.loading_text | default "Generating..." }}
+{{ $showSvg := .Params.show_svg_download | default false }}
+{{ $showPdf := .Params.show_pdf_download | default false }}
+
+<!-- Loading State -->
+<div id="loadingDiv" class="loading-container" style="display:none;">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">{{ $loadingText }}</div>
+</div>
+
+<!-- Error State -->
+<div id="errorDiv" class="error-container" style="display:none;"></div>
+
+<!-- Result Container -->
+<div id="resultDiv" class="result-container" style="display:none;">
+    <div class="result-header">
+        <h2>{{ $resultTitle }}</h2>
+    </div>
+    <div id="resultContent" class="result-content"></div>
+    <div class="result-actions">
+        <button class="action-btn copy-btn" onclick="copyResult(event)" aria-label="Copy to clipboard">📋 Copy</button>
+        <button class="action-btn download-btn" onclick="downloadResult('markdown')" aria-label="Download as Markdown">📄 MD</button>
+        <button class="action-btn download-btn" onclick="downloadResult('html')" aria-label="Download as HTML">🌐 HTML</button>
+        <button class="action-btn download-btn" onclick="downloadResult('text')" aria-label="Download as Text">📝 TXT</button>
+        {{ if $showSvg }}
+        <button class="action-btn download-btn" onclick="downloadResult('svg')" aria-label="Download as SVG">🎨 SVG</button>
+        {{ end }}
+        {{ if $showPdf }}
+        <button class="action-btn download-btn" onclick="downloadResult('pdf')" aria-label="Download as PDF">📑 PDF</button>
+        {{ end }}
+    </div>
+</div>

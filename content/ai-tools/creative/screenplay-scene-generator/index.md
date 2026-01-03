@@ -24,10 +24,11 @@ social_media:
   twitter_title: "Free AI Screenplay Generator"
   twitter_description: "Generate film scripts and scenes with proper formatting. Professional screenwriting tool."
   twitter_image: "/images/featured/aitools/screenplay-scene-generator.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
-
-
-
 
 # 🎬 Screenplay Scene Generator
 
@@ -130,30 +131,8 @@ Create professionally formatted screenplay scenes with authentic dialogue, stage
     <textarea id="additionalNotes" rows="2" placeholder="Any specific direction, subtext, or elements you want included..."></textarea>
   </div>
 
-  <div id="errorDiv" class="error-message" style="display: none;"></div>
-
-  <button type="submit" class="btn-primary">
+  <button type="submit" class="btn btn-primary">
     <span class="btn-icon">🎬</span>
     Generate Screenplay Scene
   </button>
 </form>
-
-<div id="loadingDiv" class="loading-container" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Crafting your screenplay scene...</p>
-</div>
-
-<div id="resultDiv" class="result-container" style="display: none;">
-  <h2>Your Screenplay Scene</h2>
-  <div id="resultContent" class="result-content"></div>
-  <div class="result-actions">
-    <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-    <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-    <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-  </div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="screenplay-scene-generator.js"></script>

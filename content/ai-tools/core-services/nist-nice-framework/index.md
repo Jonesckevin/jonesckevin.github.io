@@ -14,6 +14,10 @@ canonical: "/ai-tools/core-services/nist-nice-framework/"
 featured_image: "/images/featured/aitools/nist-nice-framework.png"
 sitemap_priority: 0.8
 sitemap_changefreq: "monthly"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
 ---
 
 <link rel="stylesheet" href="nist-nice-framework.css">
@@ -140,89 +144,9 @@ Generate comprehensive cybersecurity job descriptions based on the **NIST NICE W
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn-primary" id="generateBtn">
+    <button type="submit" class="btn btn-primary" id="generateBtn">
       <span class="btn-icon">🎯</span> Generate Role Description
     </button>
     <button type="button" class="btn-secondary" id="resetBtn">Reset</button>
   </div>
 </form>
-
-<div id="loadingDiv" style="display: none; text-align: center; margin-top: 20px;">
-  <div class="spinner"></div>
-  <p>Analyzing NIST NICE Framework and generating job description...</p>
-</div>
-
-<div id="errorDiv" style="display: none; margin-top: 20px;"></div>
-
-<div id="resultDiv" style="display: none; margin-top: 30px;">
-  <div class="result-header">
-    <h3>📄 Job Description Generated</h3>
-    <div class="result-actions">
-      <button class="action-btn copy-btn" onclick="copyResult(event)" title="Copy to clipboard">📋 Copy</button>
-      <button class="action-btn download-btn" onclick="downloadResult('markdown')" title="Download as Markdown">📄 MD</button>
-      <button class="action-btn download-btn-alt" onclick="downloadResult('html')" title="Download as HTML">🌐 HTML</button>
-    </div>
-  </div>
-  <div id="resultContent" class="prose job-description-output"></div>
-</div>
-
-## About the NIST NICE Framework
-
-The **NICE Workforce Framework for Cybersecurity (NIST Special Publication 800-181 Revision 1)** provides a common language for describing cybersecurity work through:
-
-- **Work Roles**: 52 distinct cybersecurity positions
-- **Tasks**: Specific work activities (1000+ unique tasks)
-- **Knowledge**: Understanding required (600+ knowledge areas)
-- **Skills**: Practical abilities needed (400+ skills)
-- **Abilities**: Competencies to perform work
-
-## The 11 Strategies of a World-Class SOC
-
-This tool incorporates best practices from MITRE's **11 Strategies of a World-Class Cybersecurity Operations Center**:
-
-1. **Know What You Are Protecting and Why** - Asset inventory and criticality
-2. **Give the SOC the Authority to Do Its Job** - Empowerment and decision-making
-3. **Build a SOC Structure to Match Your Organizational Needs** - Right-sized operations
-4. **Hire AND Grow Quality Staff** - Talent development and retention
-5. **Prioritize Incident Response** - Effective triage and handling
-6. **Illuminate Adversaries with Cyber Threat Intelligence** - Intelligence-driven defense
-7. **Select and Collect the Right Data** - Strategic data collection
-8. **Leverage Tools to Support Analyst Workflow** - Technology enablement
-9. **Communicate Clearly, Collaborate Often, Share Generously** - Information sharing
-10. **Measure Performance to Improve Performance** - Metrics and continuous improvement
-11. **Turn up the Volume by Expanding SOC Functionality** - Maturity and growth
-
-## How to Use This Tool
-
-1. **Enter a job title** - Be specific (e.g., "SOC Analyst II" vs just "Analyst")
-2. **Select work role** (optional) - Choose a NIST work role or let the tool auto-detect
-3. **Adjust sliders** - Set how many Skills, Knowledge areas, and Tasks to include
-4. **Choose SOC integration** - Include best practices from world-class SOC strategies
-5. **Generate** - Create a comprehensive, standards-based job description
-
-The tool will:
-- Map your job title to relevant NIST NICE Framework components
-- Select the most appropriate Skills, Knowledge, and Tasks
-- Generate a professional job description
-- Incorporate SOC best practices if selected
-- Provide downloadable markdown output
-
-## Use Cases
-
-- **HR & Recruiting**: Create accurate job postings with industry-standard terminology
-- **Workforce Planning**: Identify skill gaps and training needs
-- **Career Development**: Understand required competencies for advancement
-- **Compliance**: Align job descriptions with NIST framework requirements
-- **Training Programs**: Design curricula based on real work role needs
-
----
-
-<div class="tool-footer">
-  <p><strong>Data Source:</strong> NIST Special Publication 800-181 Rev 1 (2020) & MITRE 11 Strategies (2022)</p>
-  <p><strong>Note:</strong> Job descriptions are generated based on framework mappings and should be reviewed and customized for your specific organizational needs.</p>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="nist-nice-framework.js"></script>

@@ -268,7 +268,7 @@
                         noResultsDiv.innerHTML = `
                             <h3 class="no-results-title">No {{ .Params.searchNoResultsTitle | default "Items" }} Found</h3>
                             <p class="no-results-description">Try a different search term or browse all available {{ .Params.searchResultLabel | default "items" }}.</p>
-                            <button class="clear-search-btn" onclick="document.getElementById('sectionSearch').value = ''; document.getElementById('sectionSearch').dispatchEvent(new Event('input'));">Clear Search</button>
+                            <button class="clear-search-btn" aria-label="Clear search" onclick="document.getElementById('sectionSearch').value = ''; document.getElementById('sectionSearch').dispatchEvent(new Event('input'));">Clear Search</button>
                         `;
                         servicesGrid.appendChild(noResultsDiv);
                     }
@@ -307,6 +307,12 @@
                         keyFormat: 'sk-...',
                         pricing: 'https://openai.com/api/pricing/'
                     },
+                    cohere: {
+                        url: 'https://dashboard.cohere.com/api-keys',
+                        name: 'Cohere Dashboard',
+                        keyFormat: 'Alphanumeric string',
+                        pricing: 'https://cohere.com/pricing'
+                    },
                     deepseek: {
                         url: 'https://platform.deepseek.com/api_keys',
                         name: 'DeepSeek API website',
@@ -330,6 +336,30 @@
                         name: 'Grok (X.AI) Console',
                         keyFormat: 'xai-...',
                         pricing: 'https://x.ai/api'
+                    },
+                    mistral: {
+                        url: 'https://console.mistral.ai/',
+                        name: 'Mistral AI Console',
+                        keyFormat: 'Alphanumeric string',
+                        pricing: 'https://mistral.ai/technology/#pricing'
+                    },
+                    perplexity: {
+                        url: 'https://www.perplexity.ai/settings/api',
+                        name: 'Perplexity Settings',
+                        keyFormat: 'pplx-...',
+                        pricing: 'https://www.perplexity.ai/settings/api'
+                    },
+                    groq: {
+                        url: 'https://console.groq.com/keys',
+                        name: 'Groq Console',
+                        keyFormat: 'gsk_...',
+                        pricing: 'https://groq.com/pricing/'
+                    },
+                    cerebras: {
+                        url: 'https://cloud.cerebras.ai/',
+                        name: 'Cerebras Cloud',
+                        keyFormat: 'Alphanumeric string',
+                        pricing: 'https://cerebras.ai/inference'
                     },
                     custom: {
                         url: 'https://ollama.com/',

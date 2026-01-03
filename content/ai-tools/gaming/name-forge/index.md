@@ -24,9 +24,11 @@ social_media:
   twitter_title: "Free Fantasy Name Generator"
   twitter_description: "Create unique character and place names for RPG campaigns and fantasy worlds with AI."
   twitter_image: "/images/featured/aitools/dnd-name-creator.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Forging unique names..."
 ---
-
-
 
 # Name Forge: Multi-Genre Generator
 
@@ -118,32 +120,6 @@ Generate unique names for characters, places, items, ships, guilds, and more acr
 <textarea id="specialRequests" rows="2" placeholder="Any specific requirements, themes, or elements you'd like included..."></textarea>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateNames()">⚒️ Forge Names</button>
+<button type="button" class="btn btn-primary" onclick="generateNames()">⚒️ Forge Names</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-Forging unique names...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Generated Names</h3>
-<div class="result-content" id="resultContent"></div>
-<div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="name-forge.js"></script>
-
-
-
-
 

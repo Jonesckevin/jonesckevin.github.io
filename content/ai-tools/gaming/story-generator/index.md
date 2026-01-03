@@ -23,10 +23,11 @@ social_media:
   twitter_title: "Free RPG Story Generator"
   twitter_description: "Create engaging stories and adventures for your D&D campaigns with AI. Perfect for DMs and storytellers."
   twitter_image: "/images/featured/aitools/dnd-character-story.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Crafting your story..."
 ---
-
-
-
 
 # 📚 AI Story Generator
 
@@ -89,33 +90,6 @@ Create compelling stories with AI assistance. Choose your genre, setting, and ch
 </select>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateStory()">✨ Generate Story</button>
+<button type="button" class="btn btn-primary" onclick="generateStory()">✨ Generate Story</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-Crafting your story...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Generated Story</h3>
-<div class="result-content" id="resultContent"></div>
-
-<div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="story-generator.js"></script>
-
-
-
-
 

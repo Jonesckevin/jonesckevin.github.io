@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free CAF PaCE Writer Tool"
   twitter_description: "Create professional Performance and Career Evaluation reports for CAF members with AI assistance."
   twitter_image: "/images/featured/aitools/pace-writer.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating your PaCE report using CAF competency framework..."
 ---
 
 <link rel="icon" type="image/svg+xml" href="/ai-tools/core-services/pace-report-writer/PaCE.svg">
@@ -52,9 +56,9 @@ Do not put sensitive information into the form.
       <optgroup label="Junior NCMs">
         <option value="pte">Pte - Private</option>
         <option value="cpl">Cpl - Corporal</option>
+        <option value="mcpl-ms">MCpl/MS - Master Corporal / Master Seaman</option>
       </optgroup>
       <optgroup label="Senior NCMs">
-        <option value="mcpl-ms">MCpl/MS - Master Corporal / Master Seaman</option>
         <option value="sgt-po2">Sgt/PO2 - Sergeant / Petty Officer 2nd Class</option>
         <option value="wo-po1">WO/PO1 - Warrant Officer / Petty Officer 1st Class</option>
         <option value="mwo-cpo2">MWO/CPO2 - Master Warrant Officer / Chief Petty Officer 2nd Class</option>
@@ -164,7 +168,6 @@ Do not put sensitive information into the form.
     </div>
   </div>
 
-
   <!-- Optional Competency Demonstration Analysis (toggleable) -->
   <div class="form-group">
     <label class="checkbox-inline">
@@ -178,18 +181,22 @@ Do not put sensitive information into the form.
     </div>
   </div>
   
-  <button type="button" class="btn-primary" onclick="generatePaceReport()" style="display:flex;align-items:center;justify-content:center;gap:10px;">
+  <button type="button" class="btn btn-primary" onclick="generatePaceReport()" style="display:flex;align-items:center;justify-content:center;gap:10px;">
     <img src="/ai-tools/core-services/pace-report-writer/PaCE.svg" alt="" style="width:28px;height:28px;border:none!important;box-shadow:none!important;outline:none;background:transparent;margin:0;padding:0;" loading="lazy" decoding="async" />
     <span>Generate PaCEr</span>
   </button>
 </form>
 
-<div class="loading" id="loadingDiv" style="display: none;">
-  Generating your PaCE report using CAF competency framework...
+<!-- Loading State -->
+<div id="loadingDiv" class="loading-container" style="display:none;">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Generating your PaCE report using CAF competency framework...<br>Make sure to tone it down a notch. You aren't a god. Yet...</div>
 </div>
 
-<div id="errorDiv" style="display: none;"></div>
+<!-- Error State -->
+<div id="errorDiv" class="error-container" style="display:none;"></div>
 
+<!-- Result Container -->
 <div id="resultDiv" style="display: none;">
   <h3 style="color: #ff6b35; margin-bottom: 20px;">PaCEr</h3>
   <div id="resultContent"></div>
@@ -295,9 +302,7 @@ Do not put sensitive information into the form.
         </div>
       </div>
     </div>
+  </div>
+</div>
 
 <!-- Shared components already loaded in head.html -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="/ai-tools/core-services/pace-report-writer/pace-report-writer.js"></script>

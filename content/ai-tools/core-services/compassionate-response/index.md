@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free Compassionate Response Generator"
   twitter_description: "Create empathetic responses to difficult situations with AI. Express solidarity and support with meaningful content."
   twitter_image: "/images/ai-tools/compassionate-response.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating compassionate response..."
 ---
 
 # Compassionate Response Generator
@@ -54,23 +58,5 @@ Generate empathetic and hopeful responses to global tragedies. This tool crafts 
 <label for="maxLength">Maximum Tweet Length</label>
 <input id="maxLength" max="280" min="50" type="number" value="280"/>
 </div>
-<button type="button" class="btn-primary" onclick="generateResponse()">Generate Compassionate Response</button>
+<button type="button" class="btn btn-primary" onclick="generateResponse()">Generate Compassionate Response</button>
 </form>
-<div class="loading" id="loadingDiv" style="display: none;">
-                Generating compassionate response...
-            </div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Compassionate Response</h3>
-<div class="result-content" id="resultContent"></div>
-<div class="result-actions" style="margin-top: 30px;">
-<button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-<button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-<button class="action-btn download-btn" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="compassionate-response.js"></script>

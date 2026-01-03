@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Interview Questions Generator"
   twitter_description: "Create thought-provoking interview questions with AI. Perfect for hiring managers and candidate evaluation."
   twitter_image: "/images/featured/aitools/interview-questions.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating interview questions..."
 ---
 <div class="tpq-hero">
 <h1>Interviewer Questions <span class="pill">General + Chosen Topics</span></h1>
@@ -84,28 +88,5 @@ social_media:
 </label>
 </div>
 </div>
-<button type="button" class="btn-primary" onclick="generateTPQ()">Generate Questions</button>
+<button type="button" class="btn btn-primary" onclick="generateTPQ()">Generate Questions</button>
 </form>
-<div id="loadingDiv" class="loading" style="display: none;">
-Generating interview questions...
-</div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" class="result-container" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Interview Question Set</h3>
-<div id="resultContent" class="result-content"></div>
-<div class="result-actions">
-    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
-    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-</div>
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="thought-provoking-questions.js"></script>
-
-
-
-
-
-

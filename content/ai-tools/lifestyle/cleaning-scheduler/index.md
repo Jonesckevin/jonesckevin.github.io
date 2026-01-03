@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Cleaning & Chore Scheduler"
   twitter_description: "Create organized cleaning schedules for your home with AI. Maintain a tidy home effortlessly."
   twitter_image: "/images/featured/aitools/cleaning-scheduler.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
 
 # 🧹 Home Cleaning & Chore Scheduler
@@ -210,36 +214,5 @@ Create personalized cleaning schedules and chore lists that fit your lifestyle. 
     </label>
     <textarea id="additionalNotes" rows="3" placeholder="e.g., Prefer eco-friendly cleaning products, need quick morning routines, etc."></textarea>
   </div>
-  <button type="button" class="btn-primary" onclick="generateCleaningSchedule()">📋 Generate Cleaning Schedule</button>
+  <button type="button" class="btn btn-primary" onclick="generateCleaningSchedule()">📋 Generate Cleaning Schedule</button>
 </form>
-<div class="loading" id="loadingDiv" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Creating your personalized cleaning schedule...</p>
-</div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-  <h3 style="color: #ff6b35; margin-bottom: 20px;">📋 Your Cleaning Schedule</h3>
-  <div id="resultContent"></div>
-  <div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">
-      📋 Copy to Clipboard
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
-      📄 Download Markdown
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('html')">
-      🌐 Download HTML
-    </button>
-  </div>
-</div>
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="cleaning-scheduler.js"></script>
-
-
-
-
-
-
-

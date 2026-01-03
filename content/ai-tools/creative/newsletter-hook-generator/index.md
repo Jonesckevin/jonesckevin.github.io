@@ -24,8 +24,11 @@ social_media:
   twitter_title: "Free Newsletter Hook Generator"
   twitter_description: "Generate compelling newsletter openings with AI. Boost email engagement."
   twitter_image: "/images/featured/aitools/newsletter-hook-generator.png"
----
 
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating..."
+---
 
 # 📬 Newsletter Hook Generator
 
@@ -108,30 +111,6 @@ Create compelling opening paragraphs that capture attention and keep readers eng
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn-primary" id="generateBtn">✨ Generate Hooks</button>
+    <button type="submit" class="btn btn-primary" id="generateBtn">✨ Generate Hooks</button>
   </div>
 </form>
-
-<div id="loadingDiv" style="display: none; text-align: center; margin-top: 20px;">
-  <div class="spinner"></div>
-  <p>Crafting compelling hooks...</p>
-</div>
-
-<div id="errorDiv" style="display: none; margin-top: 20px;"></div>
-
-<div id="resultDiv" style="display: none; margin-top: 20px;">
-  <div class="result-header">
-    <h3>🎯 Generated Newsletter Hooks</h3>
-    <div class="result-actions">
-      <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-      <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-      <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-    </div>
-  </div>
-  <div id="resultContent"></div>
-</div>
-
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="/shared/components/utils.js"></script>
-<script src="newsletter-hook-generator.js"></script>

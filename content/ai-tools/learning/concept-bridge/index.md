@@ -8,6 +8,10 @@ tags: ["Learning","Education"]
 categories: ["AI Tools"]
 type: ai-tools
 canonical: "/ai-tools/learning/concept-bridge/"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Generating bridge..."
 ---
 
 # Concept Bridge
@@ -23,14 +27,6 @@ Bridge from what you know to what you want to learn via layered analogies.
     <label for="target">Target Concept *</label>
     <input id="target" type="text" placeholder="e.g. 'object-oriented programming'" required>
   </div>
-  <button type="button" class="btn-primary" onclick="buildBridge(event)">Build Bridge</button>
+  <button type="button" class="btn btn-primary" onclick="buildBridge(event)">Build Bridge</button>
 </form>
 
-<div id="loadingDiv" style="display:none;">Generating bridge...</div>
-<div id="errorDiv" style="display:none;"></div>
-<div id="resultDiv" style="display:none;"></div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="concept-bridge.js"></script>

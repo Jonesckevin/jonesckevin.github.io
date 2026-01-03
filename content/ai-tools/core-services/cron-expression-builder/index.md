@@ -12,8 +12,11 @@ type: ai-tools
 seo_title: "AI Cron Expression Builder — Generate and Explain Cron"
 canonical: "/ai-tools/core-services/cron-expression-builder/"
 featured_image: "/images/featured/aitools/cronjob.png"
----
 
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Results"
+loading_text: "Generating..."
+---
 
 # ⏰ Cron Expression Builder
 
@@ -38,24 +41,7 @@ Describe when something should run. Get a cron, an explanation, and the next run
   </div>
 
   <div class="button-container">
-    <button type="submit" class="btn-primary">🛠️ Build Cron</button>
+    <button type="submit" class="btn btn-primary">🛠️ Build Cron</button>
   </div>
 </form>
 
-<div id="loadingDiv" class="loading-container" style="display:none;"></div>
-<div id="errorDiv" class="error-container" style="display:none;"></div>
-
-<div id="resultDiv" class="result-container" style="display:none;">
-  <div class="result-header"><h2>Results</h2></div>
-  <div id="resultContent" class="result-content"></div>
-  <div class="result-actions">
-    <button class="copy-btn" onclick="copyResult(event)">📋 Copy</button>
-    <button class="download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-    <button class="download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-  </div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="cron-expression-builder.js"></script>

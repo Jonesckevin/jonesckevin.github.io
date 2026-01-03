@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkProviderSupport() {
         const providerWarning = document.getElementById('providerWarning');
         const provider = apiManager?.getProvider() || 'openai';
-        const isSupported = provider === 'openai' || provider === 'mistral';
+        const isSupported = provider === 'openai' || provider === 'mistral' || provider === 'groq';
         
         if (providerWarning) {
             providerWarning.style.display = isSupported ? 'none' : 'block';

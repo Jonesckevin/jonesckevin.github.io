@@ -24,8 +24,11 @@ social_media:
   twitter_title: "Mermaid Visual Roadmap Builder"
   twitter_description: "Generate interactive flowcharts and timelines with AI. Perfect for visualizing learning paths and project roadmaps."
   twitter_image: "/images/featured/aitools/mermaid-flowchart.png"
----
 
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Creating your visual roadmap..."
+---
 
 <div class="vr-hero">
 <h1>Visual Roadmap Builder <span class="pill">Mermaid Diagrams</span></h1>
@@ -87,14 +90,8 @@ Choose how detailed you want the roadmap steps to be - from strategic overview t
 <textarea id="focusAreas" placeholder="List specific skills, milestones, or phases you want visualized in the roadmap" rows="3"></textarea>
 </div>
 
-<button type="button" class="btn-primary" onclick="generateRoadmap()">Generate Visual Roadmap</button>
+<button type="button" class="btn btn-primary" onclick="generateRoadmap()">Generate Visual Roadmap</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-Creating your visual roadmap...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" style="display: none;">
 <h3 style="color: #ff6b35; margin-bottom: 20px;">Your Visual Roadmap</h3>
@@ -115,11 +112,5 @@ Creating your visual roadmap...
 </div>
 </div>
 
-
 <!-- Include CSS and JavaScript for Visual Roadmap -->
 <link rel="stylesheet" href="visual-roadmap.css">
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="visual-roadmap.js"></script>
-

@@ -15,6 +15,10 @@ featured_image: "/images/featured/aitools/gift-idea.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Finding the perfect gift..."
 ---
 
 # 🎁 Gift Idea Generator
@@ -121,40 +125,9 @@ Discover the perfect gift with AI-powered personalized suggestions. Get creative
   </div>
 
   <div class="button-container">
-    <button type="submit" class="btn-primary">
+    <button type="submit" class="btn btn-primary">
       <span class="btn-icon">🎉</span>
       <span class="btn-text">Find Perfect Gift</span>
     </button>
   </div>
 </form>
-
-<div id="loadingDiv" class="loading-container" style="display: none;">
-  <div class="loading-spinner"></div>
-  <div class="loading-text">Finding the perfect gift...</div>
-</div>
-
-<div id="errorDiv" class="error-container" style="display: none;"></div>
-
-<div id="resultDiv" class="result-container" style="display: none;">
-  <div class="result-header">
-    <h2>🎁 Gift Ideas</h2>
-  </div>
-  <div id="resultContent" class="result-content gift-display"></div>
-  <div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-  </div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="gift-idea-generator.js"></script>
-
-
-
-
-
-
-

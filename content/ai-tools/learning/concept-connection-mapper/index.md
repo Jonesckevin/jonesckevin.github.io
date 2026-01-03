@@ -15,6 +15,10 @@ featured_image: "/images/featured/aitools/concept-connection-mapper.png"
 schema_type: "SoftwareApplication"
 sitemap_priority: 0.7
 sitemap_changefreq: "monthly"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
 
 # 🧠 Concept Connection Mapper
@@ -77,35 +81,3 @@ Discover relationships and connections between concepts to deepen understanding 
 
   <div id="ai-interface"></div>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-  <div class="spinner"></div>
-  <p>Mapping concept connections...</p>
-</div>
-
-<div id="errorDiv" class="error-message" style="display: none;"></div>
-
-<div id="resultDiv" class="result-container" style="display: none;">
-  <div class="result-header">
-    <h2 id="resultTitle">Concept Map</h2>
-  </div>
-  <div id="resultContent" class="result-content"></div>
-  <div class="result-actions">
-    <button class="action-btn copy-btn" onclick="copyResult(event)"><span class="btn-icon">📋</span> Copy</button>
-    <button class="action-btn download-btn" onclick="downloadResult('markdown')"><span class="btn-icon">📄</span> MD</button>
-    <button class="action-btn download-btn-alt" onclick="downloadResult('html')"><span class="btn-icon">🌐</span> HTML</button>
-</div>
-</div>
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/ai-interface.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="concept-connection-mapper.js"></script>
-
-
-
-
-
-
-

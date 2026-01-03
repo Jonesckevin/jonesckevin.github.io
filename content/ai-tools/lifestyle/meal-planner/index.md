@@ -24,9 +24,11 @@ social_media:
   twitter_title: "Free AI Weekly Meal Planner Tool"
   twitter_description: "Plan your week with AI-powered meal planning and smart grocery lists."
   twitter_image: "/images/featured/aitools/grocery-planner.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
-
-
 
 # 🗓️ Weekly Meal Planner & Smart Grocery List
 
@@ -168,36 +170,5 @@ Plan your entire week with personalized meal suggestions, complete grocery lists
     </label>
     <textarea id="additionalPreferences" rows="3" placeholder="e.g., Kid-friendly meals, meal prep friendly, include leftovers, etc."></textarea>
   </div>
-  <button type="button" class="btn-primary" onclick="generateMealPlan()">📅 Generate Weekly Meal Plan</button>
+  <button type="button" class="btn btn-primary" onclick="generateMealPlan()">📅 Generate Weekly Meal Plan</button>
 </form>
-<div class="loading" id="loadingDiv" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Creating your personalized weekly meal plan...</p>
-</div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-  <h3 style="color: #ff6b35; margin-bottom: 20px;">📝 Your Weekly Meal Plan</h3>
-  <div id="resultContent"></div>
-  <div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">
-      📋 Copy to Clipboard
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
-      📄 Download Markdown
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('html')">
-      🌐 Download HTML
-    </button>
-  </div>
-</div>
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="meal-planner.js"></script>
-
-
-
-
-
-
-

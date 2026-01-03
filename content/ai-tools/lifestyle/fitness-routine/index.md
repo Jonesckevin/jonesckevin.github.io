@@ -24,9 +24,11 @@ social_media:
   twitter_title: "Free AI Fitness Routine Generator"
   twitter_description: "Get personalized workout plans with AI. Customized fitness routines for any goal or fitness level."
   twitter_image: "/images/featured/aitools/fitness-routine.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
-
-
 
 # 💪 AI Fitness Routine Generator
 
@@ -220,36 +222,5 @@ Create personalized workout routines designed for your specific goals, fitness l
     </label>
     <textarea id="additionalNotes" rows="3" placeholder="e.g., prefer HIIT, like compound movements, want to include stretching, etc."></textarea>
   </div>
-  <button type="button" class="btn-primary" onclick="generateFitnessRoutine()">🎯 Generate Fitness Routine</button>
+  <button type="button" class="btn btn-primary" onclick="generateFitnessRoutine()">🎯 Generate Fitness Routine</button>
 </form>
-<div class="loading" id="loadingDiv" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Creating your personalized fitness routine...</p>
-</div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-  <h3 style="color: #ff6b35; margin-bottom: 20px;">📋 Your Fitness Routine</h3>
-  <div id="resultContent"></div>
-  <div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">
-      📋 Copy to Clipboard
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
-      📄 Download Markdown
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('html')">
-      🌐 Download HTML
-    </button>
-  </div>
-</div>
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="fitness-routine.js"></script>
-
-
-
-
-
-
-

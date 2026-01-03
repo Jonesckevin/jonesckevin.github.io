@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Packing List Generator"
   twitter_description: "Create customized packing lists for any trip with AI. Travel prepared and organized."
   twitter_image: "/images/featured/aitools/packing-list.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
 
 # 🧳 Smart Packing List Generator
@@ -220,36 +224,5 @@ Create comprehensive, customized packing lists for any trip. From weekend getawa
     </label>
     <textarea id="additionalNotes" rows="3" placeholder="e.g., Need dress shoes, bringing laptop, limited luggage space, etc."></textarea>
   </div>
-  <button type="button" class="btn-primary" onclick="generatePackingList()">🎒 Generate Packing List</button>
+  <button type="button" class="btn btn-primary" onclick="generatePackingList()">🎒 Generate Packing List</button>
 </form>
-<div class="loading" id="loadingDiv" style="display: none;">
-  <div class="loading-spinner"></div>
-  <p>Creating your personalized packing list...</p>
-</div>
-<div id="errorDiv" style="display: none;"></div>
-<div id="resultDiv" style="display: none;">
-  <h3 style="color: #ff6b35; margin-bottom: 20px;">📋 Your Packing List</h3>
-  <div id="resultContent"></div>
-  <div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">
-      📋 Copy to Clipboard
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">
-      📄 Download Markdown
-    </button>
-  <button class="action-btn download-btn" onclick="downloadResult('html')">
-      🌐 Download HTML
-    </button>
-  </div>
-</div>
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="packing-list.js"></script>
-
-
-
-
-
-
-

@@ -24,6 +24,10 @@ social_media:
   twitter_title: "Free AI Resume Builder & Analyzer Tool"
   twitter_description: "Create professional ATS-optimized resumes or get detailed critique with AI. Free resume tool for job applications."
   twitter_image: "/images/featured/aitools/resume-builder.png"
+
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: ""
 ---
 
 <div class="tool-header">
@@ -225,14 +229,8 @@ social_media:
 </div>
 </div>
 
-<button type="button" class="btn-primary" id="submitBtn" onclick="processResume()">Build Resume</button>
+<button type="button" class="btn btn-primary" id="submitBtn" onclick="processResume()">Build Resume</button>
 </form>
-
-<div class="loading" id="loadingDiv" style="display: none;">
-<span id="loadingText">Building your professional resume...</span>
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
 
 <div id="resultDiv" class="result-container" style="display: none;">
 <h3 class="result-header" id="resultHeader">📄 Professional Resume</h3>
@@ -245,7 +243,3 @@ social_media:
 </div>
 
 <!-- Shared components already loaded in head.html -->
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="resume-builder.js"></script>

@@ -23,6 +23,10 @@ pagination.pagerSize  = 30
 ignoreLogs = ['warning-goldmark-raw-html']
 
 [markup]
+  [markup.tableOfContents]
+    startLevel = 2                # Start TOC from h2 (##)
+    endLevel = 3                  # End TOC at h3 (###)
+    ordered = false               # Use unordered list
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
@@ -49,6 +53,12 @@ ignoreLogs = ['warning-goldmark-raw-html']
   description = "Comprehensive cyber security resource covering digital forensics artifacts, CTF writeups, Useful AI tools, Docker containers setups. Expert analysis of Windows artifacts, registry forensics, malware analysis, and hands-on security tutorials for DFIR professionals and enthusiasts."
   keywords = "homepage, artifacts, blog, 4n6, forensics, cyber security, ctf, writeup, nsec, ns3c, nsec, NorthSec, NorthSec, NSec, NS3C, NSec CTF, NS3C CTF, Cyber Security, Cybersecurity, Cyber Security Blog, Cyber Security Writeup, Cyber Security CTF, digital forensics, DFIR, incident response, malware analysis, registry forensics, Windows artifacts, security tools, AI cybersecurity, Docker security, penetration testing"
   images = ["default.webp"]
+
+  # Author information for SEO
+  [params.author]
+    name = "JonesCKevin"
+    email = ""
+    url = "https://4n6post.com"
 
   [params.favicon]
     mask = "#10b981"

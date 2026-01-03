@@ -24,8 +24,11 @@ social_media:
   twitter_title: "Free Character Voice Converter"
   twitter_description: "Create authentic character voices and dialogue with AI. Perfect for writers and game developers."
   twitter_image: "/images/featured/aitools/dnd-personality-convert.png"
----
 
+# AI Tool Result Section (used by layouts/partials/ai-tools/result-section.html)
+result_title: "Generated Result"
+loading_text: "Converting text to character voice..."
+---
 
 # Character Voice Converter
 
@@ -160,40 +163,6 @@ Transform any text to match specific character voices and speaking styles. Perfe
 </div>
 </div>
 
-<button type="button" class="btn-primary" onclick="convertVoice()">🎭 Convert Voice</button>
+<button type="button" class="btn btn-primary" onclick="convertVoice()">🎭 Convert Voice</button>
 </form>
-
-<div id="loadingDiv" class="loading" style="display: none;">
-Converting text to character voice...
-</div>
-
-<div id="errorDiv" style="display: none;"></div>
-
-<div id="resultDiv" style="display: none;">
-<h3 style="color: #ff6b35; margin-bottom: 20px;">Converted Character Voice</h3>
-<div id="resultContent" class="result-content"></div>
-<div class="result-actions">
-  <button class="action-btn copy-btn" onclick="copyResult(event)">📋 Copy</button>
-  <button class="action-btn download-btn" onclick="downloadResult('markdown')">📄 MD</button>
-  <button class="action-btn download-btn-alt" onclick="downloadResult('html')">🌐 HTML</button>
-</div>
-
-</div>
-</div>
-
-
-<script src="/shared/components/utils.js"></script>
-<script src="/shared/components/api-manager.js"></script>
-<script src="/shared/components/download-manager.js"></script>
-<script src="character-voice-converter.js"></script>
-
-
-
-
-
-
-
-
-
-
 
