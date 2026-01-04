@@ -1,0 +1,350 @@
+{
+  "zeek": {
+    "name": "Zeek/Bro",
+    "docUrl": "https://docs.zeek.org/en/master/",
+    "commonFlags": [
+      {
+        "flag": "zeek-cut",
+        "description": "Extract specific columns from Zeek logs (e.g., zeek-cut id.orig_h id.resp_h < conn.log)"
+      },
+      {
+        "flag": "-C",
+        "description": "Ignore checksums when reading pcap files"
+      },
+      {
+        "flag": "-r <file>",
+        "description": "Read packets from pcap file instead of live capture"
+      },
+      {
+        "flag": "-i <interface>",
+        "description": "Read packets from network interface"
+      },
+      {
+        "flag": "@load <script>",
+        "description": "Load additional Zeek script/package (e.g., @load protocols/http)"
+      },
+      {
+        "flag": "Log Files",
+        "description": "conn.log (connections), dns.log (DNS), http.log (HTTP), ssl.log (SSL/TLS), files.log (file transfers)"
+      },
+      {
+        "flag": "grep",
+        "description": "Filter log entries by pattern (e.g., grep '443' conn.log)"
+      },
+      {
+        "flag": "awk",
+        "description": "Process and format log data (e.g., awk '{print $3, $5}' conn.log)"
+      },
+      {
+        "flag": "sort | uniq -c",
+        "description": "Count unique occurrences (e.g., cat dns.log | zeek-cut query | sort | uniq -c)"
+      },
+      {
+        "flag": "jq",
+        "description": "Parse JSON-formatted logs (if using JSON writer)"
+      }
+    ],
+    "configHints": {
+      "description": "Enable advanced Zeek features for enhanced logging",
+      "steps": [
+        "Edit local.zeek configuration: sudo nano /usr/share/zeek/site/local.zeek",
+        "Add protocol analyzers: @load policy/protocols/http/detect-sqli",
+        "Enable file extraction: @load frameworks/files/extract-all-files",
+        "Set log rotation: redef Log::default_rotation_interval = 1hr;",
+        "Restart Zeek: sudo zeekctl deploy"
+      ]
+    }
+  },
+  "tcpdump": {
+    "name": "TCPDump",
+    "docUrl": "https://www.tcpdump.org/manpages/tcpdump.1.html",
+    "commonFlags": [
+      {
+        "flag": "-r <file>",
+        "description": "Read packets from pcap/pcapng file"
+      },
+      {
+        "flag": "-w <file>",
+        "description": "Write packets to output file"
+      },
+      {
+        "flag": "-i <interface>",
+        "description": "Capture from network interface (e.g., -i eth0)"
+      },
+      {
+        "flag": "-n",
+        "description": "Don't resolve hostnames (faster processing)"
+      },
+      {
+        "flag": "-nn",
+        "description": "Don't resolve hostnames or port names"
+      },
+      {
+        "flag": "-c <count>",
+        "description": "Capture only specified number of packets"
+      },
+      {
+        "flag": "-A",
+        "description": "Print packet payload in ASCII"
+      },
+      {
+        "flag": "-X",
+        "description": "Print packet payload in hex and ASCII"
+      },
+      {
+        "flag": "-v, -vv, -vvv",
+        "description": "Increase verbosity level (more detail)"
+      },
+      {
+        "flag": "-s <snaplen>",
+        "description": "Capture snaplen bytes per packet (0 = unlimited)"
+      },
+      {
+        "flag": "host <ip>",
+        "description": "Filter by IP address (e.g., host 192.168.1.1)"
+      },
+      {
+        "flag": "port <num>",
+        "description": "Filter by port number (e.g., port 443)"
+      },
+      {
+        "flag": "tcp/udp/icmp",
+        "description": "Filter by protocol type"
+      },
+      {
+        "flag": "src/dst",
+        "description": "Filter by source or destination (e.g., src host 10.0.0.1)"
+      },
+      {
+        "flag": "and/or/not",
+        "description": "Combine filters (e.g., tcp and port 80)"
+      }
+    ],
+    "configHints": {
+      "description": "TCPDump typically requires minimal configuration but may need elevated privileges",
+      "steps": [
+        "Grant capture capabilities (Linux): sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/tcpdump",
+        "Or run as root: sudo tcpdump -r capture.pcap",
+        "Increase buffer size for high-traffic captures: tcpdump -B 4096 -r file.pcap",
+        "For continuous monitoring, use log rotation: tcpdump -w capture-%Y%m%d-%H%M%S.pcap -G 3600"
+      ]
+    }
+  },
+  "tshark": {
+    "name": "TShark",
+    "docUrl": "https://www.wireshark.org/docs/man-pages/tshark.html",
+    "commonFlags": [
+      {
+        "flag": "-r <file>",
+        "description": "Read packets from pcap/pcapng file"
+      },
+      {
+        "flag": "-w <file>",
+        "description": "Write packets to output file"
+      },
+      {
+        "flag": "-i <interface>",
+        "description": "Capture from network interface"
+      },
+      {
+        "flag": "-Y <filter>",
+        "description": "Apply display filter (Wireshark syntax, e.g., -Y 'http.request')"
+      },
+      {
+        "flag": "-f <filter>",
+        "description": "Apply capture filter (BPF syntax, e.g., -f 'tcp port 80')"
+      },
+      {
+        "flag": "-T <format>",
+        "description": "Output format: fields, json, pdml, ps, psml, text"
+      },
+      {
+        "flag": "-e <field>",
+        "description": "Extract specific field (use with -T fields, e.g., -e ip.src)"
+      },
+      {
+        "flag": "-z <statistic>",
+        "description": "Generate statistics (e.g., -z conv,tcp for TCP conversations)"
+      },
+      {
+        "flag": "-n",
+        "description": "Disable name resolution"
+      },
+      {
+        "flag": "-V",
+        "description": "Verbose packet details (all fields)"
+      },
+      {
+        "flag": "-c <count>",
+        "description": "Stop after capturing count packets"
+      },
+      {
+        "flag": "-q",
+        "description": "Quiet mode (less output, good with -z)"
+      },
+      {
+        "flag": "-o <preference>",
+        "description": "Override preference (e.g., -o tcp.desegment_tcp_streams:TRUE)"
+      },
+      {
+        "flag": "-d <decode>",
+        "description": "Decode layer type (e.g., -d tcp.port==8888,http)"
+      }
+    ],
+    "configHints": {
+      "description": "Configure TShark for enhanced protocol dissection and analysis",
+      "steps": [
+        "Enable protocol preferences: tshark -G currentprefs > ~/.config/wireshark/preferences",
+        "Edit preferences: nano ~/.config/wireshark/preferences",
+        "Enable TCP stream reassembly: tcp.desegment_tcp_streams: TRUE",
+        "Enable HTTP decompression: http.decompress_body: TRUE",
+        "Increase column count for better output: tshark -o column.format:\"Time,%t,Source,%s,Destination,%d,Protocol,%p,Info,%i\""
+      ]
+    }
+  },
+  "snort": {
+    "name": "Snort",
+    "docUrl": "https://www.snort.org/documents",
+    "commonFlags": [
+      {
+        "flag": "-r <file>",
+        "description": "Read packets from pcap file"
+      },
+      {
+        "flag": "-c <config>",
+        "description": "Use configuration file (e.g., -c /etc/snort/snort.conf)"
+      },
+      {
+        "flag": "-l <logdir>",
+        "description": "Log to directory (e.g., -l /var/log/snort)"
+      },
+      {
+        "flag": "-A <mode>",
+        "description": "Alert mode: console, fast, full, none, cmg, unsock"
+      },
+      {
+        "flag": "-i <interface>",
+        "description": "Listen on network interface"
+      },
+      {
+        "flag": "-k <mode>",
+        "description": "Checksum mode: all, noip, notcp, noudp, noicmp, none"
+      },
+      {
+        "flag": "-v",
+        "description": "Verbose mode (print packets to stdout)"
+      },
+      {
+        "flag": "-d",
+        "description": "Dump application layer data"
+      },
+      {
+        "flag": "-e",
+        "description": "Display link-layer headers"
+      },
+      {
+        "flag": "-X",
+        "description": "Dump raw packet data"
+      },
+      {
+        "flag": "-q",
+        "description": "Quiet mode (suppress banner and status messages)"
+      },
+      {
+        "flag": "-T",
+        "description": "Test configuration and rules, then exit"
+      },
+      {
+        "flag": "-R <rules>",
+        "description": "Include rules file (e.g., -R local.rules)"
+      }
+    ],
+    "configHints": {
+      "description": "Configure Snort IDS for pcap analysis with custom rules",
+      "steps": [
+        "Edit main config: sudo nano /etc/snort/snort.conf",
+        "Set network variables: var HOME_NET 192.168.1.0/24",
+        "Enable rule sets: include $RULE_PATH/community.rules",
+        "Add custom rules: sudo nano /etc/snort/rules/local.rules",
+        "Example rule: alert tcp any any -> $HOME_NET 80 (msg:\"HTTP Traffic\"; sid:1000001;)",
+        "Test configuration: sudo snort -T -c /etc/snort/snort.conf",
+        "Run on pcap: sudo snort -c /etc/snort/snort.conf -r capture.pcap -A console"
+      ]
+    }
+  },
+  "suricata": {
+    "name": "Suricata",
+    "docUrl": "https://docs.suricata.io/en/latest/",
+    "commonFlags": [
+      {
+        "flag": "-r <file>",
+        "description": "Read packets from pcap file"
+      },
+      {
+        "flag": "-c <config>",
+        "description": "Use configuration file (e.g., -c /etc/suricata/suricata.yaml)"
+      },
+      {
+        "flag": "-l <logdir>",
+        "description": "Log to directory (default: /var/log/suricata/)"
+      },
+      {
+        "flag": "-i <interface>",
+        "description": "Listen on network interface"
+      },
+      {
+        "flag": "-s <rules>",
+        "description": "Use custom signature/rules file"
+      },
+      {
+        "flag": "-k <mode>",
+        "description": "Checksum validation: none, all"
+      },
+      {
+        "flag": "-v",
+        "description": "Verbose mode"
+      },
+      {
+        "flag": "-T",
+        "description": "Test configuration, then exit"
+      },
+      {
+        "flag": "--pcap-file-continuous",
+        "description": "Process pcap file in continuous mode"
+      },
+      {
+        "flag": "--set <key=value>",
+        "description": "Override config option (e.g., --set default-log-dir=/tmp)"
+      },
+      {
+        "flag": "--af-packet",
+        "description": "Use AF_PACKET capture mode (Linux)"
+      },
+      {
+        "flag": "--runmode <mode>",
+        "description": "Run mode: single, autofp, workers"
+      }
+    ],
+    "configHints": {
+      "description": "Configure Suricata for comprehensive network threat detection",
+      "steps": [
+        "Edit main config: sudo nano /etc/suricata/suricata.yaml",
+        "Set network variables under 'vars:':",
+        "  HOME_NET: \"[192.168.0.0/16,10.0.0.0/8]\"",
+        "Enable EVE JSON logging (under 'outputs:'):",
+        "  - eve-log:",
+        "      enabled: yes",
+        "      filetype: regular",
+        "      types:",
+        "        - alert",
+        "        - http",
+        "        - dns",
+        "        - tls",
+        "Update rules: sudo suricata-update",
+        "Test config: sudo suricata -T -c /etc/suricata/suricata.yaml",
+        "Process pcap: sudo suricata -c /etc/suricata/suricata.yaml -r capture.pcap",
+        "View alerts: tail -f /var/log/suricata/fast.log"
+      ]
+    }
+  }
+}
