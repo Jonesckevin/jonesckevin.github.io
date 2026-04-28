@@ -1,7 +1,5 @@
 // PaCE Report Writer Script
 document.addEventListener('DOMContentLoaded', async function () {
-    console.log('PaCE Report Writer script loaded');
-    
     // Global variable to store current result
     let currentResult = '';
     
@@ -27,6 +25,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Initialize workflow graph modal controls
     initWorkflowGraphModal();
+
+    // Initialize Competency modal as standards table view
+    initCompetencyStandardsModal();
 
     // Keep workflow modal button-driven only; strip stale deep-link query param if present.
     const url = new URL(window.location.href);
@@ -138,6 +139,21 @@ const rankDisplayNames = {
     'col-capt': 'Colonel / Captain (Navy)',
     'bgen-cmdre': 'Brigadier-General / Commodore',
     'mgen-radm': 'Major-General / Rear-Admiral'
+};
+
+const standardsFileMap = {
+    'cpl': 'cpl.md',
+    'mcpl-ms': 'mcpl.md',
+    'sgt-po2': 'sgt.md',
+    'wo-po1': 'wo.md',
+    'mwo-cpo2': 'mwo.md',
+    'cwo-cpo1': 'cwo.md',
+    'capt-lt': 'capt.md',
+    'maj-lcdr': 'major.md',
+    'lcol-cdr': 'lcol.md',
+    'col-capt': 'col.md',
+    'bgen-cmdre': 'bgen.md',
+    'mgen-radm': 'mgen.md'
 };
 
 const workflowGraphs = [
@@ -546,7 +562,7 @@ const workflowGraphs = [
     subgraph SCORE_BIS ["Step 1: Score All Behavioural Indicators (BIs)"]
         EXPAND_ALL["Click 'Expand All' in competency section<br/>View all facets and BIs for the member's rank"]
         SCORE_EACH["Score each BI on the 5-point scale:<br/>1 = Ineffective<br/>2 = Partially Effective<br/>3 = Effective (meets standard)<br/>4 = Above Effective<br/>5 = Extremely Effective"]
-        BI_GUIDANCE["Refer to rank-specific competency standards<br/>for guidance on what each score means<br/>→ See competency-standards/ folder"]
+        BI_GUIDANCE["Refer to rank-specific competency standards<br/>for guidance on what each score means<br/>→ See competency standards"]
         EXPAND_ALL --> SCORE_EACH --> BI_GUIDANCE
     end
 
@@ -996,6 +1012,296 @@ function initWorkflowGraphModal() {
     renderWorkflowGraph(0);
 }
 
+function initCompetencyStandardsModal() {
+    const printBtn = document.getElementById('standardsPrintBtn');
+    const formRankSelect = document.getElementById('rankSelect');
+    if (!printBtn) return;
+
+    printBtn.addEventListener('click', function() {
+        const tableWrap = document.querySelector('#competencyStandardsContent .standards-table-wrap');
+        if (!tableWrap) return;
+
+        const rankSelect = document.getElementById('rankSelect');
+        const rankLabel  = rankSelect ? rankSelect.options[rankSelect.selectedIndex]?.text || '' : '';
+
+        // Clone the table and replace colgroup with tight print-optimised widths.
+        // Competency ~8%, Facet ~10%, 5 score cols share the rest (~16.4% each).
+        const srcTable = tableWrap.querySelector('table');
+        const tableClone = srcTable.cloneNode(true);
+        const existingCg = tableClone.querySelector('colgroup');
+        if (existingCg) existingCg.remove();
+        const cg = document.createElement('colgroup');
+        cg.innerHTML = '<col style="width:8%"><col style="width:10%">'
+                     + '<col style="width:16.4%">'.repeat(5);
+        tableClone.prepend(cg);
+
+        const win = window.open('', '_blank', 'width=1100,height=750');
+        win.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Competency Standards${rankLabel ? ' \u2014 ' + rankLabel : ''}</title>
+<style>
+  body { font-family: Arial, sans-serif; font-size: 8pt; margin: 0; color: #000; }
+  h2 { font-size: 10pt; margin: 0 0 6px; }
+  table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+  th, td { border: 1px solid #888; padding: 3px 5px; vertical-align: top; word-break: break-word; }
+  th { background: #dce6f1; font-weight: 600; }
+  tr:nth-child(odd) td { background: #f5f5f5; }
+  tr[style*="display: none"] { display: none !important; }
+  @page { size: letter landscape; margin: 6.35mm; }
+</style></head><body>
+<h2>Competency Standards${rankLabel ? ' \u2014 ' + rankLabel : ''}</h2>
+${tableClone.outerHTML}
+</body></html>`);
+        win.document.close();
+        win.focus();
+        win.onload = function() { win.print(); win.close(); };
+    });
+
+    if (formRankSelect) {
+        formRankSelect.addEventListener('change', function() {
+            const modal = document.getElementById('frameworkModal');
+            const isOpen = modal && modal.classList.contains('active');
+            if (isOpen) {
+                loadCompetencyStandards(this.value);
+            }
+        });
+    }
+}
+
+function parseMarkdownTableRow(line) {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('|') || !trimmed.endsWith('|')) return null;
+    const cells = trimmed.split('|').slice(1, -1).map(cell => cell.trim());
+    return cells;
+}
+
+function isMarkdownDividerRow(cells) {
+    if (!cells || !cells.length) return false;
+    return cells.every(cell => /^:?-{3,}:?$/.test(cell.replace(/\s+/g, '')));
+}
+
+function extractMarkdownTableBlocks(lines) {
+    const blocks = [];
+    let current = [];
+
+    lines.forEach(line => {
+        const trimmed = line.trim();
+        const isTableRow = trimmed.startsWith('|') && trimmed.endsWith('|');
+        if (isTableRow) {
+            current.push(line);
+            return;
+        }
+
+        if (current.length) {
+            blocks.push(current);
+            current = [];
+        }
+    });
+
+    if (current.length) {
+        blocks.push(current);
+    }
+
+    return blocks;
+}
+
+function escapeHtml(text) {
+    return String(text || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function buildStandardsTableHtml(headerCells, rowCells) {
+    const normalizedHeader = headerCells.map(cell => cell === '3 (Standard)' ? '3 (Effective)' : cell);
+
+    const thead = `<thead><tr>${normalizedHeader.map(cell => `<th>${escapeHtml(cell)}</th>`).join('')}</tr></thead>`;
+    const tbody = `<tbody>${rowCells.map(row => `<tr data-competency="${escapeHtml(row[0])}" data-facet="${escapeHtml(row[1])}">${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+
+    return `
+        <div class="standards-table-wrap">
+            <table class="standards-table">
+                <colgroup>
+                    <col class="col-competency">
+                    <col class="col-facet">
+                    <col class="col-score">
+                    <col class="col-score">
+                    <col class="col-score">
+                    <col class="col-score">
+                    <col class="col-score">
+                </colgroup>
+                ${thead}
+                ${tbody}
+            </table>
+        </div>
+    `;
+}
+
+function applyStandardsFilters() {
+    const compSelect = document.getElementById('stdFilterCompetency');
+    const facetSelect = document.getElementById('stdFilterFacet');
+    const searchInput = document.getElementById('stdFilterSearch');
+    const table = document.querySelector('#competencyStandardsContent .standards-table');
+    if (!table) return;
+
+    const compFilter = (compSelect ? compSelect.value : '').toLowerCase();
+    const facetFilter = (facetSelect ? facetSelect.value : '').toLowerCase();
+    const searchFilter = (searchInput ? searchInput.value : '').trim().toLowerCase();
+
+    const dataRows = table.querySelectorAll('tbody tr:not(.standards-no-results)');
+    let visibleCount = 0;
+    dataRows.forEach(row => {
+        const comp  = (row.dataset.competency || '').toLowerCase();
+        const facet = (row.dataset.facet || '').toLowerCase();
+        const text  = row.textContent.toLowerCase();
+        const show  = (!compFilter   || comp  === compFilter)
+                   && (!facetFilter  || facet === facetFilter)
+                   && (!searchFilter || text.includes(searchFilter));
+        row.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+    });
+
+    // No-results placeholder row
+    let noResults = table.querySelector('.standards-no-results');
+    if (visibleCount === 0) {
+        if (!noResults) {
+            noResults = document.createElement('tr');
+            noResults.className = 'standards-no-results';
+            noResults.innerHTML = '<td colspan="7" style="text-align:center;color:#aaa;padding:24px;">No rows match the current filters.</td>';
+            table.querySelector('tbody').appendChild(noResults);
+        }
+        noResults.style.display = '';
+    } else if (noResults) {
+        noResults.style.display = 'none';
+    }
+}
+
+function populateStandardsFilters(bodyRows) {
+    const compSelect  = document.getElementById('stdFilterCompetency');
+    const facetSelect = document.getElementById('stdFilterFacet');
+    const searchInput = document.getElementById('stdFilterSearch');
+    const clearBtn    = document.getElementById('stdFilterClear');
+    if (!compSelect || !facetSelect) return;
+
+    // Derive ordered unique values and the competency→facets map
+    const competencies = [...new Set(bodyRows.map(r => r[0]).filter(Boolean))];
+    const facetsByComp = {};
+    const allFacets    = [];
+    bodyRows.forEach(row => {
+        const comp  = row[0];
+        const facet = row[1];
+        if (!facetsByComp[comp]) facetsByComp[comp] = [];
+        if (facet && !facetsByComp[comp].includes(facet)) facetsByComp[comp].push(facet);
+        if (facet && !allFacets.includes(facet)) allFacets.push(facet);
+    });
+
+    // Reset controls to initial state
+    compSelect.innerHTML  = '<option value="">All Competencies</option>';
+    facetSelect.innerHTML = '<option value="">All Facets</option>';
+    if (searchInput) searchInput.value = '';
+
+    competencies.forEach(comp => {
+        const opt = document.createElement('option');
+        opt.value = comp;
+        opt.textContent = comp;
+        compSelect.appendChild(opt);
+    });
+    allFacets.forEach(facet => {
+        const opt = document.createElement('option');
+        opt.value = facet;
+        opt.textContent = facet;
+        facetSelect.appendChild(opt);
+    });
+
+    // Competency change → restrict facet list to relevant entries
+    compSelect.onchange = function () {
+        const selectedComp = this.value;
+        facetSelect.innerHTML = '<option value="">All Facets</option>';
+        const facets = selectedComp ? (facetsByComp[selectedComp] || []) : allFacets;
+        facets.forEach(facet => {
+            const opt = document.createElement('option');
+            opt.value = facet;
+            opt.textContent = facet;
+            facetSelect.appendChild(opt);
+        });
+        facetSelect.value = '';
+        applyStandardsFilters();
+    };
+    facetSelect.onchange = applyStandardsFilters;
+    if (searchInput) searchInput.oninput = applyStandardsFilters;
+
+    if (clearBtn) {
+        clearBtn.onclick = function () {
+            compSelect.value = '';
+            facetSelect.innerHTML = '<option value="">All Facets</option>';
+            allFacets.forEach(facet => {
+                const opt = document.createElement('option');
+                opt.value = facet;
+                opt.textContent = facet;
+                facetSelect.appendChild(opt);
+            });
+            if (searchInput) searchInput.value = '';
+            applyStandardsFilters();
+        };
+    }
+}
+
+async function loadCompetencyStandards(rankCode) {
+    const content = document.getElementById('competencyStandardsContent');
+    if (!content) return;
+
+    if (!rankCode) {
+        content.innerHTML = '<p style="text-align: center; color: #aaa; padding: 36px 20px;">Select a Member Rank in the form to view competency standards.</p>';
+        return;
+    }
+
+    const standardsFile = standardsFileMap[rankCode];
+    if (!standardsFile) {
+        content.innerHTML = `<p style="text-align: center; color: #ff9b9b; padding: 36px 20px;">No competency standards file is mapped for ${escapeHtml(rankDisplayNames[rankCode] || rankCode)}.</p>`;
+        return;
+    }
+
+    content.innerHTML = '<p style="text-align: center; color: #aaa; padding: 36px 20px;">Loading competency standards...</p>';
+
+    try {
+        const response = await fetch(`/ai-tools/core-services/pace-report-writer/resources/competency-standards/${standardsFile}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch standards file (${response.status}).`);
+        }
+
+        const markdown = await response.text();
+        const lines = markdown.split(/\r?\n/);
+        const tableBlocks = extractMarkdownTableBlocks(lines);
+        const compactBlock = tableBlocks.find(block => {
+            const header = parseMarkdownTableRow(block[0] || '');
+            return header && header.length >= 7 && /competency/i.test(header[0] || '') && /facet/i.test(header[1] || '');
+        });
+
+        if (!compactBlock || compactBlock.length < 3) {
+            throw new Error('Could not find compact standards table in markdown.');
+        }
+
+        const headerCells = parseMarkdownTableRow(compactBlock[0]);
+        const bodyRows = compactBlock
+            .slice(1)
+            .map(parseMarkdownTableRow)
+            .filter(cells => cells && !isMarkdownDividerRow(cells) && cells.length >= 7)
+            .map(cells => cells.slice(0, 7));
+
+        if (!headerCells || headerCells.length < 7 || !bodyRows.length) {
+            throw new Error('Standards table is empty or malformed.');
+        }
+
+        const tableHtml = buildStandardsTableHtml(headerCells.slice(0, 7), bodyRows);
+        content.innerHTML = tableHtml;
+        populateStandardsFilters(bodyRows);
+    } catch (error) {
+        console.error('Failed to load competency standards:', error);
+        content.innerHTML = `<p style="text-align: center; color: #ff9b9b; padding: 36px 20px;">Unable to load competency standards for ${escapeHtml(rankDisplayNames[rankCode] || rankCode)}.</p>`;
+    }
+}
+
 async function renderWorkflowGraph(index) {
     workflowGraphIndex = index;
     const graph = workflowGraphs[index];
@@ -1027,22 +1333,19 @@ async function renderWorkflowGraph(index) {
 
 // Function to move modals to body level for proper fixed positioning
 function moveModalsToBody() {
-    const frameworkModal = document.getElementById('frameworkModal');
+    const competencyModal = document.getElementById('frameworkModal');
     const referencesModal = document.getElementById('referencesModal');
     const workflowGraphModal = document.getElementById('workflowGraphModal');
     
-    if (frameworkModal && frameworkModal.parentElement !== document.body) {
-        console.log('Moving frameworkModal to body');
-        document.body.appendChild(frameworkModal);
+    if (competencyModal && competencyModal.parentElement !== document.body) {
+        document.body.appendChild(competencyModal);
     }
     
     if (referencesModal && referencesModal.parentElement !== document.body) {
-        console.log('Moving referencesModal to body');
         document.body.appendChild(referencesModal);
     }
 
     if (workflowGraphModal && workflowGraphModal.parentElement !== document.body) {
-        console.log('Moving workflowGraphModal to body');
         document.body.appendChild(workflowGraphModal);
     }
 }
@@ -1108,8 +1411,6 @@ async function loadCompetencyData() {
             });
         });
         
-        console.log('Competency data loaded successfully', window.competencyData);
-        
         // Populate the competency dropdowns with all available competencies
         populateAllCompetencies();
         
@@ -1158,7 +1459,6 @@ async function loadInclusiveBehavioursData() {
             };
         });
         
-        console.log('Inclusive behaviours (meta-competencies) data loaded successfully', window.inclusiveBehavioursData);
     } catch (error) {
         console.error('Error loading inclusive behaviours data:', error);
         window.inclusiveBehavioursData = {};
@@ -1204,7 +1504,6 @@ function populateAllCompetencies() {
     comp2.innerHTML = '<option value="">-- Optional: Select 2nd Competency --</option>' + optionsHTML;
     comp3.innerHTML = '<option value="">-- Optional: Select 3rd Competency --</option>' + optionsHTML;
     
-    console.log(`Populated competency dropdowns with ${sortedCompetencies.length} competencies`);
 }
 
 // Function to disable ranks without competency data in the dropdown
@@ -1234,32 +1533,27 @@ function updateRankDropdownState() {
     });
 }
 
-// Legacy structure kept for backward compatibility (will be replaced by JSONL data)
+// Ensure competency data store is initialized
 if (!window.competencyData) {
     window.competencyData = {};
 }
 
-// Modal functions for Competency Framework
-window.openFrameworkModal = function() {
-    console.log('openFrameworkModal called');
-    console.log('Document body:', document.body);
-    console.log('Searching for frameworkModal...');
+// Modal functions for Competency (standards table)
+window.openCompetencyModal = function() {
     const modal = document.getElementById('frameworkModal');
-    console.log('Modal element:', modal);
-    console.log('All elements with class modal:', document.querySelectorAll('.modal'));
-    if (modal) {
-        console.log('Adding active class and setting display to flex');
-        modal.classList.add('active');
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        console.log('Modal should now be visible');
-    } else {
-        console.error('frameworkModal element not found!');
-        console.log('Checking all IDs in document:', Array.from(document.querySelectorAll('[id]')).map(el => el.id));
-    }
+    const formRankSelect = document.getElementById('rankSelect');
+
+    if (!modal) return;
+
+    const selectedRank = formRankSelect ? formRankSelect.value : '';
+    loadCompetencyStandards(selectedRank);
+
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 };
 
-window.closeFrameworkModal = function() {
+window.closeCompetencyModal = function() {
     const modal = document.getElementById('frameworkModal');
     if (modal) {
         modal.classList.remove('active');
@@ -1268,19 +1562,17 @@ window.closeFrameworkModal = function() {
     }
 };
 
+// Backward compatibility aliases
+window.openFrameworkModal = window.openCompetencyModal;
+window.closeFrameworkModal = window.closeCompetencyModal;
+
 // Modal functions for References
 window.openReferencesModal = function() {
-    console.log('openReferencesModal called');
     const modal = document.getElementById('referencesModal');
-    console.log('Modal element:', modal);
     if (modal) {
-        console.log('Adding active class and setting display to flex');
         modal.classList.add('active');
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        console.log('Modal should now be visible');
-    } else {
-        console.error('referencesModal element not found!');
     }
 };
 
@@ -1314,12 +1606,12 @@ window.closeWorkflowGraphModal = function() {
 
 // Close modals when clicking outside
 window.addEventListener('click', function(event) {
-    const frameworkModal = document.getElementById('frameworkModal');
+    const competencyModal = document.getElementById('frameworkModal');
     const referencesModal = document.getElementById('referencesModal');
     const workflowGraphModal = document.getElementById('workflowGraphModal');
     
-    if (event.target === frameworkModal) {
-        closeFrameworkModal();
+    if (event.target === competencyModal) {
+        closeCompetencyModal();
     }
     if (event.target === referencesModal) {
         closeReferencesModal();
@@ -1332,7 +1624,7 @@ window.addEventListener('click', function(event) {
 // Close modals with Escape key
 window.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
-        closeFrameworkModal();
+        closeCompetencyModal();
         closeReferencesModal();
         closeWorkflowGraphModal();
     }
@@ -1347,11 +1639,10 @@ window.addEventListener('keydown', function(event) {
     }
 });
 
-// Update Competency Framework based on rank selection
-window.updateCompetencyFramework = function() {
+// Update competency state from rank selection
+window.updateCompetencyState = function() {
     const rankSelect = document.getElementById('rankSelect');
     const selectedRank = rankSelect.value;
-    const frameworkContent = document.getElementById('competencyFrameworkContent');
     const rankWarning = document.getElementById('rankWarning');
     const comp1 = document.getElementById('competency1');
     const comp2 = document.getElementById('competency2');
@@ -1361,9 +1652,6 @@ window.updateCompetencyFramework = function() {
         // Hide warning when no rank selected
         if (rankWarning) {
             rankWarning.style.display = 'none';
-        }
-        if (frameworkContent) {
-            frameworkContent.innerHTML = '<p style="text-align: center; color: #aaa; padding: 40px 20px;">Please select a rank from the dropdown above to load the competency framework.</p>';
         }
         // Reset competency selectors
         if (comp1) comp1.innerHTML = '<option value="">-- Optional: Select 1st Competency --</option>';
@@ -1390,9 +1678,6 @@ window.updateCompetencyFramework = function() {
             `;
             rankWarning.style.display = 'block';
         }
-        if (frameworkContent) {
-            frameworkContent.innerHTML = '<p style="text-align: center; color: #aaa; padding: 20px;">Competency framework will be available soon.</p>';
-        }
         // Reset competency selectors
         if (comp1) comp1.innerHTML = '<option value="">-- Optional: Select 1st Competency --</option>';
         if (comp2) comp2.innerHTML = '<option value="">-- Optional: Select 2nd Competency --</option>';
@@ -1413,31 +1698,6 @@ window.updateCompetencyFramework = function() {
         rankWarning.style.display = 'block';
     }
     
-    // Build the framework HTML with behavioral indicators
-    let html = '';
-    
-    rankData.competencies.forEach((category, index) => {
-        html += '<div class="competency-category">';
-        html += `<h4>${index + 1}. ${category.category}</h4>`;
-        
-        category.facets.forEach(facet => {
-            html += `<div style="margin-left: 15px; margin-bottom: 15px;">`;
-            html += `<strong style="color: #ffa575;">${facet.name}</strong>`;
-            html += '<ul style="margin-top: 5px;">';
-            facet.indicators.forEach(indicator => {
-                html += `<li style="color: #ccc; font-size: 0.9em;">${indicator}</li>`;
-            });
-            html += '</ul>';
-            html += '</div>';
-        });
-        
-        html += '</div>';
-    });
-    
-    if (frameworkContent) {
-        frameworkContent.innerHTML = html;
-    }
-    
     // Update competency selectors with category and facet names
     let optionsHTML = '<option value="">-- Optional: Select Competency --</option>';
     rankData.competencies.forEach(category => {
@@ -1451,10 +1711,11 @@ window.updateCompetencyFramework = function() {
     if (comp3) comp3.innerHTML = optionsHTML.replace('-- Optional: Select Competency --', '-- Optional: Select 3rd Competency --');
 };
 
+// Backward compatibility alias
+window.updateCompetencyFramework = window.updateCompetencyState;
+
 // Main PaCE Report generation function
 window.generatePaceReport = async function () {
-    console.log('=== GENERATE PACE REPORT FUNCTION CALLED ===');
-    
     // Hide previous results/errors (safely check for existence)
     const errorDiv = document.getElementById('errorDiv');
     const resultDiv = document.getElementById('resultDiv');
@@ -1515,12 +1776,6 @@ window.generatePaceReport = async function () {
         document.getElementById('errorDiv').style.display = 'block';
         return;
     }
-    
-    console.log('Form values validated:', {
-        rank: rankData.fullName,
-        eventDescriptionLength: eventDescription.length,
-        selectedCompetencies: uniqueCompetencies
-    });
     
     // Build competency framework string for AI prompt with behavioral indicators
     let competencyFramework = '';
@@ -1713,8 +1968,6 @@ IMPORTANT GUIDELINES:
     userPrompt += `"2. [Category Name] -> [Specific Competency Name]"\n`;
     userPrompt += `Do NOT write only the category name without the specific competency.`;
     
-    console.log('Prompt prepared');
-    
     // Show loading indicator
     utils.showLoading(
         document.getElementById('loadingDiv'),
@@ -1723,8 +1976,6 @@ IMPORTANT GUIDELINES:
     document.getElementById('loadingDiv').style.display = 'block';
     
     try {
-        console.log('Making API request...');
-        
         const messages = [
             {
                 role: 'system',
@@ -1742,15 +1993,11 @@ IMPORTANT GUIDELINES:
             temperature: 0.4 // Moderate temperature for professional but tailored output
         });
         
-        console.log('API response received, length:', response ? response.length : 0);
-        
         // Hide loading
         document.getElementById('loadingDiv').style.display = 'none';
         
         if (response && response.length > 0) {
             currentResult = response;
-            console.log('Result stored, length:', currentResult.length);
-            
             // Use centralized formatMarkdown from utils
             document.getElementById('resultContent').innerHTML = utils.formatMarkdown(currentResult);
             document.getElementById('resultDiv').style.display = 'block';
@@ -1805,24 +2052,20 @@ window.toggleCompetencySelectors = function() {
 window.toggleCCG = function() {
     const infoDiv = document.getElementById('ccgInfo');
     const toggle = document.getElementById('ccgToggle');
-    console.log('toggleCCG called', {infoDiv, toggle, checked: toggle?.checked});
     if (!infoDiv || !toggle) return;
     const show = !!toggle.checked;
     infoDiv.style.display = show ? 'block' : 'none';
     toggle.setAttribute('aria-expanded', show.toString());
-    console.log('CCG toggled to:', show);
 };
 
 // Toggle visibility of competency analysis info
 window.toggleAnalysis = function() {
     const infoDiv = document.getElementById('analysisInfo');
     const toggle = document.getElementById('analysisToggle');
-    console.log('toggleAnalysis called', {infoDiv, toggle, checked: toggle?.checked});
     if (!infoDiv || !toggle) return;
     const show = !!toggle.checked;
     infoDiv.style.display = show ? 'block' : 'none';
     toggle.setAttribute('aria-expanded', show.toString());
-    console.log('Analysis toggled to:', show);
 };
 
 // Toggle visibility of meta-competency options

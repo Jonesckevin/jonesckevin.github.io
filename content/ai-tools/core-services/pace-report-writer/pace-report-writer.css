@@ -39,6 +39,170 @@
     max-height: 94vh;
 }
 
+.standards-modal-content {
+    max-width: 1360px;
+    width: 98%;
+    max-height: 94vh;
+}
+
+.standards-modal-body {
+    text-align: left;
+}
+
+.standards-modal-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "title close"
+        "controls controls";
+    align-items: center;
+    row-gap: 10px;
+    column-gap: 12px;
+}
+
+.standards-modal-header h3 {
+    grid-area: title;
+    justify-self: start;
+}
+
+.standards-modal-header .modal-close {
+    grid-area: close;
+    justify-self: end;
+}
+
+.standards-modal-header .standards-controls {
+    grid-area: controls;
+}
+
+.standards-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding-top: 60px;
+}
+
+/* Filter bar inside standards controls */
+.standards-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    flex: 1;
+}
+
+.standards-filter-label {
+    color: #aaa;
+    font-size: 0.82em;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.standards-filter-select,
+.standards-filter-search {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 6px;
+    color: #e0e0e0;
+    padding: 4px 8px;
+    font-size: 0.82em;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.standards-filter-select {
+    min-width: 140px;
+    max-width: 240px;
+    cursor: pointer;
+}
+
+.standards-filter-search {
+    min-width: 140px;
+    flex: 1 1 140px;
+    max-width: 260px;
+}
+
+.standards-filter-select:focus,
+.standards-filter-search:focus {
+    border-color: rgba(255, 107, 53, 0.7);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.15);
+}
+
+.standards-filter-select option {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.standards-filter-clear {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #aaa;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.82em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.standards-filter-clear:hover {
+    border-color: rgba(255, 107, 53, 0.5);
+    color: #ff8855;
+}
+
+.standards-table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(255, 107, 53, 0.25);
+    border-radius: 8px;
+    background: #101010;
+}
+
+.standards-table {
+    width: 100%;
+    min-width: 1080px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.8rem;
+    line-height: 1.32;
+}
+
+.standards-table .col-competency {
+    width: 11%;
+}
+
+.standards-table .col-facet {
+    width: 13%;
+}
+
+.standards-table .col-score {
+    width: 15.2%;
+}
+
+.standards-table th,
+.standards-table td {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 7px 8px;
+    vertical-align: top;
+    word-break: break-word;
+}
+
+.standards-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #1c273f;
+    color: #dbe8ff;
+    font-weight: 600;
+}
+
+.standards-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.standards-table tbody tr:hover {
+    background: rgba(255, 107, 53, 0.08);
+}
+
 #workflowGraphModal.active {
     align-items: flex-start;
     padding-top: 8px;
@@ -239,15 +403,6 @@
 
 .info-banner strong {
     color: #ff8855;
-}
-
-/* Competency Reference Section */
-.competency-reference-section {
-    margin: 25px 0;
-    border: 2px solid rgba(255, 107, 53, 0.3);
-    border-radius: 8px;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0.2);
 }
 
 .collapsible-header {
@@ -503,6 +658,26 @@
     .workflow-graph-canvas {
         min-height: 260px;
     }
+
+    .standards-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .standards-filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .standards-filter-select,
+    .standards-filter-search {
+        max-width: 100%;
+    }
+
+    .standards-table {
+        min-width: 980px;
+        font-size: 0.75rem;
+    }
     
     .modal-header {
         padding: 15px;
@@ -542,12 +717,56 @@
 
 /* Print Styles */
 @media print {
-    .competency-reference-section,
     .references-section,
     .btn-primary,
     .loading,
     .result-actions {
         display: none !important;
+    }
+
+    #frameworkModal {
+        position: static !important;
+        display: block !important;
+        background: #fff !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    #frameworkModal .modal-content {
+        border: 0 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        max-height: none !important;
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    #frameworkModal .modal-header,
+    #frameworkModal .library-intro,
+    #frameworkModal .modal-close,
+    #frameworkModal #standardsPrintBtn {
+        display: none !important;
+    }
+
+    #frameworkModal .standards-table-wrap {
+        border: 0 !important;
+        overflow: visible !important;
+        background: #fff !important;
+    }
+
+    #frameworkModal .standards-table {
+        min-width: 0 !important;
+        font-size: 8.8pt !important;
+    }
+
+    #frameworkModal .standards-table th,
+    #frameworkModal .standards-table td {
+        border: 1px solid #999 !important;
+        color: #000 !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 }
 

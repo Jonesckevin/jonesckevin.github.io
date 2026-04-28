@@ -37,7 +37,7 @@ loading_text: "Generating your PaCE report using CAF competency framework..."
 # <img src="/ai-tools/core-services/pace-report-writer/PaCE.svg" alt="PaCE Report Writer" width="50" height="50" style="width:75px;height:75px;border:none!important;box-shadow:none!important;outline:none;background:transparent;display:inline-block;vertical-align:middle;" loading="lazy" decoding="async" /> CAF PaCE Writer
 
 <div style="gap: 4px; flex-wrap: wrap; margin-bottom: 10px;">
-  <button type="button" class="btn-secondary" onclick="openFrameworkModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">📚 Competency</button>
+  <button type="button" class="btn-secondary" onclick="openCompetencyModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">📚 Competency</button>
   <button type="button" class="btn-secondary" onclick="openReferencesModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">🔗 Reference</button>
   <button type="button" class="btn-secondary" onclick="openWorkflowGraphModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">🧭 Workflow Graph</button>
   <button type="button" class="btn-secondary info-toggle-btn" id="infoToggleBtn" onclick="showInfoNotice()" aria-label="Show tool information" title="Tool Information" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important; display: none;">ℹ️ Info</button>
@@ -52,7 +52,7 @@ Do not put sensitive information into the form.
       Member Rank *
       <span class="tooltiptext">Select the member's rank to load rank-specific competency framework</span>
     </label>
-    <select id="rankSelect" required onchange="updateCompetencyFramework()">
+    <select id="rankSelect" required onchange="updateCompetencyState()">
       <option value="">-- Select Rank --</option>
       <optgroup label="Junior NCMs">
         <option value="pte">Pte - Private</option>
@@ -212,20 +212,34 @@ Do not put sensitive information into the form.
   </div>
 </div>
 
-<!-- Competency Framework Modal -->
+<!-- Competency Standards Modal -->
 <div id="frameworkModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3>📚 CAF Competency Framework Reference Library</h3>
-      <button class="modal-close" onclick="closeFrameworkModal()">&times;</button>
-    </div>
-    <div class="modal-body">
-      <div class="library-intro">
-        <strong>⚠️ Select a rank from the form to view the appropriate competency framework.</strong><br>
-        The competencies and descriptions will adjust based on the member's rank level. Reference this framework when describing events.
+  <div class="modal-content standards-modal-content">
+    <div class="modal-header standards-modal-header">
+      <h3>📚 Competency Standards Table</h3>
+      <div class="standards-controls">
+        <div class="standards-filter-bar">
+          <span class="standards-filter-label">Filter:</span>
+          <select id="stdFilterCompetency" class="standards-filter-select" aria-label="Filter by Competency">
+            <option value="">All Competencies</option>
+          </select>
+          <select id="stdFilterFacet" class="standards-filter-select" aria-label="Filter by Facet">
+            <option value="">All Facets</option>
+          </select>
+          <input type="search" id="stdFilterSearch" class="standards-filter-search" placeholder="🔍 Search…" aria-label="Search standards table">
+          <button type="button" id="stdFilterClear" class="standards-filter-clear">✕ Clear</button>
+        </div>
+        <button type="button" class="btn-secondary" id="standardsPrintBtn">🖨 Print</button>
       </div>
-      <div id="competencyFrameworkContent">
-        <p style="text-align: center; color: #aaa; padding: 40px 20px;">Please select a rank from the dropdown to load the competency framework.</p>
+      <button class="modal-close" onclick="closeCompetencyModal()">&times;</button>
+    </div>
+    <div class="modal-body standards-modal-body">
+      <div class="library-intro">
+        <strong>Uses the Member Rank selection from the main form.</strong><br>
+        Column 3 is shown as <strong>3 (Effective)</strong> to match current scoring language.
+      </div>
+      <div id="competencyStandardsContent">
+        <p style="text-align: center; color: #aaa; padding: 36px 20px;">Select a Member Rank in the form, then open Competency.</p>
       </div>
     </div>
   </div>

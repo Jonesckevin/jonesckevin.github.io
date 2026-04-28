@@ -34,7 +34,7 @@ flowchart TD
     subgraph SCORE_BIS ["Step 1: Score All Behavioural Indicators (BIs)"]
         EXPAND_ALL["Click 'Expand All' in competency section<br/>View all facets and BIs for the member's rank"]
         SCORE_EACH["Score each BI on the 5-point scale:<br/>1 = Ineffective<br/>2 = Partially Effective<br/>3 = Effective (meets standard)<br/>4 = Above Effective<br/>5 = Extremely Effective"]
-        BI_GUIDANCE["Refer to rank-specific competency standards<br/>for guidance on what each score means<br/>→ See competency-standards/ folder"]
+        BI_GUIDANCE["Refer to rank-specific competency standards<br/>for guidance on what each score means<br/>→ See competency standards"]
         EXPAND_ALL --> SCORE_EACH --> BI_GUIDANCE
     end
 
