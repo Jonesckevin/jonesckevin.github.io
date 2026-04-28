@@ -136,7 +136,7 @@
   {{ end }}
   "author": {
     "@type": "Person",
-    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Author.name | default "JonesCKevin" }}{{ end }}",
+    "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Params.author.name | default "JonesCKevin" }}{{ end }}",
     "url": "{{ .Site.BaseURL }}"
   },
   "publisher": {

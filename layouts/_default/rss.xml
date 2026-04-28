@@ -24,7 +24,7 @@
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "2006-01-02" | safeHTML }}</pubDate>
-      {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
+      {{ with .Site.Params.author.email }}<author>{{.}}{{ with $.Site.Params.author.name }} ({{.}}){{end}}</author>{{end}}
       <description>{{ .Summary | html }}</description>
       <!--<content:encoded>{{ .Content | html }}</content:encoded>-->
     </item>

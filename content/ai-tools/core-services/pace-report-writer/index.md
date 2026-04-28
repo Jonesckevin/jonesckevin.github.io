@@ -39,6 +39,7 @@ loading_text: "Generating your PaCE report using CAF competency framework..."
 <div style="gap: 4px; flex-wrap: wrap; margin-bottom: 10px;">
   <button type="button" class="btn-secondary" onclick="openFrameworkModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">📚 Competency</button>
   <button type="button" class="btn-secondary" onclick="openReferencesModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">🔗 Reference</button>
+  <button type="button" class="btn-secondary" onclick="openWorkflowGraphModal()" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important;">🧭 Workflow Graph</button>
   <button type="button" class="btn-secondary info-toggle-btn" id="infoToggleBtn" onclick="showInfoNotice()" aria-label="Show tool information" title="Tool Information" style="font-size: 0.85em !important; padding: 4px 8px !important; line-height: 1.2 !important; width: auto !important; min-width: auto !important; display: none;">ℹ️ Info</button>
 </div>
 
@@ -74,6 +75,10 @@ Do not put sensitive information into the form.
         <option value="maj-lcdr">Maj/LCdr - Major / Lieutenant Commander</option>
         <option value="lcol-cdr">LCol/Cdr - Lieutenant Colonel / Commander</option>
         <option value="col-capt">Col/Capt(N) - Colonel / Captain (Navy)</option>
+      </optgroup>
+      <optgroup label="General/Flag Officers">
+        <option value="bgen-cmdre">BGen/Cmdre - Brigadier-General / Commodore</option>
+        <option value="mgen-radm">MGen/RAdm - Major-General / Rear-Admiral</option>
       </optgroup>
     </select>
     <div id="rankWarning" style="display: none; margin-top: 12px;"></div>
@@ -301,6 +306,30 @@ Do not put sensitive information into the form.
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Workflow Graph Modal -->
+<div id="workflowGraphModal" class="modal" style="display: none;">
+  <div class="modal-content workflow-modal-content">
+    <div class="modal-header workflow-modal-header">
+      <h3>🧭 Workflow Graph</h3>
+      <div class="workflow-controls">
+        <button type="button" id="workflowPrevBtn" class="btn-secondary">⬅ Previous</button>
+        <select id="workflowGraphSelect" aria-label="Select workflow graph"></select>
+        <button type="button" id="workflowNextBtn" class="btn-secondary">Next ➡</button>
+        <button type="button" id="workflowDownloadPdfBtn" class="btn-secondary">⬇ Download PDF</button>
+      </div>
+      <button class="modal-close" onclick="closeWorkflowGraphModal()">&times;</button>
+    </div>
+    <div class="modal-body workflow-modal-body">
+      <div class="workflow-meta">
+        <h4 id="workflowGraphTitle"></h4>
+        <p id="workflowGraphContext"></p>
+      </div>
+      <div id="workflowGraphRender" class="workflow-graph-render"></div>
+      <div id="workflowGraphNotes" class="workflow-notes"></div>
     </div>
   </div>
 </div>
