@@ -189,20 +189,12 @@ const workflowGraphs = [
             'Opt-Out process (DND 4638) deadline is 15 January.'
         ],
         mermaid: `flowchart TD
-    START(["Begin: New Cycle or APS Posting"])
-
-    subgraph BOTH ["Both Member and Supervisor"]
-        TRAIN["Complete PaCE Training on DLN 3.0"]
-        GET_MASS["Obtain Monitor MASS account<br/>if not already active"]
-        TRAIN --> GET_MASS
-    end
-
-    GET_MASS --> ASSIGN_SUP
+    START(["Begin: New Cycle or APS Posting"]) --> SUP_SETUP & MBR_SETUP
 
     subgraph SUP_SETUP ["Supervisor Actions"]
         ASSIGN_SUP["Assign self as PaCE Supervisor<br/>Repeat for each subordinate"]
         CREATE_JD["Create Job Description<br/>Primary duties only<br/>Do NOT include secondary duties here"]
-        FINALIZE_JD["Finalize Job Description<br/>Member notified by email<br/>Up to 7 days to un-finalize without PaCE Manager"]
+        FINALIZE_JD["AFTER REVIEWING, Finalize Job Description<br/>(Member notified by email by default)<br/>Up to 7 days to un-finalize without PaCE Manager"]
         ASSIGN_SUP --> CREATE_JD --> FINALIZE_JD
     end
 
@@ -213,29 +205,34 @@ const workflowGraphs = [
         REVIEW_JD --> COMPLETE_MAP --> OPT_CHECK
     end
 
-    FINALIZE_JD --> JOINT_INTERVIEW
+    FINALIZE_JD --> DEBRIEF_FNS
+    DEBRIEF_FNS["Conduct Feedback Session<br/>Debrief member on all 3 FNs<br/>Member acknowledges each FN"]
+    --> JOINT
+    subgraph JOINT ["Joint: JD and MAP"]
 
-    subgraph JOINT ["Joint: JD and MAP Interview"]
-        JOINT_INTERVIEW["Conduct JD and MAP Interview<br/>Review content together"]
-        ACK_MAP["Supervisor acknowledges MAP<br/>Not a commitment to fulfill aspirations"]
-        JOINT_INTERVIEW --> ACK_MAP
+        subgraph JOINT_INTER ["Conduct Joint Interview"]
+        direction TB
+            JOINT_INTERVIEW["Conduct JD and MAP Interview<br/>Review content together"] -->
+            ACK_MAP["Supervisor acknowledges MAP<br/>Not a commitment to fulfill aspirations"]
+        end
+        JOINT_INTER --> CONVERSE(["Converse, Answer Questions, Note edits, make any applicable changes"]) --> INIT_FNS
+        subgraph INIT_FNS ["Create, Send, Sign, Initial Feedback Notes — NLT 30 Apr"]
+        direction TB
+            FN1["FN 1: Initial Review of JD and MAP - See Template Design<br>Review JD and MAP"]
+            FN2["FN 2: Secondary Duties - Auto Template When Created"]
+            FN3["FN 3: Inclusive Behaviours - Auto Template When Created"]
+            FN1 --> FN2 --> FN3
+        end
+        
     end
 
     OPT_CHECK -->|"Yes — Deadline: 15 Jan"| OPTOUT["Submit DND 4638<br/>PaCE Manager processes Opt-Out<br/>Member still receives PAR<br/>Potential will not be appraised"]
-    OPT_CHECK -->|No| JOINT_INTERVIEW
-    OPTOUT --> ACK_MAP
+    OPT_CHECK -->|No| DEBRIEF_FNS
+    OPTOUT --> DEBRIEF_FNS
 
-    ACK_MAP --> FN_INITIAL
-
-    subgraph INIT_FNS ["Initial Feedback Notes — NLT 30 Apr"]
-        FN1["FN 1: Initial Review of JD and MAP"]
-        FN2["FN 2: Secondary Duties"]
-        FN3["FN 3: Inclusive Behaviours"]
-        FN1 --> FN2 --> FN3
-    end
-
-    FN3 --> DEBRIEF_FNS["Conduct Feedback Session<br/>Debrief member on all 3 FNs<br/>Member acknowledges each FN"]
-    DEBRIEF_FNS --> END(["Proceed to Q1"])`
+    JOINT --> SIGNED(["Finalize JD, Sign FNs, and everything is reviewed and signed"]) --> END(["Proceed to Q1"])
+    
+    style JOINT fill:none`
     },
     {
         id: 'q1-jul',
@@ -784,6 +781,41 @@ function serializeWorkflowSvg(svgElement) {
     if (!clone.getAttribute('xmlns:xlink')) {
         clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
     }
+
+    // Exported SVG is rendered standalone in a blob, so inject text styles directly.
+    const exportStyle = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    exportStyle.textContent = `
+        .label text,
+        .label span,
+        .label p,
+        .nodeLabel,
+        .edgeLabel,
+        .edgeLabel p,
+        .edgeLabel span,
+        text,
+        tspan,
+        foreignObject span,
+        foreignObject p {
+            fill: #ffffff !important;
+            color: #ffffff !important;
+        }
+    `;
+    clone.appendChild(exportStyle);
+
+    clone.querySelectorAll('.label text, .nodeLabel, .edgeLabel, text, tspan').forEach(node => {
+        if (node.style && node.style.setProperty) {
+            node.style.setProperty('fill', '#ffffff', 'important');
+            node.style.setProperty('color', '#ffffff', 'important');
+        }
+        node.setAttribute('fill', '#ffffff');
+    });
+    clone.querySelectorAll('foreignObject span, foreignObject p').forEach(node => {
+        if (node.style && node.style.setProperty) {
+            node.style.setProperty('color', '#ffffff', 'important');
+            node.style.setProperty('fill', '#ffffff', 'important');
+        }
+    });
+
     return new XMLSerializer().serializeToString(clone);
 }
 
@@ -874,6 +906,21 @@ function openWorkflowPrintFallback(graphTitle, svgMarkup) {
         .page { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
         .canvas-wrap { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
         .canvas-wrap svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+        .canvas-wrap svg text,
+        .canvas-wrap svg tspan,
+        .canvas-wrap svg .label,
+        .canvas-wrap svg .label text,
+        .canvas-wrap svg .nodeLabel,
+        .canvas-wrap svg .edgeLabel,
+        .canvas-wrap svg foreignObject,
+        .canvas-wrap svg foreignObject p,
+        .canvas-wrap svg foreignObject span {
+            fill: #fff !important;
+            color: #fff !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            forced-color-adjust: none;
+        }
     </style>
 </head>
 <body>

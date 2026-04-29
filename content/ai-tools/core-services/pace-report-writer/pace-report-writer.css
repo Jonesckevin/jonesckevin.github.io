@@ -304,6 +304,13 @@
     height: auto;
 }
 
+svg[id^="workflow-graph-"][id$="-svg"] .label text,
+svg[id^="workflow-graph-"][id$="-svg"] span,
+svg[id^="workflow-graph-"][id$="-svg"] p {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
 .workflow-notes {
     margin: 14px 0 0 18px;
     color: #d0d0d0;
