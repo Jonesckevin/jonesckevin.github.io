@@ -148,7 +148,3 @@
 ## Notes
 
 _Use this space to record key points raised by the member, follow-up actions, or observations for the next cycle._
-
----
-
-> **Reference**: [PaCE Report Writer Tool](../../pace-report-writer/) | [Competency Standards in Tool](../../pace-report-writer/) | [Flowcharts](../flowcharts/)

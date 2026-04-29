@@ -109,7 +109,3 @@
 ## Notes
 
 _Use this space to capture final quality checks before PAR handoff to IR/RO._
-
----
-
-> **Reference**: [PaCE Report Writer Tool](../../pace-report-writer/) | [PAR Process Flowchart](../flowcharts/par.md) | [PAR Debrief Checklist](par-debrief.md)

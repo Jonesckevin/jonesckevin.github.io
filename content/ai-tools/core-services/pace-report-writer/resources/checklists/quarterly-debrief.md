@@ -133,7 +133,3 @@
 ## Notes
 
 _Use this space to record key points from the discussion or items to action before the next debrief._
-
----
-
-> **Reference**: [PaCE Report Writer Tool](../../pace-report-writer/) | [Competency Standards in Tool](../../pace-report-writer/) | [Flowcharts](../flowcharts/)

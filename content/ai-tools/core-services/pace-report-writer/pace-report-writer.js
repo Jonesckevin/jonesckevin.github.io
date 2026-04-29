@@ -942,6 +942,236 @@ function openWorkflowPrintFallback(graphTitle, svgMarkup) {
         printWindow.document.close();
 }
 
+async function openChecklistPrint(url, title) {
+    const printWindow = window.open('', '_blank', 'width=900,height=1100');
+    if (!printWindow) {
+        alert('Unable to open print window. Please allow pop-ups and try again.');
+        return false;
+    }
+
+    const safeTitle = (title || 'Checklist').replace(/[<>]/g, '');
+
+    // Write loading state immediately
+    printWindow.document.open();
+    printWindow.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${safeTitle}</title></head><body style="font-family:Arial,sans-serif;padding:40px;color:#333">Loading checklist...</body></html>`);
+    printWindow.document.close();
+
+    let mdText;
+    let resolvedUrl;
+    try {
+        resolvedUrl = new URL(url, window.location.href).toString();
+    } catch (e) {
+        resolvedUrl = String(url || '');
+    }
+
+    const fetchCandidates = [];
+    if (resolvedUrl) fetchCandidates.push(resolvedUrl);
+    try {
+        const parsed = new URL(resolvedUrl || url, window.location.href);
+        fetchCandidates.push(`${window.location.origin}${parsed.pathname}`);
+    } catch (e) {
+        // No-op: we still try with the original resolved URL.
+    }
+
+    let fetchError = null;
+    for (const candidate of [...new Set(fetchCandidates)]) {
+        try {
+            const resp = await fetch(candidate, { cache: 'no-store', credentials: 'same-origin' });
+            if (!resp.ok) {
+                fetchError = new Error(`HTTP ${resp.status}`);
+                continue;
+            }
+            mdText = await resp.text();
+            if (mdText && mdText.trim()) break;
+        } catch (e) {
+            fetchError = e;
+        }
+    }
+
+    if (!mdText) {
+        const safeHref = (resolvedUrl || '').replace(/"/g, '&quot;');
+        printWindow.document.body.innerHTML = `
+            <h2 style="margin:0 0 12px 0;">Could not load checklist content</h2>
+            <p style="margin:0 0 8px 0;">The print parser could not fetch the markdown file from this page context.</p>
+            <p style="margin:0 0 16px 0;">You can open the source checklist directly and print from there:</p>
+            <p style="margin:0;"><a href="${safeHref}" target="_self" rel="noopener">Open checklist source</a></p>
+        `;
+        console.error('Checklist print fetch failed:', fetchError);
+        return false;
+    }
+
+    // Convert markdown to print-ready HTML
+    function mdToHtml(md) {
+        const lines = md.split('\n');
+        const out = [];
+        let inList = false;
+        let inBlockquote = false;
+        let inTable = false;
+        let tableHeaderDone = false;
+
+        function closeOpenBlocks() {
+            if (inList) { out.push('</ul>'); inList = false; }
+            if (inBlockquote) { out.push('</blockquote>'); inBlockquote = false; }
+            if (inTable) { out.push('</tbody></table>'); inTable = false; tableHeaderDone = false; }
+        }
+
+        function inlineFormat(text) {
+            return text
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                .replace(/`(.+?)`/g, '<code>$1</code>')
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+        }
+
+        for (let i = 0; i < lines.length; i++) {
+            const raw = lines[i];
+            const line = raw.trimEnd();
+
+            // Horizontal rule
+            if (/^---+$/.test(line.trim())) {
+                closeOpenBlocks();
+                out.push('<hr>');
+                continue;
+            }
+
+            // Headings
+            const hMatch = line.match(/^(#{1,6})\s+(.*)/);
+            if (hMatch) {
+                closeOpenBlocks();
+                const level = hMatch[1].length;
+                out.push(`<h${level}>${inlineFormat(hMatch[2])}</h${level}>`);
+                continue;
+            }
+
+            // Table rows
+            if (/^\|/.test(line)) {
+                if (!inTable) {
+                    closeOpenBlocks();
+                    inTable = true;
+                    tableHeaderDone = false;
+                    out.push('<table><thead>');
+                    const cells = line.replace(/^\||\|$/g, '').split('|').map(c => `<th>${inlineFormat(c.trim())}</th>`).join('');
+                    out.push(`<tr>${cells}</tr></thead><tbody>`);
+                    tableHeaderDone = false;
+                } else if (!tableHeaderDone && /^[\|\s\-:]+$/.test(line)) {
+                    tableHeaderDone = true; // separator row — skip
+                } else {
+                    const cells = line.replace(/^\||\|$/g, '').split('|').map(c => `<td>${inlineFormat(c.trim())}</td>`).join('');
+                    out.push(`<tr>${cells}</tr>`);
+                }
+                continue;
+            }
+
+            // Blockquote
+            const bqMatch = line.match(/^>\s*(.*)/);
+            if (bqMatch) {
+                if (!inBlockquote) { closeOpenBlocks(); out.push('<blockquote>'); inBlockquote = true; }
+                out.push(`<p>${inlineFormat(bqMatch[1])}</p>`);
+                continue;
+            }
+
+            // Checkbox list items (any indent)
+            const cbMatch = line.match(/^(\s*)- \[([ xX])\]\s+(.*)/);
+            if (cbMatch) {
+                if (!inList) { closeOpenBlocks(); out.push('<ul class="checklist">'); inList = true; }
+                const checked = cbMatch[2].trim().toLowerCase() === 'x' ? ' checked' : '';
+                const indent = cbMatch[1].length > 0 ? ' class="nested"' : '';
+                out.push(`<li${indent}><label><input type="checkbox"${checked}> ${inlineFormat(cbMatch[3])}</label></li>`);
+                continue;
+            }
+
+            // Plain list items
+            const liMatch = line.match(/^(\s*)[-*]\s+(.*)/);
+            if (liMatch) {
+                if (!inList) { closeOpenBlocks(); out.push('<ul>'); inList = true; }
+                out.push(`<li>${inlineFormat(liMatch[2])}</li>`);
+                continue;
+            }
+
+            // Empty line
+            if (line.trim() === '') {
+                closeOpenBlocks();
+                out.push('');
+                continue;
+            }
+
+            // Paragraph
+            closeOpenBlocks();
+            out.push(`<p>${inlineFormat(line)}</p>`);
+        }
+
+        closeOpenBlocks();
+        return out.join('\n');
+    }
+
+    const bodyHtml = mdToHtml(mdText);
+
+    const fullHtml = `<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${safeTitle}</title>
+    <style>
+        @page { size: letter portrait; margin: 15mm 15mm 15mm 15mm; }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0; padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            color: #000;
+            background: #fff;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page { max-width: 750px; margin: 0 auto; padding: 20px 10px; }
+        h1 { font-size: 16pt; border-bottom: 2px solid #333; padding-bottom: 6px; margin-bottom: 12px; }
+        h2 { font-size: 13pt; border-bottom: 1px solid #999; padding-bottom: 4px; margin-top: 18px; margin-bottom: 8px; }
+        h3 { font-size: 11pt; margin-top: 14px; margin-bottom: 6px; }
+        h4 { font-size: 10pt; margin-top: 10px; margin-bottom: 4px; }
+        hr { border: none; border-top: 1px solid #ccc; margin: 14px 0; }
+        blockquote { border-left: 3px solid #aaa; margin: 8px 0 8px 10px; padding: 4px 10px; color: #555; font-size: 10pt; }
+        blockquote p { margin: 2px 0; }
+        ul { margin: 4px 0 4px 16px; padding: 0; list-style: none; }
+        ul li { margin: 3px 0; }
+        ul.checklist li label { display: flex; align-items: flex-start; gap: 6px; cursor: default; }
+        ul.checklist li.nested { margin-left: 20px; }
+        input[type="checkbox"] {
+            margin-top: 2px;
+            width: 13px; height: 13px;
+            flex-shrink: 0;
+            accent-color: #000;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10pt; }
+        th, td { border: 1px solid #999; padding: 4px 8px; text-align: left; }
+        th { background: #eee; font-weight: bold; }
+        code { font-family: monospace; background: #f4f4f4; padding: 1px 4px; border-radius: 2px; font-size: 10pt; }
+        p { margin: 4px 0; }
+        @media print {
+            body { background: #fff; }
+            input[type="checkbox"] { -webkit-appearance: checkbox; appearance: checkbox; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        ${bodyHtml}
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => { window.print(); }, 300);
+        });
+    <\/script>
+</body>
+</html>`;
+
+    printWindow.document.open();
+    printWindow.document.write(fullHtml);
+    printWindow.document.close();
+    return false;
+}
+
 async function downloadCurrentWorkflowPdf() {
     const downloadBtn = document.getElementById('workflowDownloadPdfBtn');
     const renderRoot = document.getElementById('workflowGraphRender');
