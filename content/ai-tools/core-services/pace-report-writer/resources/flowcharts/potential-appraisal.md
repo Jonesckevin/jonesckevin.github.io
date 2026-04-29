@@ -1,6 +1,6 @@
-# PaCE — Potential Appraisal Process (PO2/Sgt and Above)
+# PaCE — Potential Appraisal Process (Cpl/S1 and Above)
 
-> **Who this applies to:** PO2/Sgt, WO/PO1, MWO/CPO2, CWO/CPO1, and all Officers who have **not** opted out of Succession Management in their MAP.
+> **Who this applies to:** Cpl/S1, MCpl/MS, PO2/Sgt, WO/PO1, MWO/CPO2, CWO/CPO1, and all Officers who are eligible for a PAR. Members **PO2/Sgt and above** may opt out of Succession Management via DND 4638; **Cpl/S1 and MCpl/MS are included automatically** and cannot opt out.
 > **Timeline:** Feeding into PEB/UPB (May) and HLRR (May–June)
 > Back to [master.md](master.md) | See also [peb.md](peb.md)
 
@@ -11,7 +11,7 @@
 The **Potential Appraisal** is a separate and distinct component from the Performance Appraisal (PAR). It assesses whether a member shows the capacity to perform effectively at the **next rank level**. It is:
 - **Not** based on how well they do their current job alone.
 - **Not** automatic — it requires a strong PAR as a gateway.
-- **Optional** — members PO2/Sgt and above can opt out via DND 4638 (deadline: 15 Jan).
+- **Optional for PO2/Sgt and above** — may opt out of Succession Management via DND 4638 (deadline: 15 Jan). Cpl/S1 and MCpl/MS are included in the PEB automatically and cannot opt out.
 
 The Potential score and the Inclusive Behaviours Rating (IBR) are **automatically generated** by the PaCE system based on the BI scores the supervisor enters. They are not manually input by the supervisor.
 
@@ -23,7 +23,7 @@ The Potential score and the Inclusive Behaviours Rating (IBR) are **automaticall
 flowchart TD
     START(["Begin Potential Appraisal Scoring"])
 
-    CONFIRM_ELIG{"Member PO2/Sgt or above<br/>AND opted in to<br/>Succession Management in MAP?"}
+    CONFIRM_ELIG{"Member Cpl/S1 or above<br/>AND eligible for PAR?<br/>(PO2/Sgt+: must not have opted out)"}
     CONFIRM_ELIG -->|No| NOT_APPLICABLE["Potential Appraisal does not apply<br/>PAR only — skip this chart"]
     CONFIRM_ELIG -->|Yes| OPEN_PAR
 

@@ -56,8 +56,8 @@ Do not put sensitive information into the form.
       <option value="">-- Select Rank --</option>
       <optgroup label="Junior NCMs">
         <option value="pte">Pte - Private</option>
-        <option value="cpl">Cpl - Corporal</option>
-        <option value="mcpl-ms">MCpl/MS - Master Corporal / Master Seaman</option>
+        <option value="cpl">Cpl/S1 - Corporal / Sailor 1st Class</option>
+        <option value="mcpl-ms">MCpl/MS - Master Corporal / Master Sailor</option>
       </optgroup>
       <optgroup label="Senior NCMs">
         <option value="sgt-po2">Sgt/PO2 - Sergeant / Petty Officer 2nd Class</option>

@@ -124,8 +124,8 @@ const rankMapping = {
 // Reverse mapping for display
 const rankDisplayNames = {
     'pte': 'Private',
-    'cpl': 'Corporal',
-    'mcpl-ms': 'Master Corporal / Master Seaman',
+    'cpl': 'Corporal / Sailor 1st Class',
+    'mcpl-ms': 'Master Corporal / Master Sailor',
     'sgt-po2': 'Sergeant / Petty Officer 2nd Class',
     'wo-po1': 'Warrant Officer / Petty Officer 1st Class',
     'mwo-cpo2': 'Master Warrant Officer / Chief Petty Officer 2nd Class',
@@ -163,7 +163,7 @@ const workflowGraphs = [
     Q4["Q4 End-Year Review<br/>NLT Mid-March"]
     PAR_PHASE["📝 PAR Process<br/>Complete by End of April"]
     DEBRIEF["PAR Debrief and Acknowledgment<br/>Mid to End of April<br/>Informal Resolution if required"]
-    POT{"Member opted in<br/>to Potential Appraisal?<br/>PO2/Sgt and above"}
+    POT{"Member eligible for PEB?<br/>Cpl/S1 and above<br/>(PO2/Sgt+ may opt out of Succession Mgmt)"}
     PEB_PHASE["🏛️ Potential Evaluation Board<br/>Unit Potential Board — May"]
     HLRR_CHK{"HLRR<br/>Eligible?"}
     HLRR_PHASE["📊 Higher Level Review Ranking<br/>May"]
@@ -526,7 +526,7 @@ const workflowGraphs = [
     {
         id: 'potential-appraisal',
         title: 'Potential Appraisal Scoring',
-        context: 'PO2/Sgt and above; feeds PEB/UPB and HLRR',
+        context: 'Cpl/S1 and above; PO2/Sgt+ may opt out of Succession Mgmt',
         sourcePath: '/ai-tools/core-services/pace-report-writer/resources/flowcharts/potential-appraisal/',
         notes: [
             'Potential and IBR are auto-calculated from BI scores.',
@@ -535,7 +535,7 @@ const workflowGraphs = [
         mermaid: `flowchart TD
     START(["Begin Potential Appraisal Scoring"])
 
-    CONFIRM_ELIG{"Member PO2/Sgt or above<br/>AND opted in to<br/>Succession Management in MAP?"}
+    CONFIRM_ELIG{"Member Cpl/S1 or above<br/>AND eligible for PAR?<br/>(PO2/Sgt+: must not have opted out)"}
     CONFIRM_ELIG -->|No| NOT_APPLICABLE["Potential Appraisal does not apply<br/>PAR only — skip this chart"]
     CONFIRM_ELIG -->|Yes| OPEN_PAR
 
@@ -595,7 +595,7 @@ const workflowGraphs = [
         context: 'Timeline: May',
         sourcePath: '/ai-tools/core-services/pace-report-writer/resources/flowcharts/peb/',
         notes: [
-            'Applies to PO2/Sgt and above who opted in.',
+            'Applies to Cpl/S1 and above. Only PO2/Sgt+ may opt out of Succession Management (DND 4638).',
             'Strong PAR is the gateway to board consideration.'
         ],
         mermaid: `flowchart TD
@@ -603,8 +603,8 @@ const workflowGraphs = [
 
     ELIGIBILITY{"Member eligible<br/>for Potential Appraisal?"}
 
-    ELIGIBILITY -->|"No — Opted Out or below PO2/Sgt"| NOT_ELIGIBLE["Member receives PAR only<br/>Potential not appraised<br/>No board file prepared"]
-    ELIGIBILITY -->|"Yes — PO2/Sgt and above, opted in"| PAR_GATEWAY
+    ELIGIBILITY -->|"No — Below Cpl/S1, or PO2/Sgt+ opted out"| NOT_ELIGIBLE["Member receives PAR only<br/>Potential not appraised<br/>No board file prepared"]
+    ELIGIBILITY -->|"Yes — Cpl/S1+; PO2/Sgt+ must not have opted out"| PAR_GATEWAY
 
     NOT_ELIGIBLE --> END_NO(["End — No Board Process"])
 

@@ -3,7 +3,7 @@
 > **Timeline:** May
 > Back to [master.md](master.md)
 > How Potential is **scored** in PaCE → [potential-appraisal.md](potential-appraisal.md)
-> Applies to: **PO2/Sgt and above** who have opted into Succession Management in their MAP
+> Applies to: **Cpl/S1 and above** (all qualifying PAR recipients). Only **PO2/Sgt and above** may opt out of Succession Management via DND 4638.
 
 ```mermaid
 flowchart TD
@@ -11,8 +11,8 @@ flowchart TD
 
     ELIGIBILITY{"Member eligible<br/>for Potential Appraisal?"}
 
-    ELIGIBILITY -->|"No — Opted Out or below PO2/Sgt"| NOT_ELIGIBLE["Member receives PAR only<br/>Potential not appraised<br/>No board file prepared"]
-    ELIGIBILITY -->|"Yes — PO2/Sgt and above, opted in"| PAR_GATEWAY
+    ELIGIBILITY -->|"No — Below Cpl/S1, or PO2/Sgt+ opted out"| NOT_ELIGIBLE["Member receives PAR only<br/>Potential not appraised<br/>No board file prepared"]
+    ELIGIBILITY -->|"Yes — Cpl/S1+; PO2/Sgt+ must not have opted out"| PAR_GATEWAY
 
     NOT_ELIGIBLE --> END_NO(["End — No Board Process"])
 
@@ -46,7 +46,7 @@ flowchart TD
 ```
 
 ### Key Notes
-- **Eligibility:** PO2/Sgt and above who have opted into Succession Management in their MAP.
+- **Eligibility:** Cpl/S1 and above (all qualifying PAR recipients). Only PO2/Sgt and above may opt out of Succession Management via DND 4638 — Cpl/S1 and MCpl/MS are included automatically.
 - **Gateway requirement:** A strong PAR is required before a member's file can be forwarded for Potential Appraisal.
 - **Board rooms:** UPBs require access to DWAN and Monitor MASS.
 - **One rank at a time:** Boards are held per rank group — not all members at once.

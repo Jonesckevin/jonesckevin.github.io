@@ -13,7 +13,7 @@ flowchart TD
     Q4["Q4 End-Year Review<br/>NLT Mid-March"]
     PAR_PHASE["📝 PAR Process<br/>Complete by End of April"]
     DEBRIEF["PAR Debrief and Acknowledgment<br/>Mid to End of April<br/>Informal Resolution if required"]
-    POT{"Member opted in<br/>to Potential Appraisal?<br/>PO2/Sgt and above"}
+    POT{"Member eligible for PEB?<br/>Cpl/S1 and above<br/>(PO2/Sgt+ may opt out of Succession Mgmt)"}
     PEB_PHASE["🏛️ Potential Evaluation Board<br/>Unit Potential Board — May"]
     HLRR_CHK{"HLRR<br/>Eligible?"}
     HLRR_PHASE["📊 Higher Level Review Ranking<br/>May"]
