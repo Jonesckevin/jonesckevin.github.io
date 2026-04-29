@@ -235,7 +235,7 @@ Do not put sensitive information into the form.
     </div>
     <div class="modal-body standards-modal-body">
       <div class="library-intro">
-        <strong>Uses the Member Rank selection from the main form.</strong><br>
+        <strong>Uses the Member Rank selection from the main form.</strong> <span id="stdLoadedRankBadge" style="display:none; background: rgba(107,255,107,0.1); border: 2px solid #6bff6b; border-radius: 8px; padding: 4px 10px; white-space: nowrap;">✅ <span id="stdLoadedRankText" style="color: #6bff6b; font-weight: 500;"></span></span><br>
         Column 3 is shown as <strong>3 (Effective)</strong> to match current scoring language.
       </div>
       <div id="competencyStandardsContent">

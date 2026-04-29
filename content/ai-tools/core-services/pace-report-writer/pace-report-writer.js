@@ -141,20 +141,7 @@ const rankDisplayNames = {
     'mgen-radm': 'Major-General / Rear-Admiral'
 };
 
-const standardsFileMap = {
-    'cpl': 'cpl.md',
-    'mcpl-ms': 'mcpl.md',
-    'sgt-po2': 'sgt.md',
-    'wo-po1': 'wo.md',
-    'mwo-cpo2': 'mwo.md',
-    'cwo-cpo1': 'cwo.md',
-    'capt-lt': 'capt.md',
-    'maj-lcdr': 'major.md',
-    'lcol-cdr': 'lcol.md',
-    'col-capt': 'col.md',
-    'bgen-cmdre': 'bgen.md',
-    'mgen-radm': 'mgen.md'
-};
+let _standardsCache = null; // Map<rankCode, {headers, rows}> — populated on first load
 
 const workflowGraphs = [
     {
@@ -1067,43 +1054,6 @@ ${tableClone.outerHTML}
     }
 }
 
-function parseMarkdownTableRow(line) {
-    const trimmed = line.trim();
-    if (!trimmed.startsWith('|') || !trimmed.endsWith('|')) return null;
-    const cells = trimmed.split('|').slice(1, -1).map(cell => cell.trim());
-    return cells;
-}
-
-function isMarkdownDividerRow(cells) {
-    if (!cells || !cells.length) return false;
-    return cells.every(cell => /^:?-{3,}:?$/.test(cell.replace(/\s+/g, '')));
-}
-
-function extractMarkdownTableBlocks(lines) {
-    const blocks = [];
-    let current = [];
-
-    lines.forEach(line => {
-        const trimmed = line.trim();
-        const isTableRow = trimmed.startsWith('|') && trimmed.endsWith('|');
-        if (isTableRow) {
-            current.push(line);
-            return;
-        }
-
-        if (current.length) {
-            blocks.push(current);
-            current = [];
-        }
-    });
-
-    if (current.length) {
-        blocks.push(current);
-    }
-
-    return blocks;
-}
-
 function escapeHtml(text) {
     return String(text || '')
         .replace(/&/g, '&amp;')
@@ -1113,8 +1063,52 @@ function escapeHtml(text) {
         .replace(/'/g, '&#39;');
 }
 
+async function loadStandardsJsonl() {
+    if (_standardsCache) return _standardsCache;
+    const urls = [
+        new URL('competency-standards.jsonl', window.location.href).toString(),
+        `${window.location.origin}/ai-tools/core-services/pace-report-writer/competency-standards.jsonl`
+    ];
+    let lastError = null;
+    for (const url of urls) {
+        try {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) { lastError = new Error(`HTTP ${response.status}`); continue; }
+            const text = await response.text();
+            const map = new Map();
+            for (const line of text.split('\n')) {
+                const trimmed = line.trim();
+                if (!trimmed) continue;
+                const entry = JSON.parse(trimmed);
+                map.set(entry.rank, entry);
+            }
+            _standardsCache = map;
+            return _standardsCache;
+        } catch (err) { lastError = err; }
+    }
+    throw lastError || new Error('Failed to load competency-standards.jsonl');
+}
+
+function normalizeStandardsRows(rows) {
+    return (rows || [])
+        .map(row => {
+            if (!row) return null;
+
+            return [
+                row.competency || '',
+                row.facet || '',
+                row.score1 || '',
+                row.score2 || '',
+                row.score3 || '',
+                row.score4 || '',
+                row.score5 || ''
+            ];
+        })
+        .filter(row => row && row.some(cell => cell));
+}
+
 function buildStandardsTableHtml(headerCells, rowCells) {
-    const normalizedHeader = headerCells.map(cell => cell === '3 (Standard)' ? '3 (Effective)' : cell);
+    const normalizedHeader = headerCells;
 
     const thead = `<thead><tr>${normalizedHeader.map(cell => `<th>${escapeHtml(cell)}</th>`).join('')}</tr></thead>`;
     const tbody = `<tbody>${rowCells.map(row => `<tr data-competency="${escapeHtml(row[0])}" data-facet="${escapeHtml(row[1])}">${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody>`;
@@ -1253,49 +1247,33 @@ async function loadCompetencyStandards(rankCode) {
 
     if (!rankCode) {
         content.innerHTML = '<p style="text-align: center; color: #aaa; padding: 36px 20px;">Select a Member Rank in the form to view competency standards.</p>';
-        return;
-    }
-
-    const standardsFile = standardsFileMap[rankCode];
-    if (!standardsFile) {
-        content.innerHTML = `<p style="text-align: center; color: #ff9b9b; padding: 36px 20px;">No competency standards file is mapped for ${escapeHtml(rankDisplayNames[rankCode] || rankCode)}.</p>`;
+        const badge = document.getElementById('stdLoadedRankBadge');
+        if (badge) badge.style.display = 'none';
         return;
     }
 
     content.innerHTML = '<p style="text-align: center; color: #aaa; padding: 36px 20px;">Loading competency standards...</p>';
 
     try {
-        const response = await fetch(`/ai-tools/core-services/pace-report-writer/resources/competency-standards/${standardsFile}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch standards file (${response.status}).`);
+        const map = await loadStandardsJsonl();
+        const standardsData = map.get(rankCode);
+        if (!standardsData) {
+            content.innerHTML = `<p style="text-align: center; color: #ff9b9b; padding: 36px 20px;">No competency standards found for ${escapeHtml(rankDisplayNames[rankCode] || rankCode)}.</p>`;
+            return;
         }
-
-        const markdown = await response.text();
-        const lines = markdown.split(/\r?\n/);
-        const tableBlocks = extractMarkdownTableBlocks(lines);
-        const compactBlock = tableBlocks.find(block => {
-            const header = parseMarkdownTableRow(block[0] || '');
-            return header && header.length >= 7 && /competency/i.test(header[0] || '') && /facet/i.test(header[1] || '');
-        });
-
-        if (!compactBlock || compactBlock.length < 3) {
-            throw new Error('Could not find compact standards table in markdown.');
+        const headerCells = Array.isArray(standardsData.headers) ? standardsData.headers.slice(0, 7) : [];
+        const bodyRows = normalizeStandardsRows(standardsData.rows);
+        if (headerCells.length < 7 || !bodyRows.length) {
+            throw new Error('Standards data is empty or malformed.');
         }
-
-        const headerCells = parseMarkdownTableRow(compactBlock[0]);
-        const bodyRows = compactBlock
-            .slice(1)
-            .map(parseMarkdownTableRow)
-            .filter(cells => cells && !isMarkdownDividerRow(cells) && cells.length >= 7)
-            .map(cells => cells.slice(0, 7));
-
-        if (!headerCells || headerCells.length < 7 || !bodyRows.length) {
-            throw new Error('Standards table is empty or malformed.');
-        }
-
-        const tableHtml = buildStandardsTableHtml(headerCells.slice(0, 7), bodyRows);
-        content.innerHTML = tableHtml;
+        content.innerHTML = buildStandardsTableHtml(headerCells, bodyRows);
         populateStandardsFilters(bodyRows);
+        const badge = document.getElementById('stdLoadedRankBadge');
+        const badgeText = document.getElementById('stdLoadedRankText');
+        if (badge && badgeText) {
+            badgeText.textContent = 'Loaded: ' + (rankDisplayNames[rankCode] || rankCode);
+            badge.style.display = '';
+        }
     } catch (error) {
         console.error('Failed to load competency standards:', error);
         content.innerHTML = `<p style="text-align: center; color: #ff9b9b; padding: 36px 20px;">Unable to load competency standards for ${escapeHtml(rankDisplayNames[rankCode] || rankCode)}.</p>`;

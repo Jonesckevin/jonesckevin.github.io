@@ -55,4 +55,4 @@ _Use this space to record key points raised by the member, or items to follow up
 
 ---
 
-> **Reference**: [PaCE Report Writer Tool](../../pace-report-writer/) | [Competency Standards](../competency-standards/) | [Flowcharts](../flowcharts/)
+> **Reference**: [PaCE Report Writer Tool](../../pace-report-writer/) | [Competency Standards in Tool](../../pace-report-writer/) | [Flowcharts](../flowcharts/)
