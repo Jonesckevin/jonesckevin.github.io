@@ -318,6 +318,13 @@ Do not put sensitive information into the form.
             <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp">⬇️ PaCE Cycle Aide</a></li>
             <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" alt="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/understanding-the-ibr-mieux-comprendre-la-cci-bil.pdf" >⬇️ Understanding IBR</a></li>
           </ul>
+          <h3 style="margin:18px 0 8px 20px; font-size:14px;">Checklist Downloads (.md)</h3>
+          <ul>
+            <li><a href="/ai-tools/core-services/pace-report-writer/resources/checklists/initial-debrief.md" download="initial-debrief.md">⬇️ Initial Debrief Checklist (.md)</a></li>
+            <li><a href="/ai-tools/core-services/pace-report-writer/resources/checklists/quarterly-debrief.md" download="quarterly-debrief.md">⬇️ Quarterly Debrief Checklist (.md)</a></li>
+            <li><a href="/ai-tools/core-services/pace-report-writer/resources/checklists/par-debrief.md" download="par-debrief.md">⬇️ PAR Debrief Checklist (.md)</a></li>
+            <li><a href="/ai-tools/core-services/pace-report-writer/resources/checklists/par-pre-submit-supervisor.md" download="par-pre-submit-supervisor.md">⬇️ PAR Pre-Submit Quality Checklist (.md)</a></li>
+          </ul>
         </div>
       </div>
     </div>
