@@ -4,6 +4,8 @@
 <meta name="robots" content="noindex" />
 {{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
 
 <!-- Resource hints for performance -->
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
@@ -13,7 +15,7 @@
 <meta name="author"
     content="{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Params.author.name }}{{ end }}">
 <meta name="description"
-    content="{{ if .IsHome }}{{ .Site.Params.homeSubtitle }}{{ else }}{{ if .Params.Description }}{{ .Params.Description }}{{ else }}{{ .Summary | plainify }}{{ end }}{{ end }}" />
+    content="{{ if .IsHome }}{{ if .Params.seo_description }}{{ .Params.seo_description }}{{ else }}{{ .Site.Params.homeSubtitle }}{{ end }}{{ else }}{{ if .Params.Description }}{{ .Params.Description }}{{ else }}{{ .Summary | plainify }}{{ end }}{{ end }}" />
 <meta name="keywords"
     content="{{ .Site.Params.keywords }}{{ if .Params.tags }}{{ range .Params.tags }}, {{ . }}{{ end }}{{ end }}" />
 <meta name="robots" content="noodp" />
@@ -23,7 +25,7 @@
 {{ block "title" . }}
 <title>
     {{ if .IsHome }}
-    {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} - {{ . }} {{ end }}
+    {{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else }}{{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} - {{ . }} {{ end }}{{ end }}
     {{ else }}
     {{ .Title }} :: {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} - {{ . }}{{ end }}
     {{ end }}

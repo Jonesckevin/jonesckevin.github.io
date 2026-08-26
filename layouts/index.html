@@ -12,9 +12,15 @@
                 style="max-width:{{ .Site.Params.Portrait.MaxWidth }}" />
             {{ end }}
 
-            <h1>{{ .Site.Title }}</h1>
+            <h1>{{ .Title }}</h1>
 
             {{ partial "subtitle.html" . }}
+
+            {{ with .Content }}
+            <div class="homepage-intro">
+                {{ . }}
+            </div>
+            {{ end }}
 
             {{- with .Site.Params.social }}
             <div>

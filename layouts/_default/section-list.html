@@ -40,8 +40,9 @@
                     <!-- Help Section for AI Tools Page -->
                     <div class="page-ai-help-section" id="page-ai-help-section" style="display: none;">
                         <div class="ai-help-content">
-                            <h4>How to Use AI Tools</h4>
-                            <img src="/images/help/ai-tool-help.gif" alt="AI Tools Tutorial" class="ai-help-gif">
+                            <p class="ai-help-title">How to Use AI Tools</p>
+                            <img src="/images/help/ai-tool-help.webp" alt="AI Tools Tutorial" class="ai-help-gif"
+                                loading="lazy" decoding="async">
                             <p class="ai-help-description">
                             <ul class="ai-help-list">
                                 <li>Configure your AI provider by selecting one from the dropdown. <a
@@ -157,7 +158,7 @@
                     <div class="info-grid">
                         {{- range .Params.infoItems }}
                         <div class="info-item">
-                            <h4>{{ .title }}</h4>
+                            <h3>{{ .title }}</h3>
                             <p>{{ .description }}</p>
                         </div>
                         {{- end }}

@@ -313,10 +313,10 @@ Do not put sensitive information into the form.
         <div class="downloads" style="min-width:260px;">
           <h3 style="margin:0 0 8px 20px; font-size:14px;">Additional Downloads</h3>
           <ul>
-            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" alt="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/quick-reference-card-members.pdf">⬇️ Quick Ref - Members</a></li>
-            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" alt="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/quick-reference-card-supervisors.pdf">⬇️ Quick Ref - Supervisors</a></li>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp">⬇️ Quick Ref - Members</a></li>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp">⬇️ Quick Ref - Supervisors</a></li>
             <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp">⬇️ PaCE Cycle Aide</a></li>
-            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp" alt="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/understanding-the-ibr-mieux-comprendre-la-cci-bil.pdf" >⬇️ Understanding IBR</a></li>
+            <li><a href="http://www.cmp-cpm.forces.gc.ca/pace-epc/en/training-documentation.asp">⬇️ Understanding IBR</a></li>
           </ul>
           <h3 style="margin:18px 0 8px 20px; font-size:14px;">Checklists</h3>
           <ul>

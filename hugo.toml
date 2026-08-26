@@ -80,7 +80,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
     readOtherPosts = "Read other posts"
 
   [languages.en.params]
-    subtitle  = "The Truest of Subtitles"
+    subtitle  = "The Truest of Subtitles with WriteUps, CTFs, and a bunch of Enjoyment"
 
     [languages.en.params.logo]
       path = "/images/4n6post-logo.svg"
@@ -92,11 +92,11 @@ ignoreLogs = ['warning-goldmark-raw-html']
   [[menu.main]]
     identifier = "ai-tools"
     name       = "AI Hub"
-    url        = "/ai-tools"
+    url        = "/ai-tools/"
   [[menu.main]]
     identifier = "artifacts"
     name       = "Artifacts"
-    url        = "/artifacts"
+    url        = "/artifacts/"
 #  [[menu.main]]
 #    identifier = "smelling-salts"
 #    name       = "Smelling Salts"
@@ -104,8 +104,8 @@ ignoreLogs = ['warning-goldmark-raw-html']
   [[menu.main]]
     identifier = "posts"
     name       = "CTF Post"
-    url        = "/writeups"
+    url        = "/writeups/"
   [[menu.main]]
     identifier = "docker"
     name       = "Dockers"
-    url        = "/dockers"
+    url        = "/dockers/"

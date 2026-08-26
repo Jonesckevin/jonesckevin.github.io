@@ -83,7 +83,8 @@ body.section-ai-tools .page-ai-help-section .ai-help-content {
     }
 }
 
-body.section-ai-tools .page-ai-help-section .ai-help-content h4 {
+body.section-ai-tools .page-ai-help-section .ai-help-content h4,
+body.section-ai-tools .page-ai-help-section .ai-help-content .ai-help-title {
     color: #ff6b35;
     font-size: 16px;
     font-weight: 600;

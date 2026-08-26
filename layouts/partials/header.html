@@ -121,8 +121,9 @@
                   <!-- Help Section (Left on wide screens) - GIF only -->
                   <div class="ai-help-section" id="ai-help-section" style="display: none;">
                     <div class="ai-help-content">
-                      <h4>How to Use AI Tools</h4>
-                      <img src="/images/help/ai-tool-help.gif" alt="AI Tools Tutorial" class="ai-help-gif">
+                      <p class="ai-help-title">How to Use AI Tools</p>
+                      <img src="/images/help/ai-tool-help.webp" alt="AI Tools Tutorial" class="ai-help-gif"
+                        loading="lazy" decoding="async">
                     </div>
                   </div>
                   <!-- Settings Section (Right on wide screens) -->
@@ -178,6 +179,38 @@
                           style="display: none; color: #999; font-weight: normal;">(Optional)</span></label>
                       <input type="password" id="ai-key" placeholder="Enter your API key">
                       <small class="ai-help">Keys are stored only for your session</small>
+                    </div>
+                    <div class="ai-field" id="ai-perplexity-advanced-wrapper" style="display: none;">
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px;">
+                        <label for="ai-perplexity-max-steps" style="margin: 0;">Perplexity Advanced</label>
+                        <button type="button" id="ai-perplexity-advanced-toggle" aria-expanded="false" aria-controls="ai-perplexity-advanced-content" style="padding: 5px 10px; border-radius: 4px; border: 1px solid #666; background: #2a2a2a; color: #fff; cursor: pointer;">Show</button>
+                      </div>
+                      <div id="ai-perplexity-advanced-content" style="display: none;">
+                        <label for="ai-perplexity-preset">Preset</label>
+                        <select id="ai-perplexity-preset">
+                          <option value="">Default</option>
+                          <option value="sonar">sonar</option>
+                          <option value="sonar-pro">sonar-pro</option>
+                          <option value="sonar-deep-research">sonar-deep-research</option>
+                        </select>
+                        <label for="ai-perplexity-max-steps">Max Steps</label>
+                        <input type="number" id="ai-perplexity-max-steps" min="1" max="10" step="1" placeholder="3">
+                        <label for="ai-perplexity-reasoning">Reasoning</label>
+                        <select id="ai-perplexity-reasoning">
+                          <option value="">Default</option>
+                          <option value="low">Low</option>
+                          <option value="medium">Medium</option>
+                          <option value="high">High</option>
+                        </select>
+                        <label for="ai-perplexity-instructions">Instructions</label>
+                        <textarea id="ai-perplexity-instructions" rows="3" placeholder="Optional instructions for the agent"></textarea>
+                        <label for="ai-perplexity-max-output-tokens">Max Output Tokens</label>
+                        <input type="number" id="ai-perplexity-max-output-tokens" min="64" step="64" placeholder="Use provider default">
+                        <label class="checkbox-inline" for="ai-perplexity-store" style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+                          <input type="checkbox" id="ai-perplexity-store">
+                          Save conversation history
+                        </label>
+                      </div>
                     </div>
                     <div class="ai-field">
                       <label for="ai-model">Model (Optional)</label>
@@ -452,6 +485,15 @@
     const aiKey = document.getElementById('ai-key');
     const aiModel = document.getElementById('ai-model');
     const aiModelHelp = document.getElementById('ai-model-help');
+    const aiPerplexityAdvancedWrapper = document.getElementById('ai-perplexity-advanced-wrapper');
+    const aiPerplexityAdvancedToggle = document.getElementById('ai-perplexity-advanced-toggle');
+    const aiPerplexityAdvancedContent = document.getElementById('ai-perplexity-advanced-content');
+    const aiPerplexityPreset = document.getElementById('ai-perplexity-preset');
+    const aiPerplexityMaxSteps = document.getElementById('ai-perplexity-max-steps');
+    const aiPerplexityReasoning = document.getElementById('ai-perplexity-reasoning');
+    const aiPerplexityInstructions = document.getElementById('ai-perplexity-instructions');
+    const aiPerplexityMaxOutputTokens = document.getElementById('ai-perplexity-max-output-tokens');
+    const aiPerplexityStore = document.getElementById('ai-perplexity-store');
     // Retry counters for deferred loading of apiManager (after header merge)
     let apiManagerRetryCount = 0;
     const MAX_API_MANAGER_RETRIES = 25; // ~7.5s at 300ms interval
@@ -484,6 +526,49 @@
       const customConfig = document.getElementById('ai-custom-config');
       if (customConfig) {
         customConfig.style.display = provider === 'custom' ? 'block' : 'none';
+      }
+    }
+
+    function getPerplexityAdvancedFields() {
+      const payload = {};
+      if (aiPerplexityPreset && aiPerplexityPreset.value) payload.preset = aiPerplexityPreset.value;
+      if (aiPerplexityMaxSteps && aiPerplexityMaxSteps.value !== '') payload.max_steps = Number(aiPerplexityMaxSteps.value);
+      if (aiPerplexityReasoning && aiPerplexityReasoning.value) payload.reasoning = { effort: aiPerplexityReasoning.value };
+      if (aiPerplexityInstructions && aiPerplexityInstructions.value.trim()) payload.instructions = aiPerplexityInstructions.value.trim();
+      if (aiPerplexityMaxOutputTokens && aiPerplexityMaxOutputTokens.value !== '') payload.max_output_tokens = Number(aiPerplexityMaxOutputTokens.value);
+      if (aiPerplexityStore && aiPerplexityStore.checked) payload.store = true;
+      return payload;
+    }
+
+    function syncPerplexityAdvancedInputs() {
+      const stored = window.apiManager && typeof window.apiManager.getPerplexityAdvancedOptions === 'function'
+        ? window.apiManager.getPerplexityAdvancedOptions()
+        : {};
+
+      if (aiPerplexityPreset) aiPerplexityPreset.value = stored.preset || '';
+      if (aiPerplexityMaxSteps) aiPerplexityMaxSteps.value = stored.max_steps ?? '';
+      if (aiPerplexityReasoning) aiPerplexityReasoning.value = stored.reasoning?.effort || '';
+      if (aiPerplexityInstructions) aiPerplexityInstructions.value = stored.instructions || '';
+      if (aiPerplexityMaxOutputTokens) aiPerplexityMaxOutputTokens.value = stored.max_output_tokens ?? '';
+      if (aiPerplexityStore) aiPerplexityStore.checked = Boolean(stored.store);
+    }
+
+    function persistPerplexityAdvancedSettings() {
+      if (!window.apiManager || typeof window.apiManager.setPerplexityAdvancedOptions !== 'function') return;
+      window.apiManager.setPerplexityAdvancedOptions(getPerplexityAdvancedFields());
+    }
+
+    function updatePerplexityAdvancedVisibility() {
+      const isPerplexity = aiProvider && aiProvider.value === 'perplexity';
+      if (aiPerplexityAdvancedWrapper) {
+        aiPerplexityAdvancedWrapper.style.display = isPerplexity ? 'block' : 'none';
+      }
+      if (aiPerplexityAdvancedContent) {
+        aiPerplexityAdvancedContent.style.display = isPerplexity && aiPerplexityAdvancedToggle && aiPerplexityAdvancedToggle.getAttribute('aria-expanded') === 'true' ? 'block' : 'none';
+      }
+      if (!isPerplexity && aiPerplexityAdvancedToggle) {
+        aiPerplexityAdvancedToggle.setAttribute('aria-expanded', 'false');
+        aiPerplexityAdvancedToggle.textContent = 'Show';
       }
     }
 
@@ -850,6 +935,10 @@
       // Initialize
       updateApiKeyPlaceholder(savedProvider);
       updateProviderLinks(savedProvider);
+      updatePerplexityAdvancedVisibility();
+      if (savedProvider === 'perplexity') {
+        syncPerplexityAdvancedInputs();
+      }
 
       // Attempt staged model loading allowing time for apiManager to attach
       // For custom provider, try to load models if endpoint is configured (even without key)
@@ -896,6 +985,13 @@
         localStorage.setItem('ai-provider', provider);
         updateApiKeyPlaceholder(provider);
         updateProviderLinks(provider);
+        updatePerplexityAdvancedVisibility();
+
+        if (provider === 'perplexity') {
+          syncPerplexityAdvancedInputs();
+        } else if (window.apiManager && typeof window.apiManager.setPerplexityAdvancedOptions === 'function') {
+          window.apiManager.setPerplexityAdvancedOptions({});
+        }
 
         if (window.apiManager) window.apiManager.setProvider(provider);
 
@@ -961,6 +1057,23 @@
         localStorage.setItem('ai-model', model);
 
         if (window.apiManager) window.apiManager.setModel(model);
+      });
+
+      if (aiPerplexityAdvancedToggle) {
+        aiPerplexityAdvancedToggle.addEventListener('click', function () {
+          const isOpen = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!isOpen));
+          this.textContent = isOpen ? 'Show' : 'Hide';
+          if (aiPerplexityAdvancedContent) {
+            aiPerplexityAdvancedContent.style.display = isOpen ? 'none' : 'block';
+          }
+        });
+      }
+
+      [aiPerplexityPreset, aiPerplexityMaxSteps, aiPerplexityReasoning, aiPerplexityInstructions, aiPerplexityMaxOutputTokens, aiPerplexityStore].forEach((field) => {
+        if (!field) return;
+        const eventName = field.type === 'checkbox' ? 'change' : 'input';
+        field.addEventListener(eventName, persistPerplexityAdvancedSettings);
       });
 
       // Custom server preset buttons

@@ -100,6 +100,7 @@ class APIManager {
         this.currentProvider = this.getStoredProvider() || 'openai';
         this.currentApiKey = this.getStoredApiKey() || '';
         this.currentModels = {};
+        this.perplexityAdvancedOptions = this.getStoredPerplexityAdvancedOptions();
 
         // Defaults for auto-continuation; can be overridden per call
         this.defaults = {
@@ -195,6 +196,79 @@ class APIManager {
         this.currentModels[p] = model;
         localStorage.setItem('ai-model-' + p, model);
         sessionStorage.setItem('ai_model_' + p, model);
+    }
+
+    getPerplexityAdvancedOptions() {
+        if (this.perplexityAdvancedOptions && Object.keys(this.perplexityAdvancedOptions).length) {
+            return this.perplexityAdvancedOptions;
+        }
+
+        this.perplexityAdvancedOptions = this.getStoredPerplexityAdvancedOptions();
+        return this.perplexityAdvancedOptions;
+    }
+
+    setPerplexityAdvancedOptions(options = {}) {
+        const normalized = this._normalizePerplexityAdvancedOptions(options);
+        this.perplexityAdvancedOptions = normalized;
+        localStorage.setItem('ai-perplexity-advanced', JSON.stringify(normalized));
+        sessionStorage.setItem('ai_perplexity_advanced', JSON.stringify(normalized));
+        return normalized;
+    }
+
+    getStoredPerplexityAdvancedOptions() {
+        const raw = localStorage.getItem('ai-perplexity-advanced') || sessionStorage.getItem('ai_perplexity_advanced');
+        if (!raw) return {};
+
+        try {
+            const parsed = JSON.parse(raw);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (error) {
+            console.warn('Failed to parse stored Perplexity advanced options:', error);
+            return {};
+        }
+    }
+
+    _normalizePerplexityAdvancedOptions(options = {}) {
+        const candidate = options.perplexityAgent || options.perplexityOptions || options || {};
+        const normalized = {};
+
+        if (candidate.preset !== undefined && candidate.preset !== null && String(candidate.preset).trim() !== '') {
+            normalized.preset = String(candidate.preset).trim();
+        }
+
+        if (candidate.max_steps !== undefined && candidate.max_steps !== null && candidate.max_steps !== '') {
+            normalized.max_steps = Number(candidate.max_steps);
+        }
+
+        if (candidate.instructions !== undefined && candidate.instructions !== null && String(candidate.instructions).trim() !== '') {
+            normalized.instructions = String(candidate.instructions).trim();
+        }
+
+        if (candidate.language_preference !== undefined && candidate.language_preference !== null && String(candidate.language_preference).trim() !== '') {
+            normalized.language_preference = String(candidate.language_preference).trim();
+        }
+
+        if (candidate.previous_response_id !== undefined && candidate.previous_response_id !== null && String(candidate.previous_response_id).trim() !== '') {
+            normalized.previous_response_id = String(candidate.previous_response_id).trim();
+        }
+
+        if (candidate.store !== undefined && candidate.store !== null) {
+            normalized.store = Boolean(candidate.store);
+        }
+
+        if (candidate.reasoning !== undefined && candidate.reasoning !== null && candidate.reasoning !== 'none') {
+            normalized.reasoning = typeof candidate.reasoning === 'string' ? { effort: candidate.reasoning } : candidate.reasoning;
+        }
+
+        if (Array.isArray(candidate.tools) && candidate.tools.length > 0) {
+            normalized.tools = candidate.tools;
+        }
+
+        if (candidate.max_output_tokens !== undefined && candidate.max_output_tokens !== null && candidate.max_output_tokens !== '') {
+            normalized.max_output_tokens = Number(candidate.max_output_tokens);
+        }
+
+        return normalized;
     }
 
     // Storage helpers
@@ -578,6 +652,21 @@ class APIManager {
         // Merge defaults
         options = { ...this.defaults, ...options };
 
+        if (provider === 'perplexity') {
+            const storedAdvanced = this.getPerplexityAdvancedOptions();
+            const callAdvanced = options.perplexityAgent || options.perplexityOptions || {};
+
+            if (Object.keys(storedAdvanced).length || Object.keys(callAdvanced).length) {
+                options = {
+                    ...options,
+                    perplexityAgent: {
+                        ...storedAdvanced,
+                        ...callAdvanced
+                    }
+                };
+            }
+        }
+
         // If fullStoryMode enabled, override continuation flags to avoid nested loops
         if (options.fullStoryMode) {
             options.autoContinue = false; // we'll manage loops manually
@@ -591,11 +680,13 @@ class APIManager {
             case 'deepseek':
             case 'grok':
             case 'mistral':
-            case 'perplexity':
             case 'groq':
             case 'cerebras':
             case 'custom': // Custom servers use OpenAI-compatible API
                 baseCall = (msgs, opts) => this._makeOpenAIStyleRequest(config, apiKey, model, msgs, opts);
+                break;
+            case 'perplexity':
+                baseCall = (msgs, opts) => this._makePerplexityAgentRequest(config, apiKey, model, msgs, opts);
                 break;
             case 'anthropic':
                 baseCall = (msgs, opts) => this._makeAnthropicRequest(config, apiKey, model, msgs, opts);
@@ -735,6 +826,131 @@ class APIManager {
             options,
             isInitiallyTruncated,
             reRequest: (msgs, opts) => this._makeOpenAIStyleRequest(config, apiKey, model, msgs, opts)
+        });
+    }
+
+    _applyPerplexityAgentOptions(requestBody, options = {}) {
+        const agentOptions = options.perplexityAgent || options.perplexityOptions || {};
+
+        if (agentOptions.preset !== undefined) requestBody.preset = agentOptions.preset;
+        if (agentOptions.max_steps !== undefined) requestBody.max_steps = agentOptions.max_steps;
+        if (agentOptions.instructions !== undefined) requestBody.instructions = agentOptions.instructions;
+        if (agentOptions.language_preference !== undefined) requestBody.language_preference = agentOptions.language_preference;
+        if (agentOptions.previous_response_id !== undefined) requestBody.previous_response_id = agentOptions.previous_response_id;
+        if (agentOptions.store !== undefined) requestBody.store = agentOptions.store;
+
+        if (agentOptions.reasoning !== undefined) {
+            requestBody.reasoning = agentOptions.reasoning;
+        }
+
+        if (Array.isArray(agentOptions.tools) && agentOptions.tools.length > 0) {
+            requestBody.tools = agentOptions.tools;
+        }
+
+        if (agentOptions.max_output_tokens !== undefined) {
+            requestBody.max_output_tokens = agentOptions.max_output_tokens;
+        }
+
+        return requestBody;
+    }
+
+    async _makePerplexityAgentRequest(config, apiKey, model, messages, options) {
+        const requestMessages = Array.isArray(messages) ? messages : [{ role: 'user', content: String(messages ?? '') }];
+
+        const input = requestMessages
+            .map(message => {
+                const content = typeof message.content === 'string'
+                    ? message.content
+                    : Array.isArray(message.content)
+                        ? message.content
+                            .map(part => typeof part === 'string' ? part : part?.text || '')
+                            .join('\n')
+                        : '';
+
+                return content ? `${message.role || 'user'}: ${content}` : '';
+            })
+            .filter(Boolean)
+            .join('\n\n');
+
+        const requestBody = {
+            ...options.extraParams,
+            model: model || 'sonar',
+            input: input || 'Please respond.',
+            stream: options.extraParams?.stream ?? false
+        };
+
+        if (options.maxTokens) {
+            requestBody.max_output_tokens = options.maxTokens;
+        }
+
+        if (options.temperature !== undefined) {
+            requestBody.temperature = options.temperature;
+        }
+
+        if (options.top_p !== undefined) {
+            requestBody.top_p = options.top_p;
+        }
+
+        this._applyPerplexityAgentOptions(requestBody, options);
+
+        const response = await fetch(config.baseURL + '/v1/agent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + apiKey
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            let error;
+            try {
+                error = await response.json();
+            } catch (jsonError) {
+                console.warn('Failed to parse Perplexity Agent error response as JSON:', jsonError);
+                error = { error: { message: 'Unknown error' } };
+            }
+            throw new Error(error.error?.message || error.message || 'Perplexity Agent request failed: ' + response.status);
+        }
+
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonError) {
+            console.error('Failed to parse Perplexity Agent response as JSON:', jsonError);
+            throw new Error('Invalid JSON response from Perplexity Agent');
+        }
+
+        let content = '';
+        if (Array.isArray(data?.output)) {
+            content = data.output
+                .map(item => {
+                    if (item?.type === 'message' && Array.isArray(item.content)) {
+                        return item.content
+                            .map(part => typeof part === 'string' ? part : part?.text || '')
+                            .join('');
+                    }
+                    return typeof item?.text === 'string' ? item.text : '';
+                })
+                .filter(Boolean)
+                .join('\n\n');
+        }
+
+        if (!content) {
+            content = data?.answer || data?.content || data?.text || data?.message || '';
+        }
+
+        content = this._postProcess(content, options);
+        const status = data?.status;
+        const isInitiallyTruncated = status === 'incomplete' || false;
+
+        return await this._finalizeWithContinuation({
+            content,
+            baseMessages: messages,
+            adjustedMessages: messages,
+            options,
+            isInitiallyTruncated,
+            reRequest: (msgs, opts) => this._makePerplexityAgentRequest(config, apiKey, model, msgs, opts)
         });
     }
 
@@ -986,42 +1202,10 @@ class APIManager {
     }
 
     async _listPerplexityModels(config, apiKey) {
-        // Perplexity is OpenAI-compatible but doesn't have a /models endpoint yet
-        // Try to query it anyway to validate the API key, fall back to static list
-        const headers = {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + apiKey
-        };
-
-        let apiAvailable = false;
-        try {
-            const response = await fetch(config.baseURL + '/models', { headers });
-            if (response.ok) {
-                // If they've added the endpoint, use it
-                const data = await response.json();
-                if (Array.isArray(data?.data)) {
-                    const ids = data.data.map(m => m?.id).filter(Boolean);
-                    if (ids.length > 0) {
-                        return this._categorizeAndFlatten(ids);
-                    }
-                }
-                apiAvailable = true;
-            } else if (response.status === 401) {
-                throw new Error('Invalid API key');
-            } else if (response.status === 404) {
-                // Endpoint doesn't exist yet, use static list (expected)
-                apiAvailable = true; // Key is likely valid, endpoint just doesn't exist
-            }
-        } catch (e) {
-            // If it's an auth error, propagate it
-            if (e.message === 'Invalid API key') {
-                throw e;
-            }
-            // Otherwise, network error - will use static list
-        }
-
-        // Return static list of Perplexity models
-        // Based on: https://docs.perplexity.ai/getting-started/models
+        // Perplexity's model list is not reliably accessible from browser clients because the
+        // endpoint is blocked by CORS in local development and often absent in production.
+        // Keep the user-facing model list predictable and stable by returning the documented
+        // Sonar family options directly instead of forcing a browser fetch to /models.
         const modelIds = [
             'sonar',
             'sonar-pro',
@@ -1030,7 +1214,6 @@ class APIManager {
             'sonar-deep-research'
         ];
 
-        // Use the standard categorization function
         return this._categorizeAndFlatten(modelIds);
     }
 
