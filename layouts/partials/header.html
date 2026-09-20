@@ -70,8 +70,14 @@
           <div class="main-nav-desktop">
             {{- range .Site.Menus.main }}
             {{- $current := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+            {{- $image := .Params.image }}
             <a href="{{ .URL | relLangURL }}" class="nav-item" {{- if $current }} aria-current="page" {{- end }}>
+              {{- if $image }}
+              <img src="{{ $image }}" alt="{{ .Name }}" title="{{ .Name }}" class="nav-item-logo" loading="lazy"
+                decoding="async">
+              {{- else }}
               {{ .Name }}
+              {{- end }}
             </a>
             {{- end }}
           </div>
@@ -85,8 +91,14 @@
           <div class="main-nav-mobile-dropdown" id="mainNavDropdown">
             {{- range .Site.Menus.main }}
             {{- $current := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+            {{- $image := .Params.image }}
             <a href="{{ .URL | relLangURL }}" class="mobile-nav-item" {{- if $current }} aria-current="page" {{- end }}>
+              {{- if $image }}
+              <img src="{{ $image }}" alt="{{ .Name }}" title="{{ .Name }}" class="mobile-nav-item-logo" loading="lazy"
+                decoding="async">
+              {{- else }}
               {{ .Name }}
+              {{- end }}
             </a>
             {{- end }}
           </div>

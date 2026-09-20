@@ -8,12 +8,12 @@ tags: ["bookstack", "documentation", "wiki", "self-hosted", "docker-compose", "p
 keywords: ["bookstack docker", "self-hosted wiki", "documentation platform", "knowledge base docker", "bookstack compose"]
 slug: "bookstack"
 draft: false
-images: ["https://w7.pngwing.com/pngs/70/626/png-transparent-bookstack-logo-tech-companies.png"]
+images: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/330px-BookStack_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"]
 seo_title: "BookStack - Self-Hosted Documentation Wiki with Docker"
 seo_description: "Set up BookStack, an open-source documentation and wiki platform, using Docker. Create and manage knowledge bases with ease in a self-hosted environment."
 seo_keywords: ["bookstack docker", "self-hosted wiki", "documentation platform", "knowledge base docker", "bookstack compose", "docker documentation wiki", "self-hosted cms", "open-source wiki", "docker knowledge management"]
 schemaItemType: "WebPage"
-featured_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/230px-BookStack_logo.svg.png"
+featured_image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/BookStack_logo.svg/330px-BookStack_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
 ---
 
 ## BookStack Docker Compose

@@ -10,6 +10,8 @@ enableRSS = true
 enableSitemap = true
 pagination.pagerSize  = 30
 
+ignoreFiles = ['🥛']
+
 # Enhanced sitemap configuration
 [sitemap]
   changefreq = "weekly"
@@ -89,6 +91,13 @@ ignoreLogs = ['warning-goldmark-raw-html']
       logoHomeLink = "/"
 
   # Create  Header Menu
+  [[menu.main]]
+    identifier = "bb-shuffle"
+    name       = "B-B-Shuffle"
+    url        = "http://bb-shuffle.4n6post.com/"
+    [menu.main.params]
+      image = "https://bb-shuffle.4n6post.com/shared/img/bb-logo-transparent-w.png"
+
   [[menu.main]]
     identifier = "ai-tools"
     name       = "AI Hub"

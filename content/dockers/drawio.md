@@ -11,7 +11,7 @@ draft: false
 seo_title: "Draw.io - Free Diagram & Flowchart Editor"
 seo_description: "Draw.io (diagrams.net) is a free, open-source diagramming tool for flowcharts, UML, network diagrams, and more. Self-hosted alternative to Visio and Lucidchart."
 canonical: "/dockers/drawio/"
-featured_image: "https://fitsmallbusiness.com/wp-content/uploads/2019/06/draw.io_.png"
+featured_image: "https://drawio-app.com/wp-content/uploads/2024/03/drawio_logo_RGB_dark_medium.svg"
 ---
 
 Draw.io is a web-based diagramming tool that allows users to create flowcharts, UML diagrams, and various other types of visual representations. It is designed for collaboration and can be used for prototyping, design, and visualization tasks.

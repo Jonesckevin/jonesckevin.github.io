@@ -29,7 +29,7 @@ hideDescriptions: false
 showAllDescendants: false
 
 # Featured Image
-featured_image: "https://www.picoctf.org/img/logos/picoctf-logo-horizontal-white.svg"
+featured_image: "https://cylabacademy.org/img/logos/cylab_shield.svg"
 
 # Schema Configuration
 schemaType: true

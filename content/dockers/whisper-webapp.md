@@ -56,20 +56,24 @@ services:
         start_period: 60s
 ```
 
+## Docker Run
 
-## Portainer Stack
+### GPU
 
-If you use Portainer, and do not have a GPU, you can utilize CPU with degraded performance. 
-
-> ⚠️ Uses Port 8000 by default. If you are already using it, you will get an error.
-
-> Adjust the `WHISPERPORT` with a new Environment PORT to help avoid port conflicts.
-
-**Portainer GitHub Connection:**
-
-Label|Value
----:|---
-Name:| whisper-webapp
-Repository URL | https://github.com/Jonesckevin/whisper-webapp.git
-Repository reference | \<You can leave blank>
-Compose path | docker-compose.cpu.yml
+```bash
+# GPU Version
+docker run -d \
+  --name whisper-webapp \
+  -p 8000:5000 \
+  -v "$(pwd)/data/uploads:/data/uploads" \
+  -v "$(pwd)/data:/data/db" \
+  -v "$(pwd)/data/models:/root/.cache/whisper" \
+  -e NVIDIA_VISIBLE_DEVICES=all \
+  -e CUDA_VISIBLE_DEVICES=0 \
+  -e FLASK_ENV=production \
+  -e MAX_UPLOAD_SIZE_GB=5 \
+  -e PRELOAD_WHISPER_MODELS=false \
+  --gpus '"device=0"' \
+  --restart unless-stopped \
+  jonesckevin/whisper-webapp:gpu
+```

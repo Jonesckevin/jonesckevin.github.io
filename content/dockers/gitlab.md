@@ -11,7 +11,7 @@ draft: false
 seo_title: "GitLab - Complete DevOps Platform"
 seo_description: "GitLab is a comprehensive DevOps platform with Git repository management, CI/CD pipelines, issue tracking, and project management. Self-host your complete development workflow with Docker."
 canonical: "/dockers/gitlab/"
-featured_image: "https://gitlab-org.gitlab.io/gitlab-ui/9ec6a4bb3cb949a057fe.svg"
+featured_image: "https://res.cloudinary.com/about-gitlab-com/image/upload/v1758203875/gs4c8p8opsgvflgkswz9.svg"
 ---
 
 GitLab is a web-based DevOps lifecycle tool that provides a Git repository manager with features like issue tracking, continuous integration/continuous deployment (CI/CD), and more. It is designed to facilitate collaboration among developers and teams, offering a comprehensive platform for software development, project management, and version control.

@@ -8,12 +8,12 @@ tags: ["backdoors and breaches", "cybersecurity game", "card game", "incident re
 keywords: ["backdoors and breaches docker", "cybersecurity card game", "incident response training", "security game", "infosec training"]
 slug: "backdoors"
 draft: false
-images: ["https://raw.githubusercontent.com/BackdoorsAndBreaches/BackdoorsAndBreaches/master/images/logo.png"]
+images: ["https://www.blackhillsinfosec.com/uploads/media/backdoors-breaches/4e2ea65fa9e24f6786c5ea0801d84bfc-4f81d979f7c7447bb6ac14d002455df9.png"]
 seo_title: "Backdoors & Breaches - Cybersecurity Card Game in Docker"
 seo_description: "Set up Backdoors & Breaches, a cybersecurity card game for incident response training, using Docker. Engage in hands-on security learning through gameplay."
 seo_keywords: ["backdoors and breaches docker", "cybersecurity card game", "incident response training", "security game", "infosec training", "docker security game", "cybersecurity training game"]
 schemaItemType: "WebPage"
-featured_image: "https://www.blackhillsinfosec.com/wp-content/uploads/2020/12/Resized-BB.png"
+featured_image: "https://www.blackhillsinfosec.com/uploads/media/backdoors-breaches/4e2ea65fa9e24f6786c5ea0801d84bfc-4f81d979f7c7447bb6ac14d002455df9.png"
 ---
 
 ## Portainer Stack

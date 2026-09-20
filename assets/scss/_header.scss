@@ -183,6 +183,33 @@
   }
 }
 
+/* Menu entries rendered as an image instead of text (menu params.image) */
+.nav-item-logo,
+.mobile-nav-item-logo {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  border: 0;
+}
+
+.nav-item-logo {
+  height: auto;
+  max-width: 160px;
+  border: 0;
+}
+
+.nav-item:hover .nav-item-logo,
+.nav-item[aria-current="page"] .nav-item-logo {
+  transform: scale(1.04);
+}
+
+.mobile-nav-item-logo {
+  height: 30px;
+  max-width: 70%;
+}
+
 /* Mobile Navigation Button */
 .main-nav-mobile-toggle {
   display: none;

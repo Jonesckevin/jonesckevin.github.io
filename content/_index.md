@@ -1,6 +1,6 @@
 ---
 # Page Configuration
-title: "4n6Post Artifact, CTF Write ups and AI Tools"
+title: "DFIR Artifact, CTF Write-ups, Dockers, and AI Tools"
 description: "Comprehensive cyber security resource covering digital forensics artifacts, CTF writeups, useful AI tools, and Docker container setups. Expert analysis for DFIR professionals and enthusiasts."
 type: "home"
 layout: "home"
