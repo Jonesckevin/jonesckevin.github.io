@@ -91,10 +91,25 @@ ignoreLogs = ['warning-goldmark-raw-html']
       logoHomeLink = "/"
 
   # Create  Header Menu
+  # NOTE: menu entries with [menu.main.params].image render as a logo. Consecutive logo
+  # entries are stacked vertically in one header slot, at the position given by their
+  # weight (Hugo sorts by weight, then by name - not by the order listed here).
+  # image must be a root-relative path (/images/foo.png) or a full URL - a bare
+  # relative path (images/foo.png) only resolves on the site root.
+
+  [[menu.main]]
+    identifier = "stitchee"
+    name       = "Stitchee.ca"
+    url        = "https://stitchee.ca/"
+    weight     = 43
+    [menu.main.params]
+      image = "/images/stitchee-logo-w.png"
+
   [[menu.main]]
     identifier = "bb-shuffle"
     name       = "B-B-Shuffle"
-    url        = "http://bb-shuffle.4n6post.com/"
+    url        = "https://bb-shuffle.4n6post.com/"
+    weight     = 42
     [menu.main.params]
       image = "https://bb-shuffle.4n6post.com/shared/img/bb-logo-transparent-w.png"
 
@@ -102,19 +117,24 @@ ignoreLogs = ['warning-goldmark-raw-html']
     identifier = "ai-tools"
     name       = "AI Hub"
     url        = "/ai-tools/"
+    weight     = 30
   [[menu.main]]
     identifier = "artifacts"
     name       = "Artifacts"
     url        = "/artifacts/"
+    weight     = 40
 #  [[menu.main]]
 #    identifier = "smelling-salts"
 #    name       = "Smelling Salts"
 #    url        = "/smelling-salts"
+#    weight     = 70
   [[menu.main]]
     identifier = "posts"
     name       = "CTF Post"
     url        = "/writeups/"
+    weight     = 50
   [[menu.main]]
     identifier = "docker"
     name       = "Dockers"
     url        = "/dockers/"
+    weight     = 60

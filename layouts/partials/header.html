@@ -67,18 +67,31 @@
       <div class="header-center">
         <nav class="header-main-nav">
           {{- if .Site.Menus.main }}
+          {{- /* Render the menu in menu order. Consecutive entries that have
+                 [menu.main.params].image are wrapped in a vertical stack, so several
+                 project logos share one header slot at whatever position their menu
+                 weight places them. */ -}}
+          {{- $items := .Site.Menus.main }}
           <div class="main-nav-desktop">
-            {{- range .Site.Menus.main }}
-            {{- $current := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
-            {{- $image := .Params.image }}
-            <a href="{{ .URL | relLangURL }}" class="nav-item" {{- if $current }} aria-current="page" {{- end }}>
-              {{- if $image }}
-              <img src="{{ $image }}" alt="{{ .Name }}" title="{{ .Name }}" class="nav-item-logo" loading="lazy"
-                decoding="async">
-              {{- else }}
-              {{ .Name }}
-              {{- end }}
+            {{- range $i, $item := $items }}
+            {{- $image := $item.Params.image }}
+            {{- $current := or ($.IsMenuCurrent "main" $item) ($.HasMenuCurrent "main" $item) }}
+            {{- if $image }}
+            {{- $prevIsLogo := false }}
+            {{- if gt $i 0 }}{{ $prevIsLogo = (index $items (sub $i 1)).Params.image }}{{ end }}
+            {{- if not $prevIsLogo }}<div class="main-nav-logo-stack">{{ end }}
+            <a href="{{ $item.URL | relLangURL }}" class="nav-item nav-item--logo" {{- if $current }} aria-current="page" {{- end }}>
+              <img src="{{ $image }}" alt="{{ $item.Name }}" title="{{ $item.Name }}" class="nav-item-logo"
+                loading="lazy" decoding="async">
             </a>
+            {{- $nextIsLogo := false }}
+            {{- if lt (add $i 1) (len $items) }}{{ $nextIsLogo = (index $items (add $i 1)).Params.image }}{{ end }}
+            {{- if not $nextIsLogo }}</div>{{ end }}
+            {{- else }}
+            <a href="{{ $item.URL | relLangURL }}" class="nav-item" {{- if $current }} aria-current="page" {{- end }}>
+              {{ $item.Name }}
+            </a>
+            {{- end }}
             {{- end }}
           </div>
           <button class="main-nav-mobile-toggle" id="mainNavToggle" aria-label="Main Navigation">
