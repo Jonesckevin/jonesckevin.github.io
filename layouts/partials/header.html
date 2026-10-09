@@ -67,31 +67,12 @@
       <div class="header-center">
         <nav class="header-main-nav">
           {{- if .Site.Menus.main }}
-          {{- /* Render the menu in menu order. Consecutive entries that have
-                 [menu.main.params].image are wrapped in a vertical stack, so several
-                 project logos share one header slot at whatever position their menu
-                 weight places them. */ -}}
-          {{- $items := .Site.Menus.main }}
           <div class="main-nav-desktop">
-            {{- range $i, $item := $items }}
-            {{- $image := $item.Params.image }}
-            {{- $current := or ($.IsMenuCurrent "main" $item) ($.HasMenuCurrent "main" $item) }}
-            {{- if $image }}
-            {{- $prevIsLogo := false }}
-            {{- if gt $i 0 }}{{ $prevIsLogo = (index $items (sub $i 1)).Params.image }}{{ end }}
-            {{- if not $prevIsLogo }}<div class="main-nav-logo-stack">{{ end }}
-            <a href="{{ $item.URL | relLangURL }}" class="nav-item nav-item--logo" {{- if $current }} aria-current="page" {{- end }}>
-              <img src="{{ $image }}" alt="{{ $item.Name }}" title="{{ $item.Name }}" class="nav-item-logo"
-                loading="lazy" decoding="async">
+            {{- range .Site.Menus.main }}
+            {{- $current := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+            <a href="{{ .URL | relLangURL }}" class="nav-item" {{- if $current }} aria-current="page" {{- end }}>
+              {{ .Name }}
             </a>
-            {{- $nextIsLogo := false }}
-            {{- if lt (add $i 1) (len $items) }}{{ $nextIsLogo = (index $items (add $i 1)).Params.image }}{{ end }}
-            {{- if not $nextIsLogo }}</div>{{ end }}
-            {{- else }}
-            <a href="{{ $item.URL | relLangURL }}" class="nav-item" {{- if $current }} aria-current="page" {{- end }}>
-              {{ $item.Name }}
-            </a>
-            {{- end }}
             {{- end }}
           </div>
           <button class="main-nav-mobile-toggle" id="mainNavToggle" aria-label="Main Navigation">
@@ -104,14 +85,8 @@
           <div class="main-nav-mobile-dropdown" id="mainNavDropdown">
             {{- range .Site.Menus.main }}
             {{- $current := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
-            {{- $image := .Params.image }}
             <a href="{{ .URL | relLangURL }}" class="mobile-nav-item" {{- if $current }} aria-current="page" {{- end }}>
-              {{- if $image }}
-              <img src="{{ $image }}" alt="{{ .Name }}" title="{{ .Name }}" class="mobile-nav-item-logo" loading="lazy"
-                decoding="async">
-              {{- else }}
               {{ .Name }}
-              {{- end }}
             </a>
             {{- end }}
           </div>
@@ -146,9 +121,8 @@
                   <!-- Help Section (Left on wide screens) - GIF only -->
                   <div class="ai-help-section" id="ai-help-section" style="display: none;">
                     <div class="ai-help-content">
-                      <p class="ai-help-title">How to Use AI Tools</p>
-                      <img src="/images/help/ai-tool-help.webp" alt="AI Tools Tutorial" class="ai-help-gif"
-                        loading="lazy" decoding="async">
+                      <h4>How to Use AI Tools</h4>
+                      <img src="/images/help/ai-tool-help.gif" alt="AI Tools Tutorial" class="ai-help-gif">
                     </div>
                   </div>
                   <!-- Settings Section (Right on wide screens) -->
@@ -213,19 +187,30 @@
                       <div id="ai-perplexity-advanced-content" style="display: none;">
                         <label for="ai-perplexity-preset">Preset</label>
                         <select id="ai-perplexity-preset">
-                          <option value="">Default</option>
-                          <option value="sonar">sonar</option>
-                          <option value="sonar-pro">sonar-pro</option>
-                          <option value="sonar-deep-research">sonar-deep-research</option>
+                          <option value="">Default (use selected model)</option>
+                          <option value="fast">Fast - quick lookup</option>
+                          <option value="low">Low - everyday research</option>
+                          <option value="medium">Medium - multi-source research</option>
+                          <option value="high">High - exhaustive analysis</option>
+                          <option value="xhigh">XHigh - open-ended agentic work</option>
                         </select>
-                        <label for="ai-perplexity-max-steps">Max Steps</label>
-                        <input type="number" id="ai-perplexity-max-steps" min="1" max="10" step="1" placeholder="3">
+                        <small class="ai-help">A preset selects its own model and tool budget, so it takes
+                          priority over the model chosen above.</small>
+                        <label for="ai-perplexity-max-tool-calls">Max Tool Calls</label>
+                        <input type="number" id="ai-perplexity-max-tool-calls" min="1" max="50" step="1" placeholder="Provider default">
                         <label for="ai-perplexity-reasoning">Reasoning</label>
                         <select id="ai-perplexity-reasoning">
                           <option value="">Default</option>
                           <option value="low">Low</option>
                           <option value="medium">Medium</option>
                           <option value="high">High</option>
+                        </select>
+                        <label for="ai-perplexity-service-tier">Service Tier</label>
+                        <select id="ai-perplexity-service-tier">
+                          <option value="">Default</option>
+                          <option value="auto">Auto</option>
+                          <option value="flex">Flex - 0.5x price, best effort</option>
+                          <option value="priority">Priority - 2x price, faster</option>
                         </select>
                         <label for="ai-perplexity-instructions">Instructions</label>
                         <textarea id="ai-perplexity-instructions" rows="3" placeholder="Optional instructions for the agent"></textarea>
@@ -514,8 +499,9 @@
     const aiPerplexityAdvancedToggle = document.getElementById('ai-perplexity-advanced-toggle');
     const aiPerplexityAdvancedContent = document.getElementById('ai-perplexity-advanced-content');
     const aiPerplexityPreset = document.getElementById('ai-perplexity-preset');
-    const aiPerplexityMaxSteps = document.getElementById('ai-perplexity-max-steps');
+    const aiPerplexityMaxToolCalls = document.getElementById('ai-perplexity-max-tool-calls');
     const aiPerplexityReasoning = document.getElementById('ai-perplexity-reasoning');
+    const aiPerplexityServiceTier = document.getElementById('ai-perplexity-service-tier');
     const aiPerplexityInstructions = document.getElementById('ai-perplexity-instructions');
     const aiPerplexityMaxOutputTokens = document.getElementById('ai-perplexity-max-output-tokens');
     const aiPerplexityStore = document.getElementById('ai-perplexity-store');
@@ -557,8 +543,9 @@
     function getPerplexityAdvancedFields() {
       const payload = {};
       if (aiPerplexityPreset && aiPerplexityPreset.value) payload.preset = aiPerplexityPreset.value;
-      if (aiPerplexityMaxSteps && aiPerplexityMaxSteps.value !== '') payload.max_steps = Number(aiPerplexityMaxSteps.value);
+      if (aiPerplexityMaxToolCalls && aiPerplexityMaxToolCalls.value !== '') payload.max_tool_calls = Number(aiPerplexityMaxToolCalls.value);
       if (aiPerplexityReasoning && aiPerplexityReasoning.value) payload.reasoning = { effort: aiPerplexityReasoning.value };
+      if (aiPerplexityServiceTier && aiPerplexityServiceTier.value) payload.service_tier = aiPerplexityServiceTier.value;
       if (aiPerplexityInstructions && aiPerplexityInstructions.value.trim()) payload.instructions = aiPerplexityInstructions.value.trim();
       if (aiPerplexityMaxOutputTokens && aiPerplexityMaxOutputTokens.value !== '') payload.max_output_tokens = Number(aiPerplexityMaxOutputTokens.value);
       if (aiPerplexityStore && aiPerplexityStore.checked) payload.store = true;
@@ -571,8 +558,9 @@
         : {};
 
       if (aiPerplexityPreset) aiPerplexityPreset.value = stored.preset || '';
-      if (aiPerplexityMaxSteps) aiPerplexityMaxSteps.value = stored.max_steps ?? '';
+      if (aiPerplexityMaxToolCalls) aiPerplexityMaxToolCalls.value = stored.max_tool_calls ?? '';
       if (aiPerplexityReasoning) aiPerplexityReasoning.value = stored.reasoning?.effort || '';
+      if (aiPerplexityServiceTier) aiPerplexityServiceTier.value = stored.service_tier || '';
       if (aiPerplexityInstructions) aiPerplexityInstructions.value = stored.instructions || '';
       if (aiPerplexityMaxOutputTokens) aiPerplexityMaxOutputTokens.value = stored.max_output_tokens ?? '';
       if (aiPerplexityStore) aiPerplexityStore.checked = Boolean(stored.store);
@@ -1095,7 +1083,7 @@
         });
       }
 
-      [aiPerplexityPreset, aiPerplexityMaxSteps, aiPerplexityReasoning, aiPerplexityInstructions, aiPerplexityMaxOutputTokens, aiPerplexityStore].forEach((field) => {
+      [aiPerplexityPreset, aiPerplexityMaxToolCalls, aiPerplexityReasoning, aiPerplexityServiceTier, aiPerplexityInstructions, aiPerplexityMaxOutputTokens, aiPerplexityStore].forEach((field) => {
         if (!field) return;
         const eventName = field.type === 'checkbox' ? 'change' : 'input';
         field.addEventListener(eventName, persistPerplexityAdvancedSettings);

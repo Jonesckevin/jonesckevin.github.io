@@ -66,7 +66,9 @@ class APIManager {
             perplexity: {
                 name: 'Perplexity',
                 baseURL: 'https://api.perplexity.ai',
-                defaultModel: 'sonar',
+                // Agent API model ids are namespaced by upstream provider. Bare "sonar" belongs to the
+                // legacy Sonar API and is rejected by POST /v1/agent.
+                defaultModel: 'perplexity/sonar',
                 keyPattern: /^pplx-[A-Za-z0-9_\-]+$/,
                 requiresKey: true
             },
@@ -188,7 +190,8 @@ class APIManager {
     // Model management
     getModel(provider = null) {
         const p = provider || this.currentProvider;
-        return this.currentModels[p] || this.getProviderConfig(p).defaultModel;
+        const model = this.currentModels[p] || this.getProviderConfig(p).defaultModel;
+        return p === 'perplexity' ? this.resolvePerplexityModel(model) : model;
     }
 
     setModel(model, provider = null) {
@@ -237,15 +240,15 @@ class APIManager {
         }
 
         if (candidate.max_steps !== undefined && candidate.max_steps !== null && candidate.max_steps !== '') {
-            normalized.max_steps = Number(candidate.max_steps);
+            normalized.max_tool_calls = Number(candidate.max_steps);
+        }
+
+        if (candidate.max_tool_calls !== undefined && candidate.max_tool_calls !== null && candidate.max_tool_calls !== '') {
+            normalized.max_tool_calls = Number(candidate.max_tool_calls);
         }
 
         if (candidate.instructions !== undefined && candidate.instructions !== null && String(candidate.instructions).trim() !== '') {
             normalized.instructions = String(candidate.instructions).trim();
-        }
-
-        if (candidate.language_preference !== undefined && candidate.language_preference !== null && String(candidate.language_preference).trim() !== '') {
-            normalized.language_preference = String(candidate.language_preference).trim();
         }
 
         if (candidate.previous_response_id !== undefined && candidate.previous_response_id !== null && String(candidate.previous_response_id).trim() !== '') {
@@ -254,6 +257,10 @@ class APIManager {
 
         if (candidate.store !== undefined && candidate.store !== null) {
             normalized.store = Boolean(candidate.store);
+        }
+
+        if (candidate.service_tier !== undefined && candidate.service_tier !== null && String(candidate.service_tier).trim() !== '') {
+            normalized.service_tier = String(candidate.service_tier).trim();
         }
 
         if (candidate.reasoning !== undefined && candidate.reasoning !== null && candidate.reasoning !== 'none') {
@@ -269,6 +276,100 @@ class APIManager {
         }
 
         return normalized;
+    }
+
+    /**
+     * Model catalog published for Perplexity's Agent API.
+     * Source of truth: https://docs.perplexity.ai/getting-started/models
+     * The Agent API exposes third-party models alongside Perplexity's own, so the IDs are
+     * namespaced by the upstream provider ("anthropic/claude-sonnet-4-6", "perplexity/sonar", ...).
+     */
+    getPerplexityAgentModels() {
+        return [
+            { group: '🔎 Perplexity (grounded search)', id: 'perplexity/sonar' },
+
+            { group: '🧠 OpenAI', id: 'openai/gpt-6.1-sol' },
+            { group: '🧠 OpenAI', id: 'openai/gpt-6-sol' },
+            { group: '🧠 OpenAI', id: 'openai/gpt-6-luna' },
+            { group: '🧠 OpenAI', id: 'openai/gpt-5.6-sol' },
+            { group: '🧠 OpenAI', id: 'openai/gpt-5.6-terra' },
+            { group: '🧠 OpenAI', id: 'openai/gpt-5.6-luna' },
+            { group: '🧠 OpenAI', id: 'openai/gpt-5.5' },
+
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-opus-5-5' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-opus-5' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-opus-4-8' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-sonnet-5-5' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-sonnet-5' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-sonnet-4-6' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-sonnet-4-5' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-haiku-5-5' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-haiku-4-5' },
+            { group: '🎭 Anthropic (Claude)', id: 'anthropic/claude-fable-5' },
+
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3.1-pro-preview' },
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3.8-flash' },
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3.7-flash' },
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3.6-flash' },
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3.5-flash' },
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3.5-flash-lite' },
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3.1-flash-lite' },
+            { group: '✨ Google (Gemini)', id: 'google/gemini-3-flash-preview' },
+
+            { group: '⚡ xAI (Grok)', id: 'xai/grok-4.7' },
+            { group: '⚡ xAI (Grok)', id: 'xai/grok-4.6' },
+            { group: '⚡ xAI (Grok)', id: 'xai/grok-4.5' },
+            { group: '⚡ xAI (Grok)', id: 'xai/grok-4.3' },
+            { group: '⚡ xAI (Grok)', id: 'xai/grok-4.20-reasoning' },
+            { group: '⚡ xAI (Grok)', id: 'xai/grok-4.20-non-reasoning' },
+            { group: '⚡ xAI (Grok)', id: 'xai/grok-4.20-multi-agent' },
+
+            { group: '🌐 Z.AI (GLM)', id: 'perplexity/glm-5.3' },
+            { group: '🌐 Z.AI (GLM)', id: 'perplexity/glm-5.3-flash' },
+
+            { group: '🌙 Moonshot AI (Kimi)', id: 'perplexity/kimi-k3' },
+
+            { group: '🟩 NVIDIA (Nemotron)', id: 'perplexity/nemotron-3-ultra-550b-a55b' }
+        ];
+    }
+
+    /**
+     * Valid presets for the Agent API. A preset selects its own model plus tool budget,
+     * so it replaces `model` rather than stacking with it.
+     */
+    getPerplexityAgentPresets() {
+        return [
+            { id: 'fast', label: 'Fast — quick lookup' },
+            { id: 'low', label: 'Low — everyday research' },
+            { id: 'medium', label: 'Medium — multi-source research' },
+            { id: 'high', label: 'High — exhaustive analysis' },
+            { id: 'xhigh', label: 'XHigh — open-ended agentic work' }
+        ];
+    }
+
+    /**
+     * Normalises any user-facing model value into a valid Agent API model id.
+     * Pre-rename installs stored bare Sonar names ("sonar", "sonar-pro", ...) which the
+     * Agent API rejects, so those are recovered onto a supported model instead of erroring.
+     */
+    resolvePerplexityModel(model) {
+        const fallback = this.getProviderConfig('perplexity').defaultModel;
+        const catalog = this.getPerplexityAgentModels().map(entry => entry.id);
+
+        if (model === undefined || model === null) return fallback;
+
+        const raw = String(model).trim();
+        if (!raw) return fallback;
+
+        // Already a namespaced Agent API id.
+        if (catalog.includes(raw)) return raw;
+
+        // Match on the short id so a bare "gpt-5.6-luna" still resolves correctly.
+        const shortMatch = catalog.find(id => id.split('/').pop() === raw);
+        if (shortMatch) return shortMatch;
+
+        // Legacy Sonar API names (and anything unrecognised) fall back to the default model.
+        return fallback;
     }
 
     // Storage helpers
@@ -634,7 +735,12 @@ class APIManager {
     async makeRequest(messages, options = {}) {
         const provider = options.provider || this.currentProvider;
         const apiKey = options.apiKey || this.currentApiKey;
-        const model = options.model || this.getModel(provider);
+        let model = options.model || this.getModel(provider);
+
+        // Perplexity's Agent API rejects legacy bare Sonar ids; normalise before dispatching.
+        if (provider === 'perplexity') {
+            model = this.resolvePerplexityModel(model);
+        }
 
         const config = this.getProviderConfig(provider);
 
@@ -832,11 +938,17 @@ class APIManager {
     _applyPerplexityAgentOptions(requestBody, options = {}) {
         const agentOptions = options.perplexityAgent || options.perplexityOptions || {};
 
-        if (agentOptions.preset !== undefined) requestBody.preset = agentOptions.preset;
-        if (agentOptions.max_steps !== undefined) requestBody.max_steps = agentOptions.max_steps;
+        if (agentOptions.preset !== undefined && String(agentOptions.preset).trim() !== '') {
+            requestBody.preset = String(agentOptions.preset).trim();
+        }
+        // `max_steps` is not an Agent API parameter; `max_tool_calls` is the documented cap.
+        if (agentOptions.max_tool_calls !== undefined) requestBody.max_tool_calls = Number(agentOptions.max_tool_calls);
         if (agentOptions.instructions !== undefined) requestBody.instructions = agentOptions.instructions;
-        if (agentOptions.language_preference !== undefined) requestBody.language_preference = agentOptions.language_preference;
         if (agentOptions.previous_response_id !== undefined) requestBody.previous_response_id = agentOptions.previous_response_id;
+        if (agentOptions.service_tier !== undefined && agentOptions.service_tier !== null && String(agentOptions.service_tier).trim() !== '') {
+            requestBody.service_tier = String(agentOptions.service_tier).trim();
+        }
+
         if (agentOptions.store !== undefined) requestBody.store = agentOptions.store;
 
         if (agentOptions.reasoning !== undefined) {
@@ -857,30 +969,60 @@ class APIManager {
     async _makePerplexityAgentRequest(config, apiKey, model, messages, options) {
         const requestMessages = Array.isArray(messages) ? messages : [{ role: 'user', content: String(messages ?? '') }];
 
-        const input = requestMessages
-            .map(message => {
-                const content = typeof message.content === 'string'
-                    ? message.content
-                    : Array.isArray(message.content)
-                        ? message.content
-                            .map(part => typeof part === 'string' ? part : part?.text || '')
-                            .join('\n')
-                        : '';
+        const messageText = (message) => {
+            if (typeof message?.content === 'string') return message.content;
+            if (Array.isArray(message?.content)) {
+                return message.content
+                    .map(part => (typeof part === 'string' ? part : part?.text || ''))
+                    .join('\n');
+            }
+            return '';
+        };
 
+        // The Agent API separates a system prompt (`instructions`) from the conversation (`input`),
+        // so system messages are lifted out instead of being flattened into the prompt text.
+        const instructions = requestMessages
+            .filter(message => message?.role === 'system')
+            .map(messageText)
+            .filter(Boolean)
+            .join('\n\n');
+
+        const input = requestMessages
+            .filter(message => message?.role !== 'system')
+            .map(message => {
+                const content = messageText(message);
                 return content ? `${message.role || 'user'}: ${content}` : '';
             })
             .filter(Boolean)
             .join('\n\n');
 
+        const agentOptions = options.perplexityAgent || options.perplexityOptions || {};
+        const preset = agentOptions.preset ? String(agentOptions.preset).trim() : '';
+        const resolvedModel = this.resolvePerplexityModel(model);
+
         const requestBody = {
             ...options.extraParams,
-            model: model || 'sonar',
-            input: input || 'Please respond.',
-            stream: options.extraParams?.stream ?? false
+            input: input || 'Please respond.'
         };
 
-        if (options.maxTokens) {
-            requestBody.max_output_tokens = options.maxTokens;
+        // A preset resolves its own model server-side, so sending an explicit model as well is ambiguous.
+        if (preset) {
+            requestBody.preset = preset;
+        } else {
+            requestBody.model = resolvedModel;
+        }
+
+        if (instructions && agentOptions.instructions === undefined) {
+            requestBody.instructions = instructions;
+        }
+
+        // Tool callers pass snake_case `max_tokens`; the Agent API names it `max_output_tokens`.
+        const maxOutputTokens = agentOptions.max_output_tokens ?? options.maxTokens ?? options.max_tokens;
+        if (maxOutputTokens) {
+            requestBody.max_output_tokens = Number(maxOutputTokens);
+        } else if (!preset && resolvedModel.startsWith('anthropic/')) {
+            // Anthropic models return HTTP 400 when max_output_tokens is omitted.
+            requestBody.max_output_tokens = 8192;
         }
 
         if (options.temperature !== undefined) {
@@ -889,6 +1031,10 @@ class APIManager {
 
         if (options.top_p !== undefined) {
             requestBody.top_p = options.top_p;
+        }
+
+        if (options.extraParams?.stream === true) {
+            requestBody.stream = true;
         }
 
         this._applyPerplexityAgentOptions(requestBody, options);
@@ -921,6 +1067,13 @@ class APIManager {
             throw new Error('Invalid JSON response from Perplexity Agent');
         }
 
+        // The Agent API can report a failed run in a 200 response, so surface the reason instead of
+        // silently returning an empty completion.
+        if (data?.status === 'failed' || data?.error) {
+            const detail = data.error?.message || data.error?.code || data.error;
+            throw new Error(typeof detail === 'string' && detail ? detail : 'Perplexity Agent request failed');
+        }
+
         let content = '';
         if (Array.isArray(data?.output)) {
             content = data.output
@@ -934,6 +1087,10 @@ class APIManager {
                 })
                 .filter(Boolean)
                 .join('\n\n');
+        }
+
+        if (!content && typeof data?.output_text === 'string') {
+            content = data.output_text;
         }
 
         if (!content) {
@@ -1202,19 +1359,31 @@ class APIManager {
     }
 
     async _listPerplexityModels(config, apiKey) {
-        // Perplexity's model list is not reliably accessible from browser clients because the
-        // endpoint is blocked by CORS in local development and often absent in production.
-        // Keep the user-facing model list predictable and stable by returning the documented
-        // Sonar family options directly instead of forcing a browser fetch to /models.
-        const modelIds = [
-            'sonar',
-            'sonar-pro',
-            'sonar-reasoning',
-            'sonar-reasoning-pro',
-            'sonar-deep-research'
-        ];
+        // The Agent API's model list is not reachable from browser clients (the endpoint is blocked by
+        // CORS in local development), so serve the documented catalog directly. This also guarantees
+        // the dropdown only offers namespaced ids that POST /v1/agent actually accepts.
+        const flattened = [];
+        let currentGroup = null;
 
-        return this._categorizeAndFlatten(modelIds);
+        this.getPerplexityAgentModels().forEach(model => {
+            if (model.group !== currentGroup) {
+                flattened.push({
+                    id: `header-${flattened.length}`,
+                    label: model.group,
+                    isHeader: true,
+                    category: model.group
+                });
+                currentGroup = model.group;
+            }
+
+            flattened.push({
+                id: model.id,
+                label: model.id.split('/').pop(),
+                category: model.group
+            });
+        });
+
+        return flattened;
     }
 
     _categorizeAndFlatten(modelIds) {
@@ -1621,6 +1790,18 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.keys(apiManager.providers).forEach(provider => {
         const storedModel = apiManager.getStoredModel(provider);
         if (storedModel) {
+            // Migrate pre-Agent-API Perplexity selections onto supported model ids so upgrading
+            // users are not left pinned to an id the API now rejects.
+            if (provider === 'perplexity') {
+                const migrated = apiManager.resolvePerplexityModel(storedModel);
+                apiManager.currentModels[provider] = migrated;
+                if (migrated !== storedModel) {
+                    localStorage.setItem('ai-model-perplexity', migrated);
+                    console.log('Migrated stored Perplexity model "' + storedModel + '" to "' + migrated + '"');
+                }
+                return;
+            }
+
             apiManager.currentModels[provider] = storedModel;
         }
     });
