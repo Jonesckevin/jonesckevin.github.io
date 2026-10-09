@@ -578,9 +578,186 @@ class APIManager {
         return t.trim();
     }
 
+    // Some models degenerate at the end of a long structured response and re-emit the same block
+    // over and over (e.g. "- **Complexity:** Medium / - **Guidance:** Independent /
+    // - **Consistency:** Occasional" repeating indefinitely). Trim that loop while leaving
+    // legitimate repetition elsewhere in a document alone.
+    _collapseTrailingRepetition(text, options = {}) {
+        if (typeof text !== 'string' || !text) return text;
+
+        const maxUnitLines = options.maxUnitLines ?? 60;
+        const minRepeats = options.minRepeats ?? 3;
+        const minUnitChars = options.minUnitChars ?? 40;
+        const maxResidueLines = options.maxResidueLines ?? 30;
+        const maxPasses = options.maxPasses ?? 8;
+
+        let out = text;
+        for (let pass = 0; pass < maxPasses; pass++) {
+            const sections = this._collapseRepeatedTrailingSections(out);
+            const next = this._collapseTrailingCycle(sections, maxUnitLines, minRepeats, minUnitChars, maxResidueLines);
+            if (next === out) break;
+            out = next;
+        }
+        return out;
+    }
+
+    // A looping model can re-emit the same section over and over with small variations (one copy
+    // carries an extra block, the next does not). Those copies are not byte-identical, so exact
+    // block matching misses them and the section has to be collapsed by its heading instead.
+    _collapseRepeatedTrailingSections(text, options = {}) {
+        if (typeof text !== 'string' || !text) return text;
+        const minSections = options.minSections ?? 2;
+        const lines = text.split('\n');
+
+        const headings = [];
+        for (let i = 0; i < lines.length; i++) {
+            if (/^#{1,6}\s+\S/.test(lines[i].trim())) headings.push(i);
+        }
+        if (headings.length < minSections) return text;
+
+        // Walk backwards over a run of sections sharing the same heading text.
+        const title = lines[headings[headings.length - 1]].trim();
+        let start = headings.length - 1;
+        while (start > 0 && lines[headings[start - 1]].trim() === title) start--;
+
+        const run = headings.slice(start);
+        if (run.length < minSections) return text;
+
+        // Only treat the run as a loop when consecutive bodies are near-duplicates (identical, or
+        // one is a prefix of the other). Legitimately repeated headings hold different content.
+        const bodies = run.map((heading, i) => {
+            const from = heading + 1;
+            const to = i + 1 < run.length ? run[i + 1] : lines.length;
+            return lines.slice(from, to);
+        });
+        for (let i = 1; i < bodies.length; i++) {
+            if (!this._isPrefixRelated(bodies[i - 1], bodies[i])) return text;
+        }
+
+        // Keep the first copy of the section and drop the rest.
+        return lines.slice(0, run[1]).join('\n');
+    }
+
+    // True when two section bodies are equal, or one is a prefix of the other (ignoring blank edges).
+    _isPrefixRelated(a, b) {
+        const trim = (arr) => {
+            let start = 0;
+            let end = arr.length;
+            while (start < end && arr[start].trim() === '') start++;
+            while (end > start && arr[end - 1].trim() === '') end--;
+            return arr.slice(start, end);
+        };
+
+        const x = trim(a || []);
+        const y = trim(b || []);
+        if (x.length === 0 || y.length === 0) return false;
+
+        const short = x.length <= y.length ? x : y;
+        const long = x.length <= y.length ? y : x;
+        return short.every((line, i) => line === long[i]);
+    }
+
+    _collapseTrailingCycle(text, maxUnitLines, minRepeats, minUnitChars, maxResidueLines) {
+        const lines = text.split('\n');
+
+        // Anchor on the last line that actually carries content.
+        let lastContent = lines.length - 1;
+        while (lastContent >= 0 && lines[lastContent].trim() === '') lastContent--;
+        if (lastContent < 0) return text;
+
+        // A looping model usually stops mid-block, leaving a partial copy of the cycle at the very
+        // end (e.g. a lone "### Heading" plus a dangling "**"). That fragment is not itself part of
+        // the cycle, so the run of complete blocks has to be detected just before it.
+        const maxResidue = Math.min(maxResidueLines, lastContent);
+
+        // Search shortest period first so the tightest repeating unit wins.
+        for (let unitLines = 1; unitLines <= maxUnitLines; unitLines++) {
+            let best = null;
+
+            for (let residue = 0; residue <= maxResidue; residue++) {
+                const anchor = lastContent - residue;
+                const unitStart = anchor - unitLines + 1;
+                if (unitStart < 0) break;
+
+                const unit = lines.slice(unitStart, anchor + 1);
+                if (!unit.some(line => line.trim() !== '')) continue;
+
+                const unitText = unit.join('\n');
+                if (unitText.trim().length < minUnitChars) continue;
+
+                let repeats = 1;
+                let cursor = unitStart - unitLines;
+                while (cursor >= 0 && lines.slice(cursor, cursor + unitLines).join('\n') === unitText) {
+                    repeats++;
+                    cursor -= unitLines;
+                }
+
+                if (repeats < (this._isHeadingAnchored(unit) ? 2 : minRepeats)) continue;
+
+                // A periodic run matches at every phase of the period, so choosing the first hit can
+                // slice a cycle in half and leave a dangling heading. Prefer the phase that keeps the
+                // retained copy on a clean section boundary.
+                const score = this._boundaryScore(unit);
+                if (!best || score > best.score) {
+                    best = { unit, unitStart, repeats, score };
+                }
+            }
+
+            if (!best) continue;
+
+            // Keep the first occurrence of the block and drop the duplicated tail copies.
+            const firstStart = best.unitStart - (best.repeats - 1) * unitLines;
+            const trailing = lines.slice(best.unitStart + unitLines);
+            return [
+                ...lines.slice(0, firstStart + unitLines),
+                ...(this._isPartialCycleCopy(best.unit, trailing) ? [] : trailing)
+            ].join('\n');
+        }
+
+        return text;
+    }
+
+    // Two adjacent identical sections are already duplication, so heading-anchored blocks only need
+    // a second copy before we treat the run as a loop. Other blocks keep the stricter threshold.
+    _isHeadingAnchored(unit) {
+        const first = (unit && unit[0]) || '';
+        return /^#{1,6}\s+\S/.test(first.trim());
+    }
+
+    // A retained cycle reads best when it ends on a blank line and starts at a section boundary.
+    _boundaryScore(unit) {
+        const first = unit[0] || '';
+        const last = unit[unit.length - 1] || '';
+        let score = 0;
+        if (last.trim() === '') score += 2;
+        if (first.trim() === '' || /^#{1,6}\s+\S/.test(first.trim())) score += 1;
+        return score;
+    }
+
+    // True when the trailing fragment is only the beginning of another copy of the cycle, which
+    // makes it leftover loop artifact rather than real content worth keeping.
+    _isPartialCycleCopy(unit, trailing) {
+        if (!Array.isArray(trailing) || trailing.length === 0) return false;
+
+        let start = 0;
+        let end = trailing.length;
+        while (start < end && trailing[start].trim() === '') start++;
+        while (end > start && trailing[end - 1].trim() === '') end--;
+
+        const fragment = trailing.slice(start, end);
+        if (fragment.length === 0 || fragment.length > unit.length) return false;
+
+        return fragment.every((line, i) => {
+            const unitLine = unit[i];
+            if (line.trim() === '') return unitLine.trim() === '';
+            return unitLine.startsWith(line);
+        });
+    }
+
     // Common post-processing pipeline for model outputs
     _postProcess(text, options) {
         let out = this._stripThinkingTags(text || '');
+        out = this._collapseTrailingRepetition(out);
         if (options?.storyOnly) out = this._purifyStory(out);
         return out;
     }
@@ -728,7 +905,8 @@ class APIManager {
                 console.warn('ensureCompleteStory tail request failed:', e);
             }
         }
-        return result;
+        // Continuation chunks are appended after post-processing, so guard the assembled result too.
+        return this._collapseTrailingRepetition(result);
     }
 
     // API operations
@@ -840,7 +1018,8 @@ class APIManager {
         if (!this._isCompleteStory(assembled) && this._hasTerminalEnding(assembled) === false) {
             assembled = assembled.trimEnd() + '...'; // indicate unresolved ending
         }
-        return assembled;
+        // Chunks are concatenated here, which is where loops across chunks become visible.
+        return this._collapseTrailingRepetition(assembled);
     }
 
     async _makeOpenAIStyleRequest(config, apiKey, model, messages, options) {

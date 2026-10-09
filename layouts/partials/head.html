@@ -114,7 +114,13 @@
 {{- end}}
 
 <!-- Global AI tooling scripts (ensure header model controls work on non ai-tools pages) -->
-<script src="/shared/components/api-manager.js?v=1763795515" defer></script>
+{{- /* Cache-bust on file modification time. A static token here means browsers keep serving a stale
+       api-manager.js indefinitely, so shipped fixes never reach returning visitors. */ -}}
+{{- $apiManagerVersion := now.Unix -}}
+{{- with os.Stat "static/shared/components/api-manager.js" -}}
+{{- $apiManagerVersion = .ModTime.Unix -}}
+{{- end -}}
+<script src="/shared/components/api-manager.js?v={{ $apiManagerVersion }}" defer></script>
 <script src="/shared/components/utils.js" defer></script>
 <script src="/shared/components/download-manager.js" defer></script>
 <script src="/shared/components/ai-interface.js" defer></script>
