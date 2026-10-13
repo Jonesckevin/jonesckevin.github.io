@@ -5,9 +5,13 @@
 window.utils = {
     // API Key validation
     validateApiKey(key, provider = 'openai') {
+        // Providers that need no cloud key: local Ollama/LM Studio and in-browser WebLLM.
+        if (provider === 'custom' || provider === 'webllm') {
+            return true;
+        }
+
         if (!key || typeof key !== 'string') {
-            // Custom provider doesn't require an API key
-            return provider === 'custom' ? true : false;
+            return false;
         }
 
         const patterns = {
@@ -21,7 +25,8 @@ window.utils = {
             perplexity: /^pplx-[A-Za-z0-9_-]+$/,
             groq: /^gsk_[A-Za-z0-9_-]+$/,
             cerebras: /^[A-Za-z0-9_-]+$/,
-            custom: null // No pattern required - API key is optional
+            custom: null, // No pattern required - API key is optional
+            webllm: null // No pattern required - runs locally
         };
 
         const pattern = patterns[provider];

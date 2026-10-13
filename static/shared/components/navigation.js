@@ -168,6 +168,7 @@ class NavigationComponent {
                                     <div class="ai-field">
                                         <label for="ai-provider">Provider</label>
                                         <select id="ai-provider">
+                                            <option value="webllm">In-Browser (WebLLM / WebGPU)</option>
                                             <option value="openai">OpenAI</option>
                                             <option value="cohere">Cohere</option>
                                             <option value="deepseek">DeepSeek</option>
@@ -282,16 +283,26 @@ class NavigationComponent {
                 gemini: 'Enter your Gemini API key (AIza...)',
                 perplexity: 'Enter your Perplexity API key (pplx-...)',
                 groq: 'Enter your Groq API key (gsk_...)',
-                cerebras: 'Enter your Cerebras API key'
+                cerebras: 'Enter your Cerebras API key',
+                webllm: 'Not required - runs in your browser'
             };
             keyEl.placeholder = placeholders[provider] || 'Enter your API key';
         };
         const resetModelSelect = () => {
             if (!modelEl) return;
-            modelEl.innerHTML = '<option value="">Enter API key to load models…</option>';
+            const provider = providerEl ? providerEl.value : '';
+            if (provider === 'webllm') {
+                modelEl.innerHTML = '<option value="">Open AI settings to list in-browser models…</option>';
+            } else {
+                modelEl.innerHTML = '<option value="">Enter API key to load models…</option>';
+            }
             modelEl.disabled = true;
             const help = document.getElementById('ai-model-help');
-            if (help) help.textContent = 'Models are fetched from the selected provider after validating your API key.';
+            if (help) {
+                help.textContent = provider === 'webllm'
+                    ? 'In-browser models run on your GPU. Nothing downloads until you load one.'
+                    : 'Models are fetched from the selected provider after validating your API key.';
+            }
         };
         const tryLoadModels = async () => {
             if (!window.apiManager || !window.utils || !providerEl || !keyEl || !modelEl) return;

@@ -8,6 +8,81 @@
         return;
     }
 
+// In-browser inference (WebLLM). The runtime and the weights are fetched from a
+// CDN the first time this provider is used, then cached by the browser.
+const WEBLLM_LIB_URL = 'https://esm.run/@mlc-ai/web-llm@0.2.85';
+const WEBLLM_DEFAULT_MODEL = 'SmolLM2-1.7B-Instruct-q4f16_1-MLC';
+const WEBLLM_MOBILE_MODEL = 'SmolLM2-360M-Instruct-q4f16_1-MLC';
+const WEBLLM_CATEGORY_LABELS = {
+    tiny: 'Tiny & fast (smallest download)',
+    balanced: 'Balanced (mid-range GPU)',
+    strong: 'Strong (needs a good GPU)',
+    specialist: 'Specialist (code / maths / reasoning)'
+};
+// Curated from the WebLLM prebuilt catalogue. Every id here is checked against
+// `prebuiltAppConfig.model_list`; the size is the GPU memory the runtime reports
+// (vram_required_MB), which is also roughly the first-run download.
+const WEBLLM_MODELS = [
+    { id: 'SmolLM2-360M-Instruct-q4f16_1-MLC', label: 'SmolLM2 360M - quickest, ~0.4 GB', category: 'tiny' },
+    { id: 'Llama-3.2-1B-Instruct-q4f16_1-MLC', label: 'Llama 3.2 1B - small and capable, ~0.9 GB', category: 'tiny' },
+    { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen 2.5 1.5B - ~1.6 GB', category: 'tiny' },
+    { id: 'Qwen3-1.7B-q4f16_1-MLC', label: 'Qwen 3 1.7B - newest small Qwen, ~2.0 GB', category: 'tiny' },
+    { id: 'SmolLM2-1.7B-Instruct-q4f16_1-MLC', label: 'SmolLM2 1.7B - good all-rounder, ~1.8 GB', category: 'balanced' },
+    { id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC', label: 'Llama 3.2 3B - solid general chat, ~2.3 GB', category: 'balanced' },
+    { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC', label: 'Qwen 2.5 3B - ~2.5 GB', category: 'balanced' },
+    { id: 'gemma-2-2b-it-q4f16_1-MLC', label: 'Gemma 2 2B - Google compact, ~1.9 GB', category: 'balanced' },
+    { id: 'Hermes-3-Llama-3.2-3B-q4f16_1-MLC', label: 'Hermes 3 3B - creative, less filtered, ~2.3 GB', category: 'balanced' },
+    { id: 'Ministral-3-3B-Instruct-2512-BF16-q4f16_1-MLC', label: 'Ministral 3 3B - Mistral compact, ~2.9 GB', category: 'balanced' },
+    { id: 'Phi-4-mini-instruct-q4f16_1-MLC', label: 'Phi 4 Mini - efficient 3.8B, ~3.4 GB', category: 'balanced' },
+    { id: 'Mistral-7B-Instruct-v0.3-q4f16_1-MLC', label: 'Mistral 7B v0.3 - ~4.6 GB', category: 'strong' },
+    { id: 'Llama-3.1-8B-Instruct-q4f16_1-MLC', label: 'Llama 3.1 8B - strong general chat, ~5.0 GB', category: 'strong' },
+    { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC', label: 'Qwen 2.5 7B - ~5.1 GB', category: 'strong' },
+    { id: 'Qwen3-8B-q4f16_1-MLC', label: 'Qwen 3 8B - strongest on this list, ~5.7 GB', category: 'strong' },
+    { id: 'Qwen2.5-Coder-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen 2.5 Coder 1.5B - small coding model, ~1.6 GB', category: 'specialist' },
+    { id: 'Qwen2.5-Coder-7B-Instruct-q4f16_1-MLC', label: 'Qwen 2.5 Coder 7B - coding, ~5.1 GB', category: 'specialist' },
+    { id: 'DeepSeek-R1-Distill-Qwen-7B-q4f16_1-MLC', label: 'DeepSeek R1 Distill 7B - reasoning, ~5.1 GB', category: 'specialist' },
+    { id: 'Qwen2.5-Math-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen 2.5 Math 1.5B - maths, ~1.6 GB', category: 'specialist' }
+];
+
+// Best-effort guess that the adapter the browser handed us is an integrated GPU.
+// Only used to decide whether to surface the "force the discrete GPU" guidance -
+// the browser and OS make the real decision, and a false positive is harmless.
+function looksLikeIntegratedGPU(vendor, description, architecture) {
+    const haystack = ((vendor || '') + ' ' + (description || '') + ' ' + (architecture || '')).toLowerCase();
+    if (!haystack.trim()) return false;
+    // Intel Arc is discrete; everything else Intel in a browser is an iGPU.
+    if (haystack.indexOf('intel') !== -1) return haystack.indexOf('arc') === -1;
+    return /(uhd graphics|iris|hd graphics|radeon graphics|radeon vega|vega \d|\b\d{3}m\b|microsoft basic|swiftshader|llvmpipe|fallback)/.test(haystack);
+}
+
+// Chrome normally leaves GPUAdapterInfo.description empty and only fills in
+// vendor/architecture, so build something readable from what we do get.
+function formatAdapterName(vendor, description, architecture, looksIntegrated) {
+    const prettyVendors = {
+        intel: 'Intel', nvidia: 'NVIDIA', amd: 'AMD', apple: 'Apple',
+        qualcomm: 'Qualcomm', arm: 'ARM', microsoft: 'Microsoft',
+        google: 'Google', img: 'Imagination'
+    };
+    const prettyVendor = prettyVendors[(vendor || '').toLowerCase()] || vendor || '';
+    const base = (description && description.trim())
+        ? description.trim()
+        : [prettyVendor, architecture].filter(Boolean).join(' ');
+    const name = base || 'Unknown GPU';
+    return looksIntegrated ? name + ' (integrated)' : name;
+}
+
+// Phones and low-memory machines get the smallest model so the first download is gentle.
+function pickWebLLMDefaultModel() {
+    try {
+        const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        const narrow = window.innerWidth <= 768;
+        const lowMemory = (navigator.deviceMemory || 8) <= 4;
+        return (coarse || narrow || lowMemory) ? WEBLLM_MOBILE_MODEL : WEBLLM_DEFAULT_MODEL;
+    } catch (e) {
+        return WEBLLM_DEFAULT_MODEL;
+    }
+}
+
 class APIManager {
     constructor() {
         this.providers = {
@@ -96,13 +171,30 @@ class APIManager {
                     ollama: { host: 'localhost', port: '11434', name: 'Ollama' },
                     lmstudio: { host: 'localhost', port: '1234', name: 'LM Studio' }
                 }
+            },
+            webllm: {
+                name: 'In-Browser (WebLLM / WebGPU)',
+                baseURL: null, // No server - the model runs on the user's GPU
+                defaultModel: pickWebLLMDefaultModel(),
+                keyPattern: null, // No API key; nothing leaves the browser
+                requiresKey: false,
+                runsLocally: true
             }
         };
 
-        this.currentProvider = this.getStoredProvider() || 'openai';
+        // Default to in-browser inference so a visitor with no cloud key still has an AI option.
+        // Anyone who already stored a cloud key keeps the previous OpenAI default.
+        this.currentProvider = this.getStoredProvider() || (this.getStoredApiKey() ? 'openai' : 'webllm');
         this.currentApiKey = this.getStoredApiKey() || '';
         this.currentModels = {};
         this.perplexityAdvancedOptions = this.getStoredPerplexityAdvancedOptions();
+
+        // WebLLM state: one resident engine per model id, plus a progress hook for the UI.
+        this.webllmEngines = {};
+        this.webllmLoading = null;
+        this.webllmLibPromise = null;
+        this.onWebLLMProgress = null;
+        this.webgpuAdapterInfo = null;
 
         // Defaults for auto-continuation; can be overridden per call
         this.defaults = {
@@ -969,6 +1061,9 @@ class APIManager {
             case 'custom': // Custom servers use OpenAI-compatible API
                 baseCall = (msgs, opts) => this._makeOpenAIStyleRequest(config, apiKey, model, msgs, opts);
                 break;
+            case 'webllm':
+                baseCall = (msgs, opts) => this._makeWebLLMRequest(config, model, msgs, opts);
+                break;
             case 'perplexity':
                 baseCall = (msgs, opts) => this._makePerplexityAgentRequest(config, apiKey, model, msgs, opts);
                 break;
@@ -1020,6 +1115,191 @@ class APIManager {
         }
         // Chunks are concatenated here, which is where loops across chunks become visible.
         return this._collapseTrailingRepetition(assembled);
+    }
+
+    // ---------- WebLLM: in-browser inference over WebGPU ----------
+    // Nothing is fetched until the user picks this provider and loads a model.
+    //
+    // Choosing a GPU: WebGPU has no adapter picker and no enumeration API - a page
+    // can only request the "high-performance" adapter (which WebLLM itself does) and
+    // the browser/OS makes the final call. So we request it here purely to report
+    // which GPU actually answered and to know whether to show the OS-level guidance.
+    async getWebGPUAdapterInfo(refresh = false) {
+        if (this.webgpuAdapterInfo && !refresh) return this.webgpuAdapterInfo;
+        if (typeof navigator === 'undefined' || !navigator.gpu) {
+            this.webgpuAdapterInfo = { ok: false, reason: 'WebGPU is not available in this browser. Use a recent Chrome or Edge on desktop with hardware acceleration enabled.' };
+            return this.webgpuAdapterInfo;
+        }
+        try {
+            const adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
+            if (!adapter) {
+                this.webgpuAdapterInfo = { ok: false, reason: 'No compatible GPU adapter found. Enable hardware acceleration in your browser settings, then reload.' };
+                return this.webgpuAdapterInfo;
+            }
+
+            let info = adapter.info;
+            if (!info && typeof adapter.requestAdapterInfo === 'function') {
+                try {
+                    info = await adapter.requestAdapterInfo();
+                } catch (e) {
+                    info = null;
+                }
+            }
+
+            const vendor = (info && info.vendor) || '';
+            const architecture = (info && info.architecture) || '';
+            const description = (info && (info.description || info.device)) || '';
+            const looksIntegrated = looksLikeIntegratedGPU(vendor, description, architecture);
+
+            this.webgpuAdapterInfo = {
+                ok: true,
+                vendor: vendor,
+                architecture: architecture,
+                description: description || [vendor, architecture].filter(Boolean).join(' ') || 'Unknown GPU',
+                displayName: formatAdapterName(vendor, description, architecture, looksIntegrated),
+                isFallback: Boolean(adapter.isFallbackAdapter),
+                looksIntegrated: looksIntegrated
+            };
+            return this.webgpuAdapterInfo;
+        } catch (e) {
+            this.webgpuAdapterInfo = { ok: false, reason: 'WebGPU adapter request failed: ' + (e && e.message ? e.message : e) };
+            return this.webgpuAdapterInfo;
+        }
+    }
+
+    async checkWebGPU(refresh = false) {
+        const adapter = await this.getWebGPUAdapterInfo(refresh);
+        if (!adapter.ok) return adapter;
+        return { ok: true, adapter: adapter };
+    }
+
+    // Model list in the {id,label,category} shape the provider UIs already render.
+    getWebLLMModels() {
+        const out = [];
+        const seen = new Set();
+        WEBLLM_MODELS.forEach(m => {
+            if (!seen.has(m.category)) {
+                seen.add(m.category);
+                out.push({ isHeader: true, label: WEBLLM_CATEGORY_LABELS[m.category] || m.category, category: m.category });
+            }
+            out.push({ id: m.id, label: m.label, category: m.category });
+        });
+        return out;
+    }
+
+    getWebLLMModelInfo(modelId) {
+        return WEBLLM_MODELS.find(m => m.id === modelId) || null;
+    }
+
+    _loadWebLLMLib() {
+        if (this.webllmLibPromise) return this.webllmLibPromise;
+        this.webllmLibPromise = import(WEBLLM_LIB_URL).catch(err => {
+            this.webllmLibPromise = null;
+            throw new Error('Could not load the in-browser AI runtime (' + (err && err.message ? err.message : err) + '). Check your connection and try again.');
+        });
+        return this.webllmLibPromise;
+    }
+
+    // Download (once) and initialise a model. onProgress receives {progress, text}.
+    async preloadWebLLMModel(modelId = null, onProgress = null) {
+        const model = modelId || this.getModel('webllm') || WEBLLM_DEFAULT_MODEL;
+        const gpu = await this.checkWebGPU();
+        if (!gpu.ok) throw new Error(gpu.reason);
+        const engine = await this._getWebLLMEngine(model, { onProgress });
+        return { model, engine };
+    }
+
+    // Only one in-browser model is kept resident; the previous one is freed.
+    async _unloadOtherWebLLMModels(keepModelId) {
+        for (const id of Object.keys(this.webllmEngines)) {
+            if (id === keepModelId) continue;
+            try {
+                await this.webllmEngines[id].unload();
+            } catch (e) {
+                // Unloading is best effort - a busy GPU should not break the flow.
+            }
+            delete this.webllmEngines[id];
+        }
+    }
+
+    async _getWebLLMEngine(modelId, options = {}) {
+        if (this.webllmEngines[modelId]) return this.webllmEngines[modelId];
+        if (this.webllmLoading && this.webllmLoading.modelId === modelId) return this.webllmLoading.promise;
+
+        const lib = await this._loadWebLLMLib();
+        await this._unloadOtherWebLLMModels(modelId);
+
+        const promise = lib.CreateMLCEngine(modelId, {
+            initProgressCallback: (p) => {
+                const payload = {
+                    model: modelId,
+                    progress: typeof (p && p.progress) === 'number' ? p.progress : 0,
+                    text: (p && p.text) || ''
+                };
+                if (typeof options.onProgress === 'function') options.onProgress(payload);
+                if (typeof this.onWebLLMProgress === 'function') this.onWebLLMProgress(payload);
+                try {
+                    document.dispatchEvent(new CustomEvent('webllmprogress', { detail: payload }));
+                } catch (e) {
+                    // CustomEvent is unavailable only in exotic hosts; ignore.
+                }
+            }
+        }).then(engine => {
+            this.webllmEngines[modelId] = engine;
+            this.webllmLoading = null;
+            return engine;
+        }).catch(err => {
+            this.webllmLoading = null;
+            throw new Error('Failed to load "' + modelId + '" in the browser: ' + (err && err.message ? err.message : err));
+        });
+
+        this.webllmLoading = { modelId, promise };
+        return promise;
+    }
+
+    // Free GPU memory and drop the downloaded weights for every catalog model.
+    async clearWebLLMModels() {
+        await this._unloadOtherWebLLMModels(null);
+        const lib = await this._loadWebLLMLib();
+        if (typeof lib.deleteModelAllInfoInCache === 'function') {
+            for (const m of WEBLLM_MODELS) {
+                try {
+                    await lib.deleteModelAllInfoInCache(m.id, lib.prebuiltAppConfig);
+                } catch (e) {
+                    // Cache eviction is best effort.
+                }
+            }
+        }
+    }
+
+    async _makeWebLLMRequest(config, model, messages, options = {}) {
+        // Fail early with an actionable message rather than a deep runtime error.
+        const gpu = await this.checkWebGPU();
+        if (!gpu.ok) throw new Error(gpu.reason);
+
+        // WebLLM takes plain text turns, so flatten any multimodal content parts.
+        const toText = (content) => Array.isArray(content)
+            ? content.map(part => (typeof part === 'string' ? part : (part && part.text) ? part.text : '')).join('\n')
+            : (content || '');
+
+        const engine = await this._getWebLLMEngine(model, { onProgress: options.onWebLLMProgress });
+        const reply = await engine.chat.completions.create({
+            messages: messages.map(m => ({ role: m.role, content: toText(m.content) })),
+            temperature: typeof options.temperature === 'number' ? options.temperature : 0.7,
+            max_tokens: options.maxTokens || 2000
+        });
+
+        const choice = reply && reply.choices && reply.choices[0];
+        const content = this._postProcess((choice && choice.message && choice.message.content) || '', options);
+
+        return await this._finalizeWithContinuation({
+            content,
+            baseMessages: messages,
+            adjustedMessages: messages,
+            options,
+            isInitiallyTruncated: Boolean(choice && choice.finish_reason === 'length'),
+            reRequest: (msgs, opts) => this._makeWebLLMRequest(config, model, msgs, opts)
+        });
     }
 
     async _makeOpenAIStyleRequest(config, apiKey, model, messages, options) {
@@ -1454,6 +1734,8 @@ class APIManager {
                 return this._listAnthropicModels(config, key);
             case 'gemini':
                 return this._listGeminiModels(config, key);
+            case 'webllm':
+                return this.getWebLLMModels();
             default:
                 throw new Error('Unsupported provider: ' + p);
         }

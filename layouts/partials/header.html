@@ -143,7 +143,7 @@
                   <div class="ai-help-section" id="ai-help-section" style="display: none;">
                     <div class="ai-help-content">
                       <h4>How to Use AI Tools</h4>
-                      <img src="/images/help/ai-tool-help.gif" alt="AI Tools Tutorial" class="ai-help-gif">
+                      <img src="/images/help/ai-tool-help.webp" alt="AI Tools Tutorial" class="ai-help-gif">
                     </div>
                   </div>
                   <!-- Settings Section (Right on wide screens) -->
@@ -162,6 +162,7 @@
                         <option value="groq">Groq</option>
                         <option value="cerebras">Cerebras</option>
                         <option value="custom">Custom Server (Ollama/LMStudio)</option>
+                        <option value="webllm">In-Browser (WebLLM / WebGPU)</option>
                       </select>
                     </div>
                     <!-- Custom Server Configuration (shown only for custom provider) -->
@@ -194,7 +195,40 @@
                       <small class="ai-help">Custom servers must support OpenAI-compatible API. Enable CORS in server
                         settings.</small>
                     </div>
-                    <div class="ai-field">
+                    <!-- In-browser (WebLLM) configuration (shown only for the webllm provider) -->
+                    <div class="ai-field" id="ai-webllm-config" style="display: none;">
+                      <label>In-Browser Model</label>
+                      <div id="ai-webllm-status" class="ai-help">Checking WebGPU support...</div>
+                      <div id="ai-webllm-gpu-wrap" class="ai-help" style="display: none;">
+                        GPU in use: <strong id="ai-webllm-gpu-name">Unknown</strong>
+                        <button type="button" id="ai-webllm-recheck-btn"
+                          style="display: inline-block; width: auto; margin: 0 0 0 6px; padding: 2px 8px; font-size: 0.85em; background: #444; border: 1px solid #666; color: #fff; border-radius: 4px; cursor: pointer;">Re-check</button>
+                      </div>
+                      <div id="ai-webllm-progress"
+                        style="display: none; height: 8px; background: #2a2a2a; border: 1px solid #555; border-radius: 4px; overflow: hidden; margin: 8px 0;">
+                        <div id="ai-webllm-progress-bar"
+                          style="width: 0%; height: 100%; background: #ff6b35; transition: width 0.2s ease;"></div>
+                      </div>
+                      <button type="button" id="ai-webllm-load-btn"
+                        style="display: block; width: fit-content; margin: 10px auto; padding: 6px 16px; background: #444; border: 1px solid #666; color: #fff; border-radius: 4px; cursor: pointer; white-space: nowrap;">Download
+                        &amp; load model</button>
+                      <small class="ai-help">Runs entirely on your device - no API key and no server. The size shown for
+                        each model is the approximate GPU memory it needs; the model downloads once and is cached by your
+                        browser.</small>
+                      <details id="ai-webllm-gpu-help"
+                        style="display: none; margin: 6px 0 0; font-size: 0.72em; line-height: 1.25;">
+                        <summary style="display: block; padding: 2px 0; cursor: pointer; font-weight: 600;">Wrong GPU?
+                        </summary>
+                        <div style="padding: 0; margin: 2px 0 0;text-align: left; margin: 12px 12px;">
+                          <div> 1. Windows: Settings &rarr; Display &rarr; Graphics &rarr; your browser &rarr; High
+                            performance</div>
+                          <div> 2. NVIDIA: Control Panel &rarr; 3D Settings &rarr; Program Settings</div>
+                          <div> 3. or launch the browser with <code>--force_high_performance_gpu</code></div>
+                          <div> 4. Restart browser and hit Re-check.</div><!--crbug.com/369219127-->
+                        </div>
+                      </details>
+                    </div>
+                    <div class="ai-field" id="ai-key-field">
                       <label for="ai-key">API Key <span id="ai-key-optional"
                           style="display: none; color: #999; font-weight: normal;">(Optional)</span></label>
                       <input type="password" id="ai-key" placeholder="Enter your API key">
@@ -274,13 +308,17 @@
                   <ul class="ai-help-list">
                     <li>Configure your AI provider by selecting one from the dropdown. <a href="#" id="provider-link"
                         target="_blank" rel="noopener noreferrer">Visit provider website</a></li>
-                    <li>Enter your API key. <span id="key-format">Format: <code>sk-...</code></span></li>
-                    <li>Optionally choose a specific model. <a href="#" id="pricing-link" target="_blank"
-                        rel="noopener noreferrer">View pricing</a> // <a href="#" id="models-link" target="_blank"
-                        rel="noopener noreferrer">View models</a></li>
+                    <li id="webllm-hint-item">No API key? Choose <strong>In-Browser (WebLLM / WebGPU)</strong> to run a
+                      model on your own device instead.</li>
+                    <li id="api-key-help-item">Enter your API key. <span id="key-format">Format: <code>sk-...</code></span></li>
+                    <li>Optionally choose a specific model. <span id="pricing-wrapper"><a href="#" id="pricing-link"
+                          target="_blank" rel="noopener noreferrer">View pricing</a> // </span><a href="#" id="models-link"
+                        target="_blank" rel="noopener noreferrer">View models</a></li>
+                    <li id="webllm-local-item" style="display: none;">In-browser models are free and run entirely on your
+                      device - prompts are never sent anywhere, and the download is cached for next time.</li>
                     <li>Visit any AI tool page to start using powerful AI-driven features like story generators, quiz
                       creators, and more.</li>
-                    <li>Your API key is stored securely in your browser session and never sent to our servers.</li>
+                    <li id="api-key-storage-item">Your API key is stored securely in your browser session and never sent to our servers.</li>
                   </ul>
                 </div>
               </div>
@@ -516,6 +554,16 @@
     const aiKey = document.getElementById('ai-key');
     const aiModel = document.getElementById('ai-model');
     const aiModelHelp = document.getElementById('ai-model-help');
+    const aiKeyField = document.getElementById('ai-key-field');
+    const aiWebLLMConfig = document.getElementById('ai-webllm-config');
+    const aiWebLLMStatus = document.getElementById('ai-webllm-status');
+    const aiWebLLMGpuWrap = document.getElementById('ai-webllm-gpu-wrap');
+    const aiWebLLMGpuName = document.getElementById('ai-webllm-gpu-name');
+    const aiWebLLMGpuHelp = document.getElementById('ai-webllm-gpu-help');
+    const aiWebLLMRecheckBtn = document.getElementById('ai-webllm-recheck-btn');
+    const aiWebLLMProgress = document.getElementById('ai-webllm-progress');
+    const aiWebLLMProgressBar = document.getElementById('ai-webllm-progress-bar');
+    const aiWebLLMLoadBtn = document.getElementById('ai-webllm-load-btn');
     const aiPerplexityAdvancedWrapper = document.getElementById('ai-perplexity-advanced-wrapper');
     const aiPerplexityAdvancedToggle = document.getElementById('ai-perplexity-advanced-toggle');
     const aiPerplexityAdvancedContent = document.getElementById('ai-perplexity-advanced-content');
@@ -544,7 +592,8 @@
         perplexity: 'Enter your Perplexity API key (pplx-...)',
         groq: 'Enter your Groq API key (gsk_...)',
         cerebras: 'Enter your Cerebras API key',
-        custom: 'API key (optional for local servers)'
+        custom: 'API key (optional for local servers)',
+        webllm: 'Not required - runs in your browser'
       };
       aiKey.placeholder = placeholders[provider] || 'Enter your API key';
 
@@ -554,12 +603,74 @@
         optionalLabel.style.display = provider === 'custom' ? 'inline' : 'none';
       }
 
+      // In-browser inference needs no key at all, so drop the field entirely
+      if (aiKeyField) {
+        aiKeyField.style.display = provider === 'webllm' ? 'none' : 'block';
+      }
+
       // Show/hide custom server configuration
       const customConfig = document.getElementById('ai-custom-config');
       if (customConfig) {
         customConfig.style.display = provider === 'custom' ? 'block' : 'none';
       }
+
+      // Show/hide in-browser (WebLLM) configuration
+      if (aiWebLLMConfig) {
+        aiWebLLMConfig.style.display = provider === 'webllm' ? 'block' : 'none';
+      }
+      if (provider === 'webllm') refreshWebLLMStatus();
     }
+
+    // ---- In-browser (WebLLM) helpers ----
+    function setWebLLMProgress(progress) {
+      if (!aiWebLLMProgress || !aiWebLLMProgressBar) return;
+      const pct = Math.max(0, Math.min(100, Math.round((progress || 0) * 100)));
+      aiWebLLMProgress.style.display = 'block';
+      aiWebLLMProgressBar.style.width = pct + '%';
+    }
+
+    async function refreshWebLLMStatus(refresh = false) {
+      if (!aiWebLLMStatus) return;
+      if (!window.apiManager || typeof window.apiManager.checkWebGPU !== 'function') {
+        aiWebLLMStatus.textContent = 'Waiting for AI engine...';
+        return;
+      }
+      aiWebLLMStatus.textContent = 'Checking WebGPU support...';
+      const gpu = await window.apiManager.checkWebGPU(refresh);
+      if (!gpu.ok) {
+        aiWebLLMStatus.textContent = gpu.reason;
+        if (aiWebLLMGpuWrap) aiWebLLMGpuWrap.style.display = 'none';
+        if (aiWebLLMGpuHelp) aiWebLLMGpuHelp.style.display = 'none';
+        if (aiWebLLMLoadBtn) aiWebLLMLoadBtn.disabled = true;
+        return;
+      }
+
+      // Show which GPU WebGPU actually handed us, so a laptop user can confirm
+      // whether the discrete card was picked.
+      const adapter = gpu.adapter || {};
+      if (aiWebLLMGpuName) aiWebLLMGpuName.textContent = adapter.displayName || adapter.description || 'Unknown GPU';
+      if (aiWebLLMGpuWrap) aiWebLLMGpuWrap.style.display = 'block';
+      if (aiWebLLMGpuHelp) {
+        // Always available, but never auto-opened: the "GPU in use" line above is the
+        // signal, and the steps are there on demand.
+        aiWebLLMGpuHelp.style.display = 'block';
+      }
+
+      const info = (aiModel && aiModel.value && window.apiManager.getWebLLMModelInfo)
+        ? window.apiManager.getWebLLMModelInfo(aiModel.value)
+        : null;
+      aiWebLLMStatus.textContent = info
+        ? 'WebGPU ready. Loading a model downloads it once: ' + info.label
+        : 'WebGPU ready. Pick a model above, then load it.';
+      if (aiWebLLMLoadBtn) aiWebLLMLoadBtn.disabled = false;
+    }
+
+    // Download progress is broadcast by apiManager so any page can surface it.
+    document.addEventListener('webllmprogress', function (e) {
+      const detail = e.detail || {};
+      setWebLLMProgress(detail.progress);
+      if (aiWebLLMStatus && detail.text) aiWebLLMStatus.textContent = detail.text;
+    });
 
     function getPerplexityAdvancedFields() {
       const payload = {};
@@ -690,6 +801,15 @@
           keyFormat: 'Optional',
           pricing: 'https://github.com/ollama/ollama',
           models: 'https://ollama.com/library'
+        },
+        webllm: {
+          url: 'https://github.com/mlc-ai/web-llm',
+          name: 'WebLLM (in-browser)',
+          keyFormat: 'Not required',
+          pricing: 'https://github.com/mlc-ai/web-llm',
+          models: 'https://mlc.ai/models',
+          modelsText: 'Model catalogue',
+          free: true
         }
       };
 
@@ -704,22 +824,45 @@
         keyFormat.innerHTML = `Format: <code>${info.keyFormat}</code>`;
       }
 
+      // In-browser inference is free, so drop the pricing link and point the model
+      // link at the catalogue the weights actually come from.
+      const isInBrowser = Boolean(info.free);
+
+      const pricingWrapper = document.getElementById('pricing-wrapper');
+      if (pricingWrapper) pricingWrapper.style.display = isInBrowser ? 'none' : 'inline';
+
+      const apiKeyHelpItem = document.getElementById('api-key-help-item');
+      if (apiKeyHelpItem) apiKeyHelpItem.style.display = isInBrowser ? 'none' : 'list-item';
+
+      const webllmHintItem = document.getElementById('webllm-hint-item');
+      if (webllmHintItem) webllmHintItem.style.display = isInBrowser ? 'none' : 'list-item';
+
+      const webllmLocalItem = document.getElementById('webllm-local-item');
+      if (webllmLocalItem) webllmLocalItem.style.display = isInBrowser ? 'list-item' : 'none';
+
+      const apiKeyStorageItem = document.getElementById('api-key-storage-item');
+      if (apiKeyStorageItem) apiKeyStorageItem.style.display = isInBrowser ? 'none' : 'list-item';
+
       if (pricingLink) {
         pricingLink.href = info.pricing;
       }
 
       if (modelsLink) {
         modelsLink.href = info.models;
+        modelsLink.textContent = info.modelsText || 'View models';
       }
     }
 
     // Reset model select to default state
     function resetModelSelect() {
       if (!aiModel) return;
-      const provider = aiProvider ? aiProvider.value : 'openai';
+      const provider = aiProvider ? aiProvider.value : 'webllm';
       if (provider === 'custom') {
         aiModel.innerHTML = '<option value="">Configure server to load models...</option>';
         if (aiModelHelp) aiModelHelp.textContent = 'Models will be fetched from your custom server after configuration.';
+      } else if (provider === 'webllm') {
+        aiModel.innerHTML = '<option value="">Open AI settings to list in-browser models...</option>';
+        if (aiModelHelp) aiModelHelp.textContent = 'In-browser models run on your GPU. Nothing downloads until you load one.';
       } else {
         aiModel.innerHTML = '<option value="">Enter API key to load models...</option>';
         if (aiModelHelp) aiModelHelp.textContent = 'Models are fetched from the selected provider after validating your API key.';
@@ -775,7 +918,7 @@
         }
 
         // For custom provider, key is optional - always try to load models if endpoint is configured
-      } else {
+      } else if (provider !== 'webllm') {
         // For other providers, validate API key
         if (!provider || !window.utils.validateApiKey(key, provider)) {
           resetModelSelect();
@@ -828,7 +971,12 @@
         aiModel.value = found ? desired : aiModel.options[0].value;
 
         window.apiManager.setModel(aiModel.value, provider);
-        if (aiModelHelp) aiModelHelp.textContent = 'Models loaded.';
+        if (aiModelHelp) {
+          aiModelHelp.textContent = provider === 'webllm'
+            ? 'In-browser models need to be downloaded.'
+            : 'Models loaded.';
+        }
+        if (provider === 'webllm') refreshWebLLMStatus();
 
       } catch (err) {
         console.error('Failed to load models:', err);
@@ -936,7 +1084,9 @@
 
     // Load saved settings
     if (aiProvider && aiKey && aiModel) {
-      const savedProvider = localStorage.getItem('ai-provider') || 'openai';
+      // No stored choice: default to in-browser inference unless a cloud key is already saved.
+      const storedKeyForDefault = (sessionStorage.getItem('ai-key') || '') || (localStorage.getItem('ai-api-key') || '');
+      const savedProvider = localStorage.getItem('ai-provider') || (storedKeyForDefault ? 'openai' : 'webllm');
       const savedKey = sessionStorage.getItem('ai-key') || '';
       const savedModel = localStorage.getItem('ai-model') || '';
 
@@ -975,9 +1125,8 @@
       }
 
       // Attempt staged model loading allowing time for apiManager to attach
-      // For custom provider, try to load models if endpoint is configured (even without key)
-      // For other providers, only try if API key exists
-      if (savedKey || savedProvider === 'custom') {
+      // Custom servers and in-browser WebLLM need no key, so they always try.
+      if (savedKey || savedProvider === 'custom' || savedProvider === 'webllm') {
         setTimeout(() => tryLoadModels(), 150); // initial attempt
         setTimeout(() => { if (aiModel.disabled) tryLoadModels(); }, 800); // second attempt
       } else {
@@ -1002,8 +1151,8 @@
           }
         }
 
-        // Try to load models if we have a key, or if it's custom provider with endpoint configured
-        if (savedKey || provider === 'custom') {
+        // Try to load models if we have a key, or for providers that need none
+        if (savedKey || provider === 'custom' || provider === 'webllm') {
           if (aiModel.disabled) {
             apiManagerRetryCount = 0;
             tryLoadModels();
@@ -1052,7 +1201,8 @@
         }
 
         resetModelSelect();
-        if (aiKey.value.trim() || provider === 'custom') {
+        if (provider === 'webllm') refreshWebLLMStatus();
+        if (aiKey.value.trim() || provider === 'custom' || provider === 'webllm') {
           apiManagerRetryCount = 0;
           setTimeout(tryLoadModels, 120);
         }
@@ -1091,7 +1241,45 @@
         localStorage.setItem('ai-model', model);
 
         if (window.apiManager) window.apiManager.setModel(model);
+        if (aiProvider && aiProvider.value === 'webllm') refreshWebLLMStatus();
       });
+
+      // In-browser model download. Weights are large, so this only ever runs
+      // when the user explicitly asks for it.
+      if (aiWebLLMLoadBtn) {
+        aiWebLLMLoadBtn.addEventListener('click', async function () {
+          if (!window.apiManager || !aiModel || !aiModel.value) return;
+          const model = aiModel.value;
+          this.disabled = true;
+          if (aiWebLLMStatus) aiWebLLMStatus.textContent = 'Downloading and loading ' + model + '...';
+          setWebLLMProgress(0);
+          try {
+            window.apiManager.setProvider('webllm');
+            window.apiManager.setModel(model, 'webllm');
+            await window.apiManager.preloadWebLLMModel(model);
+            setWebLLMProgress(1);
+            if (aiWebLLMStatus) aiWebLLMStatus.textContent = 'Model ready - generation runs on your device.';
+          } catch (err) {
+            if (aiWebLLMStatus) {
+              aiWebLLMStatus.textContent = (err && err.message) ? err.message : 'Failed to load the in-browser model.';
+            }
+          } finally {
+            this.disabled = false;
+          }
+        });
+      }
+
+      // Re-detect the GPU (e.g. after changing Windows/NVIDIA graphics settings).
+      if (aiWebLLMRecheckBtn) {
+        aiWebLLMRecheckBtn.addEventListener('click', async function () {
+          this.disabled = true;
+          try {
+            await refreshWebLLMStatus(true);
+          } finally {
+            this.disabled = false;
+          }
+        });
+      }
 
       if (aiPerplexityAdvancedToggle) {
         aiPerplexityAdvancedToggle.addEventListener('click', function () {
